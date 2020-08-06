@@ -420,11 +420,6 @@
         <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
     </div>
 
-    <div class="form-group">
-        {!! Form::label('Image Notes (Optional)') !!} {!! add_help('This section is for making additional notes about the image.') !!}
-        {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}
-    </div>
-
     <div class="text-right">
         {!! Form::submit('Create Character', ['class' => 'btn btn-primary']) !!}
     </div>
