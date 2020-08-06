@@ -400,12 +400,12 @@
 
     <div class="form-group">
         {!! Form::label('Temperament') !!}
-        {!! Form::select('temperament', ['Timid' => 'Timid', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
+        {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Diet') !!}
-        {!! Form::text('diet', old('diet'), ['class' => 'form-control']) !!}
+        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'],old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
