@@ -199,6 +199,13 @@
     </div>
     @if(!$isMyo)
         <div class="form-group">
+            {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design.') !!}
+            <div id="adornmentsList">
+            </div>
+            <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
+        </div>
+
+        <div class="form-group">
             {!! Form::label('Image Notes (Optional)') !!} {!! add_help('This section is for making additional notes about the image.') !!}
             {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}
         </div>
@@ -233,10 +240,203 @@
         </div>
     </div>
 
+    <h3>Genetics</h3>
+    <div class="form-group">
+        {!! Form::label('Sex') !!}
+        {!! Form::select('sex', ['M' => 'Male', 'F' => 'Female'], old('sex') ? old('sex') : 'm', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('genotype', 'Genotype', ['class' => 'w-25 mb-0']) !!}
+        {!! Form::text('genotype', old('genotype'), ['class' => 'form-control', 'placeholder' => 'Enter genotype']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('phenotype', 'Phenotype', ['class' => 'w-25 mb-0']) !!}
+        {!! Form::text('phenotype', old('phenotype'), ['class' => 'form-control', 'placeholder' => 'Enter phenotype']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Slots Left') !!}
+        {!! Form::text('slots_left', old('slots_left') ? old('slots_left') : 0, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Health Status') !!}
+        {!! Form::text('health_status', 'Healthy', ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
+    </div>
+
+    <h3>Rites and Activities</h3>
+
+    <div class="form-group">
+        {!! Form::checkbox('ouroboros', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+        {!! Form::label('ouroboros', 'Has Achieved Ouroboros Emblem', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Taming') !!}
+        {!! Form::select('taming', ['None' => 'None', 'Domesticated' => 'Domesticated', 'Wild' => 'Wild', 'Aether' => 'Aether'], old('taming') ? old('taming') : 'None', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::checkbox('basic_aether', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+        {!! Form::label('basic_aether', 'Has Finished Aether Awakening', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Low Aether Class') !!}
+        {!! Form::select('low_aether', ['None' => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('low_aether') ? old('low_aether') : 'None', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('High Aether Class') !!}
+        {!! Form::select('high_aether', ['None' => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('high_aether') ? old('high_aether') : 'None', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Arena Ranking') !!}
+        {!! Form::select('arena_ranking', ['None' => 'None'], old('arena_ranking') ? old('arena_ranking') : 'None', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Soul Link Type') !!}
+        {!! Form::select('soul_link_type', ['None' => 'None', 'Dragon' => 'Dragon','Account' => 'Account', 'Companion' => 'Companion'], old('soul_link_type') ? old('soul_link_type') : 'None', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Soul Link Target') !!}
+        {!! Form::text('soul_link_target', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the target']) !!}
+        {!! Form::text('soul_link_target_link', null, ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
+    </div>
+
+    <h3>Lineage</h3>
+    <div class="alert alert-info">
+        <p>You only need to enter the Sire and Dam as the system will automatically retrieve their lineage from there. In case of a custom lineage (either parent is 'Unknown' or is a legacy character), you will have to enter each ancestor manually.</p>
+        Enter the character code (e.g. SB-0001) of the dragon into each box. If correctly formatted and the character currently exists, a link to the character will show up in the preview.
+        Leave blank to set as 'Unknown'.
+    </div>
+    <div class="form-group">
+        {!! Form::checkbox('use_custom_lineage', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomLineage']) !!}
+        {!! Form::label('use_custom_lineage', 'Use Custom Lineage', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+
+    <div class="row">
+        <div class="d-flex flex-column justify-content-around col-md-4">
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('sire_slug', 'Sire:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('sire_slug', old('sire_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('dam_slug', 'Dam:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('dam_slug', old('dam_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-around col-md-4 custom-lineage-column hide">
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('ss_slug', 'SS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('ss_slug', old('ss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('sd_slug', 'SD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('sd_slug', old('sd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('ds_slug', 'DS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('ds_slug', old('ds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('dd_slug', 'DD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('dd_slug', old('dd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-around col-md-4 custom-lineage-column hide">
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('sss_slug', 'SSS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('sss_slug', old('sss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('ssd_slug', 'SSD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('ssd_slug', old('ssd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('sds_slug', 'SDS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('sds_slug', old('sds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('sdd_slug', 'SDD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('sdd_slug', old('sdd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('dss_slug', 'DSS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('dss_slug', old('dss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('dsd_slug', 'DSD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('dsd_slug', old('dsd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('dds_slug', 'DDS:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('dds_slug', old('dds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+            <div class="form-group d-flex align-items-center">
+                {!! Form::label('ddd_slug', 'DDD:', ['class' => 'w-25 mb-0']) !!}
+                {!! Form::text('ddd_slug', old('ddd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+            </div>
+        </div>
+    </div>
+    <h5>Preview</h5>
+    <div class="card mb-3">
+        <div class="card-body">
+            @include('character._lineage_tree')
+        </div>
+    </div>
+
+    <h3>Other Profile Information</h3>
+
+    <div class="form-group">
+        {!! Form::checkbox('is_adopted', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'isAdopted']) !!}
+        {!! Form::label('is_adopted', 'Is Adopted', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Temperament') !!}
+        {!! Form::select('temperament', ['Timid' => 'Timid', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Diet') !!}
+        {!! Form::text('diet', old('diet'), ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Rank') !!}
+        {!! Form::select('rank', ['Fledgling' => 'Fledgling', 'Primal' => 'Primal', 'Ancient' => 'Ancient', 'Primordial' => 'Primordial'], old('rank') ? old('rank') : 'Fledgling', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Skills') !!}
+        <div id="skillsList">
+        </div>
+        <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Image Notes (Optional)') !!} {!! add_help('This section is for making additional notes about the image.') !!}
+        {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}
+    </div>
+
     <div class="text-right">
         {!! Form::submit('Create Character', ['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
+    <div class="adornment-row hide mb-2">
+        {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+        <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+    </div>
+    <div class="skill-row hide mb-2">
+        {!! Form::text('skills[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
+        <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
+    </div>
 @endif
 
 @endsection

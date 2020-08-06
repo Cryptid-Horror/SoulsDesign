@@ -43,7 +43,11 @@ class Character extends Model
         'is_sellable', 'is_tradeable', 'is_giftable',
         'sale_value', 'transferrable_at', 'is_visible',
         'is_gift_art_allowed', 'is_trading', 'sort',
-        'is_myo_slot', 'name', 'trade_id'
+        'is_myo_slot', 'name', 'trade_id',
+        'sire_slug', 'dam_slug', 'use_custom_lineage',
+        'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+        'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+        'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug'
     ];
 
     /**
@@ -534,5 +538,70 @@ class Character extends Model
                     'character_name' => $this->fullName
                 ]);
         }        
+    }
+
+    /**
+     * Returns the character's lineage as an associative array of characters.
+     *
+     * @param int       $depth      The recursion limit of the function, i.e. how far down the lineage it should search. Used mostly to track the number of recursions.
+     * 
+     * @return array
+     */
+    public function lineage($depth=3)
+    {
+        $sire_side = [
+            'sire',
+            'ss', 'sd',
+            'sss', 'ssd', 'sds', 'sdd'
+        ];
+        $dam_side =[
+            'dam',
+            'ds', 'dd',
+            'dss', 'dsd', 'dds', 'ddd'
+        ];
+        $ancestor_titles = array_merge($sire_side, $dam_side);
+        $lineage = array_combine($ancestor_titles, array_fill(0, 14, null));
+        if($depth <= 0) return $lineage;
+
+        if($this->use_custom_lineage) {
+            foreach($ancestor_titles as $title) {
+                $lineage[$title] = isset($this[$title.'_slug']) ?  $c = Character::myo(0)->where('slug', $this[$title.'_slug'])->first() ? $c: $this[$title.'_slug'].add_help('This is a legacy character.') : null ;
+            }
+        }
+        else {
+            $sire = isset($this['sire_slug']) ? Character::myo(0)->where('slug', $this['sire_slug'])->first() : null;
+            if($sire) {
+                $sire_lineage = $sire->lineage($depth-1);
+                $lineage['sire'] = $sire;
+                $lineage['ss'] = $sire_lineage['sire'];
+                $lineage['sd'] = $sire_lineage['dam'];
+                $lineage['sss'] = $sire_lineage['ss'];
+                $lineage['ssd'] = $sire_lineage['sd'];
+                $lineage['sds'] = $sire_lineage['ds'];
+                $lineage['sdd'] = $sire_lineage['dd'];
+            }
+            else {
+                foreach($sire_side as $title) {
+                    $lineage[$title] = null;
+                }
+            }
+            $dam = isset($this['dam_slug']) ? Character::myo(0)->where('slug', $this['dam_slug'])->first() : null;
+            if($dam) {
+                $dam_lineage =$dam->lineage($depth-1);
+                $lineage['dam'] = $dam;
+                $lineage['ds'] = $dam_lineage['sire'];
+                $lineage['dd'] = $dam_lineage['dam'];
+                $lineage['dss'] = $dam_lineage['ss'];
+                $lineage['dsd'] = $dam_lineage['sd'];
+                $lineage['dds'] = $dam_lineage['ds'];
+                $lineage['ddd'] = $dam_lineage['dd'];
+            }
+            else {
+                foreach($dam_side as $title) {
+                    $lineage[$title] = null;
+                }
+            }
+        }
+        return $lineage;
     }
 }

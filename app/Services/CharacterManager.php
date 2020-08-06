@@ -189,7 +189,8 @@ class CharacterManager extends Service
             $characterData = array_only($data, [
                 'character_category_id', 'rarity_id', 'user_id',
                 'number', 'slug', 'description',
-                'sale_value', 'transferrable_at', 'is_visible'
+                'sale_value', 'transferrable_at', 'is_visible',
+                'sire_slug', 'dam_slug', 'use_custom_lineage'
             ]);
             
             $characterData['name'] = ($isMyo && isset($data['name'])) ? $data['name'] : null;
@@ -203,6 +204,21 @@ class CharacterManager extends Service
             $characterData['is_trading'] = 0;
             $characterData['parsed_description'] = parse($data['description']);
             if($isMyo) $characterData['is_myo_slot'] = 1;
+
+            if(isset($data['use_custom_lineage'])) {
+                $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+                $characterData['sd_slug'] = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+                $characterData['ds_slug'] = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+                $characterData['dd_slug'] = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+                $characterData['sss_slug'] = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+                $characterData['ssd_slug'] = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+                $characterData['sds_slug'] = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+                $characterData['sdd_slug'] = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+                $characterData['dss_slug'] = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+                $characterData['dsd_slug'] = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+                $characterData['dds_slug'] = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+                $characterData['ddd_slug'] = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+            }
             
             $character = Character::create($characterData);
 

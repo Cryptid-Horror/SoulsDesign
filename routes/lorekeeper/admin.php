@@ -254,6 +254,7 @@ Route::group(['prefix' => 'masterlist', 'namespace' => 'Characters', 'middleware
     Route::post('create-character', 'CharacterController@postCreateCharacter');
     
     Route::get('get-number', 'CharacterController@getPullNumber');
+    Route::get('get-character-info', 'CharacterController@getCharacterInfo');
     
     Route::get('transfers/{type}', 'CharacterController@getTransferQueue');
     Route::get('transfer/{id}', 'CharacterController@getTransferInfo');

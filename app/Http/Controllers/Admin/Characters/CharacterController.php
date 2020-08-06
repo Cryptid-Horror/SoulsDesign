@@ -101,7 +101,10 @@ class CharacterController extends Controller
             'designer_alias', 'designer_url',
             'artist_alias', 'artist_url',
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
-            'image', 'ext_url', 'thumbnail', 'image_description'
+            'image', 'ext_url', 'thumbnail', 'image_description',
+            'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+            'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage'
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
             flash('Character created successfully.')->success();
@@ -662,5 +665,77 @@ class CharacterController extends Controller
         return view('admin.masterlist.myo_index', [
             'slots' => Character::myo(1)->orderBy('id', 'DESC')->paginate(30),
         ]);
+    }
+
+    /**
+     * Attempts to show a link to character.
+     *
+     * @param  string  $slug
+     * @return App\Models\Character
+     */
+    public function getCharacterInfo(Request $request)
+    {
+        $ancestor_titles = [
+            'sire', 'dam',
+            'ss', 'sd', 'ds', 'dd',
+            'sss', 'ssd', 'sds', 'sdd', 'dss', 'dsd', 'dds', 'ddd'
+        ];
+        $is_custom = $request->custom == 'true';
+        $lineage = array_combine($ancestor_titles, array_fill(0, 14, 'Unknown'));
+        if($is_custom) {
+            foreach($ancestor_titles as $title) {
+                if($request[$title] == 'undefined' || $request[$title] == '') {
+                    $lineage[$title] = 'Unknown';
+                }
+                else {
+                    $lineage[$title] = Character::myo(0)->where('slug', $request[$title])->first();
+                    if($lineage[$title]) $lineage[$title] = $lineage[$title]->display_name;
+                    else $lineage[$title] = $request[$title].add_help('This is a legacy character.');
+                }
+            }
+        }
+        else {
+            if($request['sire'] == 'undefined' || $request['sire'] == '') {
+                if($request['dam'] != 'undefined' && $request['dam'] != '') $lineage['sire'] = 'Sire needs to be set.';
+                else $lineage['sire'] = 'Unknown';
+            }
+            else {
+                $sire = Character::myo(0)->where('slug', $request['sire'])->first();
+                if($sire) {
+                    $sire_lineage = $sire->lineage();
+                    $lineage['sire'] = $sire->display_name;
+                    $lineage['ss'] = $sire_lineage['sire'] ? $sire_lineage['sire']->display_name ?? $sire_lineage['sire'] : 'Unknown';
+                    $lineage['sd'] = $sire_lineage['dam'] ? $sire_lineage['dam']->display_name ?? $sire_lineage['dam'] : 'Unknown';
+                    $lineage['sss'] = $sire_lineage['ss'] ? $sire_lineage['ss']->display_name ?? $sire_lineage['ss'] : 'Unknown';
+                    $lineage['ssd'] = $sire_lineage['sd'] ? $sire_lineage['sd']->display_name ?? $sire_lineage['sd'] : 'Unknown';
+                    $lineage['sds'] = $sire_lineage['ds'] ? $sire_lineage['ds']->display_name ?? $sire_lineage['ds'] : 'Unknown';
+                    $lineage['sdd'] = $sire_lineage['dd'] ? $sire_lineage['dd']->display_name ?? $sire_lineage['dd'] : 'Unknown';
+                }
+                else {
+                    $lineage['sire'] = $request['sire'].' does not exist.';
+                }
+            }
+            if($request['dam'] == 'undefined' || $request['dam'] == '') {
+                if($request['sire'] != 'undefined' && $request['sire'] != '') $lineage['dam'] = 'Dam needs to be set.';
+                else $lineage['dam'] = 'Unknown';
+            }
+            else {
+                $dam = Character::myo(0)->where('slug', $request['dam'])->first();
+                if($dam) {
+                    $dam_lineage = $dam->lineage();
+                    $lineage['dam'] = $dam->display_name;
+                    $lineage['ds'] = $dam_lineage['sire'] ? $dam_lineage['sire']->display_name ?? $dam_lineage['sire'] : 'Unknown';
+                    $lineage['dd'] = $dam_lineage['dam'] ? $dam_lineage['dam']->display_name ?? $dam_lineage['dam'] : 'Unknown';
+                    $lineage['dss'] = $dam_lineage['ss'] ? $dam_lineage['ss']->display_name ?? $dam_lineage['ss'] : 'Unknown';
+                    $lineage['dsd'] = $dam_lineage['sd'] ? $dam_lineage['sd']->display_name ?? $dam_lineage['sd'] : 'Unknown';
+                    $lineage['dds'] = $dam_lineage['ds'] ? $dam_lineage['ds']->display_name ?? $dam_lineage['ds'] : 'Unknown';
+                    $lineage['ddd'] = $dam_lineage['dd'] ? $dam_lineage['dd']->display_name ?? $dam_lineage['dd'] : 'Unknown';
+                }
+                else {
+                    $lineage['dam'] = $request['dam'].' does not exist.';
+                }
+            }
+        }
+        return $lineage;
     }
 }
