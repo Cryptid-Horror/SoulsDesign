@@ -100,7 +100,7 @@ class BrowseController extends Controller
         }
         
         if($request->get('name')) $query->where(function($query) use ($request) {
-            $query->where('characters.name', 'LIKE', '%' . $request->get('name') . '%')->orWhere('characters.slug', 'LIKE', '%' . $request->get('name') . '%');
+            $query->where('characters.name', 'LIKE', '%' . $request->get('name') . '%')->orWhere('characters.slug', 'LIKE', '%' . $request->get('name') . '%')->orWhere('characters.title_name', 'LIKE', '%' . $request->get('name') . '%');
         });
         if($request->get('rarity_id')) $query->where('rarity_id', $request->get('rarity_id'));
         if($request->get('character_category_id')) $query->where('character_category_id', $request->get('character_category_id'));
