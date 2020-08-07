@@ -10,6 +10,7 @@
 */
 
 Route::get('/', 'HomeController@getIndex');
+Route::get('/spec1al', 'HomeController@uploadCharacterDataFromCSV');
 
 Route::group(['prefix' => 'users', 'namespace' => 'Users'], function() {
 
