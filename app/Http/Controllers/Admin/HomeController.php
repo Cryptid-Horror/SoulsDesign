@@ -90,6 +90,7 @@ class HomeController extends Controller
 
             $characterData['thumbnail'] = null;
             $characterData['image'] = null;
+            $characterData['use_custom_thumb'] = null;
 
             $characterData['species_id'] = Species::where('name', $character['species'])->first()->id;
             $characterData['subtype_id'] = Subtype::where('name', $character['subtype'])->first()->id;
@@ -125,8 +126,8 @@ class HomeController extends Controller
             $characterData['phenotype'] = $character['phenotype'];
             $characterData['free_markings'] = $character['free_markings'];
             $characterData['health_status'] = $character['health_status'];
-            $characterData['ouroboros'] = $character['ouroboros_emblem'];
-            $characterData['taming'] = $character['taming'];
+            $characterData['ouroboros'] = $character['ouroboros_emblem'] == 1 ? 1 : null;
+            $characterData['taming'] = $character['taming'] == 1 ? 1 : null;
             $characterData['basic_aether'] = $character['basic_aether'];
             $characterData['low_aether'] = $character['low_magic'];
             $characterData['high_aether'] = $character['high_magic'];
