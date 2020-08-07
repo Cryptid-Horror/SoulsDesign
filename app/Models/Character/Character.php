@@ -607,7 +607,7 @@ class Character extends Model
 
         if($this->use_custom_lineage) {
             foreach($ancestor_titles as $title) {
-                $lineage[$title] = isset($this[$title.'_slug']) ?  $c = Character::myo(0)->where('slug', $this[$title.'_slug'])->first() ? $c: $this[$title.'_slug'].add_help('This is a legacy character.') : null ;
+                $lineage[$title] = isset($this[$title.'_slug']) ?  (Character::myo(0)->where('slug', $this[$title.'_slug'])->first() ?? $this[$title.'_slug'].add_help('This is a legacy character.')) : null ;
             }
         }
         else {

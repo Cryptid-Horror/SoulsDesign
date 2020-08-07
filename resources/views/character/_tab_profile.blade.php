@@ -91,6 +91,6 @@
     <b>Lineage:</b><br>
     @include('character._lineage_tree', ['lineage' => $character->lineage()])
     <br>
-    <b>Designed By:</b> {{ $character->image->displayDesigners }}<br>
-    <b>Art By:</b> {{ $character->image->displayArtists }}<br>
+    <b>Designed By:</b> {!! $character->image->displayDesigners !!}<br>
+    <b>Art By:</b> {!! $character->image->displayArtists !!}<br>
 </div>

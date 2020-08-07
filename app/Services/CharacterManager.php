@@ -218,7 +218,7 @@ class CharacterManager extends Service
             if($characterData['soul_link_type'] == 'Dragon') if(!Character::where('slug', $characterData['soul_link_target'])->exists()) throw new \Exception('Soul link target is not a valid dragon ID.');
             $characterData['soul_link_target_link'] = $data['soul_link_target_link'];
             $characterData['is_adopted'] = isset($data['is_adopted']);
-            $characterData['skills'] = isset($data['skills']) ? parse(implode($data['skills'])) : null;
+            $characterData['skills'] = isset($data['skills']) ? parse($data['skills']) : null;
 
             if(isset($data['use_custom_lineage'])) {
                 $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
@@ -290,7 +290,7 @@ class CharacterManager extends Service
             $imageData['extension'] = isset($data['extension']) ? $data['extension'] : (isset($data['use_custom_thumb']) && isset($data['thumbnail']) ? $data['thumbnail']->getClientOriginalExtension() : (isset($data['image']) ? $data['image']->getClientOriginalExtension() : 'png'));
             $imageData['character_id'] = $character->id;
             $imageData['ext_url'] = isset($data['ext_url']) ? $data['ext_url'] : null;
-            $imageData['adornments'] = isset($data['adornments']) ? parse(implode($data['adornments'])) : null;
+            $imageData['adornments'] = isset($data['adornments']) ? parse($data['adornments']) : null;
             $image = CharacterImage::create($imageData);
 
             // Attach artists/designers
