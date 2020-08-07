@@ -44,10 +44,15 @@ class Character extends Model
         'sale_value', 'transferrable_at', 'is_visible',
         'is_gift_art_allowed', 'is_trading', 'sort',
         'is_myo_slot', 'name', 'trade_id',
+        'title_name', 'nicknames', 'is_adopted', 'health_status', 'sex', 'gender_pronouns',
+        'temperament', 'diet', 'skills', 'rank', 'slots_used',
+        'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+        'soul_link_type', 'soul_link_target', 'soul_link_target_link', 'arena_ranking',
         'sire_slug', 'dam_slug', 'use_custom_lineage',
         'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
         'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-        'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug'
+        'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug',
+        'deceased', 'deceased_at'
     ];
 
     /**
@@ -69,7 +74,7 @@ class Character extends Model
      *
      * @var array
      */
-    public $dates = ['transferrable_at'];
+    public $dates = ['transferrable_at', 'deceased_at'];
 
     /**
      * Accessors to append to the model.
@@ -94,6 +99,11 @@ class Character extends Model
         'image' => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
         'thumbnail' => 'nullable|mimes:jpeg,gif,png|max:20000',
         'ext_url' => 'required_without:image|nullable|url|max:20000',
+        'sex' => 'required',
+        'soul_link_target' => 'required_with:soul_link_type',
+        'soul_link_target_link' => 'required_with:soul_link_type|url',
+        'genotype' => 'required',
+        'phenotype' => 'required'
     ];
     
     /**
@@ -321,7 +331,7 @@ class Character extends Model
     public function getFullNameAttribute()
     {
         if($this->is_myo_slot) return $this->name;
-        else return $this->slug . ($this->name ? ': '.$this->name : '');
+        else return ($this->deceased ? '[DECEASED] ' : '').$this->slug.($this->title_name ? ': '.$this->title_name : ($this->name ? ': '.$this->name : ''));
     }
 
     /**
@@ -353,6 +363,16 @@ class Character extends Model
     public function getLogTypeAttribute()
     {
         return 'Character';
+    }
+
+    /**
+     * Gets the rank image URL for this character's rank.
+     *
+     * @return string
+     */
+    public function getRankImageUrlAttribute()
+    {
+        return asset('images/' . $this->rank . '.png');
     }
 
     /**********************************************************************************************

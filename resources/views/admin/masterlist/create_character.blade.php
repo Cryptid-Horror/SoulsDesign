@@ -199,7 +199,7 @@
     </div>
     @if(!$isMyo)
         <div class="form-group">
-            {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design.') !!}
+            {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
             <div id="adornmentsList">
             </div>
             <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
@@ -255,10 +255,17 @@
         {!! Form::label('phenotype', 'Phenotype', ['class' => 'w-25 mb-0']) !!}
         {!! Form::text('phenotype', old('phenotype'), ['class' => 'form-control', 'placeholder' => 'Enter phenotype']) !!}
     </div>
+    
+    @if(!$isMyo)
+        <div class="form-group">
+            {!! Form::label('free_markings', 'Free Markings', ['class' => 'w-25 mb-0']) !!}
+            {!! Form::text('free_markings', old('free_markings'), ['class' => 'form-control', 'placeholder' => 'Enter free markings used, if any']) !!}
+        </div>
+    @endif
 
     <div class="form-group">
-        {!! Form::label('Slots Left') !!}
-        {!! Form::text('slots_left', old('slots_left') ? old('slots_left') : 0, ['class' => 'form-control']) !!}
+        {!! Form::label('Slots used') !!}
+        {!! Form::text('slots_used', old('slots_used') ? old('slots_used') : 0, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -275,7 +282,7 @@
 
     <div class="form-group">
         {!! Form::label('Taming') !!}
-        {!! Form::select('taming', ['None' => 'None', 'Domesticated' => 'Domesticated', 'Wild' => 'Wild', 'Aether' => 'Aether'], old('taming') ? old('taming') : 'None', ['class' => 'form-control']) !!}
+        {!! Form::select('taming', [null => 'None', 'Domesticated' => 'Domesticated', 'Wild' => 'Wild', 'Aether' => 'Aether'], old('taming') ? old('taming') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -285,28 +292,28 @@
 
     <div class="form-group">
         {!! Form::label('Low Aether Class') !!}
-        {!! Form::select('low_aether', ['None' => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('low_aether') ? old('low_aether') : 'None', ['class' => 'form-control']) !!}
+        {!! Form::select('low_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('low_aether') ? old('low_aether') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('High Aether Class') !!}
-        {!! Form::select('high_aether', ['None' => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('high_aether') ? old('high_aether') : 'None', ['class' => 'form-control']) !!}
+        {!! Form::select('high_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('high_aether') ? old('high_aether') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', ['None' => 'None'], old('arena_ranking') ? old('arena_ranking') : 'None', ['class' => 'form-control']) !!}
+        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Soul Link Type') !!}
-        {!! Form::select('soul_link_type', ['None' => 'None', 'Dragon' => 'Dragon','Account' => 'Account', 'Companion' => 'Companion'], old('soul_link_type') ? old('soul_link_type') : 'None', ['class' => 'form-control']) !!}
+        {!! Form::select('soul_link_type', [null => 'None', 'Dragon' => 'Dragon','Account' => 'Account', 'Companion' => 'Companion'], old('soul_link_type') ? old('soul_link_type') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Soul Link Target') !!}
-        {!! Form::text('soul_link_target', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the target']) !!}
-        {!! Form::text('soul_link_target_link', null, ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
+        {!! Form::text('soul_link_target', old('soul_link_target'), ['class' => 'form-control', 'placeholder' => 'Enter the name of the target']) !!}
+        {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
     <h3>Lineage</h3>
@@ -393,6 +400,28 @@
 
     <h3>Other Profile Information</h3>
 
+    @if(!$isMyo)
+        <div class="form-group">
+            {!! Form::label('Name') !!}
+            {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+        </div>
+        
+        <div class="form-group">
+            {!! Form::label('Display Name') !!} {!! add_help('Optional - used for setting the name displayed in links to the character; can be different from name.') !!}
+            {!! Form::text('title_name', old('title_name'), ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Nickname(s)') !!}
+            {!! Form::text('nicknames', old('nicknames'), ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Gender/Pronouns') !!}
+            {!! Form::text('gender_pronouns', old('gender_pronouns'), ['class' => 'form-control']) !!}
+        </div>
+    @endif
+
     <div class="form-group">
         {!! Form::checkbox('is_adopted', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'isAdopted']) !!}
         {!! Form::label('is_adopted', 'Is Adopted', ['class' => 'form-check-label ml-3']) !!}
@@ -405,7 +434,7 @@
 
     <div class="form-group">
         {!! Form::label('Diet') !!}
-        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'],old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
+        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">

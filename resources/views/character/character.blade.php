@@ -10,16 +10,41 @@
 @include('character._header', ['character' => $character])
 
 {{-- Main Image --}}
-<div class="row mb-3">
-    <div class="text-center col-md-7">
-        <a href="{{ $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
-            <img src="{{ $character->image->imageUrl }}" class="image" />
-        </a>
-    </div>
-    @include('character._image_info', ['image' => $character->image])
+<div class="text-center mb-3">
+    <a href="{{ $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
+        <img src="{{ $character->image->imageUrl }}" class="image" />
+    </a>
+</div>
+<div class="text-center mb-3">
+    @if(isset($character->image->ext_url))
+        <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm d-inline d-sm-none"><i class="fas fa-link"></i> View Image On DeviantArt</a>
+    @endif
 </div>
 
-{{-- Info --}}
+{{-- Profile --}}
+<div class="card character-bio">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h3 class="mb-0">Profile</h3>
+        <div>
+            @if(isset($character->image->ext_url))
+                <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm mr-2 d-none d-sm-inline"><i class="fas fa-link"></i> View Image On DeviantArt</a>
+            @endif
+            <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
+        </div>
+    </div>
+    <div class="card-body">
+        @include('character._tab_profile', ['character' => $character])
+    </div>
+</div>
+@if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
+    <div class="d-flex justify-content-end mt-2">
+        <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
+    </div>
+@endif
+<br>
+
+{{--Technical Information--}}
+<h3>Technical Details</h3>
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
@@ -63,9 +88,26 @@
     </div>
 </div>
 
+@if(Auth::check() && Auth::user()->hasPower('manage_characters'))
+    <hr>
+    <h3>[Admin] Edit Image Details</h3>
+    <div class="alert alert-info">
+        This section is for easy editing of details relating to the active character image at the top of the page.
+    </div>
+    @include('character._image_info', ['image' => $character->image])
+@endif
+
 @endsection
 
 @section('scripts')
     @parent
     @include('character._image_js', ['character' => $character])
+    <script>
+        $(document).ready(function() {
+            $('.decease-character').on('click', function(e) {
+            e.preventDefault();
+            loadModal("{{ url('character') }}/"+$(this).data('slug')+"/decease", 'Confirm Decease Dragon');
+            });
+        });
+    </script>
 @endsection

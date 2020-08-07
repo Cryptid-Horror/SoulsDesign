@@ -25,7 +25,7 @@ class CharacterImage extends Model
         'extension', 'use_custom_thumb', 'hash', 'sort', 
         'x0', 'x1', 'y0', 'y1',
         'description', 'parsed_description',
-        'is_valid', 'ext_url', 'genotype', 'phenotype', 'accessories'
+        'is_valid', 'ext_url', 'genotype', 'phenotype', 'free_markings', 'adornments'
     ];
 
     /**

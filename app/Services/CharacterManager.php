@@ -103,6 +103,9 @@ class CharacterManager extends Service
                 if(!$subtype || $subtype->species_id != $data['species_id']) throw new \Exception('Selected subtype invalid or does not match species.');
             }
             else $data['subtype_id'] = null;
+            
+            if(isset($data['skills'])) $data['skills'] = implode(',', array_filter(str_replace(',', ';', $data['skills'])));
+            if(isset($data['adornments'])) $data['adornments'] = implode(',', array_filter(str_replace(',', ';', $data['adornments'])));
 
             // Get owner info
             $recipient = null;
@@ -190,7 +193,10 @@ class CharacterManager extends Service
                 'character_category_id', 'rarity_id', 'user_id',
                 'number', 'slug', 'description',
                 'sale_value', 'transferrable_at', 'is_visible',
-                'sire_slug', 'dam_slug', 'use_custom_lineage'
+                'sex', 'gender_pronouns', 'health_status', 'taming', 'low_aether', 'high_aether',
+                'arena_ranking', 'soul_link_type', 'temperament',
+                'diet', 'rank',
+                'sire_slug', 'dam_slug', 'use_custom_lineage', 'nicknames', 'title_name'
             ]);
             
             $characterData['name'] = ($isMyo && isset($data['name'])) ? $data['name'] : null;
@@ -204,6 +210,14 @@ class CharacterManager extends Service
             $characterData['is_trading'] = 0;
             $characterData['parsed_description'] = parse($data['description']);
             if($isMyo) $characterData['is_myo_slot'] = 1;
+
+            $characterData['slots_used'] = $data['slots_used'] ?? 0;
+            $characterData['ouroboros'] = isset($data['ouroboros']);
+            $characterData['basic_aether'] = isset($data['basic_aether']);
+            $characterData['soul_link_target'] = parse($data['soul_link_target']);
+            $characterData['soul_link_target_link'] = $data['soul_link_target_link'];
+            $characterData['is_adopted'] = isset($data['is_adopted']);
+            $characterData['skills'] = isset($data['skills']) ? parse(implode($data['skills'])) : null;
 
             if(isset($data['use_custom_lineage'])) {
                 $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
@@ -245,7 +259,7 @@ class CharacterManager extends Service
         try {
             $imageData = array_only($data, [
                 'species_id', 'subtype_id', 'rarity_id', 'use_custom_thumb', 
-                'x0', 'x1', 'y0', 'y1',
+                'x0', 'x1', 'y0', 'y1', 'genotype', 'phenotype', 'free_markings'
             ]);
 
             if($isMyo)
@@ -275,7 +289,7 @@ class CharacterManager extends Service
             $imageData['extension'] = isset($data['extension']) ? $data['extension'] : (isset($data['use_custom_thumb']) && isset($data['thumbnail']) ? $data['thumbnail']->getClientOriginalExtension() : (isset($data['image']) ? $data['image']->getClientOriginalExtension() : 'png'));
             $imageData['character_id'] = $character->id;
             $imageData['ext_url'] = isset($data['ext_url']) ? $data['ext_url'] : null;
-
+            $imageData['adornments'] = isset($data['adornments']) ? parse(implode($data['adornments'])) : null;
             $image = CharacterImage::create($imageData);
 
             // Attach artists/designers
@@ -472,6 +486,10 @@ class CharacterManager extends Service
             $old['species'] = $image->species_id ? $image->species->displayName : null;
             $old['subtype'] = $image->subtype_id ? $image->subtype->displayName : null;
             $old['rarity'] = $image->rarity_id ? $image->rarity->displayName : null;
+            $old['genotype'] = $image->genotype;
+            $old['phenotype'] = $image->phenotype;
+            $old['free_markings'] = $image->free_markings;
+            $old['adornments'] = $image->adornments;
 
             // Clear old features
             $image->features()->delete();
@@ -487,6 +505,10 @@ class CharacterManager extends Service
             $image->species_id = $data['species_id'];
             $image->subtype_id = $data['subtype_id'] ?: null;
             $image->rarity_id = $data['rarity_id'];
+            $image->genotype = $data['genotype'] ?: null;
+            $image->phenotype = $data['phenotype'] ?: null;
+            $image->free_markings = $data['free_markings'] ?: null;
+            $image->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : null;
             $image->save();
 
             $new = [];
@@ -494,6 +516,10 @@ class CharacterManager extends Service
             $new['species'] = $image->species_id ? $image->species->displayName : null;
             $new['subtype'] = $image->subtype_id ? $image->subtype->displayName : null;
             $new['rarity'] = $image->rarity_id ? $image->rarity->displayName : null;
+            $new['genotype'] = $image->genotype;
+            $new['phenotype'] = $image->phenotype;
+            $new['free_markings'] = $image->free_markings;
+            $new['adornments'] = $image->adornments;
 
             // Character also keeps track of these features
             $image->character->rarity_id = $image->rarity_id;
@@ -1020,12 +1046,66 @@ class CharacterManager extends Service
             }
 
             // Update the character's profile
-            if(!$character->is_myo_slot) $character->name = $data['name'];
-            $character->save();
-
             $character->profile->text = $data['text'];
             $character->profile->parsed_text = parse($data['text']);
             $character->profile->save();
+            
+            if(!$character->is_myo_slot || $isAdmin) {
+                $character->name = $data['name'];
+                $character->title_name = $data['title_name'];
+                $character->nicknames = $data['nicknames'];
+                $character->gender_pronouns = $data['gender_pronouns'];
+            }
+            $character->save();
+
+            // Edit the rest of the character details if admin
+            if($isAdmin) {
+                $character->health_status = $data['health_status'] ?? 'Healthy';
+                $character->ouroboros = isset($data['ouroboros']);
+                $character->taming = $data['taming'] ?? null;
+                $character->basic_aether = isset($data['basic_aether']);
+                $character->low_aether = $data['low_aether'] ?? null;
+                $character->high_aether = $data['high_aether'] ?? null;
+                $character->arena_ranking = $data['arena_ranking'] ?? null;
+                $character->soul_link_type = $data['soul_link_type'] ?? null;
+                $character->soul_link_target = $data['soul_link_target'] ?? null;
+                $character->soul_link_target_link = $data['soul_link_target_link'] ?? null;
+                $character->is_adopted = isset($data['is_adopted']);
+                $character->temperament = $data['temperament'];
+                $character->diet = $data['diet'];
+                $character->rank = $data['rank'];
+                $character->skills = isset($data['skills']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['skills'])))) : null;
+                $character->sex = $data['sex'];
+                $character->slots_used = $data['slots_used'];
+
+                $character->use_custom_lineage = isset($data['use_custom_lineage']);
+                $character->sire_slug = $data['sire_slug'];
+                $character->dam_slug = $data['dam_slug'];
+
+                if(isset($data['use_custom_lineage'])) {
+                    $character->ss_slug = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+                    $character->sd_slug = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+                    $character->ds_slug = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+                    $character->dd_slug = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+                    $character->sss_slug = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+                    $character->ssd_slug = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+                    $character->sds_slug = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+                    $character->sdd_slug = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+                    $character->dss_slug = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+                    $character->dsd_slug = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+                    $character->dds_slug = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+                    $character->ddd_slug = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+                }
+
+                $imageData = array_only($data, [
+                    'genotype', 'phenotype', 'free_markings', 'species_id', 'subtype_id',
+                    'rarity_id', 'feature_id', 'feature_data', 'adornments'
+                ]);
+                
+                // Update image data
+                if(!$this->updateImageFeatures($imageData, $character->image, $user)) throw new \Exception('Failed to update image data.');
+                $character->save();
+            }
 
             if($isAdmin && isset($data['alert_user']) && $character->is_visible && $character->user_id)
             {
@@ -2110,6 +2190,69 @@ class CharacterManager extends Service
 
             // Delete the request
             $request->delete();
+
+            return $this->commitReturn(true);
+        } catch(\Exception $e) { 
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Deceases a character.
+     *
+     * @param  \App\Models\Character\Character              $character
+     * @param  \App\Models\User\User                        $user
+     * @return  bool
+     */
+    public function deceaseCharacter($character, $user)
+    {
+        DB::beginTransaction();
+
+        try {
+            if($character->deceased) throw new \Exception("This character is already deceased.");
+            if($character->user_id != $user->id && !$user->hasPower('manage_characters')) throw new \Exception("You do not own this character.");
+            if($character->isCoOwned && !$user->hasPower('manage_characters')) throw new \Exception("Co-owned characters must be deceased by an admin.");
+            
+            $character->deceased = 1;
+            $character->deceased_at = Carbon::now();
+            $character->save();
+
+            // Clear out associated activities
+            // If the character is in an active transfer, cancel it
+            $transfer = CharacterTransfer::active()->where('character_id', $character->id)->first();
+            if($transfer) {
+                $transfer->status = 'Canceled';
+                $transfer->reason = 'Transfer canceled by admin in order to transfer character to another user';
+                $transfer->save();
+            }
+            
+            // If the character is in an active trade, reject it
+            if($character->trade_id) {
+                $tradeManager = new TradeManager;
+                if(!$tradeManager->rejectTrade([
+                    'trade' => Trade::find($character->trade_id),
+                    'reason' => 'A character in the trade has been deceased.',
+                ], $user)) throw new \Exception('Failed to reject trade');
+            }
+
+            $design_update = CharacterDesignUpdate::where('character_id', $character->id)->active();
+            // If the character has an active design request, reject it
+            if($design_update->exists()) {
+                $request = $design_update->first();
+                $this->rejectRequest(['staff_comments' => 'Request rejected as the character was deceased.'], $request, $user, true);
+            };
+
+            // Notify the owners
+            if($character->user_id != $user->id) {
+                Notifications::create('CHARACTER_DECEASED', $user, [
+                    'character_url' => $character->url,
+                    'character_name' => $character->fullName,
+                    'character_name' => $character->slug,
+                    'sender_url' => $user->url,
+                    'sender_name' => $user->name
+                ]);
+            }
 
             return $this->commitReturn(true);
         } catch(\Exception $e) { 

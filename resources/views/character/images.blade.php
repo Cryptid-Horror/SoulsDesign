@@ -18,7 +18,9 @@
                         <img src="{{ $image->imageUrl }}" class="image" />
                     </a>
                 </div>
-                @include('character._image_info', ['image' => $image])
+                <div class="col-md-5 d-flex">
+                    @include('character._image_info', ['image' => $image])
+                </div>
             </div>
         </div>
     @endforeach

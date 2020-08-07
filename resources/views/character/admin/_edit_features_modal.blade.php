@@ -15,12 +15,27 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('Genotype') !!}
+        {!! Form::text('genotype', $image->genotype, ['class' => 'form-control', 'placeholder' => 'e.g. uu/hh/Oo/vv+nDn/nMa/nUn/nPg/nIr']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Phenotype') !!}
+        {!! Form::text('phenotype', $image->phenotype, ['class' => 'form-control', 'placeholder' => 'e.g. Iridescent Masked Ivory, with Dunstripe, Underbelly, and Pigeon']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Free Markings') !!}
+        {!! Form::text('free_markings', $image->free_markings, ['class' => 'form-control', 'placeholder' => 'e.g. Accents']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('Traits') !!}
         <div id="featureList">
             @foreach($image->features as $feature)
                 <div class="d-flex mb-2">
-                    {!! Form::select('feature_id['.$feature->id.']', $features, $feature->feature_id, ['class' => 'form-control mr-2 feature-select original', 'placeholder' => 'Select Trait']) !!}
-                    {!! Form::text('feature_data['.$feature->id.']', $feature->data, ['class' => 'form-control mr-2', 'placeholder' => 'Extra Info (Optional)']) !!}
+                    {!! Form::select('feature_id[]', $features, $feature->feature_id, ['class' => 'form-control mr-2 feature-select original', 'placeholder' => 'Select Trait']) !!}
+                    {!! Form::text('feature_data[]', $feature->data, ['class' => 'form-control mr-2', 'placeholder' => 'Extra Info (Optional)']) !!}
                     <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
                 </div>
             @endforeach
@@ -30,6 +45,23 @@
             {!! Form::select('feature_id[]', $features, null, ['class' => 'form-control mr-2 feature-select', 'placeholder' => 'Select Trait']) !!}
             {!! Form::text('feature_data[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Extra Info (Optional)']) !!}
             <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
+        <div id="adornmentsList">
+            @foreach(explode(',', $image->adornments) as $adornment)
+                <div class="d-flex mb-2">
+                    {!! Form::text('adornments[]', $adornment, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+                    <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+                </div>
+            @endforeach
+        </div>
+        <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
+        <div class="adornment-row hide mb-2">
+            {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+            <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
         </div>
     </div>
 
@@ -61,6 +93,28 @@
             $clone.find('.feature-select').selectize();
         }
         function removeFeatureRow($trigger) {
+            $trigger.parent().remove();
+        }
+
+        $('#addAdornments').on('click', function(e) {
+            e.preventDefault();
+            addAdornmentRow();
+        });
+        $('.remove-adornment').on('click', function(e) {
+            e.preventDefault();
+            removeAdornmentRow($(this));
+        })
+        function addAdornmentRow() {
+            var $clone = $('.adornment-row').clone();
+            $('#adornmentsList').append($clone);
+            $clone.removeClass('hide adornment-row');
+            $clone.addClass('d-flex');
+            $clone.find('.remove-adornment').on('click', function(e) {
+                e.preventDefault();
+                removeAdornmentRow($(this));
+            })
+        }
+        function removeAdornmentRow($trigger) {
             $trigger.parent().remove();
         }
     });

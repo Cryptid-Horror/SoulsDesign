@@ -94,11 +94,7 @@ $( document ).ready(function() {
 
     // Traits /////////////////////////////////////////////////////////////////////////////////////
     
-    $('.initial.feature-select').selectize({
-        render: {
-            item: featureSelectedRender
-        }
-    });
+    $('.initial.feature-select').selectize();
     $('#add-feature').on('click', function(e) {
         e.preventDefault();
         addFeatureRow();
@@ -116,17 +112,10 @@ $( document ).ready(function() {
             e.preventDefault();
             removeFeatureRow($(this));
         })
-        $clone.find('.feature-select').selectize({
-            render: {
-                item: featureSelectedRender
-            }
-        });
+        $clone.find('.feature-select').selectize();
     }
     function removeFeatureRow($trigger) {
         $trigger.parent().remove();
-    }
-    function featureSelectedRender(item, escape) {
-        return '<div><span>' + escape(item["text"].trim()) + ' (' + escape(item["optgroup"].trim()) + ')' + '</span></div>';
     }
 
     $('#addAdornments').on('click', function(e) {

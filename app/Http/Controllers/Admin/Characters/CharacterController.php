@@ -101,10 +101,15 @@ class CharacterController extends Controller
             'designer_alias', 'designer_url',
             'artist_alias', 'artist_url',
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
-            'image', 'ext_url', 'thumbnail', 'image_description',
+            'image', 'ext_url', 'thumbnail', 'image_description', 'adornments',
+            'sex', 'gender_pronouns', 'genotype', 'phenotype', 'free_markings', 'slots_used', 'health_status',
+            'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+            'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
+            'is_adopted', 'temperament', 'diet', 'rank', 'skills',
             'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
             'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage'
+            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+            'name', 'title_name', 'nicknames'
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
             flash('Character created successfully.')->success();
@@ -134,7 +139,14 @@ class CharacterController extends Controller
             'designer_alias', 'designer_url',
             'artist_alias', 'artist_url',
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
-            'image', 'ext_url', 'thumbnail'
+            'image', 'ext_url', 'thumbnail', 'adornments',
+            'sex', 'genotype', 'phenotype', 'slots_used', 'health_status',
+            'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+            'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
+            'is_adopted', 'temperament', 'diet', 'rank', 'skills',
+            'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+            'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage'
         ]);
         if ($character = $service->createCharacter($data, Auth::user(), true)) {
             flash('MYO slot created successfully.')->success();
