@@ -199,7 +199,7 @@ class CharacterManager extends Service
                 'sire_slug', 'dam_slug', 'use_custom_lineage', 'nicknames', 'title_name'
             ]);
             
-            $characterData['name'] = ($isMyo && isset($data['name'])) ? $data['name'] : null;
+            $characterData['name'] = isset($data['name']) ? $data['name'] : null;
             $characterData['owner_alias'] = isset($characterData['user_id']) ? null : $data['owner_alias'];
             $characterData['is_sellable'] = isset($data['is_sellable']);
             $characterData['is_tradeable'] = isset($data['is_tradeable']);

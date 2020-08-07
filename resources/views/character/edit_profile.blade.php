@@ -193,7 +193,7 @@
         Leave blank to set as 'Unknown'.
     </div>
     <div class="form-group">
-        {!! Form::checkbox('use_custom_lineage', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomLineage']) !!}
+        {!! Form::checkbox('use_custom_lineage', 1, $character->use_custom_lineage, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomLineage']) !!}
         {!! Form::label('use_custom_lineage', 'Use Custom Lineage', ['class' => 'form-check-label ml-3']) !!}
     </div>
 
@@ -201,63 +201,63 @@
         <div class="d-flex flex-column justify-content-around col-md-4">
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('sire_slug', 'Sire:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('sire_slug', old('sire_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('sire_slug', $character->sire_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('dam_slug', 'Dam:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('dam_slug', old('dam_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('dam_slug', $character->dam_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
         </div>
         <div class="d-flex flex-column justify-content-around col-md-4 custom-lineage-column hide">
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('ss_slug', 'SS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('ss_slug', old('ss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('ss_slug', $character->ss_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('sd_slug', 'SD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('sd_slug', old('sd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('sd_slug', $character->sd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('ds_slug', 'DS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('ds_slug', old('ds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('ds_slug', $character->ds_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('dd_slug', 'DD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('dd_slug', old('dd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('dd_slug', $character->dd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
         </div>
         <div class="d-flex flex-column justify-content-around col-md-4 custom-lineage-column hide">
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('sss_slug', 'SSS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('sss_slug', old('sss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('sss_slug', $character->sss_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('ssd_slug', 'SSD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('ssd_slug', old('ssd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('ssd_slug', $character->ssd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('sds_slug', 'SDS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('sds_slug', old('sds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('sds_slug', $character->sds_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('sdd_slug', 'SDD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('sdd_slug', old('sdd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('sdd_slug', $character->sdd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('dss_slug', 'DSS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('dss_slug', old('dss_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('dss_slug', $character->dss_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('dsd_slug', 'DSD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('dsd_slug', old('dsd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('dsd_slug', $character->dsd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('dds_slug', 'DDS:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('dds_slug', old('dds_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('dds_slug', $character->dds_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
             <div class="form-group d-flex align-items-center">
                 {!! Form::label('ddd_slug', 'DDD:', ['class' => 'w-25 mb-0']) !!}
-                {!! Form::text('ddd_slug', old('ddd_slug'), ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
+                {!! Form::text('ddd_slug', $character->ddd_slug, ['class' => 'w-75 form-control ancestry-entry', 'placeholder' => 'Unknown']) !!}
             </div>
         </div>
     </div>
