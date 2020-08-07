@@ -47,7 +47,7 @@
         <i>Low Aether Class:</i> {{ $character->low_aether ? 'Low '.$character->low_aether.' Completed' : 'Incomplete' }}<br>
         <i>High Aether Class:</i> {{ $character->high_aether ? 'High '.$character->high_aether.' Completed' : 'Incomplete' }}<br>
     </ul>
-    <b>Soul Linking:</b> {{ $character->soul_link_type ? 'Completed; Linked to '.$character->soul_link_type : 'Incomplete' }} @if($character->soul_link_type)(<a href="{{ $character->soul_link_target_link }}">{{ $character->soul_link_target }}</a>)@endif<br>
+    <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->taming ? $character->taming.' Taming Complete' : 'Incomplete' }}<br>
     <br>
     <b>Adornments:</b>

@@ -101,7 +101,7 @@ class Character extends Model
         'ext_url' => 'required_without:image|nullable|url|max:20000',
         'sex' => 'required',
         'soul_link_target' => 'required_with:soul_link_type',
-        'soul_link_target_link' => 'required_with:soul_link_type|url',
+        'soul_link_target_link' => 'nullable|url',
         'genotype' => 'required',
         'phenotype' => 'required'
     ];
@@ -373,6 +373,28 @@ class Character extends Model
     public function getRankImageUrlAttribute()
     {
         return asset('images/' . $this->rank . '.png');
+    }
+
+    /**
+     * Gets the soul link display for this character's rank.
+     *
+     * @return string
+     */
+    public function getSoulLinkAttribute()
+    {
+        if($this->soul_link_type) {
+            $result = 'Completed; Linked to '.$this->soul_link_type.' (';
+            if($this->soul_link_type == 'Dragon') $result = $result.Character::where('slug', $this->soul_link_target)->first()->displayName;
+            else {
+                if($this->soul_link_target_link) $result = $result.'<a href="'.$this->soul_link_target_link.'">'.$this->soul_link_target.'</a>';
+                else $result = $result.$this->soul_link_target;
+            }
+            $result = $result.')';
+            return $result;
+        }
+        else {
+            return 'Incomplete';
+        }
     }
 
     /**********************************************************************************************

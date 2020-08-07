@@ -312,7 +312,7 @@
 
     <div class="form-group">
         {!! Form::label('Soul Link Target') !!}
-        {!! Form::text('soul_link_target', old('soul_link_target'), ['class' => 'form-control', 'placeholder' => 'Enter the name of the target']) !!}
+        {!! Form::text('soul_link_target', old('soul_link_target'), ['class' => 'form-control', 'placeholder' => 'Enter the name of the target, if link type is Dragon, enter the dragon ID']) !!}
         {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
