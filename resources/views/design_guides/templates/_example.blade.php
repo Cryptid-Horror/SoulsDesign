@@ -42,11 +42,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'Common_Dusted',
-        'Common_Dusted',
-        'Common_Dusted',
-        'Common_Dusted',
-        'Common_Dusted',
+        'placeholder',
+        'placeholder',
+        'placeholder',
+        'placeholder',
+        'placeholder',
     ];
 
     // You can use html!
