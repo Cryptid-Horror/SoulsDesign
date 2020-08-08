@@ -42,15 +42,11 @@
 				['Triquetra', 'nTri/TriTri']];
 ?>
 <body>
-	<div class="MainHeader mb-5">
-		<img src="{{ asset('images/design_guides/mainheader.png') }}" width="65%">
-		<div class="newsheader">
+	<div class="main">
+		<div class="text-center mb-5">
 			<h2><a href="{{ url('/') }}">Click here to return to the Home page!</a></h2>
 		</div>
-	</div>
-
-	<div class="main">
-		<div class="text-center mt-5 mb-3">
+		<div class="text-center mb-3">
 			<h1><b><u>Genetics Portal</u></b></h1><br>
 		</div>
 		<hr>

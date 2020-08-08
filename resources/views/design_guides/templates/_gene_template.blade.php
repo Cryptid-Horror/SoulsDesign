@@ -16,14 +16,10 @@
 </head>
 
 <body>
-    <div class="MainHeader mb-5">
-        <img src="{{ asset('images/design_guides/mainheader.png') }}" width="65%">
-        <div class="newsheader">
+	<div class="main">
+        <div class="text-center mb-5">
             <h2><a href="{{ url('/design') }}">Click here to return to the Genetics portal!</a></h2>
         </div>
-    </div>
-
-	<div class="main mt-5">
         <div class="row">
             <div class="col-xl-9 mb-3">
                 <!-- Marking Name and Code -->
