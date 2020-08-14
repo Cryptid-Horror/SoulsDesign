@@ -48,7 +48,7 @@
         <i>High Aether Class:</i> {{ $character->high_aether ? 'High '.$character->high_aether.' Completed' : 'Incomplete' }}<br>
     </ul>
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
-    <b>Arena Ranking:</b> {{ $character->taming ? $character->taming.' Taming Complete' : 'Incomplete' }}<br>
+    <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
     <br>
     <b>Adornments:</b>
     @if($character->image->adornments)
