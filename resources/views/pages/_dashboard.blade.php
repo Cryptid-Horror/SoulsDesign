@@ -37,10 +37,10 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <img src="{{ asset('images/inventory.png') }}" />
-                <h5 class="card-title">Inventory</h5>
+                <h5 class="card-title">Hoard</h5>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{{ url('inventory') }}">My Inventory</a></li>
+                <li class="list-group-item"><a href="{{ url('inventory') }}">My Hoard</a></li>
                 <li class="list-group-item"><a href="{{ Auth::user()->url . '/item-logs' }}">Item Logs</a></li>
             </ul>
         </div>

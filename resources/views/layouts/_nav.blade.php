@@ -27,7 +27,7 @@
                                 My MYO Slots
                             </a>
                             <a class="dropdown-item" href="{{ url('inventory') }}">
-                                Inventory
+                                Hoard
                             </a>
                             <a class="dropdown-item" href="{{ url('bank') }}">
                                 Bank
@@ -48,19 +48,41 @@
                             <a class="dropdown-item" href="{{ url('designs') }}">
                                 Design Approvals
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
-                                Character Transfers
+                             <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
+                                Dragon Transfers
                             </a>
+                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Nesting-Permissions-843973236') }}">
+                                Nesting Permissions (dA)
+                            </a>
+                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Nesting-Submissions-843972640') }}">
+                                Nesting Submissions (dA)
+                            </a>
+                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Hatchery-843975712') }}">
+                                Hatchery (dA)
+                            </a>
+                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Adoption-Center-843976416') }}">
+                                Adoption Center (dA)
+                            </a>
+                            <div class="dropdown-divider"></div>
+                           
+                            
                             <a class="dropdown-item" href="{{ url('trades/open') }}">
                                 Trades
                             </a>
                         </div>
                     </li>
+                                        <li class="nav-item dropdown">
+                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Rollers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
+                            
+                        </div>
+                    </li>
                 @endif
                 <li class="nav-item dropdown">
                     <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Browse
+                        Masterlist
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
@@ -68,7 +90,7 @@
                             Users
                         </a>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
-                            Character Masterlist
+                            Dragon Masterlist
                         </a>
                         <a class="dropdown-item" href="{{ url('myos') }}">
                             MYO Slot Masterlist
@@ -81,18 +103,48 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        World
+                        Game
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="loreDropdown">
+                    
                         <a class="dropdown-item" href="{{ url('world') }}">
                             Encyclopedia
                         </a>
-                        <a class="dropdown-item" href="{{ url('world/prompts') }}">
+                         <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/design') }}">
+                           Genetics Portal
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/prompts') }}">
                             Prompts
                         </a>
                         <a class="dropdown-item" href="{{ url('shops') }}">
                             Shops
+                        </a>
+                     <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
+                            Discord
+                        </a>
+                         <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Staff-Applications-Open-846304182') }}">
+                           Staff Applications (dA Link)
+                        </a>
+                        <a class="dropdown-item" href="{{ url('https://souls-between.deviantart.com/journal/Suggestions-717025816') }}">
+                            Suggestions and Questions (dA Link)
+                        </a>
+                        <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Leasing-Permissions-843971031') }}">
+                            Leasing a Dragon (dA Link)
+                        </a>
+                       
+                    </div>
+                </li>
+
+                 <li class="nav-item dropdown">
+                    <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Lore
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="loreDropdown">
+                         <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Map') }}">
+                            Empires of Empyrean
                         </a>
                     </div>
                 </li>

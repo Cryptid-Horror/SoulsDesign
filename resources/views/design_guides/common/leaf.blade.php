@@ -17,7 +17,7 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blanket',
+        'Sapiere' => 'placeholder',
         'Warden' => 'Warden_Blanket',
         'Greater' => 'Gemp_Blanket',
         'Ravager' => 'Ravager_Blanket',
@@ -51,7 +51,7 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.'
+        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
     ];
 
     $marking_cannot = [

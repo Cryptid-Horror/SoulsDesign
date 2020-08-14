@@ -15,7 +15,7 @@
 
 <?php 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
-				['Dunstripe', 'nDn/DnDn'], ['Dusted', 'nDt/DtDt'], ['Flaxen', 'nFla/FlaFla'],
+				['Dunstripe', 'nDn/DnDn'], ['Dusted', 'nDt/DtDt'], ['Duotone', 'nDo/DoDo'], ['Flaxen', 'nFla/FlaFla'],
 				['Frog Eye', 'nFe/FeFe'], ['Greying', 'nGr/GrGr'], ['Hood', 'nHd/HdHd'],
 				['Leaf', 'nLf/LfLf'], ['Masked', 'nMa/MaMa'], ['Pangare', 'nPa/PaPa'],
 				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rimmed', 'nRi/Ri'],

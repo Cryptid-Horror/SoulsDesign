@@ -51,7 +51,7 @@
     </div>
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
-            <h5 class="card-title">Inventory</h5>
+            <h5 class="card-title">Hoard</h5>
             <div class="profile-assets-content">
                 @if(count($items))
                     <div class="row">
