@@ -3,10 +3,10 @@
 @section('profile-title') {{ $user->name }}'s MYO Slots @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'MYO Slots' => $user->url . '/myos']) !!}
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Registered Dragon Slots' => $user->url . '/myos']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s MYO Slots
+    {!! $user->displayName !!}'s Registered Dragon Slots
 </h1>
 
 @if($myos->count())
@@ -23,7 +23,7 @@
         @endforeach
     </div>
 @else
-    <p>No MYO slots found.</p> 
+    <p>No Registered Dragon slots found.</p> 
 @endif
 
 @endsection

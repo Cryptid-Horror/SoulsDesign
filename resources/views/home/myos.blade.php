@@ -3,13 +3,13 @@
 @section('home-title') My MYO Slots @endsection
 
 @section('home-content')
-{!! breadcrumbs(['Characters' => 'characters', 'My MYO Slots' => 'myos']) !!}
+{!! breadcrumbs(['Characters' => 'characters', 'My Registered Slots' => 'Registered Dragons']) !!}
 
 <h1>
-    My MYO Slots
+    My Registered Dragon Slots
 </h1>
 
-<p>This is a list of MYO slots you own - click on a slot to view details about it. MYO slots can be submitted for design approval from their respective pages.</p>
+<p>This is a list of Registered Dragons slots you own - click on a slot to view details about it. Registered Dragon slots can be submitted for design approval from their respective pages.</p>
 <div class="row">
     @foreach($slots as $slot)
         <div class="col-md-3 col-6 text-center mb-2">

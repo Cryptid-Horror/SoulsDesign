@@ -21,16 +21,16 @@
 
                         <div class="dropdown-menu" aria-labelledby="inventoryDropdown">
                             <a class="dropdown-item" href="{{ url('characters') }}">
-                                My Characters
+                                My Official Dragons
                             </a>
                             <a class="dropdown-item" href="{{ url('characters/myos') }}">
-                                My MYO Slots
+                                My Registered Dragons
                             </a>
                             <a class="dropdown-item" href="{{ url('inventory') }}">
                                 Hoard
                             </a>
                             <a class="dropdown-item" href="{{ url('bank') }}">
-                                Bank
+                                Empyrean Bank
                             </a>
                         </div>
                     </li>
@@ -46,7 +46,7 @@
                                 Claims
                             </a>
                             <a class="dropdown-item" href="{{ url('designs') }}">
-                                Design Approvals
+                                Design Review
                             </a>
                              <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
                                 Dragon Transfers
@@ -90,10 +90,10 @@
                             Users
                         </a>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
-                            Dragon Masterlist
+                            Official Dragon Masterlist
                         </a>
                         <a class="dropdown-item" href="{{ url('myos') }}">
-                            MYO Slot Masterlist
+                            Registered Slot Masterlist
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('raffles') }}">
@@ -103,7 +103,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Game
+                        Game and Guides
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="loreDropdown">
@@ -119,6 +119,13 @@
                         </a>
                         <a class="dropdown-item" href="{{ url('shops') }}">
                             Shops
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Register_Review') }}">
+                            Dragon Registration and Review
+                        </a>
+                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Import_Info') }}">
+                            Registration Information
                         </a>
                      <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
@@ -185,6 +192,9 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('claims/new') }}">
                                 Submit Claim
+                            </a>
+                            <a class="dropdown-item" href="{{ url('designs') }}">
+                                Design Review
                             </a>
                         </div>
                     </li>
