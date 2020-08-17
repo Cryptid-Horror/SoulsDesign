@@ -13,6 +13,24 @@
     <p>Select the traits for the {{ $request->character->is_myo_slot ? 'created' : 'updated' }} character. @if($request->character->is_myo_slot) Some traits may have been restricted for you - you cannot change them. @endif Staff will not be able to modify these traits for you during approval, so if in doubt, please communicate with them beforehand to make sure that your design is acceptable.</p>
     {!! Form::open(['url' => 'designs/'.$request->id.'/traits']) !!}
         <div class="form-group">
+            {!! Form::label('genotype', 'Genotype') !!}
+            @if($request->character->is_myo_slot && $request->character->image->genotype) 
+                <div class="alert alert-secondary">{!! $request->character->image->genotype !!}</div>
+            @else
+                {!! Form::text('genotype', $request->genotype, ['class' => 'form-control', 'id' => 'genotype']) !!}
+            @endif
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('phenotype', 'Phenotype') !!}
+            @if($request->character->is_myo_slot && $request->character->image->phenotype) 
+                <div class="alert alert-secondary">{!! $request->character->image->phenotype !!}</div>
+            @else
+                {!! Form::text('phenotype', $request->phenotype, ['class' => 'form-control', 'id' => 'phenotype']) !!}
+            @endif
+        </div>
+
+        <div class="form-group">
             {!! Form::label('species_id', 'Species') !!}
             @if($request->character->is_myo_slot && $request->character->image->species_id) 
                 <div class="alert alert-secondary">{!! $request->character->image->species->displayName !!}</div>

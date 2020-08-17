@@ -1549,7 +1549,9 @@ class CharacterManager extends Service
                 // Set some data based on the character's existing stats
                 'rarity_id' => $character->image->rarity_id,
                 'species_id' => $character->image->species_id,
-                'subtype_id' => $character->image->subtype_id
+                'subtype_id' => $character->image->subtype_id,
+                'genotype' => $character->image->genotype,
+                'phenotype' => $character->image->phenotype
             ];
 
             $request = CharacterDesignUpdate::create($data);
@@ -1806,8 +1808,12 @@ class CharacterManager extends Service
             if(isset($data['subtype_id']) && $data['subtype_id'])
                 $subtype = ($request->character->is_myo_slot && $request->character->image->subtype_id) ? $request->character->image->subtype : Subtype::find($data['subtype_id']);
             else $subtype = null;
+            $genotype = ($request->character->is_myo_slot && $request->character->image->genotype) ? $request->character->image->genotype : $data['genotype'];
+            $phenotype = ($request->character->is_myo_slot && $request->character->image->phenotype) ? $request->character->image->phenotype : $data['phenotype'];
             if(!$rarity) throw new \Exception("Invalid rarity selected.");
             if(!$species) throw new \Exception("Invalid species selected.");
+            if(!$request->genotype) throw new \Exception("Genotype required.");
+            if(!$request->phenotype) throw new \Exception("Phenotype required.");
             if($subtype && $subtype->species_id != $species->id) throw new \Exception("Subtype does not match the species.");
 
             // Clear old features
@@ -1835,6 +1841,8 @@ class CharacterManager extends Service
             $request->species_id = $species->id;
             $request->rarity_id = $rarity->id;
             $request->subtype_id = $subtype ? $subtype->id : null;
+            $request->genotype = $genotype;
+            $request->phenotype = $phenotype;
             $request->has_features = 1;
             $request->save();
 
@@ -1935,6 +1943,8 @@ class CharacterManager extends Service
                 'rarity_id' => $request->rarity_id,
                 'ext_url' => $request->ext_url,
                 'sort' => 0,
+                'genotype' => $request->genotype,
+                'phenotype' => $request->phenotype,
             ]);
 
             // Shift the image credits over to the new image

@@ -26,7 +26,8 @@ class CharacterDesignupdate extends Model
         'use_custom_thumb', 'x0', 'x1', 'y0', 'y1',
         'hash', 'species_id', 'subtype_id', 'rarity_id', 
         'has_comments', 'has_image', 'has_addons', 'has_features',
-        'submitted_at', 'ext_url', 'update_type'
+        'submitted_at', 'ext_url', 'update_type',
+        'genotype', 'phenotype'
     ];
 
     /**
