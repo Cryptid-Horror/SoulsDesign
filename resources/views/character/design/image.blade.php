@@ -62,9 +62,9 @@
     {!! Form::open(['url' => 'designs/'.$request->id.'/image', 'files' => true]) !!}
         @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
             <div class="form-group">
-                {!! Form::label('Image') !!} {!! add_help('This is the image that will be used on the masterlist. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
+                {{-- {!! Form::label('Image') !!} {!! add_help('This is the image that will be used on the masterlist. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
                 <div>{!! Form::file('image', ['id' => 'mainImage']) !!}</div>
-                ---OR---
+                ---OR--- --}}
                 <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
             </div>
         @else 
