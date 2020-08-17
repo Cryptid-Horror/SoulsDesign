@@ -219,6 +219,7 @@ class CharacterManager extends Service
             $characterData['soul_link_target_link'] = $data['soul_link_target_link'];
             $characterData['is_adopted'] = isset($data['is_adopted']);
             $characterData['skills'] = isset($data['skills']) ? parse($data['skills']) : null;
+            $characterData['has_grand_title'] = isset($data['has_grand_title']);
 
             if(isset($data['use_custom_lineage'])) {
                 $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
@@ -1079,6 +1080,7 @@ class CharacterManager extends Service
                 $character->skills = isset($data['skills']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['skills'])))) : null;
                 $character->sex = $data['sex'];
                 $character->slots_used = $data['slots_used'];
+                $character->has_grand_title = isset($data['has_grand_title']);
 
                 $character->use_custom_lineage = isset($data['use_custom_lineage']);
                 $character->sire_slug = $data['sire_slug'];

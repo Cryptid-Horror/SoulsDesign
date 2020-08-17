@@ -140,7 +140,7 @@ class CharacterController extends Controller
                 'is_adopted', 'temperament', 'diet', 'rank', 'skills',
                 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
                 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-                'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+                'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
             ] : []))),
         $this->character, Auth::user(), $isMod)) {
             flash('Profile edited successfully.')->success();

@@ -52,7 +52,7 @@ class Character extends Model
         'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
         'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
         'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug',
-        'deceased', 'deceased_at'
+        'deceased', 'deceased_at', 'has_grand_title'
     ];
 
     /**

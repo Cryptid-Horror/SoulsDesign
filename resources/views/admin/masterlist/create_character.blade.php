@@ -219,6 +219,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::checkbox('has_grand_title', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+        {!! Form::label('has_grand_title', 'Has Grand Title', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('Subtype (Optional)') !!} @if($isMyo) {!! add_help('This will lock the slot into a particular subtype. Leave it blank if you would like to give the user a choice, or not select a subtype. The subtype must match the species selected above, and if no species is specified, the subtype will not be applied.') !!} @endif
         {!! Form::select('subtype_id', $subtypes, old('subtype_id'), ['class' => 'form-control', 'id' => 'subtype']) !!}
     </div>

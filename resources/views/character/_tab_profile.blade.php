@@ -6,7 +6,7 @@
     
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
-    <b>Species:</b> {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
+    <b>Species:</b> {{ $character->has_grand_title ? 'Grand' : '' }} {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
     <b>Temperament:</b> {{ $character->temperament }}<br>
     <b>Diet:</b> {{ $character->diet ?? 'Undefined' }}<br>
     <b>{{ $character->deceased ? 'Deceased' : $character->condition }}</b><br>

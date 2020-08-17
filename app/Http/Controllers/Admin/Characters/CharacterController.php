@@ -109,7 +109,7 @@ class CharacterController extends Controller
             'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
             'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
             'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
-            'name', 'title_name', 'nicknames'
+            'name', 'title_name', 'nicknames', 'has_grand_title'
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
             flash('Character created successfully.')->success();
@@ -146,7 +146,7 @@ class CharacterController extends Controller
             'is_adopted', 'temperament', 'diet', 'rank', 'skills',
             'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
             'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage'
+            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
         ]);
         if ($character = $service->createCharacter($data, Auth::user(), true)) {
             flash('MYO slot created successfully.')->success();
