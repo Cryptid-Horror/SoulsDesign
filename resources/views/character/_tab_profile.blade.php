@@ -3,15 +3,16 @@
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
     <b>ID:</b> {{ $character->slug }}<br>
     <b>Owner:</b> {!! $character->displayOwner !!}<br>
-    
+
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
     <b>Species:</b> {{ $character->has_grand_title ? 'Grand' : '' }} {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
     <b>Temperament:</b> {{ $character->temperament }}<br>
     <b>Diet:</b> {{ $character->diet ?? 'Undefined' }}<br>
-    <b>{{ $character->deceased ? 'Deceased' : $character->condition }}</b><br>
+    <b>{{ $character->deceased ? 'Deceased' : $character->health_status }}</b><br>
     <b>Genotype:</b> {{ $character->image->genotype }}<br>
     <b>Phenotype:</b> {{ $character->image->phenotype }}<br>
+    @if($character->image->free_markings)<b>Free Markings:</b> {{ $character->image->free_markings }}<br>@endif
     <b>Traits:</b>
     <?php $features = $character->image->features()->with('feature.category')->get(); ?>
     @if($features->count())
@@ -50,6 +51,14 @@
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
     <br>
+    @if($character->skills)
+        <b>Skills:</b>
+        <ul>
+        @foreach(explode(',', $character->skills) as $skill)
+            <li>{{ $skill }}</li>
+        @endforeach
+        </ul>
+    @endif
     <b>Adornments:</b>
     @if($character->image->adornments)
         <ul>
