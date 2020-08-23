@@ -1,34 +1,29 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
+    $marking_icon = 'Common_Dusted';
+    $marking_name = 'Dusted';
+    $marking_code = 'nDt/DtDt';
+    $marking_desc = "Originally thought to be a companion look to the Rosettes gene, Dusted struggled to become its own classified gene until it was found on dragons who did not come from rosettes bloodlines. Dusted can appear as either a speckling of dots, or ticking marks along the body. It has appeared both sporadically and in flowing lines along the body. However it has never been seen to create inorganic shapes like hearts or stars.";
+    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, leaf, masked, pangare, points, python, rimmed, ringed, sable, scaled, skink, Stained, trailing, underbelly, banded, bokeh, border, Brindled, cloud, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, smoke, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, petal, vignette, aether marked, gemstome, lepir, rune, truqetra';
+    $layers_above = 'None';
+    $layers_below = ' Inkwell, tobiano, painted, appaloosa';
+    $affected_by = 'Duo tone, flaxen, greying, rose, azure, copper, crimson, jade, lilac, prismatic, luminescent, aurora, shimmer';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
     $edge_solid = 'yes';
-    $edge_feathered = 'yes';
+    $edge_feathered = 'no';
     $edge_border = 'no';
-    $edge_textured = 'yes';
+    $edge_textured = 'no';
     $edge_mottled = 'no';
     $edge_soft = 'yes';
     $color_darker = 'yes';
@@ -38,28 +33,30 @@
     $edge_gradient = 'no';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'dusted_yes',
+        'dusted_yes2',
+        'dusted_no',
+        'dusted_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'Dusted can present both darker and lighter colors at the same time on a design. You do not have to use one or the other. In addition, if dusted over a blue Stained, and a black base coat, the dusted over the blue coloration can be affected by the azure marking. However it has to be not blue over the black base coat (a natural coat, altered by a different color mod, or if dominant utilizing the dominant trait). This applies to different combinations, this is only one an example.',
+       ' Dusted can appear as both a dotted design, or a "ticked" design.' ,
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
+        'You cannot apply two seperate color modifiers to dusted itself, without duo-tone.',
     ];
 
     $marking_must = [
+        'Recessive: No change from property values',
+        'Dominant: Can be any single color, without the presence of color modifiers. (Does not mean it can be rainbow, it has to be one single color, i.e. red or green)',
     ];
 
     // If left empty, the swatches section will not be shown

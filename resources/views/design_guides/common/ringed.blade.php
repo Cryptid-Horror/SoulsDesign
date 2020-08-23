@@ -1,27 +1,22 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $marking_icon = 'Common_Ringed';
+    $marking_name = 'Ringed';
+    $marking_code = 'nRn/RnRn';
+    $marking_desc = "This marking has been shown to present two different ways on the body of a dragon. Either as unfilled circles, or as complete bands that wrap around the body of a dragon. The gene was first found on the Wardens, and quickly spread throughout different species, with the banding presentation appearing more on wyvern bloodlines. Both versions of the marking can appear at once, and are not dictated by dominant or recessive properties.";
+    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, sable, scaled, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, Triquetra, Vignette, lepir, aether marked, gemstome, rune, petal';
+    $layers_above = 'Bokeh, Brindled, Cloud, Marbled, Merle, Smoke';
+    $layers_below = 'Inkwell, tobiano, painted, appaloosa ';
     $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
@@ -34,32 +29,35 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_blurred = 'yes';
+    $edge_gradient = 'yes';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'ringed_yes',
+        'ringed_yes2',
+        'ringed_no',
+        'ringed_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'Ringed can have a 12 point gradient of value or saturation. It is allowed to fade into the base coat or the marking it sits over.',
+        ' Ringed can fade into the base coat, or the marking it sits over.',
+        'Thickness, or thinness, of the marking can vary greatly. However it cannot be used to cover the entire body or a limb.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [
+        'Recessive: Can Appear in all zones',
+        ' Dominant: Can be any single color, without the presence of color modifiers. (Does not mean it can be rainbow, it has to be one single color, i.e. red or green)',
+        'Ringed can be both versions of the marking on the body, but the banded form cannot wrap around wing membranes.',
     ];
 
     // If left empty, the swatches section will not be shown

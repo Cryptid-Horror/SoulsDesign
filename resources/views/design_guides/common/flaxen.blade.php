@@ -1,69 +1,70 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Common_Flaxen';
+    $marking_name = 'Flaxen';
+    $marking_code = 'nFl/FlFl';
+    $marking_desc = "Flaxen was a confusing gene that for a long time was thought to be just dragons that were Golden in color. However Flaxen actually was deemed a color gene when it was seen on a vanta dragon with dusted compared to a golden dragon with the same gene. Flaxen appears as more yellow coloration in comparison to the richer golden color of the Gold base coat. In dominant, this marking is seen to make the entire dragon capable of being yellow in hue for it’s base and all its genes.";
+    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
+    $layers_above = 'Null, must affect the base coat or a marking.';
+    $layers_below = ' Null, must affect the base coat or a marking.';
+    $affected_by = ' Null, must affect the base coat or a marking.';
+    $can_affect = 'All Markings';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
-    $edge_solid = 'yes';
-    $edge_feathered = 'yes';
+    $edge_solid = 'no';
+    $edge_feathered = 'no';
     $edge_border = 'no';
-    $edge_textured = 'yes';
+    $edge_textured = 'no';
     $edge_mottled = 'no';
-    $edge_soft = 'yes';
+    $edge_soft = 'no';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
     $edge_gradient = 'no';
     $color_any = 'no';
-    $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $edge_blending = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'ColorMod_yes',
+        'ColorMod_yes2',
+        'ColorMod_no',
+        'ColorMod_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'If you pick a color modifier for the base coat, then it has to be picked from the sliders providered below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
+        'If a design has no markings, you either have to apply the color modifier to the base or to minimal marks. Unlike Duo-tone, it is not allowed to not appear under these conditions.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [
+        'Recessive: Can either effect the base coat and all marking/base dependant colors, or two markings (or one marking and the base).',
+        'Dominant: Can effect the base and ALL markings.',
+        'Flaxen is shades of yellow and cream. It can bleed into "yellow-oranges" but the yellow tint must overpower the orange coloration. The same applies to "yellow-green" ranges.',
+        ' Color modifier markings like this one can only affect certain markings when the color modifier is applied to the base. A marking that has the "marking/base dependant" swatch as allowed is a marking that can be altered to be shades of the color modifier, if the color modifier is applied to the base coat. Otherwise, it is not allowed.
+A huge example of the power behind a color modifier marking is in this kind of combination, however keep in mind we cannot detail every possible combination! This example uses flaxen, but applies to all color modifiers. This examples is even for a Recessive gene!
+Flaxen is applied to the base. Smoke is base dependant and is now shades of flaxen. Stained is layered above smoke and is now also shades of flaxen overtop of smoke. Duotone is applied to stained, and now stained has two shades of flaxen applies. Ontop of this, dusted is residing above all these markings, and is allowed to be shades of flaxen as well.',
     ];
 
     // If left empty, the swatches section will not be shown
     $swatches = [
+        'Flaxen_Colors',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

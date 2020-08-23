@@ -1,65 +1,64 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
+    $marking_icon = 'Common_Leaf';
+    $marking_name = 'Leaf';
+    $marking_code = 'nLf/LfLf';
+    $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Athena-Tivnan
+A gene that presents itself as leaf like markings on the body of a dragon. The leaves are not often specific to a species of tree, and has a stem or an outline found on them. Their sizes vary, and can be small or large. Dragons with this gene are thought to bring good luck, but any actual cases of this have only been seen as coincidence.";
+    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, ringed, sable, scaled, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, aether marked, gemstome, lepir, rune, truqetra, petal, vignette';
+    $layers_above = 'Bokeh, Brindled, Smoke, Cloud';
+    $layers_below = 'Inkwell, tobiano, painted, appaloosa ';
+    $affected_by = 'Duo tone, flaxen, greying, rose, azure, copper, crimson, jade, lilac, prismatic, luminescent, aurora, shimmer';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
     $edge_solid = 'yes';
     $edge_feathered = 'yes';
-    $edge_border = 'no';
+    $edge_border = 'yes';
     $edge_textured = 'yes';
-    $edge_mottled = 'no';
+    $edge_mottled = 'yes';
     $edge_soft = 'yes';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
+    $edge_blurred = 'yes';
     $edge_gradient = 'no';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'leaf_yes',
+        'leaf_yes2',
+        'leaf_no',
+        'leaf_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'Leaf can have up to three colors present, the leaf, border, and stem. However, 2 colors have to be present. One on the leaf, and one on the stem.',
+        'Leaves can be large or small, clustered or spaced out. They can flow in any direction from each other.',
+        'Leaves may have a 12 point gradient of value and saturation on them, but cannot blend into the base coat.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [
+        ' Recessive: Can appear in all zones',
+        'Dominant: Can appear in all zones, Can be any single color, without the presence of color modifiers. (Does not mean it can be rainbow, it has to be one single color, i.e. red or green)',
+        'Leaf must have a stem present on it, but it has the option for a border. The Stem can flow between different leaves, or just be present on the single leaf.',
     ];
 
     // If left empty, the swatches section will not be shown

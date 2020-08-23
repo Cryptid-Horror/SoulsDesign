@@ -1,23 +1,18 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
+    $marking_icon = 'Common_Dunstripe';
+    $marking_name = 'Dunstripe';
+    $marking_code = 'nDn/DnDn';
+    $marking_desc = "A popular mark praised for its delicate appearance down the spine of a dragon. Its origins are difficult to trace due to its abundance among the population of dragons, and many argue it appeared first in the scorched empire. Dunstripe often has a small accenting along the marking that points downward in a stripe like pattern, as well as stripes along the leg. Unlike banding though, these stripes are thin, delicate, and very few.";
+    $layers_above_or_below = 'Blanket, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Masked, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Crested, Banded, Marbled, Merle, Pigeon, Plasma, Shaped, Tabby, Toxin, Roan, Rosettes, Luminescent, Lustrous, Aurora, Iridescent, Lepir, Blooded, Eyes, Glass, Painted, Petal, Vignette, Aether Marked, Gemstone, Rune, Triquetra';
+    $layers_above = 'Bokeh, Cloud, Smoke, Brindled';
+    $layers_below = ' Inkwell, Tobiano, Appaloosa';
+    $affected_by = 'Duo Tone, Flaxen, Greying, Rose, Azure, border, Copper, Crimson, Dripping, Jade, Luminescent, Iridescent, Lilac, Prismatic, Shimmer';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
+        'Sapiere' => 'Sapiere_Dunstripe',
         'Warden' => 'Warden_Blanket',
         'Greater' => 'Gemp_Blanket',
         'Ravager' => 'Ravager_Blanket',
@@ -34,7 +29,7 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
+    $edge_blurred = 'yes';
     $edge_gradient = 'no';
     $color_any = 'no';
     $edge_blending = 'yes';
@@ -43,15 +38,16 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'dunstripe_yes',
+        'dunstripe_yes2',
+        'dunstripe_no',
+        'dunstripe_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
+        'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping.',
     ];
 
     $marking_cannot = [

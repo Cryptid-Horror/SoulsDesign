@@ -1,23 +1,18 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
+    $marking_icon = 'Common_Collar';
+    $marking_name = 'Collar';
+    $marking_code = 'nCl/ClCl';
+    $marking_desc = "The collar marking originated from the Radiant wyvern, and breeders prized the wyverns that had the cleanest collar markings. There is a lot of debate whether the full collar is superior to the half collar, but everyone agrees that it is a stylish gene on any dragon. The markings are found only on the neck of the dragon and can appear singularly or have up to 3 total rings. A single ring can also cover the whole neck.";
+    $layers_above_or_below = 'Blanket, Boar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Skink, Stained, Trailing, Underbelly, Banded, Dipped, Marbled, Roan, Tabby, Luminescent, Lustrous,  Petal, Aurora, Toxin, Blooded, Eyes, Glass, Painted, Vignette, Aether Marked, Gemstone, Lepir,  Rune, Triquetra, Pigeon, Plasma, Rosettes, Shaped,';
+    $layers_above = ' Bokeh, Cloud, Merle, Smoke, Brindled';
+    $layers_below = 'Inkwell, Cested, Masked, Tobiano, Appaloosa';
+    $affected_by = ' Duotone, Flaxen, Greying, Rose, Azure, Border, Copper, Crimson, Dripping, Jade, Lilac, Aurora, Iridescent, Prismatic, Shimmer';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
+        'Sapiere' => 'Sapiere_Blanket',
         'Warden' => 'Warden_Blanket',
         'Greater' => 'Gemp_Blanket',
         'Ravager' => 'Ravager_Blanket',
@@ -34,29 +29,30 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
+    $edge_blurred = 'yes';
     $edge_gradient = 'no';
     $color_any = 'no';
-    $edge_blending = 'yes';
+    $edge_blending = 'no';
     $color_dependant = 'no';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'collar_yes',
+        'collar_yes2',
+        'collar_no',
+        'collar_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
+        'Can appear as a full ring, or a half ring/band around the neck. Can also cover the entire range, but does not have to connect all the way around the neck.',
+        'Is allowed to fade vertically into the base coat',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [

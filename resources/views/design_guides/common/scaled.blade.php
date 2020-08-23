@@ -1,27 +1,23 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $marking_icon = 'Common_Scaled';
+    $marking_name = 'Scaled';
+    $marking_code = 'nSc/ScSc';
+    $marking_desc = "A marking that presents crescent patterns on the body, as if they were bordering scales or feathers. Originally appearing alongside the plated and feathered coat types of dragons, the marking has solidified its place in the genetic diversity of dragons with its ability to be an accent to a design, or to be the spotlight of a design.
+";
+    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, sable, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, Triquetra, Vignette, lepir, aether marked, gemstome, rune, petal';
+    $layers_above = 'Cloud, Smoke, bokeh, Brindled';
+    $layers_below = ' Inkwell, tobiano, painted, appaloosa';
     $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
@@ -35,31 +31,35 @@
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_gradient = 'yes';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'scaled_yes',
+        'scaled_yes2',
+        'scaled_no',
+        'scaled_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        ' Scales can have a 12 point value or saturation gradient to them.',
+        'Scales can be found on tips of feathers, plated scales, or present the idea of scales. It can flow in patterns and lines or be found in clustered spots.',
+        'Scaled can present both darker and lighter colors at the same time on a design. You do not have to use one or the other. In addition, if scales is over a blue Stained, and a black base coat, the dusted over the blue coloration can be affected by the azure marking. However it has to be not blue over the black base coat (a natural coat, altered by a different color mod, or if dominant utilizing the dominant trait). This applies to different combinations, this is only one an example.',
+        ' Scales can gradient into the base coat or the marking it sits over.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [
+        'Recessive: Can appear in all zones',
+        'Dominant: Can be any single color, without the presence of color modifiers. (Does not mean it can be rainbow, it has to be one single color, i.e. red or green)',
+        
     ];
 
     // If left empty, the swatches section will not be shown

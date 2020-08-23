@@ -1,27 +1,22 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $marking_icon = 'Common_Underbelly';
+    $marking_name = 'Underbelly';
+    $marking_code = 'nUn/UnUn';
+    $marking_desc = "A solid marking on the underside of a dragon. It has the ability to reach up along the underside of the wings as well. Underbelly is shades of dark, or light, and is a common marking seen on many dragons. The marking has a sibling marking called 'Pangare'.";
+    $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Pangare, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Banded, Marbled, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous, Aether Marked';
+    $layers_above = 'Bokeh, Cloud, Merle, Smoke, Brindled';
+    $layers_below = ' Crested, Inkwell, Tobiano, Appaloosa, Painted';
     $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Underbelly-Pangare',
+        'Warden' => 'Warden_Underbelly-Pangare',
+        'Greater' => 'Gemp_Underbelly-Pangare',
+        'Ravager' => 'Ravager_Underbelly-Pangare',
+        'Stalker' => 'Stalker_Underbelly-Pangare',
     ];
 
     // Use yes or no
@@ -43,20 +38,21 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'underbelly_yes',
+        'underbelly_yes2',
+        'underbelly_no',
+        'underbelly_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        ' Is allowed a 12 value and saturation point gradient difference inside the marking',
+        'Can appear above or below Pangare, if Pangare is present.',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
+        'Holes, breaks, cutouts, or floating portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.',
     ];
 
     $marking_must = [

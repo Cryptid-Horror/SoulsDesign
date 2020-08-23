@@ -1,33 +1,29 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $marking_icon = 'Common_Python';
+    $marking_name = 'Python';
+    $marking_code = 'nPy/PyPy';
+    $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Thundering-Horses
+A diamond, oval, or square/rectangular shape found on the spine of a dragon. The marking can go from the face to the tail, and in its dominant form has striping that can appear.";
+    $layers_above_or_below = ' Blanket, Boar, Collar, Dusted, Dunstripe, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Aether Marked, Blooded, Lustrous,';
+    $layers_above = 'Brindled, Bokeh, Cloud, Marbled, Merle';
+    $layers_below = ' Crested, Inkwell, Tobiano, Appaloosa, Painted';
     $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Python',
+        'Warden' => 'Warden_Python',
+        'Greater' => 'Gemp_Python',
+        'Ravager' => 'Ravager_Python',
+        'Stalker' => 'Stalker_Python',
     ];
 
     // Use yes or no
     $edge_solid = 'yes';
     $edge_feathered = 'yes';
-    $edge_border = 'no';
+    $edge_border = 'yes';
     $edge_textured = 'yes';
     $edge_mottled = 'no';
     $edge_soft = 'yes';
@@ -43,20 +39,23 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'python_yes',
+        'python_yes2',
+        'python_no',
+        'python_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        ' A border can appear on the marking. The border can be darker or lighter than the marking. The border can also be the same color as a marking it sits over, such as blanket. However it cannot be the same color as the base coat.',
+        ' Can have a 12 point value or saturation gradient.',
+        'Is allowed to interact with other markings like banding or ringed to make elongate the border on the marking.',
+        'Python can appear in a variety of shapes. It can be diamonds, ovals, squares, rectangles, diamonds, and even look like the iconic "saddle" of a boa constrictor. You can even use multiple different types of python on a single design (some oval, some rectangle, etc!)',
+        'In dominant form, the marking can show banded like markings on the tip of the tail, and the face.',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
     ];
 
     $marking_must = [
@@ -64,6 +63,7 @@
 
     // If left empty, the swatches section will not be shown
     $swatches = [
+        'At least three python shapes must be visible on the body somewhere, with the exception being if inkwell, painted, or tobiano are present as these markings can completely hide other markings.',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

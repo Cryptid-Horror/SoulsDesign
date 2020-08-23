@@ -1,65 +1,65 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Common_Duotone';
+    $marking_name = 'Duotone';
+    $marking_code = 'nDo/DoDo';
+    $marking_desc = "Marking Origin: 2018 Genetics Contest -- JemJam
+Unlike the other documented color genes, duo tone doesn’t introduce new colors into the genetics of dragons. The gene instead causes colors to blend on a marking, either be them natural colors, or color genes.This strange gene is often thought to have come from the Emperor species, but it has been around Empyrean for many years.";
+    $layers_above_or_below = 'Null, must affect a marking';
+    $layers_above = 'Null, must affect a marking';
+    $layers_below = 'Null, must affect a marking';
+    $affected_by = 'Flaxen, greying, rose, azure, copper, crimson, jade, prismatic, lilac';
+    $can_affect = 'All markings';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'placeholder',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Duotone',
+        'Warden' => 'Warden_Duotone',
+        'Greater' => 'Gemp_Duotone',
+        'Ravager' => 'Ravager_Duotone',
+        'Stalker' => 'Stalker_Duotone',
     ];
 
     // Use yes or no
-    $edge_solid = 'yes';
-    $edge_feathered = 'yes';
+    $edge_solid = 'no';
+    $edge_feathered = 'no';
     $edge_border = 'no';
-    $edge_textured = 'yes';
+    $edge_textured = 'no';
     $edge_mottled = 'no';
-    $edge_soft = 'yes';
+    $edge_soft = 'no';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
     $edge_gradient = 'no';
     $color_any = 'no';
-    $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $edge_blending = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
-        'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'duotone_yes',
+        'duotone_yes2',
+        'duotone_no',
+        'duotone_no2'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed a 4 - 6 value and saturation point gradient difference inside the marking'
+        'This gene will follow the rules of the marking it is affecting. This means that if you use it on, for example, Stained, you can have a marking/base dependancy to it (so it can be a shade of the color beneath it). However if you use it on Blanket, then it cannot do this and it has to be a natural color.',
+        'In addition to having to affect another marking, Duo Tone can be affected by a color mod! It can gradient a color modification marking into a marking not benefiting from this color mod, or you can apply the color modifier to the marking that Duo Tone is affecting and Duo Tone can be a shade of that color as well.',
+        'Only two colors can blend together, and they must be a fully blended/ smooth gradient between the colors. The gradient can start at any point in the marking, but must be present.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
+        ' Cannot affect the base coat, it must affect a marking.',
     ];
 
     $marking_must = [
+        'Recessive: Affects up to 2 markings',
+        'Dominant: Affects upt to 4 markings',
+        'This markings HAS to affect any other marking present on the dragon. If this is the only marking on the dragon then it must either affect minimal markings, or it does not show up.',
     ];
 
     // If left empty, the swatches section will not be shown

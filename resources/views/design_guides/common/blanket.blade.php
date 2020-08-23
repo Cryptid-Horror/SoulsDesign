@@ -19,7 +19,7 @@
     $ranges = [
         'Sapiere' => 'Sapiere_Blanket',
         'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
+        'Greater' => 'Gemp_Blanket-Sable',
         'Ravager' => 'Ravager_Blanket',
         'Stalker' => 'Stalker_Blanket',
     ];
@@ -56,7 +56,7 @@
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
+        'Holes, breaks, cutouts, or floating portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.'
     ];
 
     $marking_must = [
