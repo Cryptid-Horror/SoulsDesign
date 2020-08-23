@@ -62,7 +62,7 @@
         <div class="form-group">
             {!! Form::label('Traits') !!} 
             <div id="featureList">
-                {{-- Add in the compulsory traits for MYO slots --}}
+                {{-- Add in the compulsory traits for Registered Dragon slots --}}
                 @if($request->character->is_myo_slot && $request->character->image->features)
                     @foreach($request->character->image->features as $feature)
                         <div class="mb-2 d-flex align-items-center">

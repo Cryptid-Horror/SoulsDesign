@@ -4,7 +4,7 @@
 
 @section('content')
 {!! breadcrumbs(['Registered Dragons Masterlist' => 'Registered Dragons']) !!}
-<h1>MYO Slot Masterlist</h1>
+<h1>Registered Dragon Slot Masterlist</h1>
 
 @include('browse._masterlist_content', ['characters' => $slots])
 

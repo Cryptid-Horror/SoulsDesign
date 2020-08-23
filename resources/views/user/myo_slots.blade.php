@@ -1,6 +1,6 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s MYO Slots @endsection
+@section('profile-title') {{ $user->name }}'s Registered Dragon Slots @endsection
 
 @section('profile-content')
 {!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Registered Dragon Slots' => $user->url . '/myos']) !!}

@@ -1,6 +1,6 @@
 @extends('home.layout')
 
-@section('home-title') My MYO Slots @endsection
+@section('home-title') My Registered Dragon Slots @endsection
 
 @section('home-content')
 {!! breadcrumbs(['Characters' => 'characters', 'My Registered Slots' => 'Registered Dragons']) !!}

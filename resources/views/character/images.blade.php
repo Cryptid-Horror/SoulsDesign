@@ -5,7 +5,7 @@
 @section('meta-img') {{ $character->image->thumbnailUrl }} @endsection
 
 @section('profile-content')
-{!! breadcrumbs([($character->is_myo_slot ? 'MYO Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Images' => $character->url . '/images']) !!}
+{!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Images' => $character->url . '/images']) !!}
 
 @include('character._header', ['character' => $character])
 

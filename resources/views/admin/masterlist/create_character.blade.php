@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
-@section('admin-title') Create {{ $isMyo ? 'MYO Slot' : 'Character' }} @endsection
+@section('admin-title') Create {{ $isMyo ? 'Registered Dragon Slot' : 'Character' }} @endsection
 
 @section('admin-content')
-{!! breadcrumbs(['Admin Panel' => 'admin', 'Create '.($isMyo ? 'MYO Slot' : 'Character') => 'admin/masterlist/create-'.($isMyo ? 'myo' : 'character')]) !!}
+{!! breadcrumbs(['Admin Panel' => 'admin', 'Create '.($isMyo ? 'Registered Dragon Slot' : 'Character') => 'admin/masterlist/create-'.($isMyo ? 'myo' : 'character')]) !!}
 
-<h1>Create {{ $isMyo ? 'MYO Slot' : 'Character' }}</h1>
+<h1>Create {{ $isMyo ? 'Registered Dragon Slot' : 'Character' }}</h1>
 
 @if(!$isMyo && !count($categories))
 
@@ -19,13 +19,13 @@
 
     @if($isMyo)
         <div class="form-group">
-            {!! Form::label('Name') !!} {!! add_help('Enter a descriptive name for the type of character this slot can create, e.g. Rare MYO Slot. This will be listed on the MYO slot masterlist.') !!}
+            {!! Form::label('Name') !!} {!! add_help('Enter a descriptive name for the type of character this slot can create, e.g. Rare Registered Dragon Slot. This will be listed on the Registered Dragon slot masterlist.') !!}
             {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
         </div>
     @endif
 
     <div class="alert alert-info">
-        Fill in either of the owner fields - you can select a user from the list if they have registered for the site, or enter their deviantART username if they don't have an account. If the owner registers an account later and links their dA account, {{ $isMyo ? 'MYO slot' : 'character' }}s with their dA alias listed will automatically be credited to their site account. If both fields are filled, the alias field will be ignored.
+        Fill in either of the owner fields - you can select a user from the list if they have registered for the site, or enter their deviantART username if they don't have an account. If the owner registers an account later and links their dA account, {{ $isMyo ? 'Registered Dragon slot' : 'character' }}s with their dA alias listed will automatically be credited to their site account. If both fields are filled, the alias field will be ignored.
     </div>
 
     <div class="row">
@@ -76,7 +76,7 @@
     <div class="form-group">
         {!! Form::label('Description (Optional)') !!} 
         @if($isMyo)
-            {!! add_help('This section is for making additional notes about the MYO slot. If there are restrictions for the character that can be created by this slot that cannot be expressed with the options below, use this section to describe them.') !!}
+            {!! add_help('This section is for making additional notes about the Registered Dragon slot. If there are restrictions for the character that can be created by this slot that cannot be expressed with the options below, use this section to describe them.') !!}
         @else
             {!! add_help('This section is for making additional notes about the character and is separate from the character\'s profile (this is not editable by the user).') !!}
         @endif
@@ -85,16 +85,16 @@
 
     <div class="form-group">
         {!! Form::checkbox('is_visible', 1, old('is_visible'), ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
-        {!! Form::label('is_visible', 'Is Visible', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Turn this off to hide the '.($isMyo ? 'MYO slot' : 'character').'. Only mods with the Manage Masterlist power (that\'s you!) can view it - the owner will also not be able to see the '.($isMyo ? 'MYO slot' : 'character').'\'s page.') !!}
+        {!! Form::label('is_visible', 'Is Visible', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Turn this off to hide the '.($isMyo ? 'Registered Dragon slot' : 'character').'. Only mods with the Manage Masterlist power (that\'s you!) can view it - the owner will also not be able to see the '.($isMyo ? 'Registered Dragon slot' : 'character').'\'s page.') !!}
     </div>
 
     <h3>Transfer Information</h3>
 
     <div class="alert alert-info">
-        These are displayed on the {{ $isMyo ? 'MYO slot' : 'character' }}'s profile, but don't have any effect on site functionality except for the following: 
+        These are displayed on the {{ $isMyo ? 'Registered Dragon slot' : 'character' }}'s profile, but don't have any effect on site functionality except for the following: 
         <ul>
-            <li>If all switches are off, the {{ $isMyo ? 'MYO slot' : 'character' }} cannot be transferred by the user (directly or through trades).</li>
-            <li>If a transfer cooldown is set, the {{ $isMyo ? 'MYO slot' : 'character' }} also cannot be transferred by the user (directly or through trades) until the cooldown is up.</li>
+            <li>If all switches are off, the {{ $isMyo ? 'Registered Dragon slot' : 'character' }} cannot be transferred by the user (directly or through trades).</li>
+            <li>If a transfer cooldown is set, the {{ $isMyo ? 'Registered Dragon slot' : 'character' }} also cannot be transferred by the user (directly or through trades) until the cooldown is up.</li>
         </ul>
     </div>
     <div class="form-group">
@@ -111,7 +111,7 @@
     </div>
     <div class="card mb-3" id="resellOptions">
         <div class="card-body">
-            {!! Form::label('Resale Value') !!} {!! add_help('This value is publicly displayed on the '.($isMyo ? 'MYO slot' : 'character').'\'s page.') !!}
+            {!! Form::label('Resale Value') !!} {!! add_help('This value is publicly displayed on the '.($isMyo ? 'Registered Dragon slot' : 'character').'\'s page.') !!}
             {!! Form::text('sale_value', old('sale_value'), ['class' => 'form-control']) !!}
         </div>
     </div>
@@ -125,7 +125,7 @@
     <div class="form-group">
         {!! Form::label('Image') !!} 
         @if($isMyo)
-            {!! add_help('This is a cover image for the MYO slot. If left blank, a default image will be used.') !!}
+            {!! add_help('This is a cover image for the Registered Dragon slot. If left blank, a default image will be used.') !!}
         @else 
             {!! add_help('This is the full masterlist image. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
         @endif

@@ -3,7 +3,7 @@
 @section('profile-title') {{ $character->fullName }}'s Item Logs @endsection
 
 @section('profile-content')
-{!! breadcrumbs([($character->is_myo_slot ? 'MYO Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, "Inventory" => $character->url.'/inventory', 'Logs' => $character->url.'/item-logs']) !!}
+{!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, "Inventory" => $character->url.'/inventory', 'Logs' => $character->url.'/item-logs']) !!}
 
 @include('character._header', ['character' => $character])
 
