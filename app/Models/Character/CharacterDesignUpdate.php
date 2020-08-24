@@ -27,7 +27,7 @@ class CharacterDesignupdate extends Model
         'hash', 'species_id', 'subtype_id', 'rarity_id', 
         'has_comments', 'has_image', 'has_addons', 'has_features',
         'submitted_at', 'ext_url', 'update_type',
-        'genotype', 'phenotype'
+        'genotype', 'phenotype', 'free_markings', 'adornments'
     ];
 
     /**

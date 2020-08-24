@@ -29,6 +29,13 @@
                 {!! Form::text('phenotype', $request->phenotype, ['class' => 'form-control', 'id' => 'phenotype']) !!}
             @endif
         </div>
+        
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="form-group">
+                {!! Form::label('free_markings', 'Free Markings') !!}
+                {!! Form::text('free_markings', $request->free_markings, ['class' => 'form-control', 'id' => 'free_markings']) !!}
+            </div>
+        @endif
 
         <div class="form-group">
             {!! Form::label('species_id', 'Species') !!}
@@ -91,12 +98,46 @@
                 <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
             </div>
         </div>
+
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="form-group">
+                {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
+                <div id="adornmentsList">
+                    @foreach(explode(',', $request->adornments) as $adornment)
+                        <div class="d-flex mb-2">
+                            {!! Form::text('adornments[]', $adornment, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+                            <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+                        </div>
+                    @endforeach
+                </div>
+                <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
+            </div>
+        @endif
+
         <div class="text-right">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
         </div>
     {!! Form::close() !!}
+    <div class="adornment-row hide mb-2">
+        {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+        <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+    </div>
 @else
     <div class="mb-1">
+        <div class="row">
+            <div class="col-md-2 col-4"><h5>Genotype</h5></div>
+            <div class="col-md-10 col-8">{!! $request->genotype ?? 'None Entered' !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-4"><h5>Phenotype</h5></div>
+            <div class="col-md-10 col-8">{!! $request->phenotype?? 'None Entered' !!}</div>
+        </div>
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="row">
+                <div class="col-md-2 col-4"><h5>Free Markings</h5></div>
+                <div class="col-md-10 col-8">{!! $request->free_markings ?? 'None Entered' !!}</div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-2 col-4"><h5>Species</h5></div>
             <div class="col-md-10 col-8">{!! $request->species ? $request->species->displayName : 'None Selected' !!}</div>
@@ -116,6 +157,16 @@
         @foreach($request->features as $feature)
             <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div> 
         @endforeach
+    </div>
+    <h5>Adornments</h5>
+    <div>
+        @if($request->character && !$request->character->is_myo_slot)
+            <ul>
+                @foreach(explode(',', $request->adornments) as $adornment)
+                    <li>{!! $adornment !!}</li> 
+                @endforeach
+            </ul>
+        @endif
     </div>
 @endif
 

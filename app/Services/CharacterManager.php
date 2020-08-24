@@ -1551,7 +1551,9 @@ class CharacterManager extends Service
                 'species_id' => $character->image->species_id,
                 'subtype_id' => $character->image->subtype_id,
                 'genotype' => $character->image->genotype,
-                'phenotype' => $character->image->phenotype
+                'phenotype' => $character->image->phenotype,
+                'free_markings' => $character->image->free_markings,
+                'adornments' => $character->image->adornments
             ];
 
             $request = CharacterDesignUpdate::create($data);
@@ -1843,6 +1845,8 @@ class CharacterManager extends Service
             $request->subtype_id = $subtype ? $subtype->id : null;
             $request->genotype = $genotype;
             $request->phenotype = $phenotype;
+            $request->free_markings = $data['free_markings'] ?? $request->character->image->free_markings;
+            $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
             $request->has_features = 1;
             $request->save();
 
@@ -1945,6 +1949,8 @@ class CharacterManager extends Service
                 'sort' => 0,
                 'genotype' => $request->genotype,
                 'phenotype' => $request->phenotype,
+                'free_markings' => $request->free_markings,
+                'adornments' => $request->adornments
             ]);
 
             // Shift the image credits over to the new image
