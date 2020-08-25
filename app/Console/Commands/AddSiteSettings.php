@@ -115,7 +115,7 @@ class AddSiteSettings extends Command
                 [
                     'key' => 'is_myos_open',
                     'value' => 1,
-                    'description' => '0: MYO slots cannot be submitted for design approval, 1: MYO slots can be submitted for approval.'
+                    'description' => '0: Registered Dragon slots cannot be submitted for design approval, 1: Registered Dragon slots can be submitted for approval.'
                 ]
 
             ]);

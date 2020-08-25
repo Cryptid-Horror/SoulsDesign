@@ -38,13 +38,13 @@ return [
         'filename' => 'currency.png'
     ],
     'myo' => [
-        'name' => 'MYO Default Image',
-        'description' => 'The default image used for MYO slots when no image is uploaded. PNG format, no size restriction.',
+        'name' => 'Registered Dragon Default Image',
+        'description' => 'The default image used for Registered Dragon slots when no image is uploaded. PNG format, no size restriction.',
         'filename' => 'myo.png'
     ],
     'myo-th' => [
-        'name' => 'MYO Default Image (Thumbnail)',
-        'description' => 'The default masterlist thumbnail used for MYO slots when no image is uploaded. PNG format, size of masterlist thumbnails.',
+        'name' => 'Registered Dragon Default Image (Thumbnail)',
+        'description' => 'The default masterlist thumbnail used for Registered Dragon slots when no image is uploaded. PNG format, size of masterlist thumbnails.',
         'filename' => 'myo-th.png'
     ],
     'meta-image' => [

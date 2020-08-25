@@ -137,11 +137,11 @@ class CharacterManager extends Service
             
             // Add a log for the character
             // This logs all the updates made to the character
-            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'MYO Slot Created' : 'Character Created', 'Initial upload', 'character');
+            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'character');
 
             // Add a log for the user
             // This logs ownership of the character
-            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'MYO Slot Created' : 'Character Created', 'Initial upload', 'user');
+            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'user');
 
             // Update the user's FTO status and character count
             if($recipient) {
@@ -1536,8 +1536,8 @@ class CharacterManager extends Service
 
         try {
             if($character->user_id != $user->id) throw new \Exception("You do not own this character.");
-            if(CharacterDesignUpdate::where('character_id', $character->id)->active()->exists()) throw new \Exception("This ".($character->is_myo_slot ? 'MYO slot' : 'character')." already has an existing request. Please update that one, or delete it before creating a new one.");
-            if(!$character->isAvailable) throw new \Exception("This ".($character->is_myo_slot ? 'MYO slot' : 'character')." is currently in an open trade or transfer. Please cancel the trade or transfer before creating a design update.");
+            if(CharacterDesignUpdate::where('character_id', $character->id)->active()->exists()) throw new \Exception("This ".($character->is_myo_slot ? 'Registered Dragon slot' : 'character')." already has an existing request. Please update that one, or delete it before creating a new one.");
+            if(!$character->isAvailable) throw new \Exception("This ".($character->is_myo_slot ? 'Registered Dragon slot' : 'character')." is currently in an open trade or transfer. Please cancel the trade or transfer before creating a design update.");
 
             $data = [
                 'user_id' => $user->id,
@@ -1916,7 +1916,7 @@ class CharacterManager extends Service
                     if($stack->update_count < $quantity) throw new \Exception("Cannot return more items than was held. (".$stackId.")");
                     $stack->update_count -= $quantity;
                     $stack_user = User::find($request->user_id);
-                    if(!$inventoryManager->debitStack($stack_user, $request->character->is_myo_slot ? 'MYO Design Approved' : 'Character Design Updated', ['data' => 'Item used in ' . ($request->character->is_myo_slot ? 'MYO design approval' : 'Character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)'], $stack, $quantity)) throw new \Exception("Failed to create log for item stack.");
+                    if(!$inventoryManager->debitStack($stack_user, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', ['data' => 'Item used in ' . ($request->character->is_myo_slot ? 'Registered Dragon design approval' : 'Character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)'], $stack, $quantity)) throw new \Exception("Failed to create log for item stack.");
                 }
             }
             if(isset($requestData['character']['currencies']) && $requestData['character']['currencies'])
@@ -1924,8 +1924,8 @@ class CharacterManager extends Service
                 foreach($requestData['character']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
                     if(!$currencyManager->createLog($request->character_id, 'Character', null, null, 
-                    $request->character->is_myo_slot ? 'MYO Design Approved' : 'Character Design Updated', 
-                    'Used in ' . ($request->character->is_myo_slot ? 'MYO design approval' : 'character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)', 
+                    $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', 
+                    'Used in ' . ($request->character->is_myo_slot ? 'Registered Dragon design approval' : 'character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)', 
                     $currencyId, $quantity)) 
                         throw new \Exception("Failed to create log for character currency.");
                 }
@@ -2006,7 +2006,7 @@ class CharacterManager extends Service
             }
 
             // Add a log for the character
-            $this->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
+            $this->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
             
             // Final recheck and setting of update type, as insurance
             if($request->character->is_myo_slot) 

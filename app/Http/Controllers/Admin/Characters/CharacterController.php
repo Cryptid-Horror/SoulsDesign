@@ -149,7 +149,7 @@ class CharacterController extends Controller
             'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
         ]);
         if ($character = $service->createCharacter($data, Auth::user(), true)) {
-            flash('MYO slot created successfully.')->success();
+            flash('Registered Dragon slot created successfully.')->success();
             return redirect()->to($character->url);
         }
         else {

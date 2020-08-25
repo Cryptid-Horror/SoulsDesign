@@ -157,7 +157,7 @@ return [
 
     // MYO_GRANT
     24 => [
-        'message' => 'A new MYO slot (<a href="{character_url}">{name}</a>) has been created for you. (<a href="{url}">View MYO Slots</a>)',
+        'message' => 'A new Registered Dragon slot (<a href="{character_url}">{name}</a>) has been created for you. (<a href="{url}">View Registered Dragon Slots</a>)',
         'url' => 'myos'
     ],
 

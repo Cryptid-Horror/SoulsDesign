@@ -140,7 +140,7 @@ return [
                 'url' => 'admin/masterlist/create-character'
             ],
             [
-                'name' => 'Create MYO Slot',
+                'name' => 'Create Registered Dragon Slot',
                 'url' => 'admin/masterlist/create-myo'
             ],
             [
@@ -156,7 +156,7 @@ return [
                 'url' => 'admin/design-approvals/pending'
             ],
             [
-                'name' => 'MYO Approvals',
+                'name' => 'Registered Dragon Approvals',
                 'url' => 'admin/myo-approvals/pending'
             ],
         ]
