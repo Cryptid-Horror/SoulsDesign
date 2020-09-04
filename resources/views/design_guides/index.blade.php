@@ -5,7 +5,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="http://i.imgur.com/mDXvBKC.png">
+	<link rel="icon" href="{{ asset('favicon.gif') }}">
 	<!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<!-- Custom CSS -->
@@ -54,40 +54,42 @@
 			Welcome to the Genetics Portal! This is the main page of our genetics handguide. You will find links to all necessary documentations on the genes and traits of our dragons here! To view markings, click on the marking rarity names which will open a menu that shows you the different markings!<br><br>
 			In addition, we've made many new changes to our guides and how markings work. We hope you have a fun time designing your dragons!
 		</div>
-		<button type="button" class="btn btn-secondary btn-lg btn-block mb-3">Genetic Portal Handbook</button>
-		<button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Base coats and How they Work</button>
+		<a href="https://www.soulsbetween.com/info/Genetic_Handbook" button type="button" class="btn btn-secondary btn-lg btn-block mb-3">Genetic Portal Handbook</a></button>
+		<a href="https://www.soulsbetween.com/info/Coat_Colors" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Coat Colors and How they Work</a></button>
+        <a href="https://www.soulsbetween.com/world/species" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Dragon Species of Empyrean</a></button>
+
 
 		<div class="d-flex justify-content-around mb-5">
 			<div class="btn-group-vertical">
-				<button type="button" class="btn btn-secondary">Import File Downloads</button>
-				<button type="button" class="btn btn-secondary">Written Import Information</button>
-				<button type="button" class="btn btn-secondary">Filling out the Lineage</button>
-				<button type="button" class="btn btn-secondary">Design Guide check List</button>
+                <a href="{{ url('https://www.deviantart.com/the-below/gallery/66157893/dragon-imports') }}" class="btn btn-secondary">Import File Downloads</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Import_Info') }}" class="btn btn-secondary">Registration Information</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Lineage_guide') }}" class="btn btn-secondary">Filling out the Lineage</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
 			</div>
 			<div class="btn-group-vertical">
-				<button type="button" class="btn btn-secondary">Physical Traits</button>
-				<button type="button" class="btn btn-secondary">Breath Abilities</button>
-				<button type="button" class="btn btn-secondary">Skills</button>
-				<button type="button" class="btn btn-secondary">Inbreeding Consequences</button>
+                <a href="{{ url('https://www.soulsbetween.com/world/trait-categories') }}" class="btn btn-secondary">Physical Traits</a>
+                <a href="{{ url('https://www.soulsbetween.com/world/traits?feature_category_id=6') }}" class="btn btn-secondary">Breath Elements</a>
+                <a href="{{ url('https://www.soulsbetween.com/world/traits?feature_category_id=7') }}" class="btn btn-secondary">Skills</a>
+                <a href="{{ url('https://www.soulsbetween.com/world/traits?feature_category_id=11') }}" class="btn btn-secondary">Temperaments</a>
 			</div>
 			<div class="btn-group-vertical">
-				<button type="button" class="btn btn-secondary">Value and Saturation</button>
-				<button type="button" class="btn btn-secondary">Coloring in Extra Details</button>
-				<button type="button" class="btn btn-secondary">Minimal (Free) Markings</button>
-				<button type="button" class="btn btn-secondary">Import Effects</button>
-				<button type="button" class="btn btn-secondary">Shampoo and Item Kits</button>
+                <a href="{{ url('https://www.soulsbetween.com/info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
+                <a href="{{ url('dhttps://www.soulsbetween.com/info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Free_Marks') }}" class="btn btn-secondary">Minimal (Free) Markings</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Design_Addons') }}" class="btn btn-secondary">Item kits, Shampoo, and others</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>
 			</div>
 			<div class="btn-group-vertical">
-				<button type="button" class="btn btn-secondary">Physical Mutations</button>
-				<button type="button" class="btn btn-secondary">Abundism</button>
-				<button type="button" class="btn btn-secondary">Albino </button>
-				<button type="button" class="btn btn-secondary">Anery</button>
+                <a href="{{ url('https://www.soulsbetween.com/world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
+                <a href="{{ url('design/color_mutations/abundism') }}" class="btn btn-secondary">Abundism</a>
+                <a href="{{ url('design/color_mutations/albino') }}" class="btn btn-secondary">Albino</a>
+                <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
 			</div>
 			<div class="btn-group-vertical">
-				<button type="button" class="btn btn-secondary">Chimeric</button>
-				<button type="button" class="btn btn-secondary">Luecism</button>
-				<button type="button" class="btn btn-secondary">Melanistic</button>
-				<button type="button" class="btn btn-secondary">Radiance</button>
+                <a href="{{ url('design/color_mutations/chimeric') }}" class="btn btn-secondary">Chimeric</a>
+                <a href="{{ url('design/color_mutations/leucism') }}" class="btn btn-secondary">Leucism</a>
+                <a href="{{ url('design/color_mutations/melanistic') }}" class="btn btn-secondary">Melanistic</a>
+                <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance</a>
 			</div>
 		</div>
 
@@ -183,7 +185,7 @@
 				<div class="card-header" id="headingFour">
 					<h2 class="mb-0">
 						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							Very Rare Markings
+							Mythic Markings
 						</button>
 					</h2>
 				</div>
@@ -193,8 +195,8 @@
 							<div class="row mb-3">
 								@foreach($veryrare_chunk as $veryrare)
 									<div class="col-md-6 col-lg-3 mb-2">
-										<img src="{{ asset('images/design_guides/VeryRare_'.str_replace(' ', '_', $veryrare[0]).'.png') }}" width="90%" style="max-width:200px;">
-										<a class="btn btn-info" href="{{ url('design/very_rare/'.strtolower(str_replace(' ', '_', $veryrare[0]))) }}">{{ $veryrare[0].' ('.$veryrare[1].')' }}</a>
+										<img src="{{ asset('images/design_guides/Mythic_'.str_replace(' ', '_', $veryrare[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/mythic/'.strtolower(str_replace(' ', '_', $veryrare[0]))) }}">{{ $veryrare[0].' ('.$veryrare[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
@@ -207,6 +209,7 @@
 	<div class="footer">
 		Copyright Livard Arts and Cryptid-Horror 2020 all Rights reserved.<br>
 		Marking Icons created by ModernBeatnik<br>
+        Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor<br>
 	</div>
 
 	<!-- Bootstrap core JavaScript-->

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Genetics Portal</title>
+	<title>{{ $marking_name }} ({{ $marking_code }})</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="{{ asset('public/favicon.ico') }}">
+	<link rel="icon" href="{{ asset('/favicon.gif') }}">
 	<!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/featherlight.min.css') }}" rel="stylesheet">
@@ -43,7 +43,7 @@
                     <a class="btn btn-secondary" href="This marking has to appear below these markings: {{ $layers_below }}" data-featherlight="text">Always Below These Markings</a>
                     <a class="btn btn-secondary" href="This marking can be affected or modified by the following markings (such as being able to be modified by a color marking): {{ $affected_by }}" data-featherlight="text">Affected By These Markings</a>
                     <a class="btn btn-secondary" href="This marking can affect or modify the following the markings (such as making them a different color): {{ $can_affect }}" data-featherlight="text">Can Affect These Markings</a>
-                    <a class="btn btn-secondary" href="#">Genetic Portal Handbook
+                    <a class="btn btn-secondary" href="https://www.soulsbetween.com/info/Genetic_Handbook">Genetic Portal Handbook
 
                     <a class="btn btn-dark"></a>
 
@@ -105,11 +105,11 @@
                             Import Effects
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop7">
-                            <a class="dropdown-item" href="#">Value and Saturation</a>
-                            <a class="dropdown-item" href="#">Filling in Extra Import Details</a>
-                            <a class="dropdown-item" href="#">Minimal (free) Markings</a>
-                            <a class="dropdown-item" href="#">Import Effects</a>
-                            <a class="dropdown-item" href="#">Shampoo and Item Kits</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Value_Saturation">Value and Saturation</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Free_Marks">Minimal (free) Markings</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Import_Extras">Import Effects</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Design_Addons">Item kits, Shampoo, and Extras</a>
+                            
                         </div>
                     </div>
                     <div class="btn-group" role="group">
@@ -117,14 +117,15 @@
                             General Features
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop8">
-                            <a class="dropdown-item" href="#">Base Coats Explained</a>
-                            <a class="dropdown-item" href="#">Breath Abilities</a>
-                            <a class="dropdown-item" href="#">Skills</a>
-                            <a class="dropdown-item" href="#">Physical Traits</a>
-                            <a class="dropdown-item" href="#">Filling out the Lineage</a>
-                            <a class="dropdown-item" href="#">Inbreeding Consequences</a>
-                            <a class="dropdown-item" href="#">Written Import Info</a>   
-                            <a class="dropdown-item" href="#">Design Guide checklist</a>
+                        <a class="dropdown-item" href="https://www.deviantart.com/the-below/gallery/66157893/dragon-imports">Import File Downloads</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Coat_Colors">Coat Colors Explained</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=6">Breath Elements</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=7">Skills</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/trait-categories">Physical Traits</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Lineage_guide">Filling out the Lineage</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Nesting_Odds">Inbreeding Consequences</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Import_Info">Registration Information</a>   
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Check_List">Design Review checklist</a>
                         </div>
                     </div>
                     <div class="btn-group" role="group">
@@ -132,14 +133,14 @@
                             Mutations
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop9">
-                            <a class="dropdown-item" href="#">Physical Mutations</a>
-                            <a class="dropdown-item" href="{{ url('design/mutations/abundism') }}">Abundism</a>
-                            <a class="dropdown-item" href="{{ url('design/mutations/albino') }}">Albino</a>
-                            <a class="dropdown-item" href="{{ url('design/mutations/anery') }}">Anery</a>
-                            <a class="dropdown-item" href="#">Chimeric</a>
-                            <a class="dropdown-item" href="#">Luecism</a>
-                            <a class="dropdown-item" href="#">Melanistic</a>   
-                            <a class="dropdown-item" href="#">Radiance</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=5">Physical Mutations</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/abundism">Abundism</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/albino">Albino</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/anery">Anery</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/chimeric">Chimeric</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/leucism">Luecism</a>
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/melanistic">Melanistic</a>   
+                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/radiance">Radiance</a>
                         </div>
                     </div>
                 </div>
