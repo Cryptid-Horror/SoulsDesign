@@ -38,11 +38,7 @@
                 <!-- Marking Layering -->
                 <h4><b><u>Layering and Ranges</u></b></h4>
                 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <a class="btn btn-secondary" href="This marking can appear above or below the following markings: {{ $layers_above_or_below }}" data-featherlight="text">Above or Below These Markings</a>
-                    <a class="btn btn-secondary" href="This marking has to appear above the following markings: {{ $layers_above }}" data-featherlight="text">Always Above These Markings</a>
-                    <a class="btn btn-secondary" href="This marking has to appear below these markings: {{ $layers_below }}" data-featherlight="text">Always Below These Markings</a>
-                    <a class="btn btn-secondary" href="This marking can be affected or modified by the following markings (such as being able to be modified by a color marking): {{ $affected_by }}" data-featherlight="text">Affected By These Markings</a>
-                    <a class="btn btn-secondary" href="This marking can affect or modify the following the markings (such as making them a different color): {{ $can_affect }}" data-featherlight="text">Can Affect These Markings</a>
+                    @include('design_guides.templates._marking_interactions')
                     <a class="btn btn-secondary" href="https://www.soulsbetween.com/info/Genetic_Handbook">Genetic Portal Handbook
 
                     <a class="btn btn-dark"></a>
