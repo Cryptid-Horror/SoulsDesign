@@ -2,15 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use DB;
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Models\SitePage;
-
-use App\Services\DeviantArtService;
 
 class DesignGuideController extends Controller
 {
