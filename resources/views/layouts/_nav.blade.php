@@ -76,7 +76,15 @@
                             Rollers
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/combat') }}">Combat</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/daily_activity') }}">Daily Activities</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/dragons_blood') }}">Dragon's Blood</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/hatchery') }}">Hatchery</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/mp_counter') }}">Master Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/nesting') }}">Nesting </a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/pp_counter') }}">Primal Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}"> Questing</a>
+
                         </div>
                     </li>
                 @endif
