@@ -1,6 +1,5 @@
 body{
-    background: #A3D1BB;
-    min-width: 100%;
+	background-image: url('../MainBG.png');
     margin: 0px;
 	color: #FFFFFF;
 	font-family:Helvetica,sans-serif;
@@ -48,7 +47,7 @@ select {
 select option {
 	padding: 10px;
 }
-#dURL {
+#dName {
 	background-color: #592642;
 	color: #ffffff;
 	border: none;

@@ -26,8 +26,8 @@
         	    <table>
         	       <td>
 				<form id="playerinfo" align="left">
-					<b>Import URL</b>
-	<input type="text" id="dURL" placeholder="Dragons URL here">
+					<b>Import Name</b>
+	<input type="text" id="dName" placeholder="Dragon's Name here">
 	</form>
 
         <br>

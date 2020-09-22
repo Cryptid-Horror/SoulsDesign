@@ -389,7 +389,7 @@ const injuries = {
     "Your dragon was attacked by a wild dragon while questing!": 1
 }
 
-var dragonURL;
+var dragonName;
 var quest;
 var rank;
 var temper; // -5% for timid, +5% for aggressive (to injury chance)
@@ -408,7 +408,7 @@ function roll() {
 
 // Updates inputs for next roll
 function readInputs() {
-    dragonURL = document.getElementById("dURL").value;
+    dragonName = document.getElementById("dName").value;
     quest = document.getElementById("quest").value;
     rank = document.getElementById("rank").value;
     temper = document.getElementById("temper").value;
@@ -421,16 +421,6 @@ function readInputs() {
     if (document.getElementById("scoria_komodoY").checked == true){result == true};
 
 }
-
-function dragonName(){
-	var x = dragonURL.split('/');
-	var y = x[5].split('-');
-	var name = y[0];
-	var number = y[1];
-	
-	return "<a href='" + dragonURL.value + "'>" + name + " " + number + "</a>";
-}
-
 
 function rollQuest() {
     // 1. Add together total pass chance
@@ -467,7 +457,7 @@ function rollQuest() {
         if(is_hoarder) { max_loot += 1; }
         var num_loot = rand(1, max_loot);
     
-        var loot_result = dragonName() + " has succeeded in their quest! They found:<br><br>"
+        var loot_result = dragonName + " has succeeded in their quest! They found:<br><br>"
     
         for(let i = 0; i < num_loot; i++){
             loot_result += getRollResult(quest_data.loot_table);
@@ -477,9 +467,8 @@ function rollQuest() {
     }
     
     function rollSide() {
-        console.log(dragonName())
         var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest</i>. \
-        Only " + dragonName() + " may complete this quest chain.<br><br>"
+        Only " + dragonName + " may complete this quest chain.<br><br>"
         var rand_index = rand(0, side_quests.length-1);
         side_result += side_quests[rand_index];
         side_result += "To submit your side quest, please reply to the questing journal for the season \

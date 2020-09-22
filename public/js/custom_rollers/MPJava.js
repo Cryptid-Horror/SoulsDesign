@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
 		}
 	}
 	//Always calculate
-	$("#all input").change(function() {
+	$("#mpcount input").change(function() {
 		calculate();
 	});
 	setup();

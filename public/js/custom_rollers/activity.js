@@ -1,4 +1,4 @@
-var dragonURL = document.getElementById('dURL');
+var dragonName = document.getElementById('dName');
 var activity = document.getElementById('activity');
 var rank = document.getElementById('rank');
 var zone = document.getElementById('zone');
@@ -8,17 +8,7 @@ function rand(min, max) {
   var min = min || 0,
       max = max || Number.MAX_SAFE_INTEGER;
 
-  return Math.floor(Math.random() * (max - min + 1)) + min;}
-
-function dragonName(){
-	var x = dragonURL.value.split('/');
-	var y = x[5].split('-');
-	var name = y[0];
-	var number = y[1];
-	
-	return "<a href='" + dragonURL.value + "'>" + name + " " + number + "</a>";
-}
-  
+  return Math.floor(Math.random() * (max - min + 1)) + min;} 
   
  function pass(){
 	var i = rand(1,100);
@@ -483,7 +473,7 @@ function injury(){
 			return "Dangerous creatures reside here, your dragon ran face to face with one and took an impressive hit. -40 HP";}
 		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
-		else{ return dragonName() +" was not injured.";}
+		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
 			return "While diving into the :thumb743377712: for fish your dragon scraped up against a jagged rock. -10 HP";}
@@ -495,7 +485,7 @@ function injury(){
 			return "The ocean is full of giant monsters and while your dragon is an apex predator, there are some predators in the ocean that are looking for lunch. Your dragon ran into one of them, luckily they escaped in one piece... -60 HP.";}
 		else if(zone.value == "aether" && i == 5){
 			return "The Aether's oceans are especially dangerous, and creatures that have no business existing are lurking in the dark depths. One lunges at grabs a hold of your dragon. With a quick bellow and lashing claws, you escape.  -" + rand(30,100) + " HP.";}
-		else{ return dragonName() +" was not injured.";}
+		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "foraging"){
 		if(i == 1){
 			return "Your dragon searched every where for anything they could find, so focused they didn't notice they had scraped up against some rather large rocks. -10 HP";}
@@ -507,7 +497,7 @@ function injury(){
 			return "In a scuffle of something shiny, your dragon got in a fight with another dragon. It didn't last long and both dragons seem ok despite the small injuries. -60 HP.";}
 		else if(zone.value == "aether" && i == 5){
 			return "The Aether has a lot of dangerous places. Your dragon found a book that was glowing bright red letters among these dangerous places. Upon touching it they lost  -" + rand(30,100) + " HP.";}
-		else{ return dragonName() +" was not injured.";}
+		else{ return dragonName.value +" was not injured.";}
 	}
 	
 }
@@ -517,11 +507,11 @@ function injury(){
 	document.getElementById("result").innerHTML = "";
 	
 	if (pass() == true){
-		document.getElementById("result").innerHTML += dragonName() + " went " + activity.value + " and returned with the following:<br>"
+		document.getElementById("result").innerHTML += dragonName.value + " went " + activity.value + " and returned with the following:<br>"
 		+ items() 
 		+ "<br><i>Items have been added to your hoard.</i><br>";}
 	else{
-		document.getElementById("result").innerHTML += dragonName() + " went " + activity.value + " but failed to catch anything!<br>";}
+		document.getElementById("result").innerHTML += dragonName.value + " went " + activity.value + " but failed to catch anything!<br>";}
 	
 	document.getElementById("result").innerHTML += "<br>" + injury();
 
