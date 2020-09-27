@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'alias', 'rank_id', 'email', 'password', 'is_news_unread', 'is_banned'
+        'name', 'alias', 'rank_id', 'email', 'password', 'is_news_unread', 'is_banned', 'avatar'
     ];
 
     /**
@@ -285,6 +285,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         if (!$this->alias) return '(Unverified)';
         return '<a href="'.$this->aliasUrl.'">'.$this->alias.'@dA</a>';
+    }
+
+    /**
+     * Displays the user's avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return ($this->avatar);
     }
 
     /**
