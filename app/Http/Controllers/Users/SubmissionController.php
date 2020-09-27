@@ -12,6 +12,14 @@ use App\Models\User\UserItem;
 use App\Models\Character\Character;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
+=======
+use App\Models\User\UserAward;
+use App\Models\Character\Character;
+use App\Models\Item\Item;
+use App\Models\Item\ItemCategory;
+use App\Models\Award\Award;
+use App\Models\Award\AwardCategory;
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
 use App\Models\Currency\Currency;
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
@@ -75,6 +83,12 @@ class SubmissionController extends Controller
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
             'inventory' => $inventory,
             'itemsrow' => Item::all()->keyBy('id')
+=======
+            'awardcategories' => AwardCategory::orderBy('sort', 'DESC')->get(),
+            'inventory' => $inventory,
+            'itemsrow' => Item::all()->keyBy('id'),
+            'awardsrow' => Award::all()->keyBy('id')
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
         ]);
     }
 
@@ -88,6 +102,9 @@ class SubmissionController extends Controller
     {
         $closed = !Settings::get('is_prompts_open');
         $inventory = UserItem::with('item')->whereNull('deleted_at')->where('count', '>', '0')->where('user_id', Auth::user()->id)->get();
+=======
+        $awardcase = UserAward::with('award')->whereNull('deleted_at')->where('count', '>', '0')->where('user_id', Auth::user()->id)->get();
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
         return view('home.create_submission', [
             'closed' => $closed,
             'isClaim' => false
@@ -97,6 +114,9 @@ class SubmissionController extends Controller
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
             'items' => Item::orderBy('name')->pluck('name', 'id'),
+=======
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'inventory' => $inventory,
             'page' => 'submission'
@@ -196,6 +216,9 @@ class SubmissionController extends Controller
             'user' => $submission->user,
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
             'itemsrow' => Item::all()->keyBy('id'),
+=======
+            'awardsrow' => Award::all()->keyBy('id'),
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
             'inventory' => $inventory
         ]);
     }
@@ -219,6 +242,9 @@ class SubmissionController extends Controller
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
             'inventory' => $inventory,
             'items' => Item::orderBy('name')->pluck('name', 'id'),
+=======
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'page' => 'submission'
         ]));

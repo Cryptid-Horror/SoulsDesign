@@ -12,11 +12,15 @@ use Settings;
 
 use App\Models\User\User;
 use App\Models\User\UserItem;
+=======
+use App\Models\User\UserAward;
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
 use App\Models\Character\Character;
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
 use App\Models\Currency\Currency;
 use App\Models\Item\Item;
+use App\Models\Award\Award;
 use App\Models\Loot\LootTable;
 use App\Models\Prompt\Prompt;
 
@@ -126,6 +130,9 @@ class SubmissionManager extends Service
                 'comments' => $data['comments'],
                 'data' => json_encode([
                     'user' => array_only(getDataReadyAssets($userAssets), ['user_items','currencies']),
+=======
+                    'user' => array_only(getDataReadyAssets($userAssets), ['user_items', 'user_awards', 'currencies']),
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
                     'rewards' => getDataReadyAssets($promptRewards)
                     ]) // list of rewards and addons
             ] + ($isClaim ? [] : ['prompt_id' => $prompt->id,]));
@@ -202,6 +209,9 @@ class SubmissionManager extends Service
                         case 'Currency':
                             $reward = Currency::find($data['rewardable_id'][$key]);
                             if(!$reward->is_user_owned) throw new \Exception("Invalid currency selected.");
+                            break;
+                        case 'Award':
+                            $reward = Award::find($data['rewardable_id'][$key]);
                             break;
                         case 'LootTable':
                             if (!$isStaff) break;
@@ -326,6 +336,10 @@ class SubmissionManager extends Service
 
                 // Set user back to the processing staff member, now that addons have been properly processed.
                 $user = $staff;
+=======
+                
+            
+>>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
             }
 
             // Log currency removal, etc.
