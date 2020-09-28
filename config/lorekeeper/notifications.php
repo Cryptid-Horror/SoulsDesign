@@ -293,5 +293,4 @@ return [
         'message' => '{award_name} (×{award_quantity}) was removed from {character_name} by <a href="{sender_url}">{sender_name}</a>. (<a href="{url}">View Awards</a>)',
         'url' => 'character/{character_slug}/awardcase'
     ],
->>>>>>> 2281409c62992cc5e6edd2bbc9bfc42b8aba7600
 ];
