@@ -2051,10 +2051,8 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 5 + bonus)
+		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.VERY_RARE && roll < 1 + bonus + dragonsEyeBonus) // ensures only pyhsical mutes get the DE bonus
-			result = selectPhysicalMutation(i, true);
 		if (result != "") {
 			mutationList.push(" " + result);
 			result = "";
