@@ -99,7 +99,7 @@ class CharacterController extends Controller
     public function getEditCharacterProfile($slug)
     {
         if(!Auth::check()) abort(404);
-        
+
         $isMod = Auth::user()->hasPower('manage_characters');
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
@@ -114,7 +114,7 @@ class CharacterController extends Controller
             'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray(),
         ] : [])));
     }
-    
+
     /**
      * Edits a character's profile.
      *
@@ -222,7 +222,7 @@ class CharacterController extends Controller
             'currencyOptions' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id')->toArray(),
         ] : []));
     }
-    
+
     /**
      * Transfers currency between the user and character.
      *
@@ -334,7 +334,7 @@ class CharacterController extends Controller
             'logs' => $this->character->getCurrencyLogs(0)
         ]);
     }
-
+    
     /**
      * Shows a character's item logs.
      *
@@ -362,7 +362,7 @@ class CharacterController extends Controller
             'logs' => $this->character->getOwnershipLogs(0)
         ]);
     }
-    
+
     /**
      * Shows a character's ownership logs.
      *
@@ -399,7 +399,7 @@ class CharacterController extends Controller
     public function getTransfer($slug)
     {
         if(!Auth::check()) abort(404);
-        
+
         $isMod = Auth::user()->hasPower('manage_characters');
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
@@ -412,7 +412,7 @@ class CharacterController extends Controller
             'userOptions' => User::visible()->orderBy('name')->pluck('name', 'id')->toArray(),
         ]);
     }
-    
+
     /**
      * Opens a transfer request for a character.
      *
@@ -424,8 +424,8 @@ class CharacterController extends Controller
     public function postTransfer(Request $request, CharacterManager $service, $slug)
     {
         if(!Auth::check()) abort(404);
-        
-        if($service->createTransfer($request->only(['recipient_id']), $this->character, Auth::user())) {
+
+        if($service->createTransfer($request->only(['recipient_id', 'user_reason']), $this->character, Auth::user())) {
             flash('Transfer created successfully.')->success();
         }
         else {
@@ -433,7 +433,7 @@ class CharacterController extends Controller
         }
         return redirect()->back();
     }
-    
+
     /**
      * Cancels a transfer request for a character.
      *
@@ -446,7 +446,7 @@ class CharacterController extends Controller
     public function postCancelTransfer(Request $request, CharacterManager $service, $slug, $id)
     {
         if(!Auth::check()) abort(404);
-        
+
         if($service->cancelTransfer(['transfer_id' => $id], Auth::user())) {
             flash('Transfer cancelled.')->success();
         }
@@ -455,7 +455,7 @@ class CharacterController extends Controller
         }
         return redirect()->back();
     }
-    
+
     /**
      * Shows a character's design update approval page.
      *

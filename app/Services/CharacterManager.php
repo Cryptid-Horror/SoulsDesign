@@ -70,7 +70,7 @@ class CharacterManager extends Service
         }
 
         $result = format_masterlist_number($number + 1, $digits);
-        
+
         return $result;
     }
 
@@ -89,7 +89,7 @@ class CharacterManager extends Service
         try {
             if(!$isMyo && Character::where('slug', $data['slug'])->exists()) throw new \Exception("Please enter a unique character code.");
 
-            if(!(isset($data['user_id']) && $data['user_id']) && !(isset($data['owner_alias']) && $data['owner_alias'])) 
+            if(!(isset($data['user_id']) && $data['user_id']) && !(isset($data['owner_alias']) && $data['owner_alias']))
                 throw new \Exception("Please select an owner.");
             if(!$isMyo)
             {
@@ -130,11 +130,11 @@ class CharacterManager extends Service
             $data['is_valid'] = true; // New image of new characters are always valid
             $image = $this->handleCharacterImage($data, $character, $isMyo);
             if(!$image) throw new \Exception("Error happened while trying to create image.");
-            
+
             // Update the character's image ID
             $character->character_image_id = $image->id;
             $character->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'character');
@@ -156,14 +156,14 @@ class CharacterManager extends Service
             if($recipient && $user->id != $recipient->id) {
                 Notifications::create($isMyo ? 'MYO_GRANT' : 'CHARACTER_UPLOAD', $recipient, [
                     'character_url' => $character->url,
-                ] + ($isMyo ? 
+                ] + ($isMyo ?
                     ['name' => $character->name] :
                     ['character_slug' => $character->slug]
                 ));
             }
 
             return $this->commitReturn($character);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -198,7 +198,7 @@ class CharacterManager extends Service
                 'diet', 'rank',
                 'sire_slug', 'dam_slug', 'use_custom_lineage', 'nicknames', 'title_name'
             ]);
-            
+
             $characterData['name'] = isset($data['name']) ? $data['name'] : null;
             $characterData['owner_alias'] = isset($characterData['user_id']) ? null : $data['owner_alias'];
             $characterData['is_sellable'] = isset($data['is_sellable']);
@@ -211,6 +211,7 @@ class CharacterManager extends Service
             $characterData['parsed_description'] = parse($data['description']);
             if($isMyo) $characterData['is_myo_slot'] = 1;
 
+            
             $characterData['slots_used'] = $data['slots_used'] ?? 0;
             $characterData['ouroboros'] = isset($data['ouroboros']);
             $characterData['basic_aether'] = isset($data['basic_aether']);
@@ -242,7 +243,7 @@ class CharacterManager extends Service
             $character->profile()->create([]);
 
             return $character;
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return false;
@@ -269,7 +270,7 @@ class CharacterManager extends Service
                 $data['species_id'] = (isset($data['species_id']) && $data['species_id']) ? $data['species_id'] : null;
                 $data['subtype_id'] = isset($data['subtype_id']) && $data['subtype_id'] ? $data['subtype_id'] : null;
                 $data['rarity_id'] = (isset($data['rarity_id']) && $data['rarity_id']) ? $data['rarity_id'] : null;
-                
+
 
                 // Use default images for MYO slots without an image or ext_url provided
                 if(!isset($data['image']) && !isset($data['ext_url']))
@@ -281,7 +282,11 @@ class CharacterManager extends Service
                     $data['use_custom_thumb'] = true;
                 }
             }
-            $imageData['use_custom_thumb'] = isset($data['use_custom_thumb']) ;
+            $imageData = array_only($data, [
+                'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
+                'x0', 'x1', 'y0', 'y1',
+            ]);
+            $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
             $imageData['parsed_description'] = parse($imageData['description']);
             $imageData['hash'] = randomString(10);
@@ -331,7 +336,7 @@ class CharacterManager extends Service
             }
 
             return $image;
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return false;
@@ -350,7 +355,7 @@ class CharacterManager extends Service
         $cropHeight = $points['y1'] - $points['y0'];
 
         $image = Image::make($characterImage->imagePath . '/' . $characterImage->imageFileName);
-        
+
         // Crop according to the selected area
         $image->crop($cropWidth, $cropHeight, $points['x0'], $points['y0']);
 
@@ -368,11 +373,11 @@ class CharacterManager extends Service
      * @param  int     $recipientId
      * @param  string  $recipientAlias
      * @param  int     $characterId
-     * @param  string  $type 
-     * @param  string  $data 
-     * @param  string  $logType 
-     * @param  bool    $isUpdate 
-     * @param  string  $oldData 
+     * @param  string  $type
+     * @param  string  $data
+     * @param  string  $logType
+     * @param  bool    $isUpdate
+     * @param  string  $oldData
      * @param  string  $newData
      * @return bool
      */
@@ -387,10 +392,10 @@ class CharacterManager extends Service
                 'character_id' => $characterId,
                 'log' => $type . ($data ? ' (' . $data . ')' : ''),
                 'log_type' => $type,
-                'data' => $data, 
+                'data' => $data,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ] + ($logType == 'character' ? 
+            ] + ($logType == 'character' ?
                 [
                     'change_log' => $isUpdate ? json_encode([
                         'old' => $oldData,
@@ -431,15 +436,15 @@ class CharacterManager extends Service
             // Create character image
             $image = $this->handleCharacterImage($data, $character);
             if(!$image) throw new \Exception("Error happened while trying to create image.");
-            
+
             // Update the character's image ID
             $character->character_image_id = $image->id;
             $character->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, $character->user_id, $character->user_id ? $character->user->alias : $character->owner_alias, $character->id, 'Character Image Uploaded', '[#'.$image->id.']', 'character');
-            
+
             // If the recipient has an account, send them a notification
             if($character->user && $user->id != $character->user_id && $character->is_visible) {
                 Notifications::create('IMAGE_UPLOAD', $character->user, [
@@ -455,7 +460,7 @@ class CharacterManager extends Service
             $character->notifyBookmarkers('BOOKMARK_IMAGE');
 
             return $this->commitReturn($character);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -526,13 +531,13 @@ class CharacterManager extends Service
             // Character also keeps track of these features
             $image->character->rarity_id = $image->rarity_id;
             $image->character->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Traits Updated', '#'.$image->id, 'character', true, $old, $new);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -555,7 +560,7 @@ class CharacterManager extends Service
     /**
      * Updates image data.
      *
-     * @param  array                                 $data 
+     * @param  array                                 $data
      * @param  \App\Models\Character\CharacterImage  $image
      * @param  \App\Models\User\User                 $user
      * @return  bool
@@ -571,13 +576,13 @@ class CharacterManager extends Service
             $image->description = $data['description'];
             $image->parsed_description = parse($data['description']);
             $image->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Notes Updated', '[#'.$image->id.']', 'character', true, $old, $image->parsed_description);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -586,7 +591,7 @@ class CharacterManager extends Service
     /**
      * Updates image credits.
      *
-     * @param  array                                 $data 
+     * @param  array                                 $data
      * @param  \App\Models\Character\CharacterImage  $image
      * @param  \App\Models\User\User                 $user
      * @return  bool
@@ -620,13 +625,13 @@ class CharacterManager extends Service
                         'alias' => trim($alias)
                     ]);
             }
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Credits Updated', '[#'.$image->id.']', 'character', true, $old, $this->generateCredits($image));
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -651,7 +656,7 @@ class CharacterManager extends Service
     /**
      * Reuploads an image.
      *
-     * @param  array                                 $data 
+     * @param  array                                 $data
      * @param  \App\Models\Character\CharacterImage  $image
      * @param  \App\Models\User\User                 $user
      * @return  bool
@@ -686,7 +691,7 @@ class CharacterManager extends Service
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Reuploaded', '[#'.$image->id.']', 'character');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -713,13 +718,12 @@ class CharacterManager extends Service
             // Delete the image files
             if(file_exists($image->imagePath . '/' . $image->imageFileName)) unlink($image->imagePath . '/' . $image->imageFileName);
             if(file_exists($image->imagePath . '/' . $image->thumbnailFileName)) unlink($image->imagePath . '/' . $image->thumbnailFileName);
-            
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Deleted', '[#'.$image->id.']', 'character');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -743,13 +747,13 @@ class CharacterManager extends Service
             $image->is_valid = isset($data['is_valid']);
             $image->is_visible = isset($data['is_visible']);
             $image->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Visibility/Validity Updated', '[#'.$image->id.']', 'character');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -772,13 +776,13 @@ class CharacterManager extends Service
 
             $image->character->character_image_id = $image->id;
             $image->character->save();
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Active Image Updated', '[#'.$image->id.']', 'character');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -799,14 +803,14 @@ class CharacterManager extends Service
         try {
             $ids = explode(',', $data['sort']);
             $images = CharacterImage::whereIn('id', $ids)->where('character_id', $character->id)->orderByRaw(DB::raw('FIELD(id, '.implode(',', $ids).')'))->get();
-            
+
             if(count($images) != count($ids)) throw new \Exception("Invalid image included in sorting order.");
             if(!$images->first()->is_visible) throw new \Exception("Cannot set a non-visible image as the character's active image.");
 
             $count = 0;
             foreach($images as $image)
             {
-                //if($count == 1) 
+                //if($count == 1)
                 //{
                 //    // Set the first one as the active image
                 //    $image->character->image_id = $image->id;
@@ -816,13 +820,13 @@ class CharacterManager extends Service
                 $image->save();
                 $count++;
             }
-            
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Order Updated', '', 'character');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -840,9 +844,9 @@ class CharacterManager extends Service
         DB::beginTransaction();
 
         try {
-            $ids = array_reverse(explode(',', $data['sort'])); 
+            $ids = array_reverse(explode(',', $data['sort']));
             $characters = Character::myo(0)->whereIn('id', $ids)->where('user_id', $user->id)->where('is_visible', 1)->orderByRaw(DB::raw('FIELD(id, '.implode(',', $ids).')'))->get();
-            
+
             if(count($characters) != count($ids)) throw new \Exception("Invalid character included in sorting order.");
 
             $count = 0;
@@ -854,7 +858,7 @@ class CharacterManager extends Service
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -876,15 +880,15 @@ class CharacterManager extends Service
             if(!$character->is_myo_slot && Character::where('slug', $data['slug'])->where('id', '!=', $character->id)->exists()) throw new \Exception("Character code must be unique.");
 
             $characterData = array_only($data, [
-                'character_category_id', 
-                'number', 'slug', 
+                'character_category_id',
+                'number', 'slug',
             ]);
             $characterData['is_sellable'] = isset($data['is_sellable']);
             $characterData['is_tradeable'] = isset($data['is_tradeable']);
             $characterData['is_giftable'] = isset($data['is_giftable']);
             $characterData['sale_value'] = isset($data['sale_value']) ? $data['sale_value'] : 0;
             $characterData['transferrable_at'] = isset($data['transferrable_at']) ? $data['transferrable_at'] : null;
-            if($character->is_myo_slot) $characterData['name'] = (isset($data['name']) && $data['name']) ? $data['name'] : null; 
+            if($character->is_myo_slot) $characterData['name'] = (isset($data['name']) && $data['name']) ? $data['name'] : null;
 
             // Needs to be cleaned up
             $result = [];
@@ -939,18 +943,18 @@ class CharacterManager extends Service
                 $old['transferrable_at'] = $character->transferrable_at;
                 $new['transferrable_at'] = $characterData['transferrable_at'];
             }
-            
-            if(count($result)) 
+
+            if(count($result))
             {
                 $character->update($characterData);
-                
+
                 // Add a log for the character
                 // This logs all the updates made to the character
                 $this->createLog($user->id, null, null, null, $character->id, 'Character Updated', ucfirst(implode(', ', $result)) . ' edited', 'character', true, $old, $new);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -975,13 +979,13 @@ class CharacterManager extends Service
             $character->description = $data['description'];
             $character->parsed_description = parse($data['description']);
             $character->save();
-                
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $character->id, 'Character Description Updated', '', 'character', true, $old, $character->parsed_description);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1004,13 +1008,13 @@ class CharacterManager extends Service
 
             $character->is_visible = isset($data['is_visible']);
             $character->save();
-                
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $character->id, 'Character Visibility Updated', '', 'character', true, $old, ['is_visible' => $character->is_visible]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1125,7 +1129,7 @@ class CharacterManager extends Service
             if($notifyGiftArt) $character->notifyBookmarkers('BOOKMARK_GIFTS');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1169,7 +1173,7 @@ class CharacterManager extends Service
             $character->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1193,17 +1197,18 @@ class CharacterManager extends Service
             if($character->transferrable_at && $character->transferrable_at->isFuture()) throw new \Exception("This character is still on transfer cooldown and cannot be transferred.");
             if(CharacterTransfer::active()->where('character_id', $character->id)->exists()) throw new \Exception("This character is in an active transfer.");
             if($character->trade_id) throw new \Exception("This character is in an active trade.");
-            
+
             $recipient = User::find($data['recipient_id']);
             if(!$recipient) throw new \Exception("Invalid user selected.");
             if($recipient->is_banned) throw new \Exception("Cannot transfer character to a banned member.");
 
             $queueOpen = Settings::get('open_transfers_queue');
-            
+
             CharacterTransfer::create([
-                'character_id' => $character->id, 
-                'sender_id' => $user->id, 
-                'recipient_id' => $recipient->id, 
+                'user_reason' => $data['user_reason'],
+                'character_id' => $character->id,
+                'sender_id' => $user->id,
+                'recipient_id' => $recipient->id,
                 'status' => 'Pending',
 
                 // if the queue is closed, all transfers are auto-approved
@@ -1219,7 +1224,7 @@ class CharacterManager extends Service
                 ]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1258,7 +1263,7 @@ class CharacterManager extends Service
             }
 
             $sender = $character->user;
-            
+
             $this->moveCharacter($character, $recipient, 'Transferred by ' . $user->displayName . (isset($data['reason']) ? ': ' . $data['reason'] : ''), isset($data['cooldown']) ? $data['cooldown'] : -1);
 
             // Add notifications for the old and new owners
@@ -1282,7 +1287,7 @@ class CharacterManager extends Service
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1345,7 +1350,7 @@ class CharacterManager extends Service
             $transfer->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1368,7 +1373,7 @@ class CharacterManager extends Service
 
             $transfer->status = 'Canceled';
             $transfer->save();
-            
+
             // Notify recipient of the cancelled transfer
             Notifications::create('CHARACTER_TRANSFER_CANCELED', $transfer->recipient, [
                 'character_name' => $transfer->character->slug,
@@ -1378,7 +1383,7 @@ class CharacterManager extends Service
             ]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1399,7 +1404,7 @@ class CharacterManager extends Service
             if(isset($data['transfer_id'])) $transfer = CharacterTransfer::where('id', $data['transfer_id'])->active()->first();
             else $transfer = $data['transfer'];
             if(!$transfer) throw new \Exception("Invalid transfer selected.");
-            
+
             if($data['action'] == 'Approve') {
                 $transfer->is_approved = 1;
                 $transfer->data = json_encode([
@@ -1461,7 +1466,7 @@ class CharacterManager extends Service
             $transfer->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1473,7 +1478,7 @@ class CharacterManager extends Service
      * @param  \App\Models\Character\Character  $character
      * @param  \App\Models\User\User            $recipient
      * @param  string                           $data
-     * @param  int                              $cooldown 
+     * @param  int                              $cooldown
      * @param  string                           $logType
      */
     public function moveCharacter($character, $recipient, $data, $cooldown = -1, $logType = null)
@@ -1510,16 +1515,16 @@ class CharacterManager extends Service
             else $character->transferrable_at = Carbon::now()->addDays($cooldown);
         }
         $character->save();
-        
+
         // Notify bookmarkers
         $character->notifyBookmarkers('BOOKMARK_OWNER');
 
         // Add a log for the ownership change
         $this->createLog(
-            $sender ? $sender->id : null, 
-            $sender ? null : $character->owner_alias, 
-            $recipient && is_object($recipient) ? $recipient->id : null, 
-            $recipient && is_object($recipient) ? $recipient->alias : ($recipient ? : null), 
+            $sender ? $sender->id : null,
+            $sender ? null : $character->owner_alias,
+            $recipient && is_object($recipient) ? $recipient->id : null,
+            $recipient && is_object($recipient) ? $recipient->alias : ($recipient ? : null),
             $character->id, $logType ? $logType : ($character->is_myo_slot ? 'MYO Slot Transferred' : 'Character Transferred'), $data, 'user');
     }
 
@@ -1545,7 +1550,6 @@ class CharacterManager extends Service
                 'status' => 'Draft',
                 'hash' => randomString(10),
                 'update_type' => $character->is_myo_slot ? 'MYO' : 'Character',
-                
                 // Set some data based on the character's existing stats
                 'rarity_id' => $character->image->rarity_id,
                 'species_id' => $character->image->species_id,
@@ -1567,8 +1571,8 @@ class CharacterManager extends Service
                 foreach($character->image->features as $feature)
                 {
                     $request->features()->create([
-                        'character_image_id' => $request->id, 
-                        'character_type' => 'Update', 
+                        'character_image_id' => $request->id,
+                        'character_type' => 'Update',
                         'feature_id' => $feature->feature_id,
                         'data' => $feature->data
                     ]);
@@ -1576,7 +1580,7 @@ class CharacterManager extends Service
             }
 
             return $this->commitReturn($request);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1600,7 +1604,7 @@ class CharacterManager extends Service
             $request->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1635,7 +1639,7 @@ class CharacterManager extends Service
                 $imageData = [];
                 if(!isset($data['use_custom_thumb'])) {
                     $imageData = array_only($data, [
-                        'use_custom_thumb', 
+                        'use_custom_thumb',
                         'x0', 'x1', 'y0', 'y1',
                     ]);
                 }
@@ -1681,17 +1685,17 @@ class CharacterManager extends Service
 
             // Save image
             if(!$isAdmin && isset($data['image'])) $this->handleImage($data['image'], $request->imageDirectory, $request->imageFileName, null, isset($data['default_image']));
-            
+
             // Save thumbnail
             if(!$isAdmin || ($isAdmin && isset($data['modify_thumbnail']))) {
                 if(!isset($data['use_custom_thumb']) && !isset($request->ext_url))
                     $this->cropThumbnail(array_only($data, ['x0','x1','y0','y1']), $request);
-                else if(isset($data['thumbnail'])) 
+                else if(isset($data['thumbnail']))
                     $this->handleImage($data['thumbnail'], $request->imageDirectory, $request->thumbnailFileName);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1739,8 +1743,8 @@ class CharacterManager extends Service
             $characterAssets = createAssetsArray(true);
 
             // Attach items. Technically, the user doesn't lose ownership of the item - we're just adding an additional holding field.
-            // We're also not going to add logs as this might add unnecessary fluff to the logs and the items still belong to the user. 
-            // Perhaps later I'll add a way to locate items that are being held by updates/trades. 
+            // We're also not going to add logs as this might add unnecessary fluff to the logs and the items still belong to the user.
+            // Perhaps later I'll add a way to locate items that are being held by updates/trades.
             if(isset($data['stack_id'])) {
                 foreach($data['stack_id'] as $key=>$stackId) {
                     $stack = UserItem::with('item')->find($stackId);
@@ -1771,7 +1775,7 @@ class CharacterManager extends Service
 
                         if($holderType == 'user') addAsset($userAssets, $currency, $data['currency_quantity'][$holderKey][$key]);
                         else addAsset($characterAssets, $currency, $data['currency_quantity'][$holderKey][$key]);
-                        
+
                     }
                 }
             }
@@ -1784,7 +1788,7 @@ class CharacterManager extends Service
             $request->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1828,10 +1832,10 @@ class CharacterManager extends Service
 
             foreach($data['feature_id'] as $key => $featureId) {
                 if(!$featureId) continue;
-                
+
                 // Skip the feature if the rarity is too high.
                 // Comment out this check if rarities should have more berth for traits choice.
-                //if($features[$featureId]->rarity->sort > $rarity->sort) continue; 
+                //if($features[$featureId]->rarity->sort > $rarity->sort) continue;
 
                 // Skip the feature if it's not the correct species.
                 if($features[$featureId]->species_id && $features[$featureId]->species_id != $species->id) continue;
@@ -1851,7 +1855,7 @@ class CharacterManager extends Service
             $request->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1880,7 +1884,7 @@ class CharacterManager extends Service
             if(!$request->submitted_at) $request->submitted_at = Carbon::now();
             $request->save();
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -1926,7 +1930,7 @@ class CharacterManager extends Service
                     if(!$currencyManager->createLog($request->character_id, 'Character', null, null, 
                     $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', 
                     'Used in ' . ($request->character->is_myo_slot ? 'Registered Dragon design approval' : 'character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)', 
-                    $currencyId, $quantity)) 
+                    $currencyId, $quantity))
                         throw new \Exception("Failed to create log for character currency.");
                 }
             }
@@ -1965,7 +1969,7 @@ class CharacterManager extends Service
                     CharacterFeature::create(['character_image_id' => $image->id, 'feature_id' => $feature->feature_id, 'data' => $feature->data, 'character_type' => 'Character']);
                 }
             }
-            
+
             // Shift the image features over to the new image
             $request->rawFeatures()->update(['character_image_id' => $image->id, 'character_type' => 'Character']);
 
@@ -1993,14 +1997,14 @@ class CharacterManager extends Service
             $request->character->sale_value = isset($data['sale_value']) ? $data['sale_value'] : 0;
 
             // Invalidate old image if desired
-            if(isset($data['invalidate_old'])) 
+            if(isset($data['invalidate_old']))
             {
                 $request->character->image->is_valid = 0;
                 $request->character->image->save();
             }
 
             // Set new image if desired
-            if(isset($data['set_active'])) 
+            if(isset($data['set_active']))
             {
                 $request->character->character_image_id = $image->id;
             }
@@ -2039,7 +2043,7 @@ class CharacterManager extends Service
             $request->character->notifyBookmarkers('BOOKMARK_IMAGE');
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -2085,7 +2089,7 @@ class CharacterManager extends Service
                 foreach($requestData['user']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
                     if(!$currency) throw new \Exception("Cannot return an invalid currency. (".$currencyId.")");
-                    if(!$currencyManager->creditCurrency(null, $request->user, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to user. (".$currencyId.")");                    
+                    if(!$currencyManager->creditCurrency(null, $request->user, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to user. (".$currencyId.")");
                 }
             }
             if(isset($requestData['character']['currencies']) && $requestData['character']['currencies'])
@@ -2093,7 +2097,7 @@ class CharacterManager extends Service
                 foreach($requestData['character']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
                     if(!$currency) throw new \Exception("Cannot return an invalid currency. (".$currencyId.")");
-                    if(!$currencyManager->creditCurrency(null, $request->character, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to character. (".$currencyId.")");                    
+                    if(!$currencyManager->creditCurrency(null, $request->character, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to character. (".$currencyId.")");
                 }
             }
 
@@ -2111,7 +2115,7 @@ class CharacterManager extends Service
             ]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -2132,7 +2136,7 @@ class CharacterManager extends Service
         try {
             if($request->status != 'Pending') throw new \Exception("This request cannot be processed.");
 
-            // Soft removes the request from the queue - 
+            // Soft removes the request from the queue -
             // it preserves all the data entered, but allows the staff member
             // to add a comment to it. Status is returned to Draft status.
             // Use when rejecting a request that just requires minor modifications to approve.
@@ -2152,7 +2156,7 @@ class CharacterManager extends Service
             ]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -2194,7 +2198,7 @@ class CharacterManager extends Service
                 foreach($requestData['user']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
                     if(!$currency) throw new \Exception("Cannot return an invalid currency. (".$currencyId.")");
-                    if(!$currencyManager->creditCurrency(null, $request->user, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to user. (".$currencyId.")");                    
+                    if(!$currencyManager->creditCurrency(null, $request->user, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to user. (".$currencyId.")");
                 }
             }
             if(isset($requestData['character']['currencies']) && $requestData['character']['currencies'])
@@ -2202,7 +2206,7 @@ class CharacterManager extends Service
                 foreach($requestData['character']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
                     if(!$currency) throw new \Exception("Cannot return an invalid currency. (".$currencyId.")");
-                    if(!$currencyManager->creditCurrency(null, $request->character, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to character. (".$currencyId.")");                    
+                    if(!$currencyManager->creditCurrency(null, $request->character, null, null, $currency, $quantity)) throw new \Exception("Could not return currency to character. (".$currencyId.")");
                 }
             }
 
@@ -2210,7 +2214,7 @@ class CharacterManager extends Service
             $request->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
