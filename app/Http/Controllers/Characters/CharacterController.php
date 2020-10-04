@@ -334,7 +334,7 @@ class CharacterController extends Controller
             'logs' => $this->character->getCurrencyLogs(0)
         ]);
     }
-    
+
     /**
      * Shows a character's item logs.
      *
