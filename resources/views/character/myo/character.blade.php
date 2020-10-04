@@ -3,7 +3,21 @@
 @section('profile-title') {{ $character->fullName }} @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Registered Dragon Slot Masterlist' => 'myos', $character->fullName => $character->url]) !!}
+<div class="row no-gutters">
+    <div class="col-md-8 my-auto">
+        {!! breadcrumbs([($character->is_myo_slot ? 'MYO Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Profile' => $character->url . '/profile']) !!}
+    </div>
+
+    <!-- character trade/gift status badges section -->
+    <div class="col-md-4 text-center text-md-right my-auto">
+        <h1>
+        <span class="badge {{ $character->is_trading ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_trading ? 'OPEN for sale and trade offers.' : 'CLOSED for sale and trade offers.' }}"><i class="fas fa-comments-dollar"></i></span>
+        @if(!$character->is_myo_slot)
+            <span class="badge {{ $character->is_gift_art_allowed ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_gift_art_allowed ? 'OPEN for gift art.' : 'CLOSED for gift art.' }}"><i class="fas fa-pencil-ruler"></i></span>
+        @endif
+        </h1>
+    </div>
+</div>
 
 @include('character._header', ['character' => $character])
 
