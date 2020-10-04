@@ -33,17 +33,17 @@ var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "
 var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Vignette"];
 var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism", "Eagle Beak", "Whiskers"];
 
-var uncommonMutations = ["Tusked", "Eagle Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar"];
+var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Fisher Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted"];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper" ];
 
-var veryRareMutations = ["Warlord", "Vulture", "Seraph", "Triclops", "Crocodile", "Finned", "Aether Mane", "Overgrowth", "Blazer", "Albino", "Anery", "Chimera"];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental"];
 
-var veryRarePhysicalMutations = ["Eel", "Elemental", "Warlord", "Vulture", "Icarus", "Triclops", "Crocodile", "Finned", "Blazer", "Viper", "Growth", "Aether Mane"];
+var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Warlord", "Vulture" ];
+var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord" ];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad"]; 
@@ -472,24 +472,36 @@ function clutchSize() {
 		}
 	}
 	
+    //vigilant parent 
+
+
+
 	// use fertility potion if selected
 	if (document.getElementById("FP").checked) {
 		size = maxSize;
 		if (!destroyedModifiers.includes("Fertility Potion destroyed.<br>"))
 			destroyedModifiers += "Fertility Potion destroyed.<br>";
 	}
-	
-		// Attempt use of dragon's heart
-	if (document.getElementById("DH").checked) {
-		if (!destroyedModifiers.includes("Dragon's Heart destroyed.<br>"))
-			destroyedModifiers += "Dragon's Heart destroyed.<br>";
-		if (randRange(100) < 40) {
-			size += 1;
+
+// Vigilant parents + dragon heart
+    var bonus = 0;
+    var dragonsHeartBonus = 0;
+    var num = randRange(100)
+     if (document.getElementById("damTemper").value == Tempers.TIMID) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.TIMID) {
+         bonus += 10;
+     } if (document.getElementById ("DH").checked) {
+        if (!destroyedModifiers.includes("Dragon's Heart destroyed.<br>"))
+		destroyedModifiers += "Dragon's Heart destroyed.<br>";
+    dragonsHeartBonus += 30
+     }
+        if (num < 2 + bonus + dragonsHeartBonus) {
+            size += 1;
 			document.getElementById("nestTextArea").innerHTML += "Dragon's heart succeeded!<br>";
 		} else {
 			document.getElementById("nestTextArea").innerHTML += "Dragon's heart failed!<br>";
 		}
-	}
 	
 	return size;
 }
@@ -696,15 +708,15 @@ function generateSpecies() {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
 			destroyedModifiers += "Dragon's Instinct destroyed.<br>";
 		if (document.getElementById("stalkerSelected").checked) {
-			stalkerBonus = 20;
+			stalkerBonus = 40;
 		} else if (document.getElementById("ravagerSelected").checked) {
-			ravagerBonus = 20;
+			ravagerBonus = 40;
 		} else if (document.getElementById("wardenSelected").checked) {
-			wardenBonus = 20;
+			wardenBonus = 40;
 		} else if (document.getElementById("gempSelected").checked) {
-			gempBonus = 20;
+			gempBonus = 40;
 		} else if (document.getElementById("sapiSelected").checked){
-		    sapiBonus = 20;
+		    sapiBonus = 40;
 		}
 	}
 	if (damBreedVal == sireBreedVal) {
@@ -788,24 +800,8 @@ function generateSpecies() {
 			
 	
 	}
+    }
 	
-	// convert to string
-	var result = "";
-	childBreed = childBreedVal;
-	if (childBreedVal == Breeds.STALKER) {
-		result = "Stalker Wyvern";
-	} else if (childBreedVal == Breeds.RAVAGER) {
-		result = "Ravager Wyvern";
-	} else if (childBreedVal == Breeds.WARDEN) {
-		result = "Warden Dragon";
-	} else if (childBreedVal == Breeds.GEMP) {
-    result = "Greater Emperor";
-  } else if (childBreedVal == Breeds.SAPI){
-      result = "Sapiere Dragon";
-  }
-	
-	return result;
-}
 	// convert to string
 	var result = "";
 	childBreed = childBreedVal;
@@ -829,7 +825,7 @@ function generateTemper() {
 	var sireTemperVal = document.getElementById("sireTemper").value;
 	var childTemperVal;
 	// bonuses
-	var bonusAmmount = 10;
+	var bonusAmmount = 30;
 	var timidBonus = 0;
 	var aggressiveBonus = 0;
 	var calmBonus = 0;
@@ -970,7 +966,7 @@ function generateTemper() {
 	// convert to string
 	var result = "";
 	if (childTemperVal == Tempers.TIMID) {
-		result = "Timid";
+		result = "Vigilant";
 	} else if (childTemperVal == Tempers.AGGRESSIVE) {
 		result = "Aggressive";
 	} else if (childTemperVal == Tempers.CALM) {
@@ -991,9 +987,9 @@ function generateUmber() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BU").checked) {
-		if (!destroyedModifiers.includes("Bottle of Umbra destroyed.<br>"))
-			destroyedModifiers += "Bottle of Umbra destroyed.<br>";
-		bonus = 15;
+		if (!destroyedModifiers.includes("Bottle of Umber destroyed.<br>"))
+			destroyedModifiers += "Bottle of Umber destroyed.<br>";
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1065,7 +1061,7 @@ function generateHaze() {
 	if (document.getElementById("BH").checked) {
 		if (!destroyedModifiers.includes("Bottle of Haze destroyed.<br>"))
 			destroyedModifiers += "Bottle of Haze destroyed.<br>";
-		bonus = 15;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1139,7 +1135,7 @@ function generateIvory() {
 	if (document.getElementById("BI").checked) {
 		if (!destroyedModifiers.includes("Bottle of Ivory destroyed.<br>"))
 			destroyedModifiers += "Bottle of Ivory destroyed.<br>";
-		bonus = 10;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1212,7 +1208,7 @@ function generateVanta() {
 	if (document.getElementById("BV").checked) {
 		if (!destroyedModifiers.includes("Bottle of Vanta destroyed.<br>"))
 			destroyedModifiers += "Bottle of Vanta destroyed.<br>";
-		bonus = 5;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1404,9 +1400,9 @@ function generateTrait(traitToGen) {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("AT").checked) {
-		if (!destroyedModifiers.includes("Aether Token destroyed.<br>"))
-			destroyedModifiers += "Aether Token destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
+			destroyedModifiers += "Aether Tonic destroyed.<br>";
+		bonus = 30;
 	}
 	
 	var roll = randRange(100);
@@ -1685,8 +1681,8 @@ function evaluateMarkingPass(markID, markingRarity, sireDom, damDom, oneParentMi
 		result += "-";
 		if (document.getElementById("RB").checked) {
 			result += document.getElementById("colorMod").value;
-			if (!destroyedModifiers.includes("Radiance Bond destroyed.<br>"))
-				destroyedModifiers += "Radiance Bond destroyed.<br>";
+			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance.<br>"))
+				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance.<br>";
 		} else {
 			result += generateColorMod();
 		}
@@ -1853,9 +1849,9 @@ function generateBreath() {
 	var roll = randRange(100);
 	var bonus = 0;
 	if (document.getElementById("BB").checked) {
-		if (!destroyedModifiers.includes("Breath Booster destroyed.<br>"))
-			destroyedModifiers += "Breath Booster destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Breath Potion destroyed.<br>"))
+			destroyedModifiers += "Breath Potion destroyed.<br>";
+		bonus = 30;
 	}
 	if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
 		if (roll >= 96 - bonus) {
@@ -1907,9 +1903,9 @@ function generateSkill() {
 	var roll = randRange(100);
 	var bonus = 0;
 	if (document.getElementById("SB").checked) {
-		if (!destroyedModifiers.includes("Skill Booster destroyed.<br>"))
-			destroyedModifiers += "Skill Booster destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
+			destroyedModifiers += "Skill Charm destroyed.<br>";
+		bonus = 30;
 	}
 	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
 		return "";
@@ -2026,7 +2022,7 @@ function generateMutation() {
 	if (document.getElementById("DE").checked) {
 		if (!destroyedModifiers.includes("Dragon's Eye destroyed.<br>"))
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
-		dragonsEyeBonus += 10;
+		dragonsEyeBonus += 30;
 	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
@@ -2036,7 +2032,7 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonEyeBonus)
+		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);

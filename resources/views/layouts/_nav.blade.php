@@ -45,23 +45,26 @@
                             <a class="dropdown-item" href="{{ url('claims') }}">
                                 Claims
                             </a>
+                            <a class="dropdown-item" href="{{ url('/prompts') }}">
+                            Activity List (Prompts)
+                            </a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
+                                Design Registration
+                            </a>
                             <a class="dropdown-item" href="{{ url('designs') }}">
                                 Design Review
                             </a>
                              <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
                                 Dragon Transfers
                             </a>
-                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Nesting-Permissions-843973236') }}">
+                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Nesting-Permissions-855903767') }}">
                                 Nesting Permissions (dA)
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Nesting-Submissions-843972640') }}">
-                                Nesting Submissions (dA)
+                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Leasing-Permissions-855903907') }}">
+                                Leasing Permissions (dA)
                             </a>
-                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Hatchery-843975712') }}">
-                                Hatchery (dA)
-                            </a>
-                             <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Adoption-Center-843976416') }}">
-                                Adoption Center (dA)
+                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Flight-Management-855903599') }}">
+                                Flight Management (dA)
                             </a>
                             <div class="dropdown-divider"></div>
                            
@@ -92,7 +95,6 @@
                     <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Masterlist
                     </a>
-
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
                         <a class="dropdown-item" href="{{ url('users') }}">
                             Users
@@ -129,26 +131,12 @@
                             Shops
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Register_Review') }}">
-                            Dragon Registration and Review
-                        </a>
-                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Import_Info') }}">
-                            Registration Information
-                        </a>
-                     <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
-                            Discord
-                        </a>
                          <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Staff-Applications-Open-846304182') }}">
                            Staff Applications (dA Link)
                         </a>
                         <a class="dropdown-item" href="{{ url('https://souls-between.deviantart.com/journal/Suggestions-717025816') }}">
                             Suggestions and Questions (dA Link)
                         </a>
-                        <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Summer-Leasing-Permissions-843971031') }}">
-                            Leasing a Dragon (dA Link)
-                        </a>
-                       
                     </div>
                 </li>
 
