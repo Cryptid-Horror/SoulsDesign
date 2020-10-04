@@ -12,7 +12,7 @@
 <h1>
 <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;">
     {!! $user->displayName !!}
-
+    {!! $user->isOnline() !!}
     @if($user->settings->is_fto)
         <span class="badge badge-success float-right" data-toggle="tooltip" title="This user has not owned any characters from this world before.">FTO</span>
     @endif
@@ -66,7 +66,7 @@
                             </div>
                         @endforeach
                     </div>
-                @else 
+                @else
                     <div>No items owned.</div>
                 @endif
             </div>
