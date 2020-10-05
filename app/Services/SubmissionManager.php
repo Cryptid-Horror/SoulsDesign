@@ -20,6 +20,7 @@ use App\Models\Currency\Currency;
 use App\Models\Item\Item;
 use App\Models\Award\Award;
 use App\Models\Loot\LootTable;
+use App\Models\Raffle\Raffle;
 use App\Models\Prompt\Prompt;
 
 class SubmissionManager extends Service
@@ -68,14 +69,6 @@ class SubmissionManager extends Service
             }
             else $characters = [];
 
-            // Return any currency associated with this request
-            $currencyManager = new CurrencyManager;
-            if(isset($requestData['user']) && isset($requestData['user']['currencies'])) {
-                foreach($requestData['user']['currencies'] as $currencyId=>$quantity) {
-                    $currencyManager->creditCurrency(null, $request->user, null, null, $currencyId, $quantity);
-                }
-            }
-
             $userAssets = createAssetsArray();
 
             // Attach items. Technically, the user doesn't lose ownership of the item - we're just adding an additional holding field.
@@ -100,6 +93,7 @@ class SubmissionManager extends Service
 
                     $holder = User::find($holderId);
 
+                    $currencyManager = new CurrencyManager;
                     foreach($currencyIds as $key=>$currencyId) {
                         $currency = Currency::find($currencyId);
                         if(!$currency) throw new \Exception("Invalid currency selected.");
@@ -211,6 +205,10 @@ class SubmissionManager extends Service
                         case 'LootTable':
                             if (!$isStaff) break;
                             $reward = LootTable::find($data['rewardable_id'][$key]);
+                            break;
+                        case 'Raffle':
+                            if (!$isStaff) break;
+                            $reward = Raffle::find($data['rewardable_id'][$key]);
                             break;
                     }
                     if(!$reward) continue;

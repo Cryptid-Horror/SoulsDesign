@@ -56,7 +56,7 @@
     {!! Form::open(['url' => url()->current(), 'id' => 'submissionForm']) !!}
 
         <h2>Rewards</h2>
-        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true])
+        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true])
         @if($submission->prompt_id)
             <div class="mb-3">
                 @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
@@ -220,7 +220,7 @@
 @section('scripts')
 @parent 
 @if($submission->status == 'Pending')
-    @include('js._loot_js', ['showLootTables' => true])
+    @include('js._loot_js', ['showLootTables' => true, 'showRaffles' => true])
     @include('js._character_select_js')
 
     <script>
