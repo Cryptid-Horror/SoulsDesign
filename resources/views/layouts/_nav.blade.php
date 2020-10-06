@@ -61,6 +61,7 @@
                              <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
                                 Dragon Transfers
                             </a>
+                            <div class="dropdown-divider"></div>
                              <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Nesting-Permissions-855903767') }}">
                                 Nesting Permissions (dA)
                             </a>
@@ -72,7 +73,6 @@
                             </a>
                             <div class="dropdown-divider"></div>
                            
-                            
                             <a class="dropdown-item" href="{{ url('trades/open') }}">
                                 Trades
                             </a>
@@ -131,6 +131,9 @@
                          <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/design') }}">
                            Genetics Portal
                         </a>
+                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
+                            Primal and Mastery Points
+                            </a>
                         <a class="dropdown-item" href="{{ url('/prompts') }}">
                             Prompts
                         </a>
