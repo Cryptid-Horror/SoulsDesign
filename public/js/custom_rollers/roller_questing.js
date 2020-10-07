@@ -61,205 +61,205 @@ class Quest {
 const quests = {
     "b1": new Quest("A Path Less Traveled", ["non-magic"], 
         {
-            "Milk": 5, // Milk
-            "Pearl Necklace": 2, // Pearl Necklace
-            "Cooking Pot": 3, // Cooking Pot
-            "Tea": 5, // Tea
-            "Beef Stew": 5, // Beef Stew
-            "Premium Meat": 3, // Premium Meat
-            "Inkwell": 2  // Inkwell
+            "Milk <br>": 5, // Milk
+            "Pearl Necklace <br>": 2, // Pearl Necklace
+            "Cooking Pot <br>": 3, // Cooking Pot
+            "Tea <br>": 5, // Tea
+            "Beef Stew <br>": 5, // Beef Stew
+            "Premium Meat <br>": 3, // Premium Meat
+            "Inkwell <br>": 2  // Inkwell
         }
     ),
     "b2": new Quest("Counting Sheep", ["non-magic"], 
         {
-            "100 x Crystals": 10, // 100 Crystals
-            "Diminished Coin": 1, // Diminished Coin
-            "Unfertilized Dragon Egg": 2, // Unfertilised Dragon Egg
-            "Cloth": 4, // Cloth
-            "Leather": 2  // Leather
+            "100 x Crystals <br>": 10, // 100 Crystals
+            "Diminished Coin <br>": 1, // Diminished Coin
+            "Unfertilized Dragon Egg <br>": 2, // Unfertilised Dragon Egg
+            "Cloth <br>": 4, // Cloth
+            "Leather <br>": 2  // Leather
         }
     ),
     "b3": new Quest("A Festival of Honor", ["non-magic"], 
         {
-            "Revival Feather": 1, // Revival Feather
-            "Dragon Roll Sushi": 2, // Dragon Roll Sushi
-            "Beef Stew": 5, // Beef Stew
-            "Tea": 6, // Tea
-            "Water": 5  // Water
+            "Revival Feather <br>": 1, // Revival Feather
+            "Dragon Roll Sushi <br>": 2, // Dragon Roll Sushi
+            "Beef Stew <br>": 5, // Beef Stew
+            "Tea <br>": 6, // Tea
+            "Water <br>": 5  // Water
         }
     ),
     "b4": new Quest("New Discoveries", ["non-magic"], 
         {
-            "100 x Crystals": 10, // 100 Crystals
-            "Emerald": 2, // Emerald
-            "Garnet": 2, // Garnet
-            "Glass": 6, // Glass
-            "Magic Reversal Charm": 5  // Magic Reversal Charm
+            "100 x Crystals <br>": 10, // 100 Crystals
+            "Emerald <br>": 2, // Emerald
+            "Garnet <br>": 2, // Garnet
+            "Glass <br>": 6, // Glass
+            "Magic Reversal Charm <br>": 5  // Magic Reversal Charm
         }
     ),
     "b5": new Quest("Tanning the Hide", ["non-magic"], 
         {
-            "Leather": 5, // Leather
-            "Spotted Deer Pelt": 5, // Spotted Deer Pelt
-            "Red Deer Pelt": 5, // Red Deer Pelt
-            "Brown Deer Pelt": 5, // Brown Deer Pelt
-            "Bison Pelt": 3, // Bison Pelt
-            "Fox Pelt": 5, // Fox Pelt
-            "Racoon Pelt": 5, // Raccoon Pelt
-            "Wolf Pelt": 5  // Wolf Pelt
+            "Leather <br>": 5, // Leather
+            "Spotted Deer Pelt <br>": 5, // Spotted Deer Pelt
+            "Red Deer Pelt <br>": 5, // Red Deer Pelt
+            "Brown Deer Pelt <br>": 5, // Brown Deer Pelt
+            "Bison Pelt <br>": 3, // Bison Pelt
+            "Fox Pelt <br>": 5, // Fox Pelt
+            "Racoon Pelt <br>": 5, // Raccoon Pelt
+            "Wolf Pelt <br>": 5  // Wolf Pelt
         }
     ),
     "b6": new Quest("Show Me Your Bug Collection", ["non-magic"], 
         {
-            "diamond_insect": 2, // Needs a special case to roll one out of the six varieties, only a single variety can be dropped per quest
-            "Elder Beetle": 3, // Elder Beetle
-            "Bones": 5, // Bones
-            "Berries": 5, // Berries
-            "Metal": 3, // Metal
-            "Teeth": 6, // Teeth
-            "Salt": 4, // Salt
-            "Large Animal Skull": 6  // Large Animal Skull
+            "diamond_insect <br>": 2, // Needs a special case to roll one out of the six varieties, only a single variety can be dropped per quest
+            "Elder Beetle <br>": 3, // Elder Beetle
+            "Bones <br>": 5, // Bones
+            "Berries <br>": 5, // Berries
+            "Metal <br>": 3, // Metal
+            "Teeth <br>": 6, // Teeth
+            "Salt <br>": 4, // Salt
+            "Large Animal Skull <br>": 6  // Large Animal Skull
         }
     ),
     "i1": new Quest("A Missing Friend", ["arcane", "elementalist", "enchantment"], 
         {
-            "Small Animal Claws": 5, // Small Animal Claws
-            "Medium Animal Claws": 5, // Medium Animal Claws
-            "Dragon's Talon": 1, // Dragon's Talon
-            "Large Animal Claws": 6, // Large Animal Claws
-            "Large Animal Skull": 3, // Large Animal Skull
-            "Skull": 5  // Skull
+            "Small Animal Claws <br>": 5, // Small Animal Claws
+            "Medium Animal Claws <br>": 5, // Medium Animal Claws
+            "Dragon's Talon <br>": 1, // Dragon's Talon
+            "Large Animal Claws <br>": 6, // Large Animal Claws
+            "Large Animal Skull <br>": 3, // Large Animal Skull
+            "Skull <br>": 5  // Skull
         }
     ),
     "i2": new Quest("Aiding The Injured", ["arcane", "healing"], 
         {
-            "Hemlock": 5, // Hemlock
-            "Honey": 5, // Honey
-            "Bandages": 5, // Bandages
-            "Thread Spool": 5, // Thread Spool
-            "Water": 3  // Water
+            "Hemlock <br>": 5, // Hemlock
+            "Honey <br>": 5, // Honey
+            "Bandages <br>": 5, // Bandages
+            "Thread Spool <br>": 5, // Thread Spool
+            "Water <br>": 3  // Water
         }
     ),
     "i3": new Quest("Where's the Gold?", ["illusionist", "arcane"], 
         {
-            "300 x Crystals": 5, // 300 Crystals
-            "Fire Elixir": 2, // Fire Tonic
-            "Ice Elixir": 3, // Ice Tonic
-            "Diminished Coin": 4, // Diminished Coin
-            "Weatherd Coin": 2, // Weathered Coin
-            "Common Dragon Egg": 1  // Common Dragon Egg
+            "300 x Crystals <br>": 5, // 300 Crystals
+            "Fire Elixir <br>": 2, // Fire Tonic
+            "Ice Elixir <br>": 3, // Ice Tonic
+            "Diminished Coin <br>": 4, // Diminished Coin
+            "Weatherd Coin <br>": 2, // Weathered Coin
+            "Common Dragon Egg <br>": 1  // Common Dragon Egg
         }
     ),
     "i4": new Quest("The Cutest Critter You Ever Did See", ["non-magic"], 
         {
-            "Albino Otter": 1, // Albino Otter
-            "River Otter": 1, // River Otter
-            "Sea Otter": 1, // Sea Otter
-            "Teeth": 7, // Teeth
-            "Medium Animal Claws": 5, // Medium Animal Claws
-            "Premium Fish": 5  // Prime Fish
+            "Albino Otter <br>": 1, // Albino Otter
+            "River Otter <br>": 1, // River Otter
+            "Sea Otter <br>": 1, // Sea Otter
+            "Teeth <br>": 7, // Teeth
+            "Medium Animal Claws <br>": 5, // Medium Animal Claws
+            "Premium Fish <br>": 5  // Prime Fish
         }
     ),
     "i5": new Quest("The Gardener's Knowledge", ["healing"], 
         {
-            "Hemlock": 5, // Hemlock
-            "Berries": 5, // Berries
-            "Salt": 5, // Salt
-            "Water": 5, // Water
-            "Healing Salve": 3, // Healing Salve
-            "Antidote": 2  // Antidote
+            "Hemlock <br>": 5, // Hemlock
+            "Berries <br>": 5, // Berries
+            "Salt <br>": 5, // Salt
+            "Water <br>": 5, // Water
+            "Healing Salve <br>": 3, // Healing Salve
+            "Antidote <br>": 2  // Antidote
         }
     ),
     "i6": new Quest("Clockmaker's Friend", ["enchantment"], 
         {
-            "Dragon's Eye": 1, // Dragon's Eye
-            "Strange Geode": 4, // Strange Geode
-            "Metal": 6, // Metal
-            "Garnet": 5, // Garnet
-            "Emerald": 5, // Emerald
-            "Skull": 3, // Skull
-            "Small Feathers": 5, // Small Feathers
-            "Large Feathers": 2, // Large Feathers
-            "Aether Feathers": 1, // Aether Imbued Feathers
-            "Inkwell": 4  // Inkwell
+            "Dragon's Eye <br>": 1, // Dragon's Eye
+            "Strange Geode <br>": 4, // Strange Geode
+            "Metal <br>": 6, // Metal
+            "Garnet <br>": 5, // Garnet
+            "Emerald <br>": 5, // Emerald
+            "Skull <br>": 3, // Skull
+            "Small Feathers <br>": 5, // Small Feathers
+            "Large Feathers <br>": 2, // Large Feathers
+            "Aether Feathers <br>": 1, // Aether Imbued Feathers
+            "Inkwell <br>": 4  // Inkwell
         }
     ),
     "i7": new Quest("Hiding in Plain Sight", ["illusionist", "elementalist"], 
         {
-            "Shadow Elixir": 2, // Dodge Potion
-            "Wind Elixir": 2, // Critical Hit Potion
-            "Lightning Elixir": 2, // Aether Potion
-            "Poison Elixir": 2, // Strength Potion
-            "Magical Reversal Charm": 1, // Magic Reversal Charm
-            "Revival Feather": 2, // Revival Feather
-            "Diminished Coin": 2, // Diminished Coin
-            "Weathered Coin": 1, // Weathered Coin
-            "300 x Crystals": 6 // 300 Crystals
+            "Shadow Elixir <br>": 2, // Dodge Potion
+            "Wind Elixir <br>": 2, // Critical Hit Potion
+            "Lightning Elixir <br>": 2, // Aether Potion
+            "Poison Elixir <br>": 2, // Strength Potion
+            "Magical Reversal Charm <br>": 1, // Magic Reversal Charm
+            "Revival Feather <br>": 2, // Revival Feather
+            "Diminished Coin <br>": 2, // Diminished Coin
+            "Weathered Coin <br>": 1, // Weathered Coin
+            "300 x Crystals <br>": 6 // 300 Crystals
         }
     ),
  "m1": new Quest("Lurking in the Waters", ["arcane", "healing"], 
         {
-            "Hemlock": 5, // Hemlock
-            "Deer Carcass:": 3, // Deer Carcass
-            "Fox Carcass": 2, // Fox Carcass
-            "Bandages": 6, // Bandages
-            "Prime Fish": 4, // Prime Fish
-            "Jade Hummingbird": 1, // Jade Hummingbird
-            "Sea Otter": 1, // Sea Otter
-            "Antidote": 4, // Antidote
-            "Healing Salve": 4  // Healing Salve
+            "Hemlock <br>": 5, // Hemlock
+            "Large Animal Carcass <br>": 3, // Deer Carcass
+            "Small Animal Carcass <br>": 2, // Fox Carcass
+            "Bandages <br>": 6, // Bandages
+            "Prime Fish <br>": 4, // Prime Fish
+            "Jade Hummingbird <br>": 1, // Jade Hummingbird
+            "Sea Otter <br>": 1, // Sea Otter
+            "Antidote <br>": 4, // Antidote
+            "Healing Salve <br>": 4  // Healing Salve
         }
     ),
     "m2": new Quest("Surveying the Aether", ["arcane", "illusionist"], 
         {
-            "Inkwell": 5, // Inkwell
-            "Blueprints": 3, // Blueprints
-            "Aether Draco Python": 1, // Aether Draco Python
-            "Uncommon Dragon Egg": 1, // Uncommon Dragon Egg
-            "Aether Imbued Feather": 2, // Aether Imbued Feather
-            "Aether Imbued Bison Pelt": 3, // Aether Imbued Bison Pelt
-            "Aether Imbued Deer Pelt": 3, // Aether Imbued Deer Pelt
-            "Paper": 5, // Paper
-            "Aether Imbued Pages": 1  // Aether Imbued Pages
+            "Inkwell <br>": 5, // Inkwell
+            "Blueprints <br>": 3, // Blueprints
+            "Aether Draco Python <br>": 1, // Aether Draco Python
+            "Uncommon Dragon Egg <br>": 1, // Uncommon Dragon Egg
+            "Aether Feather <br>": 2, // Aether Imbued Feather
+            "Aether Bison Pelt <br>": 3, // Aether Imbued Bison Pelt
+            "Aether Deer Pelt <br>": 3, // Aether Imbued Deer Pelt
+            "Paper <br>": 5, // Paper
+            "Aether Pages <br>": 1  // Aether Imbued Pages
         }
     ),
     "m3": new Quest("The Breath of a Dragon", ["elementalist", "enchantment"], 
         {
-            "Essence of Ice": 3, // Essence of Ice
-            "Essence of Shadow": 3, // Essence of Shadow
-            "Essence of Radiation": 3, // Essence of Radiation
-            "Essence of Lightning": 3, // Essence of Lightning
-            "Essence of Fire": 3, // Essence of Fire
-            "Glass": 5, // Glass
-            "Metal": 5, // Metal
-            "500 x Crystals": 5, // 500 Crystals
-            "Brilliant Coin": 1  // Brilliant Coin
+            "Eternal Element <br>": 3, // Essence of Ice
+            "Goblet of Shadow <br>": 3, // Essence of Shadow
+            "Goblet of Radiation <br>": 3, // Essence of Radiation
+            "Goblet of Lightning <br>": 3, // Essence of Lightning
+            "Goblet of Fire <br>": 3, // Essence of Fire
+            "Glass <br>": 5, // Glass
+            "Metal <br>": 5, // Metal
+            "500 x Crystals <br>": 5, // 500 Crystals
+            "Brilliant Coin <br>": 1  // Brilliant Coin
         }
     ),
     "m4": new Quest("A Serpent's Touch", ["healing" ,"elementalist"], 
         {
-            "Radiant Draco Boa": 1, // Radiant Draco Boa
-            "Shimmering Draco Python": 1, // Shimmering Draco Python
-            "Aether Draco Python": 1, // Aether Draco Python
-            "500 x Crystals": 7, // 500 Crystals
-            "Brilliant Coin": 1, // Brilliant Coin
-            "Rare Dragon Egg": 1, // Rare Dragon Egg
-            "Teeth": 6, // Teeth
-            "Fox Carcass": 5, // Fox Carcass
-            "Large Feathers": 5  // Large Feathers
+            "Radiant Draco Boa <br>": 1, // Radiant Draco Boa
+            "Shimmering Draco Python <br>": 1, // Shimmering Draco Python
+            "Aether Draco Python <br>": 1, // Aether Draco Python
+            "500 x Crystals <br>": 7, // 500 Crystals
+            "Brilliant Coin <br>": 1, // Brilliant Coin
+            "Rare Dragon Egg <br>": 1, // Rare Dragon Egg
+            "Teeth <br>": 6, // Teeth
+            "Fox Carcass <br>": 5, // Fox Carcass
+            "Large Feathers <br>": 5  // Large Feathers
         }
     ),
     "m5": new Quest("Tiny Griffins", ["enchantment"], 
         {
-            "Crimson Humming Griffin": 1, // Crimson Humming Griffin
-            "Jade Humming Griffin": 1, // Jade Humming Griffin
-            "Revival Feather": 2, // Revival Feather
-            "Large Feathers": 6, // Large Feathers
-            "Large Feathers": 5, // Small Feathers
-            "500 x Crystals": 5, // 500 Crystals
-            "Diminished Coin": 1, // Diminished Coin
-            "Decent Meat": 6, // Decent Meat
-            "Decent Fish": 5  // Decent Fish
+            "Crimson Humming Griffin <br>": 1, // Crimson Humming Griffin
+            "Jade Humming Griffin <br>": 1, // Jade Humming Griffin
+            "Revival Feather <br>": 2, // Revival Feather
+            "Large Feathers <br>": 6, // Large Feathers
+            "Large Feathers <br>": 5, // Small Feathers
+            "500 x Crystals <br>": 5, // 500 Crystals
+            "Diminished Coin <br>": 1, // Diminished Coin
+            "Decent Meat <br>": 6, // Decent Meat
+            "Decent Fish <br>": 5  // Decent Fish
         }
     )
 }

@@ -269,7 +269,7 @@ function roll(){
 	var RESULT = rollResult();
 	
 	document.getElementById("result").innerHTML = "";
-	document.getElementById("result").innerHTML = "Your dragon drinks the contents of the vial, and a crackling magic spreads across its body, revealing that the vial has cast an illusion of the gift that it grants. The <b>"+ traitType +"</b> of <b>"+ RESULT +"</b> appears on the dragon’s body, as you touch the shimmering illusion your hand passes through it. Soft ancient whispers echo asking you a question, <i>“Will you <b>Accept</b> our gift, or <b>Decline</b> it?”</i>	<hr> Reply to me once you have made your choice to accept or decline the <b>" + RESULT + " " + traitType + "</b> to be added to "+ dragonName() +". <br>If you accept I will reply with further instructions. <br>If you decline, the vial will be unusable. You will receive no reply. <br><br><b> One Vial of Ancient Dragons Blood has been removed from your hoard.</b>";
+	document.getElementById("result").innerHTML = "Your dragon drinks the contents of the vial, and a crackling magic spreads across its body, revealing that the vial has cast an illusion of the gift that it grants. The <b>"+ traitType +"</b> of <b>"+ RESULT +"</b> appears on the dragon’s body, as you touch the shimmering illusion your hand passes through it.<br><br><hr><br> One Vial of Ancient Dragons Blood Voucher has been added to your hoard with the above result.</b>";
 }
 
 function clearResult(){
