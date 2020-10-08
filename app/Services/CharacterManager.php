@@ -282,11 +282,7 @@ class CharacterManager extends Service
                     $data['use_custom_thumb'] = true;
                 }
             }
-            $imageData = array_only($data, [
-                'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
-                'x0', 'x1', 'y0', 'y1',
-            ]);
-            $imageData['use_cropper'] = isset($data['use_cropper']) ;
+            $imageData['use_custom_thumb'] = isset($data['use_custom_thumb']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
             $imageData['parsed_description'] = parse($imageData['description']);
             $imageData['hash'] = randomString(10);
@@ -1818,8 +1814,8 @@ class CharacterManager extends Service
             $phenotype = ($request->character->is_myo_slot && $request->character->image->phenotype) ? $request->character->image->phenotype : $data['phenotype'];
             if(!$rarity) throw new \Exception("Invalid rarity selected.");
             if(!$species) throw new \Exception("Invalid species selected.");
-            if(!$request->genotype) throw new \Exception("Genotype required.");
-            if(!$request->phenotype) throw new \Exception("Phenotype required.");
+            if(!$genotype) throw new \Exception("Genotype required.");
+            if(!$phenotype) throw new \Exception("Phenotype required.");
             if($subtype && $subtype->species_id != $species->id) throw new \Exception("Subtype does not match the species.");
 
             // Clear old features
