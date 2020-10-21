@@ -67,6 +67,7 @@
     @if(file_exists(public_path(). '/css/custom.css'))
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @endif
+
 </head>
 <body>
     <div id="app">

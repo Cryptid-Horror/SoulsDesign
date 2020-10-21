@@ -1042,7 +1042,7 @@ class CharacterManager extends Service
                 if($character->is_trading != isset($data['is_trading'])) $notifyTrading = true;
                 if($character->is_gift_art_allowed != isset($data['is_gift_art_allowed'])) $notifyGiftArt = true;
 
-                $character->is_gift_art_allowed = isset($data['is_gift_art_allowed']);
+                $character->is_gift_art_allowed = isset($data['is_gift_art_allowed']) && $data['is_gift_art_allowed'] <= 2 ? $data['is_gift_art_allowed'] : 0;
                 $character->is_trading = isset($data['is_trading']);
                 $character->save();
             }
@@ -1969,6 +1969,17 @@ class CharacterManager extends Service
             // Shift the image features over to the new image
             $request->rawFeatures()->update(['character_image_id' => $image->id, 'character_type' => 'Character']);
 
+            // Make the image directory if it doesn't exist
+            if(!file_exists($image->imagePath))
+            {
+                // Create the directory.
+                if (!mkdir($image->imagePath, 0755, true)) {
+                    $this->setError('error', 'Failed to create image directory.');
+                    return false;
+                }
+                chmod($image->imagePath, 0755);
+            }
+
             // Move the image file to the new image
             if(!File::exists(dirname($image->imagePath))) File::makeDirectory(dirname($image->imagePath));
             if(!File::exists($image->imagePath)) File::makeDirectory($image->imagePath);
@@ -2104,7 +2115,7 @@ class CharacterManager extends Service
             $request->save();
 
             // Notify the user
-            Notifications::create('DESIGN_REJECTED', $user, [
+            Notifications::create('DESIGN_REJECTED', $request->user, [
                 'design_url' => $request->url,
                 'character_url' => $request->character->url,
                 'name' => $request->character->fullName
