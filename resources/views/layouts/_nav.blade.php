@@ -134,6 +134,9 @@
                         <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
                             Primal and Mastery Points
                             </a>
+                        <a class="dropdown-item" href="{{ url('world/info') }}">
+                            World Expanded
+                        </a>
                         <a class="dropdown-item" href="{{ url('/prompts') }}">
                             Prompts
                         </a>

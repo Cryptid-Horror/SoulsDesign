@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Route;
+use Settings;
+
 use App\Models\User\User;
 
 use App\Models\User\UserCurrency;
@@ -62,7 +64,8 @@ class UserController extends Controller
         return view('user.profile', [
             'user' => $this->user,
             'items' => $this->user->items()->orderBy('user_items.updated_at', 'DESC')->take(4)->get(),
-            'awards' => $this->user->awards()->orderBy('user_awards.updated_at', 'DESC')->take(4)->get()
+            'awards' => $this->user->awards()->orderBy('user_awards.updated_at', 'DESC')->take(4)->get(),
+            'user_enabled' => Settings::get('WE_user_locations')
         ]);
     }
     
