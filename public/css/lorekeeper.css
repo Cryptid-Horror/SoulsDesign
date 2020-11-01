@@ -37,7 +37,9 @@ a.h1:hover, a.h2:hover, a.h3:hover, a.h4:hover, a.h5:hover {
 }
 
 a {
-    color: rgba(0,0,0,0.7);
+    color: #800000;
+    font-weight: bold;
+
 }
 a:hover {
     color: rgba(0,0,0,1);
@@ -71,7 +73,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #A3D1BB;
+    background-image: url(emp_harvest_site_bg.png);
+    background-repeat: no-repeat;
+   background-attachment: fixed;
+    background-position: static;
+    background-size: 1920px 1306px;
+
 }
 
 main {
@@ -84,7 +91,7 @@ main > .row {
 }
 
 .main-content {
-    background-color: #D3F3E7;
+    background-color: #CC8B79;
     box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
@@ -101,6 +108,7 @@ main > .row {
 .navbar .navbar-brand, .navbar .nav-item {
     text-transform: uppercase;
     font-family: Roboto Condensed, serif; 
+     color: #daa520;
 }
 
 .navbar .row { width: 100%; }
@@ -119,7 +127,7 @@ main > .row {
 }
 
 .sidebar ul li {
-    background-color: #659D82;
+    background-color: #9F6976;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
     margin-bottom: 1em;
@@ -136,7 +144,7 @@ main > .row {
 }
 
 .sidebar .sidebar-header {
-    background-color: #343a40;
+    background-color: #714674
 }
 .sidebar .sidebar-header a {
     color: white;
