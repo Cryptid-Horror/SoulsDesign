@@ -1058,6 +1058,7 @@ class CharacterManager extends Service
                 $character->nicknames = $data['nicknames'];
                 $character->gender_pronouns = $data['gender_pronouns'];
             }
+            if(isset($data['location']) && $data['location']) $character->home_id = $data['location'];
             $character->save();
 
             // Edit the rest of the character details if admin

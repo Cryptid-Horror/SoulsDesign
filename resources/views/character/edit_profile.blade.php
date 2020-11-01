@@ -34,6 +34,22 @@
         {!! Form::text('gender_pronouns', $character->gender_pronouns, ['class' => 'form-control']) !!}
     </div>
 @endif
+
+
+
+
+@if($char_enabled == 2 || (Auth::user()->isStaff && $char_enabled == 3))
+@if(Auth::user()->isStaff && $char_enabled == 3)
+    <div class="alert alert-warning">You can edit this because you are a staff member. Normal users cannot edit their character locations freely.</div>
+@endif
+<div class="form-group">
+    {!! Form::label('location', 'Location') !!}
+    {!! Form::select('location', [0=>'Choose a Location'] + $locations, isset($character->home_id) ? $character->home_id : 0, ['class' => 'form-control selectize']) !!}
+</div>
+@endif
+
+
+
 <div class="form-group">
     {!! Form::label('text', 'Profile Content') !!}
     {!! Form::textarea('text', $character->profile->text, ['class' => 'wysiwyg form-control']) !!}

@@ -13,6 +13,7 @@ use App\Models\Character\Character;
 use App\Models\Species\Subtype;
 use App\Models\Species\Species;
 use App\Models\Rarity;
+use App\Models\WorldExpansion\Location;
 use App\Models\Feature\Feature;
 
 use App\Models\Currency\Currency;
@@ -112,6 +113,9 @@ class CharacterController extends Controller
             'subtypes' => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray(),
+            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'user_enabled' => Settings::get('WE_user_locations'),
+            'char_enabled' => Settings::get('WE_character_locations')
         ] : [])));
     }
 
@@ -131,7 +135,7 @@ class CharacterController extends Controller
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
         
-        if($service->updateCharacterProfile($request->only(array_merge(['name', 'title_name', 'nicknames', 'gender_pronouns', 'text', 'is_gift_art_allowed', 'is_trading', 'alert_user']
+        if($service->updateCharacterProfile($request->only(array_merge(['name', 'title_name', 'nicknames', 'gender_pronouns', 'text', 'is_gift_art_allowed', 'is_trading', 'alert_user', 'location']
             ,($isMod ? [
                 'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
                 'slots_used', 'adornments', 'free_markings', 'health_status',
