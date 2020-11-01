@@ -1521,7 +1521,7 @@ class CharacterManager extends Service
             $sender ? null : $character->owner_alias,
             $recipient && is_object($recipient) ? $recipient->id : null,
             $recipient && is_object($recipient) ? $recipient->alias : ($recipient ? : null),
-            $character->id, $logType ? $logType : ($character->is_myo_slot ? 'MYO Slot Transferred' : 'Character Transferred'), $data, 'user');
+            $character->id, $logType ? $logType : ($character->is_myo_slot ? 'Registered Dragon Slot Transferred' : 'Character Transferred'), $data, 'user');
     }
 
     /**

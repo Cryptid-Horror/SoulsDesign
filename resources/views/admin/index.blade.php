@@ -64,12 +64,12 @@
       <div class="col-sm-6">
           <div class="card mb-3">
               <div class="card-body">
-                  <h5 class="card-title">MYO Approvals @if($myoCount)<span class="badge badge-primary">{{ $myoCount }}</span>@endif</h5>
+                  <h5 class="card-title">Registered Dragon Approvals @if($myoCount)<span class="badge badge-primary">{{ $myoCount }}</span>@endif</h5>
                   <p class="card-text">
                       @if($myoCount)
-                          {{ $myoCount }} MYO slot{{ $myoCount == 1 ? '' : 's' }} awaiting processing.
+                          {{ $myoCount }} Registered Dragon slot{{ $myoCount == 1 ? '' : 's' }} awaiting processing.
                       @else
-                          The MYO slot approval queue is clear. Hooray!
+                          The Registered Dragon slot approval queue is clear. Hooray!
                       @endif
                   </p>
                   <div class="text-right">

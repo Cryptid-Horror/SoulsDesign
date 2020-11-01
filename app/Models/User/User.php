@@ -119,7 +119,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the user's MYO slots.
+     * Get the user's Registered Dragon slots.
      */
     public function myoSlots()
     {
@@ -455,7 +455,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $user = $this;
         $query = UserCharacterLog::with('sender.rank')->with('recipient.rank')->with('character')->where(function($query) use ($user) {
-            $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Character Created', 'MYO Slot Created', 'Character Design Updated', 'MYO Design Approved']);
+            $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Character Created', 'Registered Dragon Slot Created', 'Character Design Updated', 'Registered Dragon Design Approved']);
         })->orWhere(function($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
