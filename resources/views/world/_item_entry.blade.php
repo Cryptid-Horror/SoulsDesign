@@ -22,7 +22,7 @@
             @endif
             @if(isset($item->data['resell']) && $item->data['resell'])
                 <div class="col-md">
-                    <p><strong>Resale Value:</strong> {!! $temp = App\Models\Currency\Currency::find($item->resell->flip()->pop()) ? $temp->display($item->resell->pop()) : 'Unknown/Deleted Currency' !!}</p>
+                    <p><strong>Resale Value:</strong> {!! App\Models\Currency\Currency::find($item->resell->flip()->pop()) ? App\Models\Currency\Currency::find($item->resell->flip()->pop())->display($item->resell->pop()) : 'Unknown/Deleted Currency' !!}</p>
                 </div>
             @endif
             <div class="col-md-6 col-md">
