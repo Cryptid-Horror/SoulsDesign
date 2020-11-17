@@ -34,7 +34,7 @@
 </div>
 
 {!! $items->render() !!}
-{{ dd($items) }}
+{{ dd($items[0]) }}
 @foreach($items as $item)
     <div class="card mb-3">
         <div class="card-body">
