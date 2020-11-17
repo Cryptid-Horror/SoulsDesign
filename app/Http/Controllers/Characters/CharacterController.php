@@ -107,15 +107,15 @@ class CharacterController extends Controller
 
         return view('character.edit_profile', array_merge([
             'character' => $this->character,
+            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'user_enabled' => Settings::get('WE_user_locations'),
+            'char_enabled' => Settings::get('WE_character_locations')
         ],($isMod ? [
             'isMyo' => $this->character->is_myo,
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'subtypes' => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray(),
-            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
-            'user_enabled' => Settings::get('WE_user_locations'),
-            'char_enabled' => Settings::get('WE_character_locations')
+            'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray()
         ] : [])));
     }
 
