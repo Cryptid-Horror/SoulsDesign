@@ -224,6 +224,7 @@ function rollEgg(){
 }
 
 function rollDragon(egg_table) {
+	var loop_guard = 0;
 	// Object that will be returned at the end of function
 	var dragon = {
 		main_marks: [],
@@ -302,8 +303,14 @@ function rollDragon(egg_table) {
 		uc_mark = getRandArrayElement(uc_marks);
 		// Replace one common mark at random
 		var rand_index;
+		loop_guard = 0;
 		do {
+			if(loop_guard > 100) {
+				console.log("UC mark insurance took too long. Aborting.");
+				return;
+			}
 			rand_index = rand(0, dragon.main_marks.length-1);
+			++loop_guard;
 		} while(!c_marks.includes(dragon.main_marks[rand_index]))
 		dragon.main_marks[rand_index] = uc_mark;
 		hasUCMark = true;
@@ -313,14 +320,21 @@ function rollDragon(egg_table) {
 	// Indexed as follows: 0 = eyes, 1 = horns, 2 = ears, 3 = tails (if applicable)
 	if(!hasUCTrait) {
 		// Select random trait to reroll
-		var index = rand(0, dragon.traits.length - 1)
+		var index;
 		var trait_pool;
 		// Replace random common trait
+		loop_guard = 0;
 		do {
+			if(loop_guard > 100) {
+				console.log("UC trait insurance took too long. Aborting.");
+				return;
+			}
+			index = rand(0, dragon.traits.length - 1);
 			if (index == 0) { trait_pool = eyes; }
 			else if (index == 1) { trait_pool = horns; }
 			else if (index == 2) { trait_pool = ears; }
 			else if (index == 3) { trait_pool = tails; }
+			++loop_guard;
 		} while(!trait_pool['common'].includes(dragon.traits[index]))
 		dragon.traits[index] = getRandArrayElement(trait_pool['uncommon'])
 		hasUCTrait = true;
@@ -331,21 +345,32 @@ function rollDragon(egg_table) {
 		var marks = [];
 		for(let i = 0; i < num_markings; i++) {
 			// Roll rarity - if exceeds max UC or max R, will reroll until it does not
+			loop_guard = 0;
 			do {
+				if(loop_guard > 100) {
+					console.log("UC/R/VR markings limiting took too long. Aborting.");
+					return;
+				}
 				var mark_rarity = getRollResult(egg_table.markings);
+				++loop_guard;
 			} while (hasReachedMaxUCOrR(mark_rarity))
 			
 			var mark_rolled = ['error??!','???'];
 			// Roll actual mark - if repeated, reroll
+			loop_guard = 0;
 			do {
+				if(loop_guard > 100) {
+					console.log("Non-repeating markings took too long. Aborting.");
+					return;
+				}
 				if(mark_rarity == 'common') { mark_rolled = getRandArrayElement(c_marks); }
 				else if(mark_rarity == 'uncommon') { mark_rolled = getRandArrayElement(uc_marks); }
 				else if(mark_rarity == 'rare') { mark_rolled = getRandArrayElement(r_marks); }
 				else if(mark_rarity == 'vrare') { mark_rolled = getRandArrayElement(vr_marks); }
+				++loop_guard;
 			} while (marks.includes(mark_rolled))
 			
 			// Update counters and bools, if necessary
-			// If it's the first time UC is rolled, do not count towards max *extra*
 			if (mark_rarity == 'uncommon') {
 				dragon.num_uncommon += 1;
 				hasUCMark = true;
@@ -363,8 +388,15 @@ function rollDragon(egg_table) {
 	function rollTrait(traits_table, isRavOnly=false) {
 		var trait_rarity = '???'
 		// Reroll rarity if the dragon alr has the max UC or R, OR vrare is rolled but its a rav only trait
-		do { trait_rarity = getRollResult(egg_table.trait); }
-		while (hasReachedMaxUCOrR(trait_rarity) || (isRavOnly && trait_rarity == 'vrare'));
+		loop_guard = 0;
+		do {
+			if(loop_guard > 100) {
+				console.log("UC/R/VR traits limiting took too long. Aborting.");
+				return;
+			}
+			trait_rarity = getRollResult(egg_table.trait);
+			++loop_guard;
+		} while (hasReachedMaxUCOrR(trait_rarity) || (isRavOnly && trait_rarity == 'vrare'));
 		if(trait_rarity == 'uncommon') {
 			dragon.num_uncommon += 1;
 			hasUCTrait = true;
@@ -428,7 +460,6 @@ function formatDragon(dragon, num) {
 			else if(mark[2] == 'color') { colors.push(marks[i][0]); }
 			else if(mark[2] == 'suffix') { suffixes.push(marks[i][0]); }
 		}
-		console.log(vr_group)
 
 		// Then by rarity: c - uc, followed by alphabetical asc
 		vr_group.sort();
