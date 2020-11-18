@@ -83,26 +83,25 @@ const c_marks = [
 	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
 ];
 const uc_marks = [
-	['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'], ['Bokeh', 'nBk', 'suffix'],
+    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'], ['Bokeh', 'nBk', 'suffix'],
 	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Copper', 'nCp', 'color'],
 	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dipped', 'nDi', 'ed'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
-	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], 
-	['Pigeon', 'nPg', 'suffix'], ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'],
-	['Rosettes', 'nRs', 'suffix'], ['Shaped', 'nSp', 'ed'],	['Smoke', 'nSm', 'suffix'],
-	['Brindled', 'nBrd', 'suffix'], ['Tabby', 'nTa', 'suffix'], ['Tobiano', 'nTo', 'suffix'],
-	['Toxin', 'nTx', 'suffix']
+	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
+    ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],
+    ['Shaped', 'nSp', 'ed'],	['Smoke', 'nSm', 'suffix'], ['Brindled', 'nBrd', 'suffix'], 
+    ['Tabby', 'nTa', 'suffix'], ['Tobiano', 'nTo', 'suffix'], ['Toxin', 'nTx', 'suffix']
 ];
 const r_marks = [
 	['Appaloosa', 'nAp', 'r'], ['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
-	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'r'], ['Luminescent', 'nLu', 'r'],
-	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'],
-	['Vignette', 'nVi', 'r']
+	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
+	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
+    ['Vignette', 'nVi', 'r']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
-	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'vr'],
-	['Prismatic', 'nPr', 'vr'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
+	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'color'],
+	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
 	['Triquetra', 'nTri', 'vr']
 ];
 

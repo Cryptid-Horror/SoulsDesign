@@ -64,7 +64,7 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Azure_Colors',
+        'UIV_Crimson','HIU_Crimson','GHGA_Crimson'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

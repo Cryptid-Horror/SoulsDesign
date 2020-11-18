@@ -296,6 +296,12 @@
 					<option disabled value="4">Very Rare</option>
 					<option value="lilac">Lilac</option>
                     <option value="prismatic">Prismatic</option>
+                    <option disabled value="5">Petty</option>
+                    <option value="umber">Umber (Agouti)</option>
+                    <option value="haze">Haze (Agouti)</option>
+                    <option value="ivory">Ivory (Agouti)</option>
+                    <option value="vanta">Vanta (Agouti)</option>
+                    <option value="golden">Golden (Agouti)</option>
 				</select>
 			</div>
 		</div>

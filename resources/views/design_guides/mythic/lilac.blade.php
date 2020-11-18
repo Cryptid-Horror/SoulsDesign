@@ -64,7 +64,7 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Lilac_Colors',
+        'UIV_Lilac','HIU_Lilac','GHGA_Lilac'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
@@ -76,3 +76,4 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 ?>
 
 @include('design_guides.templates._gene_template')
+

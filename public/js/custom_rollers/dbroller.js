@@ -64,7 +64,7 @@ function rollResult(){
 			
 			let marking = [
 			"Appaloosa (nAp)",	"Blooded (nBd)",	"Eyes (nEy)",		"Glass (nGl)",
-			"Jade (nJa)",		"Luminescent (nLu)", "Lustrous (nLs)", "Painted (nPn)",	"Petal(nPl)",	"Vignette (nVi)",
+			"Jade (nJa)",		"Luminescent (nLu)", "Lustrous (nLs)", "Painted (nPn)",	"Petal (nPl)", "Vignette (nVi)",
 			] 
 			return marking[rand(0,marking.length-1)];	
 		} else {

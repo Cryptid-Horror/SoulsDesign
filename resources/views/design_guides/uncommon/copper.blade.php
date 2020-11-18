@@ -64,7 +64,7 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Copper_Colors',
+        'UIV_Copper','HIU_Copper','GHGA_Copper'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

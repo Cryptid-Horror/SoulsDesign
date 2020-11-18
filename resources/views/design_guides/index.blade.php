@@ -34,7 +34,7 @@
 
 	$rares = [['Appaloosa', 'nAp/ApAp'], ['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Glass', 'nGl/GlGl'],
 			['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
-			['Petal', 'nPl/PlPl'], ['Vignette', 'nVi/ViVi']];
+			['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe'], ['Vignette', 'nVi/ViVi']];
 
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'],
 				['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'],

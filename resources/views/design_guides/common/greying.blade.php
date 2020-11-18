@@ -64,7 +64,7 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Greying_Colors',
+        'All_Graying'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
