@@ -15,6 +15,11 @@ use App\Models\Currency\CurrencyLog;
 use App\Models\User\UserCurrency;
 use App\Models\Character\CharacterCurrency;
 use App\Models\Character\CharacterTransfer;
+use App\Models\WorldExpansion\Location;
+use App\Models\Species\Subtype;
+use App\Models\Species\Species;
+use App\Models\Rarity;
+use App\Models\Feature\Feature;
 
 use App\Services\CurrencyManager;
 use App\Services\CharacterManager;
@@ -98,9 +103,18 @@ class MyoController extends Controller
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
 
-        return view('character.edit_profile', [
+        return view('character.edit_profile', array_merge([
             'character' => $this->character,
-        ]);
+            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'user_enabled' => Settings::get('WE_user_locations'),
+            'char_enabled' => Settings::get('WE_character_locations')
+        ],($isMod ? [
+            'isMyo' => $this->character->is_myo,
+            'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'subtypes' => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray()
+        ] : [])));
     }
 
     /**
@@ -205,7 +219,7 @@ class MyoController extends Controller
     {
         if(!Auth::check()) abort(404);
 
-        if($service->createTransfer($request->only(['recipient_id']), $this->character, Auth::user())) {
+        if($service->createTransfer($request->only(['recipient_id', 'user_reason']), $this->character, Auth::user())) {
             flash('Transfer created successfully.')->success();
         }
         else {
