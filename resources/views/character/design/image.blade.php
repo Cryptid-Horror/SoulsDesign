@@ -116,7 +116,7 @@
                 @foreach($request->designers as $count=>$designer)
                     <div class="mb-2 d-flex">
                         {!! Form::text('designer_alias['.$designer->id.']', $designer->alias, ['class' => 'form-control mr-2', 'placeholder' => 'Designer Alias']) !!}
-                        {!! Form::text('designer_url['.$designer->id.']', $designer->url ?? '', ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
+                        {!! Form::text('designer_url['.$designer->id.']', isset($designer->url) ? $designer->url : '', ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
                         
                         <a href="#" class="add-designer btn btn-link" data-toggle="tooltip" title="Add another designer"
                         @if($count != $designerCount - 1)
@@ -146,7 +146,7 @@
                 @foreach($request->artists as $count=>$artist)
                     <div class="mb-2 d-flex">
                         {!! Form::text('artist_alias['.$artist->id.']', $artist->alias, ['class' => 'form-control mr-2', 'placeholder' => 'Artist Alias']) !!}
-                        {!! Form::text('artist_url['.$artist->id.']', $artist->url ?? '', ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
+                        {!! Form::text('artist_url['.$artist->id.']', isset($artist->url) ? $artist->url : '', ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
                         <a href="#" class="add-artist btn btn-link" data-toggle="tooltip" title="Add another artist"
                         @if($count != $artistCount - 1)
                             style="visibility: hidden;"
