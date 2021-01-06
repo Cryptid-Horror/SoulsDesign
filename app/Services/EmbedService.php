@@ -37,14 +37,4 @@ class EmbedService extends Service
         });
         return $response;
     }
-    
-    /**
-     * Refreshes the cache for the specified url
-     * 
-     * @param  string $url
-     */
-    public function refreshEmbed($url) {
-        Cache::forget($url);
-        $this->getEmbed($url);
-    }
 }
