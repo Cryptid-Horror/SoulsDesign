@@ -215,7 +215,7 @@ class CharacterImage extends Model
         else
         {
             $embed = new EmbedService();
-            return $embed->getEmbed($this->ext_url)['url'];
+            return isset($embed->getEmbed($this->ext_url)['url']) ? $embed->getEmbed($this->ext_url)['url'] : '#';
         }
     }
 
@@ -250,7 +250,7 @@ class CharacterImage extends Model
         else
         {
             $embed = new EmbedService();
-            return $embed->getEmbed($this->ext_url)['thumbnail_url'];
+            return isset($embed->getEmbed($this->ext_url)['thumbnail_url']) ? $embed->getEmbed($this->ext_url)['thumbnail_url'] : '#';
         }
     }
 
