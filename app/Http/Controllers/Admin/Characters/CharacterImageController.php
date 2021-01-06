@@ -364,4 +364,21 @@ class CharacterImageController extends Controller
         }
         return redirect()->back();
     }
+
+    /**
+     * Refreshes a character image if it has an ext_url
+     *
+     * @param  \Illuminate\Http\Request       $request
+     * @param  App\Services\CharacterManager  $service
+     * @param  string                         $slug
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function refreshImage(Request $request, EmbedService $service, $id)
+    {
+        $this->character = Character::where($id)->first();
+        if(!$this->character || !isset($this->character->ext_url)) abort(404);
+
+        $service->refreshEmbed($this->character->ext_url);
+        return redirect()->back();
+    }
 }
