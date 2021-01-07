@@ -16,6 +16,7 @@ use App\Models\Species\Subtype;
 use App\Models\Feature\Feature;
 
 use App\Services\CharacterManager;
+use App\Services\EmbedService;
 
 use App\Http\Controllers\Controller;
 
