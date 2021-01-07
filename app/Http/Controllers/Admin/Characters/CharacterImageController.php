@@ -376,7 +376,7 @@ class CharacterImageController extends Controller
      */
     public function refreshImage(Request $request, EmbedService $service, $id)
     {
-        $this->character = Character::where($id)->first();
+        $this->character = Character::where('id', $id)->first();
         if(!$this->character || !isset($this->character->ext_url)) abort(404);
 
         $service->refreshEmbed($this->character->ext_url);
