@@ -338,6 +338,8 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters', 'middleware'
 
     Route::post('{slug}/images/sort', 'CharacterImageController@postSortImages');
 
+    Route::post('image/{id}/refresh', 'CharacterImageController@refreshImage');
+
     # CHARACTER
     Route::get('{slug}/stats', 'CharacterController@getEditCharacterStats');
     Route::post('{slug}/stats', 'CharacterController@postEditCharacterStats');
