@@ -14,11 +14,11 @@ A marking that originates from the Warden bloodlines from before the fall of the
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Boar',
-        'Warden' => 'Warden_Boar',
-        'Greater' => 'Gemp_Boar',
-        'Ravager' => 'Ravager_Boar',
-        'Stalker' => 'Stalker_Boar',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
