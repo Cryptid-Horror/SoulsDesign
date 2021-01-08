@@ -214,11 +214,8 @@ class CharacterImage extends Model
         if(!isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->imageFileName); }
         else
         {
-            $service = new EmbedService();
-            $embed = $service->getEmbed($this->ext_url);
-            if($embed->getOEmbed() != null) return $embed->getOEmbed()->get('url');
-            else if($embed->image != null) return $embed->image;
-            else return '#';
+            $embed = new EmbedService();
+            return $embed->getEmbed($this->ext_url) != null ? $embed->getEmbed($this->ext_url) : '#';
         }
     }
 
@@ -252,11 +249,8 @@ class CharacterImage extends Model
         if($this->use_custom_thumb || !isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->thumbnailFileName); }
         else
         {
-            $service = new EmbedService();
-            $embed = $service->getEmbed($this->ext_url);
-            if($embed->getOEmbed() != null) return $embed->getOEmbed()->get('thumbnail_url');
-            else if($embed->image != null) return $embed->image;
-            else return '#';
+            $embed = new EmbedService();
+            return $embed->getEmbed($this->ext_url) != null ? $embed->getEmbed($this->ext_url) : '#';
         }
     }
 
