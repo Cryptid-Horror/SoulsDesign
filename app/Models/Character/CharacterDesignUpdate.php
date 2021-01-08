@@ -290,8 +290,11 @@ class CharacterDesignupdate extends Model
         if(!isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->imageFileName); }
         else
         {
-            $embed = new EmbedService();
-            return $embed->getEmbed($this->ext_url)['url'];
+            $service = new EmbedService();
+            $content = $service->getEmbed($this->ext_url);
+            if(isset($content[0]['url'])) return $content[0]['url'];
+            else if($content[1] != null) return $content[1];
+            else return '#';
         }
     }
 
@@ -325,8 +328,11 @@ class CharacterDesignupdate extends Model
         if($this->use_custom_thumb || !isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->thumbnailFileName); }
         else
         {
-            $embed = new EmbedService();
-            return $embed->getEmbed($this->ext_url)['thumbnail_url'];
+            $service = new EmbedService();
+            $content = $service->getEmbed($this->ext_url);
+            if(isset($content[0]['thumbnail_url'])) return $content[0]['thumbnail_url'];
+            else if($content[1] != null) return $content[1];
+            else return '#';
         }
     }
 

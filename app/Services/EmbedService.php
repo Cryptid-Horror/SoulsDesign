@@ -33,7 +33,7 @@ class EmbedService extends Service
      */
     public function getEmbed($url) {
         $response = Cache::remember($url, 60*60*24*7, function() use($url) {
-            return $this->embed->get($url)->image;
+            return [$this->embed->get($url)->getOEmbed()->all(), $this->embed->get($url)->image];
         });
         return $response;
     }
