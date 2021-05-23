@@ -61,8 +61,8 @@
     ];
 
     $marking_must = [
-        'Recessive: Can cover up to 40% of the body, allows for different patterns in separated gemstones, but the colors must be the same.',
-        'Dominant: Can cover up to 80% of the body, allowed for separated gemstones to be different color combinations, as well as different patterns.',
+        'Recessive: Can cover up to 60% of the body, allows for different patterns in separated gemstones, but the colors must be the same.',
+        'Dominant: Can cover up to 100% of the body, allowed for separated gemstones to be different color combinations, as well as different patterns.',
     ];
 
     // If left empty, the swatches section will not be shown
@@ -71,9 +71,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'gemstone_1', 'alt' => '...', 'label' => 'SB-0735', 'caption' => 'Designer: @FlawedEmperor'],
+        ['image_name' => 'gemstone_2', 'alt' => '...', 'label' => 'SB-0810', 'caption' => 'Designer: @TipToeToads'],
+        ['image_name' => 'gemstone_3', 'alt' => '...', 'label' => 'SB-0699', 'caption' => 'Designer: @PenumbralWolf'],
     ];
 ?>
 

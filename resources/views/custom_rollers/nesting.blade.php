@@ -56,7 +56,7 @@
 
 			</select>
 			<select id="sireBuild" class="cellElement">
-				<option value="1">Common Coat</option>
+				<option value="1">Velour Coat</option>
                 <option value="2">Plated</option>
 				<option value="3">Feathered</option>
                 <option value="4">Angora</option>
@@ -153,7 +153,7 @@
 
 			</select>
 			<select id="damBuild" class="cellElement">
-				<option value="1">Common Coat</option>
+				<option value="1">Velour Coat</option>
                 <option value="2">Plated</option>
 				<option value="3">Feathered</option>
                 <option value="4">Angora</option>

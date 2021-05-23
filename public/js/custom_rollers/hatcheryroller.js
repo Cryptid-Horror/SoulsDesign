@@ -12,7 +12,7 @@ const common_egg = {
 	trait: { 'common': 70, 'uncommon': 30 },
 	temper: { 'Vigilant': 70, 'Aggressive': 30 },
 	base: { 'Umber': 70, 'Haze': 15, 'Ivory': 5, 'Vanta': 10 },
-	coat: { 'Common': 80, 'Feathered': 10, 'Plated': 10 },
+	coat: { 'Velour': 80, 'Feathered': 10, 'Plated': 10 },
 	lineage: { 'yes': 90, 'no': 10 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 95, 'no': 5 },
@@ -28,7 +28,7 @@ const uncommon_egg = {
 	trait: { 'common': 60, 'uncommon': 40 },
 	temper: { 'Vigilant': 60, 'Aggressive': 30, 'Calm': 10 },
 	base: { 'Umber': 40, 'Haze': 30, 'Ivory': 15, 'Vanta': 15 },
-	coat: { 'Common': 75, 'Feathered': 10, 'Plated': 15 },
+	coat: { 'Velour': 75, 'Feathered': 10, 'Plated': 15 },
 	lineage: { 'yes': 85, 'no': 15 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 90, 'no': 10 },
@@ -44,7 +44,7 @@ const rare_egg = {
 	trait: { 'common': 55, 'uncommon': 35, 'rare': 10 },
 	temper: { 'Vigilant': 50, 'Aggressive': 35, 'Calm': 10, 'Sinister': 5 },
 	base: { 'Haze': 40, 'Ivory': 30, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 2, 'Melanistic Haze': 1, 'Melanistic Ivory': 1, 'Melanistic Golden': 1 },
-	coat: { 'Common': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
+	coat: { 'Velour': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
 	lineage: { 'yes': 75, 'no': 25 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 80, 'no': 20 },
@@ -60,7 +60,7 @@ const myst_egg = {
 	trait: { 'common': 50, 'uncommon': 35, 'rare': 10, 'vrare': 5 },
 	temper: { 'Vigilant': 40, 'Aggressive': 40, 'Calm': 10, 'Sinister': 10 },
 	base: { 'Haze': 30, 'Ivory': 35, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 3, 'Melanistic Haze': 3, 'Melanistic Ivory': 2, 'Melanistic Golden': 2 },
-	coat: { 'Common': 50, 'Feathered': 25, 'Plated': 15, 'Angora': 7, 'Imperial': 3 },
+	coat: { 'Velour': 50, 'Feathered': 25, 'Plated': 15, 'Angora': 7, 'Imperial': 3 },
 	lineage: { 'yes': 70, 'no': 30 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 75, 'no': 25 },
@@ -127,23 +127,23 @@ const eyes = {
 	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes'],
 	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes'],
 	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes'],
-	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Aether Eyes']
+	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes']
 }
 const horns = {
-	common: ['Hornless', 'Slender Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns'],
+	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns'],
 	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns'],
-	rare: ['Crowned Horns', 'Quilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns'],
+	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns'],
 	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns']
 }
 const ears = {
 	common: ['Earless', 'Fox Ears', 'Hyena Ears', 'Wild Ears', 'Equine Ears'],
-	uncommon: ['Dragon Ears', 'Feathered Ears', 'Fluffy Ears', 'Drop Fold Ears'],
+	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears'],
 	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears']
 }
 const tails = {
-	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Curled Tail'],
-	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Wild Tail', 'Fan Tail'],
-	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Plated Tail', 'Dragon Tail']
+	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail'],
+	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail'],
+	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail']
 }
 
 const coat_genos = {

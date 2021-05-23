@@ -252,39 +252,6 @@ class UserController extends Controller
             'sublists' => Sublist::orderBy('sort', 'DESC')->get()
         ]);
     }
-    
-    /**
-     * Shows a user's inventory.
-     *
-     * @param  string  $name
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function getUserAwardCase($name)
-    {
-        $categories = AwardCategory::orderBy('sort', 'DESC')->get();
-        $awards = count($categories) ? 
-            $this->user->awards()
-                ->where('count', '>', 0)
-                ->orderByRaw('FIELD(award_category_id,'.implode(',', $categories->pluck('id')->toArray()).')')
-                ->orderBy('name')
-                ->orderBy('updated_at')
-                ->get()
-                ->groupBy(['award_category_id', 'id']) :
-            $this->user->awards()
-                ->where('count', '>', 0)
-                ->orderBy('name')
-                ->orderBy('updated_at')
-                ->get()
-                ->groupBy(['award_category_id', 'id']);
-        return view('user.awardcase', [
-            'user' => $this->user,
-            'categories' => $categories->keyBy('id'),
-            'awards' => $awards,
-            'userOptions' => User::where('id', '!=', $this->user->id)->orderBy('name')->pluck('name', 'id')->toArray(),
-            'user' => $this->user,
-            'logs' => $this->user->getAwardLogs()
-        ]);
-    }
 
     /**
      * Shows a user's profile.
@@ -337,21 +304,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Shows a user's award logs.
-     *
-     * @param  string  $name
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function getUserAwardLogs($name)
-    {
-        $user = $this->user;
-        return view('user.award_logs', [
-            'user' => $this->user,
-            'logs' => $this->user->getAwardLogs(0)
-        ]);
-    }
-    
     /**
      * Shows a user's award logs.
      *

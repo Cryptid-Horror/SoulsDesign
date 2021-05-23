@@ -104,19 +104,19 @@ return [
         'power' => 'manage_characters',
         'links' => [
             [
-                'name' => 'Create Character',
+                'name' => 'Create Dragon',
                 'url' => 'admin/masterlist/create-character'
             ],
             [
-                'name' => 'Create Registered Dragon Slot',
+                'name' => 'Create Genotype',
                 'url' => 'admin/masterlist/create-myo'
             ],
             [
-                'name' => 'Character Transfers',
+                'name' => 'Dragon Transfers',
                 'url' => 'admin/masterlist/transfers/incoming'
             ],
             [
-                'name' => 'Character Trades',
+                'name' => 'Dragon Trades',
                 'url' => 'admin/masterlist/trades/incoming'
             ],
             [
@@ -124,7 +124,7 @@ return [
                 'url' => 'admin/design-approvals/pending'
             ],
             [
-                'name' => 'Registered Dragon Approvals',
+                'name' => 'Design Approvals',
                 'url' => 'admin/myo-approvals/pending'
             ],
         ]

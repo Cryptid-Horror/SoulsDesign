@@ -3,7 +3,7 @@
 @section('profile-title') {{ $character->fullName }} @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Registered Dragon Slot Masterlist' => 'myos', $character->fullName => $character->url]) !!}
+{!! breadcrumbs(['Genotype Slot Masterlist' => 'myos', $character->fullName => $character->url]) !!}
 
 @include('character._header', ['character' => $character])
 

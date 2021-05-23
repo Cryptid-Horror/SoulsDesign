@@ -63,9 +63,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'hood_1', 'alt' => '...', 'label' => 'SB-0885', 'caption' => 'Designer: @Voidtech'],
+        ['image_name' => 'hood_2', 'alt' => '...', 'label' => 'SB-0765', 'caption' => 'Designer: @StarCrossedDancing'],
+        ['image_name' => 'hood_3', 'alt' => '...', 'label' => 'SB-0803', 'caption' => 'Designer: @TipToeToads'],
     ];
 ?>
 

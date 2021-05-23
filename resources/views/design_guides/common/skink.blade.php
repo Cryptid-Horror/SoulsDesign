@@ -83,9 +83,9 @@ The border should not exceed the size of the skinks width, and does not have to 
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'skink_1', 'alt' => '...', 'label' => 'SB-1001', 'caption' => 'Designer: @GlacialFalls'],
+        ['image_name' => 'skink_2', 'alt' => '...', 'label' => 'SB-0791', 'caption' => 'Designer: @Baaltas'],
+        ['image_name' => 'skink_3', 'alt' => '...', 'label' => 'SB-0427', 'caption' => 'Designer: @Tromacom'],
     ];
 ?>
 

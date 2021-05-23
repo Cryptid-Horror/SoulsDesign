@@ -64,14 +64,14 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'UIV_Lilac','HIU_Lilac','GHGA_Lilac'
+        'LILAC_1','LILAC_2','LILAC_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'lilac_1', 'alt' => '...', 'label' => 'SB-0821', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'lilac_2', 'alt' => '...', 'label' => 'SB-0661', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'lilac_3', 'alt' => '...', 'label' => 'SB-0168', 'caption' => 'Designer: @GryAdventures + @Oreleth'],
     ];
 ?>
 

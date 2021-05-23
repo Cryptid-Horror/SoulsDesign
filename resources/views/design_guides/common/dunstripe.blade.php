@@ -13,10 +13,10 @@
     // 'species' => 'imagename'
     $ranges = [
         'Sapiere' => 'Sapiere_Dunstripe',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Warden' => 'Warden_Dunstripe',
+        'Greater' => 'Gemp_Dunstripe',
+        'Ravager' => 'Ravager_Dunstripe',
+        'Stalker' => 'Stalker_Dunstripe',
     ];
 
     // Use yes or no
@@ -64,9 +64,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'dun_1', 'alt' => '...', 'label' => 'SB-0689', 'caption' => 'Designer: @TwistedLunatic'],
+        ['image_name' => 'dun_2', 'alt' => '...', 'label' => 'SB-0880', 'caption' => 'Designer: @RikVentures'],
+        ['image_name' => 'dun_3', 'alt' => '...', 'label' => 'SB-0991', 'caption' => 'Designer: @TalonV'],
     ];
 ?>
 

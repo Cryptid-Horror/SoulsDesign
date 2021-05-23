@@ -25,8 +25,8 @@
                 <h5 class="card-title">Dragons</h5>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{{ url('characters') }}">My Official Dragons</a></li>
-                <li class="list-group-item"><a href="{{ url('characters/myos') }}">My Registered Dragon Slots</a></li>
+                <li class="list-group-item"><a href="{{ url('characters') }}">My Dragons</a></li>
+                <li class="list-group-item"><a href="{{ url('characters/myos') }}">My Genotypes</a></li>
                 <li class="list-group-item"><a href="{{ url('characters/transfers/incoming') }}">Dragon Transfers</a></li>
             </ul>
         </div>

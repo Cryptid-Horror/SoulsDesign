@@ -72,9 +72,9 @@ A marking that originates from the Warden bloodlines from before the fall of the
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'boar_1', 'alt' => '...', 'label' => 'SB-0836', 'caption' => 'Designer: @PenumbralWolf'],
+        ['image_name' => 'boar_2', 'alt' => '...', 'label' => 'SB-0564', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'boar_3', 'alt' => '...', 'label' => 'SB-0683', 'caption' => 'Designer: @FlawedEmperor'],
     ];
 ?>
 

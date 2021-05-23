@@ -9,7 +9,7 @@
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Nesting%20Rites') }}" class="{{ set_active('prompts/prompt-categories?name=Nesting%20Rites') }}">Nesting</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Taming%20Rites') }}" class="{{ set_active('prompts/prompt-categories?name=Taming%20Rites') }}">Taming</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Aether%20Restoration') }}" class="{{ set_active('prompts/prompt-categories?name=Aether%20Restoration') }}">Aether Restoration</a></div>
-        <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Soul-Bonding') }}" class="{{ set_active('prompts/prompt-categories?name=Soul-Bonding') }}">Soul Bonding</a></div>
+        <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Soul%20Linking') }}" class="{{ set_active('prompts/prompt-categories?name=Soul%20Linking') }}">Soul Linking</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=SoulsShaping') }}" class="{{ set_active('prompts/prompt-categories?name=SoulsShaping') }}">Soul Shaping</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Reversal%20of%20Choice') }}" class="{{ set_active('prompts/prompt-categories?name=Reversal%20of%20Choice') }}">Reversal of Choice</a></div>
     </li>
