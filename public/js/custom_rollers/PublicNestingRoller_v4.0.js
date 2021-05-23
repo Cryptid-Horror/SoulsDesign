@@ -51,21 +51,21 @@ var passableMutations = ["nRad", "RadRad"];
 var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
 var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
 var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes"];
-var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Aether Eyes"];
+var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes"];
 
-var commonHorns = ["Hornless", "Slender Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
+var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
 var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns"];
-var rareHorns = ["Crowned Horns", "Quillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
+var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
 var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns"];
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
-var uncommonEars = ["Dragon Ears", "Feathered Ears", "Fluffy Ears", "Button Ears"];
+var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears"];
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
 var veryRareEars = [];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Curl Tail"];
-var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Wild Tail", "Fan Tail"];
-var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Plated Tail", "Dragon Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
+var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
+var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
 var veryRareTails = [];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden"]
@@ -472,10 +472,6 @@ function clutchSize() {
 				size = 0;
 		}
 	}
-	
-    //vigilant parent 
-
-
 
 	// use fertility potion if selected
 	if (document.getElementById("FP").checked) {
@@ -535,7 +531,7 @@ function generateBody() {
 		if (num < 25)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.PLATED) || 
 			  (damBuildVal == Builds.PLATED && sireBuildVal == Builds.COMMON)) {
 		if (num < 10)
@@ -543,7 +539,7 @@ function generateBody() {
 		if (num < 30)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.FEATHERED) ||
 		       (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.COMMON)) {
 		if (num < 15)
@@ -553,7 +549,7 @@ function generateBody() {
 		else if (num < 36)
 			return "Angora";
 		else
-			return "Common";
+			return "Velour";
 	} else if  ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.ANGORA) || 
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.COMMON)) {
 		if (num < 20)
@@ -565,7 +561,7 @@ function generateBody() {
 		else if (num < 42)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.IMPERIAL) ||
 		       (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.COMMON)) {
 		if (num < 25)
@@ -577,7 +573,7 @@ function generateBody() {
 		else if (num < 58)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of plated
 	} else if (damBuildVal == Builds.PLATED && sireBuildVal == Builds.PLATED) {
 		if (num < 15)
@@ -585,7 +581,7 @@ function generateBody() {
 		if (num < 45)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.FEATHERED) ||
 			   (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.PLATED)) {
 		if (num < 20)
@@ -595,7 +591,7 @@ function generateBody() {
 		else if (num < 51)
 			return "Angora";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.ANGORA) ||
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.PLATED)) {
 		if (num < 25)
@@ -607,7 +603,7 @@ function generateBody() {
 		else if (num < 63)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.IMPERIAL) || 
 			   (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.PLATED)) {
 		if (num < 30)
@@ -619,7 +615,7 @@ function generateBody() {
 		else if (num < 74)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of feathered
 	} else if (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.FEATHERED) {
 		if (num < 20)
@@ -631,7 +627,7 @@ function generateBody() {
 		else if (num < 53)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.ANGORA) ||
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.FEATHERED)) {
 		if (num < 30)
@@ -643,7 +639,7 @@ function generateBody() {
 		else if (num < 65)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.IMPERIAL) ||
 		       (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.FEATHERED)) {
 		if (num < 40)
@@ -655,7 +651,7 @@ function generateBody() {
 		else if (num < 90)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
  // start of Angora
 	} else if (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.ANGORA) {
 		if (num < 35)
@@ -667,7 +663,7 @@ function generateBody() {
 		else if (num < 87)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.ANGORA && sireBuildVal == Builds.IMPERIAL) ||
 			   (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.ANGORA)) {
 		if (num < 45)
@@ -679,7 +675,7 @@ function generateBody() {
 		else if (num < 112)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of imperial
 	} else if (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.IMPERIAL) {
 		if (num < 50)
@@ -691,7 +687,7 @@ function generateBody() {
 		else if (num < 120)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	}
 }
 
@@ -1882,6 +1878,11 @@ function generateBreath() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
+         if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
+         bonus += 10;
+     }
 	if (document.getElementById("BB").checked) {
 		if (!destroyedModifiers.includes("Breath Potion destroyed.<br>"))
 			destroyedModifiers += "Breath Potion destroyed.<br>";
@@ -1936,6 +1937,11 @@ function generateSkill() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
+    if (document.getElementById("damTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     }
 	if (document.getElementById("SB").checked) {
 		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
 			destroyedModifiers += "Skill Charm destroyed.<br>";

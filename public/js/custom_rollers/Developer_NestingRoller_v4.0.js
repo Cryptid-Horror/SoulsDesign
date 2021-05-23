@@ -4,13 +4,13 @@
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
 
-var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
+var uncommonMarkings = ["nAg", "AgAg", "nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
                         "nCri", "CriCri", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
 			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
 			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
 
-var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn",
+var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
                     "nVi", "ViVi"];
 
 var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
@@ -26,11 +26,11 @@ var commonToText = ["Blanket", "Boar", "Collar", "Dunstripe", "Dusted", "Duo Ton
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
 					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
-var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
+var uncommonToText = ["Agouti", "Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
 					  "Crimson", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
-var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Vignette"];
+var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Vignette"];
 var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
 var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism", "Eagle Beak", "Whiskers"];
@@ -51,11 +51,11 @@ var passableMutations = ["nRad", "RadRad"];
 var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
 var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
 var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes"];
-var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Aether Eyes"];
+var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes"];
 
-var commonHorns = ["Hornless", "Slender Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
+var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
 var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns"];
-var rareHorns = ["Crowned Horns", "Quillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
+var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
 var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns"];
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
@@ -63,19 +63,19 @@ var uncommonEars = ["Dragon Ears", "Feathered Ears", "Fluffy Ears", "Button Ears
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
 var veryRareEars = [];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Curl Tail"];
-var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Wild Tail", "Fan Tail"];
-var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Plated Tail", "Dragon Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
+var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
+var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
 var veryRareTails = [];
 
+var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
 var uncommonColorMods = ["Azure", "Crimson"];
-var rareColorMods = ["Jade"];
+var rareColorMods = ["Jade", "Seafoam"];
 var veryRareColorMods = ["Lilac", "Prismatic"];
 var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "AzAz", "nCri", "CriCri", "nCp", "CpCp", 
-					"nJa", "JaJa", "nLi", "LiLi", "nPr", "PrPr"];
-
-var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Prismatic"];
+					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
+var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Seafoam", "Prismatic"];
 
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
@@ -130,6 +130,7 @@ var MaxClutchSize = Object.freeze({
 var Rarity = Object.freeze({
 		COMMON: 1,	UNCOMMON: 2,
 		RARE: 3,	VERY_RARE: 4,
+        PETTY: 5,
 	});
 
 var Breaths = Object.freeze({
@@ -396,7 +397,7 @@ function validateModifiers() {
 	}
 	
 	if (document.getElementById("RB").checked && document.getElementById("colorMod").value == 0) {
-		return "Color modifier for Radiance Bond not selected.";
+		return "Color modifier for Radiance Bond or Agouti not selected.";
 	}
 	
 	return 0;
@@ -471,10 +472,6 @@ function clutchSize() {
 				size = 0;
 		}
 	}
-	
-    //vigilant parent 
-
-
 
 	// use fertility potion if selected
 	if (document.getElementById("FP").checked) {
@@ -1665,6 +1662,29 @@ function generateColorMod() {
 	return result;
 }
 
+function generateAgoutiColorMod() {
+	var roll, modRarity, result;
+	roll = randRange(100);
+	if (roll < 30) {
+		modRarity = Rarity.PETTY;
+		result = pettyColorMods[randRange(pettyColorMods.length)];
+	} else if (roll < 60) {
+		modRarity = Rarity.COMMON;
+		result = commonColorMods[randRange(commonColorMods.length)];
+	} else if (roll < 80) {
+		modRarity = Rarity.UNCOMMON;
+		result = uncommonColorMods[randRange(uncommonColorMods.length)];
+    } else if (roll < 95) {
+		modRarity = Rarity.RARE;
+		result = rareColorMods[randRange(rareColorMods.length)];
+	} else {
+		modRarity = Rarity.VERY_RARE;
+		result = veryRareColorMods[randRange(veryRareColorMods.length)];
+	}
+	
+	return result;
+}
+
 function evaluateMarkingPass(markID, markingRarity, sireDom, damDom, oneParentMissing) {
 	var result = "";
 	if (markingRarity == Rarity.COMMON) {
@@ -1681,10 +1701,20 @@ function evaluateMarkingPass(markID, markingRarity, sireDom, damDom, oneParentMi
 		result += "-";
 		if (document.getElementById("RB").checked) {
 			result += document.getElementById("colorMod").value;
-			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance.<br>"))
-				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance.<br>";
+			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance or Agouti.<br>"))
+				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance or Agouti.<br>";
 		} else {
 			result += generateColorMod();
+		}
+	}
+    if (result == "nAg" || result == "AgAg") {
+		result += "-";
+		if (document.getElementById("RB").checked) {
+			result += document.getElementById("colorMod").value;
+			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance or Agouti.<br>"))
+				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance or Agouti.<br>";
+		} else {
+			result += generateAgoutiColorMod();
 		}
 	}
 	
@@ -1848,33 +1878,32 @@ function generateBreath() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
-    var breathPotionBonus = 0;
-    if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
+         if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
          bonus += 10;
-    } if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
+     } if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
          bonus += 10;
-	} if (document.getElementById("BB").checked) {
+     }
+	if (document.getElementById("BB").checked) {
 		if (!destroyedModifiers.includes("Breath Potion destroyed.<br>"))
 			destroyedModifiers += "Breath Potion destroyed.<br>";
-		breathPotionBonus += 30;
-
-	} if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
-		if (roll <= 5 - bonus + breathPotionBonus) {
-			result = Breaths.FIRE;
-        } else if { (roll <= 10 - bonus + breathPotionBonus)
-            result = Breaths.ICE;
+		bonus = 30;
+	}
+	if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
+		if (roll >= 96 - bonus) {
+			return "Fire";
+		}
 	} else if (damBreath == Breaths.NONE) {
-		if (roll >= 90 - bonus + breathPotionBonus) {
+		if (roll >= 90 - bonus) {
 			result = sireBreath;
 		}
 	} else if (sireBreath == Breaths.NONE) {
-		if (roll >= 90 - bonus + breathPotionBonus) {
+		if (roll >= 90 - bonus) {
 			result = damBreath;
 		}
 	} else {
-		if (roll >= 85 - bonus + breathPotionBonus) {
+		if (roll >= 85 - bonus) {
 			result = damBreath;
-		} else if (roll >= 70 - bonus + breathPotionBonus) {
+		} else if (roll >= 70 - bonus/2) {
 			result = sireBreath;
 		}
 	}
@@ -1908,6 +1937,11 @@ function generateSkill() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
+    if (document.getElementById("damTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     }
 	if (document.getElementById("SB").checked) {
 		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
 			destroyedModifiers += "Skill Charm destroyed.<br>";
@@ -2214,10 +2248,12 @@ function genoToString(coat) {
 	}
 	
 	
-	if (childMarkings.length != 0) {
+	while (childMarkings.length != 0) {
 		if (childMarkings[0].length > 6) {
 			var prefix1 = childMarkings[0].substr(0, 4);
 			var prefix2 = childMarkings[0].substr(0, 6);
+            var prefix3 = childMarkings[0].substr(0, 3);
+            var prefix4 = childMarkings[0].substr(0, 4);
 			if (prefix1 == "nRad") {
 				if (numAfter != 0)
 					result += "and ";
@@ -2228,10 +2264,21 @@ function genoToString(coat) {
 					result += "and ";
 				result += "Radiant" + childMarkings[0].substr(6, childMarkings[0].length - 6);
 				childMarkings.splice(0, 1);
-			}
-			
-		}
-	}
+			} else if (prefix3 == "nAg") {
+				if (numAfter != 0)
+					result += "and ";
+				result += "Agouti" + childMarkings[0].substr(3, childMarkings[0].length - 3);
+				childMarkings.splice(0, 1);
+		} else if (prefix4 == "AgAg") {
+				if (numAfter != 0)
+					result += "and ";
+				result += "Agouti" + childMarkings[0].substr(4, childMarkings[0].length - 4);
+				childMarkings.splice(0, 1);
+            }
+	    }
+    }
+
+    
 	if (childMarkings.length != 0) {
 		result += "[ERROR: UNCLASSIFIED MARKINGS REMAINING]";
 	}

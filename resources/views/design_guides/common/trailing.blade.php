@@ -69,9 +69,9 @@ In dominant, this marking can blend between to colors.',
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'trail_1', 'alt' => '...', 'label' => 'SB-0773', 'caption' => 'Designer: @StarDestiny24'],
+        ['image_name' => 'trail_2', 'alt' => '...', 'label' => 'SB-0827', 'caption' => 'Designer: @Lairai'],
+        ['image_name' => 'trail_3', 'alt' => '...', 'label' => 'SB-0984', 'caption' => 'Designer: @Nigh1Shadow'],
     ];
 ?>
 

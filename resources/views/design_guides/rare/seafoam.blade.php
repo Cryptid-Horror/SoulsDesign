@@ -64,12 +64,12 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'UIV_Seafoam','HIU_Seafoam','GHGA_Seafoam'
+        'SEAFOAM_1','SEAFOAM_2','SEAFOAM_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
+        ['image_name' => 'seafoam_1', 'alt' => '...', 'label' => 'SB-1057', 'caption' => 'Xialthia'],
         ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
         ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
     ];

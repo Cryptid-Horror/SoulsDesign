@@ -2,16 +2,16 @@
     <li class="sidebar-header"><a href="{{ $user->url }}" class="card-link">{{ $user->name }}</a></li>
     <li class="sidebar-section">
         <div class="sidebar-section-header">User</div>
-        <div class="sidebar-item"><a href="{{ $user->url.'/characters' }}" class="{{ set_active('user/'.$user->name.'/characters*') }}">Characters</a></div>
-        <div class="sidebar-item"><a href="{{ $user->url.'/myos' }}" class="{{ set_active('user/'.$user->name.'/myos*') }}">Registered Dragon Slots</a></div>
-        <div class="sidebar-item"><a href="{{ $user->url.'/inventory' }}" class="{{ set_active('user/'.$user->name.'/inventory*') }}">Inventory</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/characters' }}" class="{{ set_active('user/'.$user->name.'/characters*') }}">My Dragons</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/myos' }}" class="{{ set_active('user/'.$user->name.'/myos*') }}">My Genotypes</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/inventory' }}" class="{{ set_active('user/'.$user->name.'/inventory*') }}">Hoard</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/awardcase' }}" class="{{ set_active('user/'.$user->name.'/awardcase*') }}">Awards</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/bank' }}" class="{{ set_active('user/'.$user->name.'/bank*') }}">Bank</a></div>
     </li>
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
         <div class="sidebar-item"><a href="{{ $user->url.'/ownership' }}" class="{{ $user->url.'/ownership*' }}">Ownership History</a></div>
-        <div class="sidebar-item"><a href="{{ $user->url.'/item-logs' }}" class="{{ $user->url.'/currency-logs*' }}">Item Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/item-logs' }}" class="{{ $user->url.'/currency-logs*' }}">Hoard Logs</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/currency-logs' }}" class="{{ set_active($user->url.'/currency-logs*') }}">Currency Logs</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/award-logs' }}" class="{{ $user->url.'/award-logs*' }}">Award Logs</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/submissions' }}" class="{{ set_active($user->url.'/submissions*') }}">Submissions</a></div>

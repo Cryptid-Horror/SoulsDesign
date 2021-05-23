@@ -92,20 +92,7 @@ function calculate() {
 				log();
 			}
 			
-			//BACKGROUND
-			if ($("#bg").is(":checked")) {
-				
-				tempbonus = 4;
-				text = "background";
-				log();
-			}
-			
-			//PERSONAL
-			if ($("#pa").is(":checked")) {
-				tempbonus = 1;
-				text = "personal bonus";
-				log();
-			}
+		
 		
 	}
 	
@@ -137,6 +124,21 @@ function calculate() {
 			text = "Collaboration";
 			log();
 		}
+
+        //BACKGROUND
+			if ($("#bg").is(":checked")) {
+				
+				tempbonus = 4;
+				text = "background";
+				log();
+			}
+			
+		//PERSONAL
+			if ($("#pa").is(":checked")) {
+				tempbonus = 1;
+				text = "personal bonus";
+				log();
+			}
 		
 		//ACTIVITY
 		if ($("#activity").is(":checked")) {
@@ -147,7 +149,7 @@ function calculate() {
 		
 		//EVENT
 		if ($("#event").is(":checked")) {
-			tempbonus = 1;
+			tempbonus = 2;
 			text = "Event";
 			log();
 		}
@@ -166,7 +168,7 @@ function calculate() {
 			  }
 		
 		if ($("#story").is(":checked")) {
-			tempbonus = 2;
+			tempbonus = 4;
 			text = "Story Event";
 			log();
 		}

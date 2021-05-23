@@ -67,9 +67,9 @@ A gene that presents itself as leaf like markings on the body of a dragon. The l
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'leaf_1', 'alt' => '...', 'label' => 'SB-0888', 'caption' => 'Designer: @Xanowa'],
+        ['image_name' => 'leaf_2', 'alt' => '...', 'label' => 'SB-0874', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'leaf_3', 'alt' => '...', 'label' => 'SB-0854', 'caption' => 'Designer: @HigureGinhane'],
     ];
 ?>
 

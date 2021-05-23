@@ -5,7 +5,7 @@
 @section('profile-content')
 <div class="row no-gutters">
     <div class="col-md-8 my-auto">
-        {!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Profile' => $character->url . '/profile']) !!}
+        {!! breadcrumbs([($character->is_myo_slot ? 'Genotype Masterlist' : 'Dragon Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Profile' => $character->url . '/profile']) !!}
     </div>
 
     <!-- character trade/gift status badges section -->

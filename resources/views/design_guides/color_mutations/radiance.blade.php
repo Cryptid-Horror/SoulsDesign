@@ -70,9 +70,9 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'rad_1', 'alt' => '...', 'label' => 'SB-0504', 'caption' => 'Designer: @Mizie-Wolf'],
+        ['image_name' => 'rad_2', 'alt' => '...', 'label' => 'SB-0417', 'caption' => 'Designer: @Monotone-Heroes'],
+        ['image_name' => 'rad_3', 'alt' => '...', 'label' => 'SB-0179', 'caption' => 'Designer: @Voidtech'],
     ];
 ?>
 

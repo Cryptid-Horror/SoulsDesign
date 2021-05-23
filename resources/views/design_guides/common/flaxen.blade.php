@@ -64,14 +64,14 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'UIV_Flaxen','HIU_Flaxen','GHGA_Flaxen'
+        'FLAXEN_1','FLAXEN_2','FLAXEN_3',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'flaxen_1', 'alt' => '...', 'label' => 'SB-0890', 'caption' => 'Designer: @Dorosaury'],
+        ['image_name' => 'flaxen_2', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
+        ['image_name' => 'flaxen_3', 'alt' => '...', 'label' => 'SB-1065', 'caption' => 'Designer: @Tromacom'],
     ];
 ?>
 

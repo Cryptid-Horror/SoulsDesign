@@ -64,14 +64,14 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'UIV_Copper','HIU_Copper','GHGA_Copper'
+        'COPPER_1','COPPER_2','COPPER_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'copper_1', 'alt' => '...', 'label' => 'SB-0311', 'caption' => 'Designer: @Askila-Deamon'],
+        ['image_name' => 'copper_2', 'alt' => '...', 'label' => 'SB-0840', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'copper_3', 'alt' => '...', 'label' => 'SB-0212', 'caption' => 'Designer: @Cameil'],
     ];
 ?>
 

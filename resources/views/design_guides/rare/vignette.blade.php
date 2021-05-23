@@ -70,9 +70,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'vig_1', 'alt' => '...', 'label' => 'SB-0700', 'caption' => 'Designer: @PenumbralWolf'],
+        ['image_name' => 'vig_2', 'alt' => '...', 'label' => 'SB-0142', 'caption' => 'Designer: @Snowvoice'],
+        ['image_name' => 'vig_3', 'alt' => '...', 'label' => 'SB-0859', 'caption' => 'Designer: @Mloking'],
     ];
 ?>
 

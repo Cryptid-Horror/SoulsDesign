@@ -68,9 +68,9 @@ Unlike the other documented color genes, duo tone doesn’t introduce new colors
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'duo_1', 'alt' => '...', 'label' => 'SB-0998', 'caption' => 'Designer: @GlacialFalls'],
+        ['image_name' => 'duo_2', 'alt' => '...', 'label' => 'SB-0818', 'caption' => 'Designer: @DraginRaptor'],
+        ['image_name' => 'duo_3', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
     ];
 ?>
 

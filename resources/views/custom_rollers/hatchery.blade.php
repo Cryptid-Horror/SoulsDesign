@@ -26,6 +26,8 @@
             <option value="Ravager Wyvern">Ravager</option>
             <option value="Warden Dragon">Warden</option>
             <option value="Greater Emperor">Greater Emperor</option>
+            <option value="Sapiere Dragon">Sapiere Dragon</option>
+
         </select>
         <br>
         <input type="checkbox" id="activity"> Is An Activity Egg or Random Species?

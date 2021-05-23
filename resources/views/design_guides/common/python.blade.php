@@ -68,9 +68,9 @@ A diamond, oval, or square/rectangular shape found on the spine of a dragon. The
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'python_1', 'alt' => '...', 'label' => 'SB-0930', 'caption' => 'Designer: @Sulosointu'],
+        ['image_name' => 'python_2', 'alt' => '...', 'label' => 'SB-0840', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'python_3', 'alt' => '...', 'label' => 'SB-0250', 'caption' => 'Designer: @Wolfsroar18'],
     ];
 ?>
 

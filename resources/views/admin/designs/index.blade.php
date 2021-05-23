@@ -1,12 +1,12 @@
 @extends('admin.layout')
 
-@section('admin-title') {{ $isMyo ? 'Registered Dragon Approval' : 'Design Update' }} Queue @endsection
+@section('admin-title') {{ $isMyo ? 'Design Approval' : 'Design Update' }} Queue @endsection
 
 @section('admin-content')
-{!! breadcrumbs(['Admin Panel' => 'admin', ($isMyo ? 'Registered Dragon Approval' : 'Design Update').' Queue' => 'admin/designs/pending']) !!}
+{!! breadcrumbs(['Admin Panel' => 'admin', ($isMyo ? 'Design Approval' : 'Design Update').' Queue' => 'admin/designs/pending']) !!}
 
 <h1>
-    {{ $isMyo ? 'Registered Dragon Approval' : 'Design Update' }} Queue
+    {{ $isMyo ? 'Design Approval' : 'Design Update' }} Queue
 </h1>
 
 <ul class="nav nav-tabs mb-3">
@@ -24,7 +24,7 @@
 {!! $requests->render() !!}
   <div class="row ml-md-2">
     <div class="d-flex row flex-wrap col-12 pb-1 px-0 ubt-bottom">
-      <div class="col-12 col-md-4 font-weight-bold">{{ $isMyo ? 'Registered Dragon Slot' : 'Character' }}</div>
+      <div class="col-12 col-md-4 font-weight-bold">{{ $isMyo ? 'Design Approval' : 'Dragon' }}</div>
       <div class="col-4 col-md-3 font-weight-bold">User</div>
       <div class="col-4 col-md-3 font-weight-bold">Submitted</div>
       <div class="col-4 col-md-2 font-weight-bold">Status</div>

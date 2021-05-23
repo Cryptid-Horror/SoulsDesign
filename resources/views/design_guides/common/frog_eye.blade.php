@@ -67,9 +67,9 @@ Frog Eye was a strange marking to pop up, in fact it frightened most people for 
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'frog_1', 'alt' => '...', 'label' => 'SB-0988', 'caption' => 'Designer: @FallingFireX'],
+        ['image_name' => 'frog_2', 'alt' => '...', 'label' => 'SB-0831', 'caption' => 'Designer: @Imagi-Nethat'],
+        ['image_name' => 'frog_3', 'alt' => '...', 'label' => 'SB-0861', 'caption' => 'Designer: @TemporalSorceress'],
     ];
 ?>
 

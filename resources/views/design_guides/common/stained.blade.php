@@ -70,9 +70,9 @@ A gradient or blur marking that starts from the end of joints and travels inward
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'stain_1', 'alt' => '...', 'label' => 'SB-0981', 'caption' => 'Designer: @SomeSunnyBunny'],
+        ['image_name' => 'stain_2', 'alt' => '...', 'label' => 'SB-0865', 'caption' => 'Designer: @LadyLirriea'],
+        ['image_name' => 'stain_3', 'alt' => '...', 'label' => 'SB-0846', 'caption' => 'Designer: @DalekFell'],
     ];
 ?>
 
