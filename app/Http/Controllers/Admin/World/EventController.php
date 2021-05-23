@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin\World;
 
 use App\Models\WorldExpansion\Location;
+use App\Models\WorldExpansion\Faction;
 use App\Models\WorldExpansion\Figure;
 use App\Models\Item\Item;
+use App\Models\Prompt\Prompt;
+use App\Models\News;
 
 use App\Models\WorldExpansion\Event;
 use App\Models\WorldExpansion\EventFigure;
@@ -17,14 +20,14 @@ use Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Services\EventService;
+use App\Services\WorldExpansion\EventService;
 
 class EventController extends Controller
 {
 
 
     /**********************************************************************************************
-    
+
         Event Types
 
     **********************************************************************************************/
@@ -40,7 +43,7 @@ class EventController extends Controller
             'categories' => EventCategory::orderBy('sort', 'DESC')->get()
         ]);
     }
-    
+
     /**
      * Shows the create event category page.
      *
@@ -52,7 +55,7 @@ class EventController extends Controller
             'category' => new EventCategory
         ]);
     }
-    
+
     /**
      * Shows the edit event category page.
      *
@@ -72,7 +75,7 @@ class EventController extends Controller
      * Creates or edits a category.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @param  int|null                  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -81,7 +84,7 @@ class EventController extends Controller
         $id ? $request->validate(EventCategory::$updateRules) : $request->validate(EventCategory::$createRules);
 
         $data = $request->only([
-            'name', 'names', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 'is_active', 'summary'
+            'name', 'names', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 'summary'
         ]);
         if($id && $service->updateEventCategory(EventCategory::find($id), $data, Auth::user())) {
             flash('Event category updated successfully.')->success();
@@ -114,7 +117,7 @@ class EventController extends Controller
      * Deletes a category.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @param  int                       $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -133,7 +136,7 @@ class EventController extends Controller
      * Sorts categories.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSortEventCategory(Request $request, EventService $service)
@@ -152,7 +155,7 @@ class EventController extends Controller
 
 
     /**********************************************************************************************
-    
+
         FAUNA
 
     **********************************************************************************************/
@@ -168,7 +171,7 @@ class EventController extends Controller
             'events' => Event::orderBy('sort', 'DESC')->get()
         ]);
     }
-    
+
     /**
      * Shows the create event event page.
      *
@@ -182,9 +185,12 @@ class EventController extends Controller
             'events' => Event::all()->pluck('name','id')->toArray(),
             'figures' => Figure::all()->pluck('name','id')->toArray(),
             'locations' => Location::all()->pluck('name','id')->toArray(),
+            'factions' => Faction::all()->pluck('name','id')->toArray(),
+            'newses' => News::all()->pluck('title','id')->toArray(),
+            'prompts' => Prompt::all()->pluck('name','id')->toArray(),
         ]);
     }
-    
+
     /**
      * Shows the edit event event page.
      *
@@ -201,6 +207,9 @@ class EventController extends Controller
             'events' => Event::all()->where('id','!=',$event->id)->pluck('name','id')->toArray(),
             'figures' => Figure::all()->pluck('name','id')->toArray(),
             'locations' => Location::all()->pluck('name','id')->toArray(),
+            'factions' => Faction::all()->pluck('name','id')->toArray(),
+            'newses' => News::all()->pluck('title','id')->toArray(),
+            'prompts' => Prompt::all()->pluck('name','id')->toArray(),
         ]);
     }
 
@@ -208,7 +217,7 @@ class EventController extends Controller
      * Creates or edits a event.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @param  int|null                  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -217,8 +226,8 @@ class EventController extends Controller
         $id ? $request->validate(Event::$updateRules) : $request->validate(Event::$createRules);
 
         $data = $request->only([
-            'name', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 
-            'is_active', 'summary', 'category_id', 'figure_id', 'location_id',
+            'name', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th',
+            'is_active', 'summary', 'category_id', 'figure_id', 'location_id', 'faction_id', 'news_id', 'prompt_id',
             'occur_start', 'occur_end'
         ]);
         if($id && $service->updateEvent(Event::find($id), $data, Auth::user())) {
@@ -252,7 +261,7 @@ class EventController extends Controller
      * Deletes a event.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @param  int                       $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -271,7 +280,7 @@ class EventController extends Controller
      * Sorts events.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\EventService  $service
+     * @param  App\Services\WorldExpansion\EventService  $service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSortEvent(Request $request, EventService $service)
@@ -286,5 +295,5 @@ class EventController extends Controller
     }
 
 
-    
+
 }

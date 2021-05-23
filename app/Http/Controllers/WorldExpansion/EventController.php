@@ -5,13 +5,18 @@ namespace App\Http\Controllers\WorldExpansion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Settings;
 
 use App\Models\WorldExpansion\Location;
 use App\Models\WorldExpansion\LocationType;
+use App\Models\WorldExpansion\Faction;
+use App\Models\WorldExpansion\FactionType;
 use App\Models\WorldExpansion\Figure;
 use App\Models\WorldExpansion\FigureCategory;
 use App\Models\Item\Item;
+use App\Models\Prompt\Prompt;
+use App\Models\Prompt\PromptCategory;
 
 use App\Models\WorldExpansion\Event;
 use App\Models\WorldExpansion\EventFigure;
@@ -25,11 +30,11 @@ class EventController extends Controller
     | Event Controller
     |--------------------------------------------------------------------------
     |
-    | This controller shows locations and their categories, as well as the 
+    | This controller shows locations and their categories, as well as the
     | main World Info page created in the World Expansion extension.
     |
     */
-    
+
     /**
      * Shows the events page.
      *
@@ -41,12 +46,12 @@ class EventController extends Controller
         $query = EventCategory::query();
         $name = $request->get('name');
         if($name) $query->where('name', 'LIKE', '%'.$name.'%');
-        return view('worldexpansion.event_categories', [  
+        return view('worldexpansion.event_categories', [
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query())
 
         ]);
     }
-    
+
     /**
      * Shows the locations page.
      *
@@ -55,14 +60,14 @@ class EventController extends Controller
      */
     public function getEventCategory($id)
     {
-        $category = EventCategory::where('is_active',1)->find($id);
+        $category = EventCategory::find($id);
         if(!$category) abort(404);
 
         return view('worldexpansion.event_category_page', [
             'category' => $category
         ]);
     }
-    
+
     /**
      * Shows the locations page.
      *
@@ -73,12 +78,12 @@ class EventController extends Controller
     {
         $query = Event::with('category');
         $data = $request->only(['category_id', 'name', 'sort']);
-        if(isset($data['category_id']) && $data['category_id'] != 'none') 
+        if(isset($data['category_id']) && $data['category_id'] != 'none')
             $query->where('category_id', $data['category_id']);
-        if(isset($data['name'])) 
+        if(isset($data['name']))
             $query->where('name', 'LIKE', '%'.$data['name'].'%');
 
-        if(isset($data['sort'])) 
+        if(isset($data['sort']))
         {
             switch($data['sort']) {
                 case 'alpha':
@@ -97,15 +102,17 @@ class EventController extends Controller
                     $query->sortOldest();
                     break;
             }
-        } 
+        }
         else $query->sortCategory();
+
+        if(!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) $query->visible();
 
         return view('worldexpansion.events', [
             'events' => $query->paginate(20)->appends($request->query()),
             'categories' => ['none' => 'Any Category'] + EventCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
         ]);
     }
-    
+
     /**
      * Shows the locations page.
      *
@@ -114,17 +121,19 @@ class EventController extends Controller
      */
     public function getEvent($id)
     {
-        $event = Event::where('is_active',1)->find($id);
-        if(!$event) abort(404);
+        $event = Event::find($id);
+        if(!$event || !$event->is_active && (!Auth::check() || !(Auth::check() && Auth::user()->isStaff))) abort(404);
 
         return view('worldexpansion.event_page', [
             'event' => $event,
-            'figure_categories'  => FigureCategory::where('is_active',1)->get(),
-            'location_types'  => LocationType::where('is_active',1)->get(),
-            'event_categories'  => EventCategory::where('is_active',1)->get(),
+            'figure_categories'  => FigureCategory::get(),
+            'location_types'  => LocationType::get(),
+            'faction_types'  => FactionType::get(),
+            'event_categories'  => EventCategory::get(),
+            'prompt_categories'  => PromptCategory::get(),
         ]);
     }
-    
-    
+
+
 
 }

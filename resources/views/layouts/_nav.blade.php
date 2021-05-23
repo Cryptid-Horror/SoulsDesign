@@ -11,10 +11,17 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @if(Auth::check() && Auth::user()->is_news_unread)
+                    @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
                         <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
                     @else
                         <a class="nav-link" href="{{ url('news') }}">News</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if(Auth::check() && Auth::user()->is_sales_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
+                        <a class="nav-link d-flex text-warning" href="{{ url('sales') }}"><strong>Sales</strong><i class="fas fa-bell"></i></a>
+                    @else
+                        <a class="nav-link" href="{{ url('sales') }}">Sales</a>
                     @endif
                 </li>
                 @if(Auth::check())
@@ -36,6 +43,9 @@
                             <a class="dropdown-item" href="{{ url('bank') }}">
                                 Empyrean Bank
                             </a>
+                            <a class="dropdown-item" href="{{ url('awardcase') }}">
+                                Awards
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -50,7 +60,7 @@
                                 Claims
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
-                            Activity List (Prompts)
+                                Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
                                 Design Registration
@@ -79,9 +89,14 @@
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
                                 Trade Listings
                             </a>
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item" href="{{ url('reports') }}">
+                                My Reports
+                            </a>
                         </div>
                     </li>
-                                        <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Rollers
                         </a>
@@ -94,7 +109,6 @@
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/nesting') }}">Nesting </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/pp_counter') }}">Primal Point Counter</a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}"> Questing</a>
-
                         </div>
                     </li>
                 @endif
@@ -115,6 +129,10 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('raffles') }}">
                             Raffles
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
+                            Bug Reports
                         </a>
                     </div>
                 </li>
@@ -137,7 +155,7 @@
                         <a class="dropdown-item" href="{{ url('world/info') }}">
                             World Expanded
                         </a>
-                        <a class="dropdown-item" href="{{ url('/prompts') }}">
+                        <a class="dropdown-item" href="{{ url('prompts/prompts') }}">
                             Prompts
                         </a>
                         <a class="dropdown-item" href="{{ url('shops') }}">
@@ -164,6 +182,9 @@
                         </a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('gallery') }}">Gallery</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -189,7 +210,7 @@
                             <a class="nav-link btn btn-secondary btn-sm" href="{{ url('notifications') }}"><span class="fas fa-envelope"></span> {{ Auth::user()->notifications_unread }}</a>
                         </li>
                     @endif
-                    
+
                     <li class="nav-item dropdown">
                         <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Submit
@@ -205,9 +226,13 @@
                             <a class="dropdown-item" href="{{ url('designs') }}">
                                 Design Review
                             </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url('reports/new') }}">
+                                Submit Report
+                            </a>
                         </div>
                     </li>
-                    
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ Auth::user()->url }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

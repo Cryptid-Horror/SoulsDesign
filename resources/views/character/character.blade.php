@@ -5,36 +5,25 @@
 @section('meta-img') {{ $character->image->thumbnailUrl }} @endsection
 
 @section('profile-content')
-<div class="row no-gutters">
-    <div class="col-md-8 my-auto">
-        {!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Profile' => $character->url . '/profile']) !!}
-    </div>
-
-    <!-- character trade/gift status badges section -->
-    <div class="col-md-4 text-center text-md-right my-auto">
-        <h1>
-        <span class="badge {{ $character->is_trading ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_trading ? 'OPEN for sale and trade offers.' : 'CLOSED for sale and trade offers.' }}"><i class="fas fa-comments-dollar"></i></span>
-        @if(!$character->is_myo_slot)
-            <span class="badge {{ $character->is_gift_art_allowed ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_gift_art_allowed ? 'OPEN for gift art.' : 'CLOSED for gift art.' }}"><i class="fas fa-pencil-ruler"></i></span>
-        @endif
-        </h1>
-    </div>
-</div>
+@if($character->is_myo_slot)
+{!! breadcrumbs(['Registered Dragon Slot Masterlist' => 'myos', $character->fullName => $character->url]) !!}
+@else
+{!! breadcrumbs([($character->category->masterlist_sub_id ? $character->category->sublist->name.' Masterlist' : 'Character masterlist') => ($character->category->masterlist_sub_id ? 'sublist/'.$character->category->sublist->key : 'masterlist' ), $character->fullName => $character->url]) !!}
+@endif
 
 @include('character._header', ['character' => $character])
 
 {{-- Main Image --}}
 <div class="text-center mb-3">
-    <a href="{{ $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
-        <img src="{{ $character->image->imageUrl }}" class="image" />
-    </a>
-</div>
-<div class="text-center mb-3">
-    @if(isset($character->image->ext_url))
-        <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm d-inline d-sm-none"><i class="fas fa-link"></i> View Image On DeviantArt</a>
+    <div class="text-center">
+        <a href="{{ $character->image->canViewFull(Auth::check() ? Auth::user() : null) && file_exists( public_path($character->image->imageDirectory.'/'.$character->image->fullsizeFileName)) ? $character->image->fullsizeUrl : $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
+        <img src="{{ $character->image->canViewFull(Auth::check() ? Auth::user() : null) && file_exists( public_path($character->image->imageDirectory.'/'.$character->image->fullsizeFileName)) ? $character->image->fullsizeUrl : $character->image->imageUrl }}" class="image" />
+        </a>
+    </div>
+    @if($character->image->canViewFull(Auth::check() ? Auth::user() : null) && file_exists( public_path($character->image->imageDirectory.'/'.$character->image->fullsizeFileName)))
+        <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
-
 {{-- Profile --}}
 <div class="card character-bio">
     <div class="card-header d-flex align-items-center justify-content-between">

@@ -9,8 +9,6 @@ use App\Models\Feature\FeatureCategory;
 use App\Models\Character\CharacterCategory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Services\EmbedService;
-
 class CharacterImage extends Model
 {
     use SoftDeletes;
@@ -22,7 +20,7 @@ class CharacterImage extends Model
      */
     protected $fillable = [
         'character_id', 'user_id', 'species_id', 'subtype_id', 'rarity_id', 'url',
-        'extension', 'use_custom_thumb', 'hash', 'sort', 
+        'extension', 'use_cropper', 'hash', 'fullsize_hash', 'sort', 
         'x0', 'x1', 'y0', 'y1',
         'description', 'parsed_description',
         'is_valid', 'ext_url', 'genotype', 'phenotype', 'free_markings', 'adornments'
@@ -211,15 +209,40 @@ class CharacterImage extends Model
      */
     public function getImageUrlAttribute()
     {
-        if(!isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->imageFileName); }
-        else
-        {
-            $service = new EmbedService();
-            $content = $service->getEmbed($this->ext_url);
-            if(isset($content[0]['url'])) return $content[0]['url'];
-            else if($content[1] != null) return $content[1];
-            else return '#';
-        }
+        return asset($this->imageDirectory . '/' . $this->imageFileName);
+    }
+
+    /**
+     * Gets the file name of the model's fullsize image.
+     *
+     * @return string
+     */
+    public function getFullsizeFileNameAttribute()
+    {
+        return $this->id . '_'.$this->hash.'_'.$this->fullsize_hash.'_full.'.$this->extension;
+    }
+
+    /**
+     * Gets the file name of the model's fullsize image.
+     *
+     * @return string
+     */
+    public function getFullsizeUrlAttribute()
+    {
+        return asset($this->imageDirectory . '/' . $this->fullsizeFileName);
+    }
+
+    /**
+     * Gets the file name of the model's fullsize image.
+     *
+     * @param  user
+     * @return string
+     */
+    public function canViewFull($user = null)
+    {
+        if(((isset($this->character->user_id) && ($user ? $this->character->user->id == $user->id : false)) || ($user ? $user->hasPower('manage_characters') : false)))
+        return true;
+        else return false;
     }
 
     /**
@@ -249,15 +272,7 @@ class CharacterImage extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        if($this->use_custom_thumb || !isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->thumbnailFileName); }
-        else
-        {
-            $service = new EmbedService();
-            $content = $service->getEmbed($this->ext_url);
-            if(isset($content[0]['thumbnail_url'])) return $content[0]['thumbnail_url'];
-            else if($content[1] != null) return $content[1];
-            else return '#';
-        }
+        return asset($this->imageDirectory . '/' . $this->thumbnailFileName);
     }
 
     /**

@@ -9,9 +9,9 @@ use Auth;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
 use App\Models\Item\Item;
-use App\Models\Award\Award;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
+use App\Models\Award\Award;
 use App\Models\Raffle\Raffle;
 
 use App\Services\PromptService;
@@ -161,54 +161,17 @@ class PromptController extends Controller
      */
     public function getPromptIndex(Request $request)
     {
-
         $query = Prompt::query();
-
         $data = $request->only(['prompt_category_id', 'name']);
-
         if(isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none')
             $query->where('prompt_category_id', $data['prompt_category_id']);
         if(isset($data['name']))
             $query->where('name', 'LIKE', '%'.$data['name'].'%');
-
         return view('admin.prompts.prompts', [
             'prompts' => $query->paginate(20)->appends($request->query()),
-            'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-
-            'promptCategories' => PromptCategory::orderBy('sort', 'DESC')->get()->prepend([ "id" => 0 ]),
-            'pickPrompts' => $query->get()->groupBy('prompt_category_id'),
-            'count' => Prompt::all()
+            'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
         ]);
     }
-
-
-
-        /**
-         * Shows the prompt category index using the original code.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @return \Illuminate\Contracts\Support\Renderable
-         */
-        public function getPromptIndexOld(Request $request)
-        {
-
-            $query = Prompt::query();
-
-            $data = $request->only(['prompt_category_id', 'name']);
-
-            if(isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none')
-                $query->where('prompt_category_id', $data['prompt_category_id']);
-            if(isset($data['name']))
-                $query->where('name', 'LIKE', '%'.$data['name'].'%');
-
-            return view('admin.prompts.prompts_old', [
-                'prompts' => $query->paginate(20)->appends($request->query()),
-                'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
-            ]);
-        }
-
-
-
 
     /**
      * Shows the create prompt page.
@@ -261,7 +224,7 @@ class PromptController extends Controller
     {
         $id ? $request->validate(Prompt::$updateRules) : $request->validate(Prompt::$createRules);
         $data = $request->only([
-            'name', 'prompt_category_id', 'summary', 'description', 'start_at', 'end_at', 'hide_before_start', 'hide_after_end', 'is_active', 'rewardable_type', 'rewardable_id', 'quantity', 'image', 'remove_image'
+            'name', 'prompt_category_id', 'summary', 'description', 'start_at', 'end_at', 'hide_before_start', 'hide_after_end', 'is_active', 'rewardable_type', 'rewardable_id', 'quantity', 'image', 'remove_image', 'prefix', 'hide_submissions'
         ]);
         if($id && $service->updatePrompt(Prompt::find($id), $data, Auth::user())) {
             flash('Prompt updated successfully.')->success();

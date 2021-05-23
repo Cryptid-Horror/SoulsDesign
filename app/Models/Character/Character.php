@@ -29,6 +29,9 @@ use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\WorldExpansion\FactionRank;
+use App\Models\WorldExpansion\FactionRankMember;
+
 class Character extends Model
 {
     use SoftDeletes;
@@ -39,12 +42,12 @@ class Character extends Model
      * @var array
      */
     protected $fillable = [
-        'character_image_id', 'character_category_id', 'rarity_id', 'user_id', 
-        'owner_alias', 'number', 'slug', 'description', 'parsed_description', 
+        'character_image_id', 'character_category_id', 'rarity_id', 'user_id',
+        'owner_alias', 'number', 'slug', 'description', 'parsed_description',
         'is_sellable', 'is_tradeable', 'is_giftable',
         'sale_value', 'transferrable_at', 'is_visible',
-        'is_gift_art_allowed', 'is_trading', 'sort',
-        'is_myo_slot', 'name', 'trade_id', 'home_id', 'home_changed',
+        'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'sort',
+        'is_myo_slot', 'name', 'trade_id', 'owner_url', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
         'title_name', 'nicknames', 'is_adopted', 'health_status', 'sex', 'gender_pronouns',
         'temperament', 'diet', 'skills', 'rank', 'slots_used',
         'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
@@ -75,7 +78,7 @@ class Character extends Model
      *
      * @var array
      */
-    public $dates = ['transferrable_at', 'deceased_at', 'home_changed'];
+    protected $dates = ['transferrable_at', 'deceased_at', 'home_changed', 'faction_changed'];
 
     /**
      * Accessors to append to the model.
@@ -83,7 +86,7 @@ class Character extends Model
      * @var array
      */
     public $appends = ['is_available'];
-    
+
     /**
      * Validation rules for character creation.
      *
@@ -104,9 +107,10 @@ class Character extends Model
         'soul_link_target' => 'required_with:soul_link_type',
         'soul_link_target_link' => 'nullable|url',
         'genotype' => 'required',
-        'phenotype' => 'required'
+        'phenotype' => 'required',
+        'owner_url' => 'url|nullable'
     ];
-    
+
     /**
      * Validation rules for character updating.
      *
@@ -119,7 +123,7 @@ class Character extends Model
         'description' => 'nullable',
         'sale_value' => 'nullable',
     ];
-    
+
     /**
      * Validation rules for MYO slots.
      *
@@ -138,39 +142,39 @@ class Character extends Model
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Get the user who owns the character.
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\Models\User\User', 'user_id');
     }
-    
+
     /**
      * Get the category the character belongs to.
      */
-    public function category() 
+    public function category()
     {
         return $this->belongsTo('App\Models\Character\CharacterCategory', 'character_category_id');
     }
-    
+
     /**
      * Get the masterlist image of the character.
      */
-    public function image() 
+    public function image()
     {
         return $this->belongsTo('App\Models\Character\CharacterImage', 'character_image_id');
     }
-    
+
     /**
      * Get all images associated with the character.
      */
-    public function images($user = null) 
+    public function images($user = null)
     {
         return $this->hasMany('App\Models\Character\CharacterImage', 'character_id')->images($user);
     }
@@ -178,7 +182,7 @@ class Character extends Model
     /**
      * Get the user-editable profile data of the character.
      */
-    public function profile() 
+    public function profile()
     {
         return $this->hasOne('App\Models\Character\CharacterProfile', 'character_id');
     }
@@ -186,33 +190,49 @@ class Character extends Model
     /**
      * Get the character's active design update.
      */
-    public function designUpdate() 
+    public function designUpdate()
     {
         return $this->hasMany('App\Models\Character\CharacterDesignUpdate', 'character_id');
     }
-    
+
     /**
      * Get the trade this character is attached to.
      */
-    public function trade() 
+    public function trade()
     {
         return $this->belongsTo('App\Models\Trade', 'trade_id');
     }
-    
+
     /**
      * Get the trade this character is attached to.
      */
-    public function home() 
+    public function home()
     {
         return $this->belongsTo('App\Models\WorldExpansion\Location', 'home_id');
     }
-    
+
+    /**
+     * Get the faction this character is attached to.
+     */
+    public function faction()
+    {
+        return $this->belongsTo('App\Models\WorldExpansion\Faction', 'faction_id');
+    }
+
     /**
      * Get the rarity of this character.
      */
-    public function rarity() 
+    public function rarity()
     {
         return $this->belongsTo('App\Models\Rarity', 'rarity_id');
+    }
+
+    /**
+     * Get the character's associated gallery submissions.
+     */
+    public function gallerySubmissions()
+    {
+        return $this->hasMany('App\Models\Gallery\GalleryCharacter', 'character_id');
     }
 
     /**
@@ -224,7 +244,7 @@ class Character extends Model
     }
 
     /**********************************************************************************************
-    
+
         SCOPES
 
     **********************************************************************************************/
@@ -279,7 +299,7 @@ class Character extends Model
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/
@@ -296,9 +316,9 @@ class Character extends Model
         if(CharacterTransfer::active()->where('character_id', $this->id)->exists()) return false;
         return true;
     }
-    
+
     /**
-     * Display the owner's name. 
+     * Display the owner's name.
      * If the owner is not a registered user on the site, this displays the owner's dA name.
      *
      * @return string
@@ -306,7 +326,7 @@ class Character extends Model
     public function getDisplayOwnerAttribute()
     {
         if($this->user_id) return $this->user->displayName;
-        else return '<a href="https://www.deviantart.com/'.$this->owner_alias.'">'.$this->owner_alias.'@dA</a>';
+        else return prettyProfileLink($this->owner_url);
     }
 
     /**
@@ -320,7 +340,7 @@ class Character extends Model
         if($this->is_myo_slot) return $this->name;
         else return $this->attributes['slug'];
     }
-    
+
     /**
      * Displays the character's name, linked to their character page.
      *
@@ -435,8 +455,50 @@ class Character extends Model
         }
     }
 
+    public function getFactionSettingAttribute()
+    {
+        return intval(Settings::get('WE_character_factions'));
+    }
+
+    public function getCurrentFactionAttribute()
+    {
+        $setting = $this->factionSetting;
+
+        switch($setting) {
+            case 1:
+                if(!$this->user) return null;
+                elseif(!$this->user->faction) return null;
+                else return $this->user->faction->fullDisplayName;
+
+            case 2:
+                if(!$this->faction) return null;
+                else return $this->faction->fullDisplayName;
+
+            case 3:
+                if(!$this->faction) return null;
+                else return $this->faction->fullDisplayName;
+
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * Get character's faction rank.
+     */
+    public function getFactionRankAttribute()
+    {
+        if(!isset($this->faction_id) || !$this->faction->ranks()->count()) return null;
+        if(FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()) return FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()->rank;
+        if($this->faction->ranks()->where('is_open', 1)->count()) {
+            $standing = $this->getCurrencies(true)->where('id', Settings::get('WE_faction_currency'))->first();
+            if(!$standing) return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', 0)->first();
+            return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', '<=', $standing->quantity)->orderBy('breakpoint', 'DESC')->first();
+        }
+    }
+
     /**********************************************************************************************
-    
+
         OTHER FUNCTIONS
 
     **********************************************************************************************/
@@ -450,17 +512,17 @@ class Character extends Model
         if($this->user_id) return;
 
         // Check if the owner has an account and update the character's user ID for them.
-        $owner = User::where('alias', $this->owner_alias)->first();
-        if($owner) {
+        $owner = checkAlias($this->owner_url);
+        if(is_object($owner)) {
             $this->user_id = $owner->id;
-            $this->owner_alias = null;
+            $this->owner_url = null;
             $this->save();
 
             $owner->settings->is_fto = 0;
             $owner->settings->save();
         }
     }
-    
+
     /**
      * Get the character's held currencies.
      *
@@ -499,7 +561,7 @@ class Character extends Model
     {
         return CharacterCurrency::where('character_id', $this->id)->leftJoin('currencies', 'character_currencies.currency_id', '=', 'currencies.id')->orderBy('currencies.sort_character', 'DESC')->get()->pluck('name_with_quantity', 'currency_id')->toArray();
     }
-    
+
     /**
      * Get the character's currency logs.
      *
@@ -573,10 +635,10 @@ class Character extends Model
         //$character = $this;
         //return Submission::where('status', 'Approved')->with(['characters' => function($query) use ($character) {
         //    $query->where('submission_characters.character_id', 1);
-        //}])  
+        //}])
         //->whereHas('characters', function($query) use ($character) {
         //    $query->where('submission_characters.character_id', 1);
-        //});  
+        //});
         //return Submission::where('status', 'Approved')->where('user_id', $this->id)->orderBy('id', 'DESC')->paginate(30);
     }
 
@@ -595,6 +657,9 @@ class Character extends Model
                 case 'BOOKMARK_GIFTS':
                     $column = 'notify_on_gift_art_status';
                     break;
+                case 'BOOKMARK_GIFT_WRITING':
+                    $column = 'notify_on_gift_writing_status';
+                    break;
                 case 'BOOKMARK_OWNER':
                     $column = 'notify_on_transfer';
                     break;
@@ -607,7 +672,7 @@ class Character extends Model
             // they still have a bookmark on the character after it was transferred to them
             $bookmarkers = CharacterBookmark::where('character_id', $this->id)->where('user_id', '!=', $this->user_id);
             if($column) $bookmarkers = $bookmarkers->where($column, 1);
-            
+
             $bookmarkers = User::whereIn('id', $bookmarkers->pluck('user_id')->toArray())->get();
 
             // This may have to be redone more efficiently in the case of large numbers of bookmarkers,
@@ -617,7 +682,7 @@ class Character extends Model
                     'character_url' => $this->url,
                     'character_name' => $this->fullName
                 ]);
-        }        
+        }
     }
 
     /**

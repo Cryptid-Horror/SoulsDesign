@@ -9,9 +9,7 @@ use App\Models\Currency\Currency;
 use App\Models\Feature\FeatureCategory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Services\EmbedService;
-
-class CharacterDesignupdate extends Model
+class CharacterDesignUpdate extends Model
 {
     use SoftDeletes;
 
@@ -23,10 +21,12 @@ class CharacterDesignupdate extends Model
     protected $fillable = [
         'character_id', 'status', 'user_id', 'staff_id',
         'comments', 'staff_comments', 'data', 'extension',
-        'use_custom_thumb', 'x0', 'x1', 'y0', 'y1',
+        'use_cropper', 'x0', 'x1', 'y0', 'y1',
         'hash', 'species_id', 'subtype_id', 'rarity_id', 
         'has_comments', 'has_image', 'has_addons', 'has_features',
-        'submitted_at', 'ext_url', 'update_type',
+        'submitted_at', 'ext_url', 'update_type', 'fullsize_hash',
+        'approval_votes', 'rejection_votes',
+        
         'genotype', 'phenotype', 'free_markings', 'adornments'
     ];
 
@@ -50,7 +50,7 @@ class CharacterDesignupdate extends Model
      * @var array
      */
     public $dates = ['submitted_at'];
-    
+
     /**
      * Validation rules for uploaded images.
      *
@@ -60,26 +60,28 @@ class CharacterDesignupdate extends Model
         'image' => 'nullable|mimes:jpeg,gif,png',
         'thumbnail' => 'nullable|mimes:jpeg,gif,png',
         'ext_url' => 'nullable|url',
+        'artist_url.*' => 'nullable|url',
+        'designer_url.*' => 'nullable|url'
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Get the character associated with the design update.
      */
-    public function character() 
+    public function character()
     {
         return $this->belongsTo('App\Models\Character\Character', 'character_id');
     }
-    
+
     /**
      * Get the user who created the design update.
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\Models\User\User', 'user_id');
     }
@@ -87,7 +89,7 @@ class CharacterDesignupdate extends Model
     /**
      * Get the staff who processed the design update.
      */
-    public function staff() 
+    public function staff()
     {
         return $this->belongsTo('App\Models\User\User', 'staff_id');
     }
@@ -95,7 +97,7 @@ class CharacterDesignupdate extends Model
     /**
      * Get the species of the design update.
      */
-    public function species() 
+    public function species()
     {
         return $this->belongsTo('App\Models\Species\Species', 'species_id');
     }
@@ -103,7 +105,7 @@ class CharacterDesignupdate extends Model
     /**
      * Get the subtype of the design update.
      */
-    public function subtype() 
+    public function subtype()
     {
         return $this->belongsTo('App\Models\Species\Subtype', 'subtype_id');
     }
@@ -111,7 +113,7 @@ class CharacterDesignupdate extends Model
     /**
      * Get the rarity of the design update.
      */
-    public function rarity() 
+    public function rarity()
     {
         return $this->belongsTo('App\Models\Rarity', 'rarity_id');
     }
@@ -119,7 +121,7 @@ class CharacterDesignupdate extends Model
     /**
      * Get the features (traits) attached to the design update, ordered by display order.
      */
-    public function features() 
+    public function features()
     {
         $ids = FeatureCategory::orderBy('sort', 'DESC')->pluck('id')->toArray();
 
@@ -131,29 +133,29 @@ class CharacterDesignupdate extends Model
     /**
      * Get the features (traits) attached to the design update with no extra sorting.
      */
-    public function rawFeatures() 
+    public function rawFeatures()
     {
         return $this->hasMany('App\Models\Character\CharacterFeature', 'character_image_id')->where('character_features.character_type', 'Update');
     }
-    
+
     /**
      * Get the designers attached to the design update.
      */
-    public function designers() 
+    public function designers()
     {
         return $this->hasMany('App\Models\Character\CharacterImageCreator', 'character_image_id')->where('type', 'Designer')->where('character_type', 'Update');
     }
-    
+
     /**
      * Get the artists attached to the design update.
      */
-    public function artists() 
+    public function artists()
     {
         return $this->hasMany('App\Models\Character\CharacterImageCreator', 'character_image_id')->where('type', 'Artist')->where('character_type', 'Update');
     }
 
     /**********************************************************************************************
-    
+
         SCOPES
 
     **********************************************************************************************/
@@ -192,7 +194,7 @@ class CharacterDesignupdate extends Model
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/
@@ -279,7 +281,7 @@ class CharacterDesignupdate extends Model
     {
         return public_path($this->imageDirectory);
     }
-    
+
     /**
      * Gets the URL of the model's image.
      *
@@ -287,15 +289,7 @@ class CharacterDesignupdate extends Model
      */
     public function getImageUrlAttribute()
     {
-        if(!isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->imageFileName); }
-        else
-        {
-            $service = new EmbedService();
-            $content = $service->getEmbed($this->ext_url);
-            if(isset($content[0]['url'])) return $content[0]['url'];
-            else if($content[1] != null) return $content[1];
-            else return '#';
-        }
+        return asset($this->imageDirectory . '/' . $this->imageFileName);
     }
 
     /**
@@ -317,7 +311,7 @@ class CharacterDesignupdate extends Model
     {
         return $this->imagePath;
     }
-    
+
     /**
      * Gets the URL of the model's thumbnail image.
      *
@@ -325,15 +319,7 @@ class CharacterDesignupdate extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        if($this->use_custom_thumb || !isset($this->ext_url)) { return asset($this->imageDirectory . '/' . $this->thumbnailFileName); }
-        else
-        {
-            $service = new EmbedService();
-            $content = $service->getEmbed($this->ext_url);
-            if(isset($content[0]['thumbnail_url'])) return $content[0]['thumbnail_url'];
-            else if($content[1] != null) return $content[1];
-            else return '#';
-        }
+        return asset($this->imageDirectory . '/' . $this->thumbnailFileName);
     }
 
     /**
@@ -346,8 +332,18 @@ class CharacterDesignupdate extends Model
         return url('designs/'.$this->id);
     }
 
+    /**
+     * Gets the voting data of the design update request.
+     *
+     * @return string
+     */
+    public function getVoteDataAttribute()
+    {
+        return collect(json_decode($this->attributes['vote_data'], true));
+    }
+
     /**********************************************************************************************
-    
+
         OTHER FUNCTIONS
 
     **********************************************************************************************/

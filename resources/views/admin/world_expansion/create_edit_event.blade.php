@@ -104,6 +104,45 @@
         </div>
         <div class="col-12 text-right"><a href="#" class="btn btn-primary" id="add-location">Add Location</a></div>
     </div>
+
+    <h3>Associated Factions</h3>
+    <div class="form-group row">
+        <div id="factionList" class="col-12 row">
+            @foreach($event->factions as $faction)
+                <div class="d-flex mb-2 col-4">
+                    {!! Form::select('faction_id['.$faction->id.']', $factions, $faction->id, ['class' => 'form-control mr-2 faction-select original', 'placeholder' => 'Select Faction']) !!}
+                    <a href="#" class="remove-faction btn btn-danger mb-2">×</a>
+                </div>
+            @endforeach
+        </div>
+        <div class="col-12 text-right"><a href="#" class="btn btn-primary" id="add-faction">Add Faction</a></div>
+    </div>
+
+    <h3>Associated News Posts</h3>
+    <div class="form-group row">
+        <div id="newsList" class="col-12 row">
+            @foreach($event->newses as $news)
+                <div class="d-flex mb-2 col-4">
+                    {!! Form::select('news_id['.$news->id.']', $newses, $news->id, ['class' => 'form-control mr-2 news-select original', 'placeholder' => 'Select News Post']) !!}
+                    <a href="#" class="remove-news btn btn-danger mb-2">×</a>
+                </div>
+            @endforeach
+        </div>
+        <div class="col-12 text-right"><a href="#" class="btn btn-primary" id="add-news">Add News Post</a></div>
+    </div>
+
+    <h3>Associated Prompts</h3>
+    <div class="form-group row">
+        <div id="promptList" class="col-12 row">
+            @foreach($event->prompts as $prompt)
+                <div class="d-flex mb-2 col-4">
+                    {!! Form::select('prompt_id['.$prompt->id.']', $prompts, $prompt->id, ['class' => 'form-control mr-2 prompt-select original', 'placeholder' => 'Select Prompt']) !!}
+                    <a href="#" class="remove-prompt btn btn-danger mb-2">×</a>
+                </div>
+            @endforeach
+        </div>
+        <div class="col-12 text-right"><a href="#" class="btn btn-primary" id="add-prompt">Add Prompt</a></div>
+    </div>
 @endif
 
 
@@ -127,6 +166,21 @@
 <div class="location-row hide mb-2 col-4">
     {!! Form::select('location_id[]', $locations, null, ['class' => 'form-control mr-2 location-select', 'placeholder' => 'Select Location']) !!}
     <a href="#" class="remove-location btn btn-danger mb-2">×</a>
+</div>
+
+<div class="faction-row hide mb-2 col-4">
+    {!! Form::select('faction_id[]', $factions, null, ['class' => 'form-control mr-2 faction-select', 'placeholder' => 'Select Faction']) !!}
+    <a href="#" class="remove-faction btn btn-danger mb-2">×</a>
+</div>
+
+<div class="news-row hide mb-2 col-4">
+    {!! Form::select('news_id[]', $newses, null, ['class' => 'form-control mr-2 news-select', 'placeholder' => 'Select News Post']) !!}
+    <a href="#" class="remove-news btn btn-danger mb-2">×</a>
+</div>
+
+<div class="prompt-row hide mb-2 col-4">
+    {!! Form::select('prompt_id[]', $prompts, null, ['class' => 'form-control mr-2 prompt-select', 'placeholder' => 'Select Prompt']) !!}
+    <a href="#" class="remove-prompt btn btn-danger mb-2">×</a>
 </div>
 
 @endsection
@@ -188,12 +242,87 @@ $( document ).ready(function() {
     function removeLocationRow($trigger) {
         $trigger.parent().remove();
     }
-    
+
+
+    $('.original.faction-select').selectize();
+    $('#add-faction').on('click', function(e) {
+        e.preventDefault();
+        addFactionRow();
+    });
+    $('.remove-faction').on('click', function(e) {
+        e.preventDefault();
+        removeFigureRow($(this));
+    })
+    function addFactionRow() {
+        var $clone = $('.faction-row').clone();
+        $('#factionList').append($clone);
+        $clone.removeClass('hide faction-row');
+        $clone.addClass('d-flex');
+        $clone.find('.remove-faction').on('click', function(e) {
+            e.preventDefault();
+            removeFactionRow($(this));
+        })
+        $clone.find('.faction-select').selectize();
+    }
+    function removeFactionRow($trigger) {
+        $trigger.parent().remove();
+    }
+
+
+    $('.original.news-select').selectize();
+    $('#add-news').on('click', function(e) {
+        e.preventDefault();
+        addNewsRow();
+    });
+    $('.remove-news').on('click', function(e) {
+        e.preventDefault();
+        removeFigureRow($(this));
+    })
+    function addNewsRow() {
+        var $clone = $('.news-row').clone();
+        $('#newsList').append($clone);
+        $clone.removeClass('hide news-row');
+        $clone.addClass('d-flex');
+        $clone.find('.remove-news').on('click', function(e) {
+            e.preventDefault();
+            removeNewsRow($(this));
+        })
+        $clone.find('.news-select').selectize();
+    }
+    function removeNewsRow($trigger) {
+        $trigger.parent().remove();
+    }
+
+
+    $('.original.prompt-select').selectize();
+    $('#add-prompt').on('click', function(e) {
+        e.preventDefault();
+        addPromptRow();
+    });
+    $('.remove-prompt').on('click', function(e) {
+        e.preventDefault();
+        removeFigureRow($(this));
+    })
+    function addPromptRow() {
+        var $clone = $('.prompt-row').clone();
+        $('#promptList').append($clone);
+        $clone.removeClass('hide prompt-row');
+        $clone.addClass('d-flex');
+        $clone.find('.remove-prompt').on('click', function(e) {
+            e.preventDefault();
+            removePromptRow($(this));
+        })
+        $clone.find('.prompt-select').selectize();
+    }
+    function removePromptRow($trigger) {
+        $trigger.parent().remove();
+    }
+
     $( ".datepicker" ).datetimepicker({
         dateFormat: "yy-mm-dd",
         timeFormat: '',
     });
 });
-    
+
 </script>
 @endsection

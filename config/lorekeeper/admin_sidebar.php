@@ -23,12 +23,25 @@ return [
             ]
         ]
     ],
+    'Reports' => [
+        'power' => 'manage_reports',
+        'links' => [
+            [
+                'name' => 'Report Queue',
+                'url' => 'admin/reports/pending'
+            ]
+        ]
+    ],
     'Site' => [
         'power' => 'edit_pages',
         'links' => [
             [
                 'name' => 'News',
                 'url' => 'admin/news'
+            ],
+            [
+                'name' => 'Sales',
+                'url' => 'admin/sales'
             ],
             [
                 'name' => 'Pages',
@@ -53,6 +66,14 @@ return [
         'power' => 'manage_submissions',
         'links' => [
             [
+                'name' => 'Gallery Submissions',
+                'url' => 'admin/gallery/submissions'
+            ],
+            [
+                'name' => 'Gallery Currency Awards',
+                'url' => 'admin/gallery/currency'
+            ],
+            [
                 'name' => 'Prompt Submissions',
                 'url' => 'admin/submissions'
             ],
@@ -76,96 +97,6 @@ return [
             [
                 'name' => 'Award Grants',
                 'url' => 'admin/grants/awards'
-            ],
-        ]
-    ],
-    'World.Expanded' => [
-        'power' => 'manage_world',
-        'links' => [
-            [
-                'name' => 'Locations',
-                'url' => 'admin/world/locations'
-            ],
-            [
-                'name' => 'Fauna',
-                'url' => 'admin/world/faunas'
-            ],
-            [
-                'name' => 'Flora',
-                'url' => 'admin/world/floras'
-            ],
-            [
-                'name' => ' Events',
-                'url' => 'admin/world/events'
-            ],
-            [
-                'name' => ' Figures',
-                'url' => 'admin/world/figures'
-            ],
-        ]
-    ],
-    'Data' => [
-        'power' => 'edit_data',
-        'links' => [
-            [
-                'name' => 'Rarities',
-                'url' => 'admin/data/rarities'
-            ],
-            [
-                'name' => 'Species',
-                'url' => 'admin/data/species'
-            ],
-            [
-                'name' => 'Subtypes',
-                'url' => 'admin/data/subtypes'
-            ],
-            [
-                'name' => 'Trait Categories',
-                'url' => 'admin/data/trait-categories'
-            ],
-            [
-                'name' => 'Traits',
-                'url' => 'admin/data/traits'
-            ],
-            [
-                'name' => 'Item Categories',
-                'url' => 'admin/data/item-categories'
-            ],
-            [
-                'name' => 'Items',
-                'url' => 'admin/data/items'
-            ],
-            [
-                'name' => 'Shops',
-                'url' => 'admin/data/shops'
-            ],
-            [
-                'name' => 'Award Categories',
-                'url' => 'admin/data/award-categories'
-            ],
-            [
-                'name' => 'Awards',
-                'url' => 'admin/data/awards'
-            ],
-            [
-                'name' => 'Prompt Categories',
-                'url' => 'admin/data/prompt-categories'
-            ],
-            [
-                'name' => 'Prompts',
-                'url' => 'admin/data/prompts'
-            ],
-            [
-                'name' => 'Character Categories',
-                'url' => 'admin/data/character-categories'
-            ],
-            [
-                'name' => 'Currencies',
-                'url' => 'admin/data/currencies'
-            ],
-            [
-                'name' => 'Loot Tables',
-                'url' => 'admin/data/loot-tables'
             ],
         ]
     ],
@@ -195,6 +126,104 @@ return [
             [
                 'name' => 'Registered Dragon Approvals',
                 'url' => 'admin/myo-approvals/pending'
+            ],
+        ]
+    ],
+    'Data' => [
+        'power' => 'edit_data',
+        'links' => [
+            [
+                'name' => 'Galleries',
+                'url' => 'admin/data/galleries'
+            ],
+            [
+                'name' => 'Award Categories',
+                'url' => 'admin/data/award-categories'
+            ],
+            [
+                'name' => 'Awards',
+                'url' => 'admin/data/awards'
+            ],
+            [
+                'name' => 'Character Categories',
+                'url' => 'admin/data/character-categories'
+            ],
+            [
+                'name' => 'Sub Masterlists',
+                'url' => 'admin/data/sublists'
+            ],
+            [
+                'name' => 'Rarities',
+                'url' => 'admin/data/rarities'
+            ],
+            [
+                'name' => 'Species',
+                'url' => 'admin/data/species'
+            ],
+            [
+                'name' => 'Subtypes',
+                'url' => 'admin/data/subtypes'
+            ],
+            [
+                'name' => 'Traits',
+                'url' => 'admin/data/traits'
+            ],
+            [
+                'name' => 'Shops',
+                'url' => 'admin/data/shops'
+            ],
+            [
+                'name' => 'Currencies',
+                'url' => 'admin/data/currencies'
+            ],
+            [
+                'name' => 'Prompt Categories',
+                'url' => 'admin/data/prompt-categories'
+            ],
+            [
+                'name' => 'Prompts',
+                'url' => 'admin/data/prompts'
+            ],
+            [
+                'name' => 'Loot Tables',
+                'url' => 'admin/data/loot-tables'
+            ],
+            [
+                'name' => 'Items',
+                'url' => 'admin/data/items'
+            ],
+        ]
+    ],
+    'World.Expanded' => [
+        'power' => 'manage_world',
+        'links' => [
+            [
+                'name' => 'Locations',
+                'url' => 'admin/world/locations'
+            ],
+            [
+                'name' => 'Fauna',
+                'url' => 'admin/world/faunas'
+            ],
+            [
+                'name' => 'Flora',
+                'url' => 'admin/world/floras'
+            ],
+            [
+                'name' => ' Events',
+                'url' => 'admin/world/events'
+            ],
+            [
+                'name' => ' Figures',
+                'url' => 'admin/world/figures'
+            ],
+            [
+                'name' => 'Factions',
+                'url' => 'admin/world/factions'
+            ],
+            [
+                'name' => 'Concepts',
+                'url' => 'admin/world/concepts'
             ],
         ]
     ],

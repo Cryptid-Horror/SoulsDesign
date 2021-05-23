@@ -26,14 +26,24 @@
     ---OR---
     <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
 </div>
+@if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
 <div class="form-group">
-    {!! Form::checkbox('use_custom_thumb', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomThumbnail']) !!}
-    {!! Form::label('use_custom_thumb', 'Upload Custom Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
+    {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+    {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the Thumbnail Automation, or upload a custom thumbnail.') !!}
 </div>
-<div class="card mb-3" id="thumbnailSelect">
+<div class="card mb-3" id="thumbnailCrop">
     <div class="card-body">
-        Select an image to use the thumbnail cropper, or add a dA link to see a preview.
+        <div id="cropSelect">By using this function, the thumbnail will be automatically generated from the full image.</div>
+        {!! Form::hidden('x0', 1) !!}
+        {!! Form::hidden('x1', 1) !!}
+        {!! Form::hidden('y0', 1) !!}
+        {!! Form::hidden('y1', 1) !!}
     </div>
+</div>
+@else
+<div class="form-group">
+    {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+        {!! Form::label('use_cropper', 'Use Image Cropper', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
 </div>
 <div class="card mb-3" id="thumbnailCrop">
     <div class="card-body">
@@ -44,12 +54,7 @@
         {!! Form::hidden('y1', null, ['id' => 'cropY1']) !!}
     </div>
 </div>
-<div class="card mb-3" id="thumbnailDaPreview">
-    <div class="card-body">
-        <p id="previewMessage"></p>
-        <img src="#" id="thumbnailDa"/>
-    </div>
-</div>
+@endif
 <div class="card mb-3" id="thumbnailUpload">
     <div class="card-body">
         {!! Form::label('Thumbnail Image') !!} {!! add_help('This image is shown on the masterlist page.') !!}
@@ -58,19 +63,19 @@
     </div>
 </div>
 <p class="alert alert-info">
-    This section is for crediting the image creators. The first box is for the designer's deviantART name (if any). If the designer has an account on the site, it will link to their site profile; if not, it will link to their dA page. The second is for a custom URL if they don't use dA. Both are optional - you can fill in the alias and ignore the URL, or vice versa. If you fill in both, it will link to the given URL, but use the alias field as the link name.
+    This section is for crediting the image creators. The first box is for the designer or artist's on-site username (if any). The second is for a link to the designer or artist if they don't have an account on the site.
 </p>
 <div class="form-group">
     {!! Form::label('Designer(s)') !!}
     <div id="designerList">
         <div class="mb-2 d-flex">
-            {!! Form::text('designer_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer Alias']) !!}
+            {!! Form::select('designer_id[]', $users, null, ['class'=> 'form-control mr-2 selectize', 'placeholder' => 'Select a Designer']) !!}
             {!! Form::text('designer_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
             <a href="#" class="add-designer btn btn-link" data-toggle="tooltip" title="Add another designer">+</a>
         </div>
     </div>
     <div class="designer-row hide mb-2">
-        {!! Form::text('designer_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer Alias']) !!}
+        {!! Form::select('designer_id[]', $users, null, ['class'=> 'form-control mr-2 designer-select', 'placeholder' => 'Select a Designer']) !!}
         {!! Form::text('designer_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
         <a href="#" class="add-designer btn btn-link" data-toggle="tooltip" title="Add another designer">+</a>
     </div>
@@ -79,13 +84,13 @@
     {!! Form::label('Artist(s)') !!}
     <div id="artistList">
         <div class="mb-2 d-flex">
-            {!! Form::text('artist_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist Alias']) !!}
+            {!! Form::select('artist_id[]', $users, null, ['class'=> 'form-control mr-2 selectize', 'placeholder' => 'Select an Artist']) !!}
             {!! Form::text('artist_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
             <a href="#" class="add-artist btn btn-link" data-toggle="tooltip" title="Add another artist">+</a>
         </div>
     </div>
     <div class="artist-row hide mb-2">
-        {!! Form::text('artist_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist Alias']) !!}
+        {!! Form::select('artist_id[]', $users, null, ['class'=> 'form-control mr-2 artist-select', 'placeholder' => 'Select an Artist']) !!}
         {!! Form::text('artist_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
         <a href="#" class="add-artist btn btn-link mb-2" data-toggle="tooltip" title="Add another artist">+</a>
     </div>
@@ -198,6 +203,7 @@ $( document ).ready(function() {
 
     // Designers and artists //////////////////////////////////////////////////////////////////////
 
+    $('.selectize').selectize();
     $('.add-designer').on('click', function(e) {
         e.preventDefault();
         addDesignerRow($(this));
@@ -211,6 +217,7 @@ $( document ).ready(function() {
             e.preventDefault();
             addDesignerRow($(this));
         })
+        $clone.find('.designer-select').selectize();
         $trigger.css({ visibility: 'hidden' });
     }
 
@@ -227,6 +234,7 @@ $( document ).ready(function() {
             e.preventDefault();
             addArtistRow($(this));
         })
+        $clone.find('.artist-select').selectize();
         $trigger.css({ visibility: 'hidden' });
     }
 
@@ -311,39 +319,9 @@ $( document ).ready(function() {
         readURL(this);
     });
 
-    var embed_route = "/embed?url="
-
-    function fetchEmbeds(url) {
-        // Set current embed and error as loading
-        $('#previewMessage').html('Loading...');
-        $('#thumbnailDa').attr('src', '/images/loading.gif');
-        if(typeof url !== 'undefined') {
-            $.get(embed_route + url, function(data, status) {
-                if(typeof data['error'] !== 'undefined') {
-                    $('#previewMessage').html('Error: ' + data['error']);
-                    $('#thumbnailDa').attr('src', '#');
-                }
-                else
-                {
-                    $('#previewMessage').html('Image found: <a href=' + url + '>' + url + '</a>');
-                    $('#thumbnailDa').attr('src', data['thumbnail_url']);
-                }
-                updatePreviewArea();
-            }).catch(function() {
-                $('#previewMessage').html('Error: Server failed to process request');
-                $('#thumbnailDa').attr('src', '#');
-            });
-        }
-        else {
-            $('#previewMessage').html('Error: URL is undefined');
-            $('#thumbnailDa').attr('src', '#');
-        }
-    }
-
     $("#extMainImage").focusout(function() {
         $("#mainImage")[0].value = null;
         $useCustomThumbnail.bootstrapToggle('off');
-        fetchEmbeds(this.value);
     });
 
     function updateCropValues() {

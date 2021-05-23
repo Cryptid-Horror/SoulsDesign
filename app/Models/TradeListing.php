@@ -8,18 +8,21 @@ use Carbon\Carbon;
 use Settings;
 
 use App\Models\Character\Character;
+use App\Traits\Commentable;
 
 use App\Models\Model;
 
 class TradeListing extends Model
 {
+    use Commentable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'comments', 'contact', 'data', 'expires_at'
+        'user_id', 'comments', 'contact', 'data', 'expires_at', 'title'
     ];
 
     /**
@@ -49,18 +52,20 @@ class TradeListing extends Model
      * @var array
      */
     public static $createRules = [
+        'title' => 'nullable|between:3,50',
         'comments' => 'nullable',
         'contact' => 'required',
         'seeking_etc' => 'nullable|between:3,100',
         'offering_etc' => 'nullable|between:3,100',
     ];
-    
+
     /**
      * Validation rules for character updating.
      *
      * @var array
      */
     public static $updateRules = [
+        'title' => 'nullable|between:3,50',
         'comments' => 'nullable',
         'contact' => 'required',
         'seeking_etc' => 'nullable|between:3,100',
@@ -68,7 +73,7 @@ class TradeListing extends Model
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -76,13 +81,13 @@ class TradeListing extends Model
     /**
      * Get the user who posted the trade listing.
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\Models\User\User', 'user_id');
     }
 
     /**********************************************************************************************
-    
+
         SCOPES
 
     **********************************************************************************************/
@@ -100,7 +105,7 @@ class TradeListing extends Model
                     $query->where('expires_at', '>=', Carbon::now());
                 });
         });
-        
+
     }
 
     /**
@@ -116,11 +121,11 @@ class TradeListing extends Model
                     $query->where('expires_at', '<=', Carbon::now());
                 });
         });
-        
+
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/
@@ -132,9 +137,21 @@ class TradeListing extends Model
      */
     public function getDisplayNameAttribute()
     {
-        return $this->user->displayName .'\'s <a href="'. $this->url. '">Trade Listing</a> (#' . $this->id .')';
+        if($this->title == null) return $this->user->displayName .'\'s <a href="'. $this->url. '">Trade Listing</a> (#' . $this->id .')';
+        else return '<a href="'.$this->url.'" data-toggle="tooltip" title="'.$this->user->name.'\'s trade listing.">'.$this->title.'</a> (Trade Listing #' . $this->id .')';
     }
-    
+
+    /**
+     * Gets the Display Name of the trade listing with the title portion somewhat shorter.
+     *
+     * @return string
+     */
+    public function getDisplayNameShortAttribute()
+    {
+        if($this->title == null) return $this->user->displayName .'\'s <a href="'. $this->url. '">Trade Listing</a> (#' . $this->id .')';
+        else return '<a href="'.$this->url.'" data-toggle="tooltip" title="'.$this->user->name.'\'s trade listing.">'.$this->title.'</a>';
+    }
+
     /**
      * Check if the trade listing is active.
      *
@@ -168,11 +185,11 @@ class TradeListing extends Model
     }
 
     /**********************************************************************************************
-    
+
         OTHER FUNCTIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Gets all characters involved in the trade listing.
      *

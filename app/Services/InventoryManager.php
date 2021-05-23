@@ -8,6 +8,7 @@ use Auth;
 use Config;
 use Notifications;
 
+use Illuminate\Support\Arr;
 use App\Models\User\User;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
@@ -59,7 +60,7 @@ class InventoryManager extends Service
 
             foreach($users as $user) {
                 foreach($items as $item) {
-                    if($this->creditItem($staff, $user, 'Staff Grant', array_only($data, ['data', 'disallow_transfer', 'notes']), $item, $keyed_quantities[$item->id]))
+                    if($this->creditItem($staff, $user, 'Staff Grant', Arr::only($data, ['data', 'disallow_transfer', 'notes']), $item, $keyed_quantities[$item->id]))
                     {
                         Notifications::create('ITEM_GRANT', $user, [
                             'item_name' => $item->name,
@@ -115,7 +116,7 @@ class InventoryManager extends Service
             if(!count($items)) throw new \Exception("No valid items found.");
             
             foreach($items as $item) {
-                $this->creditItem($staff, $character, 'Staff Grant', array_only($data, ['data', 'disallow_transfer', 'notes']), $item, $keyed_quantities[$item->id]);
+                $this->creditItem($staff, $character, 'Staff Grant', Arr::only($data, ['data', 'disallow_transfer', 'notes']), $item, $keyed_quantities[$item->id]);
                 if($character->is_visible && $character->user_id) {
                     Notifications::create('CHARACTER_ITEM_GRANT', $character->user, [
                         'item_name' => $item->name,
@@ -151,13 +152,18 @@ class InventoryManager extends Service
         try {
             foreach($stacks as $key=>$stack) {
                 $quantity = $quantities[$key];
+
+                if(!$stack) throw new \Exception("Invalid or no stack selected.");
                 if(!$recipient) throw new \Exception("Invalid recipient selected.");
                 if(!$sender) throw new \Exception("Invalid sender selected.");
+
                 if($recipient->logType == 'Character' && $sender->logType == 'Character') throw new \Exception("Cannot transfer items between characters.");
                 if($recipient->logType == 'Character' && !$sender->hasPower('edit_inventories') && !$recipient->is_visible) throw new \Exception("Invalid character selected.");
                 if(!$stacks) throw new \Exception("Invalid stack selected.");
                 if($sender->logType == 'Character' && $quantity <= 0 && $stack->count > 0) $quantity = $stack->count;
                 if($quantity <= 0) throw new \Exception("Invalid quantity entered.");
+                
+                if(($recipient->logType == 'Character' && !$sender->hasPower('edit_inventories') && !Auth::user() == $recipient->user) || ($recipient->logType == 'User' && !Auth::user()->hasPower('edit_inventories') && !Auth::user() == $sender->user)) throw new \Exception("Cannot transfer items to/from a character you don't own.");
                 
                 if($recipient->logType == 'Character' && !$stack->item->category->is_character_owned) throw new \Exception("One of the selected items cannot be owned by characters.");
                 if((!$stack->item->allow_transfer || isset($stack->data['disallow_transfer'])) && !Auth::user()->hasPower('edit_inventories')) throw new \Exception("One of the selected items cannot be transferred.");
@@ -201,7 +207,7 @@ class InventoryManager extends Service
         try {
             foreach($stacks as $key=>$stack) {
                 $quantity = $quantities[$key];
-                if(!$sender->hasAlias) throw new \Exception("Your deviantART account must be verified before you can perform this action.");
+                if(!$sender->hasAlias) throw new \Exception("You need to have a linked social media account before you can perform this action.");
                 if(!$stack) throw new \Exception("An invalid item was selected.");
                 if($stack->user_id != $sender->id && !$sender->hasPower('edit_inventories')) throw new \Exception("You do not own one of the selected items.");
                 if($stack->user_id == $recipient->id) throw new \Exception("Cannot send items to the item's owner.");
@@ -253,7 +259,7 @@ class InventoryManager extends Service
                 foreach($stacks as $key=>$stack) {
                     $user = Auth::user();
                     $quantity = $quantities[$key];
-                    if(!$owner->hasAlias) throw new \Exception("Your deviantART account must be verified before you can perform this action.");
+                    if(!$owner->hasAlias) throw new \Exception("You need to have a linked social media account before you can perform this action.");
                     if(!$stack) throw new \Exception("An invalid item was selected.");
                     if($stack->user_id != $owner->id && !$user->hasPower('edit_inventories')) throw new \Exception("You do not own one of the selected items.");
                     if($stack->count < $quantity) throw new \Exception("Quantity to delete exceeds item count.");
@@ -276,7 +282,7 @@ class InventoryManager extends Service
                 foreach($stacks as $key=>$stack) {
                     $quantity = $quantities[$key];
                     $user = Auth::user();
-                    if(!$user->hasAlias) throw new \Exception("Your deviantART account must be verified before you can perform this action.");
+                    if(!$user->hasAlias) throw new \Exception("You need to have a linked social media account before you can perform this action.");
                     if(!$stack) throw new \Exception("An invalid item was selected.");
                     if($stack->character->user_id != $user->id && !$user->hasPower('edit_inventories')) throw new \Exception("You do not own one of the selected items.");
                     if($stack->count < $quantity) throw new \Exception("Quantity to delete exceeds item count.");
@@ -317,11 +323,12 @@ class InventoryManager extends Service
         try {
             foreach($stacks as $key=>$stack) {
                 $quantity = $quantities[$key];
-                if(!$user->hasAlias) throw new \Exception("Your deviantART account must be verified before you can perform this action.");
+                if(!$user->hasAlias) throw new \Exception("You need to have a linked social media account before you can perform this action.");
                 if(!$stack) throw new \Exception("An invalid item was selected.");
                 if($stack->user_id != $user->id && !$user->hasPower('edit_inventories')) throw new \Exception("You do not own one of the selected items.");
                 if($stack->count < $quantity) throw new \Exception("Quantity to sell exceeds item count.");
                 if(!isset($stack->item->data['resell'])) throw new \Exception ("This item cannot be sold.");
+                if(!Config::get('lorekeeper.extensions.item_entry_expansion.resale_function')) throw new \Exception("This function is not currently enabled.");
                 
                 $oldUser = $stack->user;
 
@@ -354,7 +361,7 @@ class InventoryManager extends Service
     }
 
     /**
-     * Credits an item to a user.
+     * Credits an item to a user or character.
      *
      * @param  \App\Models\User\User|\App\Models\Character\Character  $sender
      * @param  \App\Models\User\User|\App\Models\Character\Character  $recipient
@@ -461,6 +468,35 @@ class InventoryManager extends Service
 
             if($type && !$this->createLog($owner ? $owner->id : null, $owner ? $owner->logType : null, null, null, $stack->id, $type, $data['data'], $stack->item->id, $quantity)) throw new \Exception("Failed to create log."); 
 
+            return $this->commitReturn(true);
+        } catch(\Exception $e) { 
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Names an item stack.
+     *
+     * @param  \App\Models\User\User|\App\Models\Character\Character          $owner
+     * @param  \App\Models\User\UserItem|\App\Models\Character\CharacterItem  $stacks
+     * @param  int                                                            $quantities
+     * @return bool
+     */
+    public function nameStack($owner, $stacks, $name)
+    {
+        DB::beginTransaction();
+
+        try {
+            foreach($stacks as $key=>$stack) {
+                $user = Auth::user();
+                if(!$user->hasAlias) throw new \Exception("You need to have a linked social media account before you can perform this action.");
+                if(!$stack) throw new \Exception("An invalid item was selected.");
+                if($stack->character->user_id != $user->id && !$user->hasPower('edit_inventories')) throw new \Exception("You do not own one of the selected items.");
+
+                $stack['stack_name'] = $name;
+                $stack->save();
+            }
             return $this->commitReturn(true);
         } catch(\Exception $e) { 
             $this->setError('error', $e->getMessage());

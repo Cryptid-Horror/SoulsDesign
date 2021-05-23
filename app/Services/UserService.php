@@ -3,24 +3,29 @@
 use App\Services\Service;
 
 use DB;
+use Settings;
 use Auth;
 use File;
 use Image;
-use Settings;
 use Carbon\Carbon;
 
 use App\Models\User\User;
 use App\Models\Rank\Rank;
 use App\Models\Character\CharacterTransfer;
 use App\Models\WorldExpansion\Location;
+use App\Models\WorldExpansion\Faction;
+use App\Models\WorldExpansion\FactionRankMember;
 use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Submission\Submission;
+use App\Models\Gallery\GallerySubmission;
 use App\Models\User\UserUpdateLog;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 use App\Services\SubmissionManager;
+use App\Services\GalleryManager;
 use App\Services\CharacterManager;
+use App\Services\CurrencyManager;
 use App\Models\Trade;
 
 class UserService extends Service
@@ -45,11 +50,16 @@ class UserService extends Service
         // If the rank is not given, create a user with the lowest existing rank.
         if(!isset($data['rank_id'])) $data['rank_id'] = Rank::orderBy('sort')->first()->id;
 
+        // Make birthday into format we can store
+        $date = $data['dob']['day']."-".$data['dob']['month']."-".$data['dob']['year'];
+        $formatDate = carbon::parse($date);
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'rank_id' => $data['rank_id'],
             'password' => Hash::make($data['password']),
+            'birthday' => $formatDate,
         ]);
         $user->settings()->create([
             'user_id' => $user->id,
@@ -100,14 +110,55 @@ class UserService extends Service
             else throw new \Exception("You can't change your location yet!");
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Updates the user's password. 
+     * Updates a user. Used in modifying the admin user on the command line.
+     *
+     * @param  array  $data
+     * @return \App\Models\User\User
+     */
+    public function updateFaction($id, $user)
+    {
+        DB::beginTransaction();
+
+        try {
+            if($user->faction) $old = $user->faction;
+            $faction = Faction::find($id);
+            if(!$faction) throw new \Exception("Not a valid faction.");
+
+            if(!$faction->is_user_faction) throw new \Exception("Not a faction a user can join.");
+
+            $limit = Settings::get('WE_change_timelimit');
+
+            if($user->canChangeFaction) {
+                $user->faction_id = $id;
+                $user->save();
+            }
+            else throw new \Exception("You can't change your faction yet!");
+
+            // Reset standing/remove from closed rank
+            if(isset($old) && $faction->id != $old->id) {
+                $standing = $user->getCurrencies(true)->where('id', Settings::get('WE_faction_currency'))->first();
+                if($standing && $standing->quantity > 0) if(!$debit = (new CurrencyManager)->debitCurrency($user, null, 'Changed Factions', null, $standing, $standing->quantity))
+                    throw new \Exception('Failed to reset standing.');
+
+                if(FactionRankMember::where('member_type', 'user')->where('member_id', $user->id)->first()) FactionRankMember::where('member_type', 'user')->where('member_id', $user->id)->first()->delete();
+            }
+
+            return $this->commitReturn(true);
+        } catch(\Exception $e) {
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Updates the user's password.
      *
      * @param  array                  $data
      * @param  \App\Models\User\User  $user
@@ -126,14 +177,14 @@ class UserService extends Service
             $user->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Updates the user's email and resends a verification email. 
+     * Updates the user's email and resends a verification email.
      *
      * @param  array                  $data
      * @param  \App\Models\User\User  $user
@@ -151,7 +202,29 @@ class UserService extends Service
     }
 
     /**
-     * Updates the user's avatar. 
+     * Updates user's birthday
+     */
+    public function updateBirthday($data, $user)
+    {
+        $user->birthday = $data;
+        $user->save();
+
+        return true;
+    }
+
+    /**
+     * Updates user's birthday setting
+     */
+    public function updateDOB($data, $user)
+    {
+        $user->settings->birthday_setting = $data;
+        $user->settings->save();
+
+        return true;
+    }
+
+    /**
+     * Updates the user's avatar.
      *
      * @param  array                  $data
      * @param  \App\Models\User\User  $user
@@ -164,7 +237,7 @@ class UserService extends Service
         try {
             if(!$avatar) throw new \Exception ("Please upload a file.");
             $filename = $user->id . '.' . $avatar->getClientOriginalExtension();
-            
+
             if ($user->avatar !== 'default.jpg') {
                 $file = 'images/avatars/' . $user->avatar;
                 //$destinationPath = 'uploads/' . $id . '/';
@@ -176,15 +249,15 @@ class UserService extends Service
 
             // Checks if uploaded file is a GIF
             if ($avatar->getClientOriginalExtension() == 'gif') {
-            
+
                 if(!copy($avatar, $file)) throw new \Exception("Failed to copy file.");
-                if(!$file->move( public_path('images/avatars', $filename))) throw new \Exception("Failed to move file."); 
-                if(!$avatar->move( public_path('images/avatars', $filename))) throw new \Exception("Failed to move file."); 
-                
+                if(!$file->move( public_path('images/avatars', $filename))) throw new \Exception("Failed to move file.");
+                if(!$avatar->move( public_path('images/avatars', $filename))) throw new \Exception("Failed to move file.");
+
             }
 
             else {
-                if(!Image::make($avatar)->resize(150, 150)->save( public_path('images/avatars/' . $filename))) 
+                if(!Image::make($avatar)->resize(150, 150)->save( public_path('images/avatars/' . $filename)))
                 throw new \Exception("Failed to process avatar.");
             }
 
@@ -192,14 +265,14 @@ class UserService extends Service
             $user->save();
 
             return $this->commitReturn($avatar);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Bans a user. 
+     * Bans a user.
      *
      * @param  array                  $data
      * @param  \App\Models\User\User  $user
@@ -228,14 +301,25 @@ class UserService extends Service
                 foreach($submissions as $submission)
                     $submissionManager->rejectSubmission(['submission' => $submission, 'staff_comments' => 'User has been banned from site activity.']);
 
-                // 3. Design approvals
+                // 3. Gallery Submissions
+                $galleryManager = new GalleryManager;
+                $gallerySubmissions = GallerySubmission::where('user_id', $user->id)->where('status', 'Pending')->get();
+                foreach($gallerySubmissions as $submission) {
+                    $galleryManager->rejectSubmission($submission);
+                    $galleryManager->postStaffComments($submission->id, ['staff_comments' => 'User has been banned from site activity.'], $staff);
+                }
+                $gallerySubmissions = GallerySubmission::where('user_id', $user->id)->where('status', 'Accepted')->get();
+                foreach($gallerySubmissions as $submission)
+                    $submission->update(['is_visible' => 0]);
+
+                // 4. Design approvals
                 $requests = CharacterDesignUpdate::where('user_id', $user->id)->where(function($query) {
                     $query->where('status', 'Pending')->orWhere('status', 'Draft');
                 })->get();
                 foreach($requests as $request)
                     $characterManager->rejectRequest(['staff_comments' => 'User has been banned from site activity.'], $request, $staff, true);
 
-                // 4. Trades
+                // 5. Trades
                 $tradeManager = new TradeManager;
                 $trades = Trade::where(function($query) {
                     $query->where('status', 'Open')->orWhere('status', 'Pending');
@@ -261,14 +345,14 @@ class UserService extends Service
             $user->settings->save();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Unbans a user. 
+     * Unbans a user.
      *
      * @param  \App\Models\User\User  $user
      * @param  \App\Models\User\User  $staff
@@ -282,7 +366,7 @@ class UserService extends Service
             if($user->is_banned) {
                 $user->is_banned = 0;
                 $user->save();
-                
+
                 $user->settings->ban_reason = null;
                 $user->settings->banned_at = null;
                 $user->settings->save();
@@ -290,7 +374,7 @@ class UserService extends Service
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);

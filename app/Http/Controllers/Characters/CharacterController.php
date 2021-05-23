@@ -14,11 +14,14 @@ use App\Models\Species\Subtype;
 use App\Models\Species\Species;
 use App\Models\Rarity;
 use App\Models\WorldExpansion\Location;
+use App\Models\WorldExpansion\Faction;
 use App\Models\Feature\Feature;
+use App\Models\Character\CharacterProfile;
 
 use App\Models\Currency\Currency;
 use App\Models\Currency\CurrencyLog;
 use App\Models\User\UserCurrency;
+use App\Models\Gallery\GallerySubmission;
 use App\Models\Character\CharacterCurrency;
 
 use App\Models\Item\Item;
@@ -108,8 +111,11 @@ class CharacterController extends Controller
         return view('character.edit_profile', array_merge([
             'character' => $this->character,
             'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'factions' => Faction::all()->where('is_character_faction')->pluck('style','id')->toArray(),
             'user_enabled' => Settings::get('WE_user_locations'),
-            'char_enabled' => Settings::get('WE_character_locations')
+            'char_enabled' => Settings::get('WE_character_locations'),
+            'user_faction_enabled' => Settings::get('WE_user_factions'),
+            'char_faction_enabled' => Settings::get('WE_character_factions')
         ],($isMod ? [
             'isMyo' => $this->character->is_myo,
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
@@ -134,25 +140,45 @@ class CharacterController extends Controller
         $isMod = Auth::user()->hasPower('manage_characters');
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
-        
-        if($service->updateCharacterProfile($request->only(array_merge(['name', 'title_name', 'nicknames', 'gender_pronouns', 'text', 'is_gift_art_allowed', 'is_trading', 'alert_user', 'location']
-            ,($isMod ? [
-                'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
-                'slots_used', 'adornments', 'free_markings', 'health_status',
-                'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
-                'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
-                'is_adopted', 'temperament', 'diet', 'rank', 'skills',
-                'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-                'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-                'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
-            ] : []))),
-        $this->character, Auth::user(), $isMod)) {
+
+        $request->validate(CharacterProfile::$rules);
+
+        if($service->updateCharacterProfile($request->only(
+            array_merge([
+                'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
+                'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
+                'is_trading', 'alert_user', 'location', 'faction']),
+                ($isMod ? [
+                    'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
+                    'slots_used', 'adornments', 'free_markings', 'health_status',
+                    'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+                    'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
+                    'is_adopted', 'temperament', 'diet', 'rank', 'skills',
+                    'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+                    'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+                    'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
+                ] : [])),
+            $this->character, Auth::user(), !$isOwner)) {
             flash('Profile edited successfully.')->success();
         }
         else {
             foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
         }
         return redirect()->back();
+    }
+
+    /**
+     * Shows a character's gallery.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterGallery($slug)
+    {
+        return view('character.gallery', [
+            'character' => $this->character,
+            'submissions' => GallerySubmission::whereIn('id', $this->character->gallerySubmissions->pluck('gallery_submission_id')->toArray())->visible()->accepted()->orderBy('created_at', 'DESC')->paginate(20),
+        ]);
     }
 
     /**
@@ -179,8 +205,8 @@ class CharacterController extends Controller
     {
         $categories = ItemCategory::where('is_character_owned', '1')->orderBy('sort', 'DESC')->get();
         $itemOptions = Item::whereIn('item_category_id', $categories->pluck('id'));
-        
-        $items = count($categories) ? 
+
+        $items = count($categories) ?
             $this->character->items()
                 ->where('count', '>', 0)
                 ->orderByRaw('FIELD(item_category_id,'.implode(',', $categories->pluck('id')->toArray()).')')
@@ -279,6 +305,9 @@ class CharacterController extends Controller
                     foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
                 }
                 break;
+            case 'name':
+                return $this->postName($request, $service);
+                break;
             case 'delete':
                 return $this->postDelete($request, $service);
                 break;
@@ -301,6 +330,24 @@ class CharacterController extends Controller
     {
         if($service->transferCharacterStack($this->character, $this->character->user, CharacterItem::find($request->get('ids')), $request->get('quantities'))) {
             flash('Item transferred successfully.')->success();
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Names an inventory stack.
+     *
+     * @param  \Illuminate\Http\Request       $request
+     * @param  App\Services\CharacterManager  $service
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function postName(Request $request, InventoryManager $service)
+    {
+        if($service->nameStack($this->character, CharacterItem::find($request->get('ids')), $request->get('stack_name'))) {
+            flash('Item named successfully.')->success();
         }
         else {
             foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
@@ -353,7 +400,7 @@ class CharacterController extends Controller
             'logs' => $this->character->getItemLogs(0)
         ]);
     }
-    
+
     /**
      * Shows a character's ownership logs.
      *
