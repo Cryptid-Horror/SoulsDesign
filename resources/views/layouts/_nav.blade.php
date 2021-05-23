@@ -72,6 +72,9 @@
                             <a class="dropdown-item" href="{{ url('trades/open') }}">
                                 Trades
                             </a>
+                            <a class="dropdown-item" href="{{ url('trades/listings') }}">
+                                Trade Listings
+                            </a>
                         </div>
                     </li>
                 @endif

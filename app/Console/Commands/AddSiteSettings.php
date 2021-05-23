@@ -98,6 +98,29 @@ class AddSiteSettings extends Command
         $this->addSiteSetting('gallery_submissions_open', 1, '0: Gallery submissions closed, 1: Gallery submissions open.');
 
         $this->addSiteSetting('gallery_submissions_require_approval', 1, '0: Gallery submissions do not require approval, 1: Gallery submissions require approval.');
+        
+        if(!DB::table('site_settings')->where('key', 'trade_listing_duration')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'trade_listing_duration',
+                    'value' => 14,
+                    'description' => 'Number of days a trade listing is displayed for.'
+                ]
+
+            ]);
+            $this->info("Added:   trade_listing_duration / Default: 14");
+        }
+        else $this->line("Skipped: trade_listing_duration");
+        
+        if(!DB::table('site_settings')->where('key', 'admin_user')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'admin_user',
+                    'value' => 1,
+                    'description' => 'ID of the site\'s admin user.'
+                ]
+            ]);
+        }
 
         $this->addSiteSetting('gallery_submissions_reward_currency', 0, '0: Gallery submissions do not reward currency, 1: Gallery submissions reward currency.');
 
