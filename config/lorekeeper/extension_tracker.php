@@ -31,4 +31,17 @@ return [
         ]),
         'version' => '1.0.0',
     ],
+
+    
+    'world_expansion' => [
+        'key' => 'world_expansion',
+         'wiki_key' => 'World_Expansion',
+         'creators' => json_encode([
+             'Uri' => 'https://github.com/preimpression/',
+             'Mercury' => 'https://github.com/itinerare/',
+         ]),
+         'version' => '1.2.1',
+    ],
+
+
 ];
