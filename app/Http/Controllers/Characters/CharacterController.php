@@ -146,6 +146,7 @@ class CharacterController extends Controller
         if($service->updateCharacterProfile($request->only(
             array_merge([
                 'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
+                'custom_values_group', 'custom_values_name', 'custom_values_data',
                 'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
                 'is_trading', 'alert_user', 'location', 'faction']),
                 ($isMod ? [
