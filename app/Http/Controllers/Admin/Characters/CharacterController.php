@@ -12,6 +12,7 @@ use App\Models\Character\Character;
 use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Rarity;
+use App\Models\Character\CharacterTitle;
 use App\Models\User\User;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
@@ -61,6 +62,7 @@ class CharacterController extends Controller
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
             'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'titles' => ['0' => 'Select Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('sort', 'DESC')->pluck('title', 'id')->toArray(),
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'subtypes' => ['0' => 'Pick a Species First'],
             'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray(),
@@ -117,7 +119,7 @@ class CharacterController extends Controller
             'x0', 'x1', 'y0', 'y1',
             'designer_id', 'designer_url',
             'artist_id', 'artist_url',
-
+            
             // hello darkness my old friend //
             'sire_id',           'sire_name',
             'sire_sire_id',      'sire_sire_name',
@@ -136,6 +138,7 @@ class CharacterController extends Controller
             'generate_ancestors',
 
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
+            'title_id', 'title_data',
             'image', 'ext_url', 'thumbnail', 'image_description', 'adornments',
             'sex', 'gender_pronouns', 'genotype', 'phenotype', 'free_markings', 'slots_used', 'health_status',
             'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',

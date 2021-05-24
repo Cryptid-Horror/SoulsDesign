@@ -60,6 +60,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Users'], function() {
     Route::get('{name}/inventory', 'UserController@getUserInventory');
     Route::get('{name}/bank', 'UserController@getUserBank');
     Route::get('{name}/awardcase', 'UserController@getUserAwardCase');
+
     Route::get('{name}/currency-logs', 'UserController@getUserCurrencyLogs');
     Route::get('{name}/item-logs', 'UserController@getUserItemLogs');
     Route::get('{name}/award-logs', 'UserController@getUserAwardLogs');
@@ -129,6 +130,7 @@ Route::group(['prefix' => 'world'], function() {
     Route::get('character-categories', 'WorldController@getCharacterCategories');
     Route::get('recipes', 'WorldController@getRecipes');
     Route::get('recipes/{id}', 'WorldController@getRecipe');
+    Route::get('character-titles', 'WorldController@getCharacterTitles');
 });
 
 Route::group(['prefix' => 'prompts'], function() {

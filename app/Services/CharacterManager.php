@@ -28,6 +28,7 @@ use App\Models\Character\CharacterBookmark;
 use App\Models\Character\CharacterLineage;
 use App\Models\Character\CharacterProfileCustomValue;
 use App\Models\User\UserCharacterLog;
+use App\Models\Character\CharacterTitle;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
 use App\Models\Rarity;
@@ -275,8 +276,8 @@ class CharacterManager extends Service
                 $data['subtype_id'] = isset($data['subtype_id']) && $data['subtype_id'] ? $data['subtype_id'] : null;
                 $data['rarity_id'] = (isset($data['rarity_id']) && $data['rarity_id']) ? $data['rarity_id'] : null;
 
-                // Use default images for MYO slots without an image or ext_url provided
-                if(!isset($data['image']) && !isset($data['ext_url']))
+                // Use default images for MYO slots without an image provided
+                if(!isset($data['image']))
                 {
                     $data['image'] = public_path().'/images/myo.png';
                     $data['thumbnail'] = public_path().'/images/myo-th.png';
@@ -286,7 +287,7 @@ class CharacterManager extends Service
             }
             $imageData = Arr::only($data, [
                 'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
-                'x0', 'x1', 'y0', 'y1',
+                'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data'
             ]);
             $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
@@ -300,6 +301,9 @@ class CharacterManager extends Service
             $imageData['character_id'] = $character->id;
             $imageData['ext_url'] = isset($data['ext_url']) ? $data['ext_url'] : null;
             $imageData['adornments'] = isset($data['adornments']) ? parse($data['adornments']) : null;
+            $imageData['title_id'] = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $imageData['title_data'] = isset($data['title_data']) && $data['title_data'] && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
+
             $image = CharacterImage::create($imageData);
 
             // Check if entered url(s) have aliases associated with any on-site users
@@ -863,6 +867,7 @@ class CharacterManager extends Service
             $old['phenotype'] = $image->phenotype;
             $old['free_markings'] = $image->free_markings;
             $old['adornments'] = $image->adornments;
+            $old['title'] = $image->title_id ? $image->title->displayName : ($image->title_data ? $image->title_data : null);
 
             // Clear old features
             $image->features()->delete();
@@ -882,6 +887,8 @@ class CharacterManager extends Service
             $image->phenotype = $data['phenotype'] ?: null;
             $image->free_markings = $data['free_markings'] ?: null;
             $image->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : null;
+            $image->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $image->title_data = isset($data['title_data']) && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
             $image->save();
 
             $new = [];
@@ -893,6 +900,7 @@ class CharacterManager extends Service
             $new['phenotype'] = $image->phenotype;
             $new['free_markings'] = $image->free_markings;
             $new['adornments'] = $image->adornments;
+            $new['title'] = $image->title_id ? $image->title->displayName : ($image->title_data ? $image->title_data : null);
 
             // Character also keeps track of these features
             $image->character->rarity_id = $image->rarity_id;
@@ -2458,6 +2466,7 @@ class CharacterManager extends Service
 
             $rarity = ($request->character->is_myo_slot && $request->character->image->rarity_id) ? $request->character->image->rarity : Rarity::find($data['rarity_id']);
             $species = ($request->character->is_myo_slot && $request->character->image->species_id) ? $request->character->image->species : Species::find($data['species_id']);
+            if(isset($data['title_id'])) $title = ($request->character->is_myo_slot && $request->character->image->title_id) ? $request->character->image->title : CharacterTitle::find($data['title_id']);
             if(isset($data['subtype_id']) && $data['subtype_id'])
                 $subtype = ($request->character->is_myo_slot && $request->character->image->subtype_id) ? $request->character->image->subtype : Subtype::find($data['subtype_id']);
             else $subtype = null;
@@ -2468,6 +2477,7 @@ class CharacterManager extends Service
             if(!$genotype) throw new \Exception("Genotype required.");
             if(!$phenotype) throw new \Exception("Phenotype required.");
             if($subtype && $subtype->species_id != $species->id) throw new \Exception("Subtype does not match the species.");
+            if(isset($title) && !$title) throw new \Exception("Invalid title selected.");
 
             // Clear old features
             $request->features()->delete();
@@ -2499,6 +2509,8 @@ class CharacterManager extends Service
             $request->free_markings = $data['free_markings'] ?? $request->character->image->free_markings;
             $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
             $request->has_features = 1;
+            $request->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $request->title_data = isset($data['title_data']) && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
             $request->save();
 
             return $this->commitReturn(true);
@@ -2624,7 +2636,9 @@ class CharacterManager extends Service
                 'genotype' => $request->genotype,
                 'phenotype' => $request->phenotype,
                 'free_markings' => $request->free_markings,
-                'adornments' => $request->adornments
+                'adornments' => $request->adornments,
+                'title_id' => isset($request->title_id) && $request->title_id ? $request->title_id : null,
+                'title_data' => isset($request->title_data) ? $request->title_data : null
             ]);
 
             // Shift the image credits over to the new image
