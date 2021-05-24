@@ -1509,7 +1509,7 @@ class CharacterManager extends Service
                 $character->arena_ranking = $data['arena_ranking'] ?? null;
                 $character->soul_link_type = $data['soul_link_type'] ?? null;
                 $character->soul_link_target = $data['soul_link_target'] ?? null;
-                if($data['soul_link_type'] == 'Dragon') if(!Character::where('slug', $data['soul_link_target'])->exists()) throw new \Exception('Soul link target is not a valid dragon ID.');
+                if($character->soul_link_type == 'Dragon') if(!Character::where('slug', $data['soul_link_target'])->exists()) throw new \Exception('Soul link target is not a valid dragon ID.');
                 $character->soul_link_target_link = $data['soul_link_target_link'] ?? null;
                 $character->is_adopted = isset($data['is_adopted']);
                 $character->temperament = $data['temperament'];

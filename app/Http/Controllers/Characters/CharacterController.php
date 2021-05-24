@@ -142,23 +142,27 @@ class CharacterController extends Controller
         if(!$isMod && !$isOwner) abort(404);
 
         $request->validate(CharacterProfile::$rules);
-
         if($service->updateCharacterProfile($request->only(
-            array_merge([
+            array_merge(
+            [
                 'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
                 'custom_values_group', 'custom_values_name', 'custom_values_data',
                 'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
-                'is_trading', 'alert_user', 'location', 'faction']),
-                ($isMod ? [
-                    'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
-                    'slots_used', 'adornments', 'free_markings', 'health_status',
-                    'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
-                    'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
-                    'is_adopted', 'temperament', 'diet', 'rank', 'skills',
-                    'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-                    'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-                    'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
-                ] : [])),
+                'is_trading', 'alert_user', 'location', 'faction'
+            ],
+            ($isMod ?
+            [
+                'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
+                'slots_used', 'adornments', 'free_markings', 'health_status',
+                'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+                'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
+                'is_adopted', 'temperament', 'diet', 'rank', 'skills',
+                'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+                'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+                'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
+            ]
+            : [])
+            )),
             $this->character, Auth::user(), !$isOwner)) {
             flash('Profile edited successfully.')->success();
         }
