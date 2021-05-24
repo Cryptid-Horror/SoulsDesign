@@ -99,7 +99,7 @@
     <br>
     <b>Generation:</b> {!! $character->rarity->displayName !!}<br>
     <b>Lineage:</b><br>
-    @include('character._lineage_tree', ['lineage' => $character->lineage()])
+    @include('character._lineage_tree', ['lineage' => $character->lineage()->first()])
     <br>
     <b>Designed By:</b> {!! $character->image->displayDesigners !!}<br>
     <b>Art By:</b> {!! $character->image->displayArtists !!}<br>

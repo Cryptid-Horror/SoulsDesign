@@ -198,7 +198,8 @@ class CharacterManager extends Service
                 'sex', 'gender_pronouns', 'health_status', 'taming', 'low_aether', 'high_aether',
                 'arena_ranking', 'soul_link_type', 'temperament',
                 'diet', 'rank',
-                'sire_slug', 'dam_slug', 'use_custom_lineage', 'nicknames', 'title_name'
+                // 'sire_slug', 'dam_slug', 'use_custom_lineage',
+                'nicknames', 'title_name'
             ]);
             $characterData['name'] = isset($data['name']) ? $data['name'] : null;
             $characterData['owner_url'] = isset($characterData['user_id']) ? null : $data['owner_url'];
@@ -224,20 +225,21 @@ class CharacterManager extends Service
             $characterData['skills'] = isset($data['skills']) ? parse($data['skills']) : null;
             $characterData['has_grand_title'] = isset($data['has_grand_title']);
 
-            if(isset($data['use_custom_lineage'])) {
-                $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
-                $characterData['sd_slug'] = isset($data['sd_slug']) ? $data['sd_slug'] : null;
-                $characterData['ds_slug'] = isset($data['ds_slug']) ? $data['ds_slug'] : null;
-                $characterData['dd_slug'] = isset($data['dd_slug']) ? $data['dd_slug'] : null;
-                $characterData['sss_slug'] = isset($data['sss_slug']) ? $data['sss_slug'] : null;
-                $characterData['ssd_slug'] = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
-                $characterData['sds_slug'] = isset($data['sds_slug']) ? $data['sds_slug'] : null;
-                $characterData['sdd_slug'] = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
-                $characterData['dss_slug'] = isset($data['dss_slug']) ? $data['dss_slug'] : null;
-                $characterData['dsd_slug'] = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
-                $characterData['dds_slug'] = isset($data['dds_slug']) ? $data['dds_slug'] : null;
-                $characterData['ddd_slug'] = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
-            }
+            // if(isset($data['use_custom_lineage'])) {
+            //     $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+            //     $characterData['sd_slug'] = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+            //     $characterData['ds_slug'] = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+            //     $characterData['dd_slug'] = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+            //     $characterData['sss_slug'] = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+            //     $characterData['ssd_slug'] = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+            //     $characterData['sds_slug'] = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+            //     $characterData['sdd_slug'] = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+            //     $characterData['dss_slug'] = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+            //     $characterData['dsd_slug'] = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+            //     $characterData['dds_slug'] = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+            //     $characterData['ddd_slug'] = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+            // }
+
             $character = Character::create($characterData);
 
             // Create character profile row
@@ -1517,24 +1519,24 @@ class CharacterManager extends Service
                 $character->slots_used = $data['slots_used'];
                 $character->has_grand_title = isset($data['has_grand_title']);
 
-                $character->use_custom_lineage = isset($data['use_custom_lineage']);
-                $character->sire_slug = $data['sire_slug'];
-                $character->dam_slug = $data['dam_slug'];
+                // $character->use_custom_lineage = isset($data['use_custom_lineage']);
+                // $character->sire_slug = $data['sire_slug'];
+                // $character->dam_slug = $data['dam_slug'];
 
-                if(isset($data['use_custom_lineage'])) {
-                    $character->ss_slug = isset($data['ss_slug']) ? $data['ss_slug'] : null;
-                    $character->sd_slug = isset($data['sd_slug']) ? $data['sd_slug'] : null;
-                    $character->ds_slug = isset($data['ds_slug']) ? $data['ds_slug'] : null;
-                    $character->dd_slug = isset($data['dd_slug']) ? $data['dd_slug'] : null;
-                    $character->sss_slug = isset($data['sss_slug']) ? $data['sss_slug'] : null;
-                    $character->ssd_slug = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
-                    $character->sds_slug = isset($data['sds_slug']) ? $data['sds_slug'] : null;
-                    $character->sdd_slug = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
-                    $character->dss_slug = isset($data['dss_slug']) ? $data['dss_slug'] : null;
-                    $character->dsd_slug = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
-                    $character->dds_slug = isset($data['dds_slug']) ? $data['dds_slug'] : null;
-                    $character->ddd_slug = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
-                }
+                // if(isset($data['use_custom_lineage'])) {
+                //     $character->ss_slug = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+                //     $character->sd_slug = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+                //     $character->ds_slug = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+                //     $character->dd_slug = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+                //     $character->sss_slug = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+                //     $character->ssd_slug = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+                //     $character->sds_slug = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+                //     $character->sdd_slug = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+                //     $character->dss_slug = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+                //     $character->dsd_slug = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+                //     $character->dds_slug = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+                //     $character->ddd_slug = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+                // }
 
                 $imageData = array_only($data, [
                     'genotype', 'phenotype', 'free_markings', 'species_id', 'subtype_id',

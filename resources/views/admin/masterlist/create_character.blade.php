@@ -166,16 +166,7 @@
             {!! Form::hidden('y1', null, ['id' => 'cropY1']) !!}
         </div>
     </div>
-<<<<<<< HEAD
-    <div class="card mb-3" id="thumbnailDaPreview">
-        <div class="card-body">
-            <p id="previewMessage"></p>
-            <img src="#" id="thumbnailDa"/>
-        </div>
-    </div>
-=======
 @endif
->>>>>>> lk-update
     <div class="card mb-3" id="thumbnailUpload">
         <div class="card-body">
             {!! Form::label('Thumbnail Image') !!} {!! add_help('This image is shown on the masterlist page.') !!}
@@ -424,6 +415,7 @@
         {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
+    {{-- Old Lineage Code
     <h3>Lineage</h3>
     <div class="alert alert-info">
         <p>You only need to enter the Sire and Dam as the system will automatically retrieve their lineage from there. In case of a custom lineage (either parent is 'Unknown' or is a legacy character), you will have to enter each ancestor manually.</p>
@@ -505,6 +497,7 @@
             @include('character._lineage_tree')
         </div>
     </div>
+    --}}
 
     <h3>Other Profile Information</h3>
 

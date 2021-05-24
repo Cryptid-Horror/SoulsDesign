@@ -231,6 +231,7 @@
         {!! Form::text('soul_link_target_link', $character->soul_link_target_link, ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
+    {{-- Old Lineage Code
     <h3>Lineage</h3>
     <div class="alert alert-info">
         <p>You only need to enter the Sire and Dam as the system will automatically retrieve their lineage from there. In case of a custom lineage (either parent is 'Unknown' or is a legacy character), you will have to enter each ancestor manually.</p>
@@ -312,7 +313,7 @@
             @include('character._lineage_tree')
         </div>
     </div>
-
+    --}}
     <h3>Other Profile Information</h3>
     <div class="form-group">
         {!! Form::checkbox('is_adopted', 1, $character->is_adopted, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'isAdopted']) !!}
