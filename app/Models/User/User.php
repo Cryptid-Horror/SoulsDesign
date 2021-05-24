@@ -30,6 +30,8 @@ use App\Models\Gallery\GalleryFavorite;
 use App\Models\WorldExpansion\FactionRank;
 use App\Models\WorldExpansion\FactionRankMember;
 use App\Traits\Commenter;
+use App\Models\Recipe\Recipe;
+use App\Models\User\UserRecipeLog;
 
 use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Character\CharacterTransfer;
@@ -198,6 +200,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function awards()
     {
         return $this->belongsToMany('App\Models\Award\Award', 'user_awards')->withPivot('count', 'data', 'updated_at', 'id')->whereNull('user_awards.deleted_at');
+    }
+
+    /**
+     * Get the user's items.
+     */
+    public function recipes()
+    {
+        return $this->belongsToMany('App\Models\Recipe\Recipe', 'user_recipes')->withPivot('id');
     }
 
     /**
@@ -651,6 +661,24 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the user's recipe logs.
+     *
+     * @param  int  $limit
+     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getRecipeLogs($limit = 10)
+    {
+        $user = $this;
+        $query = UserRecipeLog::with('recipe')->where(function($query) use ($user) {
+            $query->with('sender')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
+        })->orWhere(function($query) use ($user) {
+            $query->with('recipient')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
+        })->orderBy('id', 'DESC');
+        if($limit) return $query->take($limit)->get();
+        else return $query->paginate(30);
+    }
+
+    /**
      * Get the user's shop purchase logs.
      *
      * @param  int  $limit
@@ -750,16 +778,51 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return int
      */
-     public function hasAdminNotification($user)
-     {
-       $submissionCount = $user->hasPower('manage_submissions') ? Submission::where('status', 'Pending')->whereNotNull('prompt_id')->count() : 0;
-       $claimCount = $user->hasPower('manage_submissions') ? Submission::where('status', 'Pending')->whereNull('prompt_id')->count() : 0;
-       $designCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::characters()->where('status', 'Pending')->count() : 0;
-       $myoCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::myos()->where('status', 'Pending')->count() : 0;
-       $transferCount =  $user->hasPower('manage_characters') ? CharacterTransfer::active()->where('is_approved', 0)->count() : 0;
-       $tradeCount = $user->hasPower('manage_characters') ? Trade::where('status', 'Pending')->count() : 0;
-       $total = $submissionCount + $claimCount + $designCount + $myoCount + $transferCount + $tradeCount;
-       return $total;
-     }
+    public function hasAdminNotification($user)
+    {
+        $submissionCount = $user->hasPower('manage_submissions') ? Submission::where('status', 'Pending')->whereNotNull('prompt_id')->count() : 0;
+        $claimCount = $user->hasPower('manage_submissions') ? Submission::where('status', 'Pending')->whereNull('prompt_id')->count() : 0;
+        $designCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::characters()->where('status', 'Pending')->count() : 0;
+        $myoCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::myos()->where('status', 'Pending')->count() : 0;
+        $transferCount =  $user->hasPower('manage_characters') ? CharacterTransfer::active()->where('is_approved', 0)->count() : 0;
+        $tradeCount = $user->hasPower('manage_characters') ? Trade::where('status', 'Pending')->count() : 0;
+        $total = $submissionCount + $claimCount + $designCount + $myoCount + $transferCount + $tradeCount;
+        return $total;
+    }
+
+    /**
+     * Checks if the user has the named recipe
+     *
+     * @return bool
+     */
+    public function hasRecipe($recipe_id)
+    {
+        $recipe = Recipe::find($recipe_id);
+        $user_has = $this->recipes->contains($recipe);
+        $default = !$recipe->needs_unlocking;
+        return $default ? true : $user_has;
+    }
+
+
+    /**
+     * Returned recipes listed that are owned
+     * Reversal simply
+     *
+     * @return object
+     */
+    public function ownedRecipes($ids, $reverse = false)
+    {
+        $recipes = Recipe::find($ids); $recipeCollection = [];
+        foreach($recipes as $recipe)
+        {
+            if($reverse) {
+                if(!$this->recipes->contains($recipe)) $recipeCollection[] = $recipe;
+            }
+            else {
+                if($this->recipes->contains($recipe)) $recipeCollection[] = $recipe;
+            }
+        }
+        return $recipeCollection;
+    }
 
 }

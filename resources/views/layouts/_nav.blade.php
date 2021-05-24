@@ -33,7 +33,7 @@
                             Activities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Activity_Guide') }}">
+                            <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
                             Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
@@ -50,9 +50,12 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
                             Shops
-                        </a>
-                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
+                            </a>
+                            <a class="dropdown-item" href="{{ url('trades/listings') }}">
                                 Trade Listings
+                            </a>
+                            <a class="dropdown-item" href="{{ url('crafting') }}">
+                                Crafting
                             </a>
                             <div class="dropdown-divider"></div>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
