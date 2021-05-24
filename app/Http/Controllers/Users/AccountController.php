@@ -8,6 +8,7 @@ use Settings;
 
 use App\Models\User\User;
 use App\Models\User\UserAlias;
+use App\Models\Theme;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -67,7 +68,8 @@ class AccountController extends Controller
             'user_faction_enabled' => Settings::get('WE_user_factions'),
             'char_enabled' => Settings::get('WE_character_locations'),
             'char_faction_enabled' => Settings::get('WE_character_factions'),
-            'location_interval' => $interval[Settings::get('WE_change_timelimit')]
+            'location_interval' => $interval[Settings::get('WE_change_timelimit')],
+            'themeOptions' => Theme::where('is_active',1)->get()->pluck('displayName','id')->toArray()
         ]);
     }
 
@@ -122,6 +124,23 @@ class AccountController extends Controller
     }
 
     /**
+     * Edits the user's theme.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postTheme(Request $request, UserService $service)
+    {
+        if($service->updateTheme($request->only('theme'), Auth::user())) {
+            flash('Theme updated successfully.')->success();
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
+    }
+
+    /**
      * Edits the user's faction from a list of factions that users can make their home.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -137,7 +156,6 @@ class AccountController extends Controller
         }
         return redirect()->back();
     }
-
 
     /**
      * Changes the user's password.
