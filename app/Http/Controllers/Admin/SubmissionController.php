@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Submission\Submission;
 use App\Models\Item\Item;
-use App\Models\Award\Award;
-use App\Models\Award\AwardCategory;
 use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
