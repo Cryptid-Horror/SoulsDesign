@@ -24,6 +24,7 @@
         <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
+
 {{-- Profile --}}
 <div class="card character-bio">
     <div class="card-header d-flex align-items-center justify-content-between">

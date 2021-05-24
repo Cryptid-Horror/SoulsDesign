@@ -71,7 +71,7 @@
         None<br>
     @endif
     <b>Personality:</b><br>
-    {!! $character->profile->parsed_text ? $character->profile->parsed_text : 'N/A' !!}
+    {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
     @if($character->ouroboros)
         <b>Slots:</b> 
@@ -97,7 +97,7 @@
         @endif
     @endif
     <br>
-    <b>Generation:</b> {!! $character->rarity->displayName !!}<br>
+    <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
     <b>Lineage:</b><br>
     @include('character._lineage_tree', ['lineage' => $character->lineage()->first()])
     <br>
