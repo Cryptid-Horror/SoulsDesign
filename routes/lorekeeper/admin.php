@@ -662,5 +662,16 @@ Route::group(['prefix' => 'world',  'namespace' => 'World', 'middleware' => 'pow
     Route::post('concepts/edit/{id?}', 'ConceptController@postCreateEditConcept');
     Route::post('concepts/delete/{id}', 'ConceptController@postDeleteConcept');
     Route::post('concepts/sort', 'ConceptController@postSortConcept');
+});
 
+# FORUMS
+Route::group(['prefix' => 'forums', 'middleware' => 'power:edit_data'], function() {
+
+    Route::get('/', 'ForumController@getIndex');
+    Route::get('create', 'ForumController@getCreateForum');
+    Route::get('edit/{id}', 'ForumController@getEditForum');
+    Route::get('delete/{id}', 'ForumController@getDeleteForum');
+    Route::post('create', 'ForumController@postCreateEditForum');
+    Route::post('edit/{id?}', 'ForumController@postCreateEditForum');
+    Route::post('delete/{id}', 'ForumController@postDeleteForum');
 });

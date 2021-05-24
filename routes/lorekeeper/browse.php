@@ -244,4 +244,14 @@ Route::group(['prefix' => 'world', 'namespace' => 'WorldExpansion'], function() 
     Route::get('concept-categories/{id}', 'ConceptController@getConceptCategory');
 });
 
+/**************************************************************************************************
+    Forums
+**************************************************************************************************/
+Route::group(['prefix' => 'forum'], function() {
+    Route::get('/', 'ForumController@getIndex');
+    Route::get('{board_id}/~{id}', 'ForumController@getThread');
+    Route::get('{id}', 'ForumController@getForum');
+});
+
+
 

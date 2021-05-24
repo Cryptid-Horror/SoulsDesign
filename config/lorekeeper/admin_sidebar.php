@@ -200,7 +200,11 @@ return [
                 'name' => 'Recipes',
                 'url' => 'admin/data/recipes'
             ],
-        ]
+            [
+                'name' => 'Forums',
+                'url' => 'admin/forums'
+            ]
+        ],
     ],
     'World.Expanded' => [
         'power' => 'manage_world',
@@ -232,7 +236,7 @@ return [
             [
                 'name' => 'Concepts',
                 'url' => 'admin/world/concepts'
-            ],
+            ]
         ]
     ],
     'Raffles' => [
