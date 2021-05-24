@@ -11,11 +11,8 @@ use Settings;
 use App\Models\User\User;
 use App\Models\User\UserItem;
 use App\Models\User\UserAward;
-<<<<<<< HEAD
-=======
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
->>>>>>> lk-update
 use App\Models\Character\Character;
 use App\Models\Item\Item;
 use App\Models\Raffle\Raffle;

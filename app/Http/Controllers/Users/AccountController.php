@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Users;
 
 use Auth;
-use Settings;
 use File;
 use Settings;
 
