@@ -108,15 +108,9 @@ class SubmissionController extends Controller
             'prompts' => Prompt::active()->sortAlphabetical()->pluck('name', 'id')->toArray(),
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
-<<<<<<< HEAD
-            'item_filter' => Item::orderBy('name')->get()->keyBy('id'),
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
-=======
             'item_filter' => Item::orderBy('name')->released()->get()->keyBy('id'),
             'items' => Item::orderBy('name')->released()->pluck('name', 'id'),
             'character_items' => Item::whereIn('item_category_id', ItemCategory::where('is_character_owned',1)->pluck('id')->toArray() )->orderBy('name')->released()->pluck('name', 'id'),
->>>>>>> lk-update
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'inventory' => $inventory,
@@ -242,14 +236,8 @@ class SubmissionController extends Controller
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->get(),
             'inventory' => $inventory,
-<<<<<<< HEAD
-            'item_filter' => Item::orderBy('name')->get()->keyBy('id'),
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
-=======
             'item_filter' => Item::orderBy('name')->released()->get()->keyBy('id'),
             'items' => Item::orderBy('name')->released()->pluck('name', 'id'),
->>>>>>> lk-update
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
