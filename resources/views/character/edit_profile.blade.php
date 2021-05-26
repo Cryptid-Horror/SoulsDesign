@@ -20,53 +20,51 @@
 @endif
 
 {!! Form::open(['url' => $character->url . '/profile/edit']) !!}
-@if(!$character->is_myo_slot)
+<div class="form-group">
+    {!! Form::label('name', 'Name') !!}
+    {!! Form::text('name', $character->name, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('title_name', 'Display Name') !!} {!! add_help('Optional - used for setting the name displayed in links to the character; can be different from name') !!}
+    {!! Form::text('title_name', $character->title_name, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('nicknames', 'Nickname(s)') !!}
+    {!! Form::text('nicknames', $character->nickname, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('gender_pronouns', 'Gender/Pronouns') !!}
+    {!! Form::text('gender_pronouns', $character->gender_pronouns, ['class' => 'form-control']) !!}
+</div>
+@if(Config::get('lorekeeper.extensions.character_TH_profile_link'))
     <div class="form-group">
-        {!! Form::label('name', 'Name') !!}
-        {!! Form::text('name', $character->name, ['class' => 'form-control']) !!}
+        {!! Form::label('link', 'Profile Link') !!}
+        {!! Form::text('link', $character->profile->link, ['class' => 'form-control']) !!}
     </div>
-    <div class="form-group">
-        {!! Form::label('title_name', 'Display Name') !!} {!! add_help('Optional - used for setting the name displayed in links to the character; can be different from name') !!}
-        {!! Form::text('title_name', $character->title_name, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('nicknames', 'Nickname(s)') !!}
-        {!! Form::text('nicknames', $character->nickname, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('gender_pronouns', 'Gender/Pronouns') !!}
-        {!! Form::text('gender_pronouns', $character->gender_pronouns, ['class' => 'form-control']) !!}
-    </div>
-    @if(Config::get('lorekeeper.extensions.character_TH_profile_link'))
-        <div class="form-group">
-            {!! Form::label('link', 'Profile Link') !!}
-            {!! Form::text('link', $character->profile->link, ['class' => 'form-control']) !!}
-        </div>
-    @endif
-    {!! Form::label('custom_values', "Custom Values") !!}
-    <div id="customValues">
-        @foreach ($character->profile->custom_values as $value)
-            <div class="form-row">
-                <div class="col-2 col-md-1 mb-2">
-                    <span class="btn btn-link drag-custom-value-row w-100"><i class="fas fa-arrows-alt-v"></i></span>
-                </div>
-                <div class="col-5 col-md-3 mb-2">
-                    {!! Form::text('custom_values_group[]', $value->group, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Group (Optional)"]) !!}
-                </div>
-                <div class="col-5 col-md-3 mb-2">
-                    {!! Form::text('custom_values_name[]', $value->name, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Title:"]) !!}
-                </div>
-                <div class="col-10 col-md-4 mb-3">
-                    {!! Form::text('custom_values_data[]', $value->data_parsed, ['class' => 'form-control', 'maxLength' => 150, 'placeholder' => "Custom Value"]) !!}
-                </div>
-                <div class="col-2 col-md-1 mb-3">
-                    <button class="btn btn-danger delete-custom-value-row w-100" type="button">x</button>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <a href="#" class="add-custom-value-row btn btn-primary mb-3">Add Custom Value</a>
 @endif
+{!! Form::label('custom_values', "Custom Values") !!}
+<div id="customValues">
+    @foreach ($character->profile->custom_values as $value)
+        <div class="form-row">
+            <div class="col-2 col-md-1 mb-2">
+                <span class="btn btn-link drag-custom-value-row w-100"><i class="fas fa-arrows-alt-v"></i></span>
+            </div>
+            <div class="col-5 col-md-3 mb-2">
+                {!! Form::text('custom_values_group[]', $value->group, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Group (Optional)"]) !!}
+            </div>
+            <div class="col-5 col-md-3 mb-2">
+                {!! Form::text('custom_values_name[]', $value->name, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Title:"]) !!}
+            </div>
+            <div class="col-10 col-md-4 mb-3">
+                {!! Form::text('custom_values_data[]', $value->data_parsed, ['class' => 'form-control', 'maxLength' => 150, 'placeholder' => "Custom Value"]) !!}
+            </div>
+            <div class="col-2 col-md-1 mb-3">
+                <button class="btn btn-danger delete-custom-value-row w-100" type="button">x</button>
+            </div>
+        </div>
+    @endforeach
+</div>
+<a href="#" class="add-custom-value-row btn btn-primary mb-3">Add Custom Value</a>
 
 @if(!$character->is_myo_slot && ($char_enabled == 2 || (Auth::user()->isStaff && $char_enabled == 3)))
 @if(Auth::user()->isStaff && $char_enabled == 3)
