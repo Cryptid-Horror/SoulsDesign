@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <?php
+        header("Permissions-Policy: interest-cohort=()");
+    ?>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -68,10 +72,24 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @endif
 
+    @if(Auth::check() && Auth::user()->theme)
+        <link href="{{ Auth::user()->theme->cssUrl }}" rel="stylesheet">
+    @elseif(isset($defaultTheme))
+        <link href="{{ $defaultTheme->CSSUrl }}" rel="stylesheet">
+    @endif
+
 </head>
 <body>
     <div id="app">
-        <div class="site-header-image" id="header" style="background-image: url('{{ asset('images/header.png') }}');"></div>
+
+        @if(Auth::check() && Auth::user()->theme)
+            <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}');"></div>
+        @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
+            <div class="site-header-image" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}');"></div>
+        @else
+            <div class="site-header-image" id="header" style="background-image: url('{{ asset('images/header.png') }}');"></div>
+        @endif
+
         @include('layouts._nav')
         @if ( View::hasSection('sidebar') )
 			<div class="site-mobile-header bg-secondary"><a href="#" class="btn btn-sm btn-outline-light" id="mobileMenuButton">Menu <i class="fas fa-caret-right ml-1"></i></a></div>
@@ -85,16 +103,15 @@
                 </div>
                 <div class="main-content col-lg-8 p-4">
                     <div>
-                        <!-- This is the original news notification message
-                        @if(Auth::check())
+                        @if(Auth::check() && !Config::get('lorekeeper.extensions.navbar_news_notif'))
                             @if(Auth::user()->is_news_unread)
                                 <div class="alert alert-info"><a href="{{ url('news') }}">There is a new news post!</a></div>
                             @endif
+                            @if(Auth::user()->is_sales_unread)
+                                <div class="alert alert-info"><a href="{{ url('sales') }}">There is a new sales post!</a></div>
+                            @endif
                         @endif
-                        -->
                         @include('flash::message')
-                    </div>
-                    <div style="position: relative;">
                         @yield('content')
                     </div>
 

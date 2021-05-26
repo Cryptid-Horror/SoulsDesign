@@ -11,8 +11,8 @@
 
 <h1>
     @if($isClaim)
-        New Claim 
-    @else 
+        New Claim
+    @else
         New Submission
     @endif
 </h1>
@@ -21,7 +21,7 @@
     <div class="alert alert-danger">
         The {{ $isClaim ? 'claim' : 'submission' }} queue is currently closed. You cannot make a new {{ $isClaim ? 'claim' : 'submission' }} at this time.
     </div>
-@else 
+@else
     {!! Form::open(['url' => $isClaim ? 'claims/new' : 'submissions/new', 'id' => 'submissionForm']) !!}
         @if(!$isClaim)
             <div class="form-group">
@@ -30,11 +30,11 @@
             </div>
         @endif
         <div class="form-group">
-            {!! Form::label('url', $isClaim ? 'URL' : 'Submission URL') !!} 
-            @if($isClaim) 
-                {!! add_help('Enter a URL relevant to your claim (for example, a comment proving you may make this claim). This field cannot be left blank.') !!} 
-            @else 
-                {!! add_help('Enter the URL of your submission (whether uploaded to dA or some other hosting service). This field cannot be left blank.') !!} 
+            {!! Form::label('url', $isClaim ? 'URL (Optional)' : 'Submission URL (Optional)') !!}
+            @if($isClaim)
+                {!! add_help('Enter a URL relevant to your claim (for example, a comment proving you may make this claim).') !!}
+            @else
+                {!! add_help('Enter the URL of your submission (whether uploaded to dA or some other hosting service).') !!}
             @endif
             {!! Form::text('url', null, ['class' => 'form-control', 'required']) !!}
         </div>
@@ -46,7 +46,7 @@
         <h2>Rewards</h2>
         @if($isClaim)
             <p>Select the rewards you would like to claim.</p>
-        @else 
+        @else
             <p>Note that any rewards added here are <u>in addition</u> to the default prompt rewards. If you do not require any additional rewards, you can leave this blank.</p>
         @endif
         @if($isClaim)
@@ -80,11 +80,11 @@
         </div>
     {!! Form::close() !!}
 
-    @include('widgets._character_select', ['characterCurrencies' => $characterCurrencies])
+    @include('widgets._character_select', ['characterCurrencies' => $characterCurrencies, 'showLootTables' => false])
     @if($isClaim)
-        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => true])
+        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => true, 'showRecipes' => true])
     @else
-        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => false])
+        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
     @endif
 
     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog">
@@ -107,12 +107,12 @@
 @endsection
 
 @section('scripts')
-@parent 
+@parent
 @if(!$closed)
     @if($isClaim)
-        @include('js._loot_js', ['showLootTables' => false, 'showRaffles' => true])
+        @include('js._loot_js', ['showLootTables' => false, 'showRaffles' => true, 'showRecipes' => true])
     @else
-        @include('js._loot_js', ['showLootTables' => false, 'showRaffles' => false])
+        @include('js._loot_js', ['showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
     @endif
     @include('js._character_select_js')
     @include('widgets._inventory_select_js', ['readOnly' => true])
@@ -135,7 +135,7 @@
                     $rewards.load('{{ url('submissions/new/prompt') }}/'+$(this).val());
                 });
             @endif
-            
+
             $submitButton.on('click', function(e) {
                 e.preventDefault();
                 $confirmationModal.modal('show');

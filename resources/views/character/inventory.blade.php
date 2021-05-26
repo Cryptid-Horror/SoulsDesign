@@ -3,7 +3,12 @@
 @section('profile-title') {{ $character->fullName }}'s Inventory @endsection
 
 @section('profile-content')
-{!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, "Inventory" => $character->url.'/inventory']) !!}
+@if($character->is_myo_slot)
+{!! breadcrumbs(['Registered Dragon Slot Masterlist' => 'myos', $character->fullName => $character->url, 'Inventory' => $character->url.'/inventory']) !!}
+@else
+{!! breadcrumbs([($character->category->masterlist_sub_id ? $character->category->sublist->name.' Masterlist' : 'Character masterlist') => ($character->category->masterlist_sub_id ? 'sublist/'.$character->category->sublist->key : 'masterlist' ), $character->fullName => $character->url, 'Inventory' => $character->url.'/inventory']) !!}
+@endif
+>>>>>>> lk-update
 
 @include('character._header', ['character' => $character])
 
@@ -23,13 +28,23 @@
             @foreach($categoryItems->chunk(4) as $chunk)
                 <div class="row mb-3">
                     @foreach($chunk as $itemId=>$stack)
-                        <div class="col-sm-3 col-6 text-center inventory-item" data-id="{{ $stack->first()->pivot->id }}" data-name="{{ $character->name }}'s {{ $stack->first()->name }}">
+                        <?php
+                            $canName = $stack->first()->category->can_name;
+                            $stackName = $stack->first()->pivot->pluck('stack_name', 'id')->toArray()[$stack->first()->pivot->id];
+                            $stackNameClean = htmlentities($stackName);
+                        ?>
+                        <div class="col-sm-3 col-6 text-center inventory-item" data-id="{{ $stack->first()->pivot->id }}" data-name="{!! $canName && $stackName ? htmlentities($stackNameClean).' [' : null !!}{{ $character->name ? $character->name : $character->slug }}'s {{ $stack->first()->name }}{!! $canName && $stackName ? ']' : null !!}">
                             <div class="mb-1">
                                 <a href="#" class="inventory-stack"><img src="{{ $stack->first()->imageUrl }}" /></a>
                             </div>
-                            <div>
+                            <div class="{{ $canName ? 'text-muted' : '' }}">
                                 <a href="#" class="inventory-stack inventory-stack-name">{{ $stack->first()->name }} x{{ $stack->sum('pivot.count') }}</a>
                             </div>
+                            @if($canName && $stackName)
+                                <div>
+                                    <span class="inventory-stack inventory-stack-name badge badge-info" style="font-size:95%; margin:5px;">"{{ $stackName }}"</span>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -37,17 +52,6 @@
         </div>
     </div>
 @endforeach
-
-@if(Auth::check() && Auth::user()->id == $character->user_id)
-{!! Form::open(['url' => 'character/'.$character->slug.'/inventory/edit']) !!}
-    <div id="attachments" class="mb-3">
-        @include('widgets._inventory_select', ['user' => Auth::user(), 'inventory' => $userInventory, 'categories' => $categories, 'selected' => [], 'page' => $page])
-    </div>
-        <div class="text-right">
-            {!! Form::button('Transfer', ['class' => 'btn btn-primary', 'name' => 'action', 'value' => 'give', 'type' => 'submit']) !!}
-        </div>
-{!! Form::close() !!}
-@endif
 
 <h3>Latest Activity</h3>
 <div class="row ml-md-2 mb-4">
@@ -124,7 +128,7 @@
 
 @endsection
 
-@section('scripts') 
+@section('scripts')
 
 @include('widgets._inventory_select_js', ['readOnly' => true])
 

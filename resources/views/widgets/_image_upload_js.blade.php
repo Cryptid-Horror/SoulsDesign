@@ -60,6 +60,7 @@ $( document ).ready(function() {
 
     // Designers and artists //////////////////////////////////////////////////////////////////////
 
+    $('.selectize').selectize();
     $('.add-designer').on('click', function(e) {
         e.preventDefault();
         addDesignerRow($(this));
@@ -74,6 +75,7 @@ $( document ).ready(function() {
             addDesignerRow($(this));
         })
         $trigger.css({ visibility: 'hidden' });
+        $clone.find('.designer-select').selectize();
     }
     
     $('.add-artist').on('click', function(e) {
@@ -90,6 +92,7 @@ $( document ).ready(function() {
             addArtistRow($(this));
         })
         $trigger.css({ visibility: 'hidden' });
+        $clone.find('.artist-select').selectize();
     }
 
     // Traits /////////////////////////////////////////////////////////////////////////////////////
@@ -232,37 +235,9 @@ $( document ).ready(function() {
             readURL(this);
         });
 
-        function fetchEmbeds(url) {
-            // Set current embed and error as loading
-            $('#previewMessage').html('Loading...');
-            $('#thumbnailDa').attr('src', '/images/loading.gif');
-            if(typeof url !== 'undefined') {
-                $.get("{{ url('embed') }}?url="+url, function(data, status) {
-                    if(typeof data['error'] !== 'undefined') {
-                        $('#previewMessage').html('Error: ' + data['error']);
-                        $('#thumbnailDa').attr('src', '#');
-                    }
-                    else
-                    {
-                        $('#previewMessage').html('Image found: <a href=' + url + '>' + url + '</a>');
-                        $('#thumbnailDa').attr('src', data['thumbnail_url']);
-                    }
-                    updatePreviewArea();
-                }).catch(function() {
-                    $('#previewMessage').html('Error: Server failed to process request');
-                    $('#thumbnailDa').attr('src', '#');
-                });
-            }
-            else {
-                $('#previewMessage').html('Error: URL is undefined');
-                $('#thumbnailDa').attr('src', '#');
-            }
-        }
-
         $("#extMainImage").on('input', function() {
             $("#mainImage")[0].value = null;
             $useCustomThumbnail.bootstrapToggle('off');
-            fetchEmbeds(this.value);
         });
     @endif
 

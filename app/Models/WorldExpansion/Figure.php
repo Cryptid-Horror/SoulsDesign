@@ -2,14 +2,16 @@
 
 namespace App\Models\WorldExpansion;
 
-use Config;
 use DB;
+use Auth;
+use Config;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\User\User;
 use App\Models\WorldExpansion\FigureCategory;
+use App\Models\WorldExpansion\FactionRankMember;
 use App\Models\Item\Item;
 
 class Figure extends Model
@@ -22,9 +24,9 @@ class Figure extends Model
      * @var array
      */
     protected $fillable = [
-        'name','description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension', 
-        'category_id', 'is_active', 'birth_date', 'death_date'
-        
+        'name','description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension',
+        'category_id', 'is_active', 'birth_date', 'death_date', 'faction_id'
+
     ];
 
 
@@ -35,9 +37,9 @@ class Figure extends Model
      */
     protected $table = 'figures';
     protected $dates = ['birth_date', 'death_date'];
-    
+
     public $timestamps = true;
-    
+
     /**
      * Validation rules for creation.
      *
@@ -68,7 +70,7 @@ class Figure extends Model
 
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -76,15 +78,23 @@ class Figure extends Model
     /**
      * Get the figure attached to this figure.
      */
-    public function category() 
+    public function category()
     {
         return $this->belongsTo('App\Models\WorldExpansion\FigureCategory', 'category_id');
     }
 
     /**
+     * Get the figure attached to this figure.
+     */
+    public function faction()
+    {
+        return $this->belongsTo('App\Models\WorldExpansion\Faction', 'faction_id')->visible();
+    }
+
+    /**
      * Get the items attached to this figure.
      */
-    public function items() 
+    public function items()
     {
         return $this->belongsToMany('App\Models\Item\Item', 'figure_items')->withPivot('id');
     }
@@ -93,13 +103,39 @@ class Figure extends Model
     /**
      * Get the items attached to this figure.
      */
-    public function events() 
+    public function events()
     {
-        return $this->belongsToMany('App\Models\WorldExpansion\Event', 'event_figures')->withPivot('id');
+        return $this->belongsToMany('App\Models\WorldExpansion\Event', 'event_figures')->visible()->withPivot('id');
+    }
+
+    /**
+     * Get the factions attached to this figure.
+     */
+    public function factions()
+    {
+        return $this->belongsToMany('App\Models\WorldExpansion\Faction', 'faction_figures')->visible()->withPivot('id');
     }
 
     /**********************************************************************************************
-    
+
+        SCOPES
+
+    **********************************************************************************************/
+
+    /**
+     * Scope a query to only include visible posts.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeVisible($query)
+    {
+        if(!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) return $query->where('is_active', 1);
+        else return $query;
+    }
+
+    /**********************************************************************************************
+
         ACCESSORS
 
     **********************************************************************************************/
@@ -157,8 +193,8 @@ class Figure extends Model
     {
         return public_path($this->imageDirectory);
     }
-    
-    
+
+
 
     /**
      * Gets the file name of the model's image.
@@ -169,7 +205,7 @@ class Figure extends Model
     {
         return $this->id . '-image.' . $this->image_extension;
     }
-    
+
 
     /**
      * Gets the file name of the model's thumbnail image.
@@ -191,7 +227,7 @@ class Figure extends Model
         if (!$this->image_extension) return null;
         return asset($this->imageDirectory . '/' . $this->imageFileName);
     }
-    
+
     /**
      * Gets the URL of the model's thumbnail image.
      *
@@ -213,15 +249,11 @@ class Figure extends Model
         return url('world/figures/'.$this->id);
     }
 
-    
-
     /**********************************************************************************************
-    
+
         SCOPES
 
     **********************************************************************************************/
-
-    
 
     /**
      * Scope a query to sort items in category order.
@@ -268,6 +300,19 @@ class Figure extends Model
         return $query->orderBy('id');
     }
 
+    /**********************************************************************************************
 
+        ACCESSORS
+
+    **********************************************************************************************/
+
+    /**
+     * Get character's faction rank.
+     */
+    public function getFactionRankAttribute()
+    {
+        if(!isset($this->faction_id) || !$this->faction->ranks()->count()) return null;
+        if(FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()) return FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()->rank;
+    }
 
 }

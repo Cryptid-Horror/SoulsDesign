@@ -2,6 +2,10 @@
 
 @section('title') Dragon Masterlist @endsection
 
+@section('sidebar')
+    @include('browse._sidebar')
+@endsection
+
 @section('content')
 {!! breadcrumbs(['Dragon Masterlist' => 'Registered Dragons']) !!}
 <h1>Genotype Masterlist</h1>

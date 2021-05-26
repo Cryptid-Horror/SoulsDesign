@@ -5,6 +5,21 @@
         ---OR---
         <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
     </div>
+@if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
+    <div class="form-group">
+        {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+        {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the Thumbnail Automation, or upload a custom thumbnail.') !!}
+    </div>
+    <div class="card mb-3" id="thumbnailCrop">
+        <div class="card-body">
+            <div id="cropSelect">By using this function, the thumbnail will be automatically generated from the full image.</div>
+            {!! Form::hidden('x0', 1) !!}
+            {!! Form::hidden('x1', 1) !!}
+            {!! Form::hidden('y0', 1) !!}
+            {!! Form::hidden('y1', 1) !!}
+        </div>
+    </div>
+@else
     <div class="form-group">
         {!! Form::checkbox('use_custom_thumb', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomThumbnail']) !!}
         {!! Form::label('use_custom_thumb', 'Upload Custom Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
@@ -23,12 +38,7 @@
             {!! Form::hidden('y1', null, ['id' => 'cropY1']) !!}
         </div>
     </div>
-    <div class="card mb-3" id="thumbnailDaPreview">
-        <div class="card-body">
-            <p id="previewMessage"></p>
-            <img src="#" id="thumbnailDa"/>
-        </div>
-    </div>
+@endif
     <div class="card mb-3" id="thumbnailUpload">
         <div class="card-body">
             {!! Form::label('Thumbnail Image') !!} {!! add_help('This image is shown on the masterlist page.') !!}
@@ -151,39 +161,9 @@
             readURL(this);
         });
 
-        var embed_route = "/embed?url="
-
-        function fetchEmbeds(url) {
-            // Set current embed and error as loading
-            $('#previewMessage').html('Loading...');
-            $('#thumbnailDa').attr('src', '/images/loading.gif');
-            if(typeof url !== 'undefined') {
-                $.get(embed_route + url, function(data, status) {
-                    if(typeof data['error'] !== 'undefined') {
-                        $('#previewMessage').html('Error: ' + data['error']);
-                        $('#thumbnailDa').attr('src', '#');
-                    }
-                    else
-                    {
-                        $('#previewMessage').html('Image found: <a href=' + url + '>' + url + '</a>');
-                        $('#thumbnailDa').attr('src', data['thumbnail_url']);
-                    }
-                    updatePreviewArea();
-                }).catch(function() {
-                    $('#previewMessage').html('Error: Server failed to process request');
-                    $('#thumbnailDa').attr('src', '#');
-                });
-            }
-            else {
-                $('#previewMessage').html('Error: URL is undefined');
-                $('#thumbnailDa').attr('src', '#');
-            }
-        }
-
         $("#extMainImage").focusout(function() {
             $("#mainImage")[0].value = null;
             $useCustomThumbnail.bootstrapToggle('off');
-            fetchEmbeds(this.value);
         });
 
         function updateCropValues() {

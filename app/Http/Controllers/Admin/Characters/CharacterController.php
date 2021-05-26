@@ -10,7 +10,9 @@ use Settings;
 
 use App\Models\Character\Character;
 use App\Models\Character\CharacterCategory;
+use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Rarity;
+use App\Models\Character\CharacterTitle;
 use App\Models\User\User;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
@@ -58,7 +60,9 @@ class CharacterController extends Controller
         return view('admin.masterlist.create_character', [
             'categories' => CharacterCategory::orderBy('sort')->get(),
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
+            'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'titles' => ['0' => 'Select Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('sort', 'DESC')->pluck('title', 'id')->toArray(),
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'subtypes' => ['0' => 'Pick a Species First'],
             'features' => Feature::orderBy('name')->pluck('name', 'id')->toArray(),
@@ -75,6 +79,7 @@ class CharacterController extends Controller
     {
         return view('admin.masterlist.create_character', [
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
+            'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'subtypes' => ['0' => 'Pick a Species First'],
@@ -108,21 +113,40 @@ class CharacterController extends Controller
     {
         $request->validate(Character::$createRules);
         $data = $request->only([
-            'user_id', 'owner_alias', 'character_category_id', 'number', 'slug',
+            'user_id', 'owner_url', 'character_category_id', 'number', 'slug',
             'description', 'is_visible', 'is_giftable', 'is_tradeable', 'is_sellable',
             'sale_value', 'transferrable_at', 'use_custom_thumb',
             'x0', 'x1', 'y0', 'y1',
-            'designer_alias', 'designer_url',
-            'artist_alias', 'artist_url',
+            'designer_id', 'designer_url',
+            'artist_id', 'artist_url',
+            
+            // hello darkness my old friend //
+            'sire_id',           'sire_name',
+            'sire_sire_id',      'sire_sire_name',
+            'sire_sire_sire_id', 'sire_sire_sire_name',
+            'sire_sire_dam_id',  'sire_sire_dam_name',
+            'sire_dam_id',       'sire_dam_name',
+            'sire_dam_sire_id',  'sire_dam_sire_name',
+            'sire_dam_dam_id',   'sire_dam_dam_name',
+            'dam_id',            'dam_name',
+            'dam_sire_id',       'dam_sire_name',
+            'dam_sire_sire_id',  'dam_sire_sire_name',
+            'dam_sire_dam_id',   'dam_sire_dam_name',
+            'dam_dam_id',        'dam_dam_name',
+            'dam_dam_sire_id',   'dam_dam_sire_name',
+            'dam_dam_dam_id',    'dam_dam_dam_name',
+            'generate_ancestors',
+
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
+            'title_id', 'title_data',
             'image', 'ext_url', 'thumbnail', 'image_description', 'adornments',
             'sex', 'gender_pronouns', 'genotype', 'phenotype', 'free_markings', 'slots_used', 'health_status',
             'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
             'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
             'is_adopted', 'temperament', 'diet', 'rank', 'skills',
-            'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-            'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+            // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+            // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+            // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
             'name', 'title_name', 'nicknames', 'has_grand_title'
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
@@ -146,21 +170,40 @@ class CharacterController extends Controller
     {
         $request->validate(Character::$myoRules);
         $data = $request->only([
-            'user_id', 'owner_alias', 'name',
+            'user_id', 'owner_url', 'name',
             'description', 'is_visible', 'is_giftable', 'is_tradeable', 'is_sellable',
             'sale_value', 'transferrable_at', 'use_custom_thumbnail',
             'x0', 'x1', 'y0', 'y1',
-            'designer_alias', 'designer_url',
-            'artist_alias', 'artist_url',
+            'designer_id', 'designer_url',
+            'artist_id', 'artist_url',
+
+            // i've come to speak with you again //
+            'sire_id',           'sire_name',
+            'sire_sire_id',      'sire_sire_name',
+            'sire_sire_sire_id', 'sire_sire_sire_name',
+            'sire_sire_dam_id',  'sire_sire_dam_name',
+            'sire_dam_id',       'sire_dam_name',
+            'sire_dam_sire_id',  'sire_dam_sire_name',
+            'sire_dam_dam_id',   'sire_dam_dam_name',
+            'dam_id',            'dam_name',
+            'dam_sire_id',       'dam_sire_name',
+            'dam_sire_sire_id',  'dam_sire_sire_name',
+            'dam_sire_dam_id',   'dam_sire_dam_name',
+            'dam_dam_id',        'dam_dam_name',
+            'dam_dam_sire_id',   'dam_dam_sire_name',
+            'dam_dam_dam_id',    'dam_dam_dam_name',
+            'generate_ancestors',
+
             'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data',
             'image', 'ext_url', 'thumbnail', 'adornments',
             'sex', 'genotype', 'phenotype', 'slots_used', 'health_status',
             'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
             'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
             'is_adopted', 'temperament', 'diet', 'rank', 'skills',
-            'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-            'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-            'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
+            // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+            // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+            // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+            'has_grand_title'
         ]);
         if ($character = $service->createCharacter($data, Auth::user(), true)) {
             flash('Registered Dragon slot created successfully.')->success();
@@ -493,7 +536,7 @@ class CharacterController extends Controller
         $this->character = Character::where('slug', $slug)->first();
         if(!$this->character) abort(404);
 
-        if($service->adminTransfer($request->only(['recipient_id', 'recipient_alias', 'cooldown', 'reason']), $this->character, Auth::user())) {
+        if($service->adminTransfer($request->only(['recipient_id', 'recipient_url', 'cooldown', 'reason']), $this->character, Auth::user())) {
             flash('Character transferred successfully.')->success();
         }
         else {
@@ -515,7 +558,7 @@ class CharacterController extends Controller
         $this->character = Character::where('is_myo_slot', 1)->where('id', $id)->first();
         if(!$this->character) abort(404);
 
-        if($service->adminTransfer($request->only(['recipient_id', 'cooldown', 'reason']), $this->character, Auth::user())) {
+        if($service->adminTransfer($request->only(['recipient_id', 'recipient_url', 'cooldown', 'reason']), $this->character, Auth::user())) {
             flash('Character transferred successfully.')->success();
         }
         else {
@@ -629,7 +672,6 @@ class CharacterController extends Controller
                 }
             }
         }
-        
         return view('admin.masterlist.character_trades', [
             'trades' => $trades->orderBy('id', 'DESC')->paginate(20),
             'tradesQueue' => Settings::get('open_transfers_queue'),

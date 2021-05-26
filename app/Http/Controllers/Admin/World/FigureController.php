@@ -7,6 +7,7 @@ use App\Models\WorldExpansion\Figure;
 use App\Models\WorldExpansion\FigureCategory;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
+use App\Models\WorldExpansion\Faction;
 
 use App\Models\WorldExpansion\Event;
 use App\Models\WorldExpansion\EventFigure;
@@ -19,14 +20,14 @@ use Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Services\FigureService;
+use App\Services\WorldExpansion\FigureService;
 
 class FigureController extends Controller
 {
 
 
     /**********************************************************************************************
-    
+
         Figure Types
 
     **********************************************************************************************/
@@ -42,7 +43,7 @@ class FigureController extends Controller
             'categories' => FigureCategory::orderBy('sort', 'DESC')->get()
         ]);
     }
-    
+
     /**
      * Shows the create figure category page.
      *
@@ -54,7 +55,7 @@ class FigureController extends Controller
             'category' => new FigureCategory
         ]);
     }
-    
+
     /**
      * Shows the edit figure category page.
      *
@@ -74,7 +75,7 @@ class FigureController extends Controller
      * Creates or edits a category.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @param  int|null                  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -83,7 +84,7 @@ class FigureController extends Controller
         $id ? $request->validate(FigureCategory::$updateRules) : $request->validate(FigureCategory::$createRules);
 
         $data = $request->only([
-            'name', 'names', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 'is_active', 'summary'
+            'name', 'names', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 'summary'
         ]);
         if($id && $service->updateFigureCategory(FigureCategory::find($id), $data, Auth::user())) {
             flash('Figure category updated successfully.')->success();
@@ -116,7 +117,7 @@ class FigureController extends Controller
      * Deletes a category.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @param  int                       $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -135,7 +136,7 @@ class FigureController extends Controller
      * Sorts categories.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSortFigureCategory(Request $request, FigureService $service)
@@ -154,7 +155,7 @@ class FigureController extends Controller
 
 
     /**********************************************************************************************
-    
+
         FAUNA
 
     **********************************************************************************************/
@@ -170,7 +171,7 @@ class FigureController extends Controller
             'figures' => Figure::orderBy('sort', 'DESC')->get()
         ]);
     }
-    
+
     /**
      * Shows the create figure figure page.
      *
@@ -184,9 +185,10 @@ class FigureController extends Controller
             'items' => Item::all()->pluck('name','id')->toArray(),
             'figures' => Figure::all()->pluck('name','id')->toArray(),
             'locations' => Location::all()->pluck('name','id')->toArray(),
+            'factions' => Faction::all()->pluck('name','id')->toArray(),
         ]);
     }
-    
+
     /**
      * Shows the edit figure figure page.
      *
@@ -203,6 +205,7 @@ class FigureController extends Controller
             'items' => Item::all()->pluck('name','id')->toArray(),
             'figures' => Figure::all()->pluck('name','id')->toArray(),
             'locations' => Location::all()->pluck('name','id')->toArray(),
+            'factions' => Faction::all()->pluck('name','id')->toArray(),
         ]);
     }
 
@@ -210,7 +213,7 @@ class FigureController extends Controller
      * Creates or edits a figure.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @param  int|null                  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -219,9 +222,9 @@ class FigureController extends Controller
         $id ? $request->validate(Figure::$updateRules) : $request->validate(Figure::$createRules);
 
         $data = $request->only([
-            'name', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th', 
+            'name', 'description', 'image', 'image_th', 'remove_image', 'remove_image_th',
             'is_active', 'summary', 'category_id', 'item_id', 'location_id',
-            'birth_date', 'death_date'
+            'birth_date', 'death_date', 'faction_id'
         ]);
         if($id && $service->updateFigure(Figure::find($id), $data, Auth::user())) {
             flash('Figure updated successfully.')->success();
@@ -254,7 +257,7 @@ class FigureController extends Controller
      * Deletes a figure.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @param  int                       $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -273,7 +276,7 @@ class FigureController extends Controller
      * Sorts figures.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\FigureService  $service
+     * @param  App\Services\WorldExpansion\FigureService  $service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSortFigure(Request $request, FigureService $service)
@@ -288,5 +291,5 @@ class FigureController extends Controller
     }
 
 
-    
+
 }

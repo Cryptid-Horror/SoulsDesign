@@ -21,7 +21,7 @@ class EventCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'name',  'description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension', 'is_active'
+        'name',  'description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension'
     ];
 
 
@@ -31,9 +31,9 @@ class EventCategory extends Model
      * @var string
      */
     protected $table = 'event_categories';
-    
+
     public $timestamps = true;
-    
+
     /**
      * Validation rules for creation.
      *
@@ -46,7 +46,7 @@ class EventCategory extends Model
         'image' => 'mimes:png,gif,jpg,jpeg',
         'image_th' => 'mimes:png,gif,jpg,jpeg',
     ];
-    
+
     /**
      * Validation rules for updating.
      *
@@ -62,24 +62,26 @@ class EventCategory extends Model
 
 
     /**********************************************************************************************
-    
+
         RELATIONS
+
     **********************************************************************************************/
 
     /**
      * Get the location attached to this type.
      */
-    public function events() 
+    public function events()
     {
-        return $this->hasMany('App\Models\WorldExpansion\Event', 'category_id');
+        return $this->hasMany('App\Models\WorldExpansion\Event', 'category_id')->visible();
     }
 
 
-    
+
 
     /**********************************************************************************************
-    
+
         ACCESSORS
+
     **********************************************************************************************/
 
     /**
@@ -121,7 +123,7 @@ class EventCategory extends Model
     {
         return $this->id . '-image.' . $this->image_extension;
     }
-    
+
 
     /**
      * Gets the file name of the model's thumbnail image.
@@ -143,7 +145,7 @@ class EventCategory extends Model
         if (!$this->image_extension) return null;
         return asset($this->imageDirectory . '/' . $this->imageFileName);
     }
-    
+
     /**
      * Gets the URL of the model's thumbnail image.
      *
@@ -154,7 +156,7 @@ class EventCategory extends Model
         if (!$this->thumb_extension) return null;
         return asset($this->imageDirectory . '/' . $this->thumbFileName);
     }
-    
+
 
     /**
      * Gets the URL of the model's encyclopedia page.
@@ -175,6 +177,6 @@ class EventCategory extends Model
     {
         return url('world/events?category_id='.$this->id.'&sort=category');
     }
-    
+
 
 }

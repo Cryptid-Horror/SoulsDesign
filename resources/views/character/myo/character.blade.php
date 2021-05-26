@@ -3,35 +3,35 @@
 @section('profile-title') {{ $character->fullName }} @endsection
 
 @section('profile-content')
-<div class="row no-gutters">
-    <div class="col-md-8 my-auto">
-        {!! breadcrumbs([($character->is_myo_slot ? 'Genotype Masterlist' : 'Dragon Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Profile' => $character->url . '/profile']) !!}
-    </div>
-
-    <!-- character trade/gift status badges section -->
-    <div class="col-md-4 text-center text-md-right my-auto">
-        <h1>
-        <span class="badge {{ $character->is_trading ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_trading ? 'OPEN for sale and trade offers.' : 'CLOSED for sale and trade offers.' }}"><i class="fas fa-comments-dollar"></i></span>
-        @if(!$character->is_myo_slot)
-            <span class="badge {{ $character->is_gift_art_allowed ? 'badge-success' : 'badge-danger' }}" data-toggle="tooltip" title="{{ $character->is_gift_art_allowed ? 'OPEN for gift art.' : 'CLOSED for gift art.' }}"><i class="fas fa-pencil-ruler"></i></span>
-        @endif
-        </h1>
-    </div>
-</div>
+{!! breadcrumbs(['Genotype Slot Masterlist' => 'myos', $character->fullName => $character->url]) !!}
 
 @include('character._header', ['character' => $character])
 
 {{-- Main Image --}}
-<div class="row mb-3">
-    <div class="text-center col-md-7">
-        <a href="{{ $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
-            <img src="{{ $character->image->imageUrl }}" class="image" />
-        </a>
-    </div>
-    @include('character._image_info', ['image' => $character->image])
+<div class="text-center mb-3">
+    <a href="{{ $character->image->imageUrl }}" data-lightbox="entry" data-title="{{ $character->fullName }}">
+        <img src="{{ $character->image->imageUrl }}" class="image" />
+    </a>
 </div>
 
-{{-- Info --}}
+{{-- Profile --}}
+<div class="card character-bio mb-3">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h3 class="mb-0">Profile</h3>
+        <div>
+            @if(isset($character->image->ext_url))
+                <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm mr-2 d-none d-sm-inline"><i class="fas fa-link"></i> View Image On DeviantArt</a>
+            @endif
+            <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
+        </div>
+    </div>
+    <div class="card-body">
+        @include('character._tab_profile', ['character' => $character])
+    </div>
+</div>
+
+{{--Technical Information--}}
+<h3>Technical Details</h3>
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
@@ -41,6 +41,11 @@
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
             </li>
+            @if($character->getLineageBlacklistLevel() < 2)
+                <li class="nav-item">
+                    <a class="nav-link" id="lineageTab" data-toggle="tab" href="#lineage" role="tab">Lineage</a>
+                </li>
+            @endif
             @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
                 <li class="nav-item">
                     <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-all" role="tab"><i class="fas fa-cog"></i></a>
@@ -55,6 +60,11 @@
         <div class="tab-pane fade" id="notes">
             @include('character._tab_notes', ['character' => $character])
         </div>
+        @if($character->getLineageBlacklistLevel() < 2)
+            <div class="tab-pane fade" id="lineage">
+                @include('character._tab_lineage', ['character' => $character])
+            </div>
+        @endif
         @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
             <div class="tab-pane fade" id="settings-all">
                 {!! Form::open(['url' => $character->is_myo_slot ? 'admin/myo/'.$character->id.'/settings' : 'admin/character/'.$character->slug.'/settings']) !!}
@@ -68,12 +78,21 @@
                 {!! Form::close() !!}
                 <hr />
                 <div class="text-right">
-                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-id="{{ $character->id }}">Delete</a>
+                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-slug="{{ $character->slug }}">Delete</a>
                 </div>
             </div>
         @endif
     </div>
 </div>
+
+@if(Auth::check() && Auth::user()->hasPower('manage_characters'))
+    <hr>
+    <h3>[Admin] Edit Image Details</h3>
+    <div class="alert alert-info">
+        This section is for easy editing of details relating to the active character image at the top of the page.
+    </div>
+    @include('character._image_info', ['image' => $character->image])
+@endif
 
 @endsection
 

@@ -25,7 +25,7 @@
     @endif
 
     <div class="alert alert-info">
-        Fill in either of the owner fields - you can select a user from the list if they have registered for the site, or enter their deviantART username if they don't have an account. If the owner registers an account later and links their dA account, {{ $isMyo ? 'Registered Dragon slot' : 'character' }}s with their dA alias listed will automatically be credited to their site account. If both fields are filled, the alias field will be ignored.
+        Fill in either of the owner fields - you can select a user from the list if they have registered for the site, or enter the URL of their off-site profile, such as their deviantArt profile, if they don't have an account. If the owner registers an account later and links their account, {{ $isMyo ? 'Registered Dragon slot' : 'character' }}s linked to that account's profile will automatically be credited to their site account. If both fields are filled, the URL field will be ignored.
     </div>
 
     <div class="row">
@@ -37,8 +37,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('Owner Alias (Optional)') !!}
-                {!! Form::text('owner_alias', old('owner_alias'), ['class' => 'form-control']) !!}
+                {!! Form::label('Owner URL (Optional)') !!}
+                {!! Form::text('owner_url', old('owner_url'), ['class' => 'form-control']) !!}
             </div>
         </div>
     </div>
@@ -133,6 +133,21 @@
         ---OR---
         <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
     </div>
+@if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
+    <div class="form-group">
+        {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+        {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the Thumbnail Automation, or upload a custom thumbnail.') !!}
+    </div>
+    <div class="card mb-3" id="thumbnailCrop">
+        <div class="card-body">
+            <div id="cropSelect">By using this function, the thumbnail will be automatically generated from the full image.</div>
+            {!! Form::hidden('x0', 1) !!}
+            {!! Form::hidden('x1', 1) !!}
+            {!! Form::hidden('y0', 1) !!}
+            {!! Form::hidden('y1', 1) !!}
+        </div>
+    </div>
+@else
     <div class="form-group">
         {!! Form::checkbox('use_custom_thumb', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomThumbnail']) !!}
         {!! Form::label('use_custom_thumb', 'Upload Custom Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
@@ -151,12 +166,7 @@
             {!! Form::hidden('y1', null, ['id' => 'cropY1']) !!}
         </div>
     </div>
-    <div class="card mb-3" id="thumbnailDaPreview">
-        <div class="card-body">
-            <p id="previewMessage"></p>
-            <img src="#" id="thumbnailDa"/>
-        </div>
-    </div>
+@endif
     <div class="card mb-3" id="thumbnailUpload">
         <div class="card-body">
             {!! Form::label('Thumbnail Image') !!} {!! add_help('This image is shown on the masterlist page.') !!}
@@ -165,19 +175,19 @@
         </div>
     </div>
     <p class="alert alert-info">
-        This section is for crediting the image creators. The first box is for the designer's deviantART name (if any). If the designer has an account on the site, it will link to their site profile; if not, it will link to their dA page. The second is for a custom URL if they don't use dA. Both are optional - you can fill in the alias and ignore the URL, or vice versa. If you fill in both, it will link to the given URL, but use the alias field as the link name.
+        This section is for crediting the image creators. The first box is for the designer or artist's on-site username (if any). The second is for a link to the designer or artist if they don't have an account on the site.
     </p>
     <div class="form-group">
         {!! Form::label('Designer(s)') !!}
         <div id="designerList">
             <div class="mb-2 d-flex">
-                {!! Form::text('designer_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer Alias']) !!}
+                {!! Form::select('designer_id[]', $userOptions, null, ['class'=> 'form-control mr-2 selectize', 'placeholder' => 'Select a Designer']) !!}
                 {!! Form::text('designer_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
                 <a href="#" class="add-designer btn btn-link" data-toggle="tooltip" title="Add another designer">+</a>
             </div>
         </div>
         <div class="designer-row hide mb-2">
-            {!! Form::text('designer_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer Alias']) !!}
+            {!! Form::select('designer_id[]', $userOptions, null, ['class'=> 'form-control mr-2 designer-select', 'placeholder' => 'Select a Designer']) !!}
             {!! Form::text('designer_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Designer URL']) !!}
             <a href="#" class="add-designer btn btn-link" data-toggle="tooltip" title="Add another designer">+</a>
         </div>
@@ -186,13 +196,13 @@
         {!! Form::label('Artist(s)') !!}
         <div id="artistList">
             <div class="mb-2 d-flex">
-                {!! Form::text('artist_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist Alias']) !!}
+                {!! Form::select('artist_id[]', $userOptions, null, ['class'=> 'form-control mr-2 selectize', 'placeholder' => 'Select an Artist']) !!}
                 {!! Form::text('artist_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
                 <a href="#" class="add-artist btn btn-link" data-toggle="tooltip" title="Add another artist">+</a>
             </div>
         </div>
         <div class="artist-row hide mb-2">
-            {!! Form::text('artist_alias[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist Alias']) !!}
+            {!! Form::select('artist_id[]', $userOptions, null, ['class'=> 'form-control mr-2 artist-select', 'placeholder' => 'Select an Artist']) !!}
             {!! Form::text('artist_url[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Artist URL']) !!}
             <a href="#" class="add-artist btn btn-link mb-2" data-toggle="tooltip" title="Add another artist">+</a>
         </div>
@@ -210,6 +220,90 @@
             {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}
         </div>
     @endif
+
+    <h3>Lineage</h3>
+
+    <div class="alert alert-info">Enter a sire and dam to autogenerate ancestry or enter ancestors manually. Do not enter anything if there are no ancestors in that slot.</div>
+
+    <?php
+        // Reduce errors and repetition
+        $k = [
+            'sire',
+            'dam',
+            'sire_sire',
+            'sire_sire_sire',
+            'sire_sire_dam',
+            'sire_dam',
+            'sire_dam_sire',
+            'sire_dam_dam',
+            'dam_sire',
+            'dam_sire_sire',
+            'dam_sire_dam',
+            'dam_dam',
+            'dam_dam_sire',
+            'dam_dam_dam'
+        ];
+        // Human-readable names for the things
+        $j = [
+            "Sire",
+            "Dam",
+            "Sire's Sire",
+            "Sire's Sire's Sire",
+            "Sire's Sire's Dam",
+            "Sire's Dam",
+            "Sire's Dam's Sire",
+            "Sire's Dam's Dam",
+            "Dam's Sire",
+            "Dam's Sire's Sire",
+            "Dam's Sire's Dam",
+            "Dam's Dam",
+            "Dam's Dam's Sire",
+            "Dam's Dam's Dam",
+        ];
+        ?>
+    <div class="row">
+        <div class="col-md-6">
+            @for ($i=0; $i < 14; $i++)
+                <?php $em = ($i < 3 || $i == 5 || $i == 8 || $i == 11); ?>
+                <div class="form-group text-center {{ $em ? 'pb-1 border-bottom' : '' }}">
+                    {!! Form::label($j[$i], null, ['class' => $em ? 'font-weight-bold' : '']) !!}
+                    <div class="row">
+                        <div class="col-sm-6 pr-sm-1">
+                            {!! Form::select($k[$i].'_id', $characterOptions, old($k[$i].'_id'), ['class' => 'form-control text-left character-select mb-1', 'placeholder' => 'None']) !!}
+                        </div>
+                        <div class="col-sm-6 pl-sm-1">
+                            {!! Form::text($k[$i].'_name', old($k[$i].'_name'), ['class' => 'form-control mb-1']) !!}
+                        </div>
+                    </div>
+                </div>
+                @if ($i == 0)
+                    </div>
+                    <div class="col-md-6">
+                @elseif ($i == 1)
+                    </div>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" value="generate" name="generate_ancestors" id="generate_ancestors" checked>
+                    <label class="form-check-label" for="generate_ancestors">
+                        automatically fill in ancestors from the parent(s)/grandparent(s) lineages?
+                    </label>
+                </div>
+
+                <h4><a href="#advanced_lineage" class="dropdown-toggle" data-toggle="collapse" data-target="#advanced_lineage" aria-expanded="false" aria-controls="advanced_lineage">
+    				Advanced Lineage
+    			</a></h4>
+
+                <div class="mb-4">
+                    <div id="advanced_lineage" class="row collapse mb-0">
+                        <div class="col-md-6">
+                @elseif ($i == 7)
+                    </div>
+                    <div class="col-md-6">
+                @endif
+            @endfor
+        </div>
+    </div>
+    </div>
 
     <h3>Traits</h3>
 
@@ -232,6 +326,28 @@
         {!! Form::label('Character Rarity') !!} @if($isMyo) {!! add_help('This will lock the slot into a particular rarity. Leave it blank if you would like to give the user more choices.') !!} @endif
         {!! Form::select('rarity_id', $rarities, old('rarity_id'), ['class' => 'form-control']) !!}
     </div>
+
+    @if(!$isMyo)
+    <div class="row no-gutters">
+        <div class="col-md-6 pr-2">
+            <div class="form-group">
+                {!! Form::label('Character Title') !!}
+                {!! Form::select('title_id', $titles, null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {!! Form::label('Extra Info/Custom Title (Optional)') !!} {!! add_help('If \'custom title\' is selected, this will be displayed as the title. If a preexisting title is selected, it will be displayed in addition to it. The short version is only used in the case of a custom title.') !!}
+                <div class="d-flex">
+                    {!! Form::text('title_data[full]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Full Title']) !!}
+                    @if(Settings::get('character_title_display'))
+                        {!! Form::text('title_data[short]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Short Title (Optional)']) !!}
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <div class="form-group">
         {!! Form::label('Traits') !!} @if($isMyo) {!! add_help('These traits will be listed as required traits for the slot. The user will still be able to add on more traits, but not be able to remove these. This is allowed to conflict with the rarity above; you may add traits above the character\'s specified rarity.') !!} @endif
@@ -321,6 +437,7 @@
         {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
+    {{-- Old Lineage Code
     <h3>Lineage</h3>
     <div class="alert alert-info">
         <p>You only need to enter the Sire and Dam as the system will automatically retrieve their lineage from there. In case of a custom lineage (either parent is 'Unknown' or is a legacy character), you will have to enter each ancestor manually.</p>
@@ -402,6 +519,7 @@
             @include('character._lineage_tree')
         </div>
     </div>
+    --}}
 
     <h3>Other Profile Information</h3>
 
@@ -485,6 +603,14 @@
       $.ajax({
         type: "GET", url: "{{ url('admin/masterlist/check-subtype') }}?species="+species+"&myo="+myo, dataType: "text"
       }).done(function (res) { $("#subtypes").html(res); }).fail(function (jqXHR, textStatus, errorThrown) { alert("AJAX call failed: " + textStatus + ", " + errorThrown); });
+    });
+    $(document).ready(function()
+    {
+        $('.character-select').selectize();
+        $('#advanced_lineage').on('click', function(e)
+        {
+            e.preventDefault();
+        });
     });
 </script>
 
