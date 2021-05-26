@@ -153,7 +153,7 @@ return [
     | Images above this cap in either dimension will be resized to suit. Enter "0" to disable resizing.
     |
     */
-    'store_masterlist_fullsizes' => 0,
+    'store_masterlist_fullsizes' => 1,
     'masterlist_fullsizes_cap' => 0,
 
     /*
