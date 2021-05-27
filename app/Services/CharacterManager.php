@@ -143,11 +143,11 @@ class CharacterManager extends Service
 
             // Add a log for the character
             // This logs all the updates made to the character
-            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'character');
+            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'character');
 
             // Add a log for the user
             // This logs ownership of the character
-            $this->createLog($user->id, null, $recipientId, $alias, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'user');
+            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'user');
             // Update the user's FTO status and character count
             if(is_object($recipient)) {
                 if(!$isMyo) {
