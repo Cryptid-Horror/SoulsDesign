@@ -10,7 +10,6 @@
 <h2>Masterlist Image</h2>
 
 @if($request->has_image)
-    If the image is not updating after a save, try refreshing with CTRL+F5!
     <div class="card mb-3">
         <div class="card-body bg-secondary text-white">
             <div class="row mb-3">
@@ -62,10 +61,8 @@
     {!! Form::open(['url' => 'designs/'.$request->id.'/image', 'files' => true]) !!}
         @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
             <div class="form-group">
-                {{-- {!! Form::label('Image') !!} {!! add_help('This is the image that will be used on the masterlist. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
+                {!! Form::label('Image') !!} {!! add_help('This is the image that will be used on the masterlist. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
                 <div>{!! Form::file('image', ['id' => 'mainImage']) !!}</div>
-                ---OR--- --}}
-                <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
             </div>
         @else 
             <div class="form-group">
@@ -89,16 +86,9 @@
         </div>
 @else
         <div class="form-group">
-            {!! Form::checkbox('use_custom_thumb', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomThumbnail']) !!}
-            {!! Form::label('use_custom_thumb', 'Upload Custom Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
+            {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+            {!! Form::label('use_cropper', 'Use Image Cropper', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
         </div>
-        @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
-        <div class="card mb-3" id="thumbnailSelect">
-            <div class="card-body">
-                Select an image to use the thumbnail cropper, or add a dA link to see a preview.
-            </div>
-        </div>
-        @endif
         <div class="card mb-3" id="thumbnailCrop">
             <div class="card-body">
                 <div id="cropSelect">Select an image to use the thumbnail cropper.</div>
@@ -189,5 +179,5 @@
 @endsection
 
 @section('scripts')
-@include('widgets._image_upload_js', ['useUploaded' => ($request->status == 'Pending' && Auth::user()->hasPower('manage_characters') && !isset($request->ext_url))])
+@include('widgets._image_upload_js', ['useUploaded' => ($request->status == 'Pending' && Auth::user()->hasPower('manage_characters'))])
 @endsection

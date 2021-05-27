@@ -125,13 +125,11 @@
     <div class="form-group">
         {!! Form::label('Image') !!}
         @if($isMyo)
-            {!! add_help('This is a cover image for the Registered Dragon slot. If left blank, a default image will be used.') !!}
-        @else 
+            {!! add_help('This is a cover image for the Genotype slot. If left blank, a default image will be used.') !!}
+        @else
             {!! add_help('This is the full masterlist image. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
         @endif
         <div>{!! Form::file('image', ['id' => 'mainImage']) !!}</div>
-        ---OR---
-        <div>{!! Form::text('ext_url', null, ['class' => 'form-control', 'id' => 'extMainImage', 'placeholder' => 'Add a link to a dA or sta.sh upload']) !!}</div>
     </div>
 @if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
     <div class="form-group">
@@ -149,16 +147,12 @@
     </div>
 @else
     <div class="form-group">
-        {!! Form::checkbox('use_custom_thumb', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCustomThumbnail']) !!}
-        {!! Form::label('use_custom_thumb', 'Upload Custom Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
-    </div>
-    <div class="card mb-3" id="thumbnailSelect">
-        <div class="card-body">
-            Select an image to use the thumbnail cropper, or add a dA link to see a preview.
-        </div>
+        {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+        {!! Form::label('use_cropper', 'Use Image Cropper', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the image cropper (crop dimensions can be adjusted in the site code), or upload a custom thumbnail.') !!}
     </div>
     <div class="card mb-3" id="thumbnailCrop">
         <div class="card-body">
+            <div id="cropSelect">Select an image to use the thumbnail cropper.</div>
             <img src="#" id="cropper" class="hide" />
             {!! Form::hidden('x0', null, ['id' => 'cropX0']) !!}
             {!! Form::hidden('x1', null, ['id' => 'cropX1']) !!}
@@ -208,13 +202,6 @@
         </div>
     </div>
     @if(!$isMyo)
-        <div class="form-group">
-            {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
-            <div id="adornmentsList">
-            </div>
-            <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
-        </div>
-
         <div class="form-group">
             {!! Form::label('Image Notes (Optional)') !!} {!! add_help('This section is for making additional notes about the image.') !!}
             {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}

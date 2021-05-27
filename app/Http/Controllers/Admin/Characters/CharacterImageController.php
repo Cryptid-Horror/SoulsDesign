@@ -243,7 +243,7 @@ class CharacterImageController extends Controller
      */
     public function postImageReupload(Request $request, CharacterManager $service, $id)
     {
-        $data = $request->only(['image', 'ext_url', 'thumbnail', 'x0', 'x1', 'y0', 'y1', 'use_custom_thumb']);
+        $data = $request->only(['image', 'ext_url', 'thumbnail', 'x0', 'x1', 'y0', 'y1', 'use_cropper']);
         $image = CharacterImage::find($id);
         if(!$image) abort(404);
         if($service->reuploadImage($data, $image, Auth::user())) {

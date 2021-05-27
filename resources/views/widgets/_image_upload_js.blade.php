@@ -3,59 +3,29 @@ $( document ).ready(function() {
 
     // Cropper ////////////////////////////////////////////////////////////////////////////////////
 
-    var $useCustomThumbnail = $('#useCustomThumbnail');
-    var $thumbnailSelect = $('#thumbnailSelect');
+    var $useCropper = $('#useCropper');
     var $thumbnailCrop = $('#thumbnailCrop');
     var $thumbnailUpload = $('#thumbnailUpload');
-    var $thumbnailDaPreview = $('#thumbnailDaPreview');
 
-    var useCustomThumbnail = $useCustomThumbnail.is(':checked');
-    var useUploaded = false;
+    var useCropper = $useCropper.is(':checked');
 
-    updatePreviewArea();
+    updateCropper();
 
-    $useCustomThumbnail.on('change', function(e) {
-        useCustomThumbnail = $useCustomThumbnail.is(':checked');
-        updatePreviewArea();
+    $useCropper.on('change', function(e) {
+        useCropper = $useCropper.is(':checked');
+
+        updateCropper();
     });
 
-    function updatePreviewArea() {
-        if(useCustomThumbnail) {
-            unhideUpload();
+    function updateCropper() {
+        if(useCropper) {
+            $thumbnailUpload.addClass('hide');
+            $thumbnailCrop.removeClass('hide');
         }
         else {
-            if(($('#mainImage')[0] && $('#mainImage')[0].value) || useUploaded) { unhideCrop(); }
-            else if($('#extMainImage')[0] && $('#extMainImage')[0].value) { unhideDaPreview(); }
-            else { unhideSelect(); }
+            $thumbnailCrop.addClass('hide');
+            $thumbnailUpload.removeClass('hide');
         }
-    }
-    
-    function unhideSelect() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.removeClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.addClass('hide');
-    }
-
-    function unhideCrop() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.removeClass('hide');
-        $thumbnailDaPreview.addClass('hide');
-    }
-
-    function unhideDaPreview() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.removeClass('hide');
-    }
-
-    function unhideUpload() {
-        $thumbnailUpload.removeClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.addClass('hide');
     }
 
     // Designers and artists //////////////////////////////////////////////////////////////////////
@@ -97,7 +67,6 @@ $( document ).ready(function() {
 
     // Traits /////////////////////////////////////////////////////////////////////////////////////
     
-    $('.initial.feature-select').selectize();
     $('#add-feature').on('click', function(e) {
         e.preventDefault();
         addFeatureRow();
@@ -121,50 +90,6 @@ $( document ).ready(function() {
         $trigger.parent().remove();
     }
 
-    $('#addAdornments').on('click', function(e) {
-        e.preventDefault();
-        addAdornmentRow();
-    });
-    $('.remove-adornment').on('click', function(e) {
-        e.preventDefault();
-        removeAdornmentRow($(this));
-    })
-    function addAdornmentRow() {
-        var $clone = $('.adornment-row').clone();
-        $('#adornmentsList').append($clone);
-        $clone.removeClass('hide adornment-row');
-        $clone.addClass('d-flex');
-        $clone.find('.remove-adornment').on('click', function(e) {
-            e.preventDefault();
-            removeAdornmentRow($(this));
-        })
-    }
-    function removeAdornmentRow($trigger) {
-        $trigger.parent().remove();
-    }
-
-    $('#addSkills').on('click', function(e) {
-        e.preventDefault();
-        addSkillRow();
-    });
-    $('.remove-skill').on('click', function(e) {
-        e.preventDefault();
-        removeSkillRow($(this));
-    })
-    function addSkillRow() {
-        var $clone = $('.skill-row').clone();
-        $('#skillsList').append($clone);
-        $clone.removeClass('hide skill-row');
-        $clone.addClass('d-flex');
-        $clone.find('.remove-skill').on('click', function(e) {
-            e.preventDefault();
-            removeSkillRow($(this));
-        })
-    }
-    function removeSkillRow($trigger) {
-        $trigger.parent().remove();
-    }
-
     // Croppie ////////////////////////////////////////////////////////////////////////////////////
 
     var thumbnailWidth = {{ Config::get('lorekeeper.settings.masterlist_thumbnails.width') }};
@@ -178,8 +103,6 @@ $( document ).ready(function() {
     var zoom = 0;
 
     @if(isset($useUploaded) && $useUploaded)
-        useUploaded = true; 
-        unhideCrop();
         // This is for modification of an existing image:
         c = new Croppie($cropper[0], {
             viewport: {
@@ -197,17 +120,9 @@ $( document ).ready(function() {
         }).then(function() {
             updateCropValues();
         });
-        //console.log(($x1.val() - $x0.val()) / thumbnailWidth);
+        console.log(($x1.val() - $x0.val()) / thumbnailWidth);
     @else
         function readURL(input) {
-            // First reset croppie
-            if(c) {
-                c.destroy();
-                c.element.outerHTML = c.element.innerHTML;
-            }
-            c = null;
-            $cropper = $('#cropper');
-            $cropper.attr('src', '#');
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -222,22 +137,17 @@ $( document ).ready(function() {
                             updateCropValues();
                         }
                     });
-                    //console.log(c);
+        console.log(c);
                     updateCropValues();
+                    $('#cropSelect').addClass('hide');
+                    $cropper.removeClass('hide');
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
         $("#mainImage").change(function() {
-            $('#extMainImage')[0].value = null;
-            $useCustomThumbnail.bootstrapToggle('off');
             readURL(this);
-        });
-
-        $("#extMainImage").on('input', function() {
-            $("#mainImage")[0].value = null;
-            $useCustomThumbnail.bootstrapToggle('off');
         });
     @endif
 

@@ -266,7 +266,7 @@ class CharacterManager extends Service
     {
         try {
             $imageData = array_only($data, [
-                'species_id', 'subtype_id', 'rarity_id', 'use_custom_thumb', 
+                'species_id', 'subtype_id', 'rarity_id', 'use_cropper', 
                 'x0', 'x1', 'y0', 'y1', 'genotype', 'phenotype', 'free_markings'
             ]);
 
@@ -276,13 +276,15 @@ class CharacterManager extends Service
                 $data['subtype_id'] = isset($data['subtype_id']) && $data['subtype_id'] ? $data['subtype_id'] : null;
                 $data['rarity_id'] = (isset($data['rarity_id']) && $data['rarity_id']) ? $data['rarity_id'] : null;
 
+
                 // Use default images for MYO slots without an image provided
                 if(!isset($data['image']))
                 {
-                    $data['image'] = public_path().'/images/myo.png';
-                    $data['thumbnail'] = public_path().'/images/myo-th.png';
+                    $data['image'] = asset('images/myo.png');
+                    $data['thumbnail'] = asset('images/myo-th.png');
                     $data['extension'] = 'png';
                     $data['default_image'] = true;
+                    unset($data['use_cropper']);
                 }
             }
             $imageData = Arr::only($data, [
@@ -1130,6 +1132,7 @@ class CharacterManager extends Service
             unlink($image->imagePath . '/' . $image->imageFileName);
             if(isset($image->fullsize_hash) ? file_exists( public_path($image->imageDirectory.'/'.$image->fullsizeFileName)) : FALSE) unlink($image->imagePath . '/' . $image->fullsizeFileName);
             unlink($image->imagePath . '/' . $image->thumbnailFileName);
+
             // Add a log for the character
             // This logs all the updates made to the character
             $this->createLog($user->id, null, null, null, $image->character_id, 'Image Deleted', '[#'.$image->id.']', 'character');
@@ -2271,16 +2274,16 @@ class CharacterManager extends Service
         DB::beginTransaction();
 
         try {
-            // Require an image or ext_url to be uploaded the first time, but if an image or ext_url already exists, allow user to update the other details
-            if(!$isAdmin && !isset($data['image']) && !file_exists($request->imagePath . '/' . $request->imageFileName) && !isset($data['ext_url']) && !isset($data['ext_url'])) throw new \Exception("Please upload a valid image or add a dA link.");
+            // Require an image to be uploaded the first time, but if an image already exists, allow user to update the other details
+            if(!$isAdmin && !isset($data['image']) && !file_exists($request->imagePath . '/' . $request->imageFileName)) throw new \Exception("Please upload a valid image.");
 
             // Require a thumbnail to be uploaded the first time as well
             if(!file_exists($request->thumbnailPath . '/' . $request->thumbnailFileName)) {
                 // If the crop dimensions are invalid...
                 // The crop function resizes the thumbnail to fit, so we only need to check that it's not null
                 if(!$isAdmin || ($isAdmin && isset($data['modify_thumbnail']))) {
-                    if(!isset($data['use_custom_thumb']) && !isset($data['ext_url']) && ($data['x0'] === null || $data['x1'] === null || $data['y0'] === null || $data['y1'] === null)) throw new \Exception('Invalid crop dimensions specified.');
-                    if(isset($data['use_custom_thumb']) && !isset($data['thumbnail'])) throw new \Exception("Please upload a valid thumbnail or use the image cropper.");
+                    if(isset($data['use_cropper']) && ($data['x0'] === null || $data['x1'] === null || $data['y0'] === null || $data['y1'] === null)) throw new \Exception('Invalid crop dimensions specified.');
+                    if(!isset($data['use_cropper']) && !isset($data['thumbnail'])) throw new \Exception("Please upload a valid thumbnail or use the image cropper.");
                 }
             }
             if(!$isAdmin || ($isAdmin && isset($data['modify_thumbnail']))) {
@@ -2290,8 +2293,8 @@ class CharacterManager extends Service
                         'use_cropper',
                         'x0', 'x1', 'y0', 'y1',
                     ]);
+                    $imageData['use_cropper'] = isset($data['use_cropper']);
                 }
-                $imageData['use_custom_thumb'] = isset($data['use_custom_thumb']);
                 if(!$isAdmin && isset($data['image'])) {
                     $imageData['extension'] = (Config::get('lorekeeper.settings.masterlist_image_format') ? Config::get('lorekeeper.settings.masterlist_image_format') : (isset($data['extension']) ? $data['extension'] : $data['image']->getClientOriginalExtension()));
                     $imageData['has_image'] = true;
