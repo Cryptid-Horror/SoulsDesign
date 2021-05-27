@@ -44,6 +44,15 @@ class Submission extends Model
     ];
 
     /**
+     * Validation rules specially for claim submissions.
+     *
+     * @var array
+     */
+    public static $claimRules = [
+        'url' => 'nullable',
+    ];
+
+    /**
      * Validation rules for submission updating.
      *
      * @var array

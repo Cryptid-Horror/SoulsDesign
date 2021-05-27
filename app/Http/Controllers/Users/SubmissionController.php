@@ -255,7 +255,7 @@ class SubmissionController extends Controller
      */
     public function postNewClaim(Request $request, SubmissionManager $service)
     {
-        $request->validate(Submission::$createRules);
+        $request->validate(Submission::$claimRules);
         if($service->createSubmission($request->only(['url', 'comments', 'stack_id', 'stack_quantity', 'slug', 'character_rewardable_type', 'character_rewardable_id', 'character_rewardable_quantity', 'rewardable_type','rewardable_id', 'quantity', 'currency_id', 'currency_quantity']), Auth::user(), true)) {
             flash('Claim submitted successfully.')->success();
         }
