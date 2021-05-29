@@ -67,6 +67,7 @@ $( document ).ready(function() {
 
     // Traits /////////////////////////////////////////////////////////////////////////////////////
     
+    $('.initial.feature-select').selectize();
     $('#add-feature').on('click', function(e) {
         e.preventDefault();
         addFeatureRow();
@@ -87,6 +88,50 @@ $( document ).ready(function() {
         $clone.find('.feature-select').selectize();
     }
     function removeFeatureRow($trigger) {
+        $trigger.parent().remove();
+    }
+
+    $('#addAdornments').on('click', function(e) {
+        e.preventDefault();
+        addAdornmentRow();
+    });
+    $('.remove-adornment').on('click', function(e) {
+        e.preventDefault();
+        removeAdornmentRow($(this));
+    })
+    function addAdornmentRow() {
+        var $clone = $('.adornment-row').clone();
+        $('#adornmentsList').append($clone);
+        $clone.removeClass('hide adornment-row');
+        $clone.addClass('d-flex');
+        $clone.find('.remove-adornment').on('click', function(e) {
+            e.preventDefault();
+            removeAdornmentRow($(this));
+        })
+    }
+    function removeAdornmentRow($trigger) {
+        $trigger.parent().remove();
+    }
+
+    $('#addSkills').on('click', function(e) {
+        e.preventDefault();
+        addSkillRow();
+    });
+    $('.remove-skill').on('click', function(e) {
+        e.preventDefault();
+        removeSkillRow($(this));
+    })
+    function addSkillRow() {
+        var $clone = $('.skill-row').clone();
+        $('#skillsList').append($clone);
+        $clone.removeClass('hide skill-row');
+        $clone.addClass('d-flex');
+        $clone.find('.remove-skill').on('click', function(e) {
+            e.preventDefault();
+            removeSkillRow($(this));
+        })
+    }
+    function removeSkillRow($trigger) {
         $trigger.parent().remove();
     }
 
