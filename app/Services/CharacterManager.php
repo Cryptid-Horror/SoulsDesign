@@ -265,11 +265,6 @@ class CharacterManager extends Service
     private function handleCharacterImage($data, $character, $isMyo = false)
     {
         try {
-            $imageData = array_only($data, [
-                'species_id', 'subtype_id', 'rarity_id', 'use_cropper', 
-                'x0', 'x1', 'y0', 'y1', 'genotype', 'phenotype', 'free_markings'
-            ]);
-
             if($isMyo)
             {
                 $data['species_id'] = (isset($data['species_id']) && $data['species_id']) ? $data['species_id'] : null;
@@ -289,7 +284,9 @@ class CharacterManager extends Service
             }
             $imageData = Arr::only($data, [
                 'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
-                'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data'
+                'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data',
+
+                'genotype', 'phenotype', 'free_markings'
             ]);
             $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
