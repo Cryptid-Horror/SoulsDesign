@@ -11,6 +11,8 @@
     <b>Diet:</b> {{ $character->diet ?? 'Undefined' }}<br>
     @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}<br>@endif
     <b>{{ $character->deceased ? 'Deceased' : $character->health_status }}</b><br>
+    <b>Total Health:</b> {{ $character->image->total_health }}<br>
+    <b>Current Health:</b> {{ $character->image->current_health }}<br>
     <b>Genotype:</b> {{ $character->image->genotype }}<br>
     <b>Phenotype:</b> {{ $character->image->phenotype }}<br>
     @if($character->image->free_markings)<b>Free Markings:</b> {{ $character->image->free_markings }}<br>@endif

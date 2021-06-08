@@ -2,7 +2,7 @@
     $marking_icon = 'Uncommon_Cloud';
     $marking_name = 'Cloud';
     $marking_code = 'nCd/CdCd';
-    $marking_desc = "A marking that creates a cloud like appearance on the body, believed to hide dragons when they are soaring through the clouds as an act of camoflauge. Cloud can present as either a splotch of collar with a border, or as a smooth soft gradient of color along the body.";
+    $marking_desc = "A marking that creates a cloud like appearance on the body, believed to hide dragons when they are soaring through the clouds as an act of camoflauge. Cloud can present as either a splotch of color with a border, or as a smooth soft gradient of color along the body.";
     $layers_above_or_below = 'Sable, Stained, Dipped, Roan, Bokeh, Merle, Brindled, Aurora, Shimmer';
     $layers_above = ' None';
     $layers_below = ' Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Pangare, Points, Pyuthon, Rimmed, Ringed, Scaled, Trailing, Underbelly, Banded, Marbled, Merle, Tabby, Toxin, Glass, Petal, Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano, Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepor, Rune, Triquetra';

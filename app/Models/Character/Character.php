@@ -50,7 +50,7 @@ class Character extends Model
         'sale_value', 'transferrable_at', 'is_visible',
         'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'sort',
         'is_myo_slot', 'name', 'trade_id', 'owner_url', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
-        'title_name', 'nicknames', 'is_adopted', 'health_status', 'sex', 'gender_pronouns',
+        'title_name', 'nicknames', 'is_adopted', 'health_status', 'total_health', 'current_health', 'sex', 'gender_pronouns',
         'temperament', 'diet', 'skills', 'rank', 'slots_used',
         'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
         'soul_link_type', 'soul_link_target', 'soul_link_target_link', 'arena_ranking',

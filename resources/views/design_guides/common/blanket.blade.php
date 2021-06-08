@@ -51,7 +51,7 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.'
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.'
     ];
 
     $marking_cannot = [

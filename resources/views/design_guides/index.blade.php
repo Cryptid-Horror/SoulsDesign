@@ -74,7 +74,7 @@
 			</div>
 			<div class="btn-group-vertical">
                 <a href="{{ url('https://www.soulsbetween.com/info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
-                <a href="{{ url('dhttps://www.soulsbetween.com/info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Free_Marks') }}" class="btn btn-secondary">Minimal (Free) Markings</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Design_Addons') }}" class="btn btn-secondary">Item kits, Shampoo, and others</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>

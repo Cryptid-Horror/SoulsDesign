@@ -20,11 +20,6 @@
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Intermediate%20Quests') }}" class="{{ set_active('prompts/prompt-categories?name=Intermediate%20Quests') }}">Intermediate Quests</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Master%20Quests') }}" class="{{ set_active('prompts/prompt-categories?name=Master%20Quests') }}">Master Quests</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Side%20Quests') }}" class="{{ set_active('prompts/prompt-categories?name=Side%20Quests') }}">Side Quests</a></div>
-        <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Seasonal%20Challenges') }}" class="{{ set_active('prompts/prompt-categories?name=Seasonal%20Challenges') }}">Seasonal Challenges</a></div>
-        <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Crafting') }}" class="{{ set_active('prompts/prompt-categories?name=Crafting') }}">Crafting</a></div>
-    </li>
-  <li class="sidebar-header"><a =class="card-link"><a href="{{ url('prompts') }}">Combat Activities</a></a></li>
-     <li class="sidebar-section">
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Arena') }}" class="{{ set_active('prompts/prompt-categories?name=Arena') }}">Arena</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Call%20to%20Arms') }}" class="{{ set_active('prompts/prompt-categories?name=Call%20to%20Arms') }}">Call To Arms</a></div>
         <div class="sidebar-item"><a href="{{ url('prompts/prompt-categories?name=Healing%20Shrine') }}" class="{{ set_active('prompts/prompt-categories?name=Healing%20Shrine') }}">Healing Shrine</a></div>

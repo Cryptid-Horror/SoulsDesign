@@ -115,7 +115,7 @@ img {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url(eternal_forest_edit.png);
+    background-image: url("https://i.imgur.com/wzw78JV.png");
     background-repeat: no-repeat;
    background-attachment: fixed;
     background-position: static;
@@ -542,7 +542,7 @@ main > .row {
 /* NOTIFICATIONS *********************************************************************************/
 
 .notifications-table .unread, .notifications-table .unread td {
-    background-color: #fffdf0;
+    background-color: #080E1B;
 }
 
 /* BROWSE ****************************************************************************************/
@@ -784,6 +784,12 @@ tr.accountbound {
 /* RECIPES ***************************************************************************************/
 .recipe-image {
     width: 150px;
+}
+
+.alert-secondary {
+    color: #b3dcfd;
+    background-color: #1f1d38;
+    border-color: #b3dcfdb;
 }
 
 /* RESPONSIVE BORDERS https://stackoverflow.com/questions/46412541/applying-borders-on-elements-depending-on-device-size-with-bootstrap */

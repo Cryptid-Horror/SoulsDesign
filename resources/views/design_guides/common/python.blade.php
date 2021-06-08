@@ -2,8 +2,7 @@
     $marking_icon = 'Common_Python';
     $marking_name = 'Python';
     $marking_code = 'nPy/PyPy';
-    $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Thundering-Horses
-A diamond, oval, or square/rectangular shape found on the spine of a dragon. The marking can go from the face to the tail, and in its dominant form has striping that can appear.";
+    $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Thundering-Horses. A diamond, oval, or square/rectangular shape found on the spine of a dragon. The marking can go from the face to the tail, and in its dominant form has striping that can appear.";
     $layers_above_or_below = ' Blanket, Boar, Collar, Dusted, Dunstripe, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Aether Marked, Blooded, Lustrous,';
     $layers_above = 'Brindled, Bokeh, Cloud, Marbled, Merle';
     $layers_below = ' Crested, Inkwell, Tobiano, Appaloosa, Painted';
@@ -55,7 +54,7 @@ A diamond, oval, or square/rectangular shape found on the spine of a dragon. The
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
+        'Edges cannot be too complicated, to avoid appearing like inkwell or other markings.',
     ];
 
     $marking_must = [

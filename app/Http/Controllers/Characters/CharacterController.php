@@ -154,7 +154,7 @@ class CharacterController extends Controller
             ($isMod ?
             [
                 'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
-                'slots_used', 'adornments', 'free_markings', 'health_status',
+                'slots_used', 'adornments', 'free_markings', 'health_status', 'total_health', 'current_health',
                 'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
                 'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
                 'is_adopted', 'temperament', 'diet', 'rank', 'skills',

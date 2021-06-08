@@ -42,6 +42,9 @@
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
                             Adoption Center
                             </a>
+                            <a class="dropdown-item" href="{{ url('crafting') }}">
+                                Crafting
+                            </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
                                 Design Registration
                             </a>
@@ -54,19 +57,18 @@
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
                                 Trade Listings
                             </a>
-                            <a class="dropdown-item" href="{{ url('crafting') }}">
-                                Crafting
-                            </a>
+                            
                             <div class="dropdown-divider"></div>
+                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/13') }}">
+                                Leasing Dragons
+                            </a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Flights') }}">
+                                Flights
+                            </a>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
                                 Nesting Permissions
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Leasing-Permissions-855903907') }}">
-                                Leasing Permissions (dA)
-                            </a>
-                            <a class="dropdown-item" href="{{ url('https://www.deviantart.com/the-below/journal/Flight-Management-855903599') }}">
-                                Flight Management (dA)
-                            </a>
+                           
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -203,8 +205,8 @@
                          <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_StaffApps') }}">
                            Staff Applications
                         </a>
-                        <a class="dropdown-item" href="{{ url('https://souls-between.deviantart.com/journal/Suggestions-717025816') }}">
-                            Suggestions (dA Link)
+                        <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/16') }}">
+                            Suggestions/Feedback
                         </a>
                     </div>
                 </li>

@@ -46,7 +46,7 @@
 
     // You can use html!
     $marking_can = [
-        'If you pick a color modifier for the base coat, then it has to be picked from the sliders providered below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
+        'If you pick a color modifier for the base coat, then it has to be picked from the sliders provided below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
         'If a design has no markings, you either have to apply the color modifier to the base or to minimal marks. Unlike Duo-tone, it is not allowed to not appear under these conditions.',
     ];
 

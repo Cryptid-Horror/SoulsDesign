@@ -197,7 +197,7 @@ class CharacterManager extends Service
                 'character_category_id', 'rarity_id', 'user_id',
                 'number', 'slug', 'description',
                 'sale_value', 'transferrable_at', 'is_visible',
-                'sex', 'gender_pronouns', 'health_status', 'taming', 'low_aether', 'high_aether',
+                'sex', 'gender_pronouns', 'health_status', 'total_health', 'current_health', 'taming', 'low_aether', 'high_aether',
                 'arena_ranking', 'soul_link_type', 'temperament',
                 'diet', 'rank',
                 // 'sire_slug', 'dam_slug', 'use_custom_lineage',
@@ -286,7 +286,7 @@ class CharacterManager extends Service
                 'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
                 'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data',
 
-                'genotype', 'phenotype', 'free_markings'
+                'genotype', 'phenotype', 'free_markings', "total_health", "current_health",
             ]);
             $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
@@ -1509,6 +1509,8 @@ class CharacterManager extends Service
             // Edit the rest of the character details if admin
             if($isAdmin) {
                 $character->health_status = $data['health_status'] ?? 'Healthy';
+                $character->total_health = $data['total_health'] ?? null;
+                $character->current_health = $data['current_health'] ?? null;
                 $character->ouroboros = isset($data['ouroboros']);
                 $character->taming = $data['taming'] ?? null;
                 $character->basic_aether = isset($data['basic_aether']);
@@ -2507,6 +2509,8 @@ class CharacterManager extends Service
             $request->genotype = $genotype;
             $request->phenotype = $phenotype;
             $request->free_markings = $data['free_markings'] ?? $request->character->image->free_markings;
+            $request->total_health = $total_health;
+            $request->current_health = $current_health;
             $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
             $request->has_features = 1;
             $request->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;

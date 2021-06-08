@@ -52,7 +52,7 @@
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
+        'Edges cannot be too complicated, to avoid appearing like inkwell or other markings.',
     ];
 
     $marking_must = [

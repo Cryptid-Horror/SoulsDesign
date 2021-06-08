@@ -49,6 +49,16 @@
         {!! Form::text('free_markings', $image->free_markings, ['class' => 'form-control', 'placeholder' => 'e.g. Accents']) !!}
     </div>
 
+ <div class="form-group">
+        {!! Form::label('Total Health') !!}
+        {!! Form::text('total_health', $image->total_health, ['class' => 'form-control', 'placeholder' => 'e.g. Accents']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Current Health') !!}
+        {!! Form::text('current_health', $image->current_health, ['class' => 'form-control', 'placeholder' => 'e.g. Accents']) !!}
+    </div>
+
     <div class="form-group">
         {!! Form::label('Traits') !!}
         <div id="featureList">
