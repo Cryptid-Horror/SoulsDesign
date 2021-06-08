@@ -85,7 +85,7 @@ return [
     10 => [
         'name' => 'Character Profile Edited',
         'message' => '{character_name}\'s profile was edited by <a href="{sender_url}">{sender_name}</a>. (<a href="{url}">View Character</a>)',
-        'url' => 'character/{character_slug}/profile'
+        'url' => 'character/{character_slug}'
     ],
 
     // IMAGE_UPLOAD
