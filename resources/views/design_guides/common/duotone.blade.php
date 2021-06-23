@@ -2,8 +2,7 @@
     $marking_icon = 'Common_Duotone';
     $marking_name = 'Duotone';
     $marking_code = 'nDo/DoDo';
-    $marking_desc = "Marking Origin: 2018 Genetics Contest -- JemJam
-Unlike the other documented color genes, duo tone doesn’t introduce new colors into the genetics of dragons. The gene instead causes colors to blend on a marking, either be them natural colors, or color genes.This strange gene is often thought to have come from the Emperor species, but it has been around Empyrean for many years.";
+    $marking_desc = "Marking Origin: 2018 Genetics Contest by user JemJam. Unlike the other documented color genes, duotone doesn’t introduce new colors into the genetics of dragons. The gene instead causes colors to blend on a marking, either be them natural colors, or color genes. This strange gene is often thought to have come from the Emperor species, but it has been around Empyrean for many years.";
     $layers_above_or_below = 'Null, must affect a marking';
     $layers_above = 'Null, must affect a marking';
     $layers_below = 'Null, must affect a marking';
@@ -58,7 +57,7 @@ Unlike the other documented color genes, duo tone doesn’t introduce new colors
 
     $marking_must = [
         'Recessive: Affects up to 2 markings',
-        'Dominant: Affects upt to 4 markings',
+        'Dominant: Affects up to 4 markings',
         'This markings HAS to affect any other marking present on the dragon. If this is the only marking on the dragon then it must either affect minimal markings, or it does not show up.',
     ];
 
@@ -68,9 +67,9 @@ Unlike the other documented color genes, duo tone doesn’t introduce new colors
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'duo_1', 'alt' => '...', 'label' => 'SB-0998', 'caption' => 'Designer: @GlacialFalls'],
+        ['image_name' => 'duo_2', 'alt' => '...', 'label' => 'SB-0818', 'caption' => 'Designer: @DraginRaptor'],
+        ['image_name' => 'duo_3', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
     ];
 ?>
 

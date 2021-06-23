@@ -1,14 +1,13 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s Characters @endsection
+@section('profile-title') {{ $user->name }}'s Dragons @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Characters' => $user->url . '/characters']) !!}
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Dragons' => $user->url . '/characters']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s Characters
+    {!! $user->displayName !!}'s Dragons
 </h1>
-
 
 @if($characters->count())
     <div class="row">
@@ -18,13 +17,13 @@
                     <a href="{{ $character->url }}"><img src="{{ $character->image->thumbnailUrl }}" class="img-thumbnail" /></a>
                 </div>
                 <div class="mt-1 h5">
-                    {!! $character->displayName !!}
+                    @if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $character->displayName !!}
                 </div>
             </div>
         @endforeach
     </div>
 @else
-    <p>No characters found.</p> 
+    <p>No Dragons found.</p> 
 @endif
 
 @endsection

@@ -56,19 +56,60 @@
                 <div class="col-lg-4 col-md-6 col-4"><h5>Rarity</h5></div>
                 <div class="col-lg-8 col-md-6 col-8">{!! $image->rarity_id ? $image->rarity->displayName : 'None' !!}</div>
             </div>
+            @if($image->hasTitle)
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-4"><h5>Title</h5></div>
+                    <div class="col-lg-8 col-md-6 col-8">{!! $image->title_id ? $image->title->displayNamePartial.(isset($image->title_data) ? ' ('.nl2br(htmlentities($image->title_data['full'])).')' : null) : (nl2br(htmlentities($image->title_data['full']))) !!}</div>
+                </div>
+            @endif
+            
+            @if($image->character->homeSetting)
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-4"><h5>Home</h5></div>
+                    <div class="col-lg-8 col-md-6 col-8">{!! $image->character->location ? $image->character->location : 'None' !!}</div>
+                </div>
+                @if($image->character->factionSetting)
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-4"><h5>Faction</h5></div>
+                        <div class="col-lg-8 col-md-6 col-8">{!! $image->character->faction ? $image->character->currentFaction : 'None' !!}{!! $character->factionRank ? ' ('.$character->factionRank->name.')' : null !!}</div>
+                    </div>
+                @endif
+            @endif
 
             <div class="mb-3">
                 <div><h5>Traits</h5></div>
-                <div>
-                    <?php $features = $image->features()->with('feature.category')->get(); ?>
-                    @if($features->count())
-                        @foreach($features as $feature)
-                            <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
-                        @endforeach
-                    @else
-                        <div>No traits listed.</div>
-                    @endif
-                </div>
+                @if(Config::get('lorekeeper.extensions.traits_by_category'))
+                    <div>
+                        @php $traitgroup = $image->features()->get()->groupBy('feature_category_id') @endphp
+                        @if($image->features()->count())
+                            @foreach($traitgroup as $key => $group)
+                            <div class="mb-2">
+                                @if($key)
+                                    <strong>{!! $group->first()->feature->category->displayName !!}:</strong>
+                                @else
+                                    <strong>Miscellaneous:</strong>
+                                @endif
+                                @foreach($group as $feature)
+                                    <div class="ml-md-2">{!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
+                                @endforeach
+                            </div>
+                            @endforeach
+                        @else
+                            <div>No traits listed.</div>
+                        @endif
+                    </div>
+                @else
+                    <div>
+                        <?php $features = $image->features()->with('feature.category')->get(); ?>
+                        @if($features->count())
+                            @foreach($features as $feature)
+                                <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
+                            @endforeach
+                        @else
+                            <div>No traits listed.</div>
+                        @endif
+                    </div>
+                @endif
             </div>
             <div class="mb-3">
                 <div><h5>adornments</h5></div>
@@ -96,6 +137,13 @@
                 <div class="mt-3">
                     <a href="#" class="btn btn-outline-info btn-sm edit-features" data-id="{{ $image->id }}"><i class="fas fa-cog"></i> Edit</a>
                 </div>
+                @if(isset($image->ext_url))
+                    <div class="mt-3">
+                        {!! Form::open(['url' => 'admin/character/image/'.$image->id.'/refresh']) !!}
+                        {!! Form::submit('Refresh Image', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                @endif
             @endif
         </div>
 

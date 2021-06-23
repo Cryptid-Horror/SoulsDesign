@@ -3,63 +3,34 @@ $( document ).ready(function() {
 
     // Cropper ////////////////////////////////////////////////////////////////////////////////////
 
-    var $useCustomThumbnail = $('#useCustomThumbnail');
-    var $thumbnailSelect = $('#thumbnailSelect');
+    var $useCropper = $('#useCropper');
     var $thumbnailCrop = $('#thumbnailCrop');
     var $thumbnailUpload = $('#thumbnailUpload');
-    var $thumbnailDaPreview = $('#thumbnailDaPreview');
 
-    var useCustomThumbnail = $useCustomThumbnail.is(':checked');
-    var useUploaded = false;
+    var useCropper = $useCropper.is(':checked');
 
-    updatePreviewArea();
+    updateCropper();
 
-    $useCustomThumbnail.on('change', function(e) {
-        useCustomThumbnail = $useCustomThumbnail.is(':checked');
-        updatePreviewArea();
+    $useCropper.on('change', function(e) {
+        useCropper = $useCropper.is(':checked');
+
+        updateCropper();
     });
 
-    function updatePreviewArea() {
-        if(useCustomThumbnail) {
-            unhideUpload();
+    function updateCropper() {
+        if(useCropper) {
+            $thumbnailUpload.addClass('hide');
+            $thumbnailCrop.removeClass('hide');
         }
         else {
-            if(($('#mainImage')[0] && $('#mainImage')[0].value) || useUploaded) { unhideCrop(); }
-            else if($('#extMainImage')[0] && $('#extMainImage')[0].value) { unhideDaPreview(); }
-            else { unhideSelect(); }
+            $thumbnailCrop.addClass('hide');
+            $thumbnailUpload.removeClass('hide');
         }
-    }
-    
-    function unhideSelect() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.removeClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.addClass('hide');
-    }
-
-    function unhideCrop() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.removeClass('hide');
-        $thumbnailDaPreview.addClass('hide');
-    }
-
-    function unhideDaPreview() {
-        $thumbnailUpload.addClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.removeClass('hide');
-    }
-
-    function unhideUpload() {
-        $thumbnailUpload.removeClass('hide');
-        $thumbnailSelect.addClass('hide');
-        $thumbnailCrop.addClass('hide');
-        $thumbnailDaPreview.addClass('hide');
     }
 
     // Designers and artists //////////////////////////////////////////////////////////////////////
 
+    $('.selectize').selectize();
     $('.add-designer').on('click', function(e) {
         e.preventDefault();
         addDesignerRow($(this));
@@ -74,6 +45,7 @@ $( document ).ready(function() {
             addDesignerRow($(this));
         })
         $trigger.css({ visibility: 'hidden' });
+        $clone.find('.designer-select').selectize();
     }
     
     $('.add-artist').on('click', function(e) {
@@ -90,6 +62,7 @@ $( document ).ready(function() {
             addArtistRow($(this));
         })
         $trigger.css({ visibility: 'hidden' });
+        $clone.find('.artist-select').selectize();
     }
 
     // Traits /////////////////////////////////////////////////////////////////////////////////////
@@ -175,8 +148,6 @@ $( document ).ready(function() {
     var zoom = 0;
 
     @if(isset($useUploaded) && $useUploaded)
-        useUploaded = true; 
-        unhideCrop();
         // This is for modification of an existing image:
         c = new Croppie($cropper[0], {
             viewport: {
@@ -194,17 +165,9 @@ $( document ).ready(function() {
         }).then(function() {
             updateCropValues();
         });
-        //console.log(($x1.val() - $x0.val()) / thumbnailWidth);
+        console.log(($x1.val() - $x0.val()) / thumbnailWidth);
     @else
         function readURL(input) {
-            // First reset croppie
-            if(c) {
-                c.destroy();
-                c.element.outerHTML = c.element.innerHTML;
-            }
-            c = null;
-            $cropper = $('#cropper');
-            $cropper.attr('src', '#');
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -219,50 +182,17 @@ $( document ).ready(function() {
                             updateCropValues();
                         }
                     });
-                    //console.log(c);
+        console.log(c);
                     updateCropValues();
+                    $('#cropSelect').addClass('hide');
+                    $cropper.removeClass('hide');
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
         $("#mainImage").change(function() {
-            $('#extMainImage')[0].value = null;
-            $useCustomThumbnail.bootstrapToggle('off');
             readURL(this);
-        });
-
-        function fetchEmbeds(url) {
-            // Set current embed and error as loading
-            $('#previewMessage').html('Loading...');
-            $('#thumbnailDa').attr('src', '/images/loading.gif');
-            if(typeof url !== 'undefined') {
-                $.get("{{ url('embed') }}?url="+url, function(data, status) {
-                    if(typeof data['error'] !== 'undefined') {
-                        $('#previewMessage').html('Error: ' + data['error']);
-                        $('#thumbnailDa').attr('src', '#');
-                    }
-                    else
-                    {
-                        $('#previewMessage').html('Image found: <a href=' + url + '>' + url + '</a>');
-                        $('#thumbnailDa').attr('src', data['thumbnail_url']);
-                    }
-                    updatePreviewArea();
-                }).catch(function() {
-                    $('#previewMessage').html('Error: Server failed to process request');
-                    $('#thumbnailDa').attr('src', '#');
-                });
-            }
-            else {
-                $('#previewMessage').html('Error: URL is undefined');
-                $('#thumbnailDa').attr('src', '#');
-            }
-        }
-
-        $("#extMainImage").on('input', function() {
-            $("#mainImage")[0].value = null;
-            $useCustomThumbnail.bootstrapToggle('off');
-            fetchEmbeds(this.value);
         });
     @endif
 

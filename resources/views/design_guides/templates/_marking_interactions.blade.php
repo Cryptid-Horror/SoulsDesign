@@ -60,7 +60,7 @@
     }
     // Modifiers
     $affected_by = [];
-    $can_affect = $modifier_affects[$marking_name] ?? ['None']; // None is the default for non-modifiers
+    $can_affect = $modifier_affects[$marking_name] ?? ([$can_affect] ?? ['None']); // None is the default for non-modifiers
     foreach($modifier_affects as $modifier=>$targets) {
         if(in_array($marking_name, $targets) || $targets[0] == 'All Markings') {
             if($modifier == 'Inherits') {

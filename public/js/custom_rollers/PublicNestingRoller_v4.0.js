@@ -4,13 +4,13 @@
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
 
-var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
+var uncommonMarkings = ["nAg", "AgAg", "nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
                         "nCri", "CriCri", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
 			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
 			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
 
-var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn",
+var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
                     "nVi", "ViVi"];
 
 var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
@@ -26,24 +26,24 @@ var commonToText = ["Blanket", "Boar", "Collar", "Dunstripe", "Dusted", "Duo Ton
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
 					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
-var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
+var uncommonToText = ["Agouti", "Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
 					  "Crimson", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
-var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Vignette"];
+var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Vignette"];
 var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism", "Eagle Beak", "Whiskers"];
 
-var uncommonMutations = ["Tusked", "Eagle Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar"];
+var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Fisher Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted"];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper" ];
 
-var veryRareMutations = ["Warlord", "Vulture", "Seraph", "Triclops", "Crocodile", "Finned", "Aether Mane", "Overgrowth", "Blazer", "Albino", "Anery", "Chimera"];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental"];
 
-var veryRarePhysicalMutations = ["Eel", "Elemental", "Warlord", "Vulture", "Icarus", "Triclops", "Crocodile", "Finned", "Blazer", "Viper", "Growth", "Aether Mane"];
+var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Warlord", "Vulture" ];
+var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord" ];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad"]; 
@@ -51,31 +51,31 @@ var passableMutations = ["nRad", "RadRad"];
 var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
 var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
 var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes"];
-var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Aether Eyes"];
+var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes"];
 
-var commonHorns = ["Hornless", "Slender Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
+var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
 var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns"];
-var rareHorns = ["Crowned Horns", "Quillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
+var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
 var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns"];
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
-var uncommonEars = ["Dragon Ears", "Feathered Ears", "Fluffy Ears", "Button Ears"];
+var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears"];
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
 var veryRareEars = [];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Curl Tail"];
-var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Wild Tail", "Fan Tail"];
-var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Plated Tail", "Dragon Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
+var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
+var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
 var veryRareTails = [];
 
+var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
 var uncommonColorMods = ["Azure", "Crimson"];
-var rareColorMods = ["Jade"];
+var rareColorMods = ["Jade", "Seafoam"];
 var veryRareColorMods = ["Lilac", "Prismatic"];
 var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "AzAz", "nCri", "CriCri", "nCp", "CpCp", 
-					"nJa", "JaJa", "nLi", "LiLi", "nPr", "PrPr"];
-
-var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Prismatic"];
+					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
+var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Seafoam", "Prismatic"];
 
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
@@ -130,6 +130,7 @@ var MaxClutchSize = Object.freeze({
 var Rarity = Object.freeze({
 		COMMON: 1,	UNCOMMON: 2,
 		RARE: 3,	VERY_RARE: 4,
+        PETTY: 5,
 	});
 
 var Breaths = Object.freeze({
@@ -396,7 +397,7 @@ function validateModifiers() {
 	}
 	
 	if (document.getElementById("RB").checked && document.getElementById("colorMod").value == 0) {
-		return "Color modifier for Radiance Bond not selected.";
+		return "Color modifier for Radiance Bond or Agouti not selected.";
 	}
 	
 	return 0;
@@ -471,25 +472,33 @@ function clutchSize() {
 				size = 0;
 		}
 	}
-	
+
 	// use fertility potion if selected
 	if (document.getElementById("FP").checked) {
 		size = maxSize;
 		if (!destroyedModifiers.includes("Fertility Potion destroyed.<br>"))
 			destroyedModifiers += "Fertility Potion destroyed.<br>";
 	}
-	
-		// Attempt use of dragon's heart
-	if (document.getElementById("DH").checked) {
-		if (!destroyedModifiers.includes("Dragon's Heart destroyed.<br>"))
-			destroyedModifiers += "Dragon's Heart destroyed.<br>";
-		if (randRange(100) < 40) {
-			size += 1;
+
+// Vigilant parents + dragon heart
+    var bonus = 0;
+    var dragonsHeartBonus = 0;
+    var num = randRange(100)
+     if (document.getElementById("damTemper").value == Tempers.TIMID) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.TIMID) {
+         bonus += 10;
+     } if (document.getElementById ("DH").checked) {
+        if (!destroyedModifiers.includes("Dragon's Heart destroyed.<br>"))
+		destroyedModifiers += "Dragon's Heart destroyed.<br>";
+    dragonsHeartBonus += 30
+     }
+        if (num < 2 + bonus + dragonsHeartBonus) {
+            size += 1;
 			document.getElementById("nestTextArea").innerHTML += "Dragon's heart succeeded!<br>";
 		} else {
 			document.getElementById("nestTextArea").innerHTML += "Dragon's heart failed!<br>";
 		}
-	}
 	
 	return size;
 }
@@ -522,7 +531,7 @@ function generateBody() {
 		if (num < 25)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.PLATED) || 
 			  (damBuildVal == Builds.PLATED && sireBuildVal == Builds.COMMON)) {
 		if (num < 10)
@@ -530,7 +539,7 @@ function generateBody() {
 		if (num < 30)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.FEATHERED) ||
 		       (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.COMMON)) {
 		if (num < 15)
@@ -540,7 +549,7 @@ function generateBody() {
 		else if (num < 36)
 			return "Angora";
 		else
-			return "Common";
+			return "Velour";
 	} else if  ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.ANGORA) || 
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.COMMON)) {
 		if (num < 20)
@@ -552,7 +561,7 @@ function generateBody() {
 		else if (num < 42)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.COMMON && sireBuildVal == Builds.IMPERIAL) ||
 		       (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.COMMON)) {
 		if (num < 25)
@@ -564,7 +573,7 @@ function generateBody() {
 		else if (num < 58)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of plated
 	} else if (damBuildVal == Builds.PLATED && sireBuildVal == Builds.PLATED) {
 		if (num < 15)
@@ -572,7 +581,7 @@ function generateBody() {
 		if (num < 45)
 			return "Plated";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.FEATHERED) ||
 			   (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.PLATED)) {
 		if (num < 20)
@@ -582,7 +591,7 @@ function generateBody() {
 		else if (num < 51)
 			return "Angora";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.ANGORA) ||
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.PLATED)) {
 		if (num < 25)
@@ -594,7 +603,7 @@ function generateBody() {
 		else if (num < 63)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.PLATED && sireBuildVal == Builds.IMPERIAL) || 
 			   (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.PLATED)) {
 		if (num < 30)
@@ -606,7 +615,7 @@ function generateBody() {
 		else if (num < 74)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of feathered
 	} else if (damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.FEATHERED) {
 		if (num < 20)
@@ -618,7 +627,7 @@ function generateBody() {
 		else if (num < 53)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.ANGORA) ||
 			   (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.FEATHERED)) {
 		if (num < 30)
@@ -630,7 +639,7 @@ function generateBody() {
 		else if (num < 65)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.FEATHERED && sireBuildVal == Builds.IMPERIAL) ||
 		       (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.FEATHERED)) {
 		if (num < 40)
@@ -642,7 +651,7 @@ function generateBody() {
 		else if (num < 90)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
  // start of Angora
 	} else if (damBuildVal == Builds.ANGORA && sireBuildVal == Builds.ANGORA) {
 		if (num < 35)
@@ -654,7 +663,7 @@ function generateBody() {
 		else if (num < 87)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	} else if ((damBuildVal == Builds.ANGORA && sireBuildVal == Builds.IMPERIAL) ||
 			   (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.ANGORA)) {
 		if (num < 45)
@@ -666,7 +675,7 @@ function generateBody() {
 		else if (num < 112)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 // start of imperial
 	} else if (damBuildVal == Builds.IMPERIAL && sireBuildVal == Builds.IMPERIAL) {
 		if (num < 50)
@@ -678,7 +687,7 @@ function generateBody() {
 		else if (num < 120)
 			return "Imperial";
 		else
-			return "Common";
+			return "Velour";
 	}
 }
 
@@ -696,15 +705,15 @@ function generateSpecies() {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
 			destroyedModifiers += "Dragon's Instinct destroyed.<br>";
 		if (document.getElementById("stalkerSelected").checked) {
-			stalkerBonus = 20;
+			stalkerBonus = 40;
 		} else if (document.getElementById("ravagerSelected").checked) {
-			ravagerBonus = 20;
+			ravagerBonus = 40;
 		} else if (document.getElementById("wardenSelected").checked) {
-			wardenBonus = 20;
+			wardenBonus = 40;
 		} else if (document.getElementById("gempSelected").checked) {
-			gempBonus = 20;
+			gempBonus = 40;
 		} else if (document.getElementById("sapiSelected").checked){
-		    sapiBonus = 20;
+		    sapiBonus = 40;
 		}
 	}
 	if (damBreedVal == sireBreedVal) {
@@ -788,24 +797,8 @@ function generateSpecies() {
 			
 	
 	}
+    }
 	
-	// convert to string
-	var result = "";
-	childBreed = childBreedVal;
-	if (childBreedVal == Breeds.STALKER) {
-		result = "Stalker Wyvern";
-	} else if (childBreedVal == Breeds.RAVAGER) {
-		result = "Ravager Wyvern";
-	} else if (childBreedVal == Breeds.WARDEN) {
-		result = "Warden Dragon";
-	} else if (childBreedVal == Breeds.GEMP) {
-    result = "Greater Emperor";
-  } else if (childBreedVal == Breeds.SAPI){
-      result = "Sapiere Dragon";
-  }
-	
-	return result;
-}
 	// convert to string
 	var result = "";
 	childBreed = childBreedVal;
@@ -829,7 +822,7 @@ function generateTemper() {
 	var sireTemperVal = document.getElementById("sireTemper").value;
 	var childTemperVal;
 	// bonuses
-	var bonusAmmount = 10;
+	var bonusAmmount = 30;
 	var timidBonus = 0;
 	var aggressiveBonus = 0;
 	var calmBonus = 0;
@@ -970,7 +963,7 @@ function generateTemper() {
 	// convert to string
 	var result = "";
 	if (childTemperVal == Tempers.TIMID) {
-		result = "Timid";
+		result = "Vigilant";
 	} else if (childTemperVal == Tempers.AGGRESSIVE) {
 		result = "Aggressive";
 	} else if (childTemperVal == Tempers.CALM) {
@@ -991,9 +984,9 @@ function generateUmber() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BU").checked) {
-		if (!destroyedModifiers.includes("Bottle of Umbra destroyed.<br>"))
-			destroyedModifiers += "Bottle of Umbra destroyed.<br>";
-		bonus = 15;
+		if (!destroyedModifiers.includes("Bottle of Umber destroyed.<br>"))
+			destroyedModifiers += "Bottle of Umber destroyed.<br>";
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1065,7 +1058,7 @@ function generateHaze() {
 	if (document.getElementById("BH").checked) {
 		if (!destroyedModifiers.includes("Bottle of Haze destroyed.<br>"))
 			destroyedModifiers += "Bottle of Haze destroyed.<br>";
-		bonus = 15;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1139,7 +1132,7 @@ function generateIvory() {
 	if (document.getElementById("BI").checked) {
 		if (!destroyedModifiers.includes("Bottle of Ivory destroyed.<br>"))
 			destroyedModifiers += "Bottle of Ivory destroyed.<br>";
-		bonus = 10;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1212,7 +1205,7 @@ function generateVanta() {
 	if (document.getElementById("BV").checked) {
 		if (!destroyedModifiers.includes("Bottle of Vanta destroyed.<br>"))
 			destroyedModifiers += "Bottle of Vanta destroyed.<br>";
-		bonus = 5;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1404,9 +1397,9 @@ function generateTrait(traitToGen) {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("AT").checked) {
-		if (!destroyedModifiers.includes("Aether Token destroyed.<br>"))
-			destroyedModifiers += "Aether Token destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
+			destroyedModifiers += "Aether Tonic destroyed.<br>";
+		bonus = 30;
 	}
 	
 	var roll = randRange(100);
@@ -1669,6 +1662,29 @@ function generateColorMod() {
 	return result;
 }
 
+function generateAgoutiColorMod() {
+	var roll, modRarity, result;
+	roll = randRange(100);
+	if (roll < 30) {
+		modRarity = Rarity.PETTY;
+		result = pettyColorMods[randRange(pettyColorMods.length)];
+	} else if (roll < 60) {
+		modRarity = Rarity.COMMON;
+		result = commonColorMods[randRange(commonColorMods.length)];
+	} else if (roll < 80) {
+		modRarity = Rarity.UNCOMMON;
+		result = uncommonColorMods[randRange(uncommonColorMods.length)];
+    } else if (roll < 95) {
+		modRarity = Rarity.RARE;
+		result = rareColorMods[randRange(rareColorMods.length)];
+	} else {
+		modRarity = Rarity.VERY_RARE;
+		result = veryRareColorMods[randRange(veryRareColorMods.length)];
+	}
+	
+	return result;
+}
+
 function evaluateMarkingPass(markID, markingRarity, sireDom, damDom, oneParentMissing) {
 	var result = "";
 	if (markingRarity == Rarity.COMMON) {
@@ -1685,10 +1701,20 @@ function evaluateMarkingPass(markID, markingRarity, sireDom, damDom, oneParentMi
 		result += "-";
 		if (document.getElementById("RB").checked) {
 			result += document.getElementById("colorMod").value;
-			if (!destroyedModifiers.includes("Radiance Bond destroyed.<br>"))
-				destroyedModifiers += "Radiance Bond destroyed.<br>";
+			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance or Agouti.<br>"))
+				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance or Agouti.<br>";
 		} else {
 			result += generateColorMod();
+		}
+	}
+    if (result == "nAg" || result == "AgAg") {
+		result += "-";
+		if (document.getElementById("RB").checked) {
+			result += document.getElementById("colorMod").value;
+			if (!destroyedModifiers.includes("Radiance Bond only destroyed if one child has radiance or Agouti.<br>"))
+				destroyedModifiers += "Radiance Bond only destroyed if one child has radiance or Agouti.<br>";
+		} else {
+			result += generateAgoutiColorMod();
 		}
 	}
 	
@@ -1852,10 +1878,15 @@ function generateBreath() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
+         if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
+         bonus += 10;
+     }
 	if (document.getElementById("BB").checked) {
-		if (!destroyedModifiers.includes("Breath Booster destroyed.<br>"))
-			destroyedModifiers += "Breath Booster destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Breath Potion destroyed.<br>"))
+			destroyedModifiers += "Breath Potion destroyed.<br>";
+		bonus = 30;
 	}
 	if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
 		if (roll >= 96 - bonus) {
@@ -1906,10 +1937,15 @@ function generateSkill() {
 	var result = 1;
 	var roll = randRange(100);
 	var bonus = 0;
+    if (document.getElementById("damTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     } if (document.getElementById("sireTemper").value == Tempers.SINISTER) {
+         bonus += 10;
+     }
 	if (document.getElementById("SB").checked) {
-		if (!destroyedModifiers.includes("Skill Booster destroyed.<br>"))
-			destroyedModifiers += "Skill Booster destroyed.<br>";
-		bonus = 10;
+		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
+			destroyedModifiers += "Skill Charm destroyed.<br>";
+		bonus = 30;
 	}
 	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
 		return "";
@@ -2026,7 +2062,7 @@ function generateMutation() {
 	if (document.getElementById("DE").checked) {
 		if (!destroyedModifiers.includes("Dragon's Eye destroyed.<br>"))
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
-		dragonsEyeBonus += 10;
+		dragonsEyeBonus += 30;
 	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
@@ -2036,10 +2072,8 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 5 + bonus)
+		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.VERY_RARE && roll < 1 + bonus + dragonsEyeBonus) // ensures only pysical mutes get the DE bonus
-			result = selectPhysicalMutation(i, true);
 		if (result != "") {
 			mutationList.push(" " + result);
 			result = "";
@@ -2214,10 +2248,12 @@ function genoToString(coat) {
 	}
 	
 	
-	if (childMarkings.length != 0) {
+	while (childMarkings.length != 0) {
 		if (childMarkings[0].length > 6) {
 			var prefix1 = childMarkings[0].substr(0, 4);
 			var prefix2 = childMarkings[0].substr(0, 6);
+            var prefix3 = childMarkings[0].substr(0, 3);
+            var prefix4 = childMarkings[0].substr(0, 4);
 			if (prefix1 == "nRad") {
 				if (numAfter != 0)
 					result += "and ";
@@ -2228,10 +2264,21 @@ function genoToString(coat) {
 					result += "and ";
 				result += "Radiant" + childMarkings[0].substr(6, childMarkings[0].length - 6);
 				childMarkings.splice(0, 1);
-			}
-			
-		}
-	}
+			} else if (prefix3 == "nAg") {
+				if (numAfter != 0)
+					result += "and ";
+				result += "Agouti" + childMarkings[0].substr(3, childMarkings[0].length - 3);
+				childMarkings.splice(0, 1);
+		} else if (prefix4 == "AgAg") {
+				if (numAfter != 0)
+					result += "and ";
+				result += "Agouti" + childMarkings[0].substr(4, childMarkings[0].length - 4);
+				childMarkings.splice(0, 1);
+            }
+	    }
+    }
+
+    
 	if (childMarkings.length != 0) {
 		result += "[ERROR: UNCLASSIFIED MARKINGS REMAINING]";
 	}

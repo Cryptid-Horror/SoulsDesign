@@ -23,12 +23,25 @@ return [
             ]
         ]
     ],
+    'Reports' => [
+        'power' => 'manage_reports',
+        'links' => [
+            [
+                'name' => 'Report Queue',
+                'url' => 'admin/reports/pending'
+            ]
+        ]
+    ],
     'Site' => [
         'power' => 'edit_pages',
         'links' => [
             [
                 'name' => 'News',
                 'url' => 'admin/news'
+            ],
+            [
+                'name' => 'Sales',
+                'url' => 'admin/sales'
             ],
             [
                 'name' => 'Pages',
@@ -52,6 +65,14 @@ return [
     'Queues' => [
         'power' => 'manage_submissions',
         'links' => [
+            [
+                'name' => 'Gallery Submissions',
+                'url' => 'admin/gallery/submissions'
+            ],
+            [
+                'name' => 'Gallery Currency Awards',
+                'url' => 'admin/gallery/currency'
+            ],
             [
                 'name' => 'Prompt Submissions',
                 'url' => 'admin/submissions'
@@ -77,11 +98,64 @@ return [
                 'name' => 'Award Grants',
                 'url' => 'admin/grants/awards'
             ],
+            [
+                'name' => 'Recipe Grants',
+                'url' => 'admin/grants/recipes'
+            ],
+        ]
+    ],
+    'Masterlist' => [
+        'power' => 'manage_characters',
+        'links' => [
+            [
+                'name' => 'Create Dragon',
+                'url' => 'admin/masterlist/create-character'
+            ],
+            [
+                'name' => 'Create Genotype',
+                'url' => 'admin/masterlist/create-myo'
+            ],
+            [
+                'name' => 'Dragon Transfers',
+                'url' => 'admin/masterlist/transfers/incoming'
+            ],
+            [
+                'name' => 'Dragon Trades',
+                'url' => 'admin/masterlist/trades/incoming'
+            ],
+            [
+                'name' => 'Design Updates',
+                'url' => 'admin/design-approvals/pending'
+            ],
+            [
+                'name' => 'Design Approvals',
+                'url' => 'admin/myo-approvals/pending'
+            ],
         ]
     ],
     'Data' => [
         'power' => 'edit_data',
         'links' => [
+            [
+                'name' => 'Galleries',
+                'url' => 'admin/data/galleries'
+            ],
+            [
+                'name' => 'Award Categories',
+                'url' => 'admin/data/award-categories'
+            ],
+            [
+                'name' => 'Awards',
+                'url' => 'admin/data/awards'
+            ],
+            [
+                'name' => 'Character Categories',
+                'url' => 'admin/data/character-categories'
+            ],
+            [
+                'name' => 'Sub Masterlists',
+                'url' => 'admin/data/sublists'
+            ],
             [
                 'name' => 'Rarities',
                 'url' => 'admin/data/rarities'
@@ -95,32 +169,20 @@ return [
                 'url' => 'admin/data/subtypes'
             ],
             [
-                'name' => 'Trait Categories',
-                'url' => 'admin/data/trait-categories'
-            ],
-            [
                 'name' => 'Traits',
                 'url' => 'admin/data/traits'
             ],
             [
-                'name' => 'Item Categories',
-                'url' => 'admin/data/item-categories'
-            ],
-            [
-                'name' => 'Items',
-                'url' => 'admin/data/items'
+                'name' => 'Character Titles',
+                'url' => 'admin/data/character-titles'
             ],
             [
                 'name' => 'Shops',
                 'url' => 'admin/data/shops'
             ],
             [
-                'name' => 'Award Categories',
-                'url' => 'admin/data/award-categories'
-            ],
-            [
-                'name' => 'Awards',
-                'url' => 'admin/data/awards'
+                'name' => 'Currencies',
+                'url' => 'admin/data/currencies'
             ],
             [
                 'name' => 'Prompt Categories',
@@ -131,46 +193,54 @@ return [
                 'url' => 'admin/data/prompts'
             ],
             [
-                'name' => 'Character Categories',
-                'url' => 'admin/data/character-categories'
-            ],
-            [
-                'name' => 'Currencies',
-                'url' => 'admin/data/currencies'
-            ],
-            [
                 'name' => 'Loot Tables',
                 'url' => 'admin/data/loot-tables'
             ],
-        ]
+            [
+                'name' => 'Items',
+                'url' => 'admin/data/items'
+            ],
+            [
+                'name' => 'Recipes',
+                'url' => 'admin/data/recipes'
+            ],
+            [
+                'name' => 'Forums',
+                'url' => 'admin/forums'
+            ]
+        ],
     ],
-    'Masterlist' => [
-        'power' => 'manage_characters',
+    'World.Expanded' => [
+        'power' => 'manage_world',
         'links' => [
             [
-                'name' => 'Create Character',
-                'url' => 'admin/masterlist/create-character'
+                'name' => 'Locations',
+                'url' => 'admin/world/locations'
             ],
             [
-                'name' => 'Create Registered Dragon Slot',
-                'url' => 'admin/masterlist/create-myo'
+                'name' => 'Fauna',
+                'url' => 'admin/world/faunas'
             ],
             [
-                'name' => 'Character Transfers',
-                'url' => 'admin/masterlist/transfers/incoming'
+                'name' => 'Flora',
+                'url' => 'admin/world/floras'
             ],
             [
-                'name' => 'Character Trades',
-                'url' => 'admin/masterlist/trades/incoming'
+                'name' => ' Events',
+                'url' => 'admin/world/events'
             ],
             [
-                'name' => 'Design Updates',
-                'url' => 'admin/design-approvals/pending'
+                'name' => ' Figures',
+                'url' => 'admin/world/figures'
             ],
             [
-                'name' => 'Registered Dragon Approvals',
-                'url' => 'admin/myo-approvals/pending'
+                'name' => 'Factions',
+                'url' => 'admin/world/factions'
             ],
+            [
+                'name' => 'Concepts',
+                'url' => 'admin/world/concepts'
+            ]
         ]
     ],
     'Raffles' => [
@@ -196,6 +266,10 @@ return [
             [
                 'name' => 'File Manager',
                 'url' => 'admin/files'
+            ],
+            [
+                'name' => 'Theme Manager',
+                'url' => 'admin/themes'
             ],
         ]
     ],

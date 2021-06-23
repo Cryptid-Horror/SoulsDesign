@@ -17,14 +17,14 @@
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
     <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v4.0.js') }}"></script>
 
-	<title>Breeding Roller - Souls-Between</title>
+	<title>Nesting Roller - Souls-Between</title>
 </head>
 
 <body onload="initialize()">
 
 <table id="rollerTitle">
 	<tr>
-		<div id="title"><br><h1>Souls-Between Breeding Roller</h1></div>
+		<div id="title"><br><h1>Nesting Roller</h1></div>
 	</tr>
 </table>
 <table id="mainContent">
@@ -41,7 +41,7 @@
 				<option value="4">Primordial</option>
 			</select>
 			<select id="sireTemper" onchange="updateTempers()" class="cellElement">
-				<option value="1">Timid</option>
+				<option value="1">Vigilant</option>
 				<option value="2">Agressive</option>
 				<option value="3">Calm</option>
 				<option value="4">Sinister</option>
@@ -56,10 +56,10 @@
 
 			</select>
 			<select id="sireBuild" class="cellElement">
-				<option value="1">Common Coat</option>
-                                <option value="2">Plated</option>
+				<option value="1">Velour Coat</option>
+                <option value="2">Plated</option>
 				<option value="3">Feathered</option>
-                                <option value="4">Angora</option>
+                <option value="4">Angora</option>
 				<option value="5">Imperial</option>
 			</select>
 		</div>
@@ -69,13 +69,13 @@
 				<option value="1">Common Eyes</option>
 				<option value="2">Uncmn Eyes</option>
 				<option value="3">Rare Eyes</option>
-				<option value="4">Very Rare Eyes</option>
+				<option value="4">Mythic Eyes</option>
 			</select>
 			<select id="sireHorns" class="cellElement">
 				<option value="1">Common Horns</option>
 				<option value="2">Uncmn Horns</option>
 				<option value="3">Rare Horns</option>
-				<option value="4">Very Rare Horns</option>
+				<option value="4">Mythic Horns</option>
 			</select>
 			<!-- The following two are only for Ravagers -->
 			<select id="sireEars" class="cellElement">
@@ -132,13 +132,13 @@
 		<h2>Dam</h2>
 		<div id="damRowTop">
 			<select id="damRank" class="cellElement">
-					<option value="1">Fledgling</option>
+				<option value="1">Fledgling</option>
 				<option value="2">Primal</option>
 				<option value="3">Ancient</option>
 				<option value="4">Primordial</option>
 			</select>
 			<select id="damTemper" onchange="updateTempers()" class="cellElement">
-				<option value="1">Timid</option>
+				<option value="1">Vigilant</option>
 				<option value="2">Agressive</option>
 				<option value="3">Calm</option>
 				<option value="4">Sinister</option>
@@ -153,7 +153,7 @@
 
 			</select>
 			<select id="damBuild" class="cellElement">
-				<option value="1">Common Coat</option>
+				<option value="1">Velour Coat</option>
                 <option value="2">Plated</option>
 				<option value="3">Feathered</option>
                 <option value="4">Angora</option>
@@ -165,22 +165,22 @@
 				<option value="1">Common Eyes</option>
 				<option value="2">Uncmn Eyes</option>
 				<option value="3">Rare Eyes</option>
-				<option value="4">Very Rare Eyes</option>
+				<option value="4">Mythic Eyes</option>
 			</select>
 			<select id="damHorns" class="cellElement">
-					<option value="1">Common Horns</option>
+				<option value="1">Common Horns</option>
 				<option value="2">Uncmn Horns</option>
 				<option value="3">Rare Horns</option>
-				<option value="4">Very Rare Horns</option>
+				<option value="4">Mythic Horns</option>
 			</select>
 			<!-- The following two are only for Ravagers -->
 			<select id="damEars" class="cellElement">
-					<option value="1">Common Ears</option>
+				<option value="1">Common Ears</option>
 				<option value="2">Uncmn Ears</option>
 				<option value="3">Rare Ears</option>
 			</select>
 			<select id="damTail" class="cellElement">
-			<option value="1">Common Tail</option>
+			    <option value="1">Common Tail</option>
 				<option value="2">Uncmn Tail</option>
 				<option value="3">Rare Tail</option>
 			</select>
@@ -228,37 +228,37 @@
 		<h2>Modifiers</h2>
 		<div width="100%">
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's heart</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's talon</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's eye</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance bond</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether token</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of umbra</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of ivory</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of Ivory</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of vanta</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
                                	<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's instinct</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
 			</span>
 			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
-			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">Starter Parent, Soul Bond, or Serpent</label>
+			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
@@ -274,7 +274,7 @@
 				<br>
 			</div>
 			<div id="temperSelectionRadios">
-				<label class="radioLabel"><input type="radio" name="temperSelector" value="1" id="timidSelected" checked>Timid</label>
+				<label class="radioLabel"><input type="radio" name="temperSelector" value="1" id="timidSelected" checked>Vigilant</label>
 				<label class="radioLabel"><input type="radio" name="temperSelector" value="2" id="aggressiveSelected">Aggressive</label>
 				<br>
 				<label class="radioLabel" id="calmLabel"><input type="radio" name="temperSelector" value="3" id="calmSelected">Calm</label>
@@ -295,6 +295,13 @@
 					<option value="jade">Jade</option>
 					<option disabled value="4">Very Rare</option>
 					<option value="lilac">Lilac</option>
+                    <option value="prismatic">Prismatic</option>
+                    <option disabled value="5">Petty</option>
+                    <option value="umber">Umber (Agouti)</option>
+                    <option value="haze">Haze (Agouti)</option>
+                    <option value="ivory">Ivory (Agouti)</option>
+                    <option value="vanta">Vanta (Agouti)</option>
+                    <option value="golden">Golden (Agouti)</option>
 				</select>
 			</div>
 		</div>
@@ -302,16 +309,6 @@
 	</tr>
 	</form>
 </table>
-
-<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <button type="button" class="btn btn-secondary">
-<a href="COMMON: Slit, Round, Beaded -- UNCOMMON: Pale, Pupiless, Crescent -- RARE: Glowing, Goat, Cuttlefish -- VERY RARE: Solar, Eclipse, Omen, Aether"data-featherlight="text"> Eye Traits</a></button>
-<button type="button" class="btn btn-secondary"> <a href="COMMON: Hornless, Slender, Nub, Bull, Rhino, Ram, Segmented, Parasaur -- UNCOMMON: Ibex, Ridge, Devil, Curled, Twisted, Ceratopsian -- RARE: Crowned, Quillin, Stag, Royal, Ascended -- VERY RARE: Eland, Unicorn, Fallow, Beastly, Aether" data-featherlight="text">  Horn Traits</a></button>
-    <button type="button" class="btn btn-secondary"> <a href="-- Ravager Only -- EARS-- COMMON: Earless, Fox, Hyena, Wild, Equine -- UNCOMMON: Dragon, Feathered, Fluffy, Button -- RARE: Tapir, Clipped, Drop Fold, Silky -- TAILS -- COMMON: Slender, Plume, Stub, Curl -- UNCOMMON: Lemur, Whip, Split, Wild, Fan -- RARE: Peacock, Kitsune, Drape, Plated, Dragon
-" data-featherlight="text">Ravager Only Traits</a></button>
-    
-    <button type="button" class="btn btn-secondary"> <a href="If your dragon has Radiant, removed the color modifier geno from it in the geno field (so not nRad-Azure, just nRad). If you have any of the following markings they have been changed or removed: Fading and Scorching are now Stained (if you had both you have dominant). Ray is now part of Sable (if you had both you have dominant Sable). Mist is now part of Smoke (if you had both you have dominant Smoke). Somatic is now called Brindled and behaves differently from how it used to.
-" data-featherlight="text">Important Notes</a></button></div>
 <table id="formButtons">
 	<td>
 		<button onclick="roll()">Roll!</button>
@@ -326,7 +323,7 @@
 	
 <table id="footer">
 	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
-        v4.0.1 - Maintained by Cryptid-Horror <br>
+        v5.0.0 - Maintained by Cryptid-Horror <br>
 </table>
 
 </body>

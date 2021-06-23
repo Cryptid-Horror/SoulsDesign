@@ -15,7 +15,7 @@
 
 <?php 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
-				['Dunstripe', 'nDn/DnDn'], ['Dusted', 'nDt/DtDt'], ['Duotone', 'nDo/DoDo'], ['Flaxen', 'nFla/FlaFla'],
+				['Dunstripe', 'nDn/DnDn'], ['Duotone', 'nDo/DoDo'], ['Dusted', 'nDt/DtDt'], ['Flaxen', 'nFla/FlaFla'],
 				['Frog Eye', 'nFe/FeFe'], ['Greying', 'nGr/GrGr'], ['Hood', 'nHd/HdHd'],
 				['Leaf', 'nLf/LfLf'], ['Masked', 'nMa/MaMa'], ['Pangare', 'nPa/PaPa'],
 				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rimmed', 'nRi/Ri'],
@@ -24,7 +24,7 @@
 				['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
 
 	$uncommons = [['Azure', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Bokeh', 'nBk/BkBk'], ['Border', 'nBo/BoBo'],
-				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCl/ClCl'], ['Copper', 'nCp/CpCp'],
+				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Copper', 'nCp/CpCp'],
 				['Crested', 'nCr/CrCr'], ['Crimson', 'nCr/CrCr'], ['Dipped', 'nDi/DiDi'],
 				['Dripping', 'nDr/DrDr'], ['Inkwell', 'nIn/InIn'], ['Marbled', 'nMar/MarMar'],
 				['Merle', 'nMr/MrMr'], ['Metallic', 'nMe/MeMe'], ['Pigeon', 'nPg/PgPg'],
@@ -34,7 +34,7 @@
 
 	$rares = [['Appaloosa', 'nAp/ApAp'], ['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Glass', 'nGl/GlGl'],
 			['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
-			['Petal', 'nPl/PlPl'], ['Vignette', 'nVi/ViVi']];
+			['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe'], ['Vignette', 'nVi/ViVi']];
 
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'],
 				['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'],
@@ -55,7 +55,7 @@
 			In addition, we've made many new changes to our guides and how markings work. We hope you have a fun time designing your dragons!
 		</div>
 		<a href="https://www.soulsbetween.com/info/Genetic_Handbook" button type="button" class="btn btn-secondary btn-lg btn-block mb-3">Genetic Portal Handbook</a></button>
-		<a href="https://www.soulsbetween.com/info/Coat_Colors" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Coat Colors and How they Work</a></button>
+		<a href="https://www.soulsbetween.com/info/Coat_Colors" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Coat Colors, Melanism, and How they Work</a></button>
         <a href="https://www.soulsbetween.com/world/species" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Dragon Species of Empyrean</a></button>
 
 
@@ -74,7 +74,7 @@
 			</div>
 			<div class="btn-group-vertical">
                 <a href="{{ url('https://www.soulsbetween.com/info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
-                <a href="{{ url('dhttps://www.soulsbetween.com/info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Free_Marks') }}" class="btn btn-secondary">Minimal (Free) Markings</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Design_Addons') }}" class="btn btn-secondary">Item kits, Shampoo, and others</a>
                 <a href="{{ url('https://www.soulsbetween.com/info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>
@@ -86,10 +86,10 @@
                 <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
 			</div>
 			<div class="btn-group-vertical">
+                <a href="{{ url('') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
                 <a href="{{ url('design/color_mutations/chimeric') }}" class="btn btn-secondary">Chimeric</a>
                 <a href="{{ url('design/color_mutations/leucism') }}" class="btn btn-secondary">Leucism</a>
-                <a href="{{ url('design/color_mutations/melanistic') }}" class="btn btn-secondary">Melanistic</a>
-                <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance</a>
+                <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance (nRad/RadRad)</a>
 			</div>
 		</div>
 

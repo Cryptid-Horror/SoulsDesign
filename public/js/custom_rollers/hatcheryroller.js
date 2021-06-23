@@ -10,9 +10,9 @@ const common_egg = {
 	mutations: { 'no': 90, 'yes': 8, 'Radiance': 1, 'Chimera': 1 },
 	skill_breath: { 'no': 90, 'yes': 10 },
 	trait: { 'common': 70, 'uncommon': 30 },
-	temper: { 'Timid': 70, 'Aggressive': 30 },
+	temper: { 'Vigilant': 70, 'Aggressive': 30 },
 	base: { 'Umber': 70, 'Haze': 15, 'Ivory': 5, 'Vanta': 10 },
-	coat: { 'Common': 80, 'Feathered': 10, 'Plated': 10 },
+	coat: { 'Velour': 80, 'Feathered': 10, 'Plated': 10 },
 	lineage: { 'yes': 90, 'no': 10 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 95, 'no': 5 },
@@ -26,11 +26,11 @@ const uncommon_egg = {
 	mutations: { 'no': 85, 'yes': 10, 'Radiance': 3, 'Chimera': 2 },
 	skill_breath: { 'no': 80, 'yes': 20 },
 	trait: { 'common': 60, 'uncommon': 40 },
-	temper: { 'Timid': 60, 'Aggressive': 30, 'Calm': 10 },
+	temper: { 'Vigilant': 60, 'Aggressive': 30, 'Calm': 10 },
 	base: { 'Umber': 40, 'Haze': 30, 'Ivory': 15, 'Vanta': 15 },
-	coat: { 'Common': 75, 'Feathered': 10, 'Plated': 15 },
+	coat: { 'Velour': 75, 'Feathered': 10, 'Plated': 15 },
 	lineage: { 'yes': 85, 'no': 15 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 90, 'no': 10 },
 	uc_max: 2,
 	r_max: 0	
@@ -42,11 +42,11 @@ const rare_egg = {
 	mutations: { 'no': 75, 'yes': 18, 'Radiance': 4, 'Chimera': 3 },
 	skill_breath: { 'no': 70, 'yes': 30 },
 	trait: { 'common': 55, 'uncommon': 35, 'rare': 10 },
-	temper: { 'Timid': 50, 'Aggressive': 35, 'Calm': 10, 'Sinister': 5 },
+	temper: { 'Vigilant': 50, 'Aggressive': 35, 'Calm': 10, 'Sinister': 5 },
 	base: { 'Haze': 40, 'Ivory': 30, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 2, 'Melanistic Haze': 1, 'Melanistic Ivory': 1, 'Melanistic Golden': 1 },
-	coat: { 'Common': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
+	coat: { 'Velour': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
 	lineage: { 'yes': 75, 'no': 25 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 80, 'no': 20 },
 	uc_max: 2,
 	r_max: 1	
@@ -58,11 +58,11 @@ const myst_egg = {
 	mutations: { 'no': 70, 'yes': 20, 'Radiance': 7, 'Chimera': 3 },
 	skill_breath: { 'no': 60, 'yes': 40 },
 	trait: { 'common': 50, 'uncommon': 35, 'rare': 10, 'vrare': 5 },
-	temper: { 'Timid': 40, 'Aggressive': 40, 'Calm': 10, 'Sinister': 10 },
+	temper: { 'Vigilant': 40, 'Aggressive': 40, 'Calm': 10, 'Sinister': 10 },
 	base: { 'Haze': 30, 'Ivory': 35, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 3, 'Melanistic Haze': 3, 'Melanistic Ivory': 2, 'Melanistic Golden': 2 },
-	coat: { 'Common': 50, 'Feathered': 25, 'Plated': 15, 'Angora': 7, 'Imperial': 3 },
+	coat: { 'Velour': 50, 'Feathered': 25, 'Plated': 15, 'Angora': 7, 'Imperial': 3 },
 	lineage: { 'yes': 70, 'no': 30 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
 	act_lineage: { 'yes': 75, 'no': 25 },
 	uc_max: 2,
 	r_max: 1
@@ -74,44 +74,43 @@ const myst_egg = {
 const c_marks = [
 	['Blanket', 'nBl', 'suffix'], ['Boar', 'nBr', 'suffix'], ['Collar', 'nCl', 'suffix'],
 	['Dunstripe', 'nDn', 'suffix'], ['Duo Tone', 'nDo', 'suffix'], ['Dusted', 'nDt', 'ed'],
-	['Fading', 'nFd', 'suffix'], ['Flaxen', 'nFla', 'color'], ['Frog Eye', 'nFe', 'suffix'],
+    ['Flaxen', 'nFla', 'color'], ['Frog Eye', 'nFe', 'suffix'],
 	['Greying', 'nGr', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
 	['Masked', 'nMa', 'ed'], ['Pangare', 'nPa', 'suffix'], ['Points', 'nPo', 'suffix'],
-	['Python', 'nPy', 'suffix'], ['Ray', 'nRa', 'suffix'], ['Rimmed', 'nRi', 'ed'],
+	['Python', 'nPy', 'suffix'], ['Rimmed', 'nRi', 'ed'],
 	['Ringed', 'nRn', 'ed'], ['Rose', 'nRos', 'color'],	['Sable', 'nSa', 'suffix'],
-	['Scaled', 'nSc', 'ed'], ['Scorching', 'nSo', 'suffix'], ['Skink', 'nSk', 'suffix'],
+	['Scaled', 'nSc', 'ed'], ['Stained', 'nSn', 'suffix'], ['Skink', 'nSk', 'suffix'],
 	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
 ];
 const uc_marks = [
-	['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'], ['Bokeh', 'nBk', 'suffix'],
+    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'], ['Bokeh', 'nBk', 'suffix'],
 	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Copper', 'nCp', 'color'],
 	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dipped', 'nDi', 'ed'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
-	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Mist', 'nMi', 'suffix'],
-	['Pigeon', 'nPg', 'suffix'], ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'],
-	['Rosettes', 'nRs', 'suffix'], ['Shaped', 'nSp', 'ed'],	['Smoke', 'nSm', 'suffix'],
-	['Somatic', 'nSt', 'suffix'], ['Tabby', 'nTa', 'suffix'], ['Tobiano', 'nTo', 'suffix'],
-	['Toxin', 'nTx', 'suffix']
+	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
+    ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],
+    ['Shaped', 'nSp', 'ed'],	['Smoke', 'nSm', 'suffix'], ['Brindled', 'nBrd', 'suffix'], 
+    ['Tabby', 'nTa', 'suffix'], ['Tobiano', 'nTo', 'suffix'], ['Toxin', 'nTx', 'suffix']
 ];
 const r_marks = [
 	['Appaloosa', 'nAp', 'r'], ['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
-	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'r'], ['Luminescent', 'nLu', 'r'],
-	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'],
-	['Vignette', 'nVi', 'r']
+	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
+	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
+    ['Vignette', 'nVi', 'r']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
-	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'vr'],
-	['Prismatic', 'nPr', 'vr'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
+	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'color'],
+	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
 	['Triquetra', 'nTri', 'vr']
 ];
 
-const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', 'Frilled', 'Raptor', 'Tusked',
-	'Feather Extensions', 'Webbed', 'Fluffed', 'Cherubian', 'Multi-Eyed', 'Sakura', 'Eel', 'Viper',
+const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', "Maned", 'Frilled', 'Raptor', 'Tusked',
+	'Feather Extensions', 'Webbed', 'Fluffed', 'Cherubian', 'Multi-Eyes', 'Sakura', 'Eel', 'Viper',
 	'Seraph', 'Blazer', 'Elemental', 'Albino', 'Anery', 'Leucism', 'Abundism', 'Lunar', 'Vented', 'Faceted',
-	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile'
+	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate"
 ];
-const rav_only_mutes = ['Eagle', 'Fisher', 'Warlord', 'Vulture'];
+const rav_only_mutes = ['Eagle Beak', 'Fisher Beak', 'Warlord', 'Vulture Beak'];
 
 const rad_opts = [
 	['Flaxen', 'Fla'], ['Greying', 'Gr'], ['Rose', 'Ros'], ['Azure', 'Az'], ['Copper', 'Cp'],
@@ -120,7 +119,7 @@ const rad_opts = [
 
 const skills = ['Friendly Giant', 'Hoarder', 'Adept', 'Steadfast', 'Swift Feet', 'Aether Walker',
 	'Inner Fire', 'Haunting Roar', 'Healing Aura'];
-const breaths = ['Fire', 'Ice', 'Shadow', 'Lightning', 'Radiation', 'Winds', 'Poison', 'Luster']
+const breaths = ['Fire', 'Ice', 'Shadow', 'Lightning', 'Radiation', 'Wind', 'Poison', 'Luster']
 
 // Store trait arrays according to the rarity - ensure that the way rarity is write is the same as
 // is written in the egg
@@ -128,23 +127,23 @@ const eyes = {
 	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes'],
 	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes'],
 	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes'],
-	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Aether Eyes']
+	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes']
 }
 const horns = {
-	common: ['Hornless', 'Slender Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns'],
+	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns'],
 	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns'],
-	rare: ['Crowned Horns', 'Quilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns'],
+	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns'],
 	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns']
 }
 const ears = {
 	common: ['Earless', 'Fox Ears', 'Hyena Ears', 'Wild Ears', 'Equine Ears'],
-	uncommon: ['Dragon Ears', 'Feathered Ears', 'Fluffy Ears', 'Drop Fold Ears'],
+	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears'],
 	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears']
 }
 const tails = {
-	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Curled Tail'],
-	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Wild Tail', 'Fan Tail'],
-	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Plated Tail', 'Dragon Tail']
+	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail'],
+	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail'],
+	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail']
 }
 
 const coat_genos = {
@@ -219,12 +218,13 @@ function rollEgg(){
 	result += "<br>"
 	if(isTwin != 'no_twins'){ result += "These dragons will receive lineage."; }
 	else if(hasLineage == 'yes') { result += "This dragon will receive lineage."}
-	else { result += "This dragon is first generation."; }
+	else { result += "This dragon is first generation"; }
 
 	document.getElementById("result").innerHTML = result;
 }
 
 function rollDragon(egg_table) {
+	var loop_guard = 0;
 	// Object that will be returned at the end of function
 	var dragon = {
 		main_marks: [],
@@ -303,8 +303,14 @@ function rollDragon(egg_table) {
 		uc_mark = getRandArrayElement(uc_marks);
 		// Replace one common mark at random
 		var rand_index;
+		loop_guard = 0;
 		do {
+			if(loop_guard > 100) {
+				console.log("UC mark insurance took too long. Aborting.");
+				return;
+			}
 			rand_index = rand(0, dragon.main_marks.length-1);
+			++loop_guard;
 		} while(!c_marks.includes(dragon.main_marks[rand_index]))
 		dragon.main_marks[rand_index] = uc_mark;
 		hasUCMark = true;
@@ -314,14 +320,21 @@ function rollDragon(egg_table) {
 	// Indexed as follows: 0 = eyes, 1 = horns, 2 = ears, 3 = tails (if applicable)
 	if(!hasUCTrait) {
 		// Select random trait to reroll
-		var index = rand(0, dragon.traits.length - 1)
+		var index;
 		var trait_pool;
 		// Replace random common trait
+		loop_guard = 0;
 		do {
+			if(loop_guard > 100) {
+				console.log("UC trait insurance took too long. Aborting.");
+				return;
+			}
+			index = rand(0, dragon.traits.length - 1);
 			if (index == 0) { trait_pool = eyes; }
 			else if (index == 1) { trait_pool = horns; }
 			else if (index == 2) { trait_pool = ears; }
 			else if (index == 3) { trait_pool = tails; }
+			++loop_guard;
 		} while(!trait_pool['common'].includes(dragon.traits[index]))
 		dragon.traits[index] = getRandArrayElement(trait_pool['uncommon'])
 		hasUCTrait = true;
@@ -332,21 +345,32 @@ function rollDragon(egg_table) {
 		var marks = [];
 		for(let i = 0; i < num_markings; i++) {
 			// Roll rarity - if exceeds max UC or max R, will reroll until it does not
+			loop_guard = 0;
 			do {
+				if(loop_guard > 100) {
+					console.log("UC/R/VR markings limiting took too long. Aborting.");
+					return;
+				}
 				var mark_rarity = getRollResult(egg_table.markings);
+				++loop_guard;
 			} while (hasReachedMaxUCOrR(mark_rarity))
 			
 			var mark_rolled = ['error??!','???'];
 			// Roll actual mark - if repeated, reroll
+			loop_guard = 0;
 			do {
+				if(loop_guard > 100) {
+					console.log("Non-repeating markings took too long. Aborting.");
+					return;
+				}
 				if(mark_rarity == 'common') { mark_rolled = getRandArrayElement(c_marks); }
 				else if(mark_rarity == 'uncommon') { mark_rolled = getRandArrayElement(uc_marks); }
 				else if(mark_rarity == 'rare') { mark_rolled = getRandArrayElement(r_marks); }
 				else if(mark_rarity == 'vrare') { mark_rolled = getRandArrayElement(vr_marks); }
+				++loop_guard;
 			} while (marks.includes(mark_rolled))
 			
 			// Update counters and bools, if necessary
-			// If it's the first time UC is rolled, do not count towards max *extra*
 			if (mark_rarity == 'uncommon') {
 				dragon.num_uncommon += 1;
 				hasUCMark = true;
@@ -364,8 +388,15 @@ function rollDragon(egg_table) {
 	function rollTrait(traits_table, isRavOnly=false) {
 		var trait_rarity = '???'
 		// Reroll rarity if the dragon alr has the max UC or R, OR vrare is rolled but its a rav only trait
-		do { trait_rarity = getRollResult(egg_table.trait); }
-		while (hasReachedMaxUCOrR(trait_rarity) || (isRavOnly && trait_rarity == 'vrare'));
+		loop_guard = 0;
+		do {
+			if(loop_guard > 100) {
+				console.log("UC/R/VR traits limiting took too long. Aborting.");
+				return;
+			}
+			trait_rarity = getRollResult(egg_table.trait);
+			++loop_guard;
+		} while (hasReachedMaxUCOrR(trait_rarity) || (isRavOnly && trait_rarity == 'vrare'));
 		if(trait_rarity == 'uncommon') {
 			dragon.num_uncommon += 1;
 			hasUCTrait = true;
@@ -429,7 +460,6 @@ function formatDragon(dragon, num) {
 			else if(mark[2] == 'color') { colors.push(marks[i][0]); }
 			else if(mark[2] == 'suffix') { suffixes.push(marks[i][0]); }
 		}
-		console.log(vr_group)
 
 		// Then by rarity: c - uc, followed by alphabetical asc
 		vr_group.sort();

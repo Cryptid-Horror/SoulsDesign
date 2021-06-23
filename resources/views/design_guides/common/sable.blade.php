@@ -51,7 +51,7 @@
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
+        'Edges cannot be too complicated, to avoid appearing like inkwell or other markings.',
         ' Holes, breaks, cutouts, or "floating" portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.'
     ];
 
@@ -64,9 +64,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'sable_1', 'alt' => '...', 'label' => 'SB-0889', 'caption' => 'Designer: @Baaltas'],
+        ['image_name' => 'sable_2', 'alt' => '...', 'label' => 'SB-0710', 'caption' => 'Designer: @Lairai'],
+        ['image_name' => 'sable_3', 'alt' => '...', 'label' => 'SB-0604', 'caption' => 'Designer: @MaraMastrullo'],
     ];
 ?>
 

@@ -15,14 +15,13 @@ function rand(min, max) {
 
 	if (document.getElementById('AdeptY').checked === true){
 	    i += 5;}
-
 	if (document.getElementById('nofaily').checked === true){
 		return true;}
 
-	else if (rank.value == "beginner" && i <= 40){return true;}
-	else if (rank.value == "stablehand" && i <= 60){return true;}
-	else if (rank.value == "tamer" && i <= 70){return true;}
-	else if (rank.value == "master" && i <= 85){return true;}
+	else if (rank.value == "beginner" && i <= 65){return true;}
+	else if (rank.value == "stablehand" && i <= 75){return true;}
+	else if (rank.value == "tamer" && i <= 85){return true;}
+	else if (rank.value == "master" && i <= 95){return true;}
 	else {return false;}
 }
  
@@ -36,14 +35,16 @@ function items(){
 	if (document.getElementById("hoardery").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Hoarder skill activated!</i><br>";}
-	
+//HUNTING//
 function rollHunt(){
 		if (zone.value == "radiant"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(55,83);}
-			else {var i = rand(1,83);}
+				var i = rand(55,94);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (80, 94);}
+			else {var i = rand(1,94);}
 			
-			if(i <= 10){itemlist += ":thumb740288268:";} // bones
+			if(i <= 10){itemlist += "Bones";} // bones
 			else if (i <= 15){itemlist += "Decent Meat";} // Decent meat
 			else if (i <= 20){itemlist += "Leather";} // leather
 			else if (i <= 25){itemlist += "Brown Rabbit Pelt";} // brown rabbit pelt
@@ -63,11 +64,17 @@ function rollHunt(){
 			else if (i <= 78){itemlist += "Premium Meat";} // premium meat
 			else if (i <= 80){itemlist += "50x Crystals";} // 50x Crystals
 			else if (i <= 83){itemlist += "Hunting Chest";} // hunting chest
+            else if (i <= 88){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 91){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
 	else if (zone.value == "gloom"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(55,72);}
-			else {var i = rand(1,72);}
+				var i = rand(55,83);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (70, 83);}
+			else {var i = rand(1,83);}
 			
 			if(i <= 5){itemlist += "Spoiled Meat";} // Spoiled Meat
 			else if (i <= 10){itemlist += "Bones";} //Bones
@@ -86,12 +93,18 @@ function rollHunt(){
 			else if (i <= 68){itemlist += "Penguin Carcass";}//dead penguin
 			else if (i <= 70){itemlist += "Hunting Chest";}//hunting chest
 			else if (i <= 72){itemlist += "100x Crystal";} //100x Crystals
+            else if (i <= 77){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 80){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 82){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 83){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 
 		}
 				else if(zone.value == "frigid"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(60,80);}
-			else {var i = rand(1,80);}
+				var i = rand(60,91);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (71, 91);}
+			else {var i = rand(1,91);}
 			
 			if(i <= 5){itemlist += "Frozen Meat";} //Frozen meat
 			else if (i <= 15){itemlist += "Bones";}//bones
@@ -110,11 +123,17 @@ function rollHunt(){
 			else if (i <= 73){itemlist += "Large Animal Skull";}//large animal skull
 			else if (i <= 76){itemlist += "Large Animal Claws";}//large animal claws
 			else if (i <= 80){itemlist += "Hunting Chest";}//hunting chest
+            else if (i <= 85){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 88){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 90){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 81){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
         else if(zone.value == "shimmering"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(45,68);}
-			else {var i = rand(1,68);}
+				var i = rand(45,79);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (60, 79);}
+			else {var i = rand(1,79);}
 			
 			if(i <= 10){itemlist += "Bones";} //bones
 			else if (i <= 15){itemlist += "Decent Meat";} //decent meat
@@ -133,11 +152,17 @@ function rollHunt(){
 			else if (i <= 62){itemlist += "Piebald Moose Pelt";} //piebald moose pelt
 			else if (i <= 64){itemlist += "Albino Moose Pelt";} //albino moose pelt
 			else if (i <= 68){itemlist += "Hunting Chest";} //hunting chest
+            else if (i <= 73){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 76){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 78){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 79){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
 			else if(zone.value == "scorched"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(53,70);}
-			else {var i = rand(1,70);}
+				var i = rand(53,81);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (66, 81);}
+			else {var i = rand(1,81);}
 			
 			if(i <= 10){itemlist += "Charred Meat";} //charred meat
 			else if (i <= 20){itemlist += "Bones";} //bones
@@ -156,11 +181,17 @@ function rollHunt(){
 			else if (i <= 66){itemlist += "600x Crystals";} //600x crystals
 			else if (i <= 68){itemlist += "Hunting Chest";} //hunting chest
 			else if (i <= 70){itemlist += "Shard of Ancients Ribcage";} //shard of ancients ribcage
+            else if (i <= 75){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 78){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 80){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 81){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			}
 		else if(zone.value == "aether"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(40,56);}
-			else {var i = rand(1,56);}
+				var i = rand(40,67);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (52, 67);}
+			else {var i = rand(1,67);}
 			
 			if(i <= 5){itemlist += "Aether Meat";} //Aether Meat
 			else if (i <= 15){itemlist += "Decent Meat";} //decent meat
@@ -176,117 +207,166 @@ function rollHunt(){
 			else if (i <= 52){itemlist += "Arcane Heart";} //Arcane Heart
 			else if (i <= 54){itemlist += "Hunting Chest";} //Hunting Chest
 			else if (i <= 56){itemlist += "Aether Bag";} //Mysterious Sack
+            else if (i <= 61){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 64){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 66){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 67){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
 	}
-	
+//FISHING//	
 	function rollFish(){
 		if (zone.value == "radiant"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(11,30);}
-			else {var i = rand(1,30);}
+				var i = rand(28,55);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (39, 55);}
+			else {var i = rand(1,55);}
 			
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "50x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 30){itemlist += "50x Crystals";}
+			if(i <= 5){itemlist += "Decent Fish";} // decent fish 
+            else if(i <= 10){itemlist += "Water";} //water 
+            else if(i <= 15){itemlist += "Trout";} // trout
+            else if(i <= 20){itemlist += "Arowana";} //Arowana
+            else if(i <= 25){itemlist += "Boot";} //boot
+            else if(i <= 28){itemlist += "Fishing Chest";} // Fishing chest - CHARMY
+            else if(i <= 31){itemlist += "Prime Fish Meat";}//prime fish meat
+            else if(i <= 34){itemlist += "Jellyfish";}//jelly fish
+            else if(i <= 37){itemlist += "Dolphin Carcass";}//dolphin carcass
+            else if(i <= 39){itemlist += "Shark Carcass";}//Shark carcass - BLUE
+            else if (i <= 44){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 47){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 49){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 50){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+            else if (i <= 55){itemlist += "200 Crystals";} // 200 crystals
 			
 		} else if (zone.value == "gloom"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(13,30);}
-			else {var i = rand(1,30);}
+				var i = rand(33,57);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (46, 57);}
+			else {var i = rand(1,57);}
 			
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "100x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 30){itemlist += "100x Crystals";}
+			if(i <= 5){itemlist += "Decent Fish";}// Decent fish 
+            else if(i <= 10){itemlist += "Spoiled Fish Meat";}//Spoiled fish meat
+            else if(i <= 15){itemlist += "Water";}//water
+            else if(i <= 20){itemlist += "Catfish";}//catfish
+            else if(i <= 25){itemlist += "Arowana";}//Arowana
+            else if(i <= 30){itemlist += "Arapaima";}//Arapaima
+            else if(i <= 33){itemlist += "Prime fish Meat";}//prime fish meat -CHARMY
+            else if(i <= 36){itemlist += "Giant Moray Eel";}//Giant Moray Eel
+            else if(i <= 39){itemlist += "Jellyfish";}//Jellyfish
+            else if(i <= 41){itemlist += "Crocodile Carcass";}//Crocodile Carcass
+            else if(i <= 43){itemlist += "Boot";}//Boot
+            else if(i <= 45){itemlist += "Fishing Chest";}//fishing chest 
+            else if(i <= 46){itemlist += "200 Crystals";}//200 crystals - BLUE
+            else if (i <= 51){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 54){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 56){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 57){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "frigid"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(16,45);}
-			else {var i = rand(1,45);}
+				var i = rand(33,55);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (42, 55);}
+			else {var i = rand(1,55);}
 			
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "100x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 45){itemlist += "150x Crystals";}
+			if(i <= 5){itemlist += "Decent Fish";}
+            else if(i <= 10){itemlist += "Frigid Fish Meat";}//frigid fish meat
+            else if(i <= 15){itemlist += "Water";}
+            else if(i <= 20){itemlist += "Seaweed";}
+            else if(i <= 25){itemlist += "Lobster";}
+            else if(i <= 30){itemlist += "Gar";}
+            else if(i <= 33){itemlist += "Prime Fish Meat";} // CHARMY
+            else if(i <= 36){itemlist += "Jellyfish";}
+            else if(i <= 38){itemlist += "Whalebone";}
+            else if(i <= 40){itemlist += "Boot";} 
+            else if(i <= 42){itemlist += "Fishing Chest";}//BLUE
+            else if(i <= 44){itemlist += "200 Crystals";}
+			else if (i <= 49){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 52){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 54){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 55){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "shimmering"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(20,47);}
-			else {var i = rand(1,47);}
+				var i = rand(30,51);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (40, 51);}
+			else {var i = rand(1,51);}
 			
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "100x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 45){itemlist += "200x Crystals";}
-			else if (i <= 47){itemlist += "Whale Bone";}
+			if(i <= 5){itemlist += "Decent Fish";}
+            else if(i <= 10){itemlist += "Water";}
+            else if(i <= 15){itemlist += "Arapaima";}
+            else if(i <= 20){itemlist += "Snowflake Moray Eel";}
+            else if(i <= 25){itemlist += "Trilobite";}
+            else if(i <= 30){itemlist += "Large Fish Egg";} //CHARMY
+            else if(i <= 33){itemlist += "Prime Fish Meat";}
+            else if(i <= 36){itemlist += "Shark Carcass";}
+            else if(i <= 38){itemlist += "Boot";}
+            else if(i <= 40){itemlist += "Fishing Chest";} //BLUE
+			else if(i <= 45){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 48){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 50){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 51){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "scorched"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(20,47);}
-			else {var i = rand(1,47);}
+				var i = rand(33,58);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (43, 58);}
+			else {var i = rand(1,58);}
 
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "100x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 45){itemlist += "200x Crystals";}
-			else if (i <= 47){itemlist += "Whale Bone";}
+			if(i <= 5){itemlist += "Decent Fish";}
+            else if(i <= 10){itemlist += "Charred Fish Meat";}
+            else if(i <= 20){itemlist += "Water";}
+            else if(i <= 25){itemlist += "Sand";}
+            else if(i <= 30){itemlist += "Turtle Shell";}
+            else if(i <= 33){itemlist += "Jellyfish";} //CHARMY
+            else if(i <= 36){itemlist += "Squid Ink";}
+            else if(i <= 39){itemlist += "Prime Fish Meat";}
+            else if(i <= 41){itemlist += "Octopus Carcass";} 
+            else if(i <= 43){itemlist += "Boot"} // BLUE
+            else if(i <= 45){itemlist += "Fishing Chest";}
+            else if(i <= 47){itemlist += "200 Crystals";}
+			else if (i <= 52){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 55){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 57){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "aether"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(22,49);}
-			else {var i = rand(1,49);}
+				var i = rand(25,53);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (40, 53);}
+			else {var i = rand(1,53);}
 			
-			if(i <= 7){itemlist += "Decent Fish";}
-			else if (i <= 9){itemlist += "Premium Fish";}
-			else if (i <= 10){itemlist += "100x Crystals";}
-			else if (i <= 13){itemlist += "Decent Fish";}
-			else if (i <= 16){itemlist += "Premium Fish";}
-			else if (i <= 18){itemlist += "Fishing Chest";}
-			else if (i <= 21){itemlist += "Metal";}
-			else if (i <= 24){itemlist += "Salt";}
-			else if (i <= 27){itemlist += "Water";}
-			else if (i <= 45){itemlist += "250x Crystals";}
-			else if (i <= 49){itemlist += "Aether Scales";}
+			if(i <= 5){itemlist += "Decent Fish";}
+            else if(i <= 10){itemlist += "Aether Fish Meat";}
+            else if(i <= 15){itemlist += "Glowing Crab";}
+            else if(i <= 20){itemlist += "Arowana";}
+            else if(i <= 25){itemlist += "Jellyfish";}//CHARMY
+            else if(i <= 30){itemlist += "Arcane Frog";}
+            else if(i <= 33){itemlist += "Arcane Shark";} 
+            else if(i <= 36){itemlist += "Prime Fish Meat";}
+            else if(i <= 39){itemlist += "Undulated Moray Eel";}
+            else if(i <= 40){itemlist += "Fishing Chest";}//BLUE
+            else if(i <= 41){itemlist += "Mysterious Bag";}
+            else if(i <= 42){itemlist += "Coelacanth";}
+			else if (i <= 47){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 50){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 52){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 53){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		}
 	}
-	
+//FORAGING//
 	function rollForage(){
 		if (zone.value == "radiant"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(83,109);}
-			else {var i = rand(1,109);}
+				var i = rand(83,120);}
+                if(document.getElementById("Blue").checked == true){
+                var i = rand (103, 120);}
+			else {var i = rand(1,120);}
 			
 			if(i <= 10){itemlist += "Small Feathers";} //Small Feathers
 			else if (i <= 15){itemlist += "Herbs";} // Herbs
@@ -305,16 +385,22 @@ function rollHunt(){
 			else if (i <= 91){itemlist += "Small Animal Horn";} // small animal horn
 			else if (i <= 95){itemlist += "Grapes";} // grapes
 			else if (i <= 100){itemlist += "Large Rocks";} // large rocks
-			else if (i <= 103){itemlist += "Foraging Chest";} // Foraging Chest
+			else if (i <= 103){itemlist += "Foraging Chest";} // Foraging Chest -blue
 			else if (i <= 105){itemlist += "x50 Crystals";} // 50 Crystals
 			else if (i <= 107){itemlist += "Garnet";} // Garnet
 			else if (i <= 109){itemlist += "Emerald";} // Emerald
+            else if (i <= 114){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 117){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 119){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 120){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 
 						
 		} else if (zone.value == "gloom"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(78,96);}
-			else {var i = rand(1,96);}
+				var i = rand(78,107);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (94, 107);}
+			else {var i = rand(1,107);}
 			
 			if(i <= 10){itemlist += "Small Feathers";} //Small feathers
 			else if (i <= 20){itemlist += "Small Rocks";} // Small Rocks
@@ -333,13 +419,19 @@ function rollHunt(){
 			else if (i <= 86){itemlist += "Medium Animal Horn";} // Medium Animal Horn
 			else if (i <= 90){itemlist += "Small Animal Horn";} // Small Animal Horn
 			else if (i <= 92){itemlist += "Black Pearl";} // Black Pearl
-			else if (i <= 94){itemlist += "Foraging Chest";} // Foraging Chest
+			else if (i <= 94){itemlist += "Foraging Chest";} // Foraging Chest -BLUE
 			else if (i <= 96){itemlist += "x100 Crystals";} // 100 Crystals
+            else if (i <= 101){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 104){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 106){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 107){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 		
 		} else if (zone.value == "frigid"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(72,91);}
-			else {var i = rand(1,91);}
+				var i = rand(72,102);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (89, 102);}
+			else {var i = rand(1,102);}
 		
 			if(i <= 10){itemlist += "Large Feathers";} // Large Feathers
 			else if (i <= 20){itemlist += "Sticks";} // sticks
@@ -358,14 +450,20 @@ function rollHunt(){
 			else if (i <= 83){itemlist += "Cooking Oil";} // Oil
 			else if (i <= 85){itemlist += "White Pearl";} // White Pearl
 			else if (i <= 87){itemlist += "Sanguine Fruit";} // Sanguine Fruit
-			else if (i <= 89){itemlist += "Foraging Chest";} // Foraging Chest
+			else if (i <= 89){itemlist += "Foraging Chest";} // Foraging Chest --BLUE
 			else if (i <= 91){itemlist += "x200 Crystals";} // 200 Crystals
+            else if (i <= 96){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 99){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 101){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 102){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 
 
 		} else if (zone.value == "shimmering"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(68,92);}
-			else {var i = rand(1,92);}
+				var i = rand(68,103);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (90, 103);}
+			else {var i = rand(1,103);}
 			
 			if(i <= 10){itemlist += "Large Feathers";} // Large Feathers
 			else if (i <= 15){itemlist += "Grapes";} // Grapes
@@ -383,15 +481,21 @@ function rollHunt(){
 			else if (i <= 81){itemlist += "Long Beans";} // long beans
 			else if (i <= 84){itemlist += "Medium Animal Horns";} // medium animal horns
 			else if (i <= 86){itemlist += "Large Animal Horns";} // large animal horns
-			else if (i <= 90){itemlist += "x400 Crystals";} // 400 Crystals
+			else if (i <= 90){itemlist += "x400 Crystals";} // 400 Crystals BLUE
 		    else if (i <= 92){itemlist += "Foraging Chest";} // Foraging Chest
+            else if (i <= 97){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 100){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 102){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 103){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 
 
 
 		} else if (zone.value == "scorched"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(68,85);}
-			else {var i = rand(1,85);}
+				var i = rand(68,96);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (83, 96);}
+			else {var i = rand(1,96);}
 			
 			if(i <= 10){itemlist += "Large Feathers";} // Large Feathers
 			else if (i <= 15){itemlist += "Clay";} // Clay
@@ -409,14 +513,20 @@ function rollHunt(){
 			else if (i <= 76){itemlist += "Chitin";} // chitin
 			else if (i <= 78){itemlist += "Metal";} // metal
 			else if (i <= 80){itemlist += "Medium Animal Horn";} // medium animal horns
-			else if (i <= 83){itemlist += "x600 Crystals";} // 600 Crystals
+			else if (i <= 83){itemlist += "x600 Crystals";} // 600 Crystals --BLUE
 			else if (i <= 85){itemlist += "Foraging Chest";} // Foraging Chest
+            else if (i <= 90){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 93){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 95){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 96){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 		
 		
 		} else if (zone.value == "aether"){
 			if(document.getElementById("charmy").checked == true){
-				var i = rand(83,102);}
-			else {var i = rand(1,102);}
+				var i = rand(83,113);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (100, 113);}
+			else {var i = rand(1,113);}
 			
 			if(i <= 10){itemlist += "Aether Feathers";} // Aether Imbued Feathers
 			else if (i <= 20){itemlist += "Large Rocks";} // Large Rocks
@@ -433,12 +543,154 @@ function rollHunt(){
 			else if (i <= 90){itemlist += "Shimmering Pearl";} // Shimmering Pearl
 			else if (i <= 93){itemlist += "Eternal Flame";} // Eternal Flame
 			else if (i <= 95){itemlist += "Aether Bag";} // Mysterious Sack
-			else if (i <= 98){itemlist += "Aether Pages";} // Aether Imbued Pages
-			else if (i <= 100){itemlist += "600 Crystals";} // 600 Crystals
+			else if (i <= 98){itemlist += "Aether Pages";} // Aether Imbued Pages 
+			else if (i <= 100){itemlist += "600 Crystals";} // 600 Crystals - BLUE
 			else if (i <= 102){itemlist += "Foraging Chest";} // Foraging Chest
+            else if (i <= 107){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 110){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 112){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 113){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 		
 		}
+		
 	}
+//CAVING//
+      function rollCave(){
+		if (zone.value == "radiant"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35, 48);}
+			else {var i = rand(1,48);}
+			
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Garnet";}
+            else if(i <= 23){itemlist += "Jade";}//CHARMY
+            else if(i <= 26){itemlist += "Amber";}
+            else if(i <= 29){itemlist += "Gold";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+
+						
+		} else if (zone.value == "gloom"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35, 48);}
+			else {var i = rand(1,48);}
+			
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Jade";}
+            else if(i <= 23){itemlist += "Ruby";}//CHARMY
+            else if(i <= 26){itemlist += "Emerald";}
+            else if(i <= 29){itemlist += "Malachite";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+		
+		} else if (zone.value == "frigid"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35, 48);}
+			else {var i = rand(1,48);}
+		
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Limestone";}
+            else if(i <= 23){itemlist += "Lapis Lazuli";}//CHARMY
+            else if(i <= 26){itemlist += "Sapphire";}
+            else if(i <= 29){itemlist += "Aquamarine";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+
+		} else if (zone.value == "shimmering"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35, 48);}
+			else {var i = rand(1,48);}
+		
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Gold";}
+            else if(i <= 23){itemlist += "Amythest";}//CHARMY
+            else if(i <= 26){itemlist += "Sunstone";}
+            else if(i <= 29){itemlist += "Aquamarine";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
+
+		} else if (zone.value == "scorched"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35,48);}
+			else {var i = rand(1,48);}
+		
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Garnet";}
+            else if(i <= 23){itemlist += "Sand";}//CHARMY
+            else if(i <= 26){itemlist += "Amythest";}
+            else if(i <= 29){itemlist += "Limestone";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+
+		} else if (zone.value == "aether"){
+			if(document.getElementById("charmy").checked == true){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true){
+                var i = rand (35,48);}
+			else {var i = rand(1,48);}
+		
+			if(i <= 5){itemlist += "metal";} //metal 
+            else if(i <= 10){itemlist += "Raw Crystal";}
+            else if(i <= 15){itemlist += "Iron";}
+            else if(i <= 20){itemlist += "Selenite";}
+            else if(i <= 23){itemlist += "Chrysocolla";}//CHARMY
+            else if(i <= 26){itemlist += "Serpentine";}
+            else if(i <= 29){itemlist += "Moonstone";} 
+            else if(i <= 32){itemlist += "Geode";} 
+            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
+            else if(i <= 37){itemlist += "Caving Chest";}
+			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+        }
+      }
+	
 	
 	
 	for (var m = 0; m < lootSize; m++) {
@@ -446,6 +698,7 @@ function rollHunt(){
 		if (activity.value == "hunting"){rollHunt();}
 		else if (activity.value == "fishing"){rollFish();}
 		else if (activity.value == "foraging"){rollForage();}
+        else if (activity.value == "caving"){rollCave();}
 	}
 	
 	return itemlist;
@@ -498,8 +751,19 @@ function injury(){
 		else if(zone.value == "aether" && i == 5){
 			return "The Aether has a lot of dangerous places. Your dragon found a book that was glowing bright red letters among these dangerous places. Upon touching it they lost  -" + rand(30,100) + " HP.";}
 		else{ return dragonName.value +" was not injured.";}
+	} else if (activity.value == "caving"){
+		if(i == 1){
+			return "Your dragon searched every where for anything they could find, so focused they didn't notice they had scraped up against some rather large rocks. -10 HP";}
+		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
+			return "Exploring further into the world, your dragon finds itself near some rather strange looking plants. You don't know if they ate them or if they touched them but your dragon isn't happy about them. -20 HP";}
+		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
+			return "Your dragon went missing for a few days, they returned to you a little beaten up, but otherwise they seem ok. -40 HP";}
+		else if(zone.value == "shimmering" || zone.value == "scorched" || zone.value =="aether" && i == 4){
+			return "In a scuffle of something shiny, your dragon got in a fight with another dragon. It didn't last long and both dragons seem ok despite the small injuries. -60 HP.";}
+		else if(zone.value == "aether" && i == 5){
+			return "The Aether has a lot of dangerous places. Your dragon found a book that was glowing bright red letters among these dangerous places. Upon touching it they lost  -" + rand(30,100) + " HP.";}
+		else{ return dragonName.value +" was not injured.";}
 	}
-	
 }
 
   

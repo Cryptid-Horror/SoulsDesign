@@ -40,10 +40,10 @@ function rollResult(){
 			
 			let marking = [
 			"Blanket (nBl)",	"Boar (nBr)",		"Collar (nCl)",		"Dunstripe (nDn)", "Duo Tone (nDo)",
-			"Dusted (nDt)",		"Fading (nFd)",		"Flaxen (nFla)",	"Greying (nGr)",
+			"Dusted (nDt)",		"Flaxen (nFla)",	"Greying (nGr)",
 			"Hood (nHd)",	"Leaf (nLf)",	"Masked (nMa)",		"Pangare (nPa)",	"Points (nPo)",
-			"Python (nPy)",		"Ray (nRa)",		"Rimmed (nRi)",		"Ringed (nRn)",
-			"Rose (nRos)",		"Sable (nSa)",		"Scaled (nSc)",		"Scorching (nSo)",
+			"Python (nPy)",		"Rimmed (nRi)",		"Ringed (nRn)",
+			"Rose (nRos)",		"Sable (nSa)",		"Scaled (nSc)",		"Stained (nSn)",
 			"Skink (nSk)",		"Trailing (nTr)",	"Underbelly (nUn)",
 			] 
 			return marking[rand(0,marking.length-1)];	
@@ -53,9 +53,9 @@ function rollResult(){
 			let marking = [
 			"Azure (nAz)",		"Banded (nBa)",		"Bokeh (nBk)",		"Border (nBo)", "Cloud (nCl)",
 			"Copper (nCp)",	 "Crested (nCr)",	"Crimson (nCn)",	"Dipped (nDi)",		"Dripping (nDr)",
-			"Inkwell (nIn)",	"Marbled (nMar)",	"Merle (nMr)",	"Metallic (nMe)", 	"Mist (nMi)",
+			"Inkwell (nIn)",	"Marbled (nMar)",	"Merle (nMr)",	"Metallic (nMe)", 
 			"Pigeon (nPg)",		"Plasma (nPs)",		"Roan (nRo)",		"Rosettes (nRs)",
-			"Shaped (nSp)",		"Smoke (nSm)",		"Somatic (nSt)",	"Tabby (nTa)",
+			"Shaped (nSp)",		"Smoke (nSm)",		"Brindled (nBrd)",	"Tabby (nTa)",
 			"Tobiano (nTo)",	"Toxin (nTx)",
 			] 
 			return marking[rand(0,marking.length-1)];	
@@ -64,7 +64,7 @@ function rollResult(){
 			
 			let marking = [
 			"Appaloosa (nAp)",	"Blooded (nBd)",	"Eyes (nEy)",		"Glass (nGl)",
-			"Jade (nJa)",		"Luminescent (nLu)", "Lustrous (nLs)", "Painted (nPn)",	"Petal(nPl)",	"Vignette (nVi)",
+			"Jade (nJa)",		"Luminescent (nLu)", "Lustrous (nLs)", "Painted (nPn)",	"Petal (nPl)", "Vignette (nVi)",
 			] 
 			return marking[rand(0,marking.length-1)];	
 		} else {
@@ -88,6 +88,7 @@ function rollResult(){
 		let mute = [
 			"Whiskers",		"Spined",	"Barbed",
 			"Fanged",		"Spiked",	"Maned",
+            "Luecism",      "Abundism",  "Eagle Beak",
 		] 
 		return mute[i];
 		} else if (rarity <= 15) {
@@ -97,7 +98,8 @@ function rollResult(){
 			
 		let mute = [
 			"Frilled",	"Raptor",	"Tusked",
-			"Feather Extensions",	"Albino",	"Eagle Beak",
+			"Feather Extensions",	"Albino",	"Fisher Beak",
+            "Lunar", "Anery", "Polycerate",
 		] 
 		return mute[i];
 		} else if (rarity <= 18){
@@ -107,8 +109,9 @@ function rollResult(){
 			
 		let mute = [
 			"Webbed",		"Fluffed",	"Cherubian",
-			"Multi-Eyed",	"Sakura",	"Anery",
-			"Fisher Beak",
+			"Multi-Eyes",	"Sakura",	"Vented",
+			"Vulture Beak", "Faceted", "Finned", 
+            "Viper",
 		] 
 		return mute[i];
 		} else {
@@ -117,10 +120,11 @@ function rollResult(){
 			} else {var i = rand(0,9);}
 			
 			let mute = [
-				"Eel",		"Viper",		"Seraph",
-				"Blazer",	"Elemental",	"Finned",
+				"Eel",	"Seraph",  "Aether Mane",
+				"Blazer",	"Elemental",	"Overgrowth",
 				"Radiance",	"Triclops",		"Crocodile",
-				"Warlord",	"Vulture Beak", "Faceted",
+				"Warlord",	 "Faceted", "Blazer", 
+                "Chimera",
 			] 
 			return mute[i];
 		}
@@ -147,7 +151,7 @@ function rollResult(){
 		} else {
 			traitType="Temperament";
 			let temp = [
-				"Timid", "Aggressive", "Calm",
+				"Vigilant", "Aggressive", "Calm",
 				"Sinister",
 			]
 			return temp[rand(0,temp.length-1)];
@@ -162,17 +166,17 @@ function rollResult(){
 			traitType = "Eyes Trait";
 			if (rarity <=10){
 				let eyes = [
-					"Round",	"Slit", "Beaded",
+					"Round","Slit", "Beaded",
 				]  
 				return eyes[rand(0,eyes.length-1)];
 			} else if (rarity <= 15){
 				let eyes = [
-					"Pale",		"Pupiless", "Crescent",
+					"Pale",	"Pupiless", "Crescent",
 				] 
 				return eyes[rand(0,eyes.length-1)];
 			} else if (rarity <= 18){
 				let eyes =[
-					"Glowing",	"Goat",	"Cuttlefish",
+					"Glowing","Goat",	"Cuttlefish",
 				] 
 				return eyes[rand(0,eyes.length-1)];
 			} else {
@@ -265,7 +269,7 @@ function roll(){
 	var RESULT = rollResult();
 	
 	document.getElementById("result").innerHTML = "";
-	document.getElementById("result").innerHTML = "Your dragon drinks the contents of the vial, and a crackling magic spreads across its body, revealing that the vial has cast an illusion of the gift that it grants. The <b>"+ traitType +"</b> of <b>"+ RESULT +"</b> appears on the dragon’s body, as you touch the shimmering illusion your hand passes through it. Soft ancient whispers echo asking you a question, <i>“Will you <b>Accept</b> our gift, or <b>Decline</b> it?”</i>	<hr> Reply to me once you have made your choice to accept or decline the <b>" + RESULT + " " + traitType + "</b> to be added to "+ dragonName() +". <br>If you accept I will reply with further instructions. <br>If you decline, the vial will be unusable. You will receive no reply. <br><br><b> One Vial of Ancient Dragons Blood has been removed from your hoard.</b>";
+	document.getElementById("result").innerHTML = "Your dragon drinks the contents of the vial, and a crackling magic spreads across its body, revealing that the vial has cast an illusion of the gift that it grants. The <b>"+ traitType +"</b> of <b>"+ RESULT +"</b> appears on the dragon’s body, as you touch the shimmering illusion your hand passes through it.<br><br><hr><br> One Vial of Ancient Dragons Blood Voucher has been added to your hoard with the above result.</b>";
 }
 
 function clearResult(){

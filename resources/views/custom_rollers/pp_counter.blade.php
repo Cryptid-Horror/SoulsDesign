@@ -49,7 +49,6 @@
 						<input type="checkbox" id="shaded"><label for="shaded">Shaded</label><br>
 						<input type="checkbox" id="chibi"><label for="chibi">Chibi</label><br>
 						<input type="checkbox" id="recolored"><label for="recolored">Recolored</label><br>
-						<input type="checkbox" id="bg"><label for="bg">Background</label>
 					</fieldset><br>
 			</fieldset>
 				<input type="checkbox" id="anim"><label for="anim" class="wide">Animated</label>
@@ -85,6 +84,7 @@
 			<h1>Additional Bonuses</h1>
 			<div id="text">These bonuses apply ontop of the base bonuses, earning you more points! Click on them to apply them to your count. <br><br></div>
 			<input type="checkbox" id="pa"><label for="pa" class="wide">Personal Art</label><br>
+            <input type="checkbox" id="bg"><label for="bg" class="wide">Background</label><br>
 			<input type="checkbox" id="colab"><label for="colab" class="wide">Collaboration</label><br>
 			<input type="checkbox" id="companion"><label for="companion" class="wide">Companion Present</label><br>
 			<input type="checkbox" id="added"><label for="added" class="wide">Added Dragon</label><br>

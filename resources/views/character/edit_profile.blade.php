@@ -5,7 +5,11 @@
 @section('meta-img') {{ $character->image->thumbnailUrl }} @endsection
 
 @section('profile-content')
-{!! breadcrumbs([($character->is_myo_slot ? 'Registered Dragon Slot Masterlist' : 'Character Masterlist') => ($character->is_myo_slot ? 'myos' : 'masterlist'), $character->fullName => $character->url, 'Editing Profile' => $character->url . '/profile/edit']) !!}
+@if($character->is_myo_slot)
+{!! breadcrumbs(['Registered Dragon Slot Masterlist' => 'myos', $character->fullName => $character->url, 'Editing Profile' => $character->url . '/profile/edit']) !!}
+@else
+{!! breadcrumbs([($character->category->masterlist_sub_id ? $character->category->sublist->name.' Masterlist' : 'Character masterlist') => ($character->category->masterlist_sub_id ? 'sublist/'.$character->category->sublist->key : 'masterlist' ), $character->fullName => $character->url, 'Editing Profile' => $character->url . '/profile/edit']) !!}
+@endif
 
 @include('character._header', ['character' => $character])
 
@@ -16,24 +20,75 @@
 @endif
 
 {!! Form::open(['url' => $character->url . '/profile/edit']) !!}
-@if(!$character->is_myo_slot)
+<div class="form-group">
+    {!! Form::label('name', 'Name') !!}
+    {!! Form::text('name', $character->name, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('title_name', 'Display Name') !!} {!! add_help('Optional - used for setting the name displayed in links to the character; can be different from name') !!}
+    {!! Form::text('title_name', $character->title_name, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('nicknames', 'Nickname(s)') !!}
+    {!! Form::text('nicknames', $character->nickname, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('gender_pronouns', 'Gender/Pronouns') !!}
+    {!! Form::text('gender_pronouns', $character->gender_pronouns, ['class' => 'form-control']) !!}
+</div>
+@if(Config::get('lorekeeper.extensions.character_TH_profile_link'))
     <div class="form-group">
-        {!! Form::label('name', 'Name') !!}
-        {!! Form::text('name', $character->name, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('title_name', 'Display Name') !!} {!! add_help('Optional - used for setting the name displayed in links to the character; can be different from name') !!}
-        {!! Form::text('title_name', $character->title_name, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('nicknames', 'Nickname(s)') !!}
-        {!! Form::text('nicknames', $character->nickname, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('gender_pronouns', 'Gender/Pronouns') !!}
-        {!! Form::text('gender_pronouns', $character->gender_pronouns, ['class' => 'form-control']) !!}
+        {!! Form::label('link', 'Profile Link') !!}
+        {!! Form::text('link', $character->profile->link, ['class' => 'form-control']) !!}
     </div>
 @endif
+{!! Form::label('custom_values', "Custom Values") !!}
+<div id="customValues">
+    @foreach ($character->profile->custom_values as $value)
+        <div class="form-row">
+            <div class="col-2 col-md-1 mb-2">
+                <span class="btn btn-link drag-custom-value-row w-100"><i class="fas fa-arrows-alt-v"></i></span>
+            </div>
+            <div class="col-5 col-md-3 mb-2">
+                {!! Form::text('custom_values_group[]', $value->group, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Group (Optional)"]) !!}
+            </div>
+            <div class="col-5 col-md-3 mb-2">
+                {!! Form::text('custom_values_name[]', $value->name, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Title:"]) !!}
+            </div>
+            <div class="col-10 col-md-4 mb-3">
+                {!! Form::text('custom_values_data[]', $value->data_parsed, ['class' => 'form-control', 'maxLength' => 150, 'placeholder' => "Custom Value"]) !!}
+            </div>
+            <div class="col-2 col-md-1 mb-3">
+                <button class="btn btn-danger delete-custom-value-row w-100" type="button">x</button>
+            </div>
+        </div>
+    @endforeach
+</div>
+<a href="#" class="add-custom-value-row btn btn-primary mb-3">Add Custom Value</a>
+
+@if(!$character->is_myo_slot && ($char_enabled == 2 || (Auth::user()->isStaff && $char_enabled == 3)))
+@if(Auth::user()->isStaff && $char_enabled == 3)
+    <div class="alert alert-warning">You can edit this because you are a staff member. Normal users cannot edit their character locations freely.</div>
+@endif
+<div class="form-group">
+    {!! Form::label('location', 'Location') !!}
+    {!! Form::select('location', [0=>'Choose a Location'] + $locations, isset($character->home_id) ? $character->home_id : 0, ['class' => 'form-control selectize']) !!}
+</div>
+@endif
+
+@if(!$character->is_myo_slot && ($char_faction_enabled == 2 || (Auth::user()->isStaff && $char_faction_enabled == 3)))
+@if(Auth::user()->isStaff && $char_faction_enabled == 3)
+    <div class="alert alert-warning">You can edit this because you are a staff member. Normal users cannot edit their character factions freely.</div>
+@endif
+<p>Please note that changing this character's faction will remove them from any special ranks and reset their faction standing!</p>
+<div class="form-group row">
+    <label class="col-md-1 col-form-label">Faction</label>
+    <div class="col-md">
+    {!! Form::select('faction', [0=>'Choose a Faction'] + $factions, isset($character->faction_id) ? $character->faction_id : 0, ['class' => 'form-control selectize']) !!}
+    </div>
+</div>
+@endif
+
 <div class="form-group">
     {!! Form::label('text', 'Profile Content') !!}
     {!! Form::textarea('text', $character->profile->text, ['class' => 'wysiwyg form-control']) !!}
@@ -41,9 +96,15 @@
 
 @if($character->user_id == Auth::user()->id)
     @if(!$character->is_myo_slot)
-        <div class="form-group">
-            {!! Form::checkbox('is_gift_art_allowed', 1, $character->is_gift_art_allowed, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
-            {!! Form::label('is_gift_art_allowed', 'Allow Gift Art', ['class' => 'form-check-label ml-3']) !!} {!! add_help('This will place the character on the list of characters that can be drawn for gift art. This does not have any other functionality, but allow users looking for characters to draw to find your character easily.') !!}
+        <div class="row">
+            <div class="col-md form-group">
+                {!! Form::label('is_gift_art_allowed', 'Allow Gift Art', ['class' => 'form-check-label mb-3']) !!} {!! add_help('This will place the character on the list of characters that can be drawn for gift art. This does not have any other functionality, but allow users looking for characters to draw to find your character easily.') !!}
+                {!! Form::select('is_gift_art_allowed', [0 => 'No', 1 => 'Yes', 2 => 'Ask First'], $character->is_gift_art_allowed, ['class' => 'form-control user-select']) !!}
+            </div>
+            <div class="col-md form-group">
+                {!! Form::label('is_gift_writing_allowed', 'Allow Gift Writing', ['class' => 'form-check-label mb-3']) !!} {!! add_help('This will place the character on the list of characters that can be written about for gift writing. This does not have any other functionality, but allow users looking for characters to write about to find your character easily.') !!}
+                {!! Form::select('is_gift_writing_allowed', [0 => 'No', 1 => 'Yes', 2 => 'Ask First'], $character->is_gift_writing_allowed, ['class' => 'form-control user-select']) !!}
+            </div>
         </div>
     @endif
     @if($character->is_tradeable ||  $character->is_sellable)
@@ -51,7 +112,7 @@
             {!! Form::checkbox('is_trading', 1, $character->is_trading, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
             {!! Form::label('is_trading', 'Up For Trade', ['class' => 'form-check-label ml-3']) !!} {!! add_help('This will place the character on the list of characters that are currently up for trade. This does not have any other functionality, but allow users looking for trades to find your character easily.') !!}
         </div>
-    @else 
+    @else
         <div class="alert alert-secondary">Cannot be set to "Up for Trade" as character cannot be traded or sold.</div>
     @endif
 @endif
@@ -148,6 +209,16 @@
         {!! Form::text('health_status', $character->health_status, ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('Total Health') !!}
+        {!! Form::select('total_health', [null => 'None', 'Greater Emperor' => 'GE 500', 'Stalker Wyvern' => 'SW 600', 'Ravager Wyvern' => 'RW 800', 'Sapiere Dragon' => 'SD 1000', 'Warden Dragon' => 'WD 1000'], $character->image->total_health, ['class' => 'form-control']) !!}
+    </div>
+    
+    <div class="form-group">
+        {!! Form::label('Current Health') !!}
+        {!! Form::text('current_health', $character->image->current_health, ['class' => 'form-control', 'placeholder' => 'Add or subtract health from the total and input. If creating new, put the total health.']) !!}
+    </div>
+
     <h3>Rites and Activities</h3>
 
     <div class="form-group">
@@ -191,6 +262,7 @@
         {!! Form::text('soul_link_target_link', $character->soul_link_target_link, ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
     </div>
 
+    {{-- Old Lineage Code
     <h3>Lineage</h3>
     <div class="alert alert-info">
         <p>You only need to enter the Sire and Dam as the system will automatically retrieve their lineage from there. In case of a custom lineage (either parent is 'Unknown' or is a legacy character), you will have to enter each ancestor manually.</p>
@@ -272,7 +344,7 @@
             @include('character._lineage_tree')
         </div>
     </div>
-
+    --}}
     <h3>Other Profile Information</h3>
     <div class="form-group">
         {!! Form::checkbox('is_adopted', 1, $character->is_adopted, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'isAdopted']) !!}
@@ -330,10 +402,51 @@
     <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
 </div>
 
+{{-- Custom Value Row --}}
+<div class="form-row hide custom-value-row">
+    <div class="col-2 col-md-1 mb-2">
+        <span class="btn btn-link drag-custom-value-row w-100"><i class="fas fa-arrows-alt-v"></i></span>
+    </div>
+    <div class="col-5 col-md-3 mb-2">
+        {!! Form::text('custom_values_group[]', null, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Group (Optional)"]) !!}
+    </div>
+    <div class="col-5 col-md-3 mb-2">
+        {!! Form::text('custom_values_name[]', null, ['class' => 'form-control', 'maxLength' => 50, 'placeholder' => "Title:"]) !!}
+    </div>
+    <div class="col-10 col-md-4 mb-3">
+        {!! Form::text('custom_values_data[]', null, ['class' => 'form-control', 'maxLength' => 150, 'placeholder' => "Custom Value"]) !!}
+    </div>
+    <div class="col-2 col-md-1 mb-3">
+        <button class="btn btn-danger delete-custom-value-row w-100" type="button">x</button>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
     @parent
     @include('widgets._character_create_options_js')
     @include('widgets._image_upload_js')
-@endsection
+    <script>
+        $(document).ready(function(){
+            $values = $("#customValues");
+            $values.sortable({ handle: ".drag-custom-value-row" });
+            $values.find(".delete-custom-value-row").each(function(i) {
+                deleteRowOnClick($(this));
+            });
+            $(".add-custom-value-row").on('click', function(e) {
+                e.preventDefault();
+                $clone = $(".custom-value-row").clone();
+                $clone.removeClass("hide custom-value-row");
+                deleteRowOnClick($clone.find('.delete-custom-value-row'));
+                $values.append($clone);
+            });
+            function deleteRowOnClick(node) {
+                node.on('click', function(e) {
+                    e.preventDefault();
+                    $(this).parent().parent().remove();
+                });
+            }
+        });
+    </script>
+@endsection {{-- end scripts --}}

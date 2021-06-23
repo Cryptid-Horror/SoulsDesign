@@ -46,12 +46,12 @@
 
     // You can use html!
     $marking_can = [
-        'Hood can appaer on the bottom or top jaw of the dragons face, but it has to appear on the neck as well. It cannot appear on just the head or just the neck.',
+        'Hood can appear on the bottom or top jaw of the face of the dragon, but it has to appear on the neck as well. It cannot appear on just the head or just the neck.',
         ' Is allowed up to a 12 value and saturation point gradient difference inside the marking. This gradient cannot blend into the base coat.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.'
+        'Edges cannot be too complicated, to avoid appearing like inkwell or other markings.'
     ];
 
     $marking_must = [
@@ -63,9 +63,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'hood_1', 'alt' => '...', 'label' => 'SB-0885', 'caption' => 'Designer: @Voidtech'],
+        ['image_name' => 'hood_2', 'alt' => '...', 'label' => 'SB-0765', 'caption' => 'Designer: @StarCrossedDancing'],
+        ['image_name' => 'hood_3', 'alt' => '...', 'label' => 'SB-0803', 'caption' => 'Designer: @TipToeToads'],
     ];
 ?>
 

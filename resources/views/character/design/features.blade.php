@@ -39,35 +39,61 @@
 
         <div class="form-group">
             {!! Form::label('species_id', 'Species') !!}
-            @if($request->character->is_myo_slot && $request->character->image->species_id) 
+            @if($request->character->is_myo_slot && $request->character->image->species_id)
                 <div class="alert alert-secondary">{!! $request->character->image->species->displayName !!}</div>
             @else
                 {!! Form::select('species_id', $specieses, $request->species_id, ['class' => 'form-control', 'id' => 'species']) !!}
             @endif
-            
+
         </div>
 
         <div class="form-group">
             {!! Form::label('subtype_id', 'Species Subtype') !!}
-            @if($request->character->is_myo_slot && $request->character->image->subtype_id) 
+            @if($request->character->is_myo_slot && $request->character->image->subtype_id)
                 <div class="alert alert-secondary">{!! $request->character->image->subtype->displayName !!}</div>
             @else
-                {!! Form::select('subtype_id', $subtypes, $request->subtype_id, ['class' => 'form-control', 'id' => 'subtype']) !!}
+                <div id="subtypes">
+                  {!! Form::select('subtype_id', $subtypes, $request->subtype_id, ['class' => 'form-control', 'id' => 'subtype']) !!}
+                </div>
             @endif
-            
+
         </div>
 
         <div class="form-group">
             {!! Form::label('rarity_id', 'Character Rarity') !!}
-            @if($request->character->is_myo_slot && $request->character->image->rarity_id) 
+            @if($request->character->is_myo_slot && $request->character->image->rarity_id)
                 <div class="alert alert-secondary">{!! $request->character->image->rarity->displayName !!}</div>
             @else
                 {!! Form::select('rarity_id', $rarities, $request->rarity_id, ['class' => 'form-control', 'id' => 'rarity']) !!}
             @endif
         </div>
 
+        @if($request->character->is_myo_slot && $request->character->image->title_id)
+                <div class="alert alert-secondary">{!! $request->character->image->title->displayName !!}</div>
+        @else
+            <div class="row no-gutters">
+                <div class="col-md-6 pr-2">
+                    <div class="form-group">
+                        {!! Form::label('Character Title') !!}
+                        {!! Form::select('title_id', $titles, $request->title_id, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('Extra Info/Custom Title (Optional)') !!} {!! add_help('If \'custom title\' is selected, this will be displayed as the title. If a preexisting title is selected, it will be displayed in addition to it. The short version is only used in the case of a custom title.') !!}
+                        <div class="d-flex">
+                            {!! Form::text('title_data[full]', isset($request->title_data['full']) ? $request->title_data['full'] : null, ['class' => 'form-control mr-2', 'placeholder' => 'Full Title']) !!}
+                            @if(Settings::get('character_title_display'))
+                                {!! Form::text('title_data[short]', isset($request->title_data['short']) ? $request->title_data['short'] : null, ['class' => 'form-control mr-2', 'placeholder' => 'Short Title (Optional)']) !!}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="form-group">
-            {!! Form::label('Traits') !!} 
+            {!! Form::label('Traits') !!}
             <div id="featureList">
                 {{-- Add in the compulsory traits for Registered Dragon slots --}}
                 @if($request->character->is_myo_slot && $request->character->image->features)
@@ -142,6 +168,18 @@
             <div class="col-md-2 col-4"><h5>Species</h5></div>
             <div class="col-md-10 col-8">{!! $request->species ? $request->species->displayName : 'None Selected' !!}</div>
         </div>
+        @if($request->subtype_id)
+        <div class="row">
+            <div class="col-md-2 col-4"><h5>Subtype</h5></div>
+            <div class="col-md-10 col-8">
+            @if($request->character->is_myo_slot && $request->character->image->subtype_id)
+                {!! $request->character->image->subtype->displayName !!}
+            @else
+                {!! $request->subtype_id ? $request->subtype->displayName : 'None Selected' !!}
+            @endif
+            </div>
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-2 col-4"><h5>Rarity</h5></div>
             <div class="col-md-10 col-8">{!! $request->rarity ? $request->rarity->displayName : 'None Selected' !!}</div>
@@ -151,11 +189,11 @@
     <div>
         @if($request->character && $request->character->is_myo_slot && $request->character->image->features)
             @foreach($request->character->image->features as $feature)
-                <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif <span class="text-danger">*Required</span></div> 
+                <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif <span class="text-danger">*Required</span></div>
             @endforeach
         @endif
         @foreach($request->features as $feature)
-            <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div> 
+            <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
         @endforeach
     </div>
     <h5>Adornments</h5>
@@ -174,4 +212,16 @@
 
 @section('scripts')
 @include('widgets._image_upload_js')
+
+<script>
+  $( "#species" ).change(function() {
+    var species = $('#species').val();
+    var id = '<?php echo($request->id); ?>';
+    $.ajax({
+      type: "GET", url: "{{ url('designs/traits/subtype') }}?species="+species+"&id="+id, dataType: "text"
+    }).done(function (res) { $("#subtypes").html(res); }).fail(function (jqXHR, textStatus, errorThrown) { alert("AJAX call failed: " + textStatus + ", " + errorThrown); });
+
+  });
+</script>
+
 @endsection

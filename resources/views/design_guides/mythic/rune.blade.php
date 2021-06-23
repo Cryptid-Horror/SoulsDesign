@@ -70,9 +70,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'rune_1', 'alt' => '...', 'label' => 'SB-0634', 'caption' => 'Designer: @Cryptid-Horror'],
+        ['image_name' => 'rune_2', 'alt' => '...', 'label' => 'SB-0505', 'caption' => 'Designer: @DalekFell'],
+        ['image_name' => 'rune_3', 'alt' => '...', 'label' => 'SB-0877', 'caption' => 'Designer: @ModernBeatnik + @TemporalSorceress'],
     ];
 ?>
 

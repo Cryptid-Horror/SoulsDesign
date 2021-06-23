@@ -25,6 +25,7 @@
 			<option value="hunting">Hunting</option>
 			<option value="fishing">Fishing</option>
 			<option value="foraging">Foraging</option>
+            <option value="caving">Caving</option>
 		</select>
 	</form>
 	
@@ -54,9 +55,9 @@
 				</select><br>
 				<b>Temperament
 					<select id="temp" name="temp">
-						<option value="neither">Other</option>
+                        <option value="other">Other</option>
+                    	<option value="aggressive">Aggressive</option>
 						<option value="timid">Vigilant</option>
-						<option value="aggressive">Aggressive</option>
 					</select>
 				
 		
@@ -80,6 +81,12 @@
 			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
 			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
 		</tr>
+        
+        <t>
+<td>Blueprint/Newt</td>
+			<td><input type="radio" name="Blueprint/Newt" id="Blue"><label for="Blue">Yes</label></td>
+			<td><input type="radio" name="Blueprint/Newt" id="Bluen" checked><label for="Bluen">No</label></td>
+        </tr>
 		<tr>
 			<td>Soul-Linked</td>
 			<td><input type="radio" name="soul" id="souly"><label for="souly">Yes</label></td>

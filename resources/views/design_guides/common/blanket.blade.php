@@ -51,7 +51,7 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.'
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.'
     ];
 
     $marking_cannot = [
@@ -68,9 +68,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'blanket_1', 'alt' => '...', 'label' => 'SB-0957', 'caption' => 'Designer: @Skoith'],
+        ['image_name' => 'blanket_2', 'alt' => '...', 'label' => 'SB-0941', 'caption' => 'Designer: @FlawedEmperor + @Aarushii'],
+        ['image_name' => 'blanket_3', 'alt' => '...', 'label' => 'SB-0656', 'caption' => 'Designer: @Jaimep'],
     ];
 ?>
 

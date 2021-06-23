@@ -46,7 +46,7 @@
 
     // You can use html!
     $marking_can = [
-        'If you pick a color modifier for the base coat, then it has to be picked from the sliders providered below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
+        'If you pick a color modifier for the base coat, then it has to be picked from the sliders provided below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
         'If a design has no markings, you either have to apply the color modifier to the base or to minimal marks. Unlike Duo-tone, it is not allowed to not appear under these conditions.',
     ];
 
@@ -64,14 +64,14 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Greying_Colors',
+        'GREYING'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'greying_1', 'alt' => '...', 'label' => 'SB-0919', 'caption' => 'Designer: @aarushiiroosh'],
+        ['image_name' => 'greying_2', 'alt' => '...', 'label' => 'SB-0752', 'caption' => 'Designer: @Cameil'],
+        ['image_name' => 'greying_3', 'alt' => '...', 'label' => 'SB-0928', 'caption' => '@Lich-ARPG and @ModernBeatnik'],
     ];
 ?>
 

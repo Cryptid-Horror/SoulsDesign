@@ -11,7 +11,3 @@ npm-debug.log
 yarn-error.log
 /composer.lock
 *.env
-sendgrid.env
-=======
-.idea
->>>>>>> df1e79cc95a433d295df24992da73fb6b6e16877

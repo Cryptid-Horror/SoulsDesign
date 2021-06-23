@@ -2,8 +2,7 @@
     $marking_icon = 'Common_Frog_Eye';
     $marking_name = 'Frog Eye';
     $marking_code = 'nFe/FeFe';
-    $marking_desc = "Marking Origin: 2019 Genetics Contest; Submitted by user Athena-Tivnan
-Frog Eye was a strange marking to pop up, in fact it frightened most people for its direct appearance to a frog’s actual eye. What makes this marking so different from the Eyes gene though, is its limitations and the fact that it always appears as a circle, and can never appear as an oval or a teardrop.";
+    $marking_desc = "Marking Origin: 2019 Genetics Contest; submitted by user Athena-Tivnan. Frog Eye was a strange marking to pop up, in fact it frightened most people for its direct appearance to a frog’s actual eye. What makes this marking so different from the Eyes gene though, is its limitations and the fact that it always appears as a circle, and can never appear as an oval or a teardrop.";
     $layers_above_or_below = ' Blanket, Boar, Collar, Dunstripe, Dusted, Hood, Leaf, Masked, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Banded, Crested, Plasma, Border, Dipped, Pigeon, Roan, Rosettes, Shaped, Tabby, Toxin, Glass, Luminescent, Lustrous, Petal, Aurora, Iridescent, Lepir, Shimmer, Blooded, Eyes, Vignette, Aether Marked, Gemstone, Rune, Triquetra';
     $layers_above = 'Bokeh, Cloud, Marbled, Merle, Smoke, Brindled';
     $layers_below = 'Inkwell, Tobiano, Appaloosa, Painted';
@@ -58,7 +57,7 @@ Frog Eye was a strange marking to pop up, in fact it frightened most people for 
     $marking_must = [
         'Recessive: Can appear in 3 zones',
         'Dominant: Can appear in all zones',
-        ' Must have three seperated colors, one for the pupil, iris, and the border around the marking itself. The border must be the darkest color.',
+        ' Must have three separated colors, one for the pupil, iris, and the border around the marking itself. The border must be the darkest color.',
     ];
 
     // If left empty, the swatches section will not be shown
@@ -67,9 +66,9 @@ Frog Eye was a strange marking to pop up, in fact it frightened most people for 
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'frog_1', 'alt' => '...', 'label' => 'SB-0988', 'caption' => 'Designer: @FallingFireX'],
+        ['image_name' => 'frog_2', 'alt' => '...', 'label' => 'SB-0831', 'caption' => 'Designer: @Imagi-Nethat'],
+        ['image_name' => 'frog_3', 'alt' => '...', 'label' => 'SB-0861', 'caption' => 'Designer: @TemporalSorceress'],
     ];
 ?>
 

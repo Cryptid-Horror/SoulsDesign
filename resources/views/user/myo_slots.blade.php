@@ -1,12 +1,12 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s Registered Dragon Slots @endsection
+@section('profile-title') {{ $user->name }}'s Genotypes @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Registered Dragon Slots' => $user->url . '/myos']) !!}
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'My Genotypes' => $user->url . '/myos']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s Registered Dragon Slots
+    {!! $user->displayName !!}'s Genotypes
 </h1>
 
 @if($myos->count())
@@ -17,13 +17,13 @@
                     <a href="{{ $myo->url }}"><img src="{{ $myo->image->thumbnailUrl }}" class="img-thumbnail" /></a>
                 </div>
                 <div class="mt-1 h5">
-                    {!! $myo->displayName !!}
+                    @if(!$myo->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $myo->displayName !!}
                 </div>
             </div>
         @endforeach
     </div>
 @else
-    <p>No Registered Dragon slots found.</p> 
+    <p>No Genotypes Found.</p> 
 @endif
 
 @endsection

@@ -2,7 +2,7 @@
     $marking_icon = 'Uncommon_Tabby';
     $marking_name = 'Tabby';
     $marking_code = 'nTa/TaTa';
-    $marking_desc = "The tabby gene present as swirled patterns on the dragon. Additionally, a 'M' shaped marking may be present on the face, stripes arouynd the eyes/cheese, or along the back and around the head and tail.";
+    $marking_desc = "The tabby gene presents as swirled patterns on the dragon. Additionally, a 'M' shaped marking may be present on the face, stripes around the eyes/cheeks, or along the back and around the head and tail.";
     $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Smoke, Roan, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra ';
     $layers_above = 'Bokeh, Cloud, Merle';
     $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted, ';
@@ -72,9 +72,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'First Slide Label', 'caption' => 'Lorem ipsum'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Second Slide Label', 'caption' => '???'],
-        ['image_name' => 'Aewa', 'alt' => '...', 'label' => 'Third Slide Label', 'caption' => 'Something'],
+        ['image_name' => 'tab_1', 'alt' => '...', 'label' => 'SB-0535', 'caption' => 'Designer: @Xanowa'],
+        ['image_name' => 'tab_2', 'alt' => '...', 'label' => 'SB-0080', 'caption' => 'Designer: @Dogue + Daineic'],
+        ['image_name' => 'tab_3', 'alt' => '...', 'label' => 'SB-0196', 'caption' => 'Designer: @Daineic'],
     ];
 ?>
 
