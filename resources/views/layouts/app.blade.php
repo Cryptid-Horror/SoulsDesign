@@ -82,7 +82,7 @@
 <body>
     <div id="app">
         @if(Auth::check() && Auth::user()->theme)
-            <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}; position: relative;');">
+            <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}'); position: relative;">
                 @include('layouts._clock')
             </div>
         @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
