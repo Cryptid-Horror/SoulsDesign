@@ -156,21 +156,21 @@ button::-moz-focus-inner {
   color: #cc8500;
 }
 .tox .tox-dialog__body-content .accessibility-issue--error .accessibility-issue__description {
-  background-color: rgba(204, 0, 0, 0.5);
-  border-color: rgba(204, 0, 0, 0.8);
+  background-color: rgba(250, 14, 14, 0.5);
+  border-color: rgba(250, 14, 14, 0.8);
   color: #c2d7f0;
 }
 .tox .tox-dialog__body-content .accessibility-issue--error .accessibility-issue__description > *:last-child {
-  border-color: rgba(204, 0, 0, 0.8);
+  border-color: rgba(250, 14, 14, 0.8);
 }
 .tox .tox-dialog__body-content .accessibility-issue--error .tox-form__group h2 {
-  color: #c00;
+  color: #fa0e0e;
 }
 .tox .tox-dialog__body-content .accessibility-issue--error .tox-icon svg {
-  fill: #c00;
+  fill: #fa0e0e;
 }
 .tox .tox-dialog__body-content .accessibility-issue--error a .tox-icon {
-  color: #c00;
+  color: #fa0e0e;
 }
 .tox .tox-dialog__body-content .accessibility-issue--success .accessibility-issue__description {
   background-color: rgba(120, 171, 70, 0.5);
@@ -252,7 +252,7 @@ button::-moz-focus-inner {
   padding: 4px 16px;
   text-align: center;
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: none;
   white-space: nowrap;
 }
 .tox .tox-button[disabled] {
@@ -302,7 +302,7 @@ button::-moz-focus-inner {
   outline: none;
   padding: 4px 16px;
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .tox .tox-button--secondary[disabled] {
   background-color: #3e407f;
@@ -523,7 +523,6 @@ button::-moz-focus-inner {
   text-transform: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
@@ -534,7 +533,6 @@ button::-moz-focus-inner {
   display: flex;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
@@ -558,24 +556,24 @@ button::-moz-focus-inner {
 }
 .tox .tox-collection--toolbar .tox-collection__item--enabled {
   background-color: #e5e8f0;
-  color: #202042;
+  color: rgba(32, 32, 66, 0);
 }
 .tox .tox-collection--toolbar .tox-collection__item--active {
   background-color: #e5e8f0;
 }
 .tox .tox-collection--grid .tox-collection__item--enabled {
   background-color: #e5e8f0;
-  color: #202042;
+  color: rgba(32, 32, 66, 0);
 }
 .tox .tox-collection--grid .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
   background-color: #e5e8f0;
-  color: #202042;
+  color: rgba(32, 32, 66, 0);
 }
 .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
-  color: #202042;
+  color: rgba(32, 32, 66, 0);
 }
 .tox .tox-collection--toolbar .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
-  color: #202042;
+  color: rgba(32, 32, 66, 0);
 }
 .tox .tox-collection__item--state-disabled {
   background-color: transparent;
@@ -1503,7 +1501,7 @@ body.tox-dialog__disable-scroll {
   position: relative;
 }
 .tox .tox-edit-area__iframe {
-  background-color: #202042;
+  background-color: rgba(32, 32, 66, 0);
   border: 0;
   box-sizing: border-box;
   flex: 1;
@@ -1568,7 +1566,7 @@ body.tox-dialog__disable-scroll {
   transform: translateY(-50%);
 }
 .tox .tox-control-wrap__status-icon-invalid svg {
-  fill: #c00;
+  fill: #fa0e0e;
 }
 .tox .tox-control-wrap__status-icon-unknown svg {
   fill: orange;
@@ -1694,7 +1692,7 @@ body.tox-dialog__disable-scroll {
   flex: 1;
 }
 .tox .tox-form__group--error {
-  color: #c00;
+  color: #fa0e0e;
 }
 .tox .tox-form__group--collection {
   display: flex;
@@ -2231,15 +2229,15 @@ body.tox-dialog__disable-scroll {
   fill: #c2d7f0;
 }
 .tox .tox-notification--error {
-  background-color: #f8dede;
-  border-color: #f2bfbf;
+  background-color: #fee0e0;
+  border-color: #fec3c3;
   color: #c2d7f0;
 }
 .tox .tox-notification--error p {
   color: #c2d7f0;
 }
 .tox .tox-notification--error a {
-  color: #c00;
+  color: #fa0e0e;
 }
 .tox .tox-notification--error svg {
   fill: #c2d7f0;
@@ -2628,6 +2626,11 @@ body.tox-dialog__disable-scroll {
 .tox .tox-statusbar__resize-handle svg {
   display: block;
   fill: rgba(194, 215, 240, 0.7);
+}
+.tox .tox-statusbar__resize-handle:focus svg {
+  background-color: #cbddf2;
+  border-radius: 1px;
+  box-shadow: 0 0 0 2px #cbddf2;
 }
 .tox:not([dir=rtl]) .tox-statusbar__path > * {
   margin-right: 4px;
