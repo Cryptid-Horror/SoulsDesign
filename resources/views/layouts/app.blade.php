@@ -72,12 +72,31 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @endif
 
+    @if(Auth::check() && Auth::user()->theme)
+        <link href="{{ Auth::user()->theme->cssUrl }}" rel="stylesheet">
+    @elseif(isset($defaultTheme))
+        <link href="{{ $defaultTheme->CSSUrl }}" rel="stylesheet">
+    @endif
+
 </head>
 <body>
     <div id="app">
-        <div class="site-header-image" id="header" style="background-image: url('{{ asset('images/header.png') }}'); position: relative;">
-            @include('layouts._clock')
-        </div>
+        @if(Auth::check() && Auth::user()->theme)
+            <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}; position: relative;');">
+                @include('layouts._clock')
+            </div>
+        @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
+            <div class="site-header-image" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}'); position: relative;">
+                @include('layouts._clock')
+            </div>
+        @else
+            <div class="site-header-image" id="header" style="background-image: url('{{ asset('images/header.png') }}'); position: relative;">
+                @include('layouts._clock')
+            </div>
+        @endif
+
+        
+        
         @include('layouts._nav')
         @if ( View::hasSection('sidebar') )
 			<div class="site-mobile-header bg-secondary"><a href="#" class="btn btn-sm btn-outline-light" id="mobileMenuButton">Menu <i class="fas fa-caret-right ml-1"></i></a></div>
@@ -143,10 +162,12 @@
                     toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | spoiler-add spoiler-remove | removeformat | code',
                     content_css: [
                         '{{ asset('css/app.css') }}',
-                        '{{ asset('css/lorekeeper.css') }}'
+                        '{{ asset('css/lorekeeper.css') }}',
+                        '{{ asset('js/skins/content/souls/content.min.css') }}'
                     ],
                     spoiler_caption: 'Toggle Spoiler',
-                    target_list: false
+                    target_list: false,
+                    skin: 'souls'
                 });
                 var $mobileMenuButton = $('#mobileMenuButton');
                 var $sidebar = $('#sidebar');
