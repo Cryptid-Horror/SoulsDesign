@@ -1,15 +1,15 @@
 @extends('home.layout')
 
-@section('home-title') My Characters @endsection
+@section('home-title') My Dragons @endsection
 
 @section('home-content')
-{!! breadcrumbs(['My Characters' => 'characters']) !!}
+{!! breadcrumbs(['My Dragons' => 'characters']) !!}
 
 <h1>
-    My Characters
+    My Dragons
 </h1>
 
-<p>This is a list of characters you own. Drag and drop to rearrange them.</p>
+<p>This is a list of dragons you own. Drag and drop to rearrange them.</p>
 
 <div id="sortable" class="row sortable">
     @foreach($characters as $character)

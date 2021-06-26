@@ -1,15 +1,15 @@
 @extends('home.layout')
 
-@section('home-title') My Registered Dragon Slots @endsection
+@section('home-title') My Genotypes @endsection
 
 @section('home-content')
-{!! breadcrumbs(['Characters' => 'characters', 'My Registered Slots' => 'Registered Dragons']) !!}
+{!! breadcrumbs(['Dragons' => 'characters', 'My Genotypes' => 'myos']) !!}
 
 <h1>
-    My Registered Dragon Slots
+    My Genotypes
 </h1>
 
-<p>This is a list of Registered Dragons slots you own - click on a slot to view details about it. Registered Dragon slots can be submitted for design approval from their respective pages.</p>
+<p>This is a list of genotypes you own - click on a slot to view details about it. Genotypes can be submitted for design approval from their respective pages.</p>
 <div class="row">
     @foreach($slots as $slot)
         <div class="col-md-3 col-6 text-center mb-2">
