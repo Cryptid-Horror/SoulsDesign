@@ -13,11 +13,13 @@ use App\Models\Shop\Shop;
 use App\Models\Shop\ShopLimit;
 use App\Models\Shop\ShopStock;
 use App\Models\Shop\ShopLog;
+use App\Models\Shop\UserItemDonation;
 use App\Models\Item\Item;
 use App\Models\Item\ItemTag;
 use App\Models\Currency\Currency;
 use App\Models\Item\ItemCategory;
 use App\Models\User\UserItem;
+use App\Models\SitePage;
 
 class ShopController extends Controller
 {
@@ -114,6 +116,7 @@ class ShopController extends Controller
             $quantityLimit = $service->getStockPurchaseLimit($stock, Auth::user());
             $userPurchaseCount = $service->checkUserPurchases($stock, Auth::user());
             $purchaseLimitReached = $service->checkPurchaseLimitReached($stock, Auth::user());
+            $userOwned = UserItem::where('user_id', $user->id)->where('item_id', $stock->item->id)->where('count', '>', 0)->get();
         }
 
         if($shop->use_coupons) {
@@ -131,7 +134,8 @@ class ShopController extends Controller
             'userCoupons' => $check,
             'quantityLimit' => $quantityLimit,
             'userPurchaseCount' => $userPurchaseCount,
-            'purchaseLimitReached' => $purchaseLimitReached
+            'purchaseLimitReached' => $purchaseLimitReached,
+            'userOwned' => $user ? $userOwned : null
 		]);
     }
 
@@ -165,6 +169,62 @@ class ShopController extends Controller
             'logs' => Auth::user()->getShopLogs(0),
             'shops' => Shop::where('is_active', 1)->orderBy('sort', 'DESC')->get(),
         ]);
+    }
+
+    /**
+     * Shows the donation shop.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getDonationShop()
+    {
+        $categories = ItemCategory::orderBy('sort', 'DESC')->get();
+
+        $object = new UserItemDonation;
+        $items = count($categories) ?
+            $object->displayStock()->orderByRaw('FIELD(item_category_id,'.implode(',', $categories->pluck('id')->toArray()).')')->orderBy('name')->get()->groupBy('item_category_id') :
+            $object->displayStock()->orderBy('name')->get()->groupBy('item_category_id');
+
+        return view('shops.donation_shop', [
+            'text' => SitePage::where('key', 'donation-shop')->first(),
+            'categories' => $categories->keyBy('id'),
+            'items' => $items,
+            'shops' => Shop::where('is_active', 1)->orderBy('sort', 'DESC')->get()
+        ]);
+    }
+
+    /**
+     * Gets the donation shop stock modal.
+     *
+     * @param  App\Services\ShopManager  $service
+     * @param  int                       $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getDonationShopStock(ShopManager $service, $id)
+    {
+        $stock = UserItemDonation::where('id', $id)->first();
+
+        return view('shops._donation_stock_modal', [
+            'stock' => $stock
+		]);
+    }
+
+    /**
+     * Collects an item from the donation shop.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Services\ShopManager  $service
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postCollect(Request $request, ShopManager $service)
+    {
+        if($service->collectDonation($request->only(['stock_id']), Auth::user())) {
+            flash('Successfully collected item.')->success();
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
     }
 }
 
