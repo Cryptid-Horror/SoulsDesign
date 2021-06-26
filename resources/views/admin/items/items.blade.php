@@ -49,8 +49,6 @@
             @endforeach
         </tbody>
     </table>
-=======
-
         <div class="row ml-md-2 mb-4">
           <div class="d-flex row flex-wrap col-12 pb-1 px-0 ubt-bottom">
             <div class="col-5 col-md-6 font-weight-bold">Name</div>
@@ -66,8 +64,6 @@
           </div>
           @endforeach
         </div>
-
->>>>>>> 26f5b66258090b03813782ce1901619fa22ce21e
     {!! $items->render() !!}
 @endif
 
