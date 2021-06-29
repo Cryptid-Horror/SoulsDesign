@@ -78,7 +78,7 @@
                 {!! Form::close() !!}
                 <hr />
                 <div class="text-right">
-                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-slug="{{ $character->slug }}">Delete</a>
+                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-id="{{ $character->id }}">Delete</a>
                 </div>
             </div>
         @endif
