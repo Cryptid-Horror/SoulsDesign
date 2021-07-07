@@ -50,7 +50,7 @@
         'Toxin is made of a gradient base and bars/dots/stripe markings. The gradient must be either fully gradient/blended into the base below it or blurred into the base.', 
         'The Gradient may be any single color bright color or vibrant pastel color, or may be up to 2 colors blending into each other and then into the base coat/what it sits over. In the case of dominant, the gradient base can cover the whole body but needs to gradient into at least 5% of the normal coat color (roughly half the face).', 
         'The bars/dots/stripes in the toxin gradient may be any color that is darker or lighter than the gradient it sits over. In cases where the gradient is two colors, the bars can be two colors as well as they sit over the different colors. The bars/etc can also gradient into the gradient base.',
-        'Bars/dots/stripes may have a small border around the, that is lighter/darker than that feature. The border can be solid, soft, blurred, or gradient. It can have edge blending.',
+        'Bars/dots/stripes may have a small border around them that is lighter/darker than that feature. The border can be solid, soft, blurred, or gradient. It can have edge blending.',
         'Toxin does not have to be connected fully, and can appear as patches in different areas of the body.',
     ];
 

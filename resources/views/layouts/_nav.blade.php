@@ -113,19 +113,9 @@
                         </a>
                     </div>
                 </li>
-                 <li class="nav-item dropdown">
-                    <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Lore
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="loreDropdown">
-                         <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Map') }}">
-                            Empires of Empyrean
-                        </a>
-                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                            World Expanded
-                        </a>
-                    </div>
+                    <li class="nav-item">
+                                <a class="nav-link" href="{{ url('world/info') }}">Lore and World</a>
+                </li>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('gallery') }}">Gallery</a>

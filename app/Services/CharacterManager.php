@@ -286,7 +286,7 @@ class CharacterManager extends Service
                 'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
                 'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data',
 
-                'genotype', 'phenotype', 'free_markings', "total_health", "current_health",
+                'genotype', 'phenotype', 'free_markings', 
             ]);
             $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
@@ -2508,9 +2508,6 @@ class CharacterManager extends Service
             $request->subtype_id = $subtype ? $subtype->id : null;
             $request->genotype = $genotype;
             $request->phenotype = $phenotype;
-            $request->free_markings = $data['free_markings'] ?? $request->character->image->free_markings;
-            $request->total_health = $total_health;
-            $request->current_health = $current_health;
             $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
             $request->has_features = 1;
             $request->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
