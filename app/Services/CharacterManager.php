@@ -1452,7 +1452,7 @@ class CharacterManager extends Service
 
             // Allow updating the gift art/trading options if the editing
             // user owns the character
-            if(!$isAdmin)
+            if(!$isAdmin || $character->user_id == $user->id)
             {
                 if($character->user_id != $user->id) throw new \Exception("You cannot edit this character.");
 
