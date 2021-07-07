@@ -112,80 +112,68 @@
             <option value="aether">Aether Armor</option>
         </select>
         <br>
-        				<select id="1_familiar" class="cellElement">
-					<option disabled selected value="0">Familiar 1</option>
-					<option value="flaxen">Basilisk</option>
-					<option value="greying">Pheonix</option>
-					<option value="rose">???</option>
-				</select>
-                <select id="1_familiar" class="cellElement">
-					<option disabled selected value="0">Familiar 2</option>
-					<option value="flaxen">Basilisk</option>
-					<option value="greying">Phoenix</option>
-					<option value="rose">???</option>
-				</select>
-                <br>
-                <select id="1_skill" class="cellElement">
-					<option disabled selected value="0">Skill 1</option>
-                    <option value="skill_aether_walker">Aether Walker</option>
-                    <option value="skill_haunting_roar">Haunting Roar</option>
-					<option value="skill_healing_aura">Healing Aura</option>
-					<option value="skill_inner_fire">Inner Fire</option>
-                    <option value="skill_steadfast">Steadfast</option>
-					<option value="skill_swift_feet">Swift Feet</option>
-				</select>
-                <select id="1_Skill" class="cellElement">
-					<option disabled selected value="0">Skill 2</option>
-                    <option value="skill_aether_walker">Aether Walker</option>
-                    <option value="skill_haunting_roar">Haunting Roar</option>
-					<option value="skill_healing_aura">Healing Aura</option>
-					<option value="skill_inner_fire">Inner Fire</option>
-                    <option value="skill_steadfast">Steadfast</option>
-					<option value="skill_swift_feet">Swift Feet</option>
-				</select>
-<select id="1_skill" class="cellElement">
-					<option disabled selected value="0">Skill 3</option>
-                    <option value="skill_aether_walker">Aether Walker</option>
-                    <option value="skill_haunting_roar">Haunting Roar</option>
-					<option value="skill_healing_aura">Healing Aura</option>
-					<option value="skill_inner_fire">Inner Fire</option>
-                    <option value="skill_steadfast">Steadfast</option>
-					<option value="skill_swift_feet">Swift Feet</option>>
-				</select>
-                <select id="colorMod" class="cellElement">
-					<option disabled selected value="0">Skill 4</option>
-                    <option value="skill_aether_walker">Aether Walker</option>
-                    <option value="skill_haunting_roar">Haunting Roar</option>
-					<option value="skill_healing_aura">Healing Aura</option>
-					<option value="skill_inner_fire">Inner Fire</option>
-                    <option value="skill_steadfast">Steadfast</option>
-					<option value="skill_swift_feet">Swift Feet</option>
-				</select>
-<br>
-<select id="1_item" class="cellElement">
-					<option disabled selected value="0">Item 1</option>
-					<option value="skill_steadfast">Steadfast</option>
-					<option value="greying">Healing Aura</option>
-					<option value="rose">Aether Walker</option>
-				</select>
-                <select id="1_item" class="cellElement">
-					<option disabled selected value="0">Item 2 </option>
-					<option value="flaxen">Haunting Roar</option>
-					<option value="greying">Healing Aura</option>
-					<option value="rose">Aether Walker</option>
-				</select>
-                <select id="1_item" class="cellElement">
-					<option disabled selected value="0">Item 3</option>
-					<option value="flaxen">Haunting Roar</option>
-					<option value="greying">Healing Aura</option>
-					<option value="rose">Aether Walker</option>
-				</select>
-                <select id="1_item" class="cellElement">
-					<option disabled selected value="0">Item 4 </option>
-					<option value="flaxen">Haunting Roar</option>
-					<option value="greying">Healing Aura</option>
-					<option value="rose">Aether Walker</option>
-				</select>
+        <select id="1_familiar_1" class="cellElement">
+            <option disabled selected value="0">Familiar 1</option>
+            <option value="dire_wolf">Dire Wolf</option>
+            <option value="basilisk">Basilisk</option>
+            <option value="phoenix">Phoenix</option>
+        </select>
+        <select id="1_familiar_2" class="cellElement">
+            <option disabled selected value="0">Familiar 2</option>
+            <option value="dire_wolf">Dire Wolf</option>
+            <option value="basilisk">Basilisk</option>
+            <option value="phoenix">Phoenix</option>
+        </select>
+        <br>
+        <select id="1_skill_1" class="cellElement">
+            <option disabled selected value="0">Skill 1</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+        </select>
+        <select id="1_skill_2" class="cellElement">
+            <option disabled selected value="0">Skill 2</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+        </select>
+        <select id="1_skill_3" class="cellElement">
+            <option disabled selected value="0">Skill 3</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>>
+            <option value="skill_bleed">Bleed</option>
+        </select>
+        <select id="1_skill_4" class="cellElement">
+            <option disabled selected value="0">Skill 4</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+        </select>
+        <br>
+        <select id="1_item_1" class="cellElement">
+            <option disabled selected value="0">Item 1</option>
+            <option value="strength_tonic">Strength Tonic</option>
+        </select>
+        <select id="1_item_2" class="cellElement">
+            <option disabled selected value="0">Item 2</option>
+            <option value="strength_tonic">Strength Tonic</option>
+        </select>
         <br>
         <hr>
         <b>Part Break</b><br>

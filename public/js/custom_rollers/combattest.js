@@ -142,6 +142,16 @@ const breakable = {
 	'none': 4
 }
 
+const modifiers = {
+	'strength_tonic': {
+		name: 'Strength Tonic',		// For logging purposes
+		raw: 10,
+		bleed: 0,
+		magic: 0,
+		breath: 0
+	}
+}
+
 // Inputs are retrieved in the setupDragons function
 
 function rand(min, max) {
