@@ -157,7 +157,7 @@ class MyoController extends Controller
             ]
             : [])
             )),
-            $this->character, Auth::user(), $isMod)) {
+            $this->character, Auth::user(), !$isOwner)) {
             flash('Profile edited successfully.')->success();
         }
         else {
