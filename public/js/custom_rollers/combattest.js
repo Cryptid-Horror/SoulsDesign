@@ -261,9 +261,13 @@ function setupDragons() {
 		dragon_1.name = getDragonName(import_link_1);
 		dragon_1.link = getDragonLink(import_link_1);
 	}
-	else {
+	else if(name_1) {
 		dragon_1.name = name_1;
 		dragon_1.link = name_1;
+	}
+	else {
+		dragon_1.name = 'Dragon 1';
+		dragon_1.link = 'Dragon 1';
 	}
 	dragon_1.health = parseInt(document.getElementById('1_health').value);
 	Object.assign(dragon_1.stats, classes[document.getElementById('1_class').value]);
@@ -304,9 +308,13 @@ function setupDragons() {
 		dragon_2.name = getDragonName(import_link_2);
 		dragon_2.link = getDragonLink(import_link_2);
 	}
-	else {
+	else if(name_2) {
 		dragon_2.name = name_2;
 		dragon_2.link = name_2;
+	}
+	else {
+		dragon_2.name = 'Dragon 2';
+		dragon_2.link = 'Dragon 2';
 	}
 	dragon_2.health = parseInt(document.getElementById('2_health').value);
 	Object.assign(dragon_2.stats, classes[document.getElementById('2_class').value]);
