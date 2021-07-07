@@ -295,7 +295,14 @@ function setupDragons() {
 	}
 	Object.assign(dragon_1.magic, magic_classes[document.getElementById('1_magic').value]);
 	
-    var skills = document.getElementById('1_skill').value;
+    //var skills = document.getElementById('1_skill').value;
+
+	var item_1_1 = document.getElementById('1_item_1').value;
+	var item_2_1 = document.getElementById('1_item_2').value;
+	// Add items as key values, using the value as the number of that particular item being used
+	// Currently all items treated as non-stacking, as the code will overwrite each other if items are repeated
+	dragon_1.items[item_1_1] = 1;
+	dragon_1.items[item_2_1] = 1;
 
 	// Dragon 1 Chest
 	dragon_1.armor.chest = document.getElementById('1_chest').value;
@@ -396,10 +403,10 @@ function calculateDamage(attacker, defender) {
 			detailed_breakdown += "* " + attacker.name + " crits their Raw attack this round.<br>"
 			raw_round = attacker.stats.max_raw;
 
-		} else if(document.getElementById("1_Skill").value == "skill_steadfast") {
-        (roll_raw_crit <= attacker.stats.phys_crit + bonus)
-			detailed_breakdown += "* " + attacker.name + " crits their Raw attack this round with Steadfast Skill.<br>"
-			raw_round = attacker.stats.max_raw;
+		// } else if(document.getElementById("1_Skill").value == "skill_steadfast") {
+        // (roll_raw_crit <= attacker.stats.phys_crit + bonus)
+		// 	detailed_breakdown += "* " + attacker.name + " crits their Raw attack this round with Steadfast Skill.<br>"
+		// 	raw_round = attacker.stats.max_raw;
         } else {
 			raw_round = rand(attacker.stats.min_raw, attacker.stats.max_raw);
 		}
@@ -414,6 +421,15 @@ function calculateDamage(attacker, defender) {
 		raw_dmg += raw_round;
 		bleed_dmg += bleed_round;
 		detailed_breakdown += "-> Raw Damage: " + raw_round + "<br>";
+		// Apply modifiers
+		Object.keys(attacker.items).forEach(item => {
+			if(modifiers[item] && modifiers[item].raw != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				raw_dmg += modifiers[item].raw * attacker.items[item];
+				detailed_breakdown += "An additional " + modifiers[item].raw + " Raw Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+			}
+		});
 		detailed_breakdown += "-> Bleed Damage: " + bleed_round + "<br>";
 		detailed_breakdown += "<br>";
 	}
