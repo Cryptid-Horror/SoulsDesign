@@ -1497,20 +1497,19 @@ class CharacterManager extends Service
             $character->profile->parsed_text = parse($data['text']);
             $character->profile->save();
             
-            if(!$character->is_myo_slot || $isAdmin) {
-                $character->name = $data['name'];
-                $character->title_name = $data['title_name'];
-                $character->nicknames = $data['nicknames'];
-                $character->gender_pronouns = $data['gender_pronouns'];
-            }
+            $character->name = $data['name'];
+            $character->title_name = $data['title_name'];
+            $character->nicknames = $data['nicknames'];
+            $character->gender_pronouns = $data['gender_pronouns'];
+            
             if(isset($data['location']) && $data['location']) $character->home_id = $data['location'];
             $character->save();
 
             // Edit the rest of the character details if admin
             if($isAdmin) {
                 $character->health_status = $data['health_status'] ?? 'Healthy';
-                $character->total_health = $data['total_health'] ?? null;
-                $character->current_health = $data['current_health'] ?? null;
+                // $character->total_health = $data['total_health'] ?? null;
+                // $character->current_health = $data['current_health'] ?? null;
                 $character->ouroboros = isset($data['ouroboros']);
                 $character->taming = $data['taming'] ?? null;
                 $character->basic_aether = isset($data['basic_aether']);
