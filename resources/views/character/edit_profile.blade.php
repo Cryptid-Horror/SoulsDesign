@@ -30,7 +30,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('nicknames', 'Nickname(s)') !!}
-    {!! Form::text('nicknames', $character->nickname, ['class' => 'form-control']) !!}
+    {!! Form::text('nicknames', $character->nicknames, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('gender_pronouns', 'Gender/Pronouns') !!}
