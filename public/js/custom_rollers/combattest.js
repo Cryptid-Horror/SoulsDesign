@@ -76,12 +76,6 @@ const breath_weaknesses = {
 	'lightning': 'wind'
 };
 
-const skills = { 
-    'Steadfast': 1,
-    'Swiftfeet': 2
-
-};
-
 const breath_tier_dmgs = { 1: 10, 2: 20, 3: 30, 4: 40 };
 
 const breath_crit = 4; // blanket value for all
@@ -134,6 +128,7 @@ const armor_sets = {
 	},
 }
 
+
 // For raids
 const breakable = {
 	'head': 1,
@@ -149,8 +144,34 @@ const modifiers = {
 		bleed: 0,
 		magic: 0,
 		breath: 0
+	},
+    'magic_tonic': {
+		name: 'Magic Tonic',		// For logging purposes
+		raw: 0,
+		bleed: 0,
+		magic: 10,
+		breath: 0
+    },
+    'bleed_tonic': {
+		name: 'Bleed Tonic',		// For logging purposes
+		raw: 0,
+		bleed: 10,
+		magic: 0,
+		breath: 0
+	},
+    'breath_tonic': {
+		name: 'Breath Tonic',		// For logging purposes
+		raw: 0,
+		bleed: 0,
+		magic: 0,
+		breath: 10
 	}
+
 }
+
+const skills = { 
+
+};
 
 // Inputs are retrieved in the setupDragons function
 
@@ -232,7 +253,7 @@ function setupDragons() {
 		breaths: {}, // array of up to 2 objs
         familiars: {}, //allowed 2
         skills: {}, //allowed 4 
-        items: {}, //allowed 4
+        items: {}, //allowed 2
 		magic: {}, // should have 2 children: min and max (damage)
 		armor: {
 			chest: '???',
@@ -252,7 +273,7 @@ function setupDragons() {
 		breaths: {}, // array of up to 2 objs
         familiars: {}, //allowed 2
         skills: {}, //allowed 4 
-        items: {}, //allowed 4
+        items: {}, //allowed 2
 		magic: {}, // should have 2 children: min and max (damage)
 		armor: {
 			chest: '???',
@@ -396,8 +417,6 @@ function calculateDamage(attacker, defender) {
         var bonus = 100;
         var skill_steadfast = 0;
 		var roll_raw_crit = rand(1, 10);
-
-        //CRYPTID INPUT STEADFAST AND RAW CRIT ITEM//Bleed too 
         
 		if(roll_raw_crit <= attacker.stats.phys_crit) {
 			detailed_breakdown += "* " + attacker.name + " crits their Raw attack this round.<br>"
@@ -431,6 +450,15 @@ function calculateDamage(attacker, defender) {
 			}
 		});
 		detailed_breakdown += "-> Bleed Damage: " + bleed_round + "<br>";
+        	// Apply modifiers
+		Object.keys(attacker.items).forEach(item => {
+			if(modifiers[item] && modifiers[item].bleed != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				bleed_dmg += modifiers[item].bleed * attacker.items[item];
+				detailed_breakdown += "An additional " + modifiers[item].bleed + " Bleed Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+			}
+		});
 		detailed_breakdown += "<br>";
 	}
 	detailed_breakdown += "Total Raw Damage: " + raw_dmg + "<br>";
@@ -474,6 +502,15 @@ function calculateDamage(attacker, defender) {
 			magic_dmg = rand(attacker.magic.min_dmg, attacker.magic.max_dmg);
 		}
 		detailed_breakdown += attacker.name + " harnesses their magic to attack for <b>" + magic_dmg + "</b> Magic damage.<br>";
+        // Apply modifiers
+		Object.keys(attacker.items).forEach(item => {
+			if(modifiers[item] && modifiers[item].magic != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				 magic_dmg += modifiers[item].magic * attacker.items[item];
+				detailed_breakdown += "An additional " + modifiers[item]. magic + " Magic Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+			}
+		});
 		// Deduct magic_res from armor
 		magic_dmg -= defender.armor.magic_res;
 		// Bleed damage cannot be less than 0
@@ -527,6 +564,16 @@ function calculateDamage(attacker, defender) {
 			breath_dmg = rand(0, highest_max_dmg);
 		}
 		detailed_breakdown += attacker.name + " breathes " + chosen_breath + " to deal <b>" + breath_dmg + "</b> Breath damage.<br>";
+
+        // Apply modifiers
+		Object.keys(attacker.items).forEach(item => {
+			if(modifiers[item] && modifiers[item].breath != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				breath_dmg += modifiers[item].breath * attacker.items[item];
+				detailed_breakdown += "An additional " + modifiers[item].breath + " Breath Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+			}
+		});
 	}
 	var total_dmg = raw_dmg + bleed_dmg + magic_dmg + breath_dmg;
 	detailed_breakdown += "Summary of " + attacker.name + "'s Turn:<br>DPS: " + dps + "<br>Raw: " + raw_dmg + "<br>Bleed: " + bleed_dmg + "<br>Magic: " + magic_dmg + "<br>Breath: " + breath_dmg + "<br><b>Total:</b> " + total_dmg + "<br><br>";
