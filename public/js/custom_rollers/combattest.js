@@ -175,12 +175,12 @@ const skills = {
 	'skill_aether_walker': {
 		name: 'Aether Walker',
 		effect: 'Increases chance to crit magic damage',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_haunting_roar': {
 		name: 'Haunting Roar',
 		effect: 'Decreases opponent\'s natural resistance',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_healing_aura': {
 		name: 'Healing Aura',
@@ -190,12 +190,12 @@ const skills = {
 	'skill_inner_fire': {
 		name: 'Inner Fire',
 		effect: 'Increases chance to crit breath damage',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_steadfast': {
 		name: 'Steadfast',
 		effect: 'Increases chance to crit raw damage',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_swift_feet': {
 		name: 'Swift Feet',
@@ -205,7 +205,7 @@ const skills = {
 	'skill_bleed': {
 		name: 'Bleed',
 		effect: 'Increases chance to crit bleed damage',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_armor': {
 		name: 'Armor',
@@ -255,7 +255,7 @@ const skill_data = {
 	defensive_crit_chance_skills: {
 
 	},
-	haunting_roar_res_reduction: 10,
+	haunting_roar_res_reduction: 10,  // This value will be deducted from the defender's res
 	healing_aura_heal: 100
 };
 
@@ -645,8 +645,17 @@ function calculateDamage(attacker, defender) {
 	raw_dmg *= (1 - deflect_chance[roll_deflect]);
 	raw_dmg = Math.trunc(raw_dmg);
 	detailed_breakdown += defender.name + " was able to deflect <b>" + (deflect_chance[roll_deflect]*100) + "%</b> of the Raw damage, reducing it to <b>" + raw_dmg + "</b>.<br>";
-	raw_dmg -= defender.stats.base_res;
-	detailed_breakdown += defender.name + "'s natural resistance of <b>" + defender.stats.base_res + "</b> helped to reduce the Raw damage to <b>" + raw_dmg + "</b>.<br>";
+	// Check for attacker's haunting roar
+	var defender_res = defender.stats.base_res;
+	var haunting_roar_roll = rand(1, 10);
+	if(haunting_roar_roll <= skills['skill_haunting_roar'].proc_chance) {
+		detailed_breakdown += attacker.name + formatSkillActivationLog('skill_haunting_roar');
+		defender_res -= skill_data.haunting_roar_res_reduction;
+		if(defender_res < 0) defender_res = 0;
+		detailed_breakdown += defender.name + "'s natural resistance has fallen to " + defender_res + ".<br>";
+	}
+	raw_dmg -= defender_res;
+	detailed_breakdown += defender.name + "'s natural resistance of <b>" + defender_res + "</b> helped to reduce the Raw damage to <b>" + raw_dmg + "</b>.<br>";
 	// Do armor check if armor is equipped, reduce raw_dmg as necessary
 	var roll_armor_deflect = 0;
 	if(defender.armor.total_rating > 0) {
