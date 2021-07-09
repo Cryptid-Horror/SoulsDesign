@@ -210,7 +210,7 @@ const skills = {
 	'skill_armor': {
 		name: 'Armor',
 		effect: 'Increases own natural resistance',
-		proc_chance: 10
+		proc_chance: 5
 	},
 };
 
@@ -255,7 +255,8 @@ const skill_data = {
 	defensive_crit_chance_skills: {
 
 	},
-	haunting_roar_res_reduction: 10,  // This value will be deducted from the defender's res
+	haunting_roar_res_reduction: 10,  	// This value will be deducted from the defender's res
+	armor_res_boost: 10, 				// This value will be added to the defender's res
 	healing_aura_heal: 100
 };
 
@@ -645,14 +646,29 @@ function calculateDamage(attacker, defender) {
 	raw_dmg *= (1 - deflect_chance[roll_deflect]);
 	raw_dmg = Math.trunc(raw_dmg);
 	detailed_breakdown += defender.name + " was able to deflect <b>" + (deflect_chance[roll_deflect]*100) + "%</b> of the Raw damage, reducing it to <b>" + raw_dmg + "</b>.<br>";
-	// Check for attacker's haunting roar
+	// Check for attacker's Haunting Roar
 	var defender_res = defender.stats.base_res;
-	var haunting_roar_roll = rand(1, 10);
-	if(haunting_roar_roll <= skills['skill_haunting_roar'].proc_chance) {
-		detailed_breakdown += attacker.name + formatSkillActivationLog('skill_haunting_roar');
-		defender_res -= skill_data.haunting_roar_res_reduction;
-		if(defender_res < 0) defender_res = 0;
-		detailed_breakdown += defender.name + "'s natural resistance has fallen to " + defender_res + ".<br>";
+	if(checkForSkill(attacker, 'skill_haunting_roar')) {
+		var haunting_roar_roll = rand(1, 10);
+		if(haunting_roar_roll <= skills['skill_haunting_roar'].proc_chance) {
+			detailed_breakdown += attacker.name + formatSkillActivationLog('skill_haunting_roar');
+			defender_res -= skill_data.haunting_roar_res_reduction;
+			detailed_breakdown += defender.name + "'s natural resistance has fallen to " + defender_res + ".<br>";
+		}
+	}
+	// Check for defender's Armor
+	if(checkForSkill(defender, 'skill_armor')) {
+		var armor_roll = rand(1, 10);
+		if(armor_roll <= skills['skill_armor'].proc_chance) {
+			detailed_breakdown += defender.name + formatSkillActivationLog('skill_armor');
+			defender_res += skill_data.armor_res_boost;
+			detailed_breakdown += defender.name + "'s natural resistance has increased to " + defender_res + ".<br>";
+		}
+	}		
+	// Resistance cannot be less than 0
+	if(defender_res < 0) {
+		defender_res = 0;
+		detailed_breakdown += defender.name + "'s natural resistance cannot be negative, and has been set to 0.<br>";
 	}
 	raw_dmg -= defender_res;
 	detailed_breakdown += defender.name + "'s natural resistance of <b>" + defender_res + "</b> helped to reduce the Raw damage to <b>" + raw_dmg + "</b>.<br>";
@@ -665,8 +681,10 @@ function calculateDamage(attacker, defender) {
 	}
 	detailed_breakdown += "Finally, their armor (or lack thereof) means that <b>" + roll_armor_deflect + "</b> is reduced from Raw damage to give <b>" + raw_dmg + "</b>.<br>";
 	// Raw damage cannot be less than 0
-	if(raw_dmg < 0) { raw_dmg = 0; }
-	detailed_breakdown += "(If the Raw damage has dropped below 0, it will be corrected to be equal to 0.)<br><br>"
+	if(raw_dmg < 0) {
+		raw_dmg = 0;
+		detailed_breakdown += "Raw damage cannot be negative, and has been set to 0.<br>";
+	}
 
 	// Deduct bleed_res from armor
 	bleed_dmg -= defender.armor.bleed_res;
