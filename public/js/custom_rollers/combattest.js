@@ -185,7 +185,7 @@ const skills = {
 	'skill_healing_aura': {
 		name: 'Healing Aura',
 		effect: 'Heals self at the end of battle',
-		proc_chance: 10
+		proc_chance: 5
 	},
 	'skill_inner_fire': {
 		name: 'Inner Fire',
@@ -273,6 +273,7 @@ var dragon_1;
 
 var dragon_2;
 
+var results = "";
 var detailed_breakdown = "";
 
 function fight() {
@@ -316,7 +317,7 @@ function fight() {
 	}
 	
 	detailed_breakdown += first.name + " goes first.<br><br>";
-	var results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br>";
+	results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br><br>";
 	var first_dmg = calculateDamage(first, second);
 	var second_part_attacked = rollBreakable(second);
 	// Print damage of first dragon
@@ -330,6 +331,8 @@ function fight() {
 	// Check if second is K.O.-ed at this point
 	// If so, end the fight and return the result
 	if(second.health == 0) {
+		// First gets to check for Healing Aura
+		checkForHealingAura(first);
 		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left."
 		return results;
 	}
@@ -344,12 +347,17 @@ function fight() {
 	results += armorCheck(first);
 	// Add a statement like 'first has x health left!
 	first.health = (first.health - second_dmg) < 0 ? 0 : first.health - second_dmg;
-	results += first.name + " has " + first.health + " health left.<br>";
+	results += first.name + " has " + first.health + " health left.<br><br>";
 	// Check if first gets K.O.-ed
 	if(first.health == 0) {
+		// Second gets to check for Healing Aura
+		checkForHealingAura(second);
 		results += "<br>" + first.name + " was knocked out, and the battle ends."
 	}
 	else {
+		// Both dragons get to check for Healing Aura
+		checkForHealingAura(first);
+		checkForHealingAura(second);
 		results += "<br>The battle ends.";
 	}
 	return results;
@@ -954,6 +962,18 @@ function getDefensiveCritSkills(dragon) {
 function formatSkillActivationLog(skill) {
 	var skill_info = skills[skill];
 	return "'s skill, " + skill_info.name + ", activates! (Effect: " + skill_info.effect + ")<br>";
+}
+
+function checkForHealingAura(dragon) {
+	if(checkForSkill(dragon, 'skill_healing_aura')) {
+		var healing_aura_roll = rand(1, 10);
+		if(healing_aura_roll <= skills['skill_healing_aura'].proc_chance) {
+			detailed_breakdown += dragon.name + formatSkillActivationLog('skill_healing_aura');
+			dragon.health += skill_data.healing_aura_heal;
+			detailed_breakdown += dragon.name + " heals, and now has " + dragon.health + " health.<br>";
+			results += dragon.name + " heals due to the activation of Healing Aura, and now has " + dragon.health + " health.<br>";
+		}
+	}
 }
 
 // JavaScript Document
