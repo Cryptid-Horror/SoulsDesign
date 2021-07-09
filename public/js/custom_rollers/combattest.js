@@ -184,7 +184,7 @@ const skills = {
 	},
 	'skill_healing_aura': {
 		name: 'Healing Aura',
-		effect: 'Adds a chance for the dragon to heal before the end of the fight',
+		effect: 'Heals self at the end of battle',
 		proc_chance: 10
 	},
 	'skill_inner_fire': {
@@ -199,8 +199,8 @@ const skills = {
 	},
 	'skill_swift_feet': {
 		name: 'Swift Feet',
-		effect: 'Increases chance to go first in battle',
-		proc_chance: 10
+		effect: 'Goes first in battle',
+		proc_chance: 5
 	},
 	'skill_bleed': {
 		name: 'Bleed',
@@ -255,10 +255,8 @@ const skill_data = {
 	defensive_crit_chance_skills: {
 
 	},
-	haunting_roar_armor_reduction: 10,
-	swift_feet_first_turn_chance_increase: 10,
-	healing_aura_heal_chance: 10,
-	healing_aura_heal_amount: 100
+	haunting_roar_res_reduction: 10,
+	healing_aura_heal: 100
 };
 
 // Inputs are retrieved in the setupDragons function
@@ -282,15 +280,41 @@ function fight() {
 	// Roll to determine who goes first
 	var first;
 	var second;
-	if(rand(1, 2) == 1) {
+	// Check for Swift Feet and whether they proc
+	var swift_feet_1 = false;
+	var swift_feet_2 = false;
+	if(checkForSkill(dragon_1, 'skill_swift_feet')) {
+		var proc_roll = rand(1, 10);
+		swift_feet_1 = proc_roll <= skills['skill_swift_feet'].proc_chance;
+		if(swift_feet_1) detailed_breakdown += dragon_1.name + formatSkillActivationLog('skill_swift_feet');
+	}
+	if(checkForSkill(dragon_2, 'skill_swift_feet')) {
+		var proc_roll = rand(1, 10);
+		swift_feet_2 = proc_roll <= skills['skill_swift_feet'].proc_chance;
+		if(swift_feet_2) detailed_breakdown += dragon_2.name + formatSkillActivationLog('skill_swift_feet');
+	}
+	// If both or neither dragons have proc'd Swift Feet, do a coin flip
+	if(swift_feet_1 == swift_feet_2) {
+		if(swift_feet_1) detailed_breakdown += "Both dragons have activated Swift Feet; the order will therefore be decided by coin flip:<br>";
+		if(rand(1, 2) == 1) {
+			var first = dragon_1;
+			var second = dragon_2;
+		}
+		else {
+			var first = dragon_2;
+			var second = dragon_1;
+		}
+	}
+	else if(swift_feet_1) {
 		var first = dragon_1;
 		var second = dragon_2;
 	}
-	else {
+	else if(swift_feet_2) {
 		var first = dragon_2;
 		var second = dragon_1;
 	}
 	
+	detailed_breakdown += first.name + " goes first.<br><br>";
 	var results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br>";
 	var first_dmg = calculateDamage(first, second);
 	var second_part_attacked = rollBreakable(second);
