@@ -2,7 +2,7 @@
 
 // dps is number of times a dragon gets to roll their raw/bleed, keyed as follows:
 // [attack_no.]:[value to roll under or equal to get that extra attack]
-const dps_chance = { 2: 5, 3: 3 };
+const dps_chance = { 2: 5, 3: 3, 4: 2 };
 
 // Keyed by: [num to roll]:[% deflected (written as float)]
 const deflect_chance = { 1: 0.75, 2: 0.5, 3: 0.25, 4: 0.1, 5: 0.05, 6: 0.03, 7: 0.02, 8: 0.01, 9: 0.0, 10: 0.0 };
@@ -137,36 +137,46 @@ const breakable = {
 	'none': 4
 }
 
-const modifiers = {
+// For logging purposes
+const item_names = {
+	'strength_tonic':	'Strength Tonic',
+	'magic_tonic': 		'Magic Tonic',
+	'bleed_tonic': 		'Bleed Tonic',
+	'breath_tonic': 	'Breath Tonic',
+	'dps_booster':		'DPS Booster',
+}
+
+const damage_modifier_items = {
 	'strength_tonic': {
-		name: 'Strength Tonic',		// For logging purposes
 		raw: 10,
 		bleed: 0,
 		magic: 0,
 		breath: 0
 	},
     'magic_tonic': {
-		name: 'Magic Tonic',		// For logging purposes
 		raw: 0,
 		bleed: 0,
 		magic: 10,
 		breath: 0
     },
     'bleed_tonic': {
-		name: 'Bleed Tonic',		// For logging purposes
 		raw: 0,
 		bleed: 10,
 		magic: 0,
 		breath: 0
 	},
     'breath_tonic': {
-		name: 'Breath Tonic',		// For logging purposes
 		raw: 0,
 		bleed: 0,
 		magic: 0,
 		breath: 10
 	}
+}
 
+const dps_items = {
+	'dps_booster': {
+		dps_boost: 1
+	}
 }
 
 // Used for logging to verify that the skill has been inputted
@@ -212,6 +222,11 @@ const skills = {
 		effect: 'Increases own natural resistance',
 		proc_chance: 5
 	},
+	'skill_dps': {
+		name: 'DPS',
+		effect: 'Increases self max DPS',
+		proc_chance: 5
+	}
 };
 
 // Stores a variety of values that will be used by skills
@@ -257,7 +272,8 @@ const skill_data = {
 	},
 	haunting_roar_res_reduction: 10,  	// This value will be deducted from the defender's res
 	armor_res_boost: 10, 				// This value will be added to the defender's res
-	healing_aura_heal: 100
+	healing_aura_heal: 100,
+	dps_max_dps_increase: 1					// This value will be added to the attacker's max_dps
 };
 
 // Inputs are retrieved in the setupDragons function
@@ -332,7 +348,7 @@ function fight() {
 	// If so, end the fight and return the result
 	if(second.health == 0) {
 		// First gets to check for Healing Aura
-		checkForHealingAura(first);
+		applyHealingAura(first);
 		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left."
 		return results;
 	}
@@ -351,13 +367,13 @@ function fight() {
 	// Check if first gets K.O.-ed
 	if(first.health == 0) {
 		// Second gets to check for Healing Aura
-		checkForHealingAura(second);
+		applyHealingAura(second);
 		results += "<br>" + first.name + " was knocked out, and the battle ends."
 	}
 	else {
 		// Both dragons get to check for Healing Aura
-		checkForHealingAura(first);
-		checkForHealingAura(second);
+		applyHealingAura(first);
+		applyHealingAura(second);
 		results += "<br>The battle ends.";
 	}
 	return results;
@@ -539,9 +555,17 @@ function setupDragons() {
 
 function calculateDamage(attacker, defender) {
 	var dps = 1;
+	var max_dps = attacker.stats.max_dps;
+	// Check for DPS skill to increase the max dps
+	if(checkForSkill(attacker, 'skill_dps')) {
+		var dps_skill_roll = rand(1, 10);
+		if(dps_skill_roll <= skills['skill_dps'].proc_chance) {
+			detailed_breakdown += attacker.name + formatSkillActivationLog('skill_dps');
+			max_dps += skill_data.dps_max_dps_increase;
+		}
+	}
 	// Roll DPS (number of times attacker will roll raw+bleed dmg)
-    // CRYPTID: INPUT SWIFTFEAT, DPS ITEM ????HAUNTING ROAR???
-	for(let i = 1; i < attacker.stats.max_dps; i++) {
+	for(let i = 1; i < max_dps; i++) {
 		var roll_dps = rand(1, 10);
 		if(roll_dps <= dps_chance[i+1]) {
 			dps++;
@@ -550,6 +574,16 @@ function calculateDamage(attacker, defender) {
 			break; // Stop the loop entirely
 		}
 	}
+	// Apply DPS item(s)
+	Object.keys(dps_items).forEach(item => {
+		if(checkForItem(attacker, item)) {
+			var dps_info = dps_items[item];
+			console.log(dps_info);
+			detailed_breakdown += "The use of " + item_names[item] + " grants " + attacker.name + " " + dps_info.dps_boost + " more attack(s)!<br>";
+			dps += dps_info.dps_boost;
+		}
+	});
+
 	detailed_breakdown += attacker.name + " goes for " + dps + " attack(s)!<br>"
 	
 	// Calculate the crit chances for each type of damage
@@ -625,23 +659,23 @@ function calculateDamage(attacker, defender) {
 		raw_dmg += raw_round;
 		bleed_dmg += bleed_round;
 		detailed_breakdown += "-> Raw Damage: " + raw_round + "<br>";
-		// Apply modifiers
+		// Apply damage_modifier_items
 		Object.keys(attacker.items).forEach(item => {
-			if(modifiers[item] && modifiers[item].raw != 0) {
+			if(damage_modifier_items[item] && damage_modifier_items[item].raw != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
-				raw_dmg += modifiers[item].raw * attacker.items[item];
-				detailed_breakdown += "An additional " + modifiers[item].raw + " Raw Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+				raw_dmg += damage_modifier_items[item].raw * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].raw + " Raw Damage is dealt due to the effects of " + item_names[item] + "<br>";
 			}
 		});
 		detailed_breakdown += "-> Bleed Damage: " + bleed_round + "<br>";
-        	// Apply modifiers
+        	// Apply damage_modifier_items
 		Object.keys(attacker.items).forEach(item => {
-			if(modifiers[item] && modifiers[item].bleed != 0) {
+			if(damage_modifier_items[item] && damage_modifier_items[item].bleed != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
-				bleed_dmg += modifiers[item].bleed * attacker.items[item];
-				detailed_breakdown += "An additional " + modifiers[item].bleed + " Bleed Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+				bleed_dmg += damage_modifier_items[item].bleed * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].bleed + " Bleed Damage is dealt due to the effects of " + item_names[item] + "<br>";
 			}
 		});
 		detailed_breakdown += "<br>";
@@ -713,13 +747,13 @@ function calculateDamage(attacker, defender) {
 			magic_dmg = rand(attacker.magic.min_dmg, attacker.magic.max_dmg);
 		}
 		detailed_breakdown += attacker.name + " harnesses their magic to attack for <b>" + magic_dmg + "</b> Magic damage.<br>";
-        // Apply modifiers
+        // Apply damage_modifier_items
 		Object.keys(attacker.items).forEach(item => {
-			if(modifiers[item] && modifiers[item].magic != 0) {
+			if(damage_modifier_items[item] && damage_modifier_items[item].magic != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
-				 magic_dmg += modifiers[item].magic * attacker.items[item];
-				detailed_breakdown += "An additional " + modifiers[item]. magic + " Magic Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+				 magic_dmg += damage_modifier_items[item].magic * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item]. magic + " Magic Damage is dealt due to the effects of " + item_names[item] + "<br>";
 			}
 		});
 		// Deduct magic_res from armor
@@ -776,13 +810,13 @@ function calculateDamage(attacker, defender) {
 		}
 		detailed_breakdown += attacker.name + " breathes " + chosen_breath + " to deal <b>" + breath_dmg + "</b> Breath damage.<br>";
 
-        // Apply modifiers
+        // Apply damage_modifier_items
 		Object.keys(attacker.items).forEach(item => {
-			if(modifiers[item] && modifiers[item].breath != 0) {
+			if(damage_modifier_items[item] && damage_modifier_items[item].breath != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
-				breath_dmg += modifiers[item].breath * attacker.items[item];
-				detailed_breakdown += "An additional " + modifiers[item].breath + " Breath Damage is dealt due to the effects of " + modifiers[item].name + "<br>";
+				breath_dmg += damage_modifier_items[item].breath * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].breath + " Breath Damage is dealt due to the effects of " + item_names[item] + "<br>";
 			}
 		});
 	}
@@ -900,12 +934,17 @@ function printDragonDetails(dragon) {
 	dragon_string += "<br>";
 	dragon_string += "Items: " + (Object.keys(dragon.items).length <= 0 ? "None" : "") + "<br>";
 	Object.keys(dragon.items).forEach(item => {
-		var item_info = modifiers[item];
-		dragon_string += "> " + item_info.name + "<br>";
-		if(item_info.raw > 0) dragon_string += "-> Raw Damage Boost: " + item_info.raw + "<br>";
-		if(item_info.bleed > 0) dragon_string += "-> Bleed Damage Boost: " + item_info.bleed + "<br>";
-		if(item_info.magic > 0) dragon_string += "-> Magic Damage Boost: " + item_info.magic + "<br>";
-		if(item_info.breath > 0) dragon_string += "-> Breath Damage Boost: " + item_info.breath + "<br>";
+		dragon_string += "> " + item_names[item] + "<br>";
+		if(Object.keys(damage_modifier_items).includes(item)) {
+			var item_info = damage_modifier_items[item];
+			if(item_info.raw > 0) dragon_string += "-> Raw Damage Boost: " + item_info.raw + "<br>";
+			if(item_info.bleed > 0) dragon_string += "-> Bleed Damage Boost: " + item_info.bleed + "<br>";
+			if(item_info.magic > 0) dragon_string += "-> Magic Damage Boost: " + item_info.magic + "<br>";
+			if(item_info.breath > 0) dragon_string += "-> Breath Damage Boost: " + item_info.breath + "<br>";
+		} else if(Object.keys(dps_items).includes(item)) {
+			var item_info = dps_items[item];
+			dragon_string += "-> DPS Boost: " + item_info.dps_boost + "<br>";
+		}
 	});
 	dragon_string += "<br>";
 	dragon_string += "Armor: " + "<br>";
@@ -923,6 +962,10 @@ function capitaliseFirstLetter(input) {
 
 function checkForSkill(dragon, skill) {
 	return Object.keys(dragon.skills).includes(skill);
+}
+
+function checkForItem(dragon, item) {
+	return Object.keys(dragon.items).includes(item);
 }
 
 function getOffensiveCritSkills(dragon) {
@@ -964,7 +1007,7 @@ function formatSkillActivationLog(skill) {
 	return "'s skill, " + skill_info.name + ", activates! (Effect: " + skill_info.effect + ")<br>";
 }
 
-function checkForHealingAura(dragon) {
+function applyHealingAura(dragon) {
 	if(checkForSkill(dragon, 'skill_healing_aura')) {
 		var healing_aura_roll = rand(1, 10);
 		if(healing_aura_roll <= skills['skill_healing_aura'].proc_chance) {

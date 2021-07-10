@@ -137,6 +137,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Bleed</option>
             <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
         </select>
         <select id="1_skill_2" class="cellElement">
             <option value="NA">NA</option>
@@ -148,6 +149,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Bleed</option>
             <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
         </select>
         <select id="1_skill_3" class="cellElement">
             <option value="NA">NA</option>
@@ -159,6 +161,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Bleed</option>
             <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
         </select>
         <select id="1_skill_4" class="cellElement">
             <option value="NA">NA</option>
@@ -170,6 +173,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Bleed</option>
             <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
         </select>
         <br>
         <label>Items:</label>
@@ -179,6 +183,7 @@
             <option value="magic_tonic">Magic Tonic</option>
             <option value="bleed_tonic">Bleed Tonic</option>
             <option value="breath_tonic">Breath Tonic</option>
+            <option value="dps_booster">DPS Booster</option>
         </select>
         <select id="1_item_2" class="cellElement">
             <option value="NA">NA</option>
@@ -186,7 +191,7 @@
             <option value="magic_tonic">Magic Tonic</option>
             <option value="bleed_tonic">Bleed Tonic</option>
             <option value="breath_tonic">Breath Tonic</option>
-            
+            <option value="dps_booster">DPS Booster</option>            
         </select>
         <br>
         <hr>
@@ -277,91 +282,96 @@
         </select>
         <br>
         <label>Familiars:</label>
-            <select id="2_familiar_1" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="dire_wolf">Dire wolf</option>
-                <option value="basilisk">Basilisk</option>
-                <option value="phoenix">Phoenix</option>
-            </select>
-            <select id="2_familiar_2" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="dire_wolf">Dire wolf</option>
-                <option value="basilisk">Basilisk</option>
-                <option value="phoenix">Phoenix</option>
-            </select>
-            <br>
+        <select id="2_familiar_1" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="dire_wolf">Dire wolf</option>
+            <option value="basilisk">Basilisk</option>
+            <option value="phoenix">Phoenix</option>
+        </select>
+        <select id="2_familiar_2" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="dire_wolf">Dire wolf</option>
+            <option value="basilisk">Basilisk</option>
+            <option value="phoenix">Phoenix</option>
+        </select>
+        <br>
         <label>Skills:</label>
-            <select id="2_skill_1" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="skill_aether_walker">Aether Walker</option>
-                <option value="skill_haunting_roar">Haunting Roar</option>
-                <option value="skill_healing_aura">Healing Aura</option>
-                <option value="skill_inner_fire">Inner Fire</option>
-                <option value="skill_steadfast">Steadfast</option>
-                <option value="skill_swift_feet">Swift Feet</option>
-                <option value="skill_bleed">Bleed</option>
-                <option value="skill_armor">Armor</option>
-            </select>
-            <select id="2_skill_2" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="skill_aether_walker">Aether Walker</option>
-                <option value="skill_haunting_roar">Haunting Roar</option>
-                <option value="skill_healing_aura">Healing Aura</option>
-                <option value="skill_inner_fire">Inner Fire</option>
-                <option value="skill_steadfast">Steadfast</option>
-                <option value="skill_swift_feet">Swift Feet</option>
-                <option value="skill_bleed">Bleed</option>
-                <option value="skill_armor">Armor</option>
-            </select>
-            <select id="2_skill_3" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="skill_aether_walker">Aether Walker</option>
-                <option value="skill_haunting_roar">Haunting Roar</option>
-                <option value="skill_healing_aura">Healing Aura</option>
-                <option value="skill_inner_fire">Inner Fire</option>
-                <option value="skill_steadfast">Steadfast</option>
-                <option value="skill_swift_feet">Swift Feet</option>
-                <option value="skill_bleed">Bleed</option>
-                <option value="skill_armor">Armor</option>
-            </select>
-                <select id="2_skill_4" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="skill_aether_walker">Aether Walker</option>
-                <option value="skill_haunting_roar">Haunting Roar</option>
-                <option value="skill_healing_aura">Healing Aura</option>
-                <option value="skill_inner_fire">Inner Fire</option>
-                <option value="skill_steadfast">Steadfast</option>
-                <option value="skill_swift_feet">Swift Feet</option>
-                <option value="skill_bleed">Bleed</option>
-                <option value="skill_armor">Armor</option>
-            </select>
+        <select id="2_skill_1" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+            <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
+        </select>
+        <select id="2_skill_2" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+            <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
+        </select>
+        <select id="2_skill_3" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+            <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
+        </select>
+            <select id="2_skill_4" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="skill_aether_walker">Aether Walker</option>
+            <option value="skill_haunting_roar">Haunting Roar</option>
+            <option value="skill_healing_aura">Healing Aura</option>
+            <option value="skill_inner_fire">Inner Fire</option>
+            <option value="skill_steadfast">Steadfast</option>
+            <option value="skill_swift_feet">Swift Feet</option>
+            <option value="skill_bleed">Bleed</option>
+            <option value="skill_armor">Armor</option>
+            <option value="skill_dps">DPS</option>
+        </select>
         <br>
         <label>Items:</label>
-            <select id="2_item_1" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="strength_tonic">Strength Tonic</option>
-                <option value="magic_tonic">Magic Tonic</option>
-                <option value="bleed_tonic">Bleed Tonic</option>
-                <option value="breath_tonic">Breath Tonic</option>
-            </select>
-                <select id="2_item_2" class="cellElement">
-                <option value="NA">NA</option>
-                <option value="strength_tonic">Strength Tonic</option>
-                <option value="magic_tonic">Magic Tonic</option>
-                <option value="bleed_tonic">Bleed Tonic</option>
-                <option value="breath_tonic">Breath Tonic</option>
-            </select>
+        <select id="2_item_1" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="strength_tonic">Strength Tonic</option>
+            <option value="magic_tonic">Magic Tonic</option>
+            <option value="bleed_tonic">Bleed Tonic</option>
+            <option value="breath_tonic">Breath Tonic</option>
+            <option value="dps_booster">DPS Booster</option>
+        </select>
+            <select id="2_item_2" class="cellElement">
+            <option value="NA">NA</option>
+            <option value="strength_tonic">Strength Tonic</option>
+            <option value="magic_tonic">Magic Tonic</option>
+            <option value="bleed_tonic">Bleed Tonic</option>
+            <option value="breath_tonic">Breath Tonic</option>
+            <option value="dps_booster">DPS Booster</option>
+        </select>
         <br>
         <hr>
         <b>Part Break</b><br>
         <i>Parts break on PvE, not PvP</i><br>
-            <input type="checkbox" id="2_use_breakable">Roll for breakable parts</input>
-            <br>
-            <input type="checkbox" id="2_head_part">Head already broken</input>
-            <input type="checkbox" id="2_tail_part">Tail already broken</input>
-            <input type="checkbox" id="2_legs_part">Legs already broken</input>
-           <br>
-           
+        <input type="checkbox" id="2_use_breakable">Roll for breakable parts</input>
+        <br>
+        <input type="checkbox" id="2_head_part">Head already broken</input>
+        <input type="checkbox" id="2_tail_part">Tail already broken</input>
+        <input type="checkbox" id="2_legs_part">Legs already broken</input>
+        <br>
 	</tr>
 	</form>
 </table>
