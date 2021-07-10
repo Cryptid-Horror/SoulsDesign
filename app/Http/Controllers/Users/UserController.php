@@ -254,7 +254,6 @@ class UserController extends Controller
      * @param  string  $name
      * @return \Illuminate\Contracts\Support\Renderable
      */
-<
     public function getUserAwardCase($name)
     {
         $categories = AwardCategory::orderBy('sort', 'DESC')->get();
