@@ -281,8 +281,8 @@ return [
             [
                 'name' => 'Concepts',
                 'url' => 'admin/world/concepts'
-            ]
-
+            ],
+            [
                 'name' => 'Pets',
                 'url' => 'admin/data/pets'
             ],
