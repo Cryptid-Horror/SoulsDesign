@@ -22,6 +22,7 @@ use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
 use App\Models\Raffle\Raffle;
 use App\Models\Recipe\Recipe;
+use App\Models\Awards\Awards;
 use App\Models\Pet\Pet;
 use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
@@ -51,6 +52,7 @@ class LevelController extends Controller
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'recipes' => Recipe::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
@@ -71,6 +73,7 @@ class LevelController extends Controller
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'recipes' => Recipe::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
@@ -159,6 +162,7 @@ class LevelController extends Controller
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'recipes' => Recipe::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
@@ -183,6 +187,7 @@ class LevelController extends Controller
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'recipes' => Recipe::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
