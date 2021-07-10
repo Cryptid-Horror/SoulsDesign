@@ -58,8 +58,9 @@ Route::group(['prefix' => 'inventory', 'namespace' => 'Users'], function() {
 Route::group(['prefix' => 'awardcase', 'namespace' => 'Users'], function() {
     Route::get('/', 'AwardCaseController@getIndex');
     Route::post('edit', 'AwardCaseController@postEdit');
-
     Route::get('selector', 'AwardCaseController@getSelector');
+});
+
 Route::group(['prefix' => 'pets', 'namespace' => 'Users'], function() {
     Route::get('/', 'PetController@getIndex');
     Route::post('transfer/{id}', 'PetController@postTransfer');
