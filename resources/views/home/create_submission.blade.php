@@ -59,7 +59,13 @@
         @endif
 
         <h2>Characters</h2>
-        @if($isClaim)
+        @if(!$isClaim)
+            <p>Please select a character who shall receive any stat / level awards. The character must be apart of the prompt / the focus character and owned by you.</p>
+
+            @include('widgets._level_select')
+            
+            <p>Any extra / background characters should be included here.</p>
+        @else
             <p>If there are character-specific rewards you would like to claim, attach them here. Otherwise, this section can be left blank.</p>
         @endif
         <div id="characters" class="mb-3">
@@ -82,9 +88,10 @@
 
     @include('widgets._character_select', ['characterCurrencies' => $characterCurrencies, 'showLootTables' => false])
     @if($isClaim)
-        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => true, 'showRecipes' => true])
+
+        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'pets' => $pets, 'gears' => $gears, 'weapons' => $weapons, 'showLootTables' => false, 'showRaffles' => true, 'showRecipes' => true])
     @else
-        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
+        @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'pets' => $pets, 'gears' => $gears, 'weapons' => $weapons, 'showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
     @endif
 
     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog">

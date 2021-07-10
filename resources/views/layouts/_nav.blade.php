@@ -45,8 +45,23 @@
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                 Crafting
                             </a>
+
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
                                 Design Registration
+
+                            <a class="dropdown-item" href="{{ url('level') }}">
+                                Level Area
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Activity
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
+                            <a class="dropdown-item" href="{{ url('submissions') }}">
+                                Prompt Submissions
+
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
                             Primal and Mastery Points
@@ -67,6 +82,9 @@
                             </a>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
                                 Nesting Permissions
+                            </a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
+                                Refer a Friend
                             </a>
                            
                         </div>

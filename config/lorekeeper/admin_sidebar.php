@@ -95,12 +95,29 @@ return [
                 'url' => 'admin/grants/items'
             ],
             [
+
                 'name' => 'Award Grants',
                 'url' => 'admin/grants/awards'
             ],
             [
                 'name' => 'Recipe Grants',
                 'url' => 'admin/grants/recipes'
+
+                'name' => 'EXP Grants',
+                'url' => 'admin/grants/exp'
+            ],
+            [
+                'name' => 'Pet Grants',
+                'url' => 'admin/grants/pets'
+            ],
+            [
+                'name' => 'Gear Grants',
+                'url' => 'admin/grants/gear'
+            ],
+            [
+                'name' => 'Weapon Grants',
+                'url' => 'admin/grants/weapons'
+
             ],
         ]
     ],
@@ -130,6 +147,28 @@ return [
             [
                 'name' => 'Design Approvals',
                 'url' => 'admin/myo-approvals/pending'
+            ],
+        ]
+    ],
+    'Stats' => [
+        'power' => 'edit_stats',
+        'links' => [
+            [
+                'name' => 'Stats',
+                'url' => 'admin/stats'
+            ],
+        ]
+    ],
+    'Levels' => [
+        'power' => 'edit_levels',
+        'links' => [
+            [
+                'name' => 'User Levels',
+                'url' => 'admin/levels'
+            ],
+            [
+                'name' => 'Character Levels',
+                'url' => 'admin/levels/character'
             ],
         ]
     ],
@@ -201,6 +240,7 @@ return [
                 'url' => 'admin/data/items'
             ],
             [
+
                 'name' => 'Recipes',
                 'url' => 'admin/data/recipes'
             ],
@@ -241,6 +281,28 @@ return [
                 'name' => 'Concepts',
                 'url' => 'admin/world/concepts'
             ]
+
+                'name' => 'Pets',
+                'url' => 'admin/data/pets'
+            ],
+        ]
+    ],
+    'Claymores' => [
+        'power' => 'edit_claymores',
+        'links' => [
+            [
+                'name' => 'Gear',
+                'url' => 'admin/gear'
+            ],
+            [
+                'name' => 'Weapons',
+                'url' => 'admin/weapon'
+            ],
+            [
+                'name' => 'Character Classes',
+                'url' => 'admin/character-classes'
+            ],
+
         ]
     ],
     'Raffles' => [

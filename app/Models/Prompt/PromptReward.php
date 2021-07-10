@@ -69,6 +69,9 @@ class PromptReward extends Model
             case 'LootTable':
                 return $this->belongsTo('App\Models\Loot\LootTable', 'rewardable_id');
                 break;
+            case 'Pet':
+                return $this->belongsTo('App\Models\Pet\Pet', 'rewardable_id');
+            break;
             case 'Raffle':
                 return $this->belongsTo('App\Models\Raffle\Raffle', 'rewardable_id');
                 break;
@@ -76,6 +79,9 @@ class PromptReward extends Model
                 return $this->belongsTo('App\Models\Recipe\Recipe', 'rewardable_id');
                 break;
         }   
+            break;
+        }
+
         return null;
     }
 }

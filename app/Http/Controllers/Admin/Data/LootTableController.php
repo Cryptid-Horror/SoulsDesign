@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
+use App\Models\Pet\Pet;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
 
@@ -54,6 +55,7 @@ class LootTableController extends Controller
             'items' => Item::orderBy('name')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
+            'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),
@@ -79,6 +81,7 @@ class LootTableController extends Controller
             'items' => Item::orderBy('name')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
+            'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),
