@@ -152,7 +152,7 @@ class CharacterController extends Controller
             // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
             // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
             'name', 'title_name', 'nicknames', 'has_grand_title'
-            'image', 'thumbnail', 'image_description', 'stats'
+            'stats'
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
             flash('Character created successfully.')->success();
