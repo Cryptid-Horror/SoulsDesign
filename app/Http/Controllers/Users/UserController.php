@@ -92,6 +92,10 @@ class UserController extends Controller
     {
         $characters = $this->user->characters();
         if(!Auth::check() || !(Auth::check() && Auth::user()->hasPower('manage_characters'))) $characters->visible();
+        $gears = $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get();
+        $weapons = $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get();
+        $armours = $gears->union($weapons);
+
 
 
         return view('user.profile', [
@@ -123,10 +127,6 @@ class UserController extends Controller
             'aliases' => $aliases->orderBy('is_primary_alias', 'DESC')->orderBy('site')->get(),
         ]);
     }
-
-        $gears = $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get();
-        $weapons = $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get();
-        $armours = $gears->union($weapons);
 
     /**
      * Shows a user's characters.
