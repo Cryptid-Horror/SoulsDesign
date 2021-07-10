@@ -410,12 +410,6 @@ Route::group(['prefix' => 'grants', 'namespace' => 'Users', 'middleware' => 'pow
     Route::post('awards', 'GrantController@postAwards');
 });
 
-# AWARD GRANTS
-Route::group(['prefix' => 'grants', 'namespace' => 'Users', 'middleware' => 'power:edit_awardcases'], function() {
-    
-    Route::get('awards', 'GrantController@getAwards');
-    Route::post('awards', 'GrantController@postAwards');
-});
 
 # MASTERLIST
 Route::group(['prefix' => 'masterlist', 'namespace' => 'Characters', 'middleware' => 'power:manage_characters'], function() {
@@ -734,6 +728,7 @@ Route::group(['prefix' => 'forums', 'middleware' => 'power:edit_data'], function
     Route::post('create', 'ForumController@postCreateEditForum');
     Route::post('edit/{id?}', 'ForumController@postCreateEditForum');
     Route::post('delete/{id}', 'ForumController@postDeleteForum');
+});
 
 # STATS - STATS
 Route::group(['prefix' => 'stats', 'namespace' => 'Stats', 'middleware' => 'power:edit_stats'], function() {
