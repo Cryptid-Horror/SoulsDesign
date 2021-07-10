@@ -102,7 +102,8 @@ return [
             [
                 'name' => 'Recipe Grants',
                 'url' => 'admin/grants/recipes'
-
+            ],
+            [
                 'name' => 'EXP Grants',
                 'url' => 'admin/grants/exp'
             ],
