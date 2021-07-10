@@ -287,7 +287,7 @@ class Character extends Model
     {
         return $this->hasOne('App\Models\Character\CharacterLineage', 'character_id');
 
-     * Get the character's class
+     /* Get the character's class
      */
     public function class()
     {
