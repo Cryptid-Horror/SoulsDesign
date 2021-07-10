@@ -294,7 +294,6 @@ Route::group(['prefix' => 'forum'], function() {
     Route::get('{id}/~{thread_id}/edit', 'ForumController@getEditThread');
 });
 
-
 Route::group(['prefix' => 'user', 'namespace' => 'Users'], function() {
     Route::get('{name}/forum', 'UserController@getUserForumPosts'); // Placed here so I don't have to mess with
 });
