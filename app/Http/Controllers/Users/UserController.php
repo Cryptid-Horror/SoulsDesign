@@ -280,7 +280,8 @@ class UserController extends Controller
             'user' => $this->user,
             'logs' => $this->user->getAwardLogs(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get()
-
+]);
+}
     public function getUserPets($name)
     {
         $categories = PetCategory::orderBy('sort', 'DESC')->get();
