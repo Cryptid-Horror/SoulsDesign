@@ -101,9 +101,7 @@ class UserController extends Controller
             'awards' => $this->user->awards()->orderBy('user_awards.updated_at', 'DESC')->take(4)->get(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
             'characters' => $characters,
-            'gears' => $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get(),
-            'weapons' => $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get(),
-            'armours' => $gears->union($weapons),
+            'armours' => $armours,
             'user_enabled' => Settings::get('WE_user_locations'),
             'user_factions_enabled' => Settings::get('WE_user_factions')
         ]);
@@ -125,6 +123,10 @@ class UserController extends Controller
             'aliases' => $aliases->orderBy('is_primary_alias', 'DESC')->orderBy('site')->get(),
         ]);
     }
+
+        $gears = $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get();
+        $weapons = $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get();
+        $armours = $gears->union($weapons);
 
     /**
      * Shows a user's characters.
@@ -253,6 +255,7 @@ class UserController extends Controller
      * @param  string  $name
      * @return \Illuminate\Contracts\Support\Renderable
      */
+<
     public function getUserAwardCase($name)
     {
         $categories = AwardCategory::orderBy('sort', 'DESC')->get();
@@ -278,8 +281,7 @@ class UserController extends Controller
             'user' => $this->user,
             'logs' => $this->user->getAwardLogs(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get()
-]);
-}
+
     public function getUserPets($name)
     {
         $categories = PetCategory::orderBy('sort', 'DESC')->get();
