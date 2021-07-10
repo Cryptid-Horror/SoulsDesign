@@ -283,19 +283,19 @@ class Character extends Model
     }
 
     /**
-<<<<<<< HEAD
+
      * Get the lineage of the character.
      */
     public function lineage()
     {
         return $this->hasOne('App\Models\Character\CharacterLineage', 'character_id');
-=======
+
      * Get the character's class
      */
     public function class()
     {
         return $this->belongsTo('App\Models\Character\CharacterClass', 'class_id');
->>>>>>> 15dbf0961810eec469f81d0e19320f91ce693af3
+
     }
 
     /**********************************************************************************************
