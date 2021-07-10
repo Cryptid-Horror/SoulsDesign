@@ -101,9 +101,6 @@ return [
         'version' => '1.0.0',
     ],
 
-
-];
-
      'Levels_&_Stats' => [
          'key' => 'Levels_&_Stats',
          'wiki_key' => 'Levels_%26_Stats',
