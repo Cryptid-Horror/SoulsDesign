@@ -156,7 +156,7 @@ class GrantController extends Controller
         $data = $request->only(['names', 'award_ids', 'quantities', 'data', 'disallow_transfer', 'notes']);
         if($service->grantAwards($data, Auth::user())) {
             flash('Awards granted successfully.')->success();
-     * Grants or removes exp (show)
+    /* * Grants or removes exp (show)
      */
     public function getExp()
     {
