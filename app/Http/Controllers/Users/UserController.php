@@ -101,10 +101,10 @@ class UserController extends Controller
             'awards' => $this->user->awards()->orderBy('user_awards.updated_at', 'DESC')->take(4)->get(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
             'characters' => $characters,
-            'armours' => $armours,
-            $gears = $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get();
-            $weapons = $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get();
-            $armours = $gears->union($weapons);
+            'armours' => $amours,
+            'gears' => $this->user->gears()->orderBy('user_gears.updated_at', 'DESC')->take(4)->get(),
+            'weapons' => $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get(),
+            'armours' => $gears->union($weapons),
             'user_enabled' => Settings::get('WE_user_locations'),
             'user_factions_enabled' => Settings::get('WE_user_factions')
         ]);
