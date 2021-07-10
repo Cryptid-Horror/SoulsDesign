@@ -815,6 +815,7 @@ class CharacterController extends Controller
             }
         }
         return $lineage;
+        }
 
     /************************************************************************************
      * CLAYMORE
