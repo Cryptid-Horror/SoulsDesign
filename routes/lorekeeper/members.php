@@ -161,8 +161,6 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function() 
 
     Route::post('{slug}/approval', 'CharacterController@postCharacterApproval');
     Route::get('{slug}/approval', 'CharacterController@getCharacterApproval');
-<
-    
     Route::post('{slug}/decease', 'CharacterController@postDeceaseCharacter');
     Route::get('{slug}/decease', 'CharacterController@getDeceaseCharacter');
 
