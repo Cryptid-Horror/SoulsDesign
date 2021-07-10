@@ -59,7 +59,7 @@
 
 @section('scripts')
 @parent
-@include('js._loot_js', ['showLootTables' => true, 'showRaffles' => true])
+@include('js._loot_js', ['showLootTables' => true, 'showRaffles' => true, 'showRecipes' => true])
 @include('js._level_limit_js')
 <script>
 $( document ).ready(function() {    
