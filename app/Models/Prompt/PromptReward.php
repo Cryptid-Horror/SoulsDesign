@@ -84,4 +84,4 @@ class PromptReward extends Model
 
         return null;
     }
-}
+
