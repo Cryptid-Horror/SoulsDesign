@@ -28,6 +28,7 @@ use App\Models\Stats\User\UserLevel;
 use App\Models\Stats\Character\Stat;
 use App\Models\Recipe\Recipe;
 use App\Models\Award\Award;
+use App\Models\AwardCategory\AwardCategory;
 
 use App\Models\Claymore\WeaponCategory;
 use App\Models\Claymore\Weapon;
