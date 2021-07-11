@@ -29,7 +29,6 @@ use App\Models\Stats\Character\Stat;
 use App\Models\Recipe\Recipe;
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
-
 use App\Models\Claymore\WeaponCategory;
 use App\Models\Claymore\Weapon;
 use App\Models\Claymore\GearCategory;
@@ -139,6 +138,24 @@ class WorldController extends Controller
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
         ]);
     }
+
+    
+        /**
+     * Shows the award categories page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getAwardCategories(Request $request)
+    {
+        $query = AwardCategory::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.award_categories', [
+            'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
 
     /**
      * Shows the trait categories page.
