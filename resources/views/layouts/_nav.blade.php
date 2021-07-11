@@ -34,13 +34,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
                             <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
-                            Activity Guide
+                                Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
                                 Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
-                            Adoption Center
+                                Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                 Crafting
@@ -49,25 +49,14 @@
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
                                 Design Registration
 
-                            <a class="dropdown-item" href="{{ url('level') }}">
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
+                                Primal and Mastery Points
+                            </a>
+                              <a class="dropdown-item" href="{{ url('level') }}">
                                 Level Area
                             </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Activity
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            <a class="dropdown-item" href="{{ url('submissions') }}">
-                                Prompt Submissions
-
-                            </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
-                            Primal and Mastery Points
-                            </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
-                            Shops
+                                Shops
                             </a>
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
                                 Trade Listings
@@ -86,9 +75,10 @@
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
                                 Refer a Friend
                             </a>
-                           
+                          
                         </div>
                     </li>
+                    
                     <li class="nav-item dropdown">
                         <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Rollers
