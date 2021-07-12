@@ -66,7 +66,6 @@ const myth_egg = {
 	act_lineage: { 'yes': 75, 'no': 25 },
 	uc_max: 2,
 	r_max: 1
-    vr_max: 1
 }	
 
 const myst_egg = {
@@ -83,7 +82,6 @@ const myst_egg = {
 	act_lineage: { 'yes': 75, 'no': 25 },
 	uc_max: 2,
 	r_max: 1
-    vr_max: 1
 }
 
 // Arrays of marking arrays in the format ['pheno', 'geno', 'pheno string position']
