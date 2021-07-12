@@ -53,7 +53,7 @@ const rare_egg = {
 }
 
 const mythic_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 55 },
+	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 65 },
 	markings: { 'common': 30, 'uncommon': 20, 'rare': 20, 'vrare': 30 },
 	mutations: { 'no': 60, 'yes': 30, 'Radiance': 7, 'Chimera': 3 },
 	skill_breath: { 'no': 40, 'yes': 60 },
@@ -69,7 +69,7 @@ const mythic_egg = {
 }	
 
 const myst_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 55 },
+	twins: { 'identical': 15, 'non_identical': 20, 'no_twins':65 },
 	markings: { 'common': 55, 'uncommon': 30, 'rare': 10, 'vrare': 5 },
 	mutations: { 'no': 70, 'yes': 20, 'Radiance': 7, 'Chimera': 3 },
 	skill_breath: { 'no': 60, 'yes': 40 },
