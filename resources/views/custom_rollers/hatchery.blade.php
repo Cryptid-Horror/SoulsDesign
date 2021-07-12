@@ -19,7 +19,6 @@
             <option value="common">Common</option>
             <option value="uncommon">Uncommon</option>
             <option value="rare">Rare</option>
-            <option value="mythic">Mythic</option>
             <option value="myst">Mysterious</option>
         </select>
         <select id="species">

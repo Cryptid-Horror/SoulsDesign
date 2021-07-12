@@ -5,7 +5,7 @@
 // When rolled the chance values are totalled and then a random number is rolled between 1 and that total
 // In this case it's 100 (i.e. 10/100 chance for identical etc)
 const common_egg = {
-	twins: { 'identical': 5, 'non_identical': 10, 'no_twins': 80 },
+	twins: { 'identical': 10, 'non_identical': 10, 'no_twins': 80 },
 	markings: { 'common': 80, 'uncommon': 20 },
 	mutations: { 'no': 90, 'yes': 8, 'Radiance': 1, 'Chimera': 1 },
 	skill_breath: { 'no': 90, 'yes': 10 },
@@ -37,7 +37,7 @@ const uncommon_egg = {
 }
 
 const rare_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 65 },
+	twins: { 'identical': 20, 'non_identical': 20, 'no_twins': 60 },
 	markings: { 'common': 65, 'uncommon': 25, 'rare': 10 },
 	mutations: { 'no': 75, 'yes': 18, 'Radiance': 4, 'Chimera': 3 },
 	skill_breath: { 'no': 70, 'yes': 30 },
@@ -52,24 +52,8 @@ const rare_egg = {
 	r_max: 1	
 }
 
-const mythic_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 65 },
-	markings: { 'common': 30, 'uncommon': 20, 'rare': 20, 'vrare': 30 },
-	mutations: { 'no': 60, 'yes': 30, 'Radiance': 7, 'Chimera': 3 },
-	skill_breath: { 'no': 40, 'yes': 60 },
-	trait: { 'common': 45, 'uncommon': 35, 'rare': 10, 'vrare': 10 },
-	temper: { 'Vigilant': 40, 'Aggressive': 40, 'Calm': 10, 'Sinister': 10 },
-	base: {  'Ivory': 40, 'Vanta': 20, 'Golden': 15, 'Melanistic Umber': 13, 'Melanistic Haze': 8, 'Melanistic Ivory': 2, 'Melanistic Golden': 2 },
-	coat: { 'Velour': 50, 'Feathered': 25, 'Plated': 15, 'Angora': 7, 'Imperial': 3 },
-	lineage: { 'yes': 70, 'no': 30 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
-	act_lineage: { 'yes': 75, 'no': 25 },
-	uc_max: 2,
-	r_max: 1
-}	
-
 const myst_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins':65 },
+	twins: { 'identical': 25, 'non_identical': 20, 'no_twins': 55 },
 	markings: { 'common': 55, 'uncommon': 30, 'rare': 10, 'vrare': 5 },
 	mutations: { 'no': 70, 'yes': 20, 'Radiance': 7, 'Chimera': 3 },
 	skill_breath: { 'no': 60, 'yes': 40 },
@@ -112,13 +96,13 @@ const r_marks = [
 	['Appaloosa', 'nAp', 'r'], ['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
-    ['Filigree', 'nFi', 'r']
+    ['Vignette', 'nVi', 'r']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
 	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'color'],
 	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
-	['Tribal', 'nTri', 'vr']
+	['Triquetra', 'nTri', 'vr']
 ];
 
 const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', "Maned", 'Frilled', 'Raptor', 'Tusked',
