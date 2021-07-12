@@ -4,7 +4,7 @@
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
 
-var uncommonMarkings = ["nAg", "AgAg", "nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
+var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
                         "nCri", "CriCri", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
 			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
@@ -26,14 +26,14 @@ var commonToText = ["Blanket", "Boar", "Collar", "Dunstripe", "Dusted", "Duo Ton
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
 					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
-var uncommonToText = ["Agouti", "Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
+var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
 					  "Crimson", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
 var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Vignette"];
 var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Luecism", "Abundism", "Eagle Beak", "Whiskers"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
@@ -46,7 +46,7 @@ var veryRarePhysicalMutations = [];
 var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord" ];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
-var passableMutations = ["nRad", "RadRad"]; 
+var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
 
 var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
 var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
@@ -68,7 +68,7 @@ var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "F
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
 var veryRareTails = [];
 
-var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden"]
+var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
 var uncommonColorMods = ["Azure", "Crimson"];
 var rareColorMods = ["Jade", "Seafoam"];
