@@ -37,7 +37,7 @@ const uncommon_egg = {
 }
 
 const rare_egg = {
-	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 60 },
+	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 65 },
 	markings: { 'common': 65, 'uncommon': 25, 'rare': 10 },
 	mutations: { 'no': 75, 'yes': 18, 'Radiance': 4, 'Chimera': 3 },
 	skill_breath: { 'no': 70, 'yes': 30 },
