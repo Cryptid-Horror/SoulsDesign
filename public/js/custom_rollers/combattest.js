@@ -276,6 +276,31 @@ const skill_data = {
 	dps_max_dps_increase: 1					// This value will be added to the attacker's max_dps
 };
 
+const familiars = {
+	damage: {
+		'dire_wolf': {
+			name: 'Dire Wolf',
+			raw: 10,
+			bleed: 0,
+			magic: 0,
+			breath: 0
+		},
+		'basilisk': {
+			name: 'Basilisk',
+			raw: 0,
+			bleed: 0,
+			magic: 10,
+			breath: 0
+		}
+	},
+	healing: {
+		'phoenix': {
+			name: 'Phoenix',
+			healing: 50
+		}
+	}
+}
+
 // Inputs are retrieved in the setupDragons function
 
 function rand(min, max) {
@@ -348,8 +373,11 @@ function fight() {
 	// If so, end the fight and return the result
 	if(second.health == 0) {
 		// First gets to check for Healing Aura
-		applyHealingAura(first);
-		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left."
+		applyHealing(first);
+		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left.<br>"
+		// Display final health
+		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
 		return results;
 	}
 	results += "<br>";
@@ -367,15 +395,19 @@ function fight() {
 	// Check if first gets K.O.-ed
 	if(first.health == 0) {
 		// Second gets to check for Healing Aura
-		applyHealingAura(second);
+		applyHealing(second);
 		results += "<br>" + first.name + " was knocked out, and the battle ends."
 	}
 	else {
 		// Both dragons get to check for Healing Aura
-		applyHealingAura(first);
-		applyHealingAura(second);
-		results += "<br>The battle ends.";
+		applyHealing(first);
+		applyHealing(second);
+		results += "<br>The battle ends.<br><br>";
 	}
+
+	// Display final health
+	results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+	results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
 	return results;
 }
 
@@ -452,6 +484,13 @@ function setupDragons() {
 		dragon_1.breaths[breath_2_1].max_dmg = breath_tier_dmgs[parseInt(document.getElementById('1_breath_tier_2').value)];
 	}
 	Object.assign(dragon_1.magic, magic_classes[document.getElementById('1_magic').value]);
+
+	// Dragon 1 familiars
+	var familiar_1_1 = document.getElementById('1_familiar_1').value;
+	var familiar_2_1 = document.getElementById('1_familiar_2').value;
+
+	if(familiar_1_1 != 'NA') dragon_1.familiars[familiar_1_1] = 1;
+    if(familiar_2_1 != 'NA') dragon_1.familiars[familiar_2_1] = 1;
 	
 	// Dragon 1 skills
     var skill_1_1 = document.getElementById('1_skill_1').value;
@@ -518,6 +557,13 @@ function setupDragons() {
 		dragon_2.breaths[breath_2_2].max_dmg = breath_tier_dmgs[parseInt(document.getElementById('2_breath_tier_2').value)];
 	}
 	Object.assign(dragon_2.magic, magic_classes[document.getElementById('2_magic').value]);
+
+	// Dragon 2 familiars
+	var familiar_1_2 = document.getElementById('2_familiar_1').value;
+	var familiar_2_2 = document.getElementById('2_familiar_2').value;
+
+	if(familiar_1_2 != 'NA') dragon_2.familiars[familiar_1_2] = 1;
+    if(familiar_2_2 != 'NA') dragon_2.familiars[familiar_2_2] = 1;
 	
 	// Dragon 2 skills
     var skill_1_2 = document.getElementById('2_skill_1').value;
@@ -659,7 +705,7 @@ function calculateDamage(attacker, defender) {
 		raw_dmg += raw_round;
 		bleed_dmg += bleed_round;
 		detailed_breakdown += "-> Raw Damage: " + raw_round + "<br>";
-		// Apply damage_modifier_items
+		// Apply damage modifier items
 		Object.keys(attacker.items).forEach(item => {
 			if(damage_modifier_items[item] && damage_modifier_items[item].raw != 0) {
 				// Add modifier damage value multiplied by the stack size
@@ -668,14 +714,34 @@ function calculateDamage(attacker, defender) {
 				detailed_breakdown += "An additional " + damage_modifier_items[item].raw + " Raw Damage is dealt due to the effects of " + item_names[item] + "<br>";
 			}
 		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.raw != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				raw_dmg += familiar_data.raw * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.raw + " Raw Damage!<br>";
+			}
+		});
 		detailed_breakdown += "-> Bleed Damage: " + bleed_round + "<br>";
-        	// Apply damage_modifier_items
+        // Apply damage modifier items
 		Object.keys(attacker.items).forEach(item => {
 			if(damage_modifier_items[item] && damage_modifier_items[item].bleed != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
 				bleed_dmg += damage_modifier_items[item].bleed * attacker.items[item];
 				detailed_breakdown += "An additional " + damage_modifier_items[item].bleed + " Bleed Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.bleed != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				bleed_dmg += familiar_data.bleed * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.bleed + " Bleed Damage!<br>";
 			}
 		});
 		detailed_breakdown += "<br>";
@@ -747,13 +813,23 @@ function calculateDamage(attacker, defender) {
 			magic_dmg = rand(attacker.magic.min_dmg, attacker.magic.max_dmg);
 		}
 		detailed_breakdown += attacker.name + " harnesses their magic to attack for <b>" + magic_dmg + "</b> Magic damage.<br>";
-        // Apply damage_modifier_items
+        // Apply damage modifier items
 		Object.keys(attacker.items).forEach(item => {
 			if(damage_modifier_items[item] && damage_modifier_items[item].magic != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
-				 magic_dmg += damage_modifier_items[item].magic * attacker.items[item];
+				magic_dmg += damage_modifier_items[item].magic * attacker.items[item];
 				detailed_breakdown += "An additional " + damage_modifier_items[item]. magic + " Magic Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.magic != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				magic_dmg += familiar_data.magic * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.magic + " Magic Damage!<br>";
 			}
 		});
 		// Deduct magic_res from armor
@@ -764,7 +840,6 @@ function calculateDamage(attacker, defender) {
 	}
 
 	// Roll breath dmg, if a breath exists
-    //CRYPTID: INPUT INNER FIRE AND BREATH ITEM
 	var breath_dmg = 0;
 	// Breaths: tier 1 = 10, tier 2 = 20...
 	// Strong breaths do double damage
@@ -810,13 +885,23 @@ function calculateDamage(attacker, defender) {
 		}
 		detailed_breakdown += attacker.name + " breathes " + chosen_breath + " to deal <b>" + breath_dmg + "</b> Breath damage.<br>";
 
-        // Apply damage_modifier_items
+        // Apply damage modifier items
 		Object.keys(attacker.items).forEach(item => {
 			if(damage_modifier_items[item] && damage_modifier_items[item].breath != 0) {
 				// Add modifier damage value multiplied by the stack size
 				// Currently stack size should not go over 1
 				breath_dmg += damage_modifier_items[item].breath * attacker.items[item];
 				detailed_breakdown += "An additional " + damage_modifier_items[item].breath + " Breath Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.breath != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				breath_dmg += familiar_data.breath * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.breath + " Breath Damage!<br>";
 			}
 		});
 	}
@@ -844,7 +929,27 @@ function armorCheck(defender) {
 	if(broken != "") { broken = defender.name + "'s armor was broken in the attack <br>"; }
 	return broken;
 }
-// HEALING PETS GO HERE
+
+function applyHealing(dragon)
+{
+	var old_health = dragon.health;
+	applyHealingAura(dragon);
+	// Apply healing familiars
+	Object.keys(dragon.familiars).forEach(familiar => {
+		var familiar_data = familiars.healing[familiar];
+		if(familiar_data) {
+			// Add modifier damage value multiplied by the stack size
+			// Currently stack size should not go over 1
+			dragon.health += familiar_data.healing * dragon.familiars[familiar];
+			detailed_breakdown += dragon.name + "'s " + familiar_data.name + " springs into action, healing " + familiar_data.healing + " Health!<br>";
+		}
+	});
+	if(dragon.health != old_health) {
+		var health_healed = dragon.health - old_health;
+		results += dragon.name + " has healed <b>" + health_healed + "</b> Health, and is now at " + dragon.health + " Health.<br>";
+		detailed_breakdown += "<b>Total Health Healed:</b> " + health_healed + "<br>";
+	}
+}
 
 function rollBreakable(dragon) {
 	// Duplicate breakable dict
@@ -924,6 +1029,21 @@ function printDragonDetails(dragon) {
 		dragon_string += "-> Min/Max Damage: 0/" + dragon.breaths[breath].max_dmg + "<br>";
 	});
 	dragon_string += "<br>";
+	dragon_string += "Familiars: " + (Object.keys(dragon.items).length <= 0 ? "None" : "") + "<br>";
+	Object.keys(dragon.familiars).forEach(familiar => {
+		if(Object.keys(familiars.damage).includes(familiar)) {
+			var familiar_info = familiars.damage[familiar];
+			dragon_string += "> " + familiar_info.name + "<br>";
+			if(familiar_info.raw > 0) dragon_string += "-> Raw Damage Boost: " + familiar_info.raw + "<br>";
+			if(familiar_info.bleed > 0) dragon_string += "-> Bleed Damage Boost: " + familiar_info.bleed + "<br>";
+			if(familiar_info.magic > 0) dragon_string += "-> Magic Damage Boost: " + familiar_info.magic + "<br>";
+			if(familiar_info.breath > 0) dragon_string += "-> Breath Damage Boost: " + familiar_info.breath + "<br>";
+		} else if(Object.keys(familiars.healing).includes(familiar)) {
+			var familiar_info = familiars.healing[familiar];
+			dragon_string += "> " + familiar_info.name + "<br>";
+			dragon_string += "-> Healing: " + familiar_info.healing + "<br>";
+		}
+	});
 	dragon_string += "Skills: " + (Object.keys(dragon.skills).length <= 0 ? "None" : "") + "<br>";
 	Object.keys(dragon.skills).forEach(skill => {
 		var skill_info = dragon.skills[skill];
