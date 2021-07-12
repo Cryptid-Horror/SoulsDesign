@@ -268,6 +268,7 @@ function rollDragon(egg_table) {
 		dragon.mutation = 'Radiant ' + rad[0];
 		dragon.radiance_geno = 'nRad-' + rad[1];
 	} else if (dragon.mutation == 'Chimera') {
+        dragon.mutation = 'Chimera';
 		dragon.chim_marks = rollMarkings(egg_table)
 		dragon.chim_coat = getRollResult(egg_table.base)
 	}
