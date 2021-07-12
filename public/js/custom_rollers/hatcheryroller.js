@@ -52,7 +52,7 @@ const rare_egg = {
 	r_max: 1	
 }
 
-const myth_egg = {
+const mythic_egg = {
 	twins: { 'identical': 15, 'non_identical': 20, 'no_twins': 55 },
 	markings: { 'common': 30, 'uncommon': 20, 'rare': 20, 'vrare': 30 },
 	mutations: { 'no': 60, 'yes': 30, 'Radiance': 7, 'Chimera': 3 },
