@@ -108,7 +108,7 @@ const vr_marks = [
 const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', "Maned", 'Frilled', 'Raptor', 'Tusked',
 	'Feather Extensions', 'Webbed', 'Fluffed', 'Cherubian', 'Multi-Eyes', 'Sakura', 'Eel', 'Viper',
 	'Seraph', 'Blazer', 'Elemental', 'Albino', 'Anery', 'Leucism', 'Abundism', 'Lunar', 'Vented', 'Faceted',
-	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate", 'Chimera'
+	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate"
 ];
 const rav_only_mutes = ['Eagle Beak', 'Fisher Beak', 'Warlord', 'Vulture Beak'];
 
@@ -268,7 +268,6 @@ function rollDragon(egg_table) {
 		dragon.mutation = 'Radiant ' + rad[0];
 		dragon.radiance_geno = 'nRad-' + rad[1];
 	} else if (dragon.mutation == 'Chimera') {
-        dragon.mutation = 'Chimera';
 		dragon.chim_marks = rollMarkings(egg_table)
 		dragon.chim_coat = getRollResult(egg_table.base)
 	}
@@ -423,6 +422,7 @@ function formatDragon(dragon, num) {
 	var addedMutation = ""
 	if(dragon.mutation == 'Chimera') {
 		var formattedChim = formatMarks(dragon.chim_marks);
+        dragon_string += `T: ${dragon.coat} Coat, ${dragon.traits.join(", ")} Chimera <br>`
 		phenotype += ` || ${formattedChim[0]}`
 		genotype += ` || ${formattedChim[1]}`
 	} else if(!dragon.mutation.includes("Radiant") && dragon.mutation != 'no') {
