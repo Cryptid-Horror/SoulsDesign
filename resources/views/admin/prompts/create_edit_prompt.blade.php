@@ -91,7 +91,7 @@
     {!! Form::checkbox('is_active', 1, $prompt->id ? $prompt->is_active : 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
     {!! Form::label('is_active', 'Is Active', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Prompts that are not active will be hidden from the prompt list. The start/end time hide settings override this setting, i.e. if this is set to active, it will still be hidden outside of the start/end times.') !!}
 </div>
-<!----Level Area--->
+
 <h3>Level Rewards (Optional)</h3>
 <p>Leave the following forms blank if you want no reward</p>
 <div class="form-group">
@@ -133,7 +133,7 @@
         {!! Form::number('level_req', $prompt->level_req ? $prompt->level_req : 1, ['class' => 'form-control mb-1', 'min' => 1]) !!}
     </div>
 </div>
-<!------------------------------------->
+
 
 <div class="form-group">
     {!! Form::label('Hide Submissions (Optional)') !!} {!! add_help('Hide submissions to this prompt until the prompt ends, or forever. <strong>Hiding until the prompt ends requires a set end time.</strong>') !!}
