@@ -37,7 +37,7 @@
                                 Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
-                                Activity List (Prompts)
+                                <i class="fas fa-book"></i> Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
                                 Adoption Center
