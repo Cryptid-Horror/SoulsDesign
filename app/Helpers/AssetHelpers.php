@@ -67,7 +67,6 @@ function calculateGroupCurrency($data)
  */
 function getAssetKeys($isCharacter = false)
 {
-    if(!$isCharacter) return ['items', 'awards', 'currencies', 'raffle_tickets', 'loot_tables', 'user_items', 'characters', 'recipes'];
     if(!$isCharacter) return ['items', 'awards', 'currencies', 'pets', 'weapons', 'gears', 'raffle_tickets', 'loot_tables', 'user_items', 'characters', 'recipes'];
     else return ['currencies', 'items', 'character_items', 'loot_tables'];
 }
