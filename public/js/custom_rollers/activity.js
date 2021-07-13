@@ -53,7 +53,7 @@ function rollHunt(){
 			else if (i <= 40){itemlist += "Fox Pelt";} // fox pelt
 			else if (i <= 43){itemlist += "Small Animal Carcass";} // fox carcass
 			else if (i <= 50){itemlist += "Wolf Pelt";} // wolf pelt
-			else if (i <= 55){itemlist += "Hark Carcass";} // dead hawk -- CHARMY
+			else if (i <= 55){itemlist += "Shark Carcass";} // Shark -- CHARMY
 			else if (i <= 58){itemlist += "Swan Carcass";} // dead swan 
 			else if (i <= 60){itemlist += "Spotted Deer Pelt";} // spotted deer pelt
 			else if (i <= 63){itemlist += "Brown Deer Pelt";} // brown deer pelt

@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
+                    <i class="fas fa-star-and-crescent"></i> 
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
@@ -24,69 +25,72 @@
                         <a class="nav-link" href="{{ url('sales') }}">Sales</a>
                     @endif
                 </li>
-                @if(Auth::check())
-                <li class="nav-item">
-                                <a class="nav-link" href="{{ url('https://www.soulsbetween.com/design') }}">GENETICS PORTAL</a>
-                </li>
-                    <li class="nav-item dropdown">
+                 <li class="nav-item dropdown">
                         <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Activities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
                             <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
-                            Activity Guide
+                               <i class="fas fa-clipboard-list"></i> Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
-                                Activity List (Prompts)
+                                <i class="fas fa-dungeon"></i> Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
-                            Adoption Center
+                               <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
-                                Crafting
+                               <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
+
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
-                                Design Registration
-                            </a>
+                               <i class="fas fa-paint-brush"></i>  Design Registration </a>
+
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
-                            Primal and Mastery Points
+                                <i class="fas fa-clipboard-list"></i> Primal and Mastery Points
+                            </a>
+                              <a class="dropdown-item" href="{{ url('level') }}">
+                                <i class="fas fa-level-up-alt"></i> Level Area
                             </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
-                            Shops
+                               <i class="fas fa-store"></i> Shops
                             </a>
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
-                                Trade Listings
+                               <i class="fas fa-sign"></i> Trade Listings
                             </a>
                             
                             <div class="dropdown-divider"></div>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/13') }}">
-                                Leasing Dragons
+                               <i class="fas fa-sign"></i> Leasing Dragons
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Flights') }}">
-                                Flights
+                               <i class="fas fa-dragon"></i> Flights
                             </a>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
-                                Nesting Permissions
+                                 <i class="fas fa-egg"></i> Nesting Permissions
                             </a>
-                           
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
+                                <i class="fas fa-sign"></i> Refer a Friend
+                            </a>
+                          
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Rollers
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/combat') }}">Combat</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/daily_activity') }}">Daily Activities</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/hatchery') }}">Hatchery</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/mp_counter') }}">Master Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/nesting') }}">Nesting </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/pp_counter') }}">Primal Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}"> Questing</a>
-                        </div>
-                    </li>
-                @endif
-                <li class="nav-item dropdown">
+                 <li class="nav-item">
+                    <a class="nav-link" href=" {{url("https://discord.gg/ZqtG7jf") }}"><i class="fab fa-discord"></i> Discord</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('forum') }}">Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('gallery') }}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                                <a class="nav-link" href="{{ url('https://www.soulsbetween.com/design') }}">GENETICS PORTAL</a>
+                </li>
+                    <li class="nav-item">
+                                <a class="nav-link" href="{{ url('world/info') }}">Lore and World</a>
+                </li>
+                 <li class="nav-item dropdown">
                     <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Masterlists
                     </a>
@@ -113,16 +117,21 @@
                         </a>
                     </div>
                 </li>
-                    <li class="nav-item">
-                                <a class="nav-link" href="{{ url('world/info') }}">Lore and World</a>
-                </li>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('gallery') }}">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('forum') }}">Forums</a>
-                </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Rollers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/combat') }}">Combat</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/daily_activity') }}">Daily Activities</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/hatchery') }}">Hatchery</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/mp_counter') }}">Master Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/nesting') }}">Nesting </a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/pp_counter') }}">Primal Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}"> Questing</a>
+                        </div>
+                    </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

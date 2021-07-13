@@ -27,6 +27,11 @@ use App\Models\Character\CharacterItem;
 use App\Models\Item\Item;
 use App\Models\Item\ItemLog;
 
+use App\Models\Stats\ExpLog;
+use App\Models\Stats\StatTransferLog;
+use App\Models\Stats\LevelLog;
+use App\Models\Stats\CountLog;
+
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -49,7 +54,7 @@ class Character extends Model
         'is_sellable', 'is_tradeable', 'is_giftable',
         'sale_value', 'transferrable_at', 'is_visible',
         'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'sort',
-        'is_myo_slot', 'name', 'trade_id', 'owner_url', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
+        'is_myo_slot', 'name', 'trade_id', 'owner_url', 'class_id', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
         'title_name', 'nicknames', 'is_adopted', 'health_status', 'total_health', 'current_health', 'sex', 'gender_pronouns',
         'temperament', 'diet', 'skills', 'rank', 'slots_used',
         'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
@@ -59,6 +64,7 @@ class Character extends Model
         // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
         // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug',
         'deceased', 'deceased_at', 'has_grand_title'
+
     ];
 
     /**
@@ -190,6 +196,22 @@ class Character extends Model
     }
 
     /**
+     * Get character level.
+     */
+    public function level() 
+    {
+        return $this->hasOne('App\Models\Stats\Character\CharaLevels');
+    }
+
+    /**
+     * Get characters stats.
+     */
+    public function stats() 
+    {
+        return $this->hasMany('App\Models\Stats\Character\CharacterStat');
+    }
+
+    /**
      * Get the character's active design update.
      */
     public function designUpdate()
@@ -229,6 +251,21 @@ class Character extends Model
         return $this->belongsTo('App\Models\Rarity', 'rarity_id');
     }
 
+    public function pets()
+    {
+        return $this->hasMany('App\Models\User\UserPet', 'chara_id');
+    }
+    
+    public function gear()
+    {
+        return $this->hasMany('App\Models\User\UserGear', 'character_id');
+    }
+
+    public function weapons()
+    {
+        return $this->hasMany('App\Models\User\UserWeapon', 'character_id');
+    }
+
     /**
      * Get the character's associated gallery submissions.
      */
@@ -245,12 +282,18 @@ class Character extends Model
         return $this->belongsToMany('App\Models\Item\Item', 'character_items')->withPivot('count', 'data', 'updated_at', 'id')->whereNull('character_items.deleted_at');
     }
 
-    /**
-     * Get the lineage of the character.
-     */
+ 
     public function lineage()
     {
         return $this->hasOne('App\Models\Character\CharacterLineage', 'character_id');
+    }
+     /* Get the character's class
+     */
+
+    public function class()
+    {
+        return $this->belongsTo('App\Models\Character\CharacterClass', 'class_id');
+
     }
 
     /**********************************************************************************************
@@ -563,6 +606,76 @@ class Character extends Model
     }
 
     /**
+     * Get the character's exp logs.
+     *
+     * @param  int  $limit
+     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getExpLogs($limit = 10)
+    {
+        $character = $this;
+        $query = ExpLog::where(function($query) use ($character) {
+            $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
+        })->orWhere(function($query) use ($character) {
+            $query->with('recipient')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
+        })->orderBy('id', 'DESC');
+        if($limit) return $query->take($limit)->get();
+        else return $query->paginate(30);
+    }
+
+    /**
+     * Get the character's stat logs.
+     *
+     * @param  int  $limit
+     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getStatLogs($limit = 10)
+    {
+        $character = $this;
+        $query = StatTransferLog::where(function($query) use ($character) {
+            $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
+        })->orWhere(function($query) use ($character) {
+            $query->with('recipient')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
+        })->orderBy('id', 'DESC');
+        if($limit) return $query->take($limit)->get();
+        else return $query->paginate(30);
+    }
+
+    /**
+     * Get the character's level logs.
+     *
+     * @param  int  $limit
+     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getLevelLogs($limit = 10)
+    {
+        $character = $this;
+        $query = LevelLog::where(function($query) use ($character) {
+            $query->with('recipient')->where('leveller_type', 'Character')->where('recipient_id', $character->id);
+        })->orderBy('id', 'DESC');
+        if($limit) return $query->take($limit)->get();
+        else return $query->paginate(30);
+    }
+
+    /**
+     * Get the character's stat count logs
+     *
+     * @param  int  $limit
+     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getCountLogs($limit = 10)
+    {
+        $character = $this;
+        $query = CountLog::where(function($query) use ($character) {
+            $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
+        })->orWhere(function($query) use ($character) {
+            $query->where('character_id', $character->id)->where('log_type', '!=', 'Staff Removal');
+        })->orderBy('id', 'DESC');
+        if($limit) return $query->take($limit)->get();
+        else return $query->paginate(30);
+    }
+
+    /**
      * Get the character's held currencies as an array for select inputs.
      *
      * @return array
@@ -639,7 +752,8 @@ class Character extends Model
      */
     public function getSubmissions()
     {
-        return Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->whereIn('id', SubmissionCharacter::where('character_id', $this->id)->pluck('submission_id')->toArray())->paginate(30);
+        $first = Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->where('focus_chara_id', $this->id)->pluck('id');
+        return Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->whereIn('id', SubmissionCharacter::where('character_id', $this->id)->pluck('submission_id')->union($first)->toArray())->paginate(30);
 
         // Untested
         //$character = $this;

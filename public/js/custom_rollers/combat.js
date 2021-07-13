@@ -2,7 +2,7 @@
 
 // dps is number of times a dragon gets to roll their raw/bleed, keyed as follows:
 // [attack_no.]:[value to roll under or equal to get that extra attack]
-const dps_chance = { 2: 5, 3: 3 };
+const dps_chance = { 2: 5, 3: 3, 4: 2 };
 
 // Keyed by: [num to roll]:[% deflected (written as float)]
 const deflect_chance = { 1: 0.75, 2: 0.5, 3: 0.25, 4: 0.1, 5: 0.05, 6: 0.03, 7: 0.02, 8: 0.01, 9: 0.0, 10: 0.0 };
@@ -64,6 +64,7 @@ const classes = {
 	},
 };
 
+
 const breath_weaknesses = {
 	'fire': 'water', // i.e. fire is weak to water
 	'water': 'lightning',
@@ -96,46 +97,37 @@ const magic_classes = {
 
 const armor_sets = {
 	'leather': {
-		helm: 10,
-		chest: 10,
-		tail: 10,
+		chest: 30,
 		break_chance: 5,
 		bleed_res: 0,
 		magic_res: 0
 	},
 	'sturdy': {
-		helm: 20,
-		chest: 20,
-		tail: 20,
+		chest: 60,
 		break_chance: 3,
 		bleed_res: 0,
 		magic_res: 0
 	},
 	'iron': {
-		helm: 25,
-		chest: 25,
-		tail: 25,
+		chest: 75,
 		break_chance: 1,
 		bleed_res: 0,
 		magic_res: 0
 	},
 	'crystalline': {
-		helm: 30,
-		chest: 30,
-		tail: 30,
+		chest: 90,
 		break_chance: 0,
 		bleed_res: 10,
 		magic_res: 0
 	},
 	'aether': {
-		helm: 30,
-		chest: 30,
-		tail: 30,
+		chest: 90,
 		break_chance: 0,
 		bleed_res: 0,
 		magic_res: 10
 	},
 }
+
 
 // For raids
 const breakable = {
@@ -143,6 +135,170 @@ const breakable = {
 	'tail': 2,
 	'legs': 3,
 	'none': 4
+}
+
+// For logging purposes
+const item_names = {
+	'strength_tonic':	'Strength Tonic',
+	'magic_tonic': 		'Magic Tonic',
+	'bleed_tonic': 		'Bleed Tonic',
+	'breath_tonic': 	'Breath Tonic',
+	'dps_booster':		'DPS Booster',
+}
+
+const damage_modifier_items = {
+	'strength_tonic': {
+		raw: 20,
+		bleed: 0,
+		magic: 0,
+		breath: 0
+	},
+    'magic_tonic': {
+		raw: 0,
+		bleed: 0,
+		magic: 20,
+		breath: 0
+    },
+    'bleed_tonic': {
+		raw: 0,
+		bleed: 20,
+		magic: 0,
+		breath: 0
+	},
+    'breath_tonic': {
+		raw: 0,
+		bleed: 0,
+		magic: 0,
+		breath: 20
+	}
+}
+
+const dps_items = {
+	'dps_booster': {
+		dps_boost: 1
+	}
+}
+
+// Used for logging to verify that the skill has been inputted
+// Also stores each skills proc chance (a value to roll equal or less than out of 10)
+const skills = {
+	'skill_aether_walker': {
+		name: 'Aether Walker',
+		effect: 'Increases chance to crit magic damage',
+		proc_chance: 5
+	},
+	'skill_haunting_roar': {
+		name: 'Haunting Roar',
+		effect: 'Decreases opponent\'s natural resistance',
+		proc_chance: 5
+	},
+	'skill_healing_aura': {
+		name: 'Healing Aura',
+		effect: 'Heals self at the end of battle',
+		proc_chance: 5
+	},
+	'skill_inner_fire': {
+		name: 'Inner Fire',
+		effect: 'Increases chance to crit breath damage',
+		proc_chance: 5
+	},
+	'skill_steadfast': {
+		name: 'Steadfast',
+		effect: 'Increases chance to crit raw damage',
+		proc_chance: 5
+	},
+	'skill_swift_feet': {
+		name: 'Swift Feet',
+		effect: 'Goes first in battle',
+		proc_chance: 5
+	},
+	'skill_bleed': {
+		name: 'Bleed',
+		effect: 'Increases chance to crit bleed damage',
+		proc_chance: 5
+	},
+	'skill_armor': {
+		name: 'Armor',
+		effect: 'Increases own natural resistance',
+		proc_chance: 5
+	},
+	'skill_dps': {
+		name: 'DPS',
+		effect: 'Increases self max DPS',
+		proc_chance: 5
+	}
+};
+
+// Stores a variety of values that will be used by skills
+const skill_data = {
+	// Skills modifying crit chance modify the dragon's phys_crit or mag_crit
+	// depending on the specific damage type being affected
+
+	// They are also split into offensive and defensive skills
+	// OFFENSIVE: applied to self when the dragon is the attacker
+	// DEFENSIVE: applied to the opponent when the dragon is the defender
+
+	// The listed value is MATHEMATICALLY ADDED to the respective crit stat
+	// which is measured out of 10 (crits are rolls that are less than the crit stat)
+	// i.e. offensive skills should use positive values and defensive skills should use negative values
+	offensive_crit_chance_skills: {
+		'skill_aether_walker': {
+			raw: 0,
+			bleed: 0,
+			magic: 1,
+			breath: 0
+		},
+		'skill_steadfast': {
+			raw: 1,
+			bleed: 0,
+			magic: 0,
+			breath: 0
+		},
+		'skill_bleed': {
+			raw: 0,
+			bleed: 1,
+			magic: 0,
+			breath: 0
+		},
+		'skill_inner_fire': {
+			raw: 0,
+			bleed: 0,
+			magic: 0,
+			breath: 1
+		}
+	},
+	defensive_crit_chance_skills: {
+
+	},
+	haunting_roar_res_reduction: 10,  	// This value will be deducted from the defender's res
+	armor_res_boost: 10, 				// This value will be added to the defender's res
+	healing_aura_heal: 100,
+	dps_max_dps_increase: 1					// This value will be added to the attacker's max_dps
+};
+
+const familiars = {
+	damage: {
+		'dire_wolf': {
+			name: 'Dire Wolf',
+			raw: 30,
+			bleed: 0,
+			magic: 0,
+			breath: 0
+		},
+		'basilisk': {
+			name: 'Basilisk',
+			raw: 0,
+			bleed: 0,
+			magic: 30,
+			breath: 0
+		}
+	},
+	healing: {
+		'phoenix': {
+			name: 'Phoenix',
+			healing: 50
+		}
+	}
 }
 
 // Inputs are retrieved in the setupDragons function
@@ -158,6 +314,7 @@ var dragon_1;
 
 var dragon_2;
 
+var results = "";
 var detailed_breakdown = "";
 
 function fight() {
@@ -166,16 +323,42 @@ function fight() {
 	// Roll to determine who goes first
 	var first;
 	var second;
-	if(rand(1, 2) == 1) {
+	// Check for Swift Feet and whether they proc
+	var swift_feet_1 = false;
+	var swift_feet_2 = false;
+	if(checkForSkill(dragon_1, 'skill_swift_feet')) {
+		var proc_roll = rand(1, 10);
+		swift_feet_1 = proc_roll <= skills['skill_swift_feet'].proc_chance;
+		if(swift_feet_1) detailed_breakdown += dragon_1.name + formatSkillActivationLog('skill_swift_feet');
+	}
+	if(checkForSkill(dragon_2, 'skill_swift_feet')) {
+		var proc_roll = rand(1, 10);
+		swift_feet_2 = proc_roll <= skills['skill_swift_feet'].proc_chance;
+		if(swift_feet_2) detailed_breakdown += dragon_2.name + formatSkillActivationLog('skill_swift_feet');
+	}
+	// If both or neither dragons have proc'd Swift Feet, do a coin flip
+	if(swift_feet_1 == swift_feet_2) {
+		if(swift_feet_1) detailed_breakdown += "Both dragons have activated Swift Feet; the order will therefore be decided by coin flip:<br>";
+		if(rand(1, 2) == 1) {
+			var first = dragon_1;
+			var second = dragon_2;
+		}
+		else {
+			var first = dragon_2;
+			var second = dragon_1;
+		}
+	}
+	else if(swift_feet_1) {
 		var first = dragon_1;
 		var second = dragon_2;
 	}
-	else {
+	else if(swift_feet_2) {
 		var first = dragon_2;
 		var second = dragon_1;
 	}
 	
-	var results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br>";
+	detailed_breakdown += first.name + " goes first.<br><br>";
+	results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br><br>";
 	var first_dmg = calculateDamage(first, second);
 	var second_part_attacked = rollBreakable(second);
 	// Print damage of first dragon
@@ -189,7 +372,12 @@ function fight() {
 	// Check if second is K.O.-ed at this point
 	// If so, end the fight and return the result
 	if(second.health == 0) {
-		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left."
+		// First gets to check for Healing Aura
+		applyHealing(first);
+		results += "<br>" + second.name + " was knocked out before they could attack, and the battle ends. " + first.name + " remains unharmed with " + first.health + " health left.<br>"
+		// Display final health
+		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
 		return results;
 	}
 	results += "<br>";
@@ -203,14 +391,23 @@ function fight() {
 	results += armorCheck(first);
 	// Add a statement like 'first has x health left!
 	first.health = (first.health - second_dmg) < 0 ? 0 : first.health - second_dmg;
-	results += first.name + " has " + first.health + " health left.<br>";
+	results += first.name + " has " + first.health + " health left.<br><br>";
 	// Check if first gets K.O.-ed
 	if(first.health == 0) {
+		// Second gets to check for Healing Aura
+		applyHealing(second);
 		results += "<br>" + first.name + " was knocked out, and the battle ends."
 	}
 	else {
-		results += "<br>The battle ends.";
+		// Both dragons get to check for Healing Aura
+		applyHealing(first);
+		applyHealing(second);
+		results += "<br>The battle ends.<br><br>";
 	}
+
+	// Display final health
+	results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+	results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
 	return results;
 }
 
@@ -223,11 +420,12 @@ function setupDragons() {
 		health: 0,
 		stats: {},  // filled with the stats of the corresponding class
 		breaths: {}, // array of up to 2 objs
+        familiars: {}, //allowed 2
+        skills: {}, //allowed 4 
+        items: {}, //allowed 2
 		magic: {}, // should have 2 children: min and max (damage)
 		armor: {
-			helm: '???',
 			chest: '???',
-			tail: '???',
 			total_rating: 0,
 			bleed_res: 0,
 			magic_res: 0
@@ -242,11 +440,12 @@ function setupDragons() {
 		health: 0,
 		stats: {}, // filled with the stats of the corresponding class
 		breaths: {}, // array of up to 2 objs
+        familiars: {}, //allowed 2
+        skills: {}, //allowed 4 
+        items: {}, //allowed 2
 		magic: {}, // should have 2 children: min and max (damage)
 		armor: {
-			helm: '???',
 			chest: '???',
-			tail: '???',
 			total_rating: 0,
 			bleed_res: 0,
 			magic_res: 0
@@ -262,9 +461,13 @@ function setupDragons() {
 		dragon_1.name = getDragonName(import_link_1);
 		dragon_1.link = getDragonLink(import_link_1);
 	}
-	else {
+	else if(name_1) {
 		dragon_1.name = name_1;
 		dragon_1.link = name_1;
+	}
+	else {
+		dragon_1.name = 'Dragon 1';
+		dragon_1.link = 'Dragon 1';
 	}
 	dragon_1.health = parseInt(document.getElementById('1_health').value);
 	Object.assign(dragon_1.stats, classes[document.getElementById('1_class').value]);
@@ -281,14 +484,33 @@ function setupDragons() {
 		dragon_1.breaths[breath_2_1].max_dmg = breath_tier_dmgs[parseInt(document.getElementById('1_breath_tier_2').value)];
 	}
 	Object.assign(dragon_1.magic, magic_classes[document.getElementById('1_magic').value]);
-	// Dragon 1 Helm
-	dragon_1.armor.helm = document.getElementById('1_helm').value;
-	if(dragon_1.armor.helm != 'NA') {
-		var helm_type_1 = armor_sets[dragon_1.armor.helm];
-		dragon_1.armor.total_rating += helm_type_1.helm;
-		dragon_1.armor.bleed_res += helm_type_1.bleed_res;
-		dragon_1.armor.magic_res += helm_type_1.magic_res;
-	}
+
+	// Dragon 1 familiars
+	var familiar_1_1 = document.getElementById('1_familiar_1').value;
+	var familiar_2_1 = document.getElementById('1_familiar_2').value;
+
+	if(familiar_1_1 != 'NA') dragon_1.familiars[familiar_1_1] = 1;
+    if(familiar_2_1 != 'NA') dragon_1.familiars[familiar_2_1] = 1;
+	
+	// Dragon 1 skills
+    var skill_1_1 = document.getElementById('1_skill_1').value;
+    var skill_2_1 = document.getElementById('1_skill_2').value;
+    var skill_3_1 = document.getElementById('1_skill_3').value;
+    var skill_4_1 = document.getElementById('1_skill_4').value;
+
+	if(skill_1_1 != 'NA') dragon_1.skills[skill_1_1] = skills[skill_1_1];
+    if(skill_2_1 != 'NA') dragon_1.skills[skill_2_1] = skills[skill_2_1];
+    if(skill_3_1 != 'NA') dragon_1.skills[skill_3_1] = skills[skill_3_1];
+    if(skill_4_1 != 'NA') dragon_1.skills[skill_4_1] = skills[skill_4_1];
+
+	// Dragon 1 items
+	var item_1_1 = document.getElementById('1_item_1').value;
+	var item_2_1 = document.getElementById('1_item_2').value;
+	// Add items as key values, using the value as the number of that particular item being used
+	// Currently all items treated as non-stacking, as the code will overwrite each other if items are repeated
+	if(item_1_1 != 'NA') dragon_1.items[item_1_1] = 1;
+	if(item_2_1 != 'NA') dragon_1.items[item_2_1] = 1;
+
 	// Dragon 1 Chest
 	dragon_1.armor.chest = document.getElementById('1_chest').value;
 	if(dragon_1.armor.chest != 'NA') {
@@ -297,18 +519,13 @@ function setupDragons() {
 		dragon_1.armor.bleed_res += chest_type_1.bleed_res;
 		dragon_1.armor.magic_res += chest_type_1.magic_res;
 	}
-	// Dragon 1 Tail
-	dragon_1.armor.tail = document.getElementById('1_tail').value;
-	if(dragon_1.armor.tail != 'NA') {
-		var tail_type_1 = armor_sets[dragon_1.armor.tail];
-		dragon_1.armor.total_rating += tail_type_1.tail;
-		dragon_1.armor.bleed_res += tail_type_1.bleed_res;
-		dragon_1.armor.magic_res += tail_type_1.magic_res;
-	}
+	
 	dragon_1.useBreakable = document.getElementById('1_use_breakable').checked;
 	if(document.getElementById('1_head_part').checked) { dragon_1.broken.push('head'); }
 	if(document.getElementById('1_tail_part').checked) { dragon_1.broken.push('tail'); }
 	if(document.getElementById('1_legs_part').checked) { dragon_1.broken.push('legs'); }
+
+
 
 	// Setup dragon_2
 	var import_link_2 = document.getElementById('2_link').value;
@@ -317,9 +534,13 @@ function setupDragons() {
 		dragon_2.name = getDragonName(import_link_2);
 		dragon_2.link = getDragonLink(import_link_2);
 	}
-	else {
+	else if(name_2) {
 		dragon_2.name = name_2;
 		dragon_2.link = name_2;
+	}
+	else {
+		dragon_2.name = 'Dragon 2';
+		dragon_2.link = 'Dragon 2';
 	}
 	dragon_2.health = parseInt(document.getElementById('2_health').value);
 	Object.assign(dragon_2.stats, classes[document.getElementById('2_class').value]);
@@ -336,14 +557,33 @@ function setupDragons() {
 		dragon_2.breaths[breath_2_2].max_dmg = breath_tier_dmgs[parseInt(document.getElementById('2_breath_tier_2').value)];
 	}
 	Object.assign(dragon_2.magic, magic_classes[document.getElementById('2_magic').value]);
-	// Dragon 2 Helm
-	dragon_2.armor.helm = document.getElementById('2_helm').value;
-	if(dragon_2.armor.helm != 'NA') {
-		var helm_type_2 = armor_sets[dragon_2.armor.helm];
-		dragon_2.armor.total_rating += helm_type_2.helm;
-		dragon_2.armor.bleed_res += helm_type_2.bleed_res;
-		dragon_2.armor.magic_res += helm_type_2.magic_res;
-		}
+
+	// Dragon 2 familiars
+	var familiar_1_2 = document.getElementById('2_familiar_1').value;
+	var familiar_2_2 = document.getElementById('2_familiar_2').value;
+
+	if(familiar_1_2 != 'NA') dragon_2.familiars[familiar_1_2] = 1;
+    if(familiar_2_2 != 'NA') dragon_2.familiars[familiar_2_2] = 1;
+	
+	// Dragon 2 skills
+    var skill_1_2 = document.getElementById('2_skill_1').value;
+    var skill_2_2 = document.getElementById('2_skill_2').value;
+    var skill_3_2 = document.getElementById('2_skill_3').value;
+    var skill_4_2 = document.getElementById('2_skill_4').value;
+
+	if(skill_1_2 != 'NA') dragon_2.skills[skill_1_2] = skills[skill_1_2];
+    if(skill_2_2 != 'NA') dragon_2.skills[skill_2_2] = skills[skill_2_2];
+    if(skill_3_2 != 'NA') dragon_2.skills[skill_3_2] = skills[skill_3_2];
+    if(skill_4_2 != 'NA') dragon_2.skills[skill_4_2] = skills[skill_4_2];
+
+	// Dragon 2 items
+	var item_1_2 = document.getElementById('2_item_1').value;
+	var item_2_2 = document.getElementById('2_item_2').value;
+	// Add items as key values, using the value as the number of that particular item being used
+	// Currently all items treated as non-stacking, as the code will overwrite each other if items are repeated
+	if(item_1_2 != 'NA') dragon_2.items[item_1_2] = 1;
+	if(item_2_2 != 'NA') dragon_2.items[item_2_2] = 1;
+
 	// Dragon 2 Chest
 	dragon_2.armor.chest = document.getElementById('2_chest').value;
 	if(dragon_2.armor.chest != 'NA') {
@@ -352,14 +592,7 @@ function setupDragons() {
 		dragon_2.armor.bleed_res += chest_type_2.bleed_res;
 		dragon_2.armor.magic_res += chest_type_2.magic_res;
 	}
-	// Dragon 2 Tail
-	dragon_2.armor.tail = document.getElementById('2_tail').value;
-	if(dragon_2.armor.tail != 'NA') {
-		var tail_type_2 = armor_sets[dragon_2.armor.tail];
-		dragon_2.armor.total_rating += tail_type_2.tail;
-		dragon_2.armor.bleed_res += tail_type_2.bleed_res;
-		dragon_2.armor.magic_res += tail_type_2.magic_res;
-	}
+	
 	dragon_2.useBreakable = document.getElementById('2_use_breakable').checked;
 	if(document.getElementById('2_head_part').checked) { dragon_2.broken.push('head'); }
 	if(document.getElementById('2_tail_part').checked) { dragon_2.broken.push('tail'); }
@@ -368,8 +601,17 @@ function setupDragons() {
 
 function calculateDamage(attacker, defender) {
 	var dps = 1;
+	var max_dps = attacker.stats.max_dps;
+	// Check for DPS skill to increase the max dps
+	if(checkForSkill(attacker, 'skill_dps')) {
+		var dps_skill_roll = rand(1, 10);
+		if(dps_skill_roll <= skills['skill_dps'].proc_chance) {
+			detailed_breakdown += attacker.name + formatSkillActivationLog('skill_dps');
+			max_dps += skill_data.dps_max_dps_increase;
+		}
+	}
 	// Roll DPS (number of times attacker will roll raw+bleed dmg)
-	for(let i = 1; i < attacker.stats.max_dps; i++) {
+	for(let i = 1; i < max_dps; i++) {
 		var roll_dps = rand(1, 10);
 		if(roll_dps <= dps_chance[i+1]) {
 			dps++;
@@ -378,7 +620,58 @@ function calculateDamage(attacker, defender) {
 			break; // Stop the loop entirely
 		}
 	}
+	// Apply DPS item(s)
+	Object.keys(dps_items).forEach(item => {
+		if(checkForItem(attacker, item)) {
+			var dps_info = dps_items[item];
+			console.log(dps_info);
+			detailed_breakdown += "The use of " + item_names[item] + " grants " + attacker.name + " " + dps_info.dps_boost + " more attack(s)!<br>";
+			dps += dps_info.dps_boost;
+		}
+	});
+
 	detailed_breakdown += attacker.name + " goes for " + dps + " attack(s)!<br>"
+	
+	// Calculate the crit chances for each type of damage
+	// -> Class base chance + offensive skills + defensive skills
+
+	// Initialise raw and bleed crit chances with the attacker's physical crit
+	var raw_crit_check = attacker.stats.phys_crit;
+	var bleed_crit_check = attacker.stats.phys_crit;
+	// Initialise magic crit chance with the attacker's physical crit
+	var magic_crit_check = attacker.stats.mag_crit;
+	// Use the global breath crit chance
+	var breath_crit_check = breath_crit;
+
+	// Check for crit modifying skills on the attacker
+	var attacker_offensive_crit_skills = getOffensiveCritSkills(attacker);
+	Object.keys(attacker_offensive_crit_skills).forEach(skill => {
+		var skill_info = attacker_offensive_crit_skills[skill];
+		// Check if the skill procs first
+		var skill_proc = rand(1, 10);
+		if(skill_proc <= skill_info.proc_chance) {
+			detailed_breakdown += attacker.name + formatSkillActivationLog(skill);
+			raw_crit_check += skill_info.raw;
+			bleed_crit_check += skill_info.bleed;
+			magic_crit_check += skill_info.magic;
+			breath_crit_check += skill_info.breath;
+		}
+	});
+	// Check for crit modifying skills on the defender
+	var defender_defensive_crit_skills = getDefensiveCritSkills(defender);
+	Object.keys(defender_defensive_crit_skills).forEach(skill => {
+		var skill_info = defender_defensive_crit_skills[skill];
+		// Check if the skill procs first
+		var skill_proc = rand(1, 10);
+		if(skill_proc <= skill_info.proc_chance) {
+			detailed_breakdown += defender.name + formatSkillActivationLog(skill);
+			raw_crit_check += skill_info.raw;
+			bleed_crit_check += skill_info.bleed;
+			magic_crit_check += skill_info.magic;
+			breath_crit_check += skill_info.breath;
+		}
+	});
+
 	// Create 2 vars: one for raw and one for bleed
 	var raw_dmg = 0;
 	var bleed_dmg = 0;
@@ -394,15 +687,15 @@ function calculateDamage(attacker, defender) {
 		var raw_round = 0;
 		var bleed_round = 0;
 		var roll_raw_crit = rand(1, 10);
-		if(roll_raw_crit <= attacker.stats.phys_crit) {
+
+		if(roll_raw_crit <= raw_crit_check) {
 			detailed_breakdown += "* " + attacker.name + " crits their Raw attack this round.<br>"
 			raw_round = attacker.stats.max_raw;
-		}
-		else {
+        } else {
 			raw_round = rand(attacker.stats.min_raw, attacker.stats.max_raw);
 		}
 		var roll_bleed_crit = rand(1, 10);
-		if(roll_bleed_crit <= attacker.stats.phys_crit) {
+		if(roll_bleed_crit <= bleed_crit_check) {
 			detailed_breakdown += "* " + attacker.name + " crits their Bleed attack this round.<br>"
 			bleed_round = attacker.stats.max_bleed;
 		}
@@ -412,7 +705,45 @@ function calculateDamage(attacker, defender) {
 		raw_dmg += raw_round;
 		bleed_dmg += bleed_round;
 		detailed_breakdown += "-> Raw Damage: " + raw_round + "<br>";
+		// Apply damage modifier items
+		Object.keys(attacker.items).forEach(item => {
+			if(damage_modifier_items[item] && damage_modifier_items[item].raw != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				raw_dmg += damage_modifier_items[item].raw * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].raw + " Raw Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.raw != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				raw_dmg += familiar_data.raw * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.raw + " Raw Damage!<br>";
+			}
+		});
 		detailed_breakdown += "-> Bleed Damage: " + bleed_round + "<br>";
+        // Apply damage modifier items
+		Object.keys(attacker.items).forEach(item => {
+			if(damage_modifier_items[item] && damage_modifier_items[item].bleed != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				bleed_dmg += damage_modifier_items[item].bleed * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].bleed + " Bleed Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.bleed != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				bleed_dmg += familiar_data.bleed * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.bleed + " Bleed Damage!<br>";
+			}
+		});
 		detailed_breakdown += "<br>";
 	}
 	detailed_breakdown += "Total Raw Damage: " + raw_dmg + "<br>";
@@ -423,8 +754,32 @@ function calculateDamage(attacker, defender) {
 	raw_dmg *= (1 - deflect_chance[roll_deflect]);
 	raw_dmg = Math.trunc(raw_dmg);
 	detailed_breakdown += defender.name + " was able to deflect <b>" + (deflect_chance[roll_deflect]*100) + "%</b> of the Raw damage, reducing it to <b>" + raw_dmg + "</b>.<br>";
-	raw_dmg -= defender.stats.base_res;
-	detailed_breakdown += defender.name + "'s natural resistance of <b>" + defender.stats.base_res + "</b> helped to reduce the Raw damage to <b>" + raw_dmg + "</b>.<br>";
+	// Check for attacker's Haunting Roar
+	var defender_res = defender.stats.base_res;
+	if(checkForSkill(attacker, 'skill_haunting_roar')) {
+		var haunting_roar_roll = rand(1, 10);
+		if(haunting_roar_roll <= skills['skill_haunting_roar'].proc_chance) {
+			detailed_breakdown += attacker.name + formatSkillActivationLog('skill_haunting_roar');
+			defender_res -= skill_data.haunting_roar_res_reduction;
+			detailed_breakdown += defender.name + "'s natural resistance has fallen to " + defender_res + ".<br>";
+		}
+	}
+	// Check for defender's Armor
+	if(checkForSkill(defender, 'skill_armor')) {
+		var armor_roll = rand(1, 10);
+		if(armor_roll <= skills['skill_armor'].proc_chance) {
+			detailed_breakdown += defender.name + formatSkillActivationLog('skill_armor');
+			defender_res += skill_data.armor_res_boost;
+			detailed_breakdown += defender.name + "'s natural resistance has increased to " + defender_res + ".<br>";
+		}
+	}		
+	// Resistance cannot be less than 0
+	if(defender_res < 0) {
+		defender_res = 0;
+		detailed_breakdown += defender.name + "'s natural resistance cannot be negative, and has been set to 0.<br>";
+	}
+	raw_dmg -= defender_res;
+	detailed_breakdown += defender.name + "'s natural resistance of <b>" + defender_res + "</b> helped to reduce the Raw damage to <b>" + raw_dmg + "</b>.<br>";
 	// Do armor check if armor is equipped, reduce raw_dmg as necessary
 	var roll_armor_deflect = 0;
 	if(defender.armor.total_rating > 0) {
@@ -434,8 +789,10 @@ function calculateDamage(attacker, defender) {
 	}
 	detailed_breakdown += "Finally, their armor (or lack thereof) means that <b>" + roll_armor_deflect + "</b> is reduced from Raw damage to give <b>" + raw_dmg + "</b>.<br>";
 	// Raw damage cannot be less than 0
-	if(raw_dmg < 0) { raw_dmg = 0; }
-	detailed_breakdown += "(If the Raw damage has dropped below 0, it will be corrected to be equal to 0.)<br><br>"
+	if(raw_dmg < 0) {
+		raw_dmg = 0;
+		detailed_breakdown += "Raw damage cannot be negative, and has been set to 0.<br>";
+	}
 
 	// Deduct bleed_res from armor
 	bleed_dmg -= defender.armor.bleed_res;
@@ -444,10 +801,11 @@ function calculateDamage(attacker, defender) {
 	detailed_breakdown += defender.name + "'s armor offers <b>" + defender.armor.bleed_res + "</b> points of Bleed resistance, and so Bleed damage is <b>" + bleed_dmg + "</b>.<br>";
 
 	// Roll magic dmg, if present
+    //CRYPTID INPUT AETHER WALKER AND PEARL NECKLACE
 	var magic_dmg = 0;
 	if(Object.keys(attacker.magic).length > 0) {
 		var roll_magic_crit = rand(1, 10);
-		if(roll_magic_crit <= attacker.stats.mag_crit) {
+		if(roll_magic_crit <= magic_crit_check) {
 			detailed_breakdown += attacker.name + " is able to land a critical Magic attack! ";
 			magic_dmg = attacker.magic.max_dmg;
 		}
@@ -455,6 +813,25 @@ function calculateDamage(attacker, defender) {
 			magic_dmg = rand(attacker.magic.min_dmg, attacker.magic.max_dmg);
 		}
 		detailed_breakdown += attacker.name + " harnesses their magic to attack for <b>" + magic_dmg + "</b> Magic damage.<br>";
+        // Apply damage modifier items
+		Object.keys(attacker.items).forEach(item => {
+			if(damage_modifier_items[item] && damage_modifier_items[item].magic != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				magic_dmg += damage_modifier_items[item].magic * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item]. magic + " Magic Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.magic != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				magic_dmg += familiar_data.magic * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.magic + " Magic Damage!<br>";
+			}
+		});
 		// Deduct magic_res from armor
 		magic_dmg -= defender.armor.magic_res;
 		// Bleed damage cannot be less than 0
@@ -499,7 +876,7 @@ function calculateDamage(attacker, defender) {
 		});
 		var roll_breath_crit = rand(1, 10);
 		// breath_crit is a blanket value set at top of file
-		if(roll_breath_crit <= breath_crit) {
+		if(roll_breath_crit <= breath_crit_check) {
 			detailed_breakdown += attacker.name + " is able to land a critical Breath attack! ";
 			breath_dmg = highest_max_dmg;
 		}
@@ -507,50 +884,71 @@ function calculateDamage(attacker, defender) {
 			breath_dmg = rand(0, highest_max_dmg);
 		}
 		detailed_breakdown += attacker.name + " breathes " + chosen_breath + " to deal <b>" + breath_dmg + "</b> Breath damage.<br>";
+
+        // Apply damage modifier items
+		Object.keys(attacker.items).forEach(item => {
+			if(damage_modifier_items[item] && damage_modifier_items[item].breath != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				breath_dmg += damage_modifier_items[item].breath * attacker.items[item];
+				detailed_breakdown += "An additional " + damage_modifier_items[item].breath + " Breath Damage is dealt due to the effects of " + item_names[item] + "<br>";
+			}
+		});
+		// Apply damage familiars
+		Object.keys(attacker.familiars).forEach(familiar => {
+			var familiar_data = familiars.damage[familiar];
+			if(familiar_data && familiar_data.breath != 0) {
+				// Add modifier damage value multiplied by the stack size
+				// Currently stack size should not go over 1
+				breath_dmg += familiar_data.breath * attacker.familiars[familiar];
+				detailed_breakdown += attacker.name + "'s " + familiar_data.name + " springs into action, dealing " + familiar_data.breath + " Breath Damage!<br>";
+			}
+		});
 	}
 	var total_dmg = raw_dmg + bleed_dmg + magic_dmg + breath_dmg;
 	detailed_breakdown += "Summary of " + attacker.name + "'s Turn:<br>DPS: " + dps + "<br>Raw: " + raw_dmg + "<br>Bleed: " + bleed_dmg + "<br>Magic: " + magic_dmg + "<br>Breath: " + breath_dmg + "<br><b>Total:</b> " + total_dmg + "<br><br>";
 	return total_dmg
 }
 
+//DAMAGE PETS GO HERE??? 
+
 function armorCheck(defender) {
 	// Check if all pieces are the same set and not NA, if so, max 1 piece can be broken
 	// Otherwise, each piece is rolled separately
 	var broken = "";
-	if(defender.armor.helm != 'NA' && defender.armor.helm == defender.armor.chest && defender.armor.chest == defender.armor.tail) {
+	if(defender.armor.chest != 'NA' ) {
 		var roll_set = rand(1, 10);
-		if(roll_set < armor_sets[defender.armor.helm].break_chance) {
+		if(roll_set < armor_sets[defender.armor.chest].break_chance) {
 			// Select one piece to be broken; 1 =  helm, 2 = chest, 3 = tail
-			var roll_broken_piece = rand(1, 3);
-			var broken_piece = roll_broken_piece == 1 ? ' Helm' : roll_broken_piece == 2 ? ' Chest Plate' : ' Tail Guard';
-			broken += capitaliseFirstLetter(defender.armor.helm) + broken_piece + "<br>";
+			var roll_broken_piece = rand(1);
+			var broken_piece = " Armor";
+			broken += capitaliseFirstLetter(defender.armor.chest) + broken_piece + "<br>";
 		}
 	}
-	else {
-		// Check helm
-		if(defender.armor.helm != 'NA') {
-			var roll_helm = rand(1, 10);
-			if(roll_helm < armor_sets[defender.armor.helm].break_chance) {
-				broken += capitaliseFirstLetter(defender.armor.helm) + " Helm<br>";
-			}
-		}
-		// Check chest
-		if(defender.armor.chest != 'NA') {
-			var roll_chest = rand(1, 10);
-			if(roll_chest < armor_sets[defender.armor.chest].break_chance) {
-				broken += capitaliseFirstLetter(defender.armor.chest) + " Chest<br>";
-			}
-		}
-		// Check tail
-		if(defender.armor.tail != 'NA') {
-			var roll_tail = rand(1, 10);
-			if(roll_tail < armor_sets[defender.armor.tail].break_chance) {
-				broken += capitaliseFirstLetter(defender.armor.tail) + " Tail<br>";
-			}
-		}
-	}
-	if(broken != "") { broken = "Some of " + defender.name + "'s armor was broken in the attack:<br>" + broken; }
+
+	if(broken != "") { broken = defender.name + "'s armor was broken in the attack <br>"; }
 	return broken;
+}
+
+function applyHealing(dragon)
+{
+	var old_health = dragon.health;
+	applyHealingAura(dragon);
+	// Apply healing familiars
+	Object.keys(dragon.familiars).forEach(familiar => {
+		var familiar_data = familiars.healing[familiar];
+		if(familiar_data) {
+			// Add modifier damage value multiplied by the stack size
+			// Currently stack size should not go over 1
+			dragon.health += familiar_data.healing * dragon.familiars[familiar];
+			detailed_breakdown += dragon.name + "'s " + familiar_data.name + " springs into action, healing " + familiar_data.healing + " Health!<br>";
+		}
+	});
+	if(dragon.health != old_health) {
+		var health_healed = dragon.health - old_health;
+		results += dragon.name + " has healed <b>" + health_healed + "</b> Health, and is now at " + dragon.health + " Health.<br>";
+		detailed_breakdown += "<b>Total Health Healed:</b> " + health_healed + "<br>";
+	}
 }
 
 function rollBreakable(dragon) {
@@ -622,19 +1020,55 @@ function printDragonDetails(dragon) {
 	dragon_string += "> Magic Crit: " + dragon.stats.mag_crit + "<br>";
 	dragon_string += "Min/Max Magic: " + (Object.keys(dragon.magic).length <= 0 ? "0/0" : dragon.magic.min_dmg + "/" + dragon.magic.max_dmg) + "<br>";
 	dragon_string += "<br>";
-	dragon_string += "Breath Crit: 4 (Blanket Value for all dragons)<br>";
+	dragon_string += "Breath Crit: " + breath_crit + " (Blanket Value for all dragons)<br>";
 	dragon_string += "Breaths: " + (Object.keys(dragon.breaths).length <= 0 ? "None" : "") + "<br>";
 	Object.keys(dragon.breaths).forEach(breath => {
 		dragon_string += "> " + capitaliseFirstLetter(breath) + "<br>";
-		dragon_string += "-> Tier " + dragon.breaths[breath].tier + "<br>", 
+		dragon_string += "-> Tier " + dragon.breaths[breath].tier + "<br>";
 		dragon_string += "-> Strong against " + capitaliseFirstLetter(breath_weaknesses[breath]) + "<br>",
-		dragon_string += "-> Min/Max Damage: 0/" + dragon.breaths[breath].max_dmg + "<br>"
+		dragon_string += "-> Min/Max Damage: 0/" + dragon.breaths[breath].max_dmg + "<br>";
+	});
+	dragon_string += "<br>";
+	dragon_string += "Familiars: " + (Object.keys(dragon.items).length <= 0 ? "None" : "") + "<br>";
+	Object.keys(dragon.familiars).forEach(familiar => {
+		if(Object.keys(familiars.damage).includes(familiar)) {
+			var familiar_info = familiars.damage[familiar];
+			dragon_string += "> " + familiar_info.name + "<br>";
+			if(familiar_info.raw > 0) dragon_string += "-> Raw Damage Boost: " + familiar_info.raw + "<br>";
+			if(familiar_info.bleed > 0) dragon_string += "-> Bleed Damage Boost: " + familiar_info.bleed + "<br>";
+			if(familiar_info.magic > 0) dragon_string += "-> Magic Damage Boost: " + familiar_info.magic + "<br>";
+			if(familiar_info.breath > 0) dragon_string += "-> Breath Damage Boost: " + familiar_info.breath + "<br>";
+		} else if(Object.keys(familiars.healing).includes(familiar)) {
+			var familiar_info = familiars.healing[familiar];
+			dragon_string += "> " + familiar_info.name + "<br>";
+			dragon_string += "-> Healing: " + familiar_info.healing + "<br>";
+		}
+	});
+	dragon_string += "Skills: " + (Object.keys(dragon.skills).length <= 0 ? "None" : "") + "<br>";
+	Object.keys(dragon.skills).forEach(skill => {
+		var skill_info = dragon.skills[skill];
+		dragon_string += "> " + skill_info.name + "<br>";
+		dragon_string += skill_info.effect + "<br>";
+		dragon_string += "-> Proc Chance: " + skill_info.proc_chance + "<br>";
+	});
+	dragon_string += "<br>";
+	dragon_string += "Items: " + (Object.keys(dragon.items).length <= 0 ? "None" : "") + "<br>";
+	Object.keys(dragon.items).forEach(item => {
+		dragon_string += "> " + item_names[item] + "<br>";
+		if(Object.keys(damage_modifier_items).includes(item)) {
+			var item_info = damage_modifier_items[item];
+			if(item_info.raw > 0) dragon_string += "-> Raw Damage Boost: " + item_info.raw + "<br>";
+			if(item_info.bleed > 0) dragon_string += "-> Bleed Damage Boost: " + item_info.bleed + "<br>";
+			if(item_info.magic > 0) dragon_string += "-> Magic Damage Boost: " + item_info.magic + "<br>";
+			if(item_info.breath > 0) dragon_string += "-> Breath Damage Boost: " + item_info.breath + "<br>";
+		} else if(Object.keys(dps_items).includes(item)) {
+			var item_info = dps_items[item];
+			dragon_string += "-> DPS Boost: " + item_info.dps_boost + "<br>";
+		}
 	});
 	dragon_string += "<br>";
 	dragon_string += "Armor: " + "<br>";
-	dragon_string += "> " + capitaliseFirstLetter(dragon.armor.helm) + " Helm <br>";
 	dragon_string += "> " + capitaliseFirstLetter(dragon.armor.chest) + " Chest Plate <br>";
-	dragon_string += "> " + capitaliseFirstLetter(dragon.armor.tail) + " Tail Guard <br>";
 	dragon_string += "> Total Armor Rating: " + dragon.armor.total_rating + "<br>";
 	dragon_string += "> Bleed Resistance: " + dragon.armor.bleed_res + "<br>";
 	dragon_string += "> Magic Resistance: " + dragon.armor.magic_res + "<br>";
@@ -644,6 +1078,65 @@ function printDragonDetails(dragon) {
 function capitaliseFirstLetter(input) {
 	var first = input[0]
 	return input.replace(first, first.toUpperCase());
+}
+
+function checkForSkill(dragon, skill) {
+	return Object.keys(dragon.skills).includes(skill);
+}
+
+function checkForItem(dragon, item) {
+	return Object.keys(dragon.items).includes(item);
+}
+
+function getOffensiveCritSkills(dragon) {
+	var result = {};
+	// Do a check on each offensive crit skill for if its in the dragon's
+	// array of skills
+	Object.keys(skill_data.offensive_crit_chance_skills).forEach(skill => {
+		if(checkForSkill(dragon, skill)) {
+			result[skill] = dragon.skills[skill];
+			var skill_info = skill_data.offensive_crit_chance_skills[skill];
+			result[skill].raw = skill_info.raw;
+			result[skill].bleed = skill_info.bleed;
+			result[skill].magic = skill_info.magic;
+			result[skill].breath = skill_info.breath;
+		}
+	});
+	return result;
+}
+
+function getDefensiveCritSkills(dragon) {
+	var result = {};
+	// Do a check on each defensive crit skill for if its in the dragon's
+	// array of skills
+	Object.keys(skill_data.defensive_crit_chance_skills).forEach(skill => {
+		if(checkForSkill(dragon, skill)) {
+			result[skill] = dragon.skills[skill];
+			var skill_info = skill_data.defensive_crit_chance_skills[skill];
+			result[skill].raw = skill_info.raw;
+			result[skill].bleed = skill_info.bleed;
+			result[skill].magic = skill_info.magic;
+			result[skill].breath = skill_info.breath;
+		}
+	});
+	return result;
+}
+
+function formatSkillActivationLog(skill) {
+	var skill_info = skills[skill];
+	return "'s skill, " + skill_info.name + ", activates! (Effect: " + skill_info.effect + ")<br>";
+}
+
+function applyHealingAura(dragon) {
+	if(checkForSkill(dragon, 'skill_healing_aura')) {
+		var healing_aura_roll = rand(1, 10);
+		if(healing_aura_roll <= skills['skill_healing_aura'].proc_chance) {
+			detailed_breakdown += dragon.name + formatSkillActivationLog('skill_healing_aura');
+			dragon.health += skill_data.healing_aura_heal;
+			detailed_breakdown += dragon.name + " heals, and now has " + dragon.health + " health.<br>";
+			results += dragon.name + " heals due to the activation of Healing Aura, and now has " + dragon.health + " health.<br>";
+		}
+	}
 }
 
 // JavaScript Document
