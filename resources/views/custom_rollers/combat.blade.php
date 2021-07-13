@@ -383,8 +383,10 @@
         
         <table id="nest">
 	<td>
-        <div id="nestTextarea"></div>
-        
+        <div id="nestTextarea"
+        <p id="result" style="border: 2px solid black;"></p>
+        <br>
+        ></div>
         </td>
         </table>
         <p>
