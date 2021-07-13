@@ -380,9 +380,11 @@
             <br>
             <center>
         <button class="button" onclick=roll()>Roll Combat</button>
+        <button class="button" onclick="clearForms()">Reset Forms</button>
         
         <table id="nest">
 	<td>
+        <div id="nestTextarea"></div>
         <p id="result" style="border: 2px solid black;"></p>
         <br>
         </td>
