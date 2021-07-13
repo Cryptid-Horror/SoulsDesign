@@ -12,7 +12,7 @@
    <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/combat.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/combattest.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/combat.js') }}"></script>
     
 
 
