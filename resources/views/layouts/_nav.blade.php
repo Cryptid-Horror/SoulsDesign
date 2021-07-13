@@ -48,7 +48,7 @@
                             </a>
 
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
-                               <i class="fas fa-paint-brush"></i>  Design Registration
+                               <i class="fas fa-paint-brush"></i>  Design Registration </a>
 
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
                                 Primal and Mastery Points
