@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    background-color: #A9CED1;
+    background-image: url("../Banner2.png");
     background-size: cover;
     background-attachment: fixed;
     -webkit-background-size: cover;
@@ -21,15 +21,17 @@ body {
     min-width: 100%;
     background-repeat: no-repeat;
     margin: 0px;
-	color: #000;
-
+	color: #FFF;
+		text-shadow: -1px 1px 0 #000,
+				  1px 1px 0 #000,
+				 1px -1px 0 #000,
+				-1px -1px 0 #000;
 }
 
 #rollerTitle {
 	width: 100%;
 }
 #mainContent{
-    background-color: #ceedf0;
 	width: 100%;
 	border-spacing: 20px 20px;
 }
@@ -38,7 +40,7 @@ body {
 	text-align: center;
 }
 #nest {
-	width: 1000px;
+	width: 100%;
 	text-align: center;
 }
 #rollerForm {
@@ -71,7 +73,7 @@ a {
 }
 
 .entryBox, input, textarea, select, .radioLabel, #nestTextArea {
-	background: #3598a1;
+	background: rgba(25, 25, 25, 0.85);
 	border-style: solid;
 	border-width: 3px;
 	border-color: rgba(225, 225, 255, 0.85);
@@ -83,9 +85,6 @@ textarea, input, #nestTextArea {
 	resize: none;
 }
 
-input:focus {
-	
-}
 .entryBox {
     text-align: center;
 	margin: 200px;
@@ -102,10 +101,11 @@ input, textarea, #nestTextArea, select, button {
 	font-family: "Overlock";
 	font-size: 14px;
 	font-weight: bold;
-	background: #2d6369;
+	background: rgba(61, 61, 75, 0.80);
 	border-width: 1px;
     border-radius: 2px;
 	width: auto;
+    color: #7cb0e1;
 }
 
 [type="text"], textarea, #nestTextArea {
@@ -166,9 +166,8 @@ button {
 	text-align: center;
 	font-family: "Overlock";
 	font-size: 14px;
-	color: #A9CED1;
 	font-weight: bold;
-	background: #3598a1;
+	background: rgba(25, 25, 25, 0.85);
 	border-style: solid;
 	border-width: 1px;
     border-radius: 2px;

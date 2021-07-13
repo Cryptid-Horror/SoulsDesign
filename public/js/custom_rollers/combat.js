@@ -148,7 +148,7 @@ const item_names = {
 
 const damage_modifier_items = {
 	'strength_tonic': {
-		raw: 10,
+		raw: 20,
 		bleed: 0,
 		magic: 0,
 		breath: 0
@@ -156,12 +156,12 @@ const damage_modifier_items = {
     'magic_tonic': {
 		raw: 0,
 		bleed: 0,
-		magic: 10,
+		magic: 20,
 		breath: 0
     },
     'bleed_tonic': {
 		raw: 0,
-		bleed: 10,
+		bleed: 20,
 		magic: 0,
 		breath: 0
 	},
@@ -169,7 +169,7 @@ const damage_modifier_items = {
 		raw: 0,
 		bleed: 0,
 		magic: 0,
-		breath: 10
+		breath: 20
 	}
 }
 
@@ -280,7 +280,7 @@ const familiars = {
 	damage: {
 		'dire_wolf': {
 			name: 'Dire Wolf',
-			raw: 10,
+			raw: 30,
 			bleed: 0,
 			magic: 0,
 			breath: 0
@@ -289,7 +289,7 @@ const familiars = {
 			name: 'Basilisk',
 			raw: 0,
 			bleed: 0,
-			magic: 10,
+			magic: 30,
 			breath: 0
 		}
 	},
