@@ -11,6 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+                <i class="fas fa-star-and-crescent"></i>
                     @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
                         <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
                     @else
@@ -34,46 +35,46 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
                             <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
-                                Activity Guide
+                               <i class="fas fa-clipboard-list"></i> Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
-                                <i class="fas fa-book"></i> Activity List (Prompts)
+                                <i class="fas fa-dungeon"></i></i> Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
-                                Adoption Center
+                               <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
-                                Crafting
+                               <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
 
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
-                                Design Registration
+                               <i class="fas fa-paint-brush"></i>  Design Registration
 
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
                                 Primal and Mastery Points
                             </a>
                               <a class="dropdown-item" href="{{ url('level') }}">
-                                Level Area
+                                <i class="fas fa-level-up-alt"></i> Level Area
                             </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
-                                Shops
+                               <i class="fas fa-store"></i> Shops
                             </a>
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
-                                Trade Listings
+                               <i class="fas fa-sign"></i> Trade Listings
                             </a>
                             
                             <div class="dropdown-divider"></div>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/13') }}">
-                                Leasing Dragons
+                               <i class="fas fa-sign"></i> Leasing Dragons
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Flights') }}">
-                                Flights
+                               <i class="fas fa-dragon"></i> Flights
                             </a>
                              <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
-                                Nesting Permissions
+                                 <i class="fas fa-egg"></i> Nesting Permissions
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
-                                Refer a Friend
+                                <i class="fas fa-sign"> Refer a Friend
                             </a>
                           
                         </div>
