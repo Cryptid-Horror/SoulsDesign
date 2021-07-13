@@ -416,7 +416,7 @@
 
 
 <table id="footer">
-	<td id="footerElement"> v0.1.2 - Created By Draginraptor<br>
+	<td id="footerElement"> v1.0.0 - Created By Draginraptor<br>
 	Souls-Between 2020<br>
 	Return Home<br>
 </table>
