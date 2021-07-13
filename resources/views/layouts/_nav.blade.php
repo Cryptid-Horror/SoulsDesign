@@ -38,7 +38,7 @@
                                <i class="fas fa-clipboard-list"></i> Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
-                                <i class="fas fa-dungeon"></i></i> Activity List (Prompts)
+                                <i class="fas fa-dungeon"></i> Activity List (Prompts)
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
                                <i class="fas fa-egg"></i> Adoption Center
@@ -74,7 +74,7 @@
                                  <i class="fas fa-egg"></i> Nesting Permissions
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
-                                <i class="fas fa-sign"> Refer a Friend
+                                <i class="fas fa-sign"></i> Refer a Friend
                             </a>
                           
                         </div>
