@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
+                    <i class="fas fa-star-and-crescent"></i>
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
@@ -11,7 +12,6 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                <i class="fas fa-star-and-crescent"></i>
                     @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
                         <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
                     @else
