@@ -10,6 +10,7 @@ use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
 use App\Models\Pet\Pet;
+use App\Models\Claymore\Gear;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
 
