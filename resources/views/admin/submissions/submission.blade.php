@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-6">
             <h2>Rewards</h2>
-            @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true])
+            @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true, 'showRecipes' => true])
         </div>
         <div class="col-6">
             <h3>Stat & Level Rewards</h3>

@@ -48,8 +48,7 @@ class BoxService extends Service
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
-            'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
->
+            'weapons' => Weapon::orderBy('name')->pluck('name', 'id')
         ];
     }
 
