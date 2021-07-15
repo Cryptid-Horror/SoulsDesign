@@ -60,7 +60,7 @@ function rollBchallenger(){
 	
 	for (var m = 0; m < lootSize; m++) {
 		 itemlist += "<br>";
-		if (activity.value == "base_1"){rollBchallenger();}
+		if (activity == "base_1"){rollBchallenger();}
 		else if (activity.value == "basewarrior"){rollBwarrior();}
 		else if (activity.value == "basegladiator"){rollBgladiator();}
         else if (activity.value == "basechampion"){rollBchampion();}
