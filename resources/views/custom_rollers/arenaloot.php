@@ -62,6 +62,11 @@
 			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
 			<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern">No</label></td>
 		</tr>
+		<tr>
+			<td>Entry Roll</td>
+			<td><input type="radio" name="entryroll" id="entryrolly"><label for="entryrolly">Yes</label></td>
+			<td><input type="radio" name="entryroll" id="entryrolln" checked><label for="entryrolln">No</label></td>
+		</tr>
 </table></form>
 			</td>
 		

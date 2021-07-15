@@ -18,7 +18,7 @@ function items(){
 	if (document.getElementById("hoardery").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Hoarder skill activated!</i><br>";}
-	if (document.getElementById ("entryroll").checked == true){
+	if (document.getElementById ("entryrolly").checked == true){
 			lootsize = rand(3,8);}
 	if (document.getElementById ("mimicy").checked == true){
 			lootsize = rand(4,8);
