@@ -1,7 +1,12 @@
 var dragonName = document.getElementById('dName');
 var activity = document.getElementById('activity');
 
-
+function rand(min, max) {
+    var min = min || 0,
+        max = max || Number.MAX_SAFE_INTEGER;
+  
+    return Math.floor(Math.random() * (max - min + 1)) + min;} 
+    
 function items(){
 	var lootSize;
 	var itemlist="";
