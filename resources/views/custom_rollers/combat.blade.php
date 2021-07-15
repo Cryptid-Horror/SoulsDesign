@@ -51,7 +51,10 @@
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
             <option value="very_heavy">Very Heavy</option>
-            <option value="grand_sap">Grand Sapiere</option>
+            <option value="1_champion">Challenger Champion<option>
+            <option value="2_champion">Warrior Champion<option>
+            <option value="3_champion">Gladiator Champion</option>
+            <option value="4_champion">Arena Champion</option>
         </select>
         <br>
 
@@ -135,9 +138,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <select id="1_skill_2" class="cellElement">
             <option value="NA">NA</option>
@@ -147,9 +150,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <select id="1_skill_3" class="cellElement">
             <option value="NA">NA</option>
@@ -159,9 +162,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <select id="1_skill_4" class="cellElement">
             <option value="NA">NA</option>
@@ -171,9 +174,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <br>
         <label>Items:</label>
@@ -220,7 +223,10 @@
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
             <option value="very_heavy">Very Heavy</option>
-            <option value="grand_sap">Grand Sapiere</option>
+            <option value="1_champion">Challenger Champion<option>
+            <option value="2_champion">Warrior Champion<option>
+            <option value="3_champion">Gladiator Champion</option>
+            <option value="4_champion">Arena Champion</option>
         </select>
         <br>
         <label for="2_breath_type_1">Breath 1:</label>
@@ -304,9 +310,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <select id="2_skill_2" class="cellElement">
             <option value="NA">NA</option>
@@ -316,9 +322,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <select id="2_skill_3" class="cellElement">
             <option value="NA">NA</option>
@@ -328,9 +334,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
             <select id="2_skill_4" class="cellElement">
             <option value="NA">NA</option>
@@ -340,9 +346,9 @@
             <option value="skill_inner_fire">Inner Fire</option>
             <option value="skill_steadfast">Steadfast</option>
             <option value="skill_swift_feet">Swift Feet</option>
-            <option value="skill_bleed">Bleed</option>
-            <option value="skill_armor">Armor</option>
-            <option value="skill_dps">DPS</option>
+            <option value="skill_bleed">Serrated Teeth</option>
+            <option value="skill_armor">Armored Hide</option>
+            <option value="skill_dps">Grapple</option>
         </select>
         <br>
         <label>Items:</label>

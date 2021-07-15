@@ -62,6 +62,43 @@ const classes = {
 		base_res: 40,
 		mag_crit: 5
 	},
+	'1_champion': {
+		phys_crit: 5, // out of 10
+		min_raw: 22,
+		max_raw: 45,
+		max_bleed: 75, // min is always 1
+		max_dps: 3,
+		base_res: 45,
+		mag_crit: 5
+	},
+	'1_champion': {
+		phys_crit: 3, // out of 10
+		min_raw: 37,
+		max_raw: 75,
+		max_bleed: 60, // min is always 1
+		max_dps: 3,
+		base_res: 45,
+		mag_crit: 3
+	},
+	'3_champion': {
+		phys_crit: 4, // out of 10
+		min_raw: 75,
+		max_raw: 180,
+		max_bleed: 45, // min is always 1
+		max_dps: 2,
+		base_res: 60,
+		mag_crit: 4
+	},
+	'4_champion': {
+	phys_crit: 2, // out of 10
+	min_raw: 80,
+	max_raw: 202,
+	max_bleed: 60, // min is always 1
+	max_dps: 2,
+	base_res: 52,
+	mag_crit: 4
+},
+	
 };
 
 
@@ -291,15 +328,18 @@ const familiars = {
 			bleed: 10,
 			magic: 30,
 			breath: 0
-		}
-	},
-	healing: {
+		},
 		'phoenix': {
 			name: 'Phoenix',
 			raw: 20,
 			bleed: 10,
 			magic: 40, 
 			breath: 0,
+		}
+	},
+	healing: {
+		'phoenix': {
+			name: 'Phoenix',
 			healing: 50
 		}
 	}
@@ -805,7 +845,6 @@ function calculateDamage(attacker, defender) {
 	detailed_breakdown += defender.name + "'s armor offers <b>" + defender.armor.bleed_res + "</b> points of Bleed resistance, and so Bleed damage is <b>" + bleed_dmg + "</b>.<br>";
 
 	// Roll magic dmg, if present
-    //CRYPTID INPUT AETHER WALKER AND PEARL NECKLACE
 	var magic_dmg = 0;
 	if(Object.keys(attacker.magic).length > 0) {
 		var roll_magic_crit = rand(1, 10);
@@ -914,7 +953,6 @@ function calculateDamage(attacker, defender) {
 	return total_dmg
 }
 
-//DAMAGE PETS GO HERE??? 
 
 function armorCheck(defender) {
 	// Check if all pieces are the same set and not NA, if so, max 1 piece can be broken
