@@ -13,9 +13,7 @@
  
    <!-- Should always be kept; found in the public/css -->
 	<link href="https://www.soulsbetween.com/css/custom_roller_css/activitycss.css" rel="stylesheet">
-	<!-- Found in the public/js folder -->
-    <script type="text/javascript" src="https://www.soulsbetween.com/js/custom_rollers/arena.js"></script>
-
+	
 
 
 </head>
@@ -26,33 +24,30 @@
 
 	<form id="activitytype" align="center">
 		<select id="activity" name="activity" align="center">
-			<option value="base_1">Challenger</option>
-			<option value="base_2">Warrior</option>
-			<option value="base_3">Gladiator</option>
-            <option value="base_4">Champion</option>
+			<option value="Bchallenger">Challenger</option>
+			<option value="Bwarrior">Warrior</option>
+			<option value="Bgladiator">Gladiator</option>
+            <option value="Bchampion">Champion</option>
 		</select>
+</form>
+		
 
-
-		<b>Zone</b>
+	
+	<form id=playerinfo" align="left">
+	<div id="container1" align="center">
+		<table>
+			<td>
+					<b>Name</b>
+					<input type="text" id="dName" placeholder="Dragon's Name here">
+		<br>
+        <b>Zone</b>
 			<select id="zone" name="zone">
 				<option value="basic">Base loot table</option>
 				<option value="copper">Copper loot table</option>
 				</select><br>
-	</form>
+				</form>
+					</td>
 
-	
-	
-	<div id="container1" align="center">
-		<table>
-			<td>
-				<form id=playerinfo" align="left">
-					<b>Name</b>
-					<input type="text" id="dName" placeholder="Dragon's Name here">
-		<br>
-				
-		
-	</form>
-			</td>
 			<td>
 			<form id="modifiers" align="right">
 			<table>
@@ -76,6 +71,11 @@
 			<td><input type="radio" name="entryroll" id="entryrolly"><label for="entryrolly">Yes</label></td>
 			<td><input type="radio" name="entryroll" id="entryrolln" checked><label for="entryrolln">No</label></td>
 		</tr>
+        <tr>
+			<td>Activity-Charm</td>
+			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
+			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
+		</tr>
 </table></form>
 			</td>
 		
@@ -91,11 +91,13 @@
 	<div id="output" align="left">
 			<div id="result"></div>
 	</div>
-	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.
+	<div id="cred">Copyright Souls Between 2021, All Rights Reserved.
 </div></div>
 	
 	
 	</div>
+<!-- Found in the public/js folder -->
+    <script type="text/javascript" src="https://www.soulsbetween.com/js/custom_rollers/arena.js"></script>
 
 </body>
 

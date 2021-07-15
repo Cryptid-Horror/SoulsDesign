@@ -58,7 +58,7 @@ function rollBchallenger(){
             else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
             else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
-        if (zone.value == "copper"){
+       else if (zone.value == "copper"){
 			if(document.getElementById("charmy").checked == true){
 				var i = rand(55,94);}
 			else {var i = rand(1,94);}
@@ -121,7 +121,7 @@ function rollBwarrior(){
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
     }
-    if (zone.value == "copper"){
+    else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true){
             var i = rand(55,94);}
         else {var i = rand(1,94);}
@@ -184,7 +184,7 @@ function rollBgladiator(){
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
     }
-    if (zone.value == "copper"){
+    else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true){
             var i = rand(55,94);}
         else {var i = rand(1,94);}
@@ -247,7 +247,7 @@ function rollBchampion(){
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
     }
-    if (zone.value == "copper"){
+    else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true){
             var i = rand(55,94);}
         else {var i = rand(1,94);}
@@ -279,25 +279,22 @@ function rollBchampion(){
     }
 }
 	
-			
-	
 	for (var m = 0; m < lootSize; m++) {
 		 itemlist += "<br>";
-		if (activity.value == "base_1"){rollBchallenger();}
-        else if (activity.value == "base_2"){rollBwarrior();}
-		else if (activity.value == "base_3"){rollBgladiator();}
-        else if (activity.value == "base_4"){rollBchampion();}
+		if (activity.value == "Bchallenger"){rollBchallenger();}
+        else if (activity.value == "Bwarrior"){rollBwarrior();}
+		else if (activity.value == "Bgladiator"){rollBgladiator();}
+        else if (activity.value == "Bchampion"){rollBchampion();}
 
     }
 	return itemlist;
-}
-
-  
+} 
  function roll() { 	
   
-		document.getElementById("result").innerHTML = items() + "<br><i>Items have been added to your hoard.</i><br>";
+		document.getElementById("result").innerHTML += items() + "<br><i>Items have been added to your hoard.</i><br>";
 
 }
+
 
 function clearForms() {
 	document.getElementById("playerinfo").reset();
