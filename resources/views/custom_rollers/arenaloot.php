@@ -36,6 +36,7 @@
 		<b>Zone</b>
 			<select id="zone" name="zone">
 				<option value="basic">Base loot table</option>
+				<option value="copper">Copper loot table</option>
 				</select><br>
 	</form>
 
