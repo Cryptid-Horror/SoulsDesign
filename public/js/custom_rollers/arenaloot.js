@@ -75,16 +75,10 @@ function rollbchallenger(){
 
 
   
- function roll() { 
-	document.getElementById("result").innerHTML = "";
-	
-	if (pass() == true){
+ function roll() { 	
 		document.getElementById("result").innerHTML += dragonName.value + "returned with the following:<br>"
 		+ items() 
-		+ "<br><i>Items have been added to your hoard.</i><br>";}	
-	document.getElementById("result").innerHTML += "<br>";
-
-
+		+ "<br><i>Items have been added to your hoard.</i><br>";	
 }
 
 function clearForms() {
