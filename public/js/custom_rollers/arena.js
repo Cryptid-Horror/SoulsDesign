@@ -66,10 +66,18 @@ function rollBchallenger(){
 
   
  function roll() { 	
-    
-		document.getElementById("result").innerHTML += dragonName.value + "returned with the following:<br>"
+    document.getElementById("result").innerHTML = "";
+	
+	if (pass() == true){
+		document.getElementById("result").innerHTML += dragonName.value + " went " + activity.value + " and returned with the following:<br>"
 		+ items() 
-		+ "<br><i>Items have been added to your hoard.</i><br>";	
+		+ "<br><i>Items have been added to your hoard.</i><br>";}
+	else{
+		document.getElementById("result").innerHTML += dragonName.value + " went " + activity.value + " but failed to catch anything!<br>";}
+	
+	document.getElementById("result").innerHTML += "<br>" + injury();
+
+
 }
 
 function clearForms() {
