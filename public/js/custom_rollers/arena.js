@@ -66,7 +66,10 @@ function rollBchallenger(){
 
   
  function roll() { 	
-    document.getElementById("result").innerHTML = ""
+    
+		document.getElementById("result").innerHTML += dragonName.value + "returned with the following:<br>"
+		+ items() 
+		+ "<br><i>Items have been added to your hoard.</i><br>";	
 }
 
 function clearForms() {
