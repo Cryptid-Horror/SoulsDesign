@@ -12,7 +12,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
    <!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
 
 </head>
 
@@ -79,7 +79,7 @@
 	
 	</div>
         <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
+    <script src="{{ asset('public/js/custom_rollers/arenaloot.js') }}"></script>
 </body>
 
 </html>
