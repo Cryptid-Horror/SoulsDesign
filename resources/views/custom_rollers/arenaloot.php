@@ -79,7 +79,7 @@
 	
 	</div>
         <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
 </body>
 
 </html>
