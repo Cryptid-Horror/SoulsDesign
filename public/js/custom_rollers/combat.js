@@ -281,14 +281,14 @@ const familiars = {
 		'dire_wolf': {
 			name: 'Dire Wolf',
 			raw: 30,
-			bleed: 0,
-			magic: 0,
+			bleed: 10,
+			magic: 20,
 			breath: 0
 		},
 		'basilisk': {
 			name: 'Basilisk',
-			raw: 0,
-			bleed: 0,
+			raw: 20,
+			bleed: 10,
 			magic: 30,
 			breath: 0
 		}
@@ -296,6 +296,10 @@ const familiars = {
 	healing: {
 		'phoenix': {
 			name: 'Phoenix',
+			raw: 20,
+			bleed: 10,
+			magic: 40, 
+			breath: 0,
 			healing: 50
 		}
 	}
