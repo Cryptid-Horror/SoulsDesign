@@ -19,32 +19,31 @@
 <body>
 <div id="title" align="center"><h1>Activity Roller</h1></div>
 
+<form id="activitytype" align="center">
+	<select id="activity" name="activity" align="center">
+		<option value="hunting">Hunting</option>
+		<option value="fishing">Fishing</option>
+		<option value="foraging">Foraging</option>
+		<option value="caving">Caving</option>
+	</select>
+</form>
 
-	<form id="activitytype" align="center">
-		<select id="activity" name="activity" align="center">
-			<option value="hunting">Hunting</option>
-			<option value="fishing">Fishing</option>
-			<option value="foraging">Foraging</option>
-            <option value="caving">Caving</option>
-		</select>
-	</form>
-	
-	<div id="container1" align="center">
-		<table>
-			<td>
-				<form id=playerinfo" align="left">
-					<b>Name</b>
-					<input type="text" id="dName" placeholder="Dragon's Name here">
-		<br>
-					<b>Rank</b>
+<div id="container1" align="center">
+	<table>
+	<td>
+		<form id=playerinfo" align="left">
+			<b>Name</b>
+			<input type="text" id="dName" placeholder="Dragon's Name here">
+			<br>
+			<b>Rank</b>
 			<select id="rank" name="rank">
 				<option value="beginner">Beginner</option>
 				<option value="stablehand">Stable-Hand</option>
 				<option value="tamer">Dragon Tamer</option>
 				<option value="master">Dragon Master</option>
-				</select>
-		<br>
-					<b>Zone</b>
+			</select>
+			<br>
+			<b>Zone</b>
 			<select id="zone" name="zone">
 				<option value="radiant">Radiant Empire</option>
 				<option value="gloom">Gloom Empire</option>
@@ -52,20 +51,19 @@
 				<option value="shimmering">Shimmering Isles</option>
 				<option value="scorched">Scorched Empire</option>
 				<option value="aether">The Aether</option>
-				</select><br>
-				<b>Temperament
-					<select id="temp" name="temp">
-                        <option value="other">Other</option>
-                    	<option value="aggressive">Aggressive</option>
-						<option value="timid">Vigilant</option>
-					</select>
-				
-		
-	</form>
-			</td>
-			<td>
-			<form id="modifiers" align="right">
-			<table>
+			</select>
+			<br>
+			<b>Temperament</b>
+			<select id="temp" name="temp">
+				<option value="other">Other</option>
+				<option value="aggressive">Aggressive</option>
+				<option value="timid">Vigilant</option>
+			</select>
+		</form>
+	</td>
+	<td>
+		<form id="modifiers" align="right">
+		<table>
 		<tr>
 			<td>Activity-Container</td>
 			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
@@ -81,12 +79,11 @@
 			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
 			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
 		</tr>
-        
-        <t>
-<td>Blueprint/Newt</td>
+		<tr>
+			<td>Blueprint/Newt</td>
 			<td><input type="radio" name="Blueprint/Newt" id="Blue"><label for="Blue">Yes</label></td>
 			<td><input type="radio" name="Blueprint/Newt" id="Bluen" checked><label for="Bluen">No</label></td>
-        </tr>
+		</tr>
 		<tr>
 			<td>Soul-Linked</td>
 			<td><input type="radio" name="soul" id="souly"><label for="souly">Yes</label></td>
@@ -97,33 +94,32 @@
 			<td><input type="radio" name="nofail" id="nofaily"><label for="nofaily">Yes</label></td>
 			<td><input type="radio" name="nofail" id="nofailn" checked><label for="nofailn">No</label></td>
 		</tr>
-		
 		<tr>
 			<td>Adept</td>
 			<td><input type="radio" name="Adept" id="AdeptY"><label for="AdeptY">Yes</label></td>
 			<td><input type="radio" name="Adept" id="AdeptN" checked><label for="AdeptN">No</label></td>
-		</tr></table></form>
-			</td>
-		
-			</table>
+		</tr>
+		</table>
+		</form>
+	</td>
+	</table>
 </div>
 <br>
-	<div id="buttoncontainer" align="center">
-		<button class="button" onclick="roll()">roll</button>
-		<button class="button" onclick="clearForms()">reset</button>
-	</div>
+<div id="buttoncontainer" align="center">
+	<button class="button" onclick="roll()">roll</button>
+	<button class="button" onclick="clearForms()">reset</button>
+</div>
 	
-	<div id="container3" align="center">
+<div id="container3" align="center">
 	<div id="output" align="left">
-			<div id="result"></div>
+		<div id="result"></div>
 	</div>
-	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.
-</div></div>
+	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.</div>
+</div>
 	
-	
-	</div>
-        <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+<!-- Found in the public/js folder -->
+<script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+
 </body>
 
 </html>

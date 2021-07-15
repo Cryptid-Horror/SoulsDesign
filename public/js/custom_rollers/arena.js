@@ -288,11 +288,14 @@ function rollBchampion(){
 
     }
 	return itemlist;
-} 
- function roll() { 	
-  
-		document.getElementById("result").innerHTML += items() + "<br><i>Items have been added to your hoard.</i><br>";
+}
 
+function roll() {
+	document.getElementById("result").innerHTML = "";
+
+	document.getElementById("result").innerHTML += dragonName.value + "returned with the following:<br>"
+	+ items() 
+	+ "<br><i>Items have been added to your hoard.</i><br>";	
 }
 
 
