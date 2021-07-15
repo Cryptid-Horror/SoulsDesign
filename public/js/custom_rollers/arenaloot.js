@@ -20,7 +20,7 @@ function items(){
 			itemlist += "<i>Golden Chest of Mimicry Returned an extra item!</i><br>";}
 	}
 //CHALLENGER//
-function rollbchallenger(){
+function rollBchallenger(){
 		if (zone.value == "basechallenger"){
 			if(document.getElementById("charmy").checked == true){
 				var i = rand(55,94);}
@@ -55,15 +55,14 @@ function rollbchallenger(){
 			
 	
 	for (var m = 0; m < lootSize; m++) {
-	    itemlist += "<br>";
+		{ itemlist += "<br>";
 		if (activity.value == "basechallenger"){rollBchallenger();}
 		else if (activity.value == "basewarrior"){rollBwarrior();}
 		else if (activity.value == "basegladiator"){rollBgladiator();}
         else if (activity.value == "basechampion"){rollBchampion();}
-		return itemlist;
 	}
-	
-	
+	return itemlist;
+}
 
   
  function roll() { 	
