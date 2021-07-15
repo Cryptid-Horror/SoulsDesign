@@ -26,7 +26,6 @@ function items(){
 
 //CHALLENGER//
 function rollBchallenger(){
-		if (zone.value == "base_1"){
 			if(document.getElementById("charmy").checked == true){
 				var i = rand(55,94);}
 			else {var i = rand(1,94);}
