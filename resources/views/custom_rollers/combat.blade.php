@@ -51,10 +51,10 @@
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
             <option value="very_heavy">Very Heavy</option>
-            <option value="1_champion">Challenger Champion<option>
-            <option value="2_champion">Warrior Champion<option>
-            <option value="3_champion">Gladiator Champion</option>
-            <option value="4_champion">Arena Champion</option>
+            <option value="1_champion">Challenger Champ<option>
+            <option value="2_champion">Warrior Champ<option>
+            <option value="3_champion">Gladiator Champ</option>
+            <option value="4_champion">Arena Champ</option>
         </select>
         <br>
 
@@ -223,10 +223,10 @@
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
             <option value="very_heavy">Very Heavy</option>
-            <option value="1_champion">Challenger Champion<option>
-            <option value="2_champion">Warrior Champion<option>
-            <option value="3_champion">Gladiator Champion</option>
-            <option value="4_champion">Arena Champion</option>
+            <option value="1_champion">Challenger Champ<option>
+            <option value="2_champion">Warrior Champ<option>
+            <option value="3_champion">Gladiator Champ</option>
+            <option value="4_champion">Arena Champ</option>
         </select>
         <br>
         <label for="2_breath_type_1">Breath 1:</label>
