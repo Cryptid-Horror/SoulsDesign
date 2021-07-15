@@ -26,7 +26,7 @@ function items(){
 
 //CHALLENGER//
 function rollBchallenger(){
-		if (zone.value == "basechallenger"){
+		if (zone.value == "base_1"){
 			if(document.getElementById("charmy").checked == true){
 				var i = rand(55,94);}
 			else {var i = rand(1,94);}
@@ -61,7 +61,7 @@ function rollBchallenger(){
 	
 	for (var m = 0; m < lootSize; m++) {
 		 itemlist += "<br>";
-		if (activity.value == "basechallenger"){rollBchallenger();}
+		if (activity.value == "base_1"){rollBchallenger();}
 		else if (activity.value == "basewarrior"){rollBwarrior();}
 		else if (activity.value == "basegladiator"){rollBgladiator();}
         else if (activity.value == "basechampion"){rollBchampion();}
