@@ -27,9 +27,9 @@
 	<form id="activitytype" align="center">
 		<select id="activity" name="activity" align="center">
 			<option value="base_1">Challenger</option>
-			<option value="basewarrior">Warrior</option>
-			<option value="basegladiator">Gladiator</option>
-            <option value="basechampion">Champion</option>
+			<option value="base_2">Warrior</option>
+			<option value="base_3">Gladiator</option>
+            <option value="base_4">Champion</option>
 		</select>
 	</form>
 	
