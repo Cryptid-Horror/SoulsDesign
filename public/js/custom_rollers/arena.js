@@ -55,7 +55,7 @@ function rollBchallenger(){
             else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
             else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
-	}
+	
 			
 	
 	for (var m = 0; m < lootSize; m++) {
