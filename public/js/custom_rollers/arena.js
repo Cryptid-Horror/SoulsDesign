@@ -1,5 +1,7 @@
 var dragonName = document.getElementById('dName');
 var activity = document.getElementById('activity');
+var zone = document.getElementById('zone');
+
 
 function rand(min, max) {
     var min = min || 0,
@@ -26,6 +28,7 @@ function items(){
 
 //CHALLENGER//
 function rollBchallenger(){
+    if (zone.value == "basic"){
 			if(document.getElementById("charmy").checked == true){
 				var i = rand(55,94);}
 			else {var i = rand(1,94);}
@@ -55,8 +58,10 @@ function rollBchallenger(){
             else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
             else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
+}
 //WARRIOR//
 function rollBwarrior(){
+    if (zone.value == "basic"){
     if(document.getElementById("charmy").checked == true){
         var i = rand(55,94);}
     else {var i = rand(1,94);}
@@ -85,9 +90,11 @@ function rollBwarrior(){
     else if (i <= 91){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+    }
 }
 //Gladiator//
 function rollBgladiator(){
+    if (zone.value == "basic"){
     if(document.getElementById("charmy").checked == true){
         var i = rand(55,94);}
     else {var i = rand(1,94);}
@@ -116,9 +123,11 @@ function rollBgladiator(){
     else if (i <= 91){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+    }
 }
 //CHAMPION//
 function rollBchampion(){
+    if (zone.value == "basic"){
     if(document.getElementById("charmy").checked == true){
         var i = rand(55,94);}
     else {var i = rand(1,94);}
@@ -147,16 +156,17 @@ function rollBchampion(){
     else if (i <= 91){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
     else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
     else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+    }
 }
 	
 			
 	
 	for (var m = 0; m < lootSize; m++) {
 		 itemlist += "<br>";
-		if (activity == "base_1"){rollBchallenger();}
-        else if (activity == "base_2"){rollBwarrior();}
-		else if (activity == "base_3"){rollBgladiator();}
-        else if (activity == "base_4"){rollBchampion();}
+		if (activity.value == "base_1"){rollBchallenger();}
+        else if (activity.value == "base_2"){rollBwarrior();}
+		else if (activity.value == "base_3"){rollBgladiator();}
+        else if (activity.value == "base_4"){rollBchampion();}
 
     }
 	return itemlist;
@@ -165,7 +175,7 @@ function rollBchampion(){
   
  function roll() { 	
   
-		document.getElementById("result").innerHTML += items() + "<br><i>Items have been added to your hoard.</i><br>";
+		document.getElementById("result").innerHTML = items() + "<br><i>Items have been added to your hoard.</i><br>";
 
 }
 

@@ -31,7 +31,15 @@
 			<option value="base_3">Gladiator</option>
             <option value="base_4">Champion</option>
 		</select>
+
+
+		<b>Zone</b>
+			<select id="zone" name="zone">
+				<option value="basic">Base loot table</option>
+				</select><br>
 	</form>
+
+	
 	
 	<div id="container1" align="center">
 		<table>
