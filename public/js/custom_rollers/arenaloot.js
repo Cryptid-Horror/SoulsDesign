@@ -60,11 +60,10 @@ function rollbchallenger(){
 		else if (activity.value == "basewarrior"){rollBwarrior();}
 		else if (activity.value == "basegladiator"){rollBgladiator();}
         else if (activity.value == "basechampion"){rollBchampion();}
+		return itemlist;
 	}
 	
-	return itemlist;
-}
-
+	
 
   
  function roll() { 	
