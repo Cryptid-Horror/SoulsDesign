@@ -13,6 +13,8 @@
  
    <!-- Should always be kept; found in the public/css -->
 	<link href="https://www.soulsbetween.com/css/custom_roller_css/activitycss.css" rel="stylesheet">
+	<!-- Found in the public/js folder -->
+    <script src="https://www.soulsbetween.com/js/custom_rollers/arenaloot.js"></script>
 
 
 
@@ -80,8 +82,6 @@
 	
 	
 	</div>
-        <!-- Found in the public/js folder -->
-	<script src="https://www.soulsbetween.com/public/js/custom_rollers/arenaloot.js"></script>
 
 </body>
 
