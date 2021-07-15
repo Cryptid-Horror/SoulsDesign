@@ -1,8 +1,6 @@
 var dragonName = document.getElementById('dName');
 var activity = document.getElementById('activity');
-var rank = document.getElementById('rank');
-var zone = document.getElementById('zone');
-var temp = document.getElementById('temp');
+
 
 function items(){
 	var lootSize;
@@ -53,14 +51,15 @@ function rollbchallenger(){
             else if (i <= 93){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
             else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
+	}
 			
 	
 	for (var m = 0; m < lootSize; m++) {
 	    itemlist += "<br>";
-		if (activity.value == "basechallenger"){rollbchallenger();}
-		else if (activity.value == "fishing"){rollFish();}
-		else if (activity.value == "foraging"){rollForage();}
-        else if (activity.value == "caving"){rollCave();}
+		if (activity.value == "basechallenger"){rollBchallenger();}
+		else if (activity.value == "basewarrior"){rollBwarrior();}
+		else if (activity.value == "basegladiator"){rollBgladiator();}
+        else if (activity.value == "basechampion"){rollBchampion();}
 	}
 	
 	return itemlist;
