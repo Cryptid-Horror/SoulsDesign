@@ -81,7 +81,7 @@
 	
 	</div>
         <!-- Found in the public/js folder -->
-	<script src="https://www.soulsbetween.com/js/custom_rollers/arenaloot.js"></script>
+	<script src="https://www.soulsbetween.com/public/js/custom_rollers/arenaloot.js"></script>
 
 </body>
 
