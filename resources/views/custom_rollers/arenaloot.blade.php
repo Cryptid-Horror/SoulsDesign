@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<div id="title" align="center"><h1>Arena Loot Roller test</h1></div>
+<div id="title" align="center"><h1>Arena Loot Roller</h1></div>
 
 <form id="activitytype" align="center">
 	<select id="activity" name="activity" align="center">
