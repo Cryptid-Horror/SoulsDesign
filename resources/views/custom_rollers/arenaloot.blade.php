@@ -70,6 +70,11 @@
 				<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
 				<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
 			</tr>
+			<tr>
+				<td>Rarity Familiar</td>
+				<td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label></td>
+				<td><input type="radio" name="fam" id="famn" checked><label for="famn">No</label></td>
+			</tr>
 			</table>
 		</form>
 	</td>
