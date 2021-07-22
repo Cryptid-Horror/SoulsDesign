@@ -11,11 +11,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
    	<!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/featherlight.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
+    <link href="https://www.soulsbetween.com/css/featherlight.min.css" rel="stylesheet">
+    <link href="https://www.soulsbetween.com/css/custom_roller_css/nesting.css" rel="stylesheet">
     <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v4.0.js') }}"></script>
+    <script src="https://www.soulsbetween.com/js/featherlight.min.js"></script>
+    <script src="https://www.soulsbetween.com/js/custom_rollers/PublicNestingRoller_v4.0.js"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -24,7 +24,7 @@
 
 <table id="rollerTitle">
 	<tr>
-		<div id="title"><br><h1>Nesting Roller</h1></div>
+		<div id="title"><br><h1>Nesting Roller test</h1></div>
 	</tr>
 </table>
 <table id="mainContent">
@@ -302,6 +302,9 @@
                     <option value="ivory">Ivory (Agouti)</option>
                     <option value="vanta">Vanta (Agouti)</option>
                     <option value="golden">Golden (Agouti)</option>
+					<option value="ivory">Hazed Umber (Agouti)</option>
+                    <option value="vanta">Hazed Ivory (Agouti)</option>
+                    <option value="golden">Hazed Golden (Agouti)</option>
 				</select>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
     $marking_icon = 'Rare_Lustrous';
     $marking_name = 'Lustrous';
     $marking_code = 'nLs/LsLs';
-    $marking_desc = "A marking that appears as an iridescent patch wit ha border. Its behavior is seen on ducks and other similar birds.";
+    $marking_desc = "A marking that appears as an iridescent patch with a border. Its behavior is seen on ducks and other similar birds.";
     $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Smoke, Roan, Tabby, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra ';
     $layers_above = 'Bokeh, Cloud, Merle';
     $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted, ';

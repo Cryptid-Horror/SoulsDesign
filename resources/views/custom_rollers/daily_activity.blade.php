@@ -12,7 +12,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
    <!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
+    <link href="https://www.soulsbetween.com/css/custom_roller_css/activitycss.css" rel="stylesheet">
 
 </head>
 
@@ -65,31 +65,45 @@
 		<form id="modifiers" align="right">
 		<table>
 		<tr>
-			<td>Activity-Container</td>
+			<td>Free Roll</td>
 			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
 			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
-		</tr>
-		<tr>
+		
 			<td>Hoarder-Skill</td>
 			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
 			<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern">No</label></td>
 		</tr>
-		<tr>
-			<td>Activity-Charm</td>
-			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
-			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
+        	<td>Item Container</td>
+			<td><input type="radio" name="satchel" id="bagy"><label for="bagy">Yes</label></td>
+			<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn">No</label></td>
+		
+			<td>Item Familiar</td>
+			<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
+			<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
 		</tr>
 		<tr>
-			<td>Blueprint/Newt</td>
-			<td><input type="radio" name="Blueprint/Newt" id="Blue"><label for="Blue">Yes</label></td>
-			<td><input type="radio" name="Blueprint/Newt" id="Bluen" checked><label for="Bluen">No</label></td>
+			<td>Charm</td>
+			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
+			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
+	
+			<td>Taming</td>
+			<td><input type="radio" name="tame" id="tamey"><label for="tamey">Yes</label></td>
+			<td><input type="radio" name="tame" id="tamen" checked><label for="tamen">No</label></td>
+		</tr>
+		<tr>
+			<td>Blueprint</td>
+			<td><input type="radio" name="Blueprint" id="Blue"><label for="Blue">Yes</label></td>
+			<td><input type="radio" name="Blueprint" id="Bluen" checked><label for="Bluen">No</label></td>
+	
+        	<td>Newt</td>
+			<td><input type="radio" name="Newt" id="newty"><label for="newty">Yes</label></td>
+			<td><input type="radio" name="Newt" id="newtn" checked><label for="newtn">No</label></td>
 		</tr>
 		<tr>
 			<td>Soul-Linked</td>
 			<td><input type="radio" name="soul" id="souly"><label for="souly">Yes</label></td>
 			<td><input type="radio" name="soul" id="souln" checked><label for="souln">No</label></td>
-		</tr>
-		<tr>
+	
 			<td>No-fail</td>
 			<td><input type="radio" name="nofail" id="nofaily"><label for="nofaily">Yes</label></td>
 			<td><input type="radio" name="nofail" id="nofailn" checked><label for="nofailn">No</label></td>
@@ -98,6 +112,10 @@
 			<td>Adept</td>
 			<td><input type="radio" name="Adept" id="AdeptY"><label for="AdeptY">Yes</label></td>
 			<td><input type="radio" name="Adept" id="AdeptN" checked><label for="AdeptN">No</label></td>
+	
+			<td>  Pass Chance Familiar</td>
+			<td><input type="radio" name="fam" id="famY"><label for="famY">Yes</label></td>
+			<td><input type="radio" name="fam" id="famN" checked><label for="famN">No</label></td>
 		</tr>
 		</table>
 		</form>
@@ -114,11 +132,12 @@
 	<div id="output" align="left">
 		<div id="result"></div>
 	</div>
-	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.</div>
+	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
+    Version 2.0.0</div>
 </div>
 	
 <!-- Found in the public/js folder -->
-<script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+<script src="https://www.soulsbetween.com/js/custom_rollers/activity.js"></script>
 
 </body>
 

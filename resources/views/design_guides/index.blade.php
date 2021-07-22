@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Genetics Portal</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
 	<meta charset="utf-8">
@@ -42,6 +43,8 @@
 				['Triquetra', 'nTri/TriTri']];
 ?>
 <body>
+
+
 	<div class="main">
 		<div class="text-center mb-5">
 			<h2><a href="{{ url('/') }}">Click here to return to the Home page!</a></h2>

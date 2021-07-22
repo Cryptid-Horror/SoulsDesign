@@ -209,15 +209,6 @@
         {!! Form::text('health_status', $character->health_status, ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
     </div>
 
-    <div class="form-group">
-        {!! Form::label('Total Health') !!}
-        {!! Form::select('total_health', [null => 'None', 'Greater Emperor' => 'GE 500', 'Stalker Wyvern' => 'SW 600', 'Ravager Wyvern' => 'RW 800', 'Sapiere Dragon' => 'SD 1000', 'Warden Dragon' => 'WD 1000'], $character->image->total_health, ['class' => 'form-control']) !!}
-    </div>
-    
-    <div class="form-group">
-        {!! Form::label('Current Health') !!}
-        {!! Form::text('current_health', $character->image->current_health, ['class' => 'form-control', 'placeholder' => 'Add or subtract health from the total and input. If creating new, put the total health.']) !!}
-    </div>
 
     <h3>Rites and Activities</h3>
 
@@ -248,7 +239,7 @@
 
     <div class="form-group">
         {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', [null => 'None'], $character->arena_ranking, ['class' => 'form-control']) !!}
+        {!! Form::select('arena_ranking', [null => 'None', 'Challenger' => 'Challenger', 'Warrior' => 'Warrior', 'Gladiator' => 'Gladiator', 'Champion' => 'Champion'], $character->arena_ranking, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">

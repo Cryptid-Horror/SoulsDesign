@@ -109,8 +109,8 @@
         <label>Armor:</label>
         <select id="1_chest">
             <option value="NA">NA</option>
-            <option value="leather">Leather Armor</option>
-            <option value="sturdy">Sturdy Armor</option>
+            <option value="leather">Bone Armor</option>
+            <option value="sturdy">Leather Armor</option>
             <option value="iron">Iron Armor</option>
             <option value="crystalline">Crystalline Armor</option>
             <option value="aether">Aether Armor</option>
@@ -141,7 +141,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <select id="1_skill_2" class="cellElement">
             <option value="NA">NA</option>
@@ -153,7 +153,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <select id="1_skill_3" class="cellElement">
             <option value="NA">NA</option>
@@ -165,7 +165,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <select id="1_skill_4" class="cellElement">
             <option value="NA">NA</option>
@@ -177,25 +177,33 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <br>
         <label>Items:</label>
         <select id="1_item_1" class="cellElement">
             <option value="NA">NA</option>
-            <option value="strength_tonic">Strength Tonic</option>
-            <option value="magic_tonic">Magic Tonic</option>
-            <option value="bleed_tonic">Bleed Tonic</option>
-            <option value="breath_tonic">Breath Tonic</option>
+            <option value="strength_tonic">Strength Booster</option>
+            <option value="magic_tonic">Aether Booster</option>
+            <option value="bleed_tonic">Bleed Booster</option>
+            <option value="breath_tonic">Breath Booster</option>
             <option value="dps_booster">DPS Booster</option>
+            <option value="brawler_booster">Brawler Booster</option>
+            <option value="nightshade_booster">Nightshade Booster</option>
+            <option value="warlord_booster">Warlord Booster</option>
+
         </select>
         <select id="1_item_2" class="cellElement">
             <option value="NA">NA</option>
-            <option value="strength_tonic">Strength Tonic</option>
-            <option value="magic_tonic">Magic Tonic</option>
-            <option value="bleed_tonic">Bleed Tonic</option>
-            <option value="breath_tonic">Breath Tonic</option>
-            <option value="dps_booster">DPS Booster</option>            
+            <option value="strength_tonic">Strength Booster</option>
+            <option value="magic_tonic">Aether Booster</option>
+            <option value="bleed_tonic">Bleed Booster</option>
+            <option value="breath_tonic">Breath Booster</option>
+            <option value="dps_booster">DPS Booster</option>
+            <option value="brawler_booster">Brawler Booster</option>
+            <option value="nightshade_booster">Nightshade Booster</option>
+            <option value="warlord_booster">Warlord Booster</option>
+           
         </select>
         <br>
         <hr>
@@ -281,8 +289,8 @@
         </select>
         <select id="2_chest">
             <option value="NA">NA</option>
-            <option value="leather">Leather Armor</option>
-            <option value="sturdy">Sturdy Armor</option>
+            <option value="leather">Bone Armor</option>
+            <option value="sturdy">Leather Armor</option>
             <option value="iron">Iron Armor</option>
             <option value="crystalline">Crystalline Armor</option>
             <option value="aether">Aether Armor</option>
@@ -313,7 +321,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <select id="2_skill_2" class="cellElement">
             <option value="NA">NA</option>
@@ -325,7 +333,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <select id="2_skill_3" class="cellElement">
             <option value="NA">NA</option>
@@ -337,7 +345,7 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
             <select id="2_skill_4" class="cellElement">
             <option value="NA">NA</option>
@@ -349,25 +357,31 @@
             <option value="skill_swift_feet">Swift Feet</option>
             <option value="skill_bleed">Serrated Teeth</option>
             <option value="skill_armor">Armored Hide</option>
-            <option value="skill_dps">Grapple</option>
+            <option value="skill_dps">Frenzy</option>
         </select>
         <br>
         <label>Items:</label>
         <select id="2_item_1" class="cellElement">
             <option value="NA">NA</option>
-            <option value="strength_tonic">Strength Tonic</option>
-            <option value="magic_tonic">Magic Tonic</option>
-            <option value="bleed_tonic">Bleed Tonic</option>
-            <option value="breath_tonic">Breath Tonic</option>
+            <option value="strength_tonic">Strength Booster</option>
+            <option value="magic_tonic">Aether Booster</option>
+            <option value="bleed_tonic">Bleed Booster</option>
+            <option value="breath_tonic">Breath Booster</option>
             <option value="dps_booster">DPS Booster</option>
+            <option value="brawler_booster">Brawler Booster</option>
+            <option value="nightshade_booster">Nightshade Booster</option>
+            <option value="warlord_booster">Warlord Booster</option>
         </select>
             <select id="2_item_2" class="cellElement">
             <option value="NA">NA</option>
-            <option value="strength_tonic">Strength Tonic</option>
-            <option value="magic_tonic">Magic Tonic</option>
-            <option value="bleed_tonic">Bleed Tonic</option>
-            <option value="breath_tonic">Breath Tonic</option>
+            <option value="strength_tonic">Strength Booster</option>
+            <option value="magic_tonic">Aether Booster</option>
+            <option value="bleed_tonic">Bleed Booster</option>
+            <option value="breath_tonic">Breath Booster</option>
             <option value="dps_booster">DPS Booster</option>
+            <option value="brawler_booster">Brawler Booster</option>
+            <option value="nightshade_booster">Nightshade Booster</option>
+            <option value="warlord_booster">Warlord Booster</option>
         </select>
         <br>
         <hr>
@@ -423,7 +437,7 @@
 
 
 <table id="footer">
-	<td id="footerElement"> v1.0.0 - Created By Draginraptor<br>
+	<td id="footerElement"> v2.0.0 - Created By Draginraptor<br>
 	Souls-Between 2020<br>
 	Return Home<br>
 </table>

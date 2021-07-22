@@ -12,12 +12,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
    <!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
+    <link href="https://www.soulsbetween.com/css/custom_roller_css/activitycss.css" rel="stylesheet">
 
 </head>
 
 <body>
-<div id="title" align="center"><h1>Activity Roller</h1></div>
+<div id="title" align="center"><h1>Arena Loot Roller</h1></div>
 
 <form id="activitytype" align="center">
 	<select id="activity" name="activity" align="center">
@@ -35,40 +35,45 @@
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
 			<br>
-			<b>Zone</b>
+			<b>Prestige</b>
 			<select id="zone" name="zone">
-				<option value="basic">Base loot table</option>
-				<option value="copper">Copper loot table</option>
+				<option value="basic">Base levels</option>
+				<option value="copper">Copper Prestige</option>
 			</select>
 		</form>
 	</td>
 	<td>
 		<form id="modifiers" align="right">
 			<table>
+            <tr>
+			    <td>Free Roll</td>
+			    <td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
+			    <td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
+		    </tr>
 			<tr>
-				<td>Golden Chest of Mimcry - Entry</td>
+				<td>Golden Chest of Mimcry</td>
 				<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
 				<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
-			</tr>
-			<tr>
-				<td>Golden Chest of Mimcry - Free</td>
-				<td><input type="radio" name="mimic" id="mimicfreey"><label for="mimicfreey">Yes</label></td>
-				<td><input type="radio" name="mimic" id="mimicfreen" checked><label for="mimicfreen">No</label></td>
 			</tr>
 			<tr>
 				<td>Hoarder-Skill</td>
 				<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
 				<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern">No</label></td>
 			</tr>
-			<tr>
-				<td>Entry Roll</td>
-				<td><input type="radio" name="entryroll" id="entryrolly"><label for="entryrolly">Yes</label></td>
-				<td><input type="radio" name="entryroll" id="entryrolln" checked><label for="entryrolln">No</label></td>
+            <tr>
+				<td>Satchel</td>
+				<td><input type="radio" name="satchel" id="bagy"><label for="bagy">Yes</label></td>
+				<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn">No</label></td>
 			</tr>
 			<tr>
-				<td>Activity-Charm</td>
+				<td>Arena Honor (Taming)</td>
 				<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
 				<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
+			</tr>
+			<tr>
+				<td>Rarity Familiar</td>
+				<td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label></td>
+				<td><input type="radio" name="fam" id="famn" checked><label for="famn">No</label></td>
 			</tr>
 			</table>
 		</form>
@@ -89,7 +94,7 @@
 </div>
 
 <!-- Found in the public/js folder -->
-<script type="text/javascript" src="{{ asset('js/custom_rollers/arena.js') }}"></script>
+<script type="text/javascript" src="https://www.soulsbetween.com/js/custom_rollers/arena.js"></script>
 
 </body>
 

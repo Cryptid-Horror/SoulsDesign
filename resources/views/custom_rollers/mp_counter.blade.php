@@ -34,25 +34,18 @@
 		<form id="mpcount">
 			<fieldset id="type">
 				<table>
-					<td><input type="radio" id="personal" checked><label for="personal" class="wide">Personal</label></td>
-					<td><input type="radio" id="nonpersonal"><label for="nonpersonal" class="wide">Other</label></td>
+					<td><input type="radio" id="personal"><label for="personal" class="wide">Free Roll</label></td>
+					<td><input type="radio" id="nonpersonal"><label for="nonpersonal" class="wide">Entry Roll</label></td>
 				</table>
 			</fieldset>
-			<input type="checkbox" id="handf"><label for="handf" class="wide">Daily Activities</label><br>
-			<input type="checkbox" id="quest"><label for="quest" class="wide">Questing</label><br>
-			<input type="checkbox" id="arenaf"><label for="arenaf" class="wide">Arena (Free)</label><br>
-			<input type="checkbox" id="arenac"><label for="arenac" class="wide">Arena (Drawn)</label><br>
-			<input type="checkbox" id="event"><label for="event" class="wide">General/Annual Event</label>
-			
-			<div id="text"><br>Regular events are annual or group-sanctioned events that are not overall story or plot driven.<br><br></div>
-			<input type="checkbox" id="story"><label for="story" class="wide">Story Event</label><br>
-			<div id="text"><br>Story events are group wide limited time events that are clearly labeled as story/lore events. <br><br></div>
-			<input type="checkbox" id="character"><label for="character" class="wide">Character Development</label><br>
-			<div id="text"><br>Character development refers to any of the following activities: Rites, Taming, Aether, and Soul Linking. <br><br></div>
-			<input type="checkbox" id="craft"><label for="craft" class="wide">Crafting</label><br>
-			<input type="checkbox" id="challenge"><label for="challenge" class="wide">Seasonal Challenge</label><br>
-			<input type="checkbox" id="advent"><label for="advent" class="wide">Advent Raffles</label><br>
-			<div id="text"><br>Advent entries only count towards your MP total if you have a dragon present in the image, meaning you will not get MP for only drawing the advent dragon.<br><br></div>
+			<input type="checkbox" id="dailyquests"><label for="dailyquests" class="wide">Daily Activities and Quests</label><br>
+			<input type="checkbox" id="combat"><label for="combat" class="wide">Arena and Grand Hunt</label><br>
+			<input type="checkbox" id="vortex"><label for="vortex" class="wide">Vortex</label><br>
+			<input type="checkbox" id="events"><label for="events" class="wide">All Events</label><br>
+			<input type="checkbox" id="rites"><label for="rites" class="wide">Rites</label>
+            <div id="text"><br>Rites include any of the following: Nesting, Taming, Aether, Occupations, and Soul Linking. <br><br></div>
+            <input type="checkbox" id="healing"><label for="healing" class="wide">Healing Shrine</label><br>
+			<div id="text"><br>Healing shrine only counts for lit/art entries - not item healing. <br><br></div>
 		</form>
 	</div>
 	<div class="boxed box3 center"><h1>Final Count</h1>
@@ -64,6 +57,33 @@
 			
 		</p>
 	</div>
+
+    <div class="boxed box3 side">
+    <form id="mpcount">
+		<fieldset id="type">
+			<h1>Additional Bonuses</h1>
+			<div id="text">These bonuses apply ontop of the base bonuses, earning you more points! Click on them to apply them to your count. <br><br></div>
+			<input type="checkbox" id="shadingsimple"><label for="shadingsimple" class="wide">Simple Shading</label><br>
+            <input type="checkbox" id="shadingcomplex"><label for="shadingcomplex" class="wide">Complex Shading</label><br>
+			<input type="checkbox" id="simplebackground"><label for="simplebackground" class="wide">Simple Background</label><br>
+			<input type="checkbox" id="complexbackground"><label for="complexbackground" class="wide">Complex Background</label><br>
+            <input type="checkbox" id="comp"><label for="comp" class="wide">Companion/Handler</label><br>
+
+			<h3>Extra Dragons (Stacks 4 times)</h3>
+			<input type="checkbox" id="extradragon1"><label for="extradragon1" class="wide">Extra Dragon (1)</label><br>
+			<input type="checkbox" id="extradragon2"><label for="extradragon2" class="wide">Extra Dragon (2)</label><br>
+            <input type="checkbox" id="extradragon3"><label for="extradragon3" class="wide">Extra Dragon (3)</label><br>
+            <input type="checkbox" id="extradragon4"><label for="extradragon4" class="wide">Extra Dragon (4)</label><br>
+
+			<h3>Extra Works (Stacks 5 times)</h3>
+			<input type="checkbox" id="extrawords1"><label for="extrawords1" class="wide">150 Extra Words (1)</label><br>
+            <input type="checkbox" id="extrawords2"><label for="extrawords2" class="wide">150 Extra Words (2)</label><br>
+            <input type="checkbox" id="extrawords3"><label for="extrawords3" class="wide">150 Extra Words (3)</label><br>
+            <input type="checkbox" id="extrawords4"><label for="extrawords4" class="wide">150 Extra Words (4)</label><br>
+            <input type="checkbox" id="extrawords5"><label for="extrawords5" class="wide">150 Extra Words (5)</label><br>
+
+			</form>
+				</fieldset>
 </div>
 <br><br>
 

@@ -28,72 +28,126 @@ function calculate() {
 	if ((($("#personal").is(":checked")) || ($("#nonpersonal").is(":checked")))) {
 		
 		if ($("#personal").is(":checked")) {
-			text = "<b>Personal Piece</b>";
+			text = "<b>Free rolls do not gain any points.</b>";
 			log();
 		}
 		
 		if ($("#nonpersonal").is(":checked")) {
-			text = "<b>Non-Personal Piece</b>";
+			text = "<b>Entry rolls gain points.</b>";
 			log();
 		}
 		
-		if ($("#handf").is(":checked")) {
-			tempbonus = 3;
-			text = "Hunting or Foraging";
+		if ($("#dailyquests").is(":checked")) {
+			tempbonus = 10;
+			text = "Daily Activities or Questing";
 			log();
 		}
 		
-		if ($("#quest").is(":checked")) {
-			tempbonus = 4;
-			text = "Questing";
+		if ($("#combat").is(":checked")) {
+			tempbonus = 10;
+			text = "Arena and Grand Hunt";
 			log();
 		}
 		
-		if ($("#arenaf").is(":checked")) {
-			tempbonus = 1;
-			text = "Arena (Free)";
+		if ($("#vortex").is(":checked")) {
+			tempbonus = 10;
+			text = "Vortex";
 			log();
 		}
 		
-		if ($("#arenac").is(":checked")) {
-			tempbonus = 4;
-			text = "Arena (Created)";
+		if ($("#events").is(":checked")) {
+			tempbonus = 15;
+			text = "Events (annual and Story)";
 			log();
 		}
 		
-		if ($("#event").is(":checked")) {
-			tempbonus = 4;
-			text = "Annual and Group Events";
+		if ($("#rites").is(":checked")) {
+			tempbonus = 10;
+			text = "Rites (nesting, taming, aether, etc)";
 			log();
 		}
 		
-		if ($("#story").is(":checked")) {
-			tempbonus = 4;
-			text = "Story Event";
+		if ($("#healing").is(":checked")) {
+			tempbonus = 10;
+			text = "Healing Shrine Entry";
 			log();
 		}
 		
-		if ($("#character").is(":checked")) {
-			tempbonus = 6;
-			text = "Character Development";
+		if ($("#extradragon1").is(":checked")) {
+			tempbonus = 2;
+			text = "Extra Dragon (1)";
+			log();
+		}
+
+        if ($("#extradragon2").is(":checked")) {
+			tempbonus = 2;
+			text = "Extra Dragon (2)";
+			log();
+		}
+
+        if ($("#extradragon3").is(":checked")) {
+			tempbonus = 2;
+			text = "Extra Dragon (3)";
 			log();
 		}
 		
-		if ($("#craft").is(":checked")) {
-			  tempbonus = 1;
-			  text ="Crafting";
+        if ($("#extradragon4").is(":checked")) {
+			tempbonus = 2;
+			text = "Extra Dragon (4)";
+			log();
+		}
+
+		if ($("#shadingsimple").is(":checked")) {
+			  tempbonus = 3;
+			  text ="Shading - Simple";
 			  log();
 		}
 		
-		if ($("#challenge").is(":checked")) {
-			tempbonus = 2;
-			text = "Monthly Challenge";
+		if ($("#shadingcomplex").is(":checked")) {
+			tempbonus = 5;
+			text = "Shading Complex";
 			log();
 		}
 		
-		if ($("#advent").is(":checked")) {
+		if ($("#comp").is(":checked")) {
+			tempbonus = 2;
+			text = "Added Companion";
+			log();
+		}
+        if ($("#extrawords1").is(":checked")) {
 			tempbonus = 1;
-			text = "Advent Raffle";
+			text = "150 Extra Words (1)";
+			log();
+		}
+
+        if ($("#extrawords2").is(":checked")) {
+			tempbonus = 1;
+			text = "150 Extra Words (2)";
+			log();
+		}
+        if ($("#extrawords3").is(":checked")) {
+			tempbonus = 1;
+			text = "150 Extra Words (3)";
+			log();
+		}
+        if ($("#extrawords4").is(":checked")) {
+			tempbonus = 1;
+			text = "150 Extra Words (4)";
+			log();
+		}
+        if ($("#extrawords5").is(":checked")) {
+			tempbonus = 1;
+			text = "150 Extra Words (5)";
+			log();
+		}
+        if ($("#simplebackground").is(":checked")) {
+			tempbonus = 3;
+			text = "Simple Background";
+			log();
+		}
+        if ($("#complexbackground").is(":checked")) {
+			tempbonus = 5;
+			text = "Complex Background";
 			log();
 		}
 	}

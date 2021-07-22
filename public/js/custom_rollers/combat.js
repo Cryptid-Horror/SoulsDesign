@@ -181,11 +181,14 @@ const item_names = {
 	'bleed_tonic': 		'Bleed Tonic',
 	'breath_tonic': 	'Breath Tonic',
 	'dps_booster':		'DPS Booster',
+    'brawler_booster':   'Brawler Booster',
+    'nightshade_booster': 'Nightshade Booster',
+    'warlord_booster':    'Warlord Booster'
 }
 
 const damage_modifier_items = {
 	'strength_tonic': {
-		raw: 20,
+		raw: 10,
 		bleed: 0,
 		magic: 0,
 		breath: 0
@@ -193,12 +196,12 @@ const damage_modifier_items = {
     'magic_tonic': {
 		raw: 0,
 		bleed: 0,
-		magic: 20,
+		magic: 10,
 		breath: 0
     },
     'bleed_tonic': {
 		raw: 0,
-		bleed: 20,
+		bleed: 10,
 		magic: 0,
 		breath: 0
 	},
@@ -206,13 +209,34 @@ const damage_modifier_items = {
 		raw: 0,
 		bleed: 0,
 		magic: 0,
+		breath: 10
+	}, 
+     'brawler_booster': {
+		raw: 20,
+		bleed: 20,
+		magic: 0,
+		breath: 0
+	},
+     'nightshade_booster': {
+		raw: 0,
+		bleed: 0,
+		magic: 20,
 		breath: 20
+	},
+     'warlord_booster': {
+		raw: 30,
+		bleed: 30,
+		magic: 30,
+		breath: 30
 	}
 }
 
 const dps_items = {
 	'dps_booster': {
 		dps_boost: 1
+	},
+    'warlord_booster': {
+		dps_boost: 2
 	}
 }
 
