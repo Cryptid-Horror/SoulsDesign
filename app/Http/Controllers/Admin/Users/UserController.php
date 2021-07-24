@@ -159,7 +159,7 @@ class UserController extends Controller
         else if (!Auth::user()->canEditRank($user->rank)) {
             flash('You cannot edit the information of a user that has a higher rank than yourself.')->error();
         }
-        else if($service->updateFaction($request->input('faction'), Auth::user())) {
+        else if($service->updateFaction($request->input('faction'), $user)) {
             flash('Faction updated successfully.')->success();
         }
         else {
