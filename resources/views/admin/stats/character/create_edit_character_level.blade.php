@@ -45,7 +45,7 @@
 <br>
 <h3>Rewards</h3>
 <p>Rewards are awarded when the user levels up</p>
-@include('widgets._loot_select', ['loots' => $level->rewards, 'showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
+@include('widgets._loot_select', ['loots' => $level->rewards, 'showLootTables' => true, 'showRaffles' => false, 'showRecipes' => false])
 
 <div class="text-right">
     {!! Form::submit($level->id ? 'Edit' : 'Create', ['class' => 'btn btn-primary']) !!}
@@ -53,7 +53,7 @@
 
 {!! Form::close() !!}
 
-@include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'pets' => $pets, 'gears' => $gears, 'weapons' => $weapons, 'tables' => $tables, 'raffles' => $raffles, 'recipes' => $recipes, 'showLootTables' => false, 'showRaffles' => false, 'showRecipes' => false])
+@include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'pets' => $pets, 'gears' => $gears, 'weapons' => $weapons, 'tables' => $tables, 'raffles' => $raffles, 'recipes' => $recipes, 'showLootTables' => true, 'showRaffles' => false, 'showRecipes' => false])
 @include('widgets._level_limit_row', ['items' => $items, 'currencies' => $currencies])
 @endsection
 
