@@ -49,7 +49,7 @@
             @foreach($table->loot as $loot)
                 <tr class="loot-row">
 
-                    <td>{!! Form::select('rewardable_type[]', Config::get('lorekeeper.extensions.item_entry_expansion.loot_tables.enable') ? ['Item' => 'Item', 'ItemRarity' => 'Item Rarity', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'LootTable' => 'Loot Table', 'ItemCategory' => 'Item Category', 'ItemCategoryRarity' => 'Item Category (Conditional)', 'None' => 'None'] : ['Item' => 'Item', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'LootTable' => 'Loot Table', 'None' => 'None'], $loot->rewardable_type, ['class' => 'form-control reward-type', 'placeholder' => 'Select Reward Type']) !!}</td>
+                    <td>{!! Form::select('rewardable_type[]', Config::get('lorekeeper.extensions.item_entry_expansion.loot_tables.enable') ? ['Item' => 'Item', 'ItemRarity' => 'Item Rarity', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'Weapon' => 'Weapon', 'LootTable' => 'Loot Table', 'ItemCategory' => 'Item Category', 'ItemCategoryRarity' => 'Item Category (Conditional)', 'None' => 'None'] : ['Item' => 'Item', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'Weapon' => 'Weapon', 'LootTable' => 'Loot Table', 'None' => 'None'], $loot->rewardable_type, ['class' => 'form-control reward-type', 'placeholder' => 'Select Reward Type']) !!}</td>
 
                     <td class="loot-row-select">
                         @if($loot->rewardable_type == 'Item')
@@ -65,6 +65,8 @@
                             {!! Form::select('rewardable_id[]', $pets, $loot->rewardable_id, ['class' => 'form-control currency-select selectize', 'placeholder' => 'Select Pet']) !!}
                         @elseif($loot->rewardable_type == 'Gear')
                             {!! Form::select('rewardable_id[]', $gears, $loot->rewardable_id, ['class' => 'form-control gear-select selectize', 'placeholder' => 'Select Gear']) !!}
+                        @elseif($loot->rewardable_type == 'Weapon')
+                            {!! Form::select('rewardable_id[]', $weapons, $loot->rewardable_id, ['class' => 'form-control weapon-select selectize', 'placeholder' => 'Select Weapon']) !!}
                         @elseif($loot->rewardable_type == 'LootTable')
                             {!! Form::select('rewardable_id[]', $tables, $loot->rewardable_id, ['class' => 'form-control table-select selectize', 'placeholder' => 'Select Loot Table']) !!}
                         @elseif($loot->rewardable_type == 'ItemCategoryRarity')
@@ -100,7 +102,7 @@
         <tbody id="lootRow">
             <tr class="loot-row">
 
-                <td>{!! Form::select('rewardable_type[]', Config::get('lorekeeper.extensions.item_entry_expansion.loot_tables.enable') ? ['Item' => 'Item', 'ItemRarity' => 'Item Rarity', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'LootTable' => 'Loot Table', 'ItemCategory' => 'Item Category', 'ItemCategoryRarity' => 'Item Category (Conditional)', 'None' => 'None'] : ['Item' => 'Item', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'LootTable' => 'Loot Table', 'None' => 'None'], null, ['class' => 'form-control reward-type', 'placeholder' => 'Select Reward Type']) !!}</td>
+                <td>{!! Form::select('rewardable_type[]', Config::get('lorekeeper.extensions.item_entry_expansion.loot_tables.enable') ? ['Item' => 'Item', 'ItemRarity' => 'Item Rarity', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'Weapon' => 'Weapon', 'LootTable' => 'Loot Table', 'ItemCategory' => 'Item Category', 'ItemCategoryRarity' => 'Item Category (Conditional)', 'None' => 'None'] : ['Item' => 'Item', 'Currency' => 'Currency', 'Pet' => 'Pet', 'Gear' => 'Gear', 'Weapon' => 'Weapon', 'LootTable' => 'Loot Table', 'None' => 'None'], null, ['class' => 'form-control reward-type', 'placeholder' => 'Select Reward Type']) !!}</td>
 
                 <td class="loot-row-select"></td>
                 <td>{!! Form::text('quantity[]', 1, ['class' => 'form-control']) !!}</td>
@@ -118,6 +120,7 @@
     {!! Form::select('rewardable_id[]', $currencies, null, ['class' => 'form-control currency-select', 'placeholder' => 'Select Currency']) !!}
     {!! Form::select('rewardable_id[]', $pets, null, ['class' => 'form-control pet-select', 'placeholder' => 'Select Pet']) !!}
     {!! Form::select('rewardable_id[]', $gears, null, ['class' => 'form-control gear-select', 'placeholder' => 'Select Gear']) !!}
+    {!! Form::select('rewardable_id[]', $weapons, null, ['class' => 'form-control weapon-select', 'placeholder' => 'Select Weapon']) !!}
     {!! Form::select('rewardable_id[]', $tables, null, ['class' => 'form-control table-select', 'placeholder' => 'Select Loot Table']) !!}
     {!! Form::select('rewardable_id[]', $categories, null, ['class' => 'form-control category-select', 'placeholder' => 'Select Item Category']) !!}
     <div class="category-rarity-select d-flex">
@@ -154,6 +157,7 @@ $( document ).ready(function() {
 
     var $petSelect = $('#lootRowData').find('.pet-select');
     var $gearSelect = $('#lootRowData').find('.gear-select');
+    var $weaponSelect = $('#lootRowData').find('.weapon-select');
 
     var $currencySelect = $('#lootRowData').find('.currency-select');
     var $tableSelect = $('#lootRowData').find('.table-select');
@@ -199,6 +203,7 @@ $( document ).ready(function() {
 
         else if (val == 'Pet') $clone = $petSelect.clone();
         else if (val == 'Gear') $clone = $gearSelect.clone();
+        else if (val == 'Weapon') $clone = $weaponSelect.clone();
 
         else if (val == 'LootTable') $clone = $tableSelect.clone();
         else if (val == 'None') $clone = $noneSelect.clone();
@@ -220,6 +225,7 @@ $( document ).ready(function() {
             else if (val == 'Currency') $clone = $currencySelect.clone();
             else if (val == 'Pet') $clone = $petSelect.clone();
             else if (val == 'Gear') $clone = $gearSelect.clone();
+            else if (val == 'Weapon') $clone = $weaponSelect.clone();
             else if (val == 'LootTable') $clone = $tableSelect.clone();
             else if (val == 'None') $clone = $noneSelect.clone();
 

@@ -11,6 +11,7 @@ use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
 use App\Models\Pet\Pet;
 use App\Models\Claymore\Gear;
+use App\Models\Claymore\Weapon;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
 
@@ -58,6 +59,7 @@ class LootTableController extends Controller
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
+            'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),
@@ -85,6 +87,7 @@ class LootTableController extends Controller
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
+            'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),

@@ -77,6 +77,8 @@ class Loot extends Model
                 return $this->belongsTo('App\Models\Item\ItemCategory', 'rewardable_id');
             case 'Gear':
                 return $this->belongsTo('App\Models\Claymore\Gear', 'rewardable_id');
+            case 'Weapon':
+                return $this->belongsTo('App\Models\Claymore\Weapon', 'rewardable_id');
             case 'Pet':
                 return $this->belongsTo('App\Models\Pet\Pet', 'rewardable_id');
             case 'None':
