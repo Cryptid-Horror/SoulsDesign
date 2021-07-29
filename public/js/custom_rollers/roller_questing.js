@@ -418,7 +418,7 @@ function readInputs() {
     if (document.getElementById("bondedY").checked == true){has_bonded};
     if (document.getElementById("other_dragonY").checked == true){has_other_dragon};
     if (document.getElementById("is_hoarderY").checked == true){result == true};
-    if (document.getElementByID("nofaily").checked == true){result == true};
+    if (document.getElementById("nofaily").checked == true){result == true};
     if (document.getElementById("domes_tamingY").checked == true){result == true};
     if (document.getElementById("scoria_komodoY").checked == true){result == true};
 
