@@ -46,11 +46,9 @@
         <input type="number" id="1_health" min="1" value=500>
         <label for="1_class">Class:</label>
         <select id="1_class">
-            <option value="very_light">Very Light</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
-            <option value="very_heavy">Very Heavy</option>
             <option value="1_champion">Challenger Champion</option>
             <option value="2_champion">Warrior Champion</option>
             <option value="3_champion">Gladiator Champion</option>
@@ -227,11 +225,9 @@
         <input type="number" id="2_health" min="1" value=500>
         <label for="2_class">Class:</label>
         <select id="2_class">
-            <option value="very_light">Very Light</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
-            <option value="very_heavy">Very Heavy</option>
             <option value="1_champion">Challenger Champion</option>
             <option value="2_champion">Warrior Champion</option>
             <option value="3_champion">Gladiator Champion</option>
