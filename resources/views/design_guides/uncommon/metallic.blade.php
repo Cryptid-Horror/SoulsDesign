@@ -48,15 +48,17 @@
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
         'Can gradient or blend between colors smoothly, or have a solid edge as it presents multiple colors',
+        'Metallic is allowed to effect horns, claws, teeth, spikes etc, or One marking.'
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
+        'Metallic cannot affect the base coat or color modifiers (i.e. if you effect the base coat with Copper, you cannot apply Metallic to Copper.'
     ];
 
     $marking_must = [
-        'Recessive: Can be up to three colors and affect all special features (horns/etc)',
-        'Dominant: Can be up to five colors and affect all special features (horns/etc)',
+        'Recessive: Can be up to three colors and affect all special features (horns/etc) AND/OR one marking.',
+        'Dominant: Can be up to five colors and affect all special features (horns/etc) AND/OR two markings.',
     ];
 
     // If left empty, the swatches section will not be shown

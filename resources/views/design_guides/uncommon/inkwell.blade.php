@@ -46,16 +46,22 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
+        'Is allowed up to a 24 value point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base. It is allowed a 24 saturation point difference if it is being affected by a color modifier.',
         'Inkwell be modified by color modifiers to change the color of inkwell from black to any shade of the modifier (i.e. applying crimson to make it red).',
         'Can have an outline with the border marking that is slightly darker or lighter than the color of inkwell (along with allowed to have a border with it).',
         'Can have a mottled effect, especially on the feet/gums/flesh, causing covered areas to appear in different colors, and even have the mottled look to them. These flesh areas MUST have a visible difference between where this marking appears on the skin around the flesh in order to appear on the flesh itself.',
         'Heterochromia is allowed in all dragon designs, and especially so in this gene.',
         'This gene may have coloration changes for the markings below it, i.e. being black in coloration except for the blanket below it, which may appear as a very subtle greyer or slightly darker/lighter shade of black where blanket is.',
+        'Inkwell is allowed to have an extra layer beneath it that is lighter or darker shade of its color.',
+        'Inkwell may hide any marking that sits beneath it.',
+
     ];
 
     $marking_cannot = [
         'Cannot be used to mimic other markings, it needs to appear erratic and non uniform.',
+        'Inkwell cannot be under any other markings except for Tobiano and painted. All other markings it must be over (It can layer over or under inkwell/etc)',
+        'If affected by a color modifier, this marking cannot be pastel or pale shades of colors like on the Tobiano guide. ',
+
     ];
 
     $marking_must = [

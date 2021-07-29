@@ -48,13 +48,13 @@
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.', 
         'Is allowed to gradually fade into the base coat.',
-        'Up to three shapes may be present at once.',
+        'Up to three shapes may be present at once and each shape may be a different color. I.e if you have stars, diamonds, and triangles, the stars can be white, diamonds grey, and triangles brown.',
         'Shapes do not have to be filled in, they can be the outline of the shape.',
         'Examples of shapes are squares, rectangles, large dots/ovals, diamonds, triangles, stars, hearts, octagons, etc.',
     ];
 
     $marking_cannot = [
-        'Shaped may not be rings or small dots (like dusted).', 
+        'Shaped may not be rings or small dots (like dusted or ringed).', 
     ];
 
     $marking_must = [

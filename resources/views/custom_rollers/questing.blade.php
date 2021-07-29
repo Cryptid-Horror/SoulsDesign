@@ -97,32 +97,36 @@
     <td>
   	<form id="modifiers" align="left">
   	    <table>
-<tr>
+    <tr>
         <td>Bonded</td>
         <td><input type="radio" name="bonded" id="bondedY"><label for="bondedY">Yes</label></td>
         <td><input type="radio" name="bonded" id="bondedN"><label for="bondedN">No</label></td>
-        </tr>
-        <tr>
+    </tr>
+    <tr>
         <td>Extra Dragon</td>
         <td><input type="radio" name="other_dragon" id="other_dragonY"><label for="other_dragonY">Yes</label></td>
         <td><input type="radio" name="other_dragon" id="other_dragonN"><label for="other_dragonN">No</label></td>
-        </tr>
-        <tr>
+    </tr>
+    <tr>
         <td>Hoarder</td>
        <td><input type="radio" name="hoarder" id="is_hoarderY"><label for="is_hoarderY">Yes</label></td>
        <td><input type="radio" name="hoarder" id="is_hoarderN"><label for="is_hoarderN">No</label></td>
-</tr>
-<tr>
+    </tr>
+    <tr>
         <td>Domestic Taming</td>
        <td><input type="radio" name="domes_tamingY" value ="domes_taming" id="domes_tamingY"><label for="domes_tamingY">Yes</label></td>  
        <td><input type="radio" name="domes_tamingY" value ="domes_taming" id="domes_tamingN"><label for="domes_tamingN">No</label></td>
     </tr>
     <tr>
-            <td>Scoria Komodo</td>
+        <td>Scoria Komodo</td>
       <td><input type="radio" name="scoria_komodoY" value="scoria_komdo" id="scoria_komodoY"><label for="scoria_komodoY">Yes</label></td>  
       <td><input type="radio" name="scoria_komodoY" value="scoria_komdo" id="scoria_komodoN"><label for="scoria_komodoN">No</label></td> 
     </tr>
-    
+    <tr>
+    <td>Pearl Necklace</td>
+			<td><input type="radio" name="nofail" id="nofaily"><label for="nofaily">Yes</label></td>
+			<td><input type="radio" name="nofail" id="nofailn" checked><label for="nofailn">No</label></td>
+	</tr>
       </table></table>
                </form>
         </td>

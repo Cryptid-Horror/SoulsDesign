@@ -398,6 +398,7 @@ var magic_type;
 var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass chance)
 var has_other_dragon; // +5% (to pass chance)
 var is_hoarder; // Chance to return with one more item
+var nofaily; // Cannot fail quest
 
 var extras; // Array of strings, if input was true, add id to this array, later used to get value from index
 
@@ -417,6 +418,7 @@ function readInputs() {
     if (document.getElementById("bondedY").checked == true){has_bonded};
     if (document.getElementById("other_dragonY").checked == true){has_other_dragon};
     if (document.getElementById("is_hoarderY").checked == true){result == true};
+    if (document.getElementByID("nofaily").checked == true){result == true};
     if (document.getElementById("domes_tamingY").checked == true){result == true};
     if (document.getElementById("scoria_komodoY").checked == true){result == true};
 
@@ -433,6 +435,7 @@ function rollQuest() {
     pass_chance += magic_level_pass[magic_level];
     if(quest_data.quest_types.includes(magic_type)) { pass_chance += 5; }
     if(has_bonded) { pass_chance += 10; }
+    if(nofaily) {pass_chance += 100; }
     else if(has_other_dragon) { pass_chance += 5; }
    /* for(let i = 0; i < extras.length; i++) {
         pass_chance += extra_pass[extras[i]];
