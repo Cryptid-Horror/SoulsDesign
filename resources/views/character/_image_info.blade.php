@@ -141,18 +141,13 @@
                 </div>
             </div>
 
-<<
             <div>
                 <strong>Uploaded:</strong> {!! pretty_date($image->created_at) !!}
             </div>
             <div>
                 <strong>Last Edited:</strong> {!! pretty_date($image->updated_at) !!}
 
-                @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-                    <div class="mt-3">
-                        <a href="#" class="btn btn-outline-info btn-sm edit-features mb-3" data-id="{{ $image->id }}"><i class="fas fa-cog"></i> Edit</a>
-                    </div>
-                @endif
+                
 
                 <div class="mb-1">
                     <div><h5>Pets</h5></div>
