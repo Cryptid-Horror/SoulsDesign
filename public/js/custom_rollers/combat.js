@@ -8,50 +8,32 @@ const dps_chance = { 2: 5, 3: 3, 4: 2 };
 const deflect_chance = { 1: 0.75, 2: 0.5, 3: 0.25, 4: 0.1, 5: 0.05, 6: 0.03, 7: 0.02, 8: 0.01, 9: 0.0, 10: 0.0 };
 
 const classes = {
-	'very_light': {
-		phys_crit: 5, // out of 10
-		min_raw: 15,
-		max_raw: 30,
-		max_bleed: 50, // min is always 1
+	'light': {
+		phys_crit: 3, // out of 10
+		min_raw: 40,
+		max_raw: 100,
+		max_bleed: 30, // min is always 1
 		max_dps: 3,
 		base_res: 30,
 		mag_crit: 5
-	},
-	'light': {
-		phys_crit: 3, // out of 10
-		min_raw: 25,
-		max_raw: 50,
-		max_bleed: 40, // min is always 1
-		max_dps: 3,
-		base_res: 30,
-		mag_crit: 3
 	},
 	'medium': {
 		phys_crit: 4, // out of 10
 		min_raw: 50,
 		max_raw: 120,
-		max_bleed: 30, // min is always 1
-		max_dps: 2,
+		max_bleed: 40, // min is always 1
+		max_dps: 3,
 		base_res: 40,
 		mag_crit: 4
 	},
 	'heavy': {
-		phys_crit: 2, // out of 10
-		min_raw: 50,
-		max_raw: 135,
-		max_bleed: 40, // min is always 1
-		max_dps: 2,
-		base_res: 35,
-		mag_crit: 4
-	},
-	'very_heavy': {
-		phys_crit: 1, // out of 10
-		min_raw: 50,
+		phys_crit: 5, // out of 10
+		min_raw: 60,
 		max_raw: 150,
-		max_bleed: 20, // min is always 1
+		max_bleed: 50, // min is always 1
 		max_dps: 2,
 		base_res: 50,
-		mag_crit: 2
+		mag_crit: 3
 	},
 	'grand_sap': {
 		phys_crit: 5, // out of 10
@@ -90,15 +72,15 @@ const classes = {
 		mag_crit: 4
 	},
 	'4_champion': {
-	phys_crit: 2, // out of 10
-	min_raw: 80,
-	max_raw: 202,
-	max_bleed: 60, // min is always 1
-	max_dps: 2,
-	base_res: 52,
-	mag_crit: 4
-},
-	
+		phys_crit: 2, // out of 10
+		min_raw: 80,
+		max_raw: 202,
+		max_bleed: 60, // min is always 1
+		max_dps: 2,
+		base_res: 52,
+		mag_crit: 4
+	},
+		
 };
 
 
