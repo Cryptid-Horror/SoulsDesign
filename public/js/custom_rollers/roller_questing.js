@@ -435,7 +435,7 @@ function rollQuest() {
     pass_chance += magic_level_pass[magic_level];
     if(quest_data.quest_types.includes(magic_type)) { pass_chance += 5; }
     if(has_bonded) { pass_chance += 10; }
-    if(nofaily) {pass_chance += 100; }
+    if(nofaily) { pass_chance += 100; }
     else if(has_other_dragon) { pass_chance += 5; }
    /* for(let i = 0; i < extras.length; i++) {
         pass_chance += extra_pass[extras[i]];
