@@ -43,16 +43,16 @@
         <br>
 
         <label for="1_health">Health:</label>
-        <input type="number" id="1_health" min="1" value=500>
+        <input type="number" id="1_health" min="1" value=600>
         <label for="1_class">Class:</label>
         <select id="1_class">
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
-            <option value="1_champion">Challenger Champion</option>
-            <option value="2_champion">Warrior Champion</option>
-            <option value="3_champion">Gladiator Champion</option>
-            <option value="4_champion">Arena Champion</option>
+            <option value="1_champion">Exalted Challenger</option>
+            <option value="2_champion">Exalted Warrior</option>
+            <option value="3_champion">Exalted Gladiator</option>
+            <option value="4_champion">Exalted Champion</option>
         </select>
         
         <br>
@@ -222,16 +222,16 @@
         <input type="text" id="2_name">
         <br>
         <label for="2_health">Health:</label>
-        <input type="number" id="2_health" min="1" value=500>
+        <input type="number" id="2_health" min="1" value=600>
         <label for="2_class">Class:</label>
         <select id="2_class">
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
-            <option value="1_champion">Challenger Champion</option>
-            <option value="2_champion">Warrior Champion</option>
-            <option value="3_champion">Gladiator Champion</option>
-            <option value="4_champion">Arena Champion</option>
+            <option value="1_champion">Exalted Challenger</option>
+            <option value="2_champion">Exalted Warrior</option>
+            <option value="3_champion">Exalted Gladiator</option>
+            <option value="4_champion">Exalted Champion</option>
         </select>
         <br>
         <label for="2_breath_type_1">Breath 1:</label>
