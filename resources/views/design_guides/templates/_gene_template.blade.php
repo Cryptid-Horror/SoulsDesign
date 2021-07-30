@@ -39,7 +39,7 @@
                 <h4><b><u>Layering and Ranges</u></b></h4>
                 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                     @include('design_guides.templates._marking_interactions')
-                    <a class="btn btn-secondary" href="https://www.soulsbetween.com/info/Genetic_Handbook">Genetic Portal Handbook
+                    <a class="btn btn-secondary" href="{{ url('info/Genetic_Handbook') }}">Genetic Portal Handbook
 
                     <a class="btn btn-dark"></a>
 
@@ -101,10 +101,10 @@
                             Import Effects
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop7">
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Value_Saturation">Value and Saturation</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Free_Marks">Minimal (free) Markings</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Import_Extras">Import Effects</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Design_Addons">Item kits, Shampoo, and Extras</a>
+                            <a class="dropdown-item" href="{{ url('info/Value_Saturation') }}">Value and Saturation</a>
+                            <a class="dropdown-item" href="{{ url('info/Free_Marks') }}">Minimal (free) Markings</a>
+                            <a class="dropdown-item" href="{{ url('info/Import_Extras') }}">Import Effects</a>
+                            <a class="dropdown-item" href="{{ url('info/Design_Addons') }}">Item kits, Shampoo, and Extras</a>
                             
                         </div>
                     </div>
@@ -114,14 +114,14 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop8">
                         <a class="dropdown-item" href="https://www.deviantart.com/the-below/gallery/66157893/dragon-imports">Import File Downloads</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Coat_Colors">Coat Colors Explained</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=6">Breath Elements</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=7">Skills</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/trait-categories">Physical Traits</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Lineage_guide">Filling out the Lineage</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Nesting_Odds">Inbreeding Consequences</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Import_Info">Registration Information</a>   
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/info/Check_List">Design Review checklist</a>
+                            <a class="dropdown-item" href="{{ url('info/Coat_Colors') }}">Coat Colors Explained</a>
+                            <a class="dropdown-item" href="{{ url('world/traits?feature_category_id=6') }}">Breath Elements</a>
+                            <a class="dropdown-item" href="{{ url('world/traits?feature_category_id=7') }}">Skills</a>
+                            <a class="dropdown-item" href="{{ url('world/trait-categories') }}">Physical Traits</a>
+                            <a class="dropdown-item" href="{{ url('info/Lineage_guide') }}">Filling out the Lineage</a>
+                            <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">Inbreeding Consequences</a>
+                            <a class="dropdown-item" href="{{ url('info/Import_Info') }}">Registration Information</a>   
+                            <a class="dropdown-item" href="{{ url('info/Check_List') }}">Design Review checklist</a>
                         </div>
                     </div>
                     <div class="btn-group" role="group">
@@ -129,14 +129,14 @@
                             Mutations
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop9">
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/world/traits?feature_category_id=5">Physical Mutations</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/abundism">Abundism</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/albino">Albino</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/anery">Anery</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/chimeric">Chimeric</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/leucism">Luecism</a>
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/melanistic">Melanistic</a>   
-                            <a class="dropdown-item" href="https://www.soulsbetween.com/design/color_mutations/radiance">Radiance</a>
+                            <a class="dropdown-item" href="{{ url('world/traits?feature_category_id=5') }}">Physical Mutations</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/abundism') }}">Abundism</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/albino') }}">Albino</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/anery') }}">Anery</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/chimeric') }}">Chimeric</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/leucism') }}">Luecism</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/melanistic') }}">Melanistic</a>   
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/radiance') }}">Radiance</a>
                         </div>
                     </div>
                 </div>

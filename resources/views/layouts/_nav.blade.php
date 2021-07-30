@@ -36,22 +36,22 @@
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
                                 <i class="fas fa-dungeon"></i> Activity Prompts
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_AC') }}">
+                            <a class="dropdown-item" href="{{ url('info/_AC') }}">
                                <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
+                            <a class="dropdown-item" href="{{ url('info/dragon_registration') }}">
                                <i class="fas fa-paint-brush"></i>  Design Registration
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
+                            <a class="dropdown-item" href="{{ url('info/point_counting') }}">
                                 <i class="fas fa-clipboard-list"></i> Primal and Mastery Points
                             </a>
                             <a class="dropdown-item" href="{{ url('level') }}">
                                 <i class="fas fa-level-up-alt"></i> Level Area
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/MFA') }}">
+                            <a class="dropdown-item" href="{{ url('info/MFA') }}">
                                 <i class="fas fa-dungeon"></i> Monthly Free Activities
                             </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
@@ -59,16 +59,16 @@
                             </a>
                             
                             <div class="dropdown-divider"></div>
-                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/13') }}">
+                             <a class="dropdown-item" href="{{ url('forum/13') }}">
                                <i class="fas fa-sign"></i> Leasing Dragons
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Flights') }}">
+                            <a class="dropdown-item" href="{{ url('info/Flights') }}">
                                <i class="fas fa-dragon"></i> Flights
                             </a>
-                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nest_perms') }}">
+                             <a class="dropdown-item" href="{{ url('info/Nest_perms') }}">
                                  <i class="fas fa-egg"></i> Nesting Permissions
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Sales') }}">
+                            <a class="dropdown-item" href="{{ url('info/Sales') }}">
                             <i class="fas fa-store"></i>Seasonal Sales
                             </a>
                         </div>
@@ -90,7 +90,7 @@
                                <i class="fas fa-paint-brush"></i>Gallery
                             </a>
                            
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/R-A-F') }}">
+                            <a class="dropdown-item" href="{{ url('info/R-A-F') }}">
                                 <i class="fas fa-sign"></i> Refer a Friend
                             </a>
                             <a class="dropdown-item" href="{{ url('trades/listings') }}">
@@ -106,7 +106,7 @@
                         </div>
                     </li>
                 <li class="nav-item">
-                                <a class="nav-link" href="{{ url('https://www.soulsbetween.com/design') }}">GENETICS PORTAL</a>
+                                <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
                  <li class="nav-item dropdown">
                     <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Lore and World
@@ -138,19 +138,19 @@
                             Rollers
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/arenaloot') }}">Arena Loot</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/combat') }}">Combat</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/daily_activity') }}">Daily Activities</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/hatchery') }}">Hatchery</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/mp_counter') }}">Master Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/nesting') }}">Nesting </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/pp_counter') }}">Primal Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}">Questing</a>
+                            <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
+                            <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
+                            <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
+                            <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
+                            <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Master Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
+                            <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Primal Point Counter</a>
+                            <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/HatchOdds') }}">
+                            <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
                                 Hatchery Odds
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nesting_Odds') }}">
+                            <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
                                 Nesting Odds
                             </a>
                         </div>
@@ -206,10 +206,10 @@
                             <a class="dropdown-item" href="{{ url('reports/new') }}">
                                 Submit Report
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_StaffApps') }}">
+                            <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
                                 Staff Applications
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/16') }}">
+                            <a class="dropdown-item" href="{{ url('forum/16') }}">
                                 Suggestions/Feedback
                             </a>
                         </div>
