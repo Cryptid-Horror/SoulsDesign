@@ -25,10 +25,12 @@ const magic_level_pass = {
 }
 
 // Pass rate boosts based on items, familiars, or taming
+// These refer to the inputs (must be of type 'radio') that
+// also have the 'extras' class on them
 const extra_pass = {
-    "domes_tamingY": 5,
-    "scoria_komodoY": 5,
-    "nofaily": 100
+    "domestic_taming": 5,
+    "scoria_komodo": 5,
+    "pearl_necklace": 100
 }
 
 const base_injury = {
@@ -399,7 +401,6 @@ var magic_type;
 var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass chance)
 var has_other_dragon; // +5% (to pass chance)
 var is_hoarder; // Chance to return with one more item
-var nofaily; // Cannot fail quest
 
 var extras; // Array of strings, if input was true, add id to this array, later used to get value from index
 
@@ -416,13 +417,17 @@ function readInputs() {
     temper = document.getElementById("temper").value;
     magic_level = document.getElementById("magic_level").value;
     magic_type = document.getElementById("magic_type").value;
-    if (document.getElementById("bondedY").checked == true){has_bonded};
-    if (document.getElementById("other_dragonY").checked == true){has_other_dragon};
-    if (document.getElementById("is_hoarderY").checked == true){result == true};
-    if (document.getElementById("nofaily").checked == true){result == true};
-    if (document.getElementById("domes_tamingY").checked == true){result == true};
-    if (document.getElementById("scoria_komodoY").checked == true){result == true};
-
+    has_bonded = document.querySelector("[name=bonded]:checked") ? document.querySelector("[name=bonded]:checked").value == "Y" : false;
+    has_other_dragon = document.querySelector("[name=other_dragon]:checked") ? document.querySelector("[name=other_dragon]:checked").value == "Y" : false;
+    is_hoarder = document.querySelector("[name=hoarder]:checked") ? document.querySelector("[name=hoarder]:checked").value == "Y" : false;
+    
+    // Get extras
+    extras = []
+    // Extras are input elements (assumed to all be of type 'radio') with the 'extras' class
+    extras_inputs = document.querySelectorAll("input.extras:checked");
+    for(let i = 0; i < extras_inputs.length; i++) {
+        if (extras_inputs[i].value == "Y") { extras.push(extras_inputs[i].name); }
+    }
 }
 
 function rollQuest() {
@@ -435,12 +440,11 @@ function rollQuest() {
     var pass_chance = base_pass[rank];
     pass_chance += magic_level_pass[magic_level];
     if(quest_data.quest_types.includes(magic_type)) { pass_chance += 5; }
-    if(has_bonded) { pass_chance += 10; }
-    if(nofaily) { pass_chance += 100; }
+    if(has_bonded) { pass_chance += 10; }               // The bonded bonus overwrites the has_other_dragon bonus
     else if(has_other_dragon) { pass_chance += 5; }
-   /* for(let i = 0; i < extras.length; i++) {
+    for(let i = 0; i < extras.length; i++) {
         pass_chance += extra_pass[extras[i]];
-    }*/
+    }
 
     var result = "";
     var pass_roll = rand(1, 100);
