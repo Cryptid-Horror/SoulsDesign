@@ -42,14 +42,13 @@
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
-
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}">
-                               <i class="fas fa-paint-brush"></i>  Design Registration </a>
-
+                               <i class="fas fa-paint-brush"></i>  Design Registration
+                            </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/point_counting') }}">
                                 <i class="fas fa-clipboard-list"></i> Primal and Mastery Points
                             </a>
-                             <a class="dropdown-item" href="{{ url('level') }}">
+                            <a class="dropdown-item" href="{{ url('level') }}">
                                 <i class="fas fa-level-up-alt"></i> Level Area
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/MFA') }}">
@@ -85,7 +84,7 @@
                             </a>
                             
                             <a class="dropdown-item" href="{{ url('forum') }}">
-                                 <i class="fas fa-sign"></i> Forums
+                                <i class="fas fa-sign"></i> Forums
                             </a>
                             <a class="dropdown-item" href="{{ url('gallery') }}">
                                <i class="fas fa-paint-brush"></i>Gallery
@@ -99,10 +98,10 @@
                             </a>   
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
-                            Bug Reports
+                                Bug Reports
                             </a>
                             <a class="dropdown-item" href="{{ url('raffles') }}">
-                            Raffles
+                                Raffles
                             </a>
                         </div>
                     </li>
@@ -149,11 +148,11 @@
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/roller/questing') }}">Questing</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/HatchOdds') }}">
-                            Hatchery Odds
-                         </a>
+                                Hatchery Odds
+                            </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/Nesting_Odds') }}">
-                           Nesting Odds
-                        </a>
+                                Nesting Odds
+                            </a>
                         </div>
                     </li>
             </ul>
@@ -208,10 +207,10 @@
                                 Submit Report
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/info/_StaffApps') }}">
-                           Staff Applications
+                                Staff Applications
                             </a>
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/forum/16') }}">
-                            Suggestions/Feedback
+                                Suggestions/Feedback
                             </a>
                         </div>
                     </li>
