@@ -50,6 +50,7 @@
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
         'May be up to three individual colors',
+        'Merle can have large or small patches. It can appear more like a calico cat if desired.',
     ];
 
     $marking_cannot = [

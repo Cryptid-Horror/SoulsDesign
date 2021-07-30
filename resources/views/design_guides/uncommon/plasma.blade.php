@@ -46,9 +46,11 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
+        'Plasma may gradient into the base.',
         'Plasma can start in up to three starting locations, or can extend from one zone into the next one freely',
-        'Thickness and thinness of the marking can vary, so long as it is very "lightning" or "spiderweb" looking in design.'
+        'Thickness and thinness of the marking can vary.',
+        'Plasma can appear as lightning, spiderweb, or water ripple patterns. This means it can connect together and weave throughout the design creating sort of like "holes" throughout the pattern.',
     ];
 
     $marking_cannot = [

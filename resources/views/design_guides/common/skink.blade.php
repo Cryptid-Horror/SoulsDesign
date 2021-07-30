@@ -47,34 +47,24 @@
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
-        'Skinks has to have one line that started from ontop, below, or through the eye and flows horizontally down the body. Skink lines can start from the muzzle/face tip and go down towards the body, so long as the placement fits with the above and below needs. The following areas are allowed to be added in addition to the needed one around the eye:
-
-*Following the upper, or lower lip of the dragon and then flowing down the body horizontally.
-* Starting at the middle of the skull and flowing down the spine/back of the dragon.
-
-Skinks horizontal lines can merge at the tail tip.',
-'Skink is allowed to fade from one color to another down the line of the body. In recessive form, both colors must be a natural base coat color. However, a few things can effect this:
-
-*Applying a color modifier marking to the base -- Skink can be color dependant to what is below it. If both markings are recessive, only one of skinks colors can be the color modifier. If one or both are dominant, both of skinks colors can be a shade of the color modifier.
-*Applying a color modifier to Skink -- If both markings are recessive, only one color on skink can be the color modifier color. If one or both markings are dominant, both of skinks colors can be the color modifier.
-
-*Dominant Skink -- Dominant skink can be any natural color blending into Any color, so applying a color modifier to skink you can have it effect the natural color. Same goes for applying it to the base coat.
-
-Skink has a degree of control when interacting with other color dependant markings. If you layer skink under stained, and have stained modified with crimson, the portion of skink under stained can be red and fade into a natural color.',
-' Skink is allowed a border, which follows the same color rules as the main marking, or can be a seperate natural color or modified by a color marking.The border of skink can be solid, soft, blurred, or gradient, with textured or feathered edges.
-
-The border should not exceed the size of the skinks width, and does not have to travel all the way down the skinks length.',
-'Skink can cause the color of the tongue to be any shade of blue.',
+        'Skink can flow from any part of the face down the body. It has to start at the face, or base of the face and flow down through at least the neck. Skink no longer HAS to flow from the eye.',
+        'If using multiple lines, you can use up to three, and they are allowed to merge at the face or end of the tail or both.',
+        'Skink is allowed to fade from one color to another as it travels down the body. In recessive it can only blend from one natural color to one random color. In dominant it can flow from any two unnatural colors.',
+        'Skink can be modified by a color modifier - If the modifier is affecting the base, skink can be shades of that modifier. If the color modifier effects Skink, it can be shades from that modifier and can still have any random color that it blends into. Like most markings, if a color modifier is affecting a marking like Stained and it sits over Skink, Skink can take on the properties of that color ',
+        'Skinks is allowed a thin border which can be darker or lighter than skink and can even fade like skink. The border is allowed to be solid, soft, blurred, gradient, and textured or feathered edges. The border should not exceed the width of skink or trail too far without skink being in it. It does not have to flow through all of skink and can blend into the base coat.',
+        'Skink allows the color of the tongue to be any shade of blue. It is allowed to gradient from the allowed colors to blue as well.', 
+        'Skink is allowed to gradient into the base coat.',
+        'Duotone allows the presence of a third color in Skink.',
     ];
 
     $marking_cannot = [
        'Skink lines cannot be disconnected or have holes. Each line of skink must be fully connected and come to an end either somewhere down the body or end at the tip of the tail. Different lines of skink can end in different spots!',
-       ' Skink must appear horizontal down the body. It cannot appear on wings and it cannot be vertical.',
+       'Skink must appear horizontal down the body. It cannot appear on wings and it cannot be vertical.',
     ];
 
     $marking_must = [
-        'Recessive: Can appear in all zones and can gradient between two natural colors',
-        'Dominant: Can appear in all zones, and can gradient between a natural color and any other color.',
+        'Recessive: Can appear in all zones and can gradient between a natural color and any other color.',
+        'Dominant: Can appear in all zones, and can gradient between any two colors.',
     ];
 
     // If left empty, the swatches section will not be shown

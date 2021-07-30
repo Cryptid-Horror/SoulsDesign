@@ -104,7 +104,7 @@
 			<td><input type="radio" name="soul" id="souly"><label for="souly">Yes</label></td>
 			<td><input type="radio" name="soul" id="souln" checked><label for="souln">No</label></td>
 	
-			<td>No-fail</td>
+			<td>Pearl Necklace</td>
 			<td><input type="radio" name="nofail" id="nofaily"><label for="nofaily">Yes</label></td>
 			<td><input type="radio" name="nofail" id="nofailn" checked><label for="nofailn">No</label></td>
 		</tr>
@@ -116,6 +116,11 @@
 			<td>  Pass Chance Familiar</td>
 			<td><input type="radio" name="fam" id="famY"><label for="famY">Yes</label></td>
 			<td><input type="radio" name="fam" id="famN" checked><label for="famN">No</label></td>
+		</tr>
+		<tr>
+			<td>Temperament Location Buff</td>
+			<td><input type="radio" name="local" id="localY"><label for="localY">Yes</label></td>
+			<td><input type="radio" name="local" id="localN" checked><label for="localN">No</label></td>
 		</tr>
 		</table>
 		</form>

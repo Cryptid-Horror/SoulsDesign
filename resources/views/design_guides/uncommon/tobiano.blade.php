@@ -46,23 +46,26 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
+        'Is allowed up to a 24 value point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base. It is allowed a 24 saturation point difference if it is being affected by a color modifier.',
         'Can have an outline with the border marking that is slightly darker or lighter than the color of tobiano (along with allowed to have a border with it).',
         'Can have a mottled effect, especially on the feet/gums/flesh, causing covered areas to appear in different colors, and even have the mottled look to them. These flesh areas MUST have a visible difference between where this marking appears on the skin around the flesh in order to appear on the flesh itself.',
         'Heterochromia is allowed in all dragon designs, and especially so in this gene.',
         'This gene may have coloration changes for the markings below it, i.e. being white in coloration except for the blanket below it, which may appear as a very subtle pinker/creamer or slightly darker/lighter shade of white where blanket is.',
+        'Tobiano is allowed to have an extra layer beneath it that is lighter or darker shade of its color.',
+        'Tobiano is allowed to be effected by color modifiers, however the colors must be pale and pastel in color. Refer to the provided swatches for example of good colors for this!',
+        'Tobiano may hide any marking that sits beneath it.',
     ];
 
     $marking_cannot = [
         'Cannot be used to mimic other markings, it needs to appear erratic and non uniform.',
-        'Tobiano cannot be modified by color modifiers to change its color.',
+        'Tobiano cannot be under any other markings except for inkwell and painted. All other markings it must be over (It can layer over or under inkwell/etc)'
 
     ];
 
     $marking_must = [
         'Recessive: Covers up to 75% of the body',
         'Dominant: Covers up to 95% of the body',
-        'Tobiano is allowed shades of white, very bright/white cream, and bright white/pink.',
+        'Tobiano is allowed shades of white, very bright/white cream, and bright white/pink unless modifierd by a color modifier. Then it is only allowed pastel or pale colors of that modifier.',
     ];
 
     // If left empty, the swatches section will not be shown
