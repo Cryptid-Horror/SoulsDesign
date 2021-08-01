@@ -386,7 +386,6 @@ Route::group(['prefix' => 'grants', 'namespace' => 'Users', 'middleware' => 'pow
     Route::get('items', 'GrantController@getItems');
     Route::post('items', 'GrantController@postItems');
 
-
     Route::get('exp', 'GrantController@getExp');
     Route::post('exp', 'GrantController@postExp');
     

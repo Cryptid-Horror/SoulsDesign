@@ -11,7 +11,6 @@
     <div class="alert alert-danger">This user has been banned.</div>
 @endif
 <h1>
-
     <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;">
     {!! $user->displayName !!}
     {!! $user->isOnline() !!}

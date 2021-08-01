@@ -10,9 +10,7 @@
         @if($character->getLineageBlacklistLevel() < 1)
             <div class="sidebar-item"><a href="{{ $character->url . '/lineage' }}" class="{{ set_active('character/'.$character->slug.'/lineage') }}">Lineage</a></div>
         @endif
-
-        <div class="sidebar-item"><a href="{{ $character->url . '/level-logs' }}" class="{{ set_active('character/'.$character->slug.'/level-logs') }}">Level Logs</a></div>
-
+        <div class="sidebar-item"><a href="{{ $character->url . '/level' }}" class="{{ set_active('character/'.$character->slug.'/level') }}">Level Logs</a></div>
     </li>
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
