@@ -1399,7 +1399,7 @@ function generateTrait(traitToGen) {
 	if (document.getElementById("AT").checked) {
 		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
 			destroyedModifiers += "Aether Tonic destroyed.<br>";
-		bonus = 30;
+		bonus = 60;
 	}
 	
 	var roll = randRange(100);
@@ -2052,6 +2052,8 @@ function generateMutation() {
 	var i, roll;
 	var bonus = 0;
 	var dragonsEyeBonus = 0;
+	var smMuteBonus = 0;
+	var dmMuteBonus = 0;
 	var mutationList = [];
 	if (document.getElementById("damTemper").value == Tempers.CALM) {
 		bonus += 10;
@@ -2062,7 +2064,13 @@ function generateMutation() {
 	if (document.getElementById("DE").checked) {
 		if (!destroyedModifiers.includes("Dragon's Eye destroyed.<br>"))
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
-		dragonsEyeBonus += 30;
+		dragonsEyeBonus += 50;
+	}
+	if (document.getElementById("SM").checked) {
+		smMuteBonus += 30;
+	}
+	if (document.getElementById("DM").checked) {
+		dmMuteBonus += 30;
 	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);

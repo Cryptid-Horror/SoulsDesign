@@ -119,8 +119,8 @@
 		</tr>
 		<tr>
 			<td>Temperament Location Buff</td>
-			<td><input type="radio" name="local" id="localY"><label for="localY">Yes</label></td>
-			<td><input type="radio" name="local" id="localN" checked><label for="localN">No</label></td>
+			<td><input type="radio" name="local" id="localy"><label for="localy">Yes</label></td>
+			<td><input type="radio" name="local" id="localn" checked><label for="localn">No</label></td>
 		</tr>
 		</table>
 		</form>
