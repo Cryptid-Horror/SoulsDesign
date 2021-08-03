@@ -1399,7 +1399,7 @@ function generateTrait(traitToGen) {
 	if (document.getElementById("AT").checked) {
 		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
 			destroyedModifiers += "Aether Tonic destroyed.<br>";
-		bonus = 30;
+		bonus = 60;
 	}
 	
 	var roll = randRange(100);
@@ -2064,7 +2064,7 @@ function generateMutation() {
 	if (document.getElementById("DE").checked) {
 		if (!destroyedModifiers.includes("Dragon's Eye destroyed.<br>"))
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
-		dragonsEyeBonus += 30;
+		dragonsEyeBonus += 50;
 	}
 	if (document.getElementById("SM").checked) {
 		smMuteBonus += 30;
