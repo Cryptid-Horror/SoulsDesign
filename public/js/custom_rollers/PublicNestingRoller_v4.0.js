@@ -2064,6 +2064,16 @@ function generateMutation() {
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
 		dragonsEyeBonus += 30;
 	}
+	if (document.getElementById("SM").checked) {
+		if (!destroyedModifiers.includes("The sire increased mutation passing.<br>"))
+			destroyedModifiers += "The sire increased mutation passing.<br>";
+		dragonsEyeBonus += 30;
+	}
+	if (document.getElementById("DM").checked) {
+		if (!destroyedModifiers.includes("The dam increased mutation passing.<br>"))
+			destroyedModifiers += "the dam increased mutation passing..<br>";
+		dragonsEyeBonus += 30;
+	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
 		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus)

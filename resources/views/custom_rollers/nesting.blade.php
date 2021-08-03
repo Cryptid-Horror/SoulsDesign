@@ -253,8 +253,13 @@
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
-                               	<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
+                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
+			</span>
+			<br>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SM" id="SM">Sire Mutation</label>
+                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DM" id="DM">Dam Mutation</label>
 			</span>
 			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
