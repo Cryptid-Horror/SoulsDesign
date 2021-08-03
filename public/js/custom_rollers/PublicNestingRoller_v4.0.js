@@ -2052,6 +2052,8 @@ function generateMutation() {
 	var i, roll;
 	var bonus = 0;
 	var dragonsEyeBonus = 0;
+	var smMuteBonus = 0;
+	var dmMuteBonus = 0;
 	var mutationList = [];
 	if (document.getElementById("damTemper").value == Tempers.CALM) {
 		bonus += 10;
@@ -2067,12 +2069,12 @@ function generateMutation() {
 	if (document.getElementById("SM").checked) {
 		if (!destroyedModifiers.includes("The sire increased mutation passing.<br>"))
 			destroyedModifiers += "The sire increased mutation passing.<br>";
-		dragonsEyeBonus += 30;
+		smMuteBonus += 30;
 	}
 	if (document.getElementById("DM").checked) {
 		if (!destroyedModifiers.includes("The dam increased mutation passing.<br>"))
-			destroyedModifiers += "the dam increased mutation passing..<br>";
-		dragonsEyeBonus += 30;
+			destroyedModifiers += "the dam increased mutation passing.<br>";
+		dmMuteBonus += 30;
 	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
