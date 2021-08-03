@@ -293,18 +293,19 @@
 					<option value="crimson">Crimson</option>
 					<option disabled value="3">Rare</option>
 					<option value="jade">Jade</option>
+					<option value="Seafoam">Seafoam</option>
 					<option disabled value="4">Very Rare</option>
 					<option value="lilac">Lilac</option>
                     <option value="prismatic">Prismatic</option>
-                    <option disabled value="5">Petty</option>
-                    <option value="umber">Umber (Agouti)</option>
-                    <option value="haze">Haze (Agouti)</option>
-                    <option value="ivory">Ivory (Agouti)</option>
-                    <option value="vanta">Vanta (Agouti)</option>
-                    <option value="golden">Golden (Agouti)</option>
-					<option value="ivory">Hazed Umber (Agouti)</option>
-                    <option value="vanta">Hazed Ivory (Agouti)</option>
-                    <option value="golden">Hazed Golden (Agouti)</option>
+                    <option disabled value="5">Petty(Agouti Only)</option>
+                    <option value="umber">Umber</option>
+                    <option value="haze">Haze</option>
+                    <option value="ivory">Ivory</option>
+                    <option value="vanta">Vanta</option>
+                    <option value="golden">Golden</option>
+					<option value="ivory">Hazed Umber</option>
+                    <option value="vanta">Hazed Ivory</option>
+                    <option value="golden">Hazed Golden</option>
 				</select>
 			</div>
 		</div>
