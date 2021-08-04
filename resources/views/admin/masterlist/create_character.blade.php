@@ -547,10 +547,12 @@
         {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
     </div>
 
+    {{--
     <div class="form-group">
         {!! Form::label('Rank') !!}
         {!! Form::select('rank', ['Fledgling' => 'Fledgling', 'Primal' => 'Primal', 'Ancient' => 'Ancient', 'Primordial' => 'Primordial'], old('rank') ? old('rank') : 'Fledgling', ['class' => 'form-control']) !!}
     </div>
+    --}}
 
     <div class="form-group">
         {!! Form::label('Skills') !!}

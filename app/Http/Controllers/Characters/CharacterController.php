@@ -157,10 +157,11 @@ class CharacterController extends Controller
                 'slots_used', 'adornments', 'free_markings', 'health_status', 'total_health', 'current_health',
                 'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
                 'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
-                'is_adopted', 'temperament', 'diet', 'rank', 'skills',
-                'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-                'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-                'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage', 'has_grand_title'
+                'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
+                // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+                // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+                // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+                'has_grand_title'
             ]
             : [])
             )),

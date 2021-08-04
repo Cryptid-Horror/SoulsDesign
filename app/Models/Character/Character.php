@@ -56,7 +56,7 @@ class Character extends Model
         'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'sort',
         'is_myo_slot', 'name', 'trade_id', 'owner_url', 'class_id', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
         'title_name', 'nicknames', 'is_adopted', 'health_status', 'sex', 'gender_pronouns',
-        'temperament', 'diet', 'skills', 'rank', 'slots_used',
+        'temperament', 'diet', 'skills', /*'rank',*/ 'slots_used',
         'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
         'soul_link_type', 'soul_link_target', 'soul_link_target_link', 'arena_ranking',
         // 'sire_slug', 'dam_slug', 'use_custom_lineage',
@@ -534,6 +534,21 @@ class Character extends Model
             default:
                 return null;
         }
+    }
+
+    /**
+     * Get dragon's rank based on their level.
+     * Overrides the old manual rank setting.
+     */
+    public function getRankAttribute()
+    {
+        // A sorta hacky way to check for the rank
+        $level = $this->level->current_level;
+        if(!$level || $level <= 1) return 'Fledgling';
+        elseif($level == 2) return 'Primal';
+        elseif($level == 3) return 'Ancient';
+        elseif($level >= 4) return 'Primordial';
+        else return 'Fledgling'; // The fallback
     }
 
     /**

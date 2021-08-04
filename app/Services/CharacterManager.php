@@ -219,7 +219,7 @@ class CharacterManager extends Service
                 'sale_value', 'transferrable_at', 'is_visible',
                 'sex', 'gender_pronouns', 'health_status', 'total_health', 'current_health', 'taming', 'low_aether', 'high_aether',
                 'arena_ranking', 'soul_link_type', 'temperament',
-                'diet', 'rank',
+                'diet', /*'rank',*/
                 // 'sire_slug', 'dam_slug', 'use_custom_lineage',
                 'nicknames', 'title_name'
             ]);
@@ -1543,7 +1543,7 @@ class CharacterManager extends Service
                 $character->is_adopted = isset($data['is_adopted']);
                 $character->temperament = $data['temperament'];
                 $character->diet = $data['diet'];
-                $character->rank = $data['rank'];
+                // $character->rank = $data['rank'];
                 $character->skills = isset($data['skills']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['skills'])))) : null;
                 $character->sex = $data['sex'];
                 $character->slots_used = $data['slots_used'];
