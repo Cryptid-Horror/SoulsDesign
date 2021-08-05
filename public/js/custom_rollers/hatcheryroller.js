@@ -424,7 +424,8 @@ function formatDragon(dragon, num) {
 		var formattedChim = formatMarks(dragon.chim_marks);
 		phenotype += ` || ${formattedChim[0]}`
 		genotype += ` || ${formattedChim[1]}`
-	} else if(!dragon.mutation.includes("Radiant") && dragon.mutation != 'no') {
+	}
+	if(!dragon.mutation.includes("Radiant") && dragon.mutation != 'no') {
 		addedMutation = ` | ${dragon.mutation}`
 	}
 
