@@ -218,7 +218,7 @@ function rollEgg(){
 	result += "<br>"
 	// if twins or rolled to have lineage
 	if(isTwin != 'no_twins' || hasLineage == 'yes'){ result += "These dragons will receive lineage."; }
-	else { result += "This dragon is first generation"; }
+	else { result += "This dragon is first generation."; }
 
 	document.getElementById("result").innerHTML = result;
 }
