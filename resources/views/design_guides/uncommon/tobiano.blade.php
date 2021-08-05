@@ -6,7 +6,7 @@
     $layers_above_or_below = 'Inkwell, Painted, Appaloosa';
     $layers_above = 'All Other Markings';
     $layers_below = 'None';
-    $affected_by = 'Iridescent(only makes it shiny), Border, Dripping';
+    $affected_by = 'Iridescent(only makes it shiny), Border, Dripping, Color Modifiers';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
@@ -74,9 +74,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'tobi_1', 'alt' => '...', 'label' => 'SB-0588', 'caption' => 'Designer: @Akllozz + Lich-ARPG'],
-        ['image_name' => 'tobi_2', 'alt' => '...', 'label' => 'SB-0852', 'caption' => 'Designer: @Nek0ura'],
-        ['image_name' => 'tobi_3', 'alt' => '...', 'label' => 'SB-0114', 'caption' => 'Designer: @Sankko'],
+        ['image_name' => 'tob_1', 'alt' => '...', 'label' => 'SB-0588', 'caption' => 'Designer: @Akllozz + Lich-ARPG'],
+        ['image_name' => 'tob_2', 'alt' => '...', 'label' => 'SB-0852', 'caption' => 'Designer: @Nek0ura'],
+        ['image_name' => 'tob_3', 'alt' => '...', 'label' => 'SB-0114', 'caption' => 'Designer: @Sankko'],
     ];
 ?>
 

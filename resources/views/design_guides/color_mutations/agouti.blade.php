@@ -66,9 +66,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'rad_1', 'alt' => '...', 'label' => 'SB-0504', 'caption' => 'Designer: @Mizie-Wolf'],
-        ['image_name' => 'rad_2', 'alt' => '...', 'label' => 'SB-0417', 'caption' => 'Designer: @Monotone-Heroes'],
-        ['image_name' => 'rad_3', 'alt' => '...', 'label' => 'SB-0179', 'caption' => 'Designer: @Voidtech'],
+        ['image_name' => 'agouti_1', 'alt' => '...', 'label' => 'SB-1127', 'caption' => 'Designer: @Kobold_Ghost'],
+        ['image_name' => 'agouti_2', 'alt' => '...', 'label' => 'SB-????', 'caption' => 'Designer: @Thundercat'],
+        ['image_name' => 'agouti_3', 'alt' => '...', 'label' => 'SB-1131', 'caption' => 'Designer: @Cryptid-Horror'],
     ];
 ?>
 

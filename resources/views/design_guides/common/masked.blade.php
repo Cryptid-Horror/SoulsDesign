@@ -65,8 +65,8 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'mask_1', 'alt' => '...', 'label' => 'SB-0995', 'caption' => 'Designer: @Purpleshadowbooster'],
-        ['image_name' => 'mask_2', 'alt' => '...', 'label' => 'SB-0843', 'caption' => 'Designer: @Owlapin'],
+        ['image_name' => 'mask_1', 'alt' => '...', 'label' => 'SB-1115', 'caption' => 'Designer: @PlusBacon'],
+        ['image_name' => 'mask_2', 'alt' => '...', 'label' => 'AV-0040', 'caption' => 'Designer: @Thundercat'],
         ['image_name' => 'mask_3', 'alt' => '...', 'label' => 'SB-0863', 'caption' => 'Designer: @Sulosointu'],
     ];
 ?>

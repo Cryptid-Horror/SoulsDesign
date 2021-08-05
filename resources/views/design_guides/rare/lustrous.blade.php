@@ -57,7 +57,7 @@
 
     $marking_cannot = [
         'Lustrous cannot affect the whole body or to make a whole section covered (like the entire wing for example.)',
-        'Luminescent may not mimic any other marking.',
+        'Lustrous may not mimic any other marking.',
     ];
 
     $marking_must = [

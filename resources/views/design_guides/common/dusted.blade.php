@@ -52,6 +52,7 @@
 
     $marking_cannot = [
         'You cannot apply two seperate color modifiers to dusted itself, without duo-tone.',
+        'Dusted spots should not appear bigger than the eye on the dragon.',
     ];
 
     $marking_must = [
