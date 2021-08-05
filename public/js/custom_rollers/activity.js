@@ -615,7 +615,7 @@ function rollHunt(){
 			if(i <= 10){itemlist += "Aether Feathers";} // Aether Imbued Feathers
 			else if (i <= 20){itemlist += "Large Rocks";} // Large Rocks
 			else if (i <= 30){itemlist += "Sticks";} // Sticks
-			else if (i <= 40){itemlist += "Arcane Herbs";} // Arcane Herbs
+			else if (i <= 40){itemlist += "Herbs";} // herbs
 			else if (i <= 50){itemlist += "Small Rocks";} // Small Rocks
 			else if (i <= 55){itemlist += "Plant Fiber";} // Plant Fiber
 			else if (i <= 60){itemlist += "Wood";} // Wood
