@@ -11,7 +11,7 @@ var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoB
 			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
 
 var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
-                    "nVi", "ViVi"];
+                    "nFi", "FiFi"];
 
 var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
                         "nRu", "RuRu", "nTri", "TriTri"];
@@ -30,7 +30,7 @@ var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "
 					  "Crimson", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
-var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Vignette"];
+var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
 var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
 var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];

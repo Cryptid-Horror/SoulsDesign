@@ -33,9 +33,9 @@
 				['Shaped', 'nSp/SpSp'], ['Smoke', 'nSm/SmSm'], ['Tabby', 'nTa/TaTa'],
 				['Tobiano', 'nTo/ToTo'], ['Toxin', 'nTx/TxTx']];
 
-	$rares = [['Appaloosa', 'nAp/ApAp'], ['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Glass', 'nGl/GlGl'],
+	$rares = [['Appaloosa', 'nAp/ApAp'], ['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Filigree', 'nFi/FiFi'], ['Glass', 'nGl/GlGl'],
 			['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
-			['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe'], ['Vignette', 'nVi/ViVi']];
+			['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe']];
 
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'],
 				['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'],
@@ -89,7 +89,7 @@
                 <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
 			</div>
 			<div class="btn-group-vertical">
-                <a href="{{ url('') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
+                <a href="{{ url('design/color_mutations/agouti') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
                 <a href="{{ url('design/color_mutations/chimeric') }}" class="btn btn-secondary">Chimeric</a>
                 <a href="{{ url('design/color_mutations/leucism') }}" class="btn btn-secondary">Leucism</a>
                 <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance (nRad/RadRad)</a>

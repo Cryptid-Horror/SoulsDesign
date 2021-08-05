@@ -96,7 +96,7 @@ const r_marks = [
 	['Appaloosa', 'nAp', 'r'], ['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
-    ['Vignette', 'nVi', 'r']
+    ['Filigree', 'nFi', 'r']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
