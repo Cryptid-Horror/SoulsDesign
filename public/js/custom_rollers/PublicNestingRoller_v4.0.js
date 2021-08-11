@@ -155,7 +155,7 @@ function clearForms() {
 }
 function clipBoard() {
 	/* Get the text field */
-	var copyText = document.getElementById("nestTextArea");
+	var copyText = document.getElementById("nestClipboard");
   
 	/* Select the text field */
 	copyText.select();
@@ -2376,6 +2376,8 @@ function roll() {
 	}
 	document.getElementById("nestTextArea").innerHTML += destroyedModifiers;
 	
+	document.getElementById("nestClipboard").value = document.getElementById("nestTextArea").innerHTML;
+
 	// reset global variables
 	resetVars();
 }
