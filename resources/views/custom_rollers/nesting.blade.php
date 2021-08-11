@@ -321,6 +321,7 @@
 	<td>
 		<button onclick="roll()">Roll!</button>
 		<button onclick="clearForms()">Reset forms</button>
+		<button onclick="myFunction()">Copy To Clipboard</button>
 	</td>
 </table>
 <table id="nest">
