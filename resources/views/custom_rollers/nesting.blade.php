@@ -222,7 +222,18 @@
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
 		</div>
 	</td>
-	
+	<table id="formButtons">
+	<td>
+		<button onclick="roll()">Roll!</button>
+		<button onclick="clearForms()">Reset forms</button>
+	</td>
+</table>
+<table id="nest">
+	<td>
+		<div id="nestTextArea"></div>
+	</td>
+</table>
+	<br>
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
@@ -317,17 +328,7 @@
 	</tr>
 	</form>
 </table>
-<table id="formButtons">
-	<td>
-		<button onclick="roll()">Roll!</button>
-		<button onclick="clearForms()">Reset forms</button>
-	</td>
-</table>
-<table id="nest">
-	<td>
-		<div id="nestTextArea"></div>
-	</td>
-</table>
+
 	
 <table id="footer">
 	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
