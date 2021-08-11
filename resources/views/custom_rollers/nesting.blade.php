@@ -235,6 +235,8 @@
 </table>
 	<br>
 	<!-- MODIFIERS -->
+	<table id="mainContent">
+
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
 		<div width="100%">
@@ -327,6 +329,7 @@
 	</td>
 	</tr>
 	</form>
+</table>
 </table>
 
 	
