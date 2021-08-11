@@ -178,6 +178,8 @@ class AddSiteSettings extends Command
         }
         else $this->line("Skipped: claymore_cooldown");
 
+        $this->addSiteSetting('featured_character', 1, 'ID of the currently featured character.');
+
         $this->line("\nSite settings up to date!");
 
     }
