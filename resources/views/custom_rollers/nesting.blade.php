@@ -327,7 +327,7 @@
 <table id="nest">
 	<td>
 		<div id="nestTextArea"></div>
-		<input id="nestClipboard" style="display:none;">
+		<input id="nestClipboard" type="hidden";>
 	</td>
 </table>
 	
