@@ -153,7 +153,7 @@ function clearForms() {
 	document.getElementById("rollerForm").reset();
 	document.getElementById("nestTextArea").innerHTML = "";
 }
-function copyText() {
+function clipBoard() {
 	/* Get the text field */
 	var copyText = document.getElementById("nestTextArea");
   
