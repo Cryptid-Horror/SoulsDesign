@@ -258,8 +258,8 @@
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-			<label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
-			<label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
 			</span>
 			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
