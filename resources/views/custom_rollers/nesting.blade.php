@@ -258,8 +258,8 @@
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SM" id="SM">Sire Mutation</label>
-                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DM" id="DM">Dam Mutation</label>
+			<br><label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
+			<br><label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
 			</span>
 			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
