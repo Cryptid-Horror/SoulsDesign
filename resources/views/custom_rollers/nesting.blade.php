@@ -66,28 +66,27 @@
 		
 		<div id="sireRowMiddle">
 		<select id="sireHorns" class="cellElement">
-				<option value="1">Common Horns</option>
-				<option value="2">Uncmn Horns</option>
-				<option value="3">Rare Horns</option>
-				<option value="4">Mythic Horns</option>
+				<option value="1">C Horns</option>
+				<option value="2">UC Horns</option>
+				<option value="3">R Horns</option>
+				<option value="4">M Horns</option>
 			</select>
 			<select id="sireEyes" class="cellElement">
-				<option value="1">Common Eyes</option>
-				<option value="2">Uncmn Eyes</option>
-				<option value="3">Rare Eyes</option>
-				<option value="4">Mythic Eyes</option>
+				<option value="1">C Eyes</option>
+				<option value="2">UC Eyes</option>
+				<option value="3">R Eyes</option>
+				<option value="4">M Eyes</option>
 			</select>
-			<br>
 			<!-- The following two are only for Ravagers -->
 			<select id="sireEars" class="cellElement">
-				<option value="1">Common Ears</option>
-				<option value="2">Uncmn Ears</option>
-				<option value="3">Rare Ears</option>
+				<option value="1">C Ears</option>
+				<option value="2">UC Ears</option>
+				<option value="3">R Ears</option>
 			</select>
 			<select id="sireTail" class="cellElement">
-				<option value="1">Common Tail</option>
-				<option value="2">Uncmn Tail</option>
-				<option value="3">Rare Tail</option>
+				<option value="1">C Tail</option>
+				<option value="2">UC Tail</option>
+				<option value="3">R Tail</option>
 			</select>
 		</div>
 		
