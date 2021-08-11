@@ -24,7 +24,7 @@
 
 <table id="rollerTitle">
 	<tr>
-		<div id="title"><br><h1>Nesting Roller test</h1></div>
+		<div id="title"><br><h1>Nesting Roller</h1></div>
 	</tr>
 </table>
 <table id="mainContent">
@@ -65,18 +65,19 @@
 		</div>
 		
 		<div id="sireRowMiddle">
+		<select id="sireHorns" class="cellElement">
+				<option value="1">Common Horns</option>
+				<option value="2">Uncmn Horns</option>
+				<option value="3">Rare Horns</option>
+				<option value="4">Mythic Horns</option>
+			</select>
 			<select id="sireEyes" class="cellElement">
 				<option value="1">Common Eyes</option>
 				<option value="2">Uncmn Eyes</option>
 				<option value="3">Rare Eyes</option>
 				<option value="4">Mythic Eyes</option>
 			</select>
-			<select id="sireHorns" class="cellElement">
-				<option value="1">Common Horns</option>
-				<option value="2">Uncmn Horns</option>
-				<option value="3">Rare Horns</option>
-				<option value="4">Mythic Horns</option>
-			</select>
+			<br>
 			<!-- The following two are only for Ravagers -->
 			<select id="sireEars" class="cellElement">
 				<option value="1">Common Ears</option>
@@ -161,18 +162,18 @@
 			</select>
 		</div>
 		<div id="damRowMiddle">
-			<select id="damEyes" class="cellElement">
-				<option value="1">Common Eyes</option>
-				<option value="2">Uncmn Eyes</option>
-				<option value="3">Rare Eyes</option>
-				<option value="4">Mythic Eyes</option>
-			</select>
-			<select id="damHorns" class="cellElement">
+		<select id="damHorns" class="cellElement">
 				<option value="1">Common Horns</option>
 				<option value="2">Uncmn Horns</option>
 				<option value="3">Rare Horns</option>
 				<option value="4">Mythic Horns</option>
 			</select>
+			<select id="damEyes" class="cellElement">
+				<option value="1">Common Eyes</option>
+				<option value="2">Uncmn Eyes</option>
+				<option value="3">Rare Eyes</option>
+				<option value="4">Mythic Eyes</option>
+			</select><br>
 			<!-- The following two are only for Ravagers -->
 			<select id="damEars" class="cellElement">
 				<option value="1">Common Ears</option>
@@ -261,7 +262,6 @@
 			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
 			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
 			</span>
-			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
 			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
 			<div id="genderSelectionRadios">
