@@ -24,7 +24,7 @@
             @endif
             @if(isset($item->data['resell']) && $item->data['resell'] && App\Models\Currency\Currency::where('id', $item->resell->flip()->pop())->first() && Config::get('lorekeeper.extensions.item_entry_expansion.resale_function'))
                 <div class="col-md">
-                    <p><strong>Resale Value:</strong> {!! App\Models\Currency\Currency::find($item->resell->flip()->pop())->display($item->resell->pop()) !!}</p>
+                    <p><strong>Resale Value:</strong> {!! App\Models\Currency\Currency::find($item->resell->flip()->pop()) ? App\Models\Currency\Currency::find($item->resell->flip()->pop())->display($item->resell->pop()) : 'Unknown/Deleted Currency' !!}</p>
                 </div>
             @endif
             <div class="col-md-6 col-md">

@@ -2,7 +2,7 @@
     {!! Form::open(['method' => 'GET']) !!}
         <div class="form-inline justify-content-end">
             <div class="form-group mr-3 mb-3">
-                {!! Form::label('name', 'Character Name/Code: ', ['class' => 'mr-2']) !!}
+                {!! Form::label('name', 'Dragon Name/Code: ', ['class' => 'mr-2']) !!}
                 {!! Form::text('name', Request::get('name'), ['class' => 'form-control']) !!}
             </div>
             <div class="form-group mb-3">
@@ -23,6 +23,10 @@
                     <div class="masterlist-search-field">
                         {!! Form::label('subtype_id', 'Species Subtype: ') !!}
                         {!! Form::select('subtype_id', $subtypes, Request::get('subtype_id'), ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="masterlist-search-field">
+                        {!! Form::label('title_id', 'Title: ') !!}
+                        {!! Form::select('title_id', $titles, Request::get('title_id'), ['class' => 'form-control']) !!}
                     </div>
                 @endif
                 <hr/>
@@ -149,7 +153,11 @@
                     <a href="{{ $character->url }}" class="h5 mb-0">@if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {{ $character->fullName }}</a>
                 </div>
                 <div class="small">
-                    {!! $character->image->species_id ? $character->image->species->displayName : 'No Species' !!} ・ {!! $character->image->rarity_id ? $character->image->rarity->displayName : 'No Rarity' !!} ・ {!! $character->displayOwner !!}
+                    {!! $character->image->species_id ? $character->image->species->displayName : 'No Species' !!} ・ {!! $character->image->rarity_id ? $character->image->rarity->displayName : 'No Rarity' !!}
+                    @if(Settings::get('character_title_display') && $character->image->hasTitle)
+                        ・ {!! $character->image->title_id ? $character->image->title->displayNameShort : (isset($character->image->title_data['short']) ? nl2br(htmlentities($character->image->title_data['short'])) : nl2br(htmlentities($character->image->title_data['full']))) !!}
+                    @endif
+                     ・ {!! $character->displayOwner !!}
                 </div>
             </div>
             @endforeach
@@ -164,6 +172,9 @@
                 <th>Name</th>
                 <th>Rarity</th>
                 <th>Species</th>
+                @if(Settings::get('character_title_display'))
+                    <th>Title</th>
+                @endif
                 <th>Created</th>
             </tr>
         </thead>
@@ -174,6 +185,9 @@
                     <td>@if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $character->displayName !!}</td>
                     <td>{!! $character->image->rarity_id ? $character->image->rarity->displayName : 'None' !!}</td>
                     <td>{!! $character->image->species_id ? $character->image->species->displayName : 'None' !!}</td>
+                    @if(Settings::get('character_title_display'))
+                        <td>{!! $character->image->hasTitle ? ($character->image->title_id ? $character->image->title->displayNameShort : (isset($character->image->title_data['short']) ? nl2br(htmlentities($character->image->title_data['short'])) : nl2br(htmlentities($character->image->title_data['full'])))) : 'None' !!}</td>
+                    @endif
                     <td>{!! format_date($character->created_at) !!}</td>
                 </tr>
             @endforeach

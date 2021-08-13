@@ -23,7 +23,9 @@
                         <div class="text-right">You are viewing the full-size image. <a href="{{ $image->imageUrl }}">View watermarked image</a>?</div>
                     @endif
                 </div>
-                @include('character._image_info', ['image' => $image])
+                <div class="col-md-5 d-flex">
+                    @include('character._image_info', ['image' => $image])
+                </div>
             </div>
         </div>
     @endforeach

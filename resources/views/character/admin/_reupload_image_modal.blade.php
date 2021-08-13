@@ -1,5 +1,5 @@
 {!! Form::open(['url' => 'admin/character/image/'.$image->id.'/reupload', 'files' => true]) !!}
-<div class="form-group">
+    <div class="form-group">
         {!! Form::label('Character Image') !!} {!! add_help('This is the full masterlist image. Note that the image is not protected in any way, so take precautions to avoid art/design theft.') !!}
         <div>{!! Form::file('image', ['id' => 'mainImage']) !!}</div>
     </div>

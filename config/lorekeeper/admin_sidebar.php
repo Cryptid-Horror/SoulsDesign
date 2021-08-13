@@ -94,25 +94,51 @@ return [
                 'name' => 'Item Grants',
                 'url' => 'admin/grants/items'
             ],
+            [
+
+                'name' => 'Award Grants',
+                'url' => 'admin/grants/awards'
+            ],
+            [
+                'name' => 'Recipe Grants',
+                'url' => 'admin/grants/recipes'
+            ],
+            [
+                'name' => 'EXP Grants',
+                'url' => 'admin/grants/exp'
+            ],
+            [
+                'name' => 'Pet Grants',
+                'url' => 'admin/grants/pets'
+            ],
+            [
+                'name' => 'Gear Grants',
+                'url' => 'admin/grants/gear'
+            ],
+            [
+                'name' => 'Weapon Grants',
+                'url' => 'admin/grants/weapons'
+
+            ],
         ]
     ],
     'Masterlist' => [
         'power' => 'manage_characters',
         'links' => [
             [
-                'name' => 'Create Character',
+                'name' => 'Create Dragon',
                 'url' => 'admin/masterlist/create-character'
             ],
             [
-                'name' => 'Create MYO Slot',
+                'name' => 'Create Genotype',
                 'url' => 'admin/masterlist/create-myo'
             ],
             [
-                'name' => 'Character Transfers',
+                'name' => 'Dragon Transfers',
                 'url' => 'admin/masterlist/transfers/incoming'
             ],
             [
-                'name' => 'Character Trades',
+                'name' => 'Dragon Trades',
                 'url' => 'admin/masterlist/trades/incoming'
             ],
             [
@@ -120,8 +146,30 @@ return [
                 'url' => 'admin/design-approvals/pending'
             ],
             [
-                'name' => 'MYO Approvals',
+                'name' => 'Design Approvals',
                 'url' => 'admin/myo-approvals/pending'
+            ],
+        ]
+    ],
+    'Stats' => [
+        'power' => 'edit_stats',
+        'links' => [
+            [
+                'name' => 'Stats',
+                'url' => 'admin/stats'
+            ],
+        ]
+    ],
+    'Levels' => [
+        'power' => 'edit_levels',
+        'links' => [
+            [
+                'name' => 'User Levels',
+                'url' => 'admin/levels/user'
+            ],
+            [
+                'name' => 'Character Levels',
+                'url' => 'admin/levels/character'
             ],
         ]
     ],
@@ -131,6 +179,14 @@ return [
             [
                 'name' => 'Galleries',
                 'url' => 'admin/data/galleries'
+            ],
+            [
+                'name' => 'Award Categories',
+                'url' => 'admin/data/award-categories'
+            ],
+            [
+                'name' => 'Awards',
+                'url' => 'admin/data/awards'
             ],
             [
                 'name' => 'Character Categories',
@@ -157,12 +213,20 @@ return [
                 'url' => 'admin/data/traits'
             ],
             [
+                'name' => 'Character Titles',
+                'url' => 'admin/data/character-titles'
+            ],
+            [
                 'name' => 'Shops',
                 'url' => 'admin/data/shops'
             ],
             [
                 'name' => 'Currencies',
                 'url' => 'admin/data/currencies'
+            ],
+            [
+                'name' => 'Prompt Categories',
+                'url' => 'admin/data/prompt-categories'
             ],
             [
                 'name' => 'Prompts',
@@ -176,6 +240,70 @@ return [
                 'name' => 'Items',
                 'url' => 'admin/data/items'
             ],
+            [
+
+                'name' => 'Recipes',
+                'url' => 'admin/data/recipes'
+            ],
+            [
+                'name' => 'Forums',
+                'url' => 'admin/forums'
+            ]
+        ],
+    ],
+    'World.Expanded' => [
+        'power' => 'manage_world',
+        'links' => [
+            [
+                'name' => 'Locations',
+                'url' => 'admin/world/locations'
+            ],
+            [
+                'name' => 'Fauna',
+                'url' => 'admin/world/faunas'
+            ],
+            [
+                'name' => 'Flora',
+                'url' => 'admin/world/floras'
+            ],
+            [
+                'name' => ' Events',
+                'url' => 'admin/world/events'
+            ],
+            [
+                'name' => ' Figures',
+                'url' => 'admin/world/figures'
+            ],
+            [
+                'name' => 'Factions',
+                'url' => 'admin/world/factions'
+            ],
+            [
+                'name' => 'Concepts',
+                'url' => 'admin/world/concepts'
+            ],
+            [
+                'name' => 'Pets',
+                'url' => 'admin/data/pets'
+            ],
+        ]
+    ],
+    'Claymores' => [
+        'power' => 'edit_claymores',
+        'links' => [
+            [
+                'name' => 'Gear',
+                'url' => 'admin/gear'
+            ],
+            [
+                'name' => 'Weapons',
+                'url' => 'admin/weapon'
+            ],
+            [
+                'name' => 'Character Classes',
+                'url' => 'admin/character-classes'
+            ],
+
         ]
     ],
     'Raffles' => [
@@ -201,6 +329,10 @@ return [
             [
                 'name' => 'File Manager',
                 'url' => 'admin/files'
+            ],
+            [
+                'name' => 'Theme Manager',
+                'url' => 'admin/themes'
             ],
         ]
     ],

@@ -4,29 +4,17 @@
             e.preventDefault();
             loadModal("{{ url('admin/character/image') }}/"+$(this).data('id')+"/traits", 'Edit Traits');
         });
+        $('.edit-class').on('click', function(e) {
+            e.preventDefault();
+            console.log($(this).data('id'));
+            loadModal("{{ url('admin/character/class/edit') }}/"+$(this).data('id'), 'Edit Class');
+        });
         $('.edit-notes').on('click', function(e) {
             e.preventDefault();
-            $( "div.imagenoteseditingparse" ).load("{{ url('admin/character/image') }}/"+$(this).data('id')+"/notes", function() {
-			    tinymce.init({
-                    selector: '.imagenoteseditingparse .wysiwyg',
-                    height: 500,
-                    menubar: false,
-                    convert_urls: false,
-                    plugins: [
-                        'advlist autolink lists link image charmap print preview anchor',
-                        'searchreplace visualblocks code fullscreen spoiler',
-                        'insertdatetime media table paste code help wordcount'
-                    ],
-                    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | spoiler-add spoiler-remove | removeformat | code',
-                    content_css: [
-                        '{{ asset('css/app.css') }}',
-                        '{{ asset('css/lorekeeper.css') }}'
-                    ],
-                    spoiler_caption: 'Toggle Spoiler',
-                    target_list: false
-                });
-			});
+            $( "div.imagenoteseditingparse" ).load("{{ url('admin/character/image') }}/"+$(this).data('id')+"/notes", 'Edit Image Notes');
+            $( "div.imagenoteseditingparse" ).attr('id', 'modal');
             $( ".edit-notes" ).remove();
+            //loadModal("{{ url('admin/character/image') }}/"+$(this).data('id')+"/notes", 'Edit Image Notes');
         });
         $('.edit-credits').on('click', function(e) {
             e.preventDefault();
@@ -52,29 +40,16 @@
             e.preventDefault();
             loadModal("{{ url($character->is_myo_slot ? 'admin/myo/' : 'admin/character/') }}/"+$(this).data('{{ $character->is_myo_slot ? 'id' : 'slug' }}')+"/stats", 'Edit Character Stats');
         });
+        $('.edit-lineage').on('click', function(e) {
+            e.preventDefault();
+            loadModal("{{ url($character->is_myo_slot ? 'admin/myo/' : 'admin/character/') }}/"+$(this).data('{{ $character->is_myo_slot ? 'id' : 'slug' }}')+"/lineage", 'Edit Character Lineage');
+        });
         $('.edit-description').on('click', function(e) {
             e.preventDefault();
-            $( "div.descriptioneditingparse" ).load("{{ url($character->is_myo_slot ? 'admin/myo/' : 'admin/character/') }}/"+$(this).data('{{ $character->is_myo_slot ? 'id' : 'slug' }}')+"/description", function() {
-			    tinymce.init({
-                    selector: '.descriptioneditingparse .wysiwyg',
-                    height: 500,
-                    menubar: false,
-                    convert_urls: false,
-                    plugins: [
-                        'advlist autolink lists link image charmap print preview anchor',
-                        'searchreplace visualblocks code fullscreen spoiler',
-                        'insertdatetime media table paste code help wordcount'
-                    ],
-                    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | spoiler-add spoiler-remove | removeformat | code',
-                    content_css: [
-                        '{{ asset('css/app.css') }}',
-                        '{{ asset('css/lorekeeper.css') }}'
-                    ],
-                    spoiler_caption: 'Toggle Spoiler',
-                    target_list: false
-                });
-			});
+            $( "div.descriptioneditingparse" ).load("{{ url($character->is_myo_slot ? 'admin/myo/' : 'admin/character/') }}/"+$(this).data('{{ $character->is_myo_slot ? 'id' : 'slug' }}')+"/description", 'Edit Description');
+            $( "div.descriptioneditingparse" ).attr('id', 'modal');
             $( ".edit-description" ).remove();
+            //loadModal("{{ url($character->is_myo_slot ? 'admin/myo/' : 'admin/character/') }}/"+$(this).data('{{ $character->is_myo_slot ? 'id' : 'slug' }}')+"/description", 'Edit Description');
         });
         $('.delete-character').on('click', function(e) {
             e.preventDefault();

@@ -36,7 +36,7 @@ return [
     | site wherever the name needs to be displayed.
     |
     */
-    'site_name' => 'Lorekeeper',
+    'site_name' => 'Souls-Between',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,8 +107,8 @@ return [
     |
     */
     'character_codes' => '{category}-{number}',
-    'character_number_digits' => 3,
-    'character_pull_number' => 'all',
+    'character_number_digits' => 4,
+    'character_pull_number' => 'category',
 
     'reset_character_status_on_transfer' => 0,
     'reset_character_profile_on_transfer' => 0,
@@ -153,7 +153,7 @@ return [
     | Images above this cap in either dimension will be resized to suit. Enter "0" to disable resizing.
     |
     */
-    'store_masterlist_fullsizes' => 0,
+    'store_masterlist_fullsizes' => 1,
     'masterlist_fullsizes_cap' => 0,
 
     /*
@@ -205,11 +205,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Shop Purchase Limit
+    | Shops
     |--------------------------------------------------------------------------
     |
-    | This is an arbitrary upper limit on how many items a uses can buy in a
+    | Purchase limit:
+    |       This is an arbitrary upper limit on how many items a uses can buy in a
     | single shop transaction.
+    |
+    | Donation Shop:
+    |       Item donations: Controls restrictions (or lack thereof) on user item donations. 0: No restrictions. Any item can be donated. 1: Only items of certain categories may be donated (configure when creating/editing item categories). 2: Only items with the 'donatable' tag may be donated. 3: Items in certain categories or that have the 'donateable' tag may be donated. Default: 0.
+    |       Cooldown: Time (in minutes) that users must wait between "purchases". Default: 5.
     |
     */
     'default_purchase_limit' => 99,
@@ -222,6 +227,10 @@ return [
     | Symbol for the (real world) currency used for sales posts.
     |
     */
-    'currency_symbol' => '$'
+    'currency_symbol' => '$',
 
+    'donation_shop' => [
+        'item_donations' => 0,
+        'cooldown' => 5,
+    ]
 ];

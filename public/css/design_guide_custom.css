@@ -1,0 +1,179 @@
+/* Custom CSS is where elements specific to one or two pages are placed, while accessible from anywhere they should be clearly labeled for use. */
+body {
+    overflow-x: hidden;
+	background-image: url(../sitebg.jpg);
+    padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
+}
+.portfolio-item {
+    margin-bottom: 25px;
+	text-align: justify;
+	padding: 20px;
+	width: 800px;
+	color: #AA4465;
+	background-color: #3f3f3f;
+	font-family: "Raleway", sans-serif;
+}
+.mainheader {
+	margin-top: 10%;
+	text-align: center;
+	background: none;
+	width: 50%;
+	margin: auto;
+}
+.newsheader {
+	background: none;
+	padding: 0px;
+	width: 49%;
+	margin: auto;
+	margin-top: -40px;
+}
+.quotebox {
+	background: #A9CED1;
+	border: 3px solid #2c222f;
+	color: #796a7e;
+	padding: 0px;
+	width: 85%;
+	margin: auto;
+	padding: 5px;
+	text-align: justify;
+	font-style: italic;
+}
+.leftbox {
+	width: 250px;
+	padding: 5px;
+	position: relative;
+	top: 0%;
+	transform: translateY(-55%);
+}
+.rightbox {
+	width: 670px;
+	padding: 5px;
+	text-align: justify;
+}
+.important {
+	color: #3F6493;
+	text-style: italic;
+	text-align: center;
+}
+.contact {
+	background-color: #222222;
+	color: #eee;
+	border: none;
+	width: 150px;
+}
+.contact:hover {
+	background-color: #3E3E3E;
+	color: #eee;
+}
+h2.title {
+	color: #3D394F;
+	font-size: 25px;
+	font-weight: normal;
+	border-left: 20px solid white;
+	padding-left: 20px;
+ }  
+.right {
+	float: right;
+}
+hr {
+	background-color: #000;
+	border: 1px solid #000;
+	width: auto;
+}
+.copyright {
+    background-color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+.content {
+	padding: 15px;
+	font-family: 'Raleway', sans-serif;
+	color: #eee;
+}
+.blankdivider {
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+}
+/*Items in This Section are for the Design Guide */
+.designcontainer {
+	text-align: center;
+	width: 50%;
+	margin: auto;
+	background: #20201f;
+	color: #8c8c84;
+}
+/*END DESIGN GUIDE ITEMS */
+.info {
+	background-color: #424242;
+	padding: 5px;
+	margin: 5px;
+	border: 5px solid #eeeeee;
+	color: #eeeeee;
+	text-align: center;
+}
+.stuff {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #313030;
+}
+
+.stuff:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+	font-family: "Raleway", sans-serif;
+  position: absolute;
+	width: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+a {
+	color: #d14391;
+	font-family: 'Raleway', sans-serif;
+}
+a:hover {
+	color: #f7b3d8;
+	text-decoration: none;
+}
+
+/*shop stuff*/
+
+.shopitem {
+	Background-color: #1a101e;
+	border: 7px solid #4d2d58;
+	padding: 5px;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+}
+.shop {
+	background-color: #1a101e;
+	text-align: center;
+	padding: 5px;
+	border: 1px solid #462950;
+	max-width: 250px;
+}

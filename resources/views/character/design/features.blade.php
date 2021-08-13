@@ -13,6 +13,31 @@
     <p>Select the traits for the {{ $request->character->is_myo_slot ? 'created' : 'updated' }} character. @if($request->character->is_myo_slot) Some traits may have been restricted for you - you cannot change them. @endif Staff will not be able to modify these traits for you during approval, so if in doubt, please communicate with them beforehand to make sure that your design is acceptable.</p>
     {!! Form::open(['url' => 'designs/'.$request->id.'/traits']) !!}
         <div class="form-group">
+            {!! Form::label('genotype', 'Genotype') !!}
+            @if($request->character->is_myo_slot && $request->character->image->genotype) 
+                <div class="alert alert-secondary">{!! $request->character->image->genotype !!}</div>
+            @else
+                {!! Form::text('genotype', $request->genotype, ['class' => 'form-control', 'id' => 'genotype']) !!}
+            @endif
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('phenotype', 'Phenotype') !!}
+            @if($request->character->is_myo_slot && $request->character->image->phenotype) 
+                <div class="alert alert-secondary">{!! $request->character->image->phenotype !!}</div>
+            @else
+                {!! Form::text('phenotype', $request->phenotype, ['class' => 'form-control', 'id' => 'phenotype']) !!}
+            @endif
+        </div>
+        
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="form-group">
+                {!! Form::label('free_markings', 'Free Markings') !!}
+                {!! Form::text('free_markings', $request->free_markings, ['class' => 'form-control', 'id' => 'free_markings']) !!}
+            </div>
+        @endif
+
+        <div class="form-group">
             {!! Form::label('species_id', 'Species') !!}
             @if($request->character->is_myo_slot && $request->character->image->species_id)
                 <div class="alert alert-secondary">{!! $request->character->image->species->displayName !!}</div>
@@ -43,10 +68,34 @@
             @endif
         </div>
 
+        @if($request->character->is_myo_slot && $request->character->image->title_id)
+                <div class="alert alert-secondary">{!! $request->character->image->title->displayName !!}</div>
+        @else
+            <div class="row no-gutters">
+                <div class="col-md-6 pr-2">
+                    <div class="form-group">
+                        {!! Form::label('Character Title') !!}
+                        {!! Form::select('title_id', $titles, $request->title_id, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('Extra Info/Custom Title (Optional)') !!} {!! add_help('If \'custom title\' is selected, this will be displayed as the title. If a preexisting title is selected, it will be displayed in addition to it. The short version is only used in the case of a custom title.') !!}
+                        <div class="d-flex">
+                            {!! Form::text('title_data[full]', isset($request->title_data['full']) ? $request->title_data['full'] : null, ['class' => 'form-control mr-2', 'placeholder' => 'Full Title']) !!}
+                            @if(Settings::get('character_title_display'))
+                                {!! Form::text('title_data[short]', isset($request->title_data['short']) ? $request->title_data['short'] : null, ['class' => 'form-control mr-2', 'placeholder' => 'Short Title (Optional)']) !!}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="form-group">
             {!! Form::label('Traits') !!}
             <div id="featureList">
-                {{-- Add in the compulsory traits for MYO slots --}}
+                {{-- Add in the compulsory traits for Registered Dragon slots --}}
                 @if($request->character->is_myo_slot && $request->character->image->features)
                     @foreach($request->character->image->features as $feature)
                         <div class="mb-2 d-flex align-items-center">
@@ -61,7 +110,7 @@
                 @if($request->features)
                     @foreach($request->features as $feature)
                         <div class="mb-2 d-flex">
-                            {!! Form::select('feature_id[]', $features, $feature->feature_id, ['class' => 'form-control mr-2 feature-select', 'placeholder' => 'Select Trait']) !!}
+                            {!! Form::select('feature_id[]', $features, $feature->feature_id, ['class' => 'form-control mr-2 initial feature-select', 'placeholder' => 'Select Trait']) !!}
                             {!! Form::text('feature_data[]', $feature->data, ['class' => 'form-control mr-2', 'placeholder' => 'Extra Info (Optional)']) !!}
                             <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
                         </div>
@@ -75,12 +124,46 @@
                 <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
             </div>
         </div>
+
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="form-group">
+                {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
+                <div id="adornmentsList">
+                    @foreach(explode(',', $request->adornments) as $adornment)
+                        <div class="d-flex mb-2">
+                            {!! Form::text('adornments[]', $adornment, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+                            <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+                        </div>
+                    @endforeach
+                </div>
+                <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
+            </div>
+        @endif
+
         <div class="text-right">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
         </div>
     {!! Form::close() !!}
+    <div class="adornment-row hide mb-2">
+        {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+        <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+    </div>
 @else
     <div class="mb-1">
+        <div class="row">
+            <div class="col-md-2 col-4"><h5>Genotype</h5></div>
+            <div class="col-md-10 col-8">{!! $request->genotype ?? 'None Entered' !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-4"><h5>Phenotype</h5></div>
+            <div class="col-md-10 col-8">{!! $request->phenotype?? 'None Entered' !!}</div>
+        </div>
+        @if($request->character && !$request->character->is_myo_slot)
+            <div class="row">
+                <div class="col-md-2 col-4"><h5>Free Markings</h5></div>
+                <div class="col-md-10 col-8">{!! $request->free_markings ?? 'None Entered' !!}</div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-2 col-4"><h5>Species</h5></div>
             <div class="col-md-10 col-8">{!! $request->species ? $request->species->displayName : 'None Selected' !!}</div>
@@ -112,6 +195,16 @@
         @foreach($request->features as $feature)
             <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
         @endforeach
+    </div>
+    <h5>Adornments</h5>
+    <div>
+        @if($request->character && !$request->character->is_myo_slot)
+            <ul>
+                @foreach(explode(',', $request->adornments) as $adornment)
+                    <li>{!! $adornment !!}</li> 
+                @endforeach
+            </ul>
+        @endif
     </div>
 @endif
 

@@ -5,7 +5,7 @@
             <div class="transfer-info-content">
                 <h3 class="mb-0 transfer-info-header"><a href="{{ $transfer->character->url }}">{{ $transfer->character->fullName }}</a></h3>
                 <div class="transfer-info-body mb-3">
-                    <p>Transfer from {!! $transfer->sender->displayName !!} to {!! $transfer->recipient->displayName !!}, {!! format_date($transfer->created_at) !!}</p>
+                    <p>Transfer from {!! $transfer->sender ? $transfer->sender->displayName : '(Deleted User)' !!} to {!! $transfer->recipient ? $transfer->recipient->displayName : '(Deleted User)' !!}, {!! format_date($transfer->created_at) !!}</p>
                     <p>Reason stated: {!! $transfer->user_reason !!}</p>
                     @if($transfer->isActive && $transfersQueue)
                         @if($transfer->is_approved)

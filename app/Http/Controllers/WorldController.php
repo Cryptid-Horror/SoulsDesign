@@ -11,14 +11,30 @@ use App\Models\Species\Species;
 use App\Models\Species\Subtype;
 use App\Models\Item\ItemCategory;
 use App\Models\Item\Item;
+use App\Models\Pet\PetCategory;
+use App\Models\Pet\Pet;
 use App\Models\Feature\FeatureCategory;
 use App\Models\Feature\Feature;
 use App\Models\Character\CharacterCategory;
+use App\Models\Character\CharacterTitle;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopStock;
 use App\Models\User\User;
+use App\Models\Stats\Character\CharacterLevel;
+use App\Models\Stats\User\Level;
+use App\Models\Stats\Character\CharaLevels;
+use App\Models\Stats\User\UserLevel;
+use App\Models\Stats\Character\Stat;
+use App\Models\Recipe\Recipe;
+use App\Models\Award\Award;
+use App\Models\Award\AwardCategory;
+use App\Models\Claymore\WeaponCategory;
+use App\Models\Claymore\Weapon;
+use App\Models\Claymore\GearCategory;
+use App\Models\Claymore\Gear;
+use App\Models\Character\CharacterClass;
 
 class WorldController extends Controller
 {
@@ -123,6 +139,24 @@ class WorldController extends Controller
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
         ]);
     }
+
+    
+        /**
+     * Shows the award categories page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getAwardCategories(Request $request)
+    {
+        $query = AwardCategory::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.award_categories', [
+            'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
 
     /**
      * Shows the trait categories page.
@@ -304,6 +338,74 @@ class WorldController extends Controller
         ]);
     }
 
+     /**
+     * Shows the awards page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getAwards(Request $request)
+    {
+        $query = Award::with('category');
+        $data = $request->only(['award_category_id', 'name', 'sort']);
+        if(isset($data['award_category_id']) && $data['award_category_id'] != 'none')
+            $query->where('award_category_id', $data['award_category_id']);
+        if(isset($data['name']))
+            $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->sortAlphabetical();
+                    break;
+                case 'alpha-reverse':
+                    $query->sortAlphabetical(true);
+                    break;
+                case 'category':
+                    $query->sortCategory();
+                    break;
+                case 'newest':
+                    $query->sortNewest();
+                    break;
+                case 'oldest':
+                    $query->sortOldest();
+                    break;
+            }
+        }
+        else $query->sortCategory();
+
+        return view('world.awards', [
+            'awards' => $query->paginate(20)->appends($request->query()),
+            'categories' => ['none' => 'Any Category'] + AwardCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'shops' => Shop::orderBy('sort', 'DESC')->get()
+        ]);
+    }
+
+
+    /**
+     * Shows an individual award's page.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getAward($id)
+    {
+        $categories = AwardCategory::orderBy('sort', 'DESC')->get();
+        $award = Award::where('id', $id)->first();
+        if(!$award) abort(404);
+
+        return view('world.award_page', [
+            'award' => $award,
+            'imageUrl' => $award->imageUrl,
+            'name' => $award->displayName,
+            'description' => $award->parsed_description,
+            'categories' => $categories->keyBy('id'),
+            'shops' => Shop::orderBy('sort', 'DESC')->get()
+        ]);
+    }
+
+
     /**
      * Shows the character categories page.
      *
@@ -317,6 +419,27 @@ class WorldController extends Controller
         if($name) $query->where('name', 'LIKE', '%'.$name.'%')->orWhere('code', 'LIKE', '%'.$name.'%');
         return view('world.character_categories', [
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
+     /**
+     * Shows the character titles page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterTitles(Request $request)
+    {
+        $query = CharacterTitle::query();
+        $title = $request->get('title');
+        $rarity = $request->get('rarity_id');
+        if($title) $query->where('title', 'LIKE', '%'.$title.'%');
+        if(isset($rarity) && $rarity != 'none')
+            $query->where('rarity_id', $rarity);
+
+        return view('world.character_titles', [
+            'titles' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+            'rarities' => ['none' => 'Any Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
         ]);
     }
 
@@ -335,6 +458,7 @@ class WorldController extends Controller
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
         ]);
     }
+
 
     /**
      * Shows the prompts page.
@@ -388,6 +512,364 @@ class WorldController extends Controller
         return view('world.prompts', [
             'prompts' => $query->paginate(20)->appends($request->query()),
             'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
+        ]);
+    }
+
+       /**
+     * Shows the items page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getRecipes(Request $request)
+    {
+        $query = Recipe::query();
+        $data = $request->only(['name', 'sort']);
+        if(isset($data['name']))
+            $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->sortAlphabetical();
+                    break;
+                case 'alpha-reverse':
+                    $query->sortAlphabetical(true);
+                    break;
+                case 'newest':
+                    $query->sortNewest();
+                    break;
+                case 'oldest':
+                    $query->sortOldest();
+                    break;
+                case 'locked':
+                    $query->sortNeedsUnlocking();
+                    break;
+            }
+        }
+        else $query->sortNewest();
+
+        return view('world.recipes.recipes', [
+            'recipes' => $query->paginate(20)->appends($request->query()),
+        ]);
+    }
+
+    /**
+     * Shows an individual recipe;ss page.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getRecipe($id)
+    {
+        $recipe = Recipe::where('id', $id)->first();
+        if(!$recipe) abort(404);
+
+        return view('world.recipes._recipe_page', [
+            'recipe' => $recipe,
+            'imageUrl' => $recipe->imageUrl,
+            'name' => $recipe->displayName,
+            'description' => $recipe->parsed_description,
+        ]);
+    }
+
+    /**
+     * 
+     *  LEVELS
+     * 
+     */
+    public function getLevels()
+    {
+        return view('world.level_index');
+    }
+
+    /**
+     * Level types
+     */
+    public function getLevelTypes($type)
+    {
+        if($type == 'user')
+        {
+            $levels = Level::all();
+        }
+        elseif($type == 'character')
+        {
+            $levels = CharacterLevel::all();
+        }
+        else abort(404);
+
+        return view('world.level_type_index', [
+            'levels' => $levels->paginate(20),
+            'type' => $type
+        ]);
+    }
+
+    /**
+     * ID view
+     */
+    public function getSingleLevel($type, $level)
+    {
+        if($type == 'user')
+        {
+            $levels = Level::where('level', $level)->first();
+        }
+        elseif($type == 'character')
+        {
+            $levels = CharacterLevel::where('level', $level)->first();
+        }
+        else abort(404);
+
+        return view('world.level_single', [
+            'level' => $levels,
+            'type' => $type
+        ]);
+    }
+
+    /**
+     * STATS
+     */
+    public function getStats()
+    {
+        $stats = Stat::all();
+
+        return view('world.stats', [
+            'stats' => $stats,
+        ]);
+    }
+
+    /**
+     * Shows the pet categories page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPetCategories(Request $request)
+    {
+        $query = PetCategory::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.pet_categories', [  
+            'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
+    /** 
+    * Shows the pets page.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Contracts\Support\Renderable
+    */
+   public function getPets(Request $request)
+   {
+       $query = Pet::with('category');
+       $data = $request->only(['pet_category_id', 'name', 'sort']);
+       if(isset($data['pet_category_id']) && $data['pet_category_id'] != 'none') 
+           $query->where('pet_category_id', $data['pet_category_id']);
+       if(isset($data['name'])) 
+           $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+       if(isset($data['sort'])) 
+       {
+           switch($data['sort']) {
+               case 'alpha':
+                   $query->sortAlphabetical();
+                   break;
+               case 'alpha-reverse':
+                   $query->sortAlphabetical(true);
+                   break;
+               case 'category':
+                   $query->sortCategory();
+                   break;
+               case 'newest':
+                   $query->sortNewest();
+                   break;
+               case 'oldest':
+                   $query->sortOldest();
+                   break;
+           }
+       } 
+       else $query->sortCategory();
+
+       return view('world.pets', [
+           'pets' => $query->paginate(20)->appends($request->query()),
+           'categories' => ['none' => 'Any Category'] + PetCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
+       ]);
+    }    
+
+    /**
+     * Shows the weapon categories page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getWeaponCategories(Request $request)
+    {
+        $query = WeaponCategory::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.weapon_categories', [  
+            'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
+    /** 
+    * Shows the weapons page.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Contracts\Support\Renderable
+    */
+   public function getWeapons(Request $request)
+   {
+       $query = Weapon::with('category');
+       $data = $request->only(['weapon_category_id', 'name', 'sort']);
+       if(isset($data['weapon_category_id']) && $data['weapon_category_id'] != 'none') 
+           $query->where('weapon_category_id', $data['weapon_category_id']);
+       if(isset($data['name'])) 
+           $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+       if(isset($data['sort'])) 
+       {
+           switch($data['sort']) {
+               case 'alpha':
+                   $query->sortAlphabetical();
+                   break;
+               case 'alpha-reverse':
+                   $query->sortAlphabetical(true);
+                   break;
+               case 'category':
+                   $query->sortCategory();
+                   break;
+               case 'newest':
+                   $query->sortNewest();
+                   break;
+               case 'oldest':
+                   $query->sortOldest();
+                   break;
+           }
+       } 
+       else $query->sortCategory();
+
+       return view('world.weapons', [
+           'weapons' => $query->paginate(20)->appends($request->query()),
+           'categories' => ['none' => 'Any Category'] + WeaponCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
+       ]);
+    }    
+
+    /**
+     * Shows an individual weapon's page.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getWeapon($id)
+    {
+        $categories = WeaponCategory::orderBy('sort', 'DESC')->get();
+        $weapon = Weapon::where('id', $id)->first();
+        if(!$weapon) abort(404);
+
+        return view('world.weapon_page', [
+            'weapon' => $weapon,
+            'imageUrl' => $weapon->imageUrl,
+            'name' => $weapon->displayName,
+            'description' => $weapon->parsed_description,
+            'categories' => $categories->keyBy('id'),
+        ]);
+    }
+
+    /**
+     * Shows the gear categories page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getGearCategories(Request $request)
+    {
+        $query = GearCategory::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.gear_categories', [  
+            'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
+        ]);
+    }
+
+    /** 
+    * Shows the gears page.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Contracts\Support\Renderable
+    */
+   public function getGears(Request $request)
+   {
+       $query = Gear::with('category');
+       $data = $request->only(['gear_category_id', 'name', 'sort']);
+       if(isset($data['gear_category_id']) && $data['gear_category_id'] != 'none') 
+           $query->where('gear_category_id', $data['gear_category_id']);
+       if(isset($data['name'])) 
+           $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+       if(isset($data['sort'])) 
+       {
+           switch($data['sort']) {
+               case 'alpha':
+                   $query->sortAlphabetical();
+                   break;
+               case 'alpha-reverse':
+                   $query->sortAlphabetical(true);
+                   break;
+               case 'category':
+                   $query->sortCategory();
+                   break;
+               case 'newest':
+                   $query->sortNewest();
+                   break;
+               case 'oldest':
+                   $query->sortOldest();
+                   break;
+           }
+       } 
+       else $query->sortCategory();
+
+       return view('world.gears', [
+           'gears' => $query->paginate(20)->appends($request->query()),
+           'categories' => ['none' => 'Any Category'] + GearCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
+       ]);
+    }  
+    
+    /**
+     * Shows an individual gear's page.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getGear($id)
+    {
+        $categories = GearCategory::orderBy('sort', 'DESC')->get();
+        $gear = Gear::where('id', $id)->first();
+        if(!$gear) abort(404);
+
+        return view('world.gear_page', [
+            'gear' => $gear,
+            'imageUrl' => $gear->imageUrl,
+            'name' => $gear->displayName,
+            'description' => $gear->parsed_description,
+            'categories' => $categories->keyBy('id'),
+        ]);
+    }
+
+    /**
+     * Shows the character classes page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterClasses(Request $request)
+    {
+        $query = CharacterClass::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+        return view('world.character_class', [
+            'classes' => $query->orderBy('name', 'DESC')->paginate(20)->appends($request->query()),
         ]);
     }
 }

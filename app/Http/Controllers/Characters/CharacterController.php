@@ -10,8 +10,11 @@ use Route;
 use Settings;
 use App\Models\User\User;
 use App\Models\Character\Character;
+use App\Models\Species\Subtype;
 use App\Models\Species\Species;
 use App\Models\Rarity;
+use App\Models\WorldExpansion\Location;
+use App\Models\WorldExpansion\Faction;
 use App\Models\Feature\Feature;
 use App\Models\Character\CharacterProfile;
 
@@ -53,6 +56,7 @@ class CharacterController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware(function ($request, $next) {
             $slug = Route::current()->parameter('slug');
             $query = Character::myo(0)->where('slug', $slug);
@@ -105,9 +109,21 @@ class CharacterController extends Controller
         $isOwner = ($this->character->user_id == Auth::user()->id);
         if(!$isMod && !$isOwner) abort(404);
 
-        return view('character.edit_profile', [
+        return view('character.edit_profile', array_merge([
             'character' => $this->character,
-        ]);
+            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'factions' => Faction::all()->where('is_character_faction')->pluck('style','id')->toArray(),
+            'user_enabled' => Settings::get('WE_user_locations'),
+            'char_enabled' => Settings::get('WE_character_locations'),
+            'user_faction_enabled' => Settings::get('WE_user_factions'),
+            'char_faction_enabled' => Settings::get('WE_character_factions')
+        ],($isMod ? [
+            'isMyo' => $this->character->is_myo,
+            'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'subtypes' => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'features' => Feature::getFeaturesByCategory(),
+        ] : [])));
     }
 
     /**
@@ -127,8 +143,29 @@ class CharacterController extends Controller
         if(!$isMod && !$isOwner) abort(404);
 
         $request->validate(CharacterProfile::$rules);
-
-        if($service->updateCharacterProfile($request->only(['name', 'link', 'text', 'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'alert_user']), $this->character, Auth::user(), !$isOwner)) {
+        if($service->updateCharacterProfile($request->only(
+            array_merge(
+            [
+                'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
+                'custom_values_group', 'custom_values_name', 'custom_values_data',
+                'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
+                'is_trading', 'alert_user', 'location', 'faction'
+            ],
+            ($isMod ?
+            [
+                'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
+                'slots_used', 'adornments', 'free_markings', 'health_status', 'total_health', 'current_health',
+                'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+                'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
+                'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
+                // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+                // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+                // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+                'has_grand_title'
+            ]
+            : [])
+            )),
+            $this->character, Auth::user(), $isMod)) {
             flash('Profile edited successfully.')->success();
         }
         else {
@@ -224,6 +261,23 @@ class CharacterController extends Controller
         ] : []));
     }
 
+    /**
+     * Shows a character's levels
+     *
+     * @param  string  $name
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterLevel($name)
+    {
+        return view('character.stats.level', [
+            'character' => $this->character,
+            'exps' => $this->character->getExpLogs(),
+            'levels' => $this->character->getLevelLogs(),
+            'stats' => $this->character->getStatLogs(),
+            'counts' => $this->character->getCountLogs(),
+        ]);
+    }
+    
     /**
      * Transfers currency between the user and character.
      *
@@ -372,6 +426,66 @@ class CharacterController extends Controller
     }
 
     /**
+     * Shows a character's item logs.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterExpLogs($slug)
+    {
+        $character = $this->character;
+        return view('character.stats.exp_logs', [
+            'character' => $this->character,
+            'logs' => $this->character->getExpLogs(0)
+        ]);
+    }
+
+    /**
+     * Shows a user's stat logs.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterStatLogs($slug)
+    {
+        $character = $this->character;
+        return view('character.stats.stat_logs', [
+            'character' => $this->character,
+            'logs' => $this->character->getStatLogs(0)
+        ]);
+    }
+
+    /**
+     * Shows a user's level logs.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterLevelLogs($slug)
+    {
+        $character = $this->character;
+        return view('character.stats.level_logs', [
+            'character' => $this->character,
+            'logs' => $this->character->getLevelLogs(0)
+        ]);
+    }
+
+    /**
+     * Shows a user's count logs.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getCharacterCountLogs($slug)
+    {
+        $character = $this->character;
+        return view('character.stats.count_logs', [
+            'character' => $this->character,
+            'logs' => $this->character->getCountLogs(0)
+        ]);
+    }
+
+    /**
      * Shows a character's ownership logs.
      *
      * @param  string  $slug
@@ -509,6 +623,42 @@ class CharacterController extends Controller
         if($request = $service->createDesignUpdateRequest($this->character, Auth::user())) {
             flash('Successfully created new design update request draft.')->success();
             return redirect()->to($request->url);
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Shows a confirmation modal for deceasing characters
+     *
+     * @param  string   $slug
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getDeceaseCharacter($slug)
+    {
+        if(!Auth::check() || !$this->character->user_id == Auth::user()->id || !Auth::user()->hasPower('manage_characters')) abort(404);
+
+        return view('character._decease_character_modal', [
+            'character' => $this->character,
+        ]);
+    }
+
+    /**
+     * Deceases a character
+     *
+     * @param  string   $slug
+     * @param  App\Services\CharacterManager  $service
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function postDeceaseCharacter($slug, CharacterManager $service)
+    {
+        if(!Auth::check() || !$this->character->user_id == Auth::user()->id || !Auth::user()->hasPower('manage_characters')) abort(404);
+
+        if($request = $service->deceaseCharacter($this->character, Auth::user())) {
+            flash('Character deceased.')->success();
+            return redirect()->back();
         }
         else {
             foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();

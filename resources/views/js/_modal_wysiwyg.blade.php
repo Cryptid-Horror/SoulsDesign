@@ -12,5 +12,6 @@ tinymce.init({
         '//www.tiny.cloud/css/codepen.min.css',
         '{{ asset('css/app.css') }}',
         '{{ asset('css/lorekeeper.css') }}'
-    ]
+    ],
+    skin: 'souls'
 });

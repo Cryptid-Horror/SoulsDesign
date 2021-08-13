@@ -32,21 +32,21 @@ class Notification extends Model
 
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Get the user who owns notification.
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\Models\User\User');
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/
@@ -72,10 +72,10 @@ class Notification extends Model
 
         $message = $notification['message'];
 
-        // Replace the URL... 
+        // Replace the URL...
         $message = str_replace('{url}', url($notification['url']), $message);
 
-        // Replace any variables in data... 
+        // Replace any variables in data...
         $data = $this->data;
         if($data && count($data)) {
             foreach($data as $key => $value) {
@@ -97,10 +97,11 @@ class Notification extends Model
     }
 
     /**********************************************************************************************
-    
+
         CONSTANTS
 
     **********************************************************************************************/
+
 
     const CURRENCY_GRANT                    = 0;
     const ITEM_GRANT                        = 1;
@@ -142,12 +143,31 @@ class Notification extends Model
     const BOOKMARK_IMAGE                    = 37;
     const CHARACTER_TRANSFER_ACCEPTABLE     = 38;
     const BOOKMARK_GIFT_WRITING             = 39;
+    const THREAD_REPLY                      = 110; // URI - Forums
     const REPORT_ASSIGNED                   = 220;
     const REPORT_CLOSED                     = 221;
     const COMMENT_MADE                      = 239;
     const COMMENT_REPLY                     = 240;
-    const CHARACTER_ITEM_GRANT              = 501;
-    const CHARACTER_ITEM_REMOVAL            = 502;
+    const AWARD_GRANT                       = 341;
+    const AWARD_REMOVAL                     = 342;
+    const AWARD_TRANSFER                    = 343;
+    const FORCED_AWARD_TRANSFER             = 344;
+     const PET_REMOVAL                     = 241;
+    const PET_TRANSFER                    = 242;
+    const FORCED_PET_TRANSFER             = 243;
+    const PET_GRANT                       = 244;
+    const EXP_GRANT                       = 245;
+    const GEAR_GRANT                      = 250;
+    const WEAPON_GRANT                    = 251;
+    const WEAPON_REMOVAL                  = 252;
+    const WEAPON_TRANSFER                 = 253;
+    const FORCED_WEAPON_TRANSFER          = 254;
+    const GEAR_REMOVAL                    = 255;
+    const GEAR_TRANSFER                   = 256;
+    const FORCED_GEAR_TRANSFER            = 257;
+    const CHARACTER_ITEM_GRANT            = 501;
+    const CHARACTER_ITEM_REMOVAL          = 502;
+
     const GALLERY_SUBMISSION_COLLABORATOR   = 505;
     const GALLERY_COLLABORATORS_APPROVED    = 506;
     const GALLERY_SUBMISSION_ACCEPTED       = 507;
@@ -159,4 +179,5 @@ class Notification extends Model
     const GALLERY_SUBMISSION_STAFF_COMMENTS = 513;
     const GALLERY_SUBMISSION_EDITED         = 514;
     const GALLERY_SUBMISSION_PARTICIPANT    = 515;
+    const RECIPE_GRANT                      = 600; // Draginraptor - Crafting
 }

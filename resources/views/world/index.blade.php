@@ -20,6 +20,7 @@
                 <li class="list-group-item"><a href="{{ url('world/trait-categories') }}">Trait Categories</a></li>
                 <li class="list-group-item"><a href="{{ url('world/traits') }}">All Traits</a></li>
                 <li class="list-group-item"><a href="{{ url('world/character-categories') }}">Character Categories</a></li>
+                <li class="list-group-item"><a href="{{ url('world/character-classes') }}">Character Classes</a></li>
             </ul>
         </div>
     </div>
@@ -27,12 +28,21 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <img src="{{ asset('images/inventory.png') }}" />
-                <h5 class="card-title">Items</h5>
+                <h5 class="card-title">Items & Awards</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ url('world/item-categories') }}">Item Categories</a></li>
                 <li class="list-group-item"><a href="{{ url('world/items') }}">All Items</a></li>
+                <li class="list-group-item"><a href="{{ url('world/award-categories') }}">Award Categories</a></li>
+                <li class="list-group-item"><a href="{{ url('world/awards') }}">All Awards</a></li>
                 <li class="list-group-item"><a href="{{ url('world/currencies') }}">Currencies</a></li>
+                <li class="list-group-item"><a href="{{ url('world/recipes') }}">All Recipes</a></li>
+                <li class="list-group-item"><a href="{{ url('world/pet-categories') }}">Pet Categories</a></li>
+                <li class="list-group-item"><a href="{{ url('world/pets') }}">All Pets</a></li>
+                <li class="list-group-item"><a href="{{ url('world/weapon-categories') }}">Weapon Categories</a></li>
+                <li class="list-group-item"><a href="{{ url('world/weapons') }}">All Weapons</a></li>
+                <li class="list-group-item"><a href="{{ url('world/gear-categories') }}">Gear Categories</a></li>
+                <li class="list-group-item"><a href="{{ url('world/gear') }}">All Gear</a></li>
             </ul>
         </div>
     </div>

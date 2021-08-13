@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #A3D1BB;
+	font-size: 14px;
+	margin: 0;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+}
+
+.header {
+	margin-top: 10%;
+	text-align: center;
+	background: #D3F3E7;
+	border: 1px solid black;
+	color: #DC9D9E;
+	width: 50%;
+	margin: auto;
+}
+
+.main {
+	text-align: justify;
+	background: #D3F3E7;
+	color: #406A53;
+	width: 60%;
+	margin: auto;
+	margin-top: -50px;
+	padding: 10px;
+}
+
+.footer {
+	text-align: center;
+	background: #5B7B69;
+	color: #DCFAFA;
+	width: 50%;
+	margin: auto;
+	opacity: .5;
+	padding: 15px;
+}
+.rightimg {
+	float: right;
+	padding: 5px;
+}
+.leftimg {
+	float: left;
+	padding: 5px;
+}
+
+
+a {
+	font-family: 'Raleway', sans-serif;
+	color: #FFF;
+}
+h1 {
+	font-size: 30px;
+	line-height: 21px;
+	font-family: 'Raleway', sans-serif;
+	color: #413C58;
+}
+h2 {
+	font-size: 16px;
+	font-style: italic;
+	color: #406A53;
+	line-height: 11px;
+	font-family: 'bilbo-swash-caps';
+}
+b {
+	font-family: 'Raleway', sans-serif;
+	color: #413C58;
+	font-style: bold;
+}
+.wide {
+	min-width: 1000;
+}
+
+    /* Set additional styling options for the columns */
+    .column {
+    float: left;
+    }
+
+    /* Set width length for the left, right and middle columns */
+    .left {
+    width: 23%;
+    padding: 10px;
+    }
+
+    .middle {
+    width: 23%;
+    padding: 10px;
+    }
+    
+    .right {
+    width: 23%;
+    padding: 10px;
+    }
+    
+    .last {
+    width: 23%;
+    padding: 10px;
+    }
+
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }

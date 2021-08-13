@@ -65,6 +65,8 @@ class Loot extends Model
                 return $this->belongsTo('App\Models\Item\Item', 'rewardable_id');
             case 'ItemRarity':
                 return $this->belongsTo('App\Models\Item\Item', 'rewardable_id');
+            case 'Award':
+                return $this->belongsTo('App\Models\Award\Award', 'rewardable_id');
             case 'Currency':
                 return $this->belongsTo('App\Models\Currency\Currency', 'rewardable_id');
             case 'LootTable':
@@ -73,6 +75,12 @@ class Loot extends Model
                 return $this->belongsTo('App\Models\Item\ItemCategory', 'rewardable_id');
             case 'ItemCategoryRarity':
                 return $this->belongsTo('App\Models\Item\ItemCategory', 'rewardable_id');
+            case 'Gear':
+                return $this->belongsTo('App\Models\Claymore\Gear', 'rewardable_id');
+            case 'Weapon':
+                return $this->belongsTo('App\Models\Claymore\Weapon', 'rewardable_id');
+            case 'Pet':
+                return $this->belongsTo('App\Models\Pet\Pet', 'rewardable_id');
             case 'None':
                 // Laravel requires a relationship instance to be returned (cannot return null), so returning one that doesn't exist here.
                 return $this->belongsTo('App\Models\Loot\Loot', 'rewardable_id', 'loot_table_id')->whereNull('loot_table_id');

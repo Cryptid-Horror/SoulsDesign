@@ -1,12 +1,12 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s Characters @endsection
+@section('profile-title') {{ $user->name }}'s Dragons @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Characters' => $user->url . '/characters']) !!}
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Dragons' => $user->url . '/characters']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s Characters
+    {!! $user->displayName !!}'s Dragons
 </h1>
 
 @if($characters->count())
@@ -23,7 +23,7 @@
         @endforeach
     </div>
 @else
-    <p>No characters found.</p> 
+    <p>No Dragons found.</p> 
 @endif
 
 @endsection

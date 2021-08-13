@@ -1,12 +1,12 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s MYO Slots @endsection
+@section('profile-title') {{ $user->name }}'s Genotypes @endsection
 
 @section('profile-content')
-{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'MYO Slots' => $user->url . '/myos']) !!}
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'My Genotypes' => $user->url . '/myos']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s MYO Slots
+    {!! $user->displayName !!}'s Genotypes
 </h1>
 
 @if($myos->count())
@@ -23,7 +23,7 @@
         @endforeach
     </div>
 @else
-    <p>No MYO slots found.</p> 
+    <p>No Genotypes Found.</p> 
 @endif
 
 @endsection

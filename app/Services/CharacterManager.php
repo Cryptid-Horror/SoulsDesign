@@ -18,6 +18,7 @@ use Illuminate\Support\Arr;
 use App\Models\User\User;
 use App\Models\User\UserItem;
 use App\Models\Character\Character;
+use App\Models\Character\CharacterClass;
 use App\Models\Character\CharacterCurrency;
 use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterFeature;
@@ -25,12 +26,18 @@ use App\Models\Character\CharacterImage;
 use App\Models\Character\CharacterTransfer;
 use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Character\CharacterBookmark;
+use App\Models\Character\CharacterLineage;
+use App\Models\Character\CharacterProfileCustomValue;
 use App\Models\User\UserCharacterLog;
+use App\Models\Character\CharacterTitle;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
 use App\Models\Rarity;
 use App\Models\Currency\Currency;
 use App\Models\Feature\Feature;
+use App\Models\WorldExpansion\FactionRankMember;
+
+use App\Models\Stats\Character\CharacterStat;
 
 class CharacterManager extends Service
 {
@@ -89,7 +96,6 @@ class CharacterManager extends Service
 
         try {
             if(!$isMyo && Character::where('slug', $data['slug'])->exists()) throw new \Exception("Please enter a unique character code.");
-
             if(!(isset($data['user_id']) && $data['user_id']) && !(isset($data['owner_url']) && $data['owner_url']))
                 throw new \Exception("Please select an owner.");
             if(!$isMyo)
@@ -104,6 +110,9 @@ class CharacterManager extends Service
                 if(!$subtype || $subtype->species_id != $data['species_id']) throw new \Exception('Selected subtype invalid or does not match species.');
             }
             else $data['subtype_id'] = null;
+            
+            if(isset($data['skills'])) $data['skills'] = implode(',', array_filter(str_replace(',', ';', $data['skills'])));
+            if(isset($data['adornments'])) $data['adornments'] = implode(',', array_filter(str_replace(',', ';', $data['adornments'])));
 
             // Get owner info
             $url = null;
@@ -123,6 +132,9 @@ class CharacterManager extends Service
             $character = $this->handleCharacter($data, $isMyo);
             if(!$character) throw new \Exception("Error happened while trying to create character.");
 
+            // Create character lineage
+            $lineage = $this->handleCharacterLineage($data, $character, $isMyo);
+
             // Create character image
             $data['is_valid'] = true; // New image of new characters are always valid
             $image = $this->handleCharacterImage($data, $character, $isMyo);
@@ -132,14 +144,30 @@ class CharacterManager extends Service
             $character->character_image_id = $image->id;
             $character->save();
 
+            // Create character stats
+            $character->level()->create([
+                'character_id' => $character->id
+            ]);
+            
+            if(isset($data['stats']))
+            {
+                foreach($data['stats'] as $key=>$stat)
+                {
+                    CharacterStat::create([
+                        'character_id' => $character->id,
+                        'stat_id' => $key,
+                        'count' => $stat,
+                    ]);
+                }
+            }
+            
             // Add a log for the character
             // This logs all the updates made to the character
-            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'MYO Slot Created' : 'Character Created', 'Initial upload', 'character');
+            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'character');
 
             // Add a log for the user
             // This logs ownership of the character
-            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'MYO Slot Created' : 'Character Created', 'Initial upload', 'user');
-
+            $this->createLog($user->id, null, $recipientId, $url, $character->id, $isMyo ? 'Registered Dragon Slot Created' : 'Character Created', 'Initial upload', 'user');
             // Update the user's FTO status and character count
             if(is_object($recipient)) {
                 if(!$isMyo) {
@@ -188,10 +216,14 @@ class CharacterManager extends Service
             $characterData = Arr::only($data, [
                 'character_category_id', 'rarity_id', 'user_id',
                 'number', 'slug', 'description',
-                'sale_value', 'transferrable_at', 'is_visible'
+                'sale_value', 'transferrable_at', 'is_visible',
+                'sex', 'gender_pronouns', 'health_status', 'total_health', 'current_health', 'taming', 'low_aether', 'high_aether',
+                'arena_ranking', 'soul_link_type', 'temperament',
+                'diet', /*'rank',*/
+                // 'sire_slug', 'dam_slug', 'use_custom_lineage',
+                'nicknames', 'title_name'
             ]);
-
-            $characterData['name'] = ($isMyo && isset($data['name'])) ? $data['name'] : null;
+            $characterData['name'] = isset($data['name']) ? $data['name'] : null;
             $characterData['owner_url'] = isset($characterData['user_id']) ? null : $data['owner_url'];
             $characterData['is_sellable'] = isset($data['is_sellable']);
             $characterData['is_tradeable'] = isset($data['is_tradeable']);
@@ -203,6 +235,32 @@ class CharacterManager extends Service
             $characterData['is_trading'] = 0;
             $characterData['parsed_description'] = parse($data['description']);
             if($isMyo) $characterData['is_myo_slot'] = 1;
+
+            // Souls specific
+            $characterData['slots_used'] = $data['slots_used'] ?? 0;
+            $characterData['ouroboros'] = isset($data['ouroboros']);
+            $characterData['basic_aether'] = isset($data['basic_aether']);
+            $characterData['soul_link_target'] = parse($data['soul_link_target']);
+            if($characterData['soul_link_type'] == 'Dragon') if(!Character::where('slug', $characterData['soul_link_target'])->exists()) throw new \Exception('Soul link target is not a valid dragon ID.');
+            $characterData['soul_link_target_link'] = $data['soul_link_target_link'];
+            $characterData['is_adopted'] = isset($data['is_adopted']);
+            $characterData['skills'] = isset($data['skills']) ? parse($data['skills']) : null;
+            $characterData['has_grand_title'] = isset($data['has_grand_title']);
+
+            // if(isset($data['use_custom_lineage'])) {
+            //     $characterData['ss_slug'] = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+            //     $characterData['sd_slug'] = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+            //     $characterData['ds_slug'] = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+            //     $characterData['dd_slug'] = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+            //     $characterData['sss_slug'] = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+            //     $characterData['ssd_slug'] = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+            //     $characterData['sds_slug'] = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+            //     $characterData['sdd_slug'] = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+            //     $characterData['dss_slug'] = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+            //     $characterData['dsd_slug'] = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+            //     $characterData['dds_slug'] = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+            //     $characterData['ddd_slug'] = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+            // }
 
             $character = Character::create($characterData);
 
@@ -246,7 +304,9 @@ class CharacterManager extends Service
             }
             $imageData = Arr::only($data, [
                 'species_id', 'subtype_id', 'rarity_id', 'use_cropper',
-                'x0', 'x1', 'y0', 'y1',
+                'x0', 'x1', 'y0', 'y1', 'title_id', 'title_data',
+
+                'genotype', 'phenotype', 'free_markings', 
             ]);
             $imageData['use_cropper'] = isset($data['use_cropper']) ;
             $imageData['description'] = isset($data['image_description']) ? $data['image_description'] : null;
@@ -258,6 +318,10 @@ class CharacterManager extends Service
             $imageData['is_visible'] = isset($data['is_visible']);
             $imageData['extension'] = (Config::get('lorekeeper.settings.masterlist_image_format') ? Config::get('lorekeeper.settings.masterlist_image_format') : (isset($data['extension']) ? $data['extension'] : $data['image']->getClientOriginalExtension()));
             $imageData['character_id'] = $character->id;
+            $imageData['ext_url'] = isset($data['ext_url']) ? $data['ext_url'] : null;
+            $imageData['adornments'] = isset($data['adornments']) ? parse($data['adornments']) : null;
+            $imageData['title_id'] = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $imageData['title_data'] = isset($data['title_data']) && $data['title_data'] && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
 
             $image = CharacterImage::create($imageData);
 
@@ -335,6 +399,137 @@ class CharacterManager extends Service
         }
         return false;
 
+    }
+
+    /**
+     * Handles character lineage data.
+     *
+     * @param  array                            $data
+     * @return \App\Models\Character\Character  $character
+     * @param  bool                             $isMyo
+     * @return \App\Models\Character\CharacterLineage|bool
+     */
+    private function handleCharacterLineage($data, $character, $isMyo = false)
+    {
+        try {
+            // TODO take values from $data
+            $lineageData = [
+                'character_id'          => $character->id,
+                'sire_id'               => null,
+                'sire_name'             => null,
+                'sire_sire_id'          => null,
+                'sire_sire_name'        => null,
+                'sire_sire_sire_id'     => null,
+                'sire_sire_sire_name'   => null,
+                'sire_sire_dam_id'      => null,
+                'sire_sire_dam_name'    => null,
+                'sire_dam_id'           => null,
+                'sire_dam_name'         => null,
+                'sire_dam_sire_id'      => null,
+                'sire_dam_sire_name'    => null,
+                'sire_dam_dam_id'       => null,
+                'sire_dam_dam_name'     => null,
+                'dam_id'                => null,
+                'dam_name'              => null,
+                'dam_sire_id'           => null,
+                'dam_sire_name'         => null,
+                'dam_sire_sire_id'      => null,
+                'dam_sire_sire_name'    => null,
+                'dam_sire_dam_id'       => null,
+                'dam_sire_dam_name'     => null,
+                'dam_dam_id'            => null,
+                'dam_dam_name'          => null,
+                'dam_dam_sire_id'       => null,
+                'dam_dam_sire_name'     => null,
+                'dam_dam_dam_id'        => null,
+                'dam_dam_dam_name'      => null,
+            ];
+            $roots = [
+                'sire',
+                'sire_sire',
+                'sire_sire_sire',
+                'sire_sire_dam',
+                'sire_dam',
+                'sire_dam_sire',
+                'sire_dam_dam',
+                'dam',
+                'dam_sire',
+                'dam_sire_sire',
+                'dam_sire_dam',
+                'dam_dam',
+                'dam_dam_sire',
+                'dam_dam_dam'
+            ];
+            // you don't need to look for great-great-grandparents
+            $shortlist = [
+                'sire',
+                'sire_sire',
+                'sire_dam',
+                'dam',
+                'dam_sire',
+                'dam_dam',
+            ];
+
+            // check if lineage is empty ...
+            $isEmpty = true;
+
+            // Checking inputs ?
+            for ($i=0; $i < 14; $i++) {
+                // if isset Data key_id, set Lineage key_id and check if that character exists?
+                // else if isset Data key_name, set Lineage key_name to that.
+                if (isset($data[$roots[$i].'_id'])) {
+                    $id = $data[$roots[$i].'_id'];
+                    $lineageData[$roots[$i].'_id'] = $id;
+                    $char = Character::find($id);
+
+                    // TODO Set name to be the slug of the character.
+                    $lineageData[$roots[$i].'_name'] = $char->slug;
+                    $isEmpty = false;
+                }
+                else if (isset($data[$roots[$i].'_name'])) {
+                    $lineageData[$roots[$i].'_name'] = $data[$roots[$i].'_name'];
+                    $isEmpty = $data[$roots[$i].'_name'] == "" ? $isEmpty : false;
+                }
+            }
+
+            //TODO: Fill from ancestor(s) IF ancestor fill is checked.
+            if (isset($data['generate_ancestors']) && !$isEmpty)
+            {
+                for ($j=0; $j < 6; $j++) {
+                    $key = $shortlist[$j];
+                    $id = $data[$key.'_id'];
+
+                    // check if this is a character id and not null
+                    if ($id !== null)
+                    {
+                        // check if this exists and has lineage
+                        $char = Character::find($id);
+                        if($char->exists() && $char->lineage !== null)
+                        {
+                            // go through their parents and gparents
+                            for ($k=0; $k < 6; $k++)
+                            {
+                                // checks that this is a valid lineage index
+                                // eg. sire_sire_sire and not sire_sire_sire_sire
+                                $key2 = $key."_".$shortlist[$k];
+                                if (in_array($key2, $roots, true))
+                                {
+                                    $lineageData[$key2."_id"] = $char->lineage[$shortlist[$k]."_id"];
+                                    $lineageData[$key2."_name"] = $char->lineage[$shortlist[$k]."_name"];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // throw new \Exception('Everything went right, we hope.');
+
+            $lineage = $isEmpty ? null : CharacterLineage::create($lineageData);
+            return $lineage;
+        } catch(\Exception $e) {
+            $this->setError('error', $e->getMessage());
+        }
+        return false;
     }
 
     /**
@@ -688,6 +883,11 @@ class CharacterManager extends Service
             $old['species'] = $image->species_id ? $image->species->displayName : null;
             $old['subtype'] = $image->subtype_id ? $image->subtype->displayName : null;
             $old['rarity'] = $image->rarity_id ? $image->rarity->displayName : null;
+            $old['genotype'] = $image->genotype;
+            $old['phenotype'] = $image->phenotype;
+            $old['free_markings'] = $image->free_markings;
+            $old['adornments'] = $image->adornments;
+            $old['title'] = $image->title_id ? $image->title->displayName : ($image->title_data ? $image->title_data : null);
 
             // Clear old features
             $image->features()->delete();
@@ -703,6 +903,12 @@ class CharacterManager extends Service
             $image->species_id = $data['species_id'];
             $image->subtype_id = $data['subtype_id'] ?: null;
             $image->rarity_id = $data['rarity_id'];
+            $image->genotype = $data['genotype'] ?: null;
+            $image->phenotype = $data['phenotype'] ?: null;
+            $image->free_markings = $data['free_markings'] ?: null;
+            $image->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : null;
+            $image->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $image->title_data = isset($data['title_data']) && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
             $image->save();
 
             $new = [];
@@ -710,6 +916,11 @@ class CharacterManager extends Service
             $new['species'] = $image->species_id ? $image->species->displayName : null;
             $new['subtype'] = $image->subtype_id ? $image->subtype->displayName : null;
             $new['rarity'] = $image->rarity_id ? $image->rarity->displayName : null;
+            $new['genotype'] = $image->genotype;
+            $new['phenotype'] = $image->phenotype;
+            $new['free_markings'] = $image->free_markings;
+            $new['adornments'] = $image->adornments;
+            $new['title'] = $image->title_id ? $image->title->displayName : ($image->title_data ? $image->title_data : null);
 
             // Character also keeps track of these features
             $image->character->rarity_id = $image->rarity_id;
@@ -1264,7 +1475,7 @@ class CharacterManager extends Service
 
             // Allow updating the gift art/trading options if the editing
             // user owns the character
-            if(!$isAdmin)
+            if(!$isAdmin || $character->user_id == $user->id)
             {
                 if($character->user_id != $user->id) throw new \Exception("You cannot edit this character.");
 
@@ -1282,12 +1493,115 @@ class CharacterManager extends Service
             if(!$character->is_myo_slot) $character->name = $data['name'];
             $character->save();
 
+            // Update the character's location
+            if(isset($data['location']) && $data['location']) $character->home_id = $data['location'];
+
+            // Update the character's faction
+            if(isset($data['faction']) && $data['faction']) {
+                if($character->faction_id) $old = $character->faction_id;
+
+                $character->faction_id = $data['faction'];
+                $character->save();
+
+                // Reset standing/remove from closed rank
+                if(isset($old) && $character->faction_id != $old) {
+                    $standing = $character->getCurrencies(true)->where('id', Settings::get('WE_faction_currency'))->first();
+                    if($standing && $standing->quantity > 0) if(!$debit = (new CurrencyManager)->debitCurrency($character, null, 'Changed Factions', null, $standing, $standing->quantity))
+                        throw new \Exception('Failed to reset standing.');
+
+                    if(FactionRankMember::where('member_type', 'character')->where('member_id', $character->id)->first()) FactionRankMember::where('member_type', 'character')->where('member_id', $character->id)->first()->delete();
+                }
+            }
+
             if(!$character->is_myo_slot && Config::get('lorekeeper.extensions.character_TH_profile_link')) $character->profile->link = $data['link'];
             $character->profile->save();
 
             $character->profile->text = $data['text'];
             $character->profile->parsed_text = parse($data['text']);
             $character->profile->save();
+            
+            $character->name = $data['name'];
+            $character->title_name = $data['title_name'];
+            $character->nicknames = $data['nicknames'];
+            $character->gender_pronouns = $data['gender_pronouns'];
+            
+            if(isset($data['location']) && $data['location']) $character->home_id = $data['location'];
+            $character->save();
+
+            // Edit the rest of the character details if admin
+            if($isAdmin) {
+                $character->health_status = $data['health_status'] ?? 'Healthy';
+                // $character->total_health = $data['total_health'] ?? null;
+                // $character->current_health = $data['current_health'] ?? null;
+                $character->ouroboros = isset($data['ouroboros']);
+                $character->taming = $data['taming'] ?? null;
+                $character->basic_aether = isset($data['basic_aether']);
+                $character->low_aether = $data['low_aether'] ?? null;
+                $character->high_aether = $data['high_aether'] ?? null;
+                $character->arena_ranking = $data['arena_ranking'] ?? null;
+                $character->soul_link_type = $data['soul_link_type'] ?? null;
+                $character->soul_link_target = $data['soul_link_target'] ?? null;
+                if($character->soul_link_type == 'Dragon') if(!Character::where('slug', $data['soul_link_target'])->exists()) throw new \Exception('Soul link target is not a valid dragon ID.');
+                $character->soul_link_target_link = $data['soul_link_target_link'] ?? null;
+                $character->is_adopted = isset($data['is_adopted']);
+                $character->temperament = $data['temperament'];
+                $character->diet = $data['diet'];
+                // $character->rank = $data['rank'];
+                $character->skills = isset($data['skills']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['skills'])))) : null;
+                $character->sex = $data['sex'];
+                $character->slots_used = $data['slots_used'];
+                $character->has_grand_title = isset($data['has_grand_title']);
+
+                // $character->use_custom_lineage = isset($data['use_custom_lineage']);
+                // $character->sire_slug = $data['sire_slug'];
+                // $character->dam_slug = $data['dam_slug'];
+
+                // if(isset($data['use_custom_lineage'])) {
+                //     $character->ss_slug = isset($data['ss_slug']) ? $data['ss_slug'] : null;
+                //     $character->sd_slug = isset($data['sd_slug']) ? $data['sd_slug'] : null;
+                //     $character->ds_slug = isset($data['ds_slug']) ? $data['ds_slug'] : null;
+                //     $character->dd_slug = isset($data['dd_slug']) ? $data['dd_slug'] : null;
+                //     $character->sss_slug = isset($data['sss_slug']) ? $data['sss_slug'] : null;
+                //     $character->ssd_slug = isset($data['ssd_slug']) ? $data['ssd_slug'] : null;
+                //     $character->sds_slug = isset($data['sds_slug']) ? $data['sds_slug'] : null;
+                //     $character->sdd_slug = isset($data['sdd_slug']) ? $data['sdd_slug'] : null;
+                //     $character->dss_slug = isset($data['dss_slug']) ? $data['dss_slug'] : null;
+                //     $character->dsd_slug = isset($data['dsd_slug']) ? $data['dsd_slug'] : null;
+                //     $character->dds_slug = isset($data['dds_slug']) ? $data['dds_slug'] : null;
+                //     $character->ddd_slug = isset($data['ddd_slug']) ? $data['ddd_slug'] : null;
+                // }
+
+                $imageData = array_only($data, [
+                    'genotype', 'phenotype', 'free_markings', 'species_id', 'subtype_id',
+                    'rarity_id', 'feature_id', 'feature_data', 'adornments'
+                ]);
+                
+                // Update image data
+                if(!$this->updateImageFeatures($imageData, $character->image, $user)) throw new \Exception('Failed to update image data.');
+                $character->save();
+            }
+
+            if (!$character->is_myo_slot) {
+                // clear old custom values and add new ones.
+                $character->profile->custom_values()->delete();
+                if(isset($data['custom_values_data'])) {
+                    foreach( $data['custom_values_data'] as $i => $val) {
+                        $val_parsed = parse($val);
+                        if ($val_parsed != "") {
+                            $group = isset($data['custom_values_group']) ? $data['custom_values_group'][$i] : null;
+                            $name = isset($data['custom_values_name']) ? $data['custom_values_name'][$i] : null;
+                            $custom_value = CharacterProfileCustomValue::create([
+                                'character_id' => $character->id,
+                                'group' => $group,
+                                'name' => $name,
+                                'data' => $val,
+                                'data_parsed' => $val_parsed,
+                            ]);
+                        }
+                    }
+                }
+                $character->profile->save();
+            }
 
             if($isAdmin && isset($data['alert_user']) && $character->is_visible && $character->user_id)
             {
@@ -1303,6 +1617,150 @@ class CharacterManager extends Service
             if($notifyGiftArt) $character->notifyBookmarkers('BOOKMARK_GIFTS');
             if($notifyGiftWriting) $character->notifyBookmarkers('BOOKMARK_GIFT_WRITING');
 
+            return $this->commitReturn(true);
+        } catch(\Exception $e) {
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Updates a character's lineage.
+     *
+     * @param  array                            $data
+     * @param  \App\Models\Character\Character  $character
+     * @param  \App\Models\User\User            $user
+     * @param  bool                             $isAdmin
+     * @return  bool
+     */
+    public function updateCharacterLineage($data, $character, $user, $isAdmin = false)
+    {
+        DB::beginTransaction();
+
+        try {
+            if(!$user->hasPower('manage_characters')) throw new \Exception('You do not have the required permissions to do this.');
+            $roots = [
+                'sire',
+                'sire_sire', 'sire_sire_sire', 'sire_sire_dam',
+                'sire_dam',  'sire_dam_sire',  'sire_dam_dam',
+                'dam',
+                'dam_sire',  'dam_sire_sire',  'dam_sire_dam',
+                'dam_dam',   'dam_dam_sire',   'dam_dam_dam'
+            ];
+            // you don't need to look for great-great-grandparents
+            $shortlist = [
+                'sire', 'sire_sire', 'sire_dam',
+                'dam', 'dam_sire', 'dam_dam',
+            ];
+            $line = null;
+            $skipFlag = false;
+
+            // Check if we need to create a lineage bc this character doesn't have one.
+            if(!$character->lineage) {
+                $line = $this->handleCharacterLineage($data, $character, $character->is_myo_slot);
+                // tells us we don't need to calculate ancestors as handleCharacterLineage already does
+                $skipFlag = true;
+            }
+            else {
+                // Grab the character's existing lineage
+                $line = $character->lineage;
+            }
+
+            // If we have a lineage already, and didn't just create one, then update it.
+            if(!$skipFlag){
+                // Checking inputs ?
+                for ($i=0; $i < 14; $i++) {
+                    // if isset Data key_id, set Lineage key_id and check if that character exists?
+                    // else if isset Data key_name, set Lineage key_name to that.
+                    if (isset($data[$roots[$i].'_id'])) {
+                        $id = $data[$roots[$i].'_id'];
+                        $line[$roots[$i].'_id'] = $id;
+                        $char = Character::find($id);
+
+                        // TODO Set name to be the slug of the character.
+                        $line[$roots[$i].'_name'] = $char->slug;
+                    }
+                    else if (isset($data[$roots[$i].'_name'])) {
+                        $line[$roots[$i].'_name'] = $data[$roots[$i].'_name'];
+                    }
+                    else {
+                        // EG. someone deleted it, so we erase it.
+                        $line[$roots[$i].'_id'] = null;
+                        $line[$roots[$i].'_name'] = null;
+                    }
+                }
+            }
+
+            // If generate_ancestors is set and we didn't just create a new lineage ...
+            if (!$skipFlag && isset($data['generate_ancestors'])) {
+                // for each of this character's shortlist of ancestors...
+                for ($j=0; $j < 6; $j++) {
+                    $key = $shortlist[$j];
+                    $id = isset($data[$key.'_id']) ? $data[$key.'_id'] : null;
+
+                    // check if this is a character id and not null
+                    if ($id !== null) {
+                        // check if this exists and has lineage
+                        $char = Character::find($id);
+                        if($char->exists() && $char->lineage !== null) {
+                            // go through their parents and gparents
+                            for ($k=0; $k < 6; $k++) {
+                                // checks that this is a valid lineage index
+                                // eg. sire_sire_sire and not sire_sire_sire_sire
+                                $key2 = $key."_".$shortlist[$k];
+                                if (in_array($key2, $roots, true)) {
+                                    $line[$key2."_id"] = $char->lineage[$shortlist[$k]."_id"];
+                                    $line[$key2."_name"] = $char->lineage[$shortlist[$k]."_name"];
+                                }
+                            }
+                        }
+                        else {
+                            for ($k=0; $k < 6; $k++) {
+                                $key2 = $key."_".$shortlist[$k];
+                                if (in_array($key2, $roots, true)) {
+                                    $line[$key2."_id"] = null;
+                                    $line[$key2."_name"] = null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // if this request wants to update descendants
+            if (isset($data['update_descendants'])) {
+                // TODO: See if there's a better way to query this, because it is HELL on the database.
+
+                // find the descendants of this character
+                $children = CharacterLineage::query()
+                    ->where  ('sire_id',        $character->id)
+                    ->orWhere('sire_sire_id',   $character->id)
+                    ->orWhere('sire_dam_id',    $character->id)
+                    ->orWhere('dam_id',         $character->id)
+                    ->orWhere('dam_dam_id',     $character->id)
+                    ->orWhere('dam_sire_id',    $character->id)
+                    ->get();
+
+                // go through each descendant
+                foreach ($children as $child) {
+                    // search the lineage to find which ancestor this character is
+                    for ($k=0; $k < 6; $k++) {
+                        if ($child[$shortlist[$k]."_id"] == $character-> id) {
+                            for ($j=0; $j < 6; $j++) {
+                                $key = $shortlist[$k]."_".$shortlist[$j];
+                                if (in_array($key, $roots, true)) {
+                                    $child[$key."_id"] = $line[$shortlist[$j].'_id'];
+                                    $child[$key."_name"] = $line[$shortlist[$j].'_name'];
+                                }
+                            }
+                        }
+                    }
+                // save the changes
+                $child->save();
+                }
+            }
+            // and we're done!
+            if(!$skipFlag) $character->lineage->save();
             return $this->commitReturn(true);
         } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
@@ -1377,6 +1835,10 @@ class CharacterManager extends Service
             if(!$recipient) throw new \Exception("Invalid user selected.");
             if($recipient->is_banned) throw new \Exception("Cannot transfer character to a banned member.");
 
+            if($character->pets()->exists()) throw new \Exception("This character has pets attached to it.");
+            if($character->weapons()->exists()) throw new \Exception("This character has weapons attached to it.");
+            if($character->gear()->exists()) throw new \Exception("This character has gear attached to it.");
+
             // deletes any pending design drafts
             foreach($character->designUpdate as $update)
             {
@@ -1399,14 +1861,13 @@ class CharacterManager extends Service
                 'is_approved' => !$queueOpen
             ]);
 
-            if(!$queueOpen)
-                Notifications::create('CHARACTER_TRANSFER_RECEIVED', $recipient, [
-                    'character_url' => $character->url,
-                    'character_name' => $character->slug,
-                    'sender_name' => $user->name,
-                    'sender_url' => $user->url
-                ]);
-
+            Notifications::create('CHARACTER_TRANSFER_RECEIVED', $recipient, [
+                'character_url' => $character->url,
+                'character_name' => $character->slug,
+                'sender_name' => $user->name,
+                'sender_url' => $user->url
+            ]);
+            
             return $this->commitReturn(true);
         } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
@@ -1427,6 +1888,10 @@ class CharacterManager extends Service
         DB::beginTransaction();
 
         try {
+            if($character->pets()->exists()) throw new \Exception("This character has pets attached to it.");
+            if($character->weapons()->exists()) throw new \Exception("This character has weapons attached to it.");
+            if($character->gear()->exists()) throw new \Exception("This character has gear attached to it.");
+
             if(isset($data['recipient_id']) && $data['recipient_id']) {
                 $recipient = User::find($data['recipient_id']);
                 if(!$recipient) throw new \Exception("Invalid user selected.");
@@ -1734,11 +2199,11 @@ class CharacterManager extends Service
 
         // Add a log for the ownership change
         $this->createLog(
-is_object($sender) ? $sender->id : null,
+            is_object($sender) ? $sender->id : null,
             is_object($sender) ? null : $sender,
             $recipient && is_object($recipient) ? $recipient->id : null,
             $recipient && is_object($recipient) ? $recipient->url : ($recipient ? : null),
-            $character->id, $logType ? $logType : ($character->is_myo_slot ? 'MYO Slot Transferred' : 'Character Transferred'), $data, 'user');
+            $character->id, $logType ? $logType : ($character->is_myo_slot ? 'Registered Dragon Slot Transferred' : 'Character Transferred'), $data, 'user');
     }
 
     /**
@@ -1754,8 +2219,8 @@ is_object($sender) ? $sender->id : null,
 
         try {
             if($character->user_id != $user->id) throw new \Exception("You do not own this character.");
-            if(CharacterDesignUpdate::where('character_id', $character->id)->active()->exists()) throw new \Exception("This ".($character->is_myo_slot ? 'MYO slot' : 'character')." already has an existing request. Please update that one, or delete it before creating a new one.");
-            if(!$character->isAvailable) throw new \Exception("This ".($character->is_myo_slot ? 'MYO slot' : 'character')." is currently in an open trade or transfer. Please cancel the trade or transfer before creating a design update.");
+            if(CharacterDesignUpdate::where('character_id', $character->id)->active()->exists()) throw new \Exception("This ".($character->is_myo_slot ? 'Registered Dragon slot' : 'character')." already has an existing request. Please update that one, or delete it before creating a new one.");
+            if(!$character->isAvailable) throw new \Exception("This ".($character->is_myo_slot ? 'Registered Dragon slot' : 'character')." is currently in an open trade or transfer. Please cancel the trade or transfer before creating a design update.");
 
             $data = [
                 'user_id' => $user->id,
@@ -1764,11 +2229,14 @@ is_object($sender) ? $sender->id : null,
                 'hash' => randomString(10),
                 'fullsize_hash' => randomString(15),
                 'update_type' => $character->is_myo_slot ? 'MYO' : 'Character',
-
                 // Set some data based on the character's existing stats
                 'rarity_id' => $character->image->rarity_id,
                 'species_id' => $character->image->species_id,
-                'subtype_id' => $character->image->subtype_id
+                'subtype_id' => $character->image->subtype_id,
+                'genotype' => $character->image->genotype,
+                'phenotype' => $character->image->phenotype,
+                'free_markings' => $character->image->free_markings,
+                'adornments' => $character->image->adornments
             ];
 
             $request = CharacterDesignUpdate::create($data);
@@ -2029,12 +2497,18 @@ is_object($sender) ? $sender->id : null,
 
             $rarity = ($request->character->is_myo_slot && $request->character->image->rarity_id) ? $request->character->image->rarity : Rarity::find($data['rarity_id']);
             $species = ($request->character->is_myo_slot && $request->character->image->species_id) ? $request->character->image->species : Species::find($data['species_id']);
+            if(isset($data['title_id'])) $title = ($request->character->is_myo_slot && $request->character->image->title_id) ? $request->character->image->title : CharacterTitle::find($data['title_id']);
             if(isset($data['subtype_id']) && $data['subtype_id'])
                 $subtype = ($request->character->is_myo_slot && $request->character->image->subtype_id) ? $request->character->image->subtype : Subtype::find($data['subtype_id']);
             else $subtype = null;
+            $genotype = ($request->character->is_myo_slot && $request->character->image->genotype) ? $request->character->image->genotype : $data['genotype'];
+            $phenotype = ($request->character->is_myo_slot && $request->character->image->phenotype) ? $request->character->image->phenotype : $data['phenotype'];
             if(!$rarity) throw new \Exception("Invalid rarity selected.");
             if(!$species) throw new \Exception("Invalid species selected.");
+            if(!$genotype) throw new \Exception("Genotype required.");
+            if(!$phenotype) throw new \Exception("Phenotype required.");
             if($subtype && $subtype->species_id != $species->id) throw new \Exception("Subtype does not match the species.");
+            if(isset($title) && !$title) throw new \Exception("Invalid title selected.");
 
             // Clear old features
             $request->features()->delete();
@@ -2061,7 +2535,12 @@ is_object($sender) ? $sender->id : null,
             $request->species_id = $species->id;
             $request->rarity_id = $rarity->id;
             $request->subtype_id = $subtype ? $subtype->id : null;
+            $request->genotype = $genotype;
+            $request->phenotype = $phenotype;
+            $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
             $request->has_features = 1;
+            $request->title_id = isset($data['title_id']) && $data['title_id'] ? ($data['title_id'] != 'custom' ? $data['title_id'] : null) : null;
+            $request->title_data = isset($data['title_data']) && isset($data['title_data']['full']) ? json_encode($data['title_data']) : null;
             $request->save();
 
             return $this->commitReturn(true);
@@ -2157,9 +2636,9 @@ is_object($sender) ? $sender->id : null,
             {
                 foreach($requestData['character']['currencies'] as $currencyId=>$quantity) {
                     $currency = Currency::find($currencyId);
-                    if(!$currencyManager->createLog($request->character_id, 'Character', null, null,
-                    $request->character->is_myo_slot ? 'MYO Design Approved' : 'Character Design Updated',
-                    'Used in ' . ($request->character->is_myo_slot ? 'MYO design approval' : 'character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)',
+                    if(!$currencyManager->createLog($request->character_id, 'Character', null, null, 
+                    $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', 
+                    'Used in ' . ($request->character->is_myo_slot ? 'Registered Dragon design approval' : 'character design update') . ' (<a href="'.$request->url.'">#'.$request->id.'</a>)', 
                     $currencyId, $quantity))
                         throw new \Exception("Failed to create log for character currency.");
                 }
@@ -2182,7 +2661,14 @@ is_object($sender) ? $sender->id : null,
                 'species_id' => $request->species_id,
                 'subtype_id' => ($request->character->is_myo_slot && isset($request->character->image->subtype_id)) ? $request->character->image->subtype_id : $request->subtype_id,
                 'rarity_id' => $request->rarity_id,
+                'ext_url' => $request->ext_url,
                 'sort' => 0,
+                'genotype' => $request->genotype,
+                'phenotype' => $request->phenotype,
+                'free_markings' => $request->free_markings,
+                'adornments' => $request->adornments,
+                'title_id' => isset($request->title_id) && $request->title_id ? $request->title_id : null,
+                'title_data' => isset($request->title_data) ? $request->title_data : null
             ]);
 
             // Shift the image credits over to the new image
@@ -2249,6 +2735,9 @@ is_object($sender) ? $sender->id : null,
                 $request->character->character_image_id = $image->id;
             }
 
+            // Add a log for the character
+            $this->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
+            
             // Final recheck and setting of update type, as insurance
             if($request->character->is_myo_slot)
             $request->update_type = 'MYO';
@@ -2467,6 +2956,69 @@ is_object($sender) ? $sender->id : null,
     }
 
     /**
+     * Deceases a character.
+     *
+     * @param  \App\Models\Character\Character              $character
+     * @param  \App\Models\User\User                        $user
+     * @return  bool
+     */
+    public function deceaseCharacter($character, $user)
+    {
+        DB::beginTransaction();
+
+        try {
+            if($character->deceased) throw new \Exception("This character is already deceased.");
+            if($character->user_id != $user->id && !$user->hasPower('manage_characters')) throw new \Exception("You do not own this character.");
+            if($character->isCoOwned && !$user->hasPower('manage_characters')) throw new \Exception("Co-owned characters must be deceased by an admin.");
+            
+            $character->deceased = 1;
+            $character->deceased_at = Carbon::now();
+            $character->save();
+
+            // Clear out associated activities
+            // If the character is in an active transfer, cancel it
+            $transfer = CharacterTransfer::active()->where('character_id', $character->id)->first();
+            if($transfer) {
+                $transfer->status = 'Canceled';
+                $transfer->reason = 'Transfer canceled by admin in order to transfer character to another user';
+                $transfer->save();
+            }
+            
+            // If the character is in an active trade, reject it
+            if($character->trade_id) {
+                $tradeManager = new TradeManager;
+                if(!$tradeManager->rejectTrade([
+                    'trade' => Trade::find($character->trade_id),
+                    'reason' => 'A character in the trade has been deceased.',
+                ], $user)) throw new \Exception('Failed to reject trade');
+            }
+
+            $design_update = CharacterDesignUpdate::where('character_id', $character->id)->active();
+            // If the character has an active design request, reject it
+            if($design_update->exists()) {
+                $request = $design_update->first();
+                $this->rejectRequest(['staff_comments' => 'Request rejected as the character was deceased.'], $request, $user, true);
+            };
+
+            // Notify the owners
+            if($character->user_id != $user->id) {
+                Notifications::create('CHARACTER_DECEASED', $user, [
+                    'character_url' => $character->url,
+                    'character_name' => $character->fullName,
+                    'character_name' => $character->slug,
+                    'sender_url' => $user->url,
+                    'sender_name' => $user->name
+                ]);
+            }
+
+            return $this->commitReturn(true);
+        } catch(\Exception $e) { 
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
      * Votes on a a character design update request.
      *
      * @param  string                                       $action
@@ -2500,6 +3052,36 @@ is_object($sender) ? $sender->id : null,
             $request->vote_data = $voteData->toJson();
 
             $request->save();
+
+            return $this->commitReturn(true);
+        } catch(\Exception $e) {
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /*************************************************************************************
+     * CLAYMORE
+     *************************************************************************************/
+    public function editClass($data, $character, $user)
+    {
+        DB::beginTransaction();
+
+        try {
+            if($data['class_id'] != 'none') {
+                $class = CharacterClass::find($data['class_id']);
+                if(!$class) throw new \Exception('Invalid class.');
+                $character->class_id = $class->id;
+                $character->save();
+
+                if(!$this->createLog($user->id, null, $character->user_id, ($character->user_id ? null : $character->owner_url), $character->id, 'Character Class Updated', '['.$class->displayName.']', 'character')) throw new \Exception('Failed to create log.');
+            }
+            else {
+                $character->class_id = null;
+                $character->save();
+
+                if(!$this->createLog($user->id, null, $character->user_id, ($character->user_id ? null : $character->owner_url), $character->id, 'Character Class Removed', '[None]', 'character')) throw new \Exception('Failed to create log.');
+            }
 
             return $this->commitReturn(true);
         } catch(\Exception $e) {

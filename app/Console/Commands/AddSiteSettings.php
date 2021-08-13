@@ -81,7 +81,7 @@ class AddSiteSettings extends Command
 
         $this->addSiteSetting('is_reports_open', 1, '0: New reports cannot be made (mods can work on the queue still), 1: Reports are submittable.');
 
-        $this->addSiteSetting('is_myos_open', 1, '0: MYO slots cannot be submitted for design approval, 1: MYO slots can be submitted for approval.');
+        $this->addSiteSetting('is_myos_open', 1, '0: Registered Dragon slots cannot be submitted for design approval, 1: Registered Dragon slots can be submitted for approval.');
 
         $this->addSiteSetting('is_design_updates_open', 1, '0: Characters cannot be submitted for design update approval, 1: Characters can be submitted for design update approval.');
 
@@ -91,17 +91,94 @@ class AddSiteSettings extends Command
 
         $this->addSiteSetting('blacklist_key', 0, 'Optional key to view the blacklist. Enter "0" to not require one.');
 
-        $this->addSiteSetting('design_votes_needed', 3, 'Number of approval votes needed for a design update or MYO submission to be considered as having approval.');
+        $this->addSiteSetting('design_votes_needed', 3, 'Number of approval votes needed for a design update or Registered Dragon submission to be considered as having approval.');
 
         $this->addSiteSetting('admin_user', 1, 'ID of the site\'s admin user.');
 
         $this->addSiteSetting('gallery_submissions_open', 1, '0: Gallery submissions closed, 1: Gallery submissions open.');
 
         $this->addSiteSetting('gallery_submissions_require_approval', 1, '0: Gallery submissions do not require approval, 1: Gallery submissions require approval.');
+        
+        if(!DB::table('site_settings')->where('key', 'trade_listing_duration')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'trade_listing_duration',
+                    'value' => 14,
+                    'description' => 'Number of days a trade listing is displayed for.'
+                ]
+
+            ]);
+            $this->info("Added:   trade_listing_duration / Default: 14");
+        }
+        else $this->line("Skipped: trade_listing_duration");
+        
+        if(!DB::table('site_settings')->where('key', 'admin_user')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'admin_user',
+                    'value' => 1,
+                    'description' => 'ID of the site\'s admin user.'
+                ]
+            ]);
+        }
 
         $this->addSiteSetting('gallery_submissions_reward_currency', 0, '0: Gallery submissions do not reward currency, 1: Gallery submissions reward currency.');
 
         $this->addSiteSetting('group_currency', 1, 'ID of the group currency to award from gallery submissions (if enabled).');
+
+        if(!DB::table('site_settings')->where('key', 'character_title_display')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'character_title_display',
+                    'value' => 0,
+                    'description' => '0: Characters\' titles only display in their image info. 1: Characters\'s titles display alongside their category, species, rarity.'
+                ]
+
+            ]);
+            $this->info("Added:   character_title_display / Default: 0");
+        }
+        else $this->line("Skipped: character_title_display");
+
+        if(!DB::table('site_settings')->where('key', 'coupon_settings')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'coupon_settings',
+                    'value' => 0,
+                    'description' => '0: Percentage is taken from total (e.g 20% from 2 items costing a total of 100 = 80), 1: Percentage is taken from item (e.g 20% from 2 items costing a total of 100 = 90)'
+                ]
+
+            ]);
+            $this->info("Added:   coupon_settings / Default: 0");
+        }
+        else $this->line("Skipped: limited_stock_coupon_settings");
+
+        if(!DB::table('site_settings')->where('key', 'limited_stock_coupon_settings')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'limited_stock_coupon_settings',
+                    'value' => 0,
+                    'description' => '0: Does not allow coupons to be used on limited stock items, 1: Allows coupons to be used on limited stock items'
+                ]
+
+            ]);
+            $this->info("Added:   limited_stock_coupon_settings / Default: 0");
+        }
+        else $this->line("Skipped: limited_stock_coupon_settings");
+
+        if(!DB::table('site_settings')->where('key', 'claymore_cooldown')->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key' => 'claymore_cooldown',
+                    'value' => 0,
+                    'description' => 'Number of days to add to the cooldown timer when a pet/weapon/gear is attached.'
+                ]
+
+            ]);
+            $this->info("Added:   claymore_cooldown / Default: 0");
+        }
+        else $this->line("Skipped: claymore_cooldown");
+
+        $this->addSiteSetting('featured_character', 1, 'ID of the currently featured character.');
 
         $this->line("\nSite settings up to date!");
 

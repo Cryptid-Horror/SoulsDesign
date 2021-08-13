@@ -8,8 +8,13 @@ use App\Services\InventoryManager;
 
 use App\Models\Item\Item;
 use App\Models\Currency\Currency;
+use App\Models\Award\Award;
 use App\Models\Loot\LootTable;
 use App\Models\Raffle\Raffle;
+use App\Models\Recipe\Recipe;
+use App\Models\Pet\Pet;
+use App\Models\Claymore\Gear;
+use App\Models\Claymore\Weapon;
 
 class BoxService extends Service
 {
@@ -33,8 +38,17 @@ class BoxService extends Service
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'items' => Item::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
+
+            'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
+            'recipes'=> Recipe::orderBy('name')->pluck('name', 'id'),
+
+            'pets' => Pet::orderBy('name')->pluck('name', 'id'),
+            'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
+            'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
+            'gears' => Gear::orderBy('name')->pluck('name', 'id'),
+            'weapons' => Weapon::orderBy('name')->pluck('name', 'id')
         ];
     }
 
@@ -79,8 +93,8 @@ class BoxService extends Service
         try {
             // If there's no data, return.
             if(!isset($data['rewardable_type'])) return true;
-            
-            // The data will be stored as an asset table, json_encode()d. 
+
+            // The data will be stored as an asset table, json_encode()d.
             // First build the asset table, then prepare it for storage.
             $assets = createAssetsArray();
             foreach($data['rewardable_type'] as $key => $r) {
@@ -92,11 +106,28 @@ class BoxService extends Service
                     case 'Currency':
                         $type = 'App\Models\Currency\Currency';
                         break;
+
+                    case 'Award':
+                        $type = 'App\Models\Award\Award';
+
+                    case 'Pet':
+                        $type = 'App\Models\Pet\Pet';
+                        break;
+                    case 'Gear':
+                        $type = 'App\Models\Claymore\Gear';
+                        break;
+                    case 'Weapon':
+                        $type = 'App\Models\Claymore\Weapon';
+
+                        break;
                     case 'LootTable':
                         $type = 'App\Models\Loot\LootTable';
                         break;
                     case 'Raffle':
                         $type = 'App\Models\Raffle\Raffle';
+                        break;
+                    case 'Recipe':
+                        $type = 'App\Models\Recipe\Recipe';
                         break;
                 }
                 $asset = $type::find($data['rewardable_id'][$key]);
@@ -107,7 +138,7 @@ class BoxService extends Service
             $tag->update(['data' => json_encode($assets)]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -129,12 +160,12 @@ class BoxService extends Service
         try {
             foreach($stacks as $key=>$stack) {
                 // We don't want to let anyone who isn't the owner of the box open it,
-                // so do some validation... 
+                // so do some validation...
                 if($stack->user_id != $user->id) throw new \Exception("This item does not belong to you.");
 
                 // Next, try to delete the box item. If successful, we can start distributing rewards.
                 if((new InventoryManager)->debitStack($stack->user, 'Box Opened', ['data' => ''], $stack, $data['quantities'][$key])) {
-                    
+
                     for($q=0; $q<$data['quantities'][$key]; $q++) {
                         // Distribute user rewards
                         if(!$rewards = fillUserAssets(parseAssetData($stack->item->tag('box')->data), $user, $user, 'Box Rewards', [
@@ -145,7 +176,7 @@ class BoxService extends Service
                 }
             }
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
