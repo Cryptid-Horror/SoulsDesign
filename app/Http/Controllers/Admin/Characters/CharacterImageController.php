@@ -107,7 +107,7 @@ class CharacterImageController extends Controller
             'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'titles' => ['0' => 'Select Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('sort', 'DESC')->pluck('title', 'id')->toArray(),
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'subtypes' => ['0' => 'Pick a Species First'],
+            'subtypes' => ['0' => 'Select Subtype'] + Subtype::where('species_id','=',$image->species_id)->orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
             'features' => Feature::getFeaturesByCategory()
         ]);
     }
