@@ -65,7 +65,7 @@
 		<div class="d-flex justify-content-around mb-5">
 			<div class="btn-group-vertical">
                 <a href="{{ url('https://www.soulsbetween.com/world/subtypes') }}" class="btn btn-secondary">Import File Downloads</a>
-                <a href="{{ url('info/Import_Info') }}" class="btn btn-secondary">Registration Information</a>
+                <a href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
                 <a href="{{ url('info/Lineage_guide') }}" class="btn btn-secondary">How Lineage Works</a>
                 <a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
 			</div>
@@ -78,8 +78,8 @@
 			<div class="btn-group-vertical">
                 <a href="{{ url('info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
                 <a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
-                <a href="{{ url('info/Free_Marks') }}" class="btn btn-secondary">Minimal (Free) Markings</a>
-                <a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Item kits, Shampoo, and others</a>
+                <a href="{{ url('info/Free_Marks') }}" class="btn btn-secondary">Minimal & Free Markings</a>
+                <a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
                 <a href="{{ url('info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>
 			</div>
 			<div class="btn-group-vertical">
