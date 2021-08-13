@@ -1858,14 +1858,13 @@ class CharacterManager extends Service
                 'is_approved' => !$queueOpen
             ]);
 
-            if(!$queueOpen)
-                Notifications::create('CHARACTER_TRANSFER_RECEIVED', $recipient, [
-                    'character_url' => $character->url,
-                    'character_name' => $character->slug,
-                    'sender_name' => $user->name,
-                    'sender_url' => $user->url
-                ]);
-
+            Notifications::create('CHARACTER_TRANSFER_RECEIVED', $recipient, [
+                'character_url' => $character->url,
+                'character_name' => $character->slug,
+                'sender_name' => $user->name,
+                'sender_url' => $user->url
+            ]);
+            
             return $this->commitReturn(true);
         } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());

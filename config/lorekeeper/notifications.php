@@ -98,7 +98,7 @@ return [
     // CHARACTER_TRANSFER_RECEIVED
     12 => [
         'name' => 'Character Transfer Received',
-        'message' => 'You have received a transfer for <a href="{character_url}">{character_name}</a> from <a href="{sender_url}">{sender_name}</a>. (<a href="{url}">View Transfers</a>)',
+        'message' => 'You have received a transfer for <a href="{character_url}">{character_name}</a> from <a href="{sender_url}">{sender_name}</a>. Remember to accept/reject the transfer. (<a href="{url}">View Transfers</a>)',
         'url' => 'characters/transfers/incoming'
     ],
 
