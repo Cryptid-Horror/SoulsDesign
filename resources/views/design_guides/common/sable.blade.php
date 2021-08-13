@@ -1,7 +1,7 @@
 <?php
     $marking_icon = 'Common_Sable';
     $marking_name = 'Sable';
-    $marking_code = 'nBl/BlBl';
+    $marking_code = 'nSa/SaSa';
     $marking_desc = "A soft gradient marking that rests on the back of the dragon. The marking covers a similar range to blanket, which could be considered its sibling marking. Sable can be darker or lighter than the base or what it sits over.";
     $layers_above_or_below = 'Blanket, Dunstripe, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous, Aether Marked';
     $layers_above = 'Brindled, Bokeh, Cloud, Marbled, Smoke, Merle';

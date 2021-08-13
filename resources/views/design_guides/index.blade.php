@@ -64,7 +64,7 @@
 
 		<div class="d-flex justify-content-around mb-5">
 			<div class="btn-group-vertical">
-                <a href="{{ url('https://www.deviantart.com/the-below/gallery/66157893/dragon-imports') }}" class="btn btn-secondary">Import File Downloads</a>
+                <a href="{{ url('https://www.soulsbetween.com/world/subtypes') }}" class="btn btn-secondary">Import File Downloads</a>
                 <a href="{{ url('info/Import_Info') }}" class="btn btn-secondary">Registration Information</a>
                 <a href="{{ url('info/Lineage_guide') }}" class="btn btn-secondary">Filling out the Lineage</a>
                 <a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
