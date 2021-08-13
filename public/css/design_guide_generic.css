@@ -2,9 +2,7 @@
 /* CSS Document */
 
 body {
-	background-image: url("coastal.png");
-	height: 100%;
-    min-width: 100%;
+	background-color: #A3D1BB;
 	font-size: 14px;
 	margin: 0;
 	text-align: center;
