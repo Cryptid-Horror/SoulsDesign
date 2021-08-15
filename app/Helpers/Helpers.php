@@ -233,11 +233,11 @@ function checkAlias($url, $failOnError = true)
             preg_match_all($site['regex'], $url, $matches, PREG_SET_ORDER, 0);
             if($matches != []) {$urlSite = $key; break;}
         }
-        if($matches[0] == [] && $failOnError) throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
+        if(($matches == [] || $matches[0] == []) && $failOnError) throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
 
         // and 2. if it contains an alias associated with a user on-site.
 
-        if($matches[0] != [] && isset($matches[0][1])) {
+        if($matches != [] && $matches[0] != [] && isset($matches[0][1])) {
             if($urlSite != 'discord') {
                 $alias = App\Models\User\UserAlias::where('site', $urlSite)->where('alias', $matches[0][1])->first();
             }
