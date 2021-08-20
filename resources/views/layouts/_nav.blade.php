@@ -36,7 +36,7 @@
                             <a class="dropdown-item" href="{{ url('/prompts') }}">
                                 <i class="fas fa-dungeon"></i> Activity Prompts
                             </a>
-                            <a class="dropdown-item" href="{{ url('info/_AC') }}">
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Adoption%20Center') }}">
                                <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
@@ -99,6 +99,9 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
                                 Bug Reports
+                            </a>
+                            <a class="dropdown-item" href="{{ url('https://docs.google.com/spreadsheets/d/1DAK3eKFtAaqfA51r2USy6vT9Lzv7Xsv8uypeohMtcOs/edit?usp=sharing') }}">
+                                Offsite Tracker
                             </a>
                             <a class="dropdown-item" href="{{ url('raffles') }}">
                                 Raffles
