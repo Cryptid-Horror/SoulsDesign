@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-	background-color: #110a24;
+	background-image: url('../MainBG.png');
 	font-size: 14px;
 	margin: 0;
 	text-align: center;
@@ -22,7 +22,7 @@ body {
 .main {
 	text-align: justify;
 	background: #D3F3E7;
-	color: #406A53;
+	color: #313131;
 	width: 60%;
 	margin: auto;
 	margin-top: -50px;
