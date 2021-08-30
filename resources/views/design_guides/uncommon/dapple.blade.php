@@ -1,7 +1,7 @@
 <?php
-    $marking_icon = 'Uncommon_Bokeh';
-    $marking_name = 'Bokeh';
-    $marking_code = 'nBk/BkBk';
+    $marking_icon = 'Uncommon_Dapple';
+    $marking_name = 'Dapple';
+    $marking_code = 'nDl/nDl';
     $marking_desc = "The appeal for this marking comes from the similarities it holds with the dapple gene on horses. Bokeh appears as circles of different shades of color from the base coat, in varying sizes or minor shape differences. ";
     $layers_above_or_below = 'Pangare, Stained, Sable, Roan, Cloud';
     $layers_above = ' None';
@@ -41,10 +41,10 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'bokeh_yes',
-        'bokeh_yes2',
-        'bokeh_no',
-        'bokeh_no2'
+        'dapple_yes',
+        'dapple_yes2',
+        'dapple_no',
+        'dapple_no2'
     ];
 
     // You can use html!
@@ -68,9 +68,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'bokeh_1', 'alt' => '...', 'label' => 'SB-0540', 'caption' => 'Designer: @FallingFireX'],
-        ['image_name' => 'bokeh_2', 'alt' => '...', 'label' => 'SB-0125', 'caption' => 'Designer: @The-Shellcat'],
-        ['image_name' => 'bokeh_3', 'alt' => '...', 'label' => 'SB-0055', 'caption' => 'Designer: @TeachMeToLearn'],
+        ['image_name' => 'dapple_1', 'alt' => '...', 'label' => 'SB-0540', 'caption' => 'Designer: @FallingFireX'],
+        ['image_name' => 'dapple_2', 'alt' => '...', 'label' => 'SB-0125', 'caption' => 'Designer: @The-Shellcat'],
+        ['image_name' => 'dapple_3', 'alt' => '...', 'label' => 'SB-0055', 'caption' => 'Designer: @TeachMeToLearn'],
     ];
 ?>
 

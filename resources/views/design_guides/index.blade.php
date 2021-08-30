@@ -24,9 +24,9 @@
 				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'],
 				['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
 
-	$uncommons = [['Azure', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Bokeh', 'nBk/BkBk'], ['Border', 'nBo/BoBo'],
+	$uncommons = [['Azure', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Border', 'nBo/BoBo'],
 				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Copper', 'nCp/CpCp'],
-				['Crested', 'nCr/CrCr'], ['Crimson', 'nCr/CrCr'], ['Dipped', 'nDi/DiDi'],
+				['Crested', 'nCr/CrCr'], ['Crimson', 'nCr/CrCr'], ['Dapple', 'nDl/DlDl'], ['Dipped', 'nDi/DiDi'],
 				['Dripping', 'nDr/DrDr'], ['Inkwell', 'nIn/InIn'], ['Marbled', 'nMar/MarMar'],
 				['Merle', 'nMr/MrMr'], ['Metallic', 'nMe/MeMe'], ['Pigeon', 'nPg/PgPg'],
 				['Plasma', 'nPs/PsPs'], ['Roan', 'nRo/RoRo'], ['Rosettes', 'nRs/RsRs'],
