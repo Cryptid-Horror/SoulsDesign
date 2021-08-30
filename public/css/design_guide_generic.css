@@ -2,8 +2,8 @@
 /* CSS Document */
 
 body {
-	background: url("coastal.png") no-repeat;
-    background-attachment: local;
+	background: url("coastal.png");
+    background-attachment: scroll;
     height: 100%;
     min-width: 100%;
 	font-size: 14px;
