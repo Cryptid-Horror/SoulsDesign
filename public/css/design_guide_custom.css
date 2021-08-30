@@ -1,7 +1,7 @@
 /* Custom CSS is where elements specific to one or two pages are placed, while accessible from anywhere they should be clearly labeled for use. */
 body {
     overflow-x: hidden;
-	background-image: url(../sitebg.jpg);
+	background-image: url("coastal.png") no-repeat;
     padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
 }
 .portfolio-item {
