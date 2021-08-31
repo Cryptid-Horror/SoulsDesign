@@ -83,9 +83,9 @@ const c_marks = [
 	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
 ];
 const uc_marks = [
-    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'], ['Bokeh', 'nBk', 'suffix'],
+    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
 	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Copper', 'nCp', 'color'],
-	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dipped', 'nDi', 'ed'],
+	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
 	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
     ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],

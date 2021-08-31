@@ -4,8 +4,8 @@
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
 
-var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBk", "BkBk", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
-                        "nCri", "CriCri", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
+var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
+                        "nCri", "CriCri", "nDa", "DaDa", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
 			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
 			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
@@ -26,8 +26,8 @@ var commonToText = ["Blanket", "Boar", "Collar", "Dunstripe", "Dusted", "Duo Ton
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
 					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
-var uncommonToText = ["Azure", "Banded", "Bokeh", "Border", "Cloud", "Copper", "Crested", 
-					  "Crimson", "Dipped", "Dripping", "Inkwell",
+var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested", 
+					  "Crimson", "Dapple", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
 var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
