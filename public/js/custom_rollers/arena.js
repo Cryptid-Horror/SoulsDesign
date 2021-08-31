@@ -264,10 +264,10 @@ function rollBwarrior(){
 function rollBgladiator(){
     if (zone.value == "basic"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,190);}
+            var i = rand(132,191);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,190);}
-        else {var i = rand(1,190);}
+                var i = rand(132,191);}
+        else {var i = rand(1,191);}
         
         if(i <= 5){itemlist += "300 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -332,16 +332,17 @@ function rollBgladiator(){
         else if (i <= 188){itemlist += "Brawler Booster";}
         else if (i <= 189){itemlist += "Nightshade Booster";}
         else if (i <= 190){itemlist += "Phoenix";}
+        else if (i <= 191){itemlist += "Soul Twine";}
 
 
 
     }
     else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,190);}
+            var i = rand(132,191);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,190);}
-        else {var i = rand(1,190);}
+                var i = rand(132,191);}
+        else {var i = rand(1,191);}
         
         if(i <= 5){itemlist += "300 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -406,6 +407,8 @@ function rollBgladiator(){
         else if (i <= 188){itemlist += "Brawler Booster";}
         else if (i <= 189){itemlist += "Nightshade Booster";}
         else if (i <= 190){itemlist += "Phoenix";}
+        else if (i <= 191){itemlist += "Soul Twine";}
+
 
     }
 }
@@ -413,10 +416,10 @@ function rollBgladiator(){
 function rollBchampion(){
     if (zone.value == "basic"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,208);}
+            var i = rand(132,209);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,208);}
-        else {var i = rand(1,208);}
+                var i = rand(132,209);}
+        else {var i = rand(1,209);}
         
         if(i <= 5){itemlist += "400 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -492,16 +495,18 @@ function rollBchampion(){
         else if (i <= 202){itemlist += "Warlord Booster";}
         else if (i <= 207){itemlist += "Hotpot";}
         else if (i <= 208){itemlist += "Phoenix";}
+        else if (i <= 209){itemlist += "Soul Twine";}
+
 
 
 
     }
     else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,208);}
+            var i = rand(132,209);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,208);}
-        else {var i = rand(1,208);}
+                var i = rand(132,209);}
+        else {var i = rand(1,209);}
         
         if(i <= 5){itemlist += "400 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -577,6 +582,8 @@ function rollBchampion(){
         else if (i <= 202){itemlist += "Warlord Booster";}
         else if (i <= 207){itemlist += "Hotpot";}
         else if (i <= 208){itemlist += "Phoenix";}
+        else if (i <= 209){itemlist += "Soul Twine";}
+
 
     }
 }
