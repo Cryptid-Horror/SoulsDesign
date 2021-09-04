@@ -14,20 +14,26 @@
     {!! Form::open(['url' => 'designs/'.$request->id.'/traits']) !!}
         <div class="form-group">
             {!! Form::label('genotype', 'Genotype') !!}
+            <div class="alert alert-secondary">{!! $request->character->image->genotype !!}</div>
+            {{--
             @if($request->character->is_myo_slot && $request->character->image->genotype) 
                 <div class="alert alert-secondary">{!! $request->character->image->genotype !!}</div>
             @else
                 {!! Form::text('genotype', $request->genotype, ['class' => 'form-control', 'id' => 'genotype']) !!}
             @endif
+            --}}
         </div>
 
         <div class="form-group">
             {!! Form::label('phenotype', 'Phenotype') !!}
+            <div class="alert alert-secondary">{!! $request->character->image->phenotype !!}</div>
+            {{--
             @if($request->character->is_myo_slot && $request->character->image->phenotype) 
                 <div class="alert alert-secondary">{!! $request->character->image->phenotype !!}</div>
             @else
                 {!! Form::text('phenotype', $request->phenotype, ['class' => 'form-control', 'id' => 'phenotype']) !!}
             @endif
+            --}}
         </div>
         
         @if($request->character && !$request->character->is_myo_slot)
@@ -125,6 +131,7 @@
             </div>
         </div>
 
+        {{--
         @if($request->character && !$request->character->is_myo_slot)
             <div class="form-group">
                 {!! Form::label('Adornments') !!} {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}
@@ -139,6 +146,7 @@
                 <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
             </div>
         @endif
+        --}}
 
         <div class="text-right">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
