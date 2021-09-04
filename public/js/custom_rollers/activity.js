@@ -232,7 +232,7 @@ function rollHunt(){
 			if(i <= 5){itemlist += "Aether Meat";} //Aether Meat
 			else if (i <= 15){itemlist += "Decent Meat";} //decent meat
 			else if (i <= 20){itemlist += "Aether Deer Pelt";} //Aether imbued deer pelt
-			else if (i <= 25){itemlist += "Aether Leather";} //Aether Imbued Leather
+			else if (i <= 25){itemlist += "Leather";} //Aether Imbued Leather
 			else if (i <= 30){itemlist += "Aether Bison Pelt";} //Aether Imbued Bison Pelt
 			else if (i <= 35){itemlist += "Aether Bones";} //Aether imbued bones
 			else if (i <= 38){itemlist += "Aether Bird Carcass";} //Dead Aether Bird
@@ -508,7 +508,7 @@ function rollHunt(){
 			if(i <= 10){itemlist += "Large Feathers";} // Large Feathers
 			else if (i <= 20){itemlist += "Sticks";} // sticks
 			else if (i <= 25){itemlist += "Wood";} // Wood
-			else if (i <= 35){itemlist += "Ice Block";} // Ice Block
+			else if (i <= 35){itemlist += "Ice";} // Ice Block
 			else if (i <= 40){itemlist += "Herbs";} // Herbs
 			else if (i <= 45){itemlist += "Blue Berries";} // Blue berries
 			else if (i <= 55){itemlist += "Small Rocks";} // small rocks
