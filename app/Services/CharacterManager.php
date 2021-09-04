@@ -2551,6 +2551,28 @@ class CharacterManager extends Service
     }
 
     /**
+     * Saves the adornments of a character design update request.
+     *
+     * @param  array                                        $data
+     * @param  \App\Models\Character\CharacterDesignUpdate  $request
+     * @return  bool
+     */
+    public function saveRequestAdornments($data, $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $request->adornments = isset($data['adornments']) ? parse(implode(',', array_filter(str_replace(',', ';', $data['adornments'])))) : $request->character->image->adornments;
+            $request->save();
+
+            return $this->commitReturn(true);
+        } catch(\Exception $e) {
+            $this->setError('error', $e->getMessage());
+        }
+        return $this->rollbackReturn(false);
+    }
+
+    /**
      * Submit a character design update request to the approval queue.
      *
      * @param  \App\Models\Character\CharacterDesignUpdate  $request

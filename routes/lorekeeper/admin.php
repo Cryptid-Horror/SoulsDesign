@@ -577,6 +577,7 @@ Route::group(['prefix' => 'designs', 'middleware' => 'power:manage_characters'],
     Route::get('edit/{id}/{action}', 'DesignController@getDesignConfirmation')->where('action', 'cancel|approve|reject');
     Route::post('edit/{id}/{action}', 'DesignController@postDesign')->where('action', 'cancel|approve|reject');
     Route::post('vote/{id}/{action}', 'DesignController@postVote')->where('action', 'approve|reject');
+    Route::post('{id}/adornments', 'DesignController@postAdornments');
 });
 
 Route::get('{type}/{status}', 'DesignController@getDesignIndex')->where('type', 'myo-approvals|design-approvals')->where('status', 'pending|approved|rejected');

@@ -204,15 +204,41 @@
             <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div>
         @endforeach
     </div>
-    <h5>Adornments</h5>
-    <div>
-        @if($request->character && !$request->character->is_myo_slot)
-            <ul>
-                @foreach(explode(',', $request->adornments) as $adornment)
-                    <li>{!! $adornment !!}</li> 
-                @endforeach
-            </ul>
-        @endif
+    @if($request->adornments)
+        <h5>Adornments</h5>
+        <div>
+            @if($request->character && !$request->character->is_myo_slot)
+                <ul>
+                    @foreach(explode(',', $request->adornments) as $adornment)
+                        <li>{!! $adornment !!}</li> 
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+    @endif
+    <hr>
+    {!! Form::open(['url' => 'admin/designs/'.$request->id.'/adornments']) !!}
+    <div class="form-group">
+        <h5>Adornments {!! add_help('This section is for specifying when items have been used in the design. Simple html is allowed (e.g. adding a link).') !!}</h5>
+        <div id="adornmentsList">
+            @foreach(explode(',', $request->adornments) as $adornment)
+                <div class="d-flex mb-2">
+                    {!! Form::text('adornments[]', $adornment, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+                    <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
+                </div>
+            @endforeach
+        </div>
+        <div><a href="#" class="btn btn-primary" id="addAdornments">Add Adornment</a></div>
+    </div>
+
+    <div class="text-right">
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    </div>
+
+    {!! Form::close() !!}
+    <div class="adornment-row hide mb-2">
+        {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
+        <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
     </div>
 @endif
 

@@ -96,4 +96,27 @@ class DesignController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Edits a design update request's adornments.
+     * Admin exclusive.
+     *
+     * @param  \Illuminate\Http\Request       $request
+     * @param  App\Services\CharacterManager  $service
+     * @param  int                            $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postAdornments(Request $request, CharacterManager $service, $id)
+    {
+        $r = CharacterDesignUpdate::find($id);
+        if(!$r) abort(404);
+        if(!Auth::user()->hasPower('manage_characters')) abort(404);
+
+        if($service->saveRequestAdornments($request->only('adornments'), $r)) {
+            flash('Request edited successfully.')->success();
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
+    }
 }
