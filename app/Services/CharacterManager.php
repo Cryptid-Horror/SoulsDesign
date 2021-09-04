@@ -2501,8 +2501,8 @@ class CharacterManager extends Service
             if(isset($data['subtype_id']) && $data['subtype_id'])
                 $subtype = ($request->character->is_myo_slot && $request->character->image->subtype_id) ? $request->character->image->subtype : Subtype::find($data['subtype_id']);
             else $subtype = null;
-            $genotype = ($request->character->is_myo_slot && $request->character->image->genotype) ? $request->character->image->genotype : $data['genotype'];
-            $phenotype = ($request->character->is_myo_slot && $request->character->image->phenotype) ? $request->character->image->phenotype : $data['phenotype'];
+            $genotype = $request->character->image->genotype ?? $data['genotype'];
+            $phenotype = $request->character->image->phenotype ?? $data['phenotype'];
             if(!$rarity) throw new \Exception("Invalid rarity selected.");
             if(!$species) throw new \Exception("Invalid species selected.");
             if(!$genotype) throw new \Exception("Genotype required.");
