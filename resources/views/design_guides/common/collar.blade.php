@@ -38,10 +38,15 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'collar_yes',
+        'collar_yes1',
         'collar_yes2',
-        'collar_no',
-        'collar_no2'
+        'collar_yes3',
+        'collar_yes4',
+        'collar_no1',
+        'collar_no2',
+        'collar_no3',
+        'collar_no4',
+        'collar_dom'
     ];
 
     // You can use html!

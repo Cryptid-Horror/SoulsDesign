@@ -40,9 +40,9 @@ A marking that originates from the Warden bloodlines from before the fall of the
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'boar_yes',
+        'boar_yes1',
         'boar_yes2',
-        'boar_no',
+        'boar_no1',
         'boar_no2'
     ];
 
