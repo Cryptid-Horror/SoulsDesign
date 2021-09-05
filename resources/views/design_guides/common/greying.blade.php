@@ -38,10 +38,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'ColorMod_yes',
-        'ColorMod_yes2',
-        'ColorMod_no',
-        'ColorMod_no2'
+        'grey_yes1',
+        'grey_yes2',
+        'frey_yes3',
+        'grey_yes4',
+        'grey_dom'
     ];
 
     // You can use html!
