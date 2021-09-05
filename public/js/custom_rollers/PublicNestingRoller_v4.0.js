@@ -22,7 +22,7 @@ var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled"];
 
 // markings map 2:1 with ___ToText array indexes.
-var commonToText = ["Blanket", "Boar", "Collar", "Dunstripe", "Dusted", "Duo Tone", 
+var commonToText = ["Blanket", "Boar", "Collar", "Dun", "Dusted", "Duo Tone", 
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
 					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];

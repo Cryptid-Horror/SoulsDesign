@@ -1,8 +1,8 @@
 <?php
-    $marking_icon = 'Common_Dunstripe';
-    $marking_name = 'Dunstripe';
+    $marking_icon = 'Common_Dun';
+    $marking_name = 'Dun';
     $marking_code = 'nDn/DnDn';
-    $marking_desc = "A popular mark praised for its delicate appearance down the spine of a dragon. Its origins are difficult to trace due to its abundance among the population of dragons, and many argue it appeared first in the scorched empire. Dunstripe often has a small accenting along the marking that points downward in a stripe like pattern, as well as stripes along the leg. Unlike banding though, these stripes are thin, delicate, and very few.";
+    $marking_desc = "A popular mark praised for its delicate appearance down the spine of a dragon. Its origins are difficult to trace due to its abundance among the population of dragons, and many argue it appeared first in the scorched empire. dun often has a small accenting along the marking that points downward in a stripe like pattern, as well as stripes along the leg. Unlike banding though, these stripes are thin, delicate, and very few.";
     $layers_above_or_below = 'Blanket, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Masked, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Crested, Banded, Marbled, Merle, Pigeon, Plasma, Shaped, Tabby, Toxin, Roan, Rosettes, Luminescent, Lustrous, Aurora, Iridescent, Lepir, Blooded, Eyes, Glass, Painted, Petal, Vignette, Aether Marked, Gemstone, Rune, Triquetra';
     $layers_above = 'Bokeh, Cloud, Smoke, Brindled';
     $layers_below = ' Inkwell, Tobiano, Appaloosa';
@@ -12,11 +12,11 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Dunstripe',
-        'Warden' => 'Warden_Dunstripe',
-        'Greater' => 'Gemp_Dunstripe',
-        'Ravager' => 'Ravager_Dunstripe',
-        'Stalker' => 'Stalker_Dunstripe',
+        'Sapiere' => 'Sapiere_dunstripe',
+        'Warden' => 'Warden_dunstripe',
+        'Greater' => 'Gemp_dunstripe',
+        'Ravager' => 'Ravager_dunstripe',
+        'Stalker' => 'Stalker_dunstripe',
     ];
 
     // Use yes or no
@@ -49,7 +49,7 @@
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
-        'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping. These small bands may also have a gradient on them, but this gradient is not allowed on these small bars, not on the dunstripe itself.',
+        'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping. These small bands may also have a gradient on them, but this gradient is not allowed on these small bars, not on the dun itself.',
     ];
 
     $marking_cannot = [
@@ -58,7 +58,7 @@
     ];
 
     $marking_must = [
-        'Dunstripe must either present a stripe, or the lines on the legs/back. It can appear as both, or one or the other.'
+        'dun must either present a stripe, or the lines on the legs/back. It can appear as both, or one or the other.'
     ];
 
     // If left empty, the swatches section will not be shown
