@@ -50,6 +50,7 @@
         'The sizing of the three components to this marking can differ, so long as all the parts are there and visible on each "eye."',
         'A gradient is allowed to radiant from the pupil into the iris, but it cannot be the same color as the pupil or blend into the pupil.',
         'Frog eye pupil may mimic any allow eye shape.',
+        'Frog eye can be affected by three different color modifiers (border, iris, and pupil).'
     ];
 
     $marking_cannot = [
