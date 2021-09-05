@@ -38,10 +38,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'python_yes',
+        'python_yes1',
         'python_yes2',
-        'python_no',
-        'python_no2'
+        'python_yes3',
+        'python_yes4',
+        'python_no1'
     ];
 
     // You can use html!
@@ -51,6 +52,7 @@
         'Is allowed to interact with other markings like banding or ringed to make elongate the border on the marking.',
         'Python can appear in a variety of shapes. It can be diamonds, ovals, squares, rectangles, diamonds, and even look like the iconic "saddle" of a boa constrictor. You can even use multiple different types of python on a single design (some oval, some rectangle, etc!)',
         'In dominant form, the marking can show banded like markings on the tip of the tail, and the face.',
+        'Python can have small dots around the shapes it uses. They cannot be so many to be confused as dusted, and should be used sparingly.',
     ];
 
     $marking_cannot = [
