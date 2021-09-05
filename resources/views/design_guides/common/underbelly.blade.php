@@ -38,10 +38,12 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'underbelly_yes',
+        'underbelly_yes1',
         'underbelly_yes2',
-        'underbelly_no',
-        'underbelly_no2'
+        'underbelly_yes3',
+        'underbelly_yes4',
+        'underbelly_yes5',
+        'underbelly_no1'
     ];
 
     // You can use html!
