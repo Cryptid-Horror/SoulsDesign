@@ -38,16 +38,18 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'dunstripe_yes',
+        'dunstripe_yes1',
         'dunstripe_yes2',
-        'dunstripe_no',
+        'dunstripe_yes3',
+        'dunstripe_yes4',
+        'dunstripe_no1',
         'dunstripe_no2'
     ];
 
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
-        'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping.',
+        'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping. These small bands may also have a gradient on them, but this gradient is not allowed on these small bars, not on the dunstripe itself.',
     ];
 
     $marking_cannot = [
