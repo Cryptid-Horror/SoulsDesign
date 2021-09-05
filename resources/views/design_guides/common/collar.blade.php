@@ -61,6 +61,7 @@
     ];
 
     $marking_must = [
+        'Dominant color may have a gradient beneath the collar.',
     ];
 
     // If left empty, the swatches section will not be shown
