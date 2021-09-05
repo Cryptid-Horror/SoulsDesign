@@ -55,13 +55,16 @@
         'Holes, breaks, cutouts, or "floating" portions of the marking are allowed.',
         'The marking is allowed to blur, or gradient, into the base coat or marking it sits over.',
         'The marking is allowed to have a thin border',
+        'If white, mask can have pink around the nostrils/snout.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings. However, they masked may have a few mottled holes in the marking around the edges. The number can be up to 6, with the sizes varying so long as they are not massive chunks of the marking missing.',
+        'Edges cannot be too complicated, to avoid appearing looking likeinkwell or other markings. However, they masked may have a few mottled holes in the marking around the edges. The number can be up to 6, with the sizes varying so long as they are not massive chunks of the marking missing.',
+        'Mask should be obvious it is masked, if it looks too much like min mark or other free marks you will be asked to correct it.',
     ];
 
     $marking_must = [
+        'Masked must be at least 5% of the face covered to avoid looking like min mark.',
     ];
 
     // If left empty, the swatches section will not be shown
