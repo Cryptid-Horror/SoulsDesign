@@ -38,10 +38,15 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'masked_yes',
-        'masked_yes2',
-        'masked_no',
-        'masked_no2'
+        'mask_yes1',
+        'mask_yes2',
+        'mask_yes3',
+        'mask_yes4',
+        'mask_no1',
+        'mask_no2',
+        'mask_no3',
+        'mask_no4',
+        'mask_examples'
     ];
 
     // You can use html!

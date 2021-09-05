@@ -38,10 +38,10 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'hood_yes',
+        'hood_yes1',
         'hood_yes2',
-        'hood_no',
-        'hood_no2'
+        'hood_yes3',
+        'hood_no1'
     ];
 
     // You can use html!
