@@ -38,14 +38,15 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'duotone_yes',
+        'duotone_yes1',
         'duotone_yes2',
-        'duotone_no',
-        'duotone_no2'
+        'duotone_yes3',
+        'duotone_no1'
     ];
 
     // You can use html!
     $marking_can = [
+        'The behavior images for this marking are very specific to markings, except for swatch 2 which shows duotone affecting the wing membranes only. This is a way to use duotone without any marking. Adversly, the fourth swatch tells you not to use this marking on the base coat outside of the wings.',
         'This gene will follow the rules of the marking it is affecting. This means that if you use it on, for example, Stained, you can have a marking/base dependancy to it (so it can be a shade of the color beneath it). However if you use it on Blanket, then it cannot do this and it has to be a natural color.',
         'In addition to having to affect another marking, Duo Tone can be affected by a color mod! It can gradient a color modification marking into a marking not benefiting from this color mod, or you can apply the color modifier to the marking that Duo Tone is affecting and Duo Tone can be a shade of that color as well.',
         'Only two colors can blend together, and they must be a fully blended/ smooth gradient between the colors. The gradient can start at any point in the marking, but must be present.',
