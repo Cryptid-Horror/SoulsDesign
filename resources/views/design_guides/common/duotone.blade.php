@@ -50,16 +50,17 @@
         'This gene will follow the rules of the marking it is affecting. This means that if you use it on, for example, Stained, you can have a marking/base dependancy to it (so it can be a shade of the color beneath it). However if you use it on Blanket, then it cannot do this and it has to be a natural color.',
         'In addition to having to affect another marking, Duo Tone can be affected by a color mod! It can gradient a color modification marking into a marking not benefiting from this color mod, or you can apply the color modifier to the marking that Duo Tone is affecting and Duo Tone can be a shade of that color as well.',
         'Only two colors can blend together, and they must be a fully blended/ smooth gradient between the colors. The gradient can start at any point in the marking, but must be present.',
+        'Duotone may affect the wing membrane of wings that have membranes.',
+        'Duotone may affect "extra" areas such as claws, gums, tongue, horns, special zones, etc.',
     ];
 
     $marking_cannot = [
-        ' Cannot affect the base coat, it must affect a marking.',
+        ' Cannot affect the base coat, it must affect a marking, wing membranes, or other extra zones.',
     ];
 
     $marking_must = [
         'Recessive: Affects up to 2 markings',
         'Dominant: Affects up to 4 markings',
-        'This markings HAS to affect any other marking present on the dragon. If this is the only marking on the dragon then it must either affect minimal markings, or it does not show up.',
     ];
 
     // If left empty, the swatches section will not be shown
