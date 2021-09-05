@@ -38,21 +38,24 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'sable_yes',
+        'sable_yes1',
         'sable_yes2',
-        'sable_no',
-        'sable_no2'
+        'sable_yes3',
+        'sable_yes4',
+        'sable_no2',
+        'sable_no1'
     ];
 
     // You can use html!
     $marking_can = [
         'Is allowed a 12 value and saturation point gradient difference inside the marking',
         'Can appear above or below blanket, if blanket is present.',
+        'The marking can be disconnected in very small portions.',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing like inkwell or other markings.',
-        ' Holes, breaks, cutouts, or "floating" portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.'
+        'Holes and large cut outs are not allowed',    
     ];
 
     $marking_must = [

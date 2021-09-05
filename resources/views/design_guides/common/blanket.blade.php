@@ -46,17 +46,21 @@
         'blanket_yes1',
         'blanket_yes2',
         'blanket_yes3',
+        'blanket_yes4',
+        'blanket_no2',
         'blanket_no1'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.'
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
+        'The marking can be disconnected in very small portions.',
+
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes, breaks, cutouts, or floating portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.'
+        'Holes and large cut outs are not allowed',    
     ];
 
     $marking_must = [
