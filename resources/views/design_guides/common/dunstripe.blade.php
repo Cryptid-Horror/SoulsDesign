@@ -58,6 +58,7 @@
     ];
 
     $marking_must = [
+        'Dunstripe must either present a stripe, or the lines on the legs/back. It can appear as both, or one or the other.'
     ];
 
     // If left empty, the swatches section will not be shown
