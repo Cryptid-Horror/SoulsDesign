@@ -30,7 +30,7 @@
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'yes';
-    $edge_gradient = 'no';
+    $edge_gradient = 'dominant';
     $color_any = 'no';
     $edge_blending = 'no';
     $color_dependant = 'no';
@@ -42,11 +42,12 @@
         'collar_yes2',
         'collar_yes3',
         'collar_yes4',
-        'collar_no1',
         'collar_no2',
         'collar_no3',
         'collar_no4',
-        'collar_dom'
+        'collar_dom',
+        'collar_no1'
+
     ];
 
     // You can use html!
