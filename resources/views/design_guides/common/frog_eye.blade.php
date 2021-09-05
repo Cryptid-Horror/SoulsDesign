@@ -38,26 +38,28 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'frogeye_yes',
+        'frogeye_yes1',
         'frogeye_yes2',
-        'frogeye_no',
-        'frogeye_no2'
+        'frogeye_yes3',
+        'frogeye_no1',
+        'frogeye_guide'
     ];
 
     // You can use html!
     $marking_can = [
         'The sizing of the three components to this marking can differ, so long as all the parts are there and visible on each "eye."',
-        ' A gradient is allowed to radiant from the pupil into the iris, but it cannot be the same color as the pupil or blend into the pupil.',
+        'A gradient is allowed to radiant from the pupil into the iris, but it cannot be the same color as the pupil or blend into the pupil.',
+        'Frog eye pupil may mimic any allow eye shape.',
     ];
 
     $marking_cannot = [
-        'Frog Eye may not be oval, tear drop, etc in shape. It must appear as a circle.',
+        'Frog Eye border and iris may not be oval, tear drop, etc in shape. It must appear as a circle.',
     ];
 
     $marking_must = [
         'Recessive: Can appear in 3 zones',
         'Dominant: Can appear in all zones',
-        ' Must have three separated colors, one for the pupil, iris, and the border around the marking itself. The border must be the darkest color.',
+        'Must have three separated colors, one for the pupil, iris, and the border around the marking itself. The border may be darker or lighter than the iris and pupil, but cannot be the same color as the iris.',
     ];
 
     // If left empty, the swatches section will not be shown
