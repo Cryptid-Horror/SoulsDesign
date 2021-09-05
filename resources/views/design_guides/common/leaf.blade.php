@@ -39,10 +39,10 @@ A gene that presents itself as leaf like markings on the body of a dragon. The l
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'leaf_yes',
+        'leaf_yes1',
         'leaf_yes2',
-        'leaf_no',
-        'leaf_no2'
+        'leaf_yes3',
+        'leaf_no1'
     ];
 
     // You can use html!
@@ -50,6 +50,8 @@ A gene that presents itself as leaf like markings on the body of a dragon. The l
         'Leaf can have up to three colors present, the leaf, border, and stem. However, 2 colors have to be present. One on the leaf, and one on the stem.',
         'Leaves can be large or small, clustered or spaced out. They can flow in any direction from each other.',
         'Leaves may have a 12 point gradient of value and saturation on them, but cannot blend into the base coat.',
+        'Leaf may be affected by three different color modifiers at once (leaf, stem, border).',
+        'Leaf stem may be a long line, but it should not be too complex or look like Filigree.'
     ];
 
     $marking_cannot = [
@@ -58,7 +60,7 @@ A gene that presents itself as leaf like markings on the body of a dragon. The l
     $marking_must = [
         ' Recessive: Can appear in all zones',
         'Dominant: Can appear in all zones, Can be any single color, without the presence of color modifiers. (Does not mean it can be rainbow, it has to be one single color, i.e. red or green)',
-        'Leaf must have a stem present on it, but it has the option for a border. The Stem can flow between different leaves, or just be present on the single leaf.',
+        'Leaf must have a stem present on it, but it has the option for a border. The Stem can flow between different leaves, or just be present on the single leaf. The stem CAN be the same color as the base coat.',
     ];
 
     // If left empty, the swatches section will not be shown
