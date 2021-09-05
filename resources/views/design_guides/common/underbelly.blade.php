@@ -43,6 +43,8 @@
         'underbelly_yes3',
         'underbelly_yes4',
         'underbelly_yes5',
+        'underbelly_yes6',
+        'underbelly_no2',
         'underbelly_no1'
     ];
 
@@ -50,11 +52,12 @@
     $marking_can = [
         ' Is allowed a 12 value and saturation point gradient difference inside the marking',
         'Can appear above or below Pangare, if Pangare is present.',
+        'The marking can be disconnected in very small portions.',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes, breaks, cutouts, or floating portions of the marking are not allowed. The marking must be fully connected with the EXCEPTION of the wing membrane which may be disconnected from the underside of the marking.',
+        'Holes and large cut outs are not allowed',    
     ];
 
     $marking_must = [
