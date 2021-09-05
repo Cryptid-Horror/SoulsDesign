@@ -43,10 +43,10 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes',
+        'blanket_yes1',
         'blanket_yes2',
-        'blanket_no',
-        'blanket_no2'
+        'blanket_yes3',
+        'blanket_no1'
     ];
 
     // You can use html!
