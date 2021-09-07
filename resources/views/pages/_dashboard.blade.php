@@ -25,6 +25,7 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <img src="{{ asset('images/characters.png') }}" />
+                <div class="card-overlay"></div>
                 <h5 class="card-title">Dragons</h5>
             </div>
             <ul class="list-group list-group-flush">
