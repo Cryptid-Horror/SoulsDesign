@@ -61,14 +61,15 @@
         </div>
     </div>
 </div>
-
-<div class="card bg-dark text-white">
-  <img class="card-img" src="{{ asset('images/awards.png') }}" alt="Card image">
-  <div class="card-img-overlay">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text">Last updated 3 mins ago</p>
-  </div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="hovereffect">
+        <img class="img-responsive" src="{{ asset('images/awards.png') }}">
+            <div class="overlay">
+                <h2>Effect 12</h2>
+				<p>
+					<a href="#">LINK HERE</a>
+				</p>
+            </div>
+    </div>
 </div>
-
 
