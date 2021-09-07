@@ -8,7 +8,7 @@
             @include('widgets._recent_forum_posts')
 <br>
 
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<div class="col-md-6">
     <div class="hovereffect">
         <img class="img-responsive" src="{{ asset('images/account.png') }}" alt="">
             <div class="overlay">
