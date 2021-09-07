@@ -40,27 +40,17 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <img src="{{ asset('images/inventory.png') }}" />
-                <h5 class="card-title">Hoard</h5>
+                <h5 class="card-title">Hoard and Bank</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ url('inventory') }}">My Hoard</a></li>
-                <li class="list-group-item"><a href="{{ Auth::user()->url . '/item-logs' }}">Item Logs</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body text-center">
-                <img src="{{ asset('images/currency.png') }}" />
-                <h5 class="card-title">Bank</h5>
-            </div>
-            <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ url('bank') }}">Bank of Empyrean</a></li>
+                <li class="list-group-item"><a href="{{ Auth::user()->url . '/item-logs' }}">Item Logs</a></li>
                 <li class="list-group-item"><a href="{{ Auth::user()->url . '/currency-logs' }}">Currency Logs</a></li>
             </ul>
         </div>
     </div>
-</div>
+    
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card mb-12">
