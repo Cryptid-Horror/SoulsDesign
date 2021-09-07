@@ -25,7 +25,7 @@
     </li>
     <div id="accordion">
 <li class="sidebar-section">
-<div class="sidebar-section-header pointer" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-sort-down"></i>  History</div>
+<div class="sidebar-section-header pointer" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-sort-down"></i>
 <i class="fas fa-sort-down"></i>
 History 
 </div> 
@@ -42,7 +42,7 @@ History
         @auth
             <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
         @endauth
-
+</div>
 </li>
 
     <li class="sidebar-section">
