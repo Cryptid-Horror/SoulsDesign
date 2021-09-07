@@ -45,8 +45,7 @@ History
                 </div>
 </li>
 </div>
-</ul>
-</div>
+
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
         <div class="sidebar-item"><a href="{{ $user->url.'/ownership' }}" class="{{ $user->url.'/ownership*' }}">Ownership History</a></div>
