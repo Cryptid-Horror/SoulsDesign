@@ -84,6 +84,7 @@
             </div>
         @endforeach
         </div>
+        <br>
     @endif
 
     @if(count($character->gear))
@@ -100,6 +101,7 @@
             </div>
         @endforeach
         </div>
+        <br>
     @endif
 
     @if(count($character->weapons))
@@ -116,6 +118,7 @@
             </div>
         @endforeach
         </div>
+        <br>
     @endif
 
     <b>Adornments:</b>
