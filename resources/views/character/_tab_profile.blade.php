@@ -35,14 +35,20 @@
             @case('Domesticated')
                 <li><i>Arena Honor</i> - The Dragons gains an extra chance to get rare items in the arena, even if they lose the fight.</li>
                 <li><i>Good Listening</i> - The dragon has a higher chance to pass quests.</li>
+                <li><i>Survival of the Fittest</i> - The dragon has a higher chance of finding rarer items in hunting, fishing, and foraging.</li>
+                <li><i>Answering the Call</i> - The dragon has a higher chance to get rare items in the Grand Hunt.</li>
                 @break
             @case('Wild')
-                <li><i>War Blood</i> - The dragon has a higher chance to deal critical damage in fights.</li>
+                <li><i>Arena Honor</i> - The Dragons gains an extra chance to get rare items in the arena, even if they lose the fight.</li>
+                <li><i>Good Listening</i> - The dragon has a higher chance to pass quests.</li>
                 <li><i>Survival of the Fittest</i> - The dragon has a higher chance of finding rarer items in hunting, fishing, and foraging.</li>
+                <li><i>Answering the Call</i> - The dragon has a higher chance to get rare items in the Grand Hunt.</li>
                 @break
             @case('Aether')
-                <li><i>Answering the Call</i> - The dragon has a higher chance to succeed in the Call to Arms activity.</li>
-                <li><i>Aether Bound</i> - This dragon has a higher chance of succeeding in their magic attacks in fights.</li>
+                <li><i>Arena Honor</i> - The Dragons gains an extra chance to get rare items in the arena, even if they lose the fight.</li>
+                <li><i>Good Listening</i> - The dragon has a higher chance to pass quests.</li>
+                <li><i>Survival of the Fittest</i> - The dragon has a higher chance of finding rarer items in hunting, fishing, and foraging.</li>
+                <li><i>Answering the Call</i> - The dragon has a higher chance to get rare items in the Grand Hunt.</li>
                 @break
         @endswitch
     </ul>
