@@ -13,7 +13,7 @@
             <div class="overlay">
                 <h2>Effect 12</h2>
 				<p>
-					<a href="#">LINK HERE</a>
+					<a href="{{ url('account/settings') }}">LINK HERE</a>
 				</p>
             </div>
     </div>
