@@ -44,7 +44,6 @@ History
         @endauth
                 </div>
 </li>
-</div>
 
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
