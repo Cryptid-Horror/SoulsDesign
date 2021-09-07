@@ -15,7 +15,7 @@
                 @endforeach
         @endif
         <div class="sidebar-item"><a href="{{ $user->url.'/inventory' }}" class="{{ set_active('user/'.$user->name.'/inventory*') }}">Hoard</a></div>
-        <div class="sidebar-item"><a href="{{ $user->url.'/level' }}" class="{{ set_active('user/'.$user->name.'/level*') }}">Level-Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/level' }}" class="{{ set_active('user/'.$user->name.'/level*') }}">User Level Area</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/pets' }}" class="{{ set_active('user/'.$user->name.'/pets*') }}">Pets</a></div>
     </li>
 
