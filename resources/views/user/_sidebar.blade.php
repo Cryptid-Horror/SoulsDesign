@@ -42,7 +42,7 @@ History
         @auth
             <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
         @endauth
-                </div>
+
 </li>
 
     <li class="sidebar-section">
