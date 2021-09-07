@@ -8,15 +8,6 @@
             @include('widgets._recent_forum_posts')
 <br>
 
-    <div class="hovereffect">
-        <img class="img-responsive" src="{{ asset('images/account.png') }}" alt="">
-            <div class="overlay">
-                <h2>Effect 12</h2>
-				<p>
-					<a href="{{ url('account/settings') }}">LINK HERE</a>
-				</p>
-            </div>
-    </div>
 
 <div class="row">
     <div class="col-md-6">
