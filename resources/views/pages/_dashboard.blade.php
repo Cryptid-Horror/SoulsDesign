@@ -50,12 +50,10 @@
             </ul>
         </div>
     </div>
-</div>
-<div class="row">
     <div class="col-md-6">
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-body text-center">
-                <img src="{{ asset('images/awards.png') }}" />
+            <img src="{{ asset('images/awards.png') }}" />
                 <h5 class="card-title">Awards</h5>
             </div>
             <ul class="list-group list-group-flush">
@@ -65,4 +63,5 @@
         </div>
     </div>
 </div>
+
 
