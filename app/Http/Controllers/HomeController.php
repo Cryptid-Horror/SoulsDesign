@@ -14,6 +14,7 @@ use App\Models\SitePage;
 use App\Models\Comment;
 use App\Models\Forum;
 use App\Models\Character\Character;
+use App\Models\Character\CharacterImage;
 use App\Services\LinkService;
 use App\Services\DeviantArtService;
 use App\Services\UserService;
@@ -42,6 +43,22 @@ class HomeController extends Controller
         return view('welcome', [
             'about' => SitePage::where('key', 'about')->first(),
             'featured' => $character,
+        ]);
+    }
+
+    public function getIndex()
+    {
+        $characters = Character::with('user.rank')->with('image.features')->with('rarity')->with('image.species')->myo(0);
+        $imageQuery = CharacterImage::images()->with('features')->with('rarity')->with('species')->with('features')
+        ->whereIn('character_id', $characters->pluck('id')->toArray())->orderBy('created_at', 'DESC')->get()->unique('character_id')->take(4)->pluck('character_id')->toArray();
+        $characters->whereIn('id', $imageQuery)->get();
+
+        return view('welcome', [
+            'characters' => $characters->get(),
+            'news' => News::visible()->orderBy('updated_at', 'DESC')->first(),
+            'sales' => Sales::visible()->orderBy('updated_at', 'DESC')->first(),
+            'submissions' => $submissions->get(),
+            'about' => SitePage::where('key', 'about')->first()
         ]);
     }
     
