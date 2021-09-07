@@ -68,3 +68,5 @@ History
         </li>
     @endif
 </ul>
+</div>
+</div>
