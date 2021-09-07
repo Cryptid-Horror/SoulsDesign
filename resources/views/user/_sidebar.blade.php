@@ -23,8 +23,31 @@
         <div class="sidebar-item"><a href="{{ $user->url.'/pets' }}" class="{{ set_active('user/'.$user->name.'/pets*') }}">Pets</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/armoury' }}" class="{{ set_active('user/'.$user->name.'/armoury*') }}">Armoury</a></div>
     </li>
+    <div id="accordion">
+<li class="sidebar-section">
+<div class="sidebar-section-header pointer" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-sort-down"></i>  History</div>
+<i class="fas fa-sort-down"></i>
+History 
+</div> 
+<div class="collapse show __web-inspector-hide-shortcut__" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion" style="">
+<div class="sidebar-item"><a href="{{ $user->url.'/ownership' }}" class="{{ $user->url.'/ownership*' }}">Ownership History</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/item-logs' }}" class="{{ $user->url.'/currency-logs*' }}">Hoard Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/currency-logs' }}" class="{{ set_active($user->url.'/currency-logs*') }}">Currency Logs</a></div>
+
+        <div class="sidebar-item"><a href="{{ $user->url.'/award-logs' }}" class="{{ $user->url.'/award-logs*' }}">Award Logs</a></div>
+
+        <div class="sidebar-item"><a href="{{ $user->url.'/pet-logs' }}" class="{{ set_active($user->url.'/pet-logs*') }}">Pet Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/submissions' }}" class="{{ set_active($user->url.'/submissions*') }}">Submissions</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/recipe-logs' }}" class="{{ set_active($user->url.'/recipe-logs*') }}">Recipe Logs</a></div>
+        @auth
+            <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
+        @endauth
+                </div>
+</li>
+</div>
+</ul>
+</div>
     <li class="sidebar-section">
-    <div class="sidebar-section-header pointer collapsed" data-toggle="collapse">
         <div class="sidebar-section-header">History</div>
         <div class="sidebar-item"><a href="{{ $user->url.'/ownership' }}" class="{{ $user->url.'/ownership*' }}">Ownership History</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/item-logs' }}" class="{{ $user->url.'/currency-logs*' }}">Hoard Logs</a></div>
@@ -38,7 +61,6 @@
         @auth
             <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
         @endauth
-</div>
     </li>
 
     @if(Auth::check() && Auth::user()->hasPower('edit_user_info'))
