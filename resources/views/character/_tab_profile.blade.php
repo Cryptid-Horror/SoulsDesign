@@ -68,6 +68,56 @@
         @endforeach
         </ul>
     @endif
+    @if(count($character->pets))
+        <b>Pets:</b>
+        <div class="text-center row">
+        @foreach($character->pets as $pet)
+            <div class="ml-3 mr-3">
+                @if($pet->has_image)
+                <img src="{{ $pet->imageUrl }}" data-toggle="tooltip" title="{{ $pet->pet->name }}" style="max-width: 75px;"/>
+                @elseif($pet->pet->imageurl)
+                <img src="{{ $pet->pet->imageUrl }}" data-toggle="tooltip" title="{{ $pet->pet->name }}" style="max-width: 75px;"/>
+                @else {!!$pet->pet->displayName !!}
+                @endif
+                <br>
+                <span class="text-light badge badge-dark" style="font-size:95%;">{!! $pet->pet_name !!}</span>
+            </div>
+        @endforeach
+        </div>
+    @endif
+
+    @if(count($character->gear))
+        <b>Gear:</b>
+        <div class="text-center row">
+        @foreach($character->gear as $gear)
+            <div class="ml-3 mr-3">
+                @if($gear->has_image)
+                <img src="{{ $gear->imageUrl }}" data-toggle="tooltip" title="{{ $gear->gear->name }}" style="max-width: 75px;"/>
+                @elseif($gear->gear->imageurl)
+                <img src="{{ $gear->gear->imageUrl }}" data-toggle="tooltip" title="{{ $gear->gear->name }}" style="max-width: 75px;"/>
+                @else {!!$gear->gear->displayName !!}
+                @endif
+            </div>
+        @endforeach
+        </div>
+    @endif
+
+    @if(count($character->weapons))
+        <b>Weapons:</b>
+        <div class="text-center row">
+        @foreach($character->weapons as $weapon)
+            <div class="ml-3 mr-3">
+                @if($weapon->has_image)
+                <img src="{{ $weapon->imageUrl }}" data-toggle="tooltip" title="{{ $weapon->weapon->name }}" style="max-width: 75px;"/>
+                @elseif($weapon->weapon->imageurl)
+                <img src="{{ $weapon->weapon->imageUrl }}" data-toggle="tooltip" title="{{ $weapon->weapon->name }}" style="max-width: 75px;"/>
+                @else {!!$weapon->weapon->displayName !!}
+                @endif
+            </div>
+        @endforeach
+        </div>
+    @endif
+
     <b>Adornments:</b>
     @if($character->image->adornments)
         <ul>
