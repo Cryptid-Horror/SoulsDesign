@@ -45,8 +45,6 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ url('inventory') }}">My Hoard</a></li>
                 <li class="list-group-item"><a href="{{ url('bank') }}">Bank of Empyrean</a></li>
-                <li class="list-group-item"><a href="{{ Auth::user()->url . '/item-logs' }}">Item Logs</a></li>
-                <li class="list-group-item"><a href="{{ Auth::user()->url . '/currency-logs' }}">Currency Logs</a></li>
             </ul>
         </div>
     </div>
