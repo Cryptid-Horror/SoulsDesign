@@ -51,9 +51,9 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-center">
+<div class="row">
     <div class="col-md-6">
-        <div class="card mb-12">
+        <div class="card mb-4">
             <div class="card-body text-center">
                 <img src="{{ asset('images/awards.png') }}" />
                 <h5 class="card-title">Awards</h5>
