@@ -26,8 +26,7 @@
 <div id="accordion">
     <li class="sidebar-section">
     <div class="sidebar-section-header pointer" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-sort-down"></i>
-        History 
- 
+        Logs 
         <div class="collapse show __web-inspector-hide-shortcut__" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion" style="">
         <div class="sidebar-item"><a href="{{ $user->url.'/ownership' }}" class="{{ $user->url.'/ownership*' }}">Ownership History</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/item-logs' }}" class="{{ $user->url.'/currency-logs*' }}">Hoard Logs</a></div>
@@ -40,8 +39,8 @@
             <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
         @endauth
     </div>
-    </li>
 </div>
+    </li>
 
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
