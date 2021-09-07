@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light">
-    <ul class="navbar-nav ml-auto mr-auto">
+    <ul>
         <li class="nav-item"><a href="mailto:soulsbetweenstaff@gmail.com" class="nav-link"><i class="fas fa-envelope-square"></i></a></li>
         <li class="nav-item"><a href="https://discord.gg/ZqtG7jf" class="nav-link"><i class="fab fa-discord"></i></a></li>
         <li class="nav-item"><a href="http://deviantart.com/souls-between" class="nav-link"><i class="fab fa-deviantart"></i></a></li>
