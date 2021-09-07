@@ -5,6 +5,7 @@
         <li class="nav-item"><a href="http://deviantart.com/souls-between" class="nav-link"><i class="fab fa-deviantart"></i></a></li>
 </ul>
 </nav>
+<nav class="navbar navbar-expand-md navbar-light">
     <ul class="navbar-nav ml-auto mr-auto">
 
         <li class="nav-item"><a href="{{ url('info/about') }}" class="nav-link">About</a></li> 
