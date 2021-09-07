@@ -3,9 +3,9 @@
         <li class="nav-item"><a href="mailto:soulsbetweenstaff@gmail.com" class="nav-link"><i class="fas fa-envelope-square"></i></a></li>
         <li class="nav-item"><a href="https://discord.gg/ZqtG7jf" class="nav-link"><i class="fab fa-discord"></i></a></li>
         <li class="nav-item"><a href="http://deviantart.com/souls-between" class="nav-link"><i class="fab fa-deviantart"></i></a></li>
-        <br>
 </ul>
-        <ul class="navbar-nav ml-auto mr-auto">
+<br>
+    <ul class="navbar-nav ml-auto mr-auto">
 
         <li class="nav-item"><a href="{{ url('info/about') }}" class="nav-link">About</a></li> 
         <li class="nav-item"><a href="{{ url('info/terms') }}" class="nav-link">Terms</a></li> 
