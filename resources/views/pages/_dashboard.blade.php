@@ -51,13 +51,17 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body text-center">
+            <div class="hovereffect">
             <img src="{{ asset('images/awards.png') }}" />
+            <div class="overlay">
                 <h5 class="card-title">Awards</h5>
             </div>
+        <p>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ url('awardcase') }}">My Awards</a></li>
                 <li class="list-group-item"><a href="{{ Auth::user()->url . '/award-logs' }}">Award Logs</a></li>
             </ul>
+        </p>
         </div>
     </div>
 </div>
