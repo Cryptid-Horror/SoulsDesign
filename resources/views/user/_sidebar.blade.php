@@ -40,7 +40,8 @@
             <div class="sidebar-item"><a href="{{ $user->url.'/forum' }}" class="{{ $user->url.'/forum*' }}">Forum Posts</a></div>
         @endauth
     </div>
-</li>
+    </li>
+</div>
 
     <li class="sidebar-section">
         <div class="sidebar-section-header">History</div>
