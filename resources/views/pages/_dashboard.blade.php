@@ -10,7 +10,7 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <div class="hovereffect">
-        <img class="img-responsive" src="{{ asset('images/account.png') }}" alt="">
+        <img src="{{ asset('images/account.png') }}" alt="">
             <div class="overlay">
                 <h2>Effect 13</h2>
 				<p>
