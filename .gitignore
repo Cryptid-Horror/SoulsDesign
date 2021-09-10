@@ -13,3 +13,6 @@ yarn-error.log
 *.env
 clear_characters.sql
 
+=======
+/composer.phar
+
