@@ -7,19 +7,6 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-<div id="hovercontainer">
-    <a href="{{ Auth::user()->url }}">
-    <a href="{{ url('account/settings') }}">
-    <a href="{{ url('https://www.soulsbetween.com/notifications') }}">
-
-    <img src="{{ asset('images/account.png') }}" alt="" />
-<ul>
-    <li><span>Profile</span></li>
-    <li><span>Settings</span></li>
-    <li><span>Notifications</span></li>
-</ul>
-</a>
-</div>
 
 <div class="row">
     <div class="col-md-6">
