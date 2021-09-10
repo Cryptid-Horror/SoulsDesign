@@ -8,6 +8,22 @@
             @include('widgets._recent_forum_posts')
 <br>
 
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="hovereffect">
+        <img class="img-responsive" src="{{ asset('images/account.png') }}" alt="">
+            <div class="overlay">
+                <h2>Effect 13</h2>
+				<p>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="{{ Auth::user()->url }}">Profile</a></li>
+                <li class="list-group-item"><a href="{{ url('account/settings') }}">User Settings</a></li>
+                <li class="list-group-item"><a href="{{ url('https://www.soulsbetween.com/notifications') }}">Notifications</a></li>
+            </ul>
+				</p>
+            </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
