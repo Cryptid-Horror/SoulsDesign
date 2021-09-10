@@ -8,9 +8,11 @@
             @include('widgets._recent_forum_posts')
 <br>
 <div id="hovercontainer">
-  <a href="{{ Auth::user()->url }}">
-  <a href="{{ url('account/settings') }}">
-  <a href="{{ url('https://www.soulsbetween.com/notifications') }}">
+<ul>
+    <li><a href="{{ Auth::user()->url }}"></li>
+    <li> <a href="{{ url('account/settings') }}"></li>
+    <li><a href="{{ url('https://www.soulsbetween.com/notifications') }}"></li>
+</ul>
     <img src="{{ asset('images/account.png') }}" alt="" />
     <span>Profile</span>
     <span>Settings</span>
