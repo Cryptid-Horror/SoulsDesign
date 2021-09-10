@@ -9,7 +9,7 @@
 <br>
 <div id="hovercontainer">
     <a href="{{ Auth::user()->url }}">
-     a href="{{ url('account/settings') }}">
+    <a href="{{ url('account/settings') }}">
     <a href="{{ url('https://www.soulsbetween.com/notifications') }}">
 
     <img src="{{ asset('images/account.png') }}" alt="" />
@@ -18,7 +18,7 @@
     <li><span>Settings</span></li>
     <li><span>Notifications</span></li>
 </ul>
-  </a>
+</a>
 </div>
 
 <div class="row">
