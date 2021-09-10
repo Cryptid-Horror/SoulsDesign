@@ -14,9 +14,11 @@
     <li><a href="{{ url('https://www.soulsbetween.com/notifications') }}"></li>
 </ul>
     <img src="{{ asset('images/account.png') }}" alt="" />
-    <span>Profile</span>
-    <span>Settings</span>
-    <span>Notifications</span>
+<ul>
+    <li><span>Profile</span></li>
+    <li><span>Settings</span></li>
+    <li><span>Notifications</span></li>
+</ul>
   </a>
   <a href="#">
     <img src="{{ asset('images/account.png') }}" alt="" />
