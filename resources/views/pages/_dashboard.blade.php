@@ -14,7 +14,7 @@
             <div class="overlay">
                 <h2>Effect 13</h2>
 				<p>
-                <ul>
+                <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ Auth::user()->url }}">Profile</a></li>
                 <li class="list-group-item"><a href="{{ url('account/settings') }}">User Settings</a></li>
                 <li class="list-group-item"><a href="{{ url('https://www.soulsbetween.com/notifications') }}">Notifications</a></li>
