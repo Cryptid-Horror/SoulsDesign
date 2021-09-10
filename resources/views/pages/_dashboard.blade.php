@@ -7,7 +7,16 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-
+<div id="hovercontainer">
+  <a href="{{ Auth::user()->url }}">
+    <img src="{{ asset('images/account.png') }}" alt="" />
+    <span>Profile</span>
+  </a>
+  <a href="#">
+    <img src="{{ asset('images/account.png') }}" alt="" />
+    <span>Another link</span>
+  </a>
+</div>
 
 <div class="row">
     <div class="col-md-6">
