@@ -9,8 +9,12 @@
 <br>
 <div id="hovercontainer">
   <a href="{{ Auth::user()->url }}">
+  <a href="{{ url('account/settings') }}">
+  <a href="{{ url('https://www.soulsbetween.com/notifications') }}">
     <img src="{{ asset('images/account.png') }}" alt="" />
     <span>Profile</span>
+    <span>Settings</span>
+    <span>Notifications</span>
   </a>
   <a href="#">
     <img src="{{ asset('images/account.png') }}" alt="" />
