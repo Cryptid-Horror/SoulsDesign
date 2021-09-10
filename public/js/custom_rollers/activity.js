@@ -621,11 +621,11 @@ function rollHunt(){
 			else if (i <= 60){itemlist += "Wood";} // Wood
 			else if (i <= 65){itemlist += "Arcane Fruit";} // Arcane Fruit
 			else if (i <= 70){itemlist += "Arcane Honey";} // Arcane Honey
-			else if (i <= 73){itemlist += "Strange Glowing Rock";} // Strange Glowing Rock
+			else if (i <= 73){itemlist += "Glowing Rock";} // Strange Glowing Rock
 			else if (i <= 80){itemlist += "Glowing Mushrooms";} // Glowing Mushrooms
 			else if (i <= 83){itemlist += "Exotic Scale";} // Exotic Scale -- CHARMY
 			else if (i <= 90){itemlist += "Shimmering Pearl";} // Shimmering Pearl
-			else if (i <= 93){itemlist += "Eternal Flame";} // Eternal Flame
+			else if (i <= 93){itemlist += "Eternal Element";} // Eternal Flame
 			else if (i <= 95){itemlist += "Aether Bag";} // Mysterious Sack
 			else if (i <= 98){itemlist += "Aether Pages";} // Aether Imbued Pages 
 			else if (i <= 100){itemlist += "600 Crystals";} // 600 Crystals - BLUE
