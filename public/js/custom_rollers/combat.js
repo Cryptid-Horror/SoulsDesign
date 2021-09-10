@@ -136,14 +136,14 @@ const armor_sets = {
 	'crystalline': {
 		chest: 90,
 		break_chance: 0,
-		bleed_res: 10,
-		magic_res: 0
+		bleed_res: 20,
+		magic_res: 5
 	},
 	'aether': {
 		chest: 90,
 		break_chance: 0,
-		bleed_res: 0,
-		magic_res: 10
+		bleed_res: 5,
+		magic_res: 20
 	},
 }
 
