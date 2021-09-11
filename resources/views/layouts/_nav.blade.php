@@ -33,10 +33,10 @@
                             <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
                                <i class="fas fa-clipboard-list"></i> Activity Guide
                             </a>
-                            <a class="dropdown-item" href="{{ url('/prompts') }}">
+                            <a class="dropdown-item" href="{{ url('prompts') }}">
                                 <i class="fas fa-dungeon"></i> Activity Prompts
                             </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Adoption%20Center') }}">
+                            <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Adoption%20Center') }}">
                                <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">

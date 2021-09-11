@@ -64,8 +64,8 @@
 
 		<div class="d-flex justify-content-around mb-5">
 			<div class="btn-group-vertical">
-                <a href="{{ url('https://www.soulsbetween.com/world/subtypes') }}" class="btn btn-secondary">Import File Downloads</a>
-                <a href="{{ url('https://www.soulsbetween.com/info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
+                <a href="{{ url('world/subtypes') }}" class="btn btn-secondary">Import File Downloads</a>
+                <a href="{{ url('info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
                 <a href="{{ url('info/Lineage_guide') }}" class="btn btn-secondary">How Lineage Works</a>
                 <a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
 			</div>
