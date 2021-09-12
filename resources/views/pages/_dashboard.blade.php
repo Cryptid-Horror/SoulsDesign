@@ -8,7 +8,7 @@
             @include('widgets._recent_forum_posts')
 <br>
                 @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/account.png'),
+                    'imageUrl' => asset('images/xdd.png'),
                     'header' => 'Account',
                     'links' => [
                         'Profile' => Auth::user()->url,
