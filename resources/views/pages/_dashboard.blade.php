@@ -7,43 +7,52 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-                @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/xdd.png'),
-                    'header' => 'Account',
-                    'links' => [
-                        'Profile' => Auth::user()->url,
-                        'User Settings' => url('account/settings'),
-                        'Notifications' => url('notifications')
-                    ]
-                ])
-
-                @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/characters2.png'),
-                    'header' => 'Dragons',
-                    'links' => [
-                        'My Dragons' => url('characters'),
-                        'My Genotypes' => url('characters/myos'),
-                        'Dragon Transfers' => url('characters/transfers/incoming')
-                    ]
-                ])  
-                @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/honeyedit.png'),
-                    'header' => 'Hoard',
-                    'links' => [
-                        'Awards' => url('awardcase'),
-                        'Bank' => url('bank'),
-                        'Hoard' => url('inventory'),
-                    ]
-                ])  
-                @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/flower2.png'),
-                    'header' => 'Activities',
-                    'links' => [
-                        'Prompts' => url('prompts'),
-                        'Crafting' => url('crafting'),
-                        'Dragon Registration' => url('info/dragon_Registration'),
-                    ]
-                ])
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/xdd.png'),
+                'header' => 'Account',
+                'links' => [
+                    'Profile' => Auth::user()->url,
+                    'User Settings' => url('account/settings'),
+                    'Notifications' => url('notifications')
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/characters2.png'),
+                'header' => 'Dragons',
+                'links' => [
+                    'My Dragons' => url('characters'),
+                    'My Genotypes' => url('characters/myos'),
+                    'Dragon Transfers' => url('characters/transfers/incoming')
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Hoard',
+                'links' => [
+                    'Awards' => url('awardcase'),
+                    'Bank' => url('bank'),
+                    'Hoard' => url('inventory'),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Activities',
+                'links' => [
+                    'Prompts' => url('prompts'),
+                    'Crafting' => url('crafting'),
+                    'Dragon Registration' => url('info/dragon_Registration'),
+                ]
+            ])
+        </div>
+    </div>
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
