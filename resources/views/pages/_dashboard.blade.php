@@ -7,7 +7,7 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-            @include('widgets._hovereffect_image', [
+                @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/account.png'),
                     'header' => 'Account',
                     'links' => [
@@ -17,7 +17,25 @@
                     ]
                 ])
 
-<div class="row">
+                @include('widgets._hovereffect_image', [
+                    'imageUrl' => asset('images/Ancient.png'),
+                    'header' => 'Dragons',
+                    'links' => [
+                        'My Dragons' => url('characters'),
+                        'My Genotypes' => url('characters/myos'),
+                        'Dragon Transfers' => url('characters/transfers/incoming')
+                    ]
+                ])  
+                @include('widgets._hovereffect_image', [
+                    'imageUrl' => asset('images/awards.png'),
+                    'header' => 'Hoard',
+                    'links' => [
+                        'My Dragons' => url('inventory'),
+                        'My Genotypes' => url('bank'),
+                        'Dragon Transfers' => url('awardcase')
+                    ]
+                ])               
+ {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body text-center">
@@ -32,7 +50,7 @@
                         'User Settings' => url('account/settings'),
                         'Notifications' => url('notifications')
                     ]
-                ])--}}
+                ])
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{{ Auth::user()->url }}">Profile</a></li>
@@ -81,5 +99,5 @@
         </div>
     </div>
 </div>
-
+--}}
 
