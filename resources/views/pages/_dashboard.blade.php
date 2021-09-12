@@ -24,13 +24,10 @@
                     ]
                 ])
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{{ Auth::user()->url }}">Profile</a></li>
-                <li class="list-group-item"><a href="{{ url('account/settings') }}">User Settings</a></li>
-                <li class="list-group-item"><a href="{{ url('notifications') }}">Notifications</a></li>
-            </ul>
         </div>
     </div>
+</div>
+
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body text-center">
