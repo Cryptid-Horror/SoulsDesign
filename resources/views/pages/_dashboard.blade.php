@@ -36,7 +36,7 @@
                     ]
                 ])  
                 @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/honeyedit.png'),
+                    'imageUrl' => asset('images/flower.png'),
                     'header' => 'Activities',
                     'links' => [
                         'Prompts' => url('prompts'),
