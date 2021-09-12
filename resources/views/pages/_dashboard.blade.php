@@ -7,7 +7,7 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-
+<div align="center">
                 @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/xdd.png'),
                     'header' => 'Account',
@@ -44,7 +44,8 @@
                         'Crafting' => url('crafting'),
                         'Dragon Registration' => url('info/dragon_Registration'),
                     ]
-                ])   
+                ])
+</div>   
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
