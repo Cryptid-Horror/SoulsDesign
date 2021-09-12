@@ -7,6 +7,7 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
+<center>
                 @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/account.png'),
                     'header' => 'Account',
@@ -18,7 +19,7 @@
                 ])
 
                 @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/Ancient.png'),
+                    'imageUrl' => asset('images/Primordial.png'),
                     'header' => 'Dragons',
                     'links' => [
                         'My Dragons' => url('characters'),
@@ -34,7 +35,8 @@
                         'My Genotypes' => url('bank'),
                         'Dragon Transfers' => url('awardcase')
                     ]
-                ])               
+                ])    
+                    </center>           
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
