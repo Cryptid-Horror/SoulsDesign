@@ -8,12 +8,7 @@
             @include('widgets._recent_forum_posts')
 <br>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card mb-4">
-            <div class="card-body text-center">
-                <img src="{{ asset('images/account.png') }}" />
-                <h5 class="card-title">Account</h5>
+
                 @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/account.png'),
                     'header' => 'Account',
@@ -23,10 +18,7 @@
                         'Notifications' => url('notifications')
                     ]
                 ])
-            </div>
-        </div>
-    </div>
-</div>
+  
 
     <div class="col-md-6">
         <div class="card mb-4">
