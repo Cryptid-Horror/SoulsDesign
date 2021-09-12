@@ -42,7 +42,6 @@
                         'Prompts' => url('prompts'),
                         'Crafting' => url('crafting'),
                         'Dragon Registration' => url('info/dragon_Registration'),
-                        'Bank' => url('bank'),
                     ]
                 ])   
  {{-- <div class="row">
