@@ -18,7 +18,7 @@
                 ])
 
                 @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/Primordial.png'),
+                    'imageUrl' => asset('images/characters2.png'),
                     'header' => 'Dragons',
                     'links' => [
                         'My Dragons' => url('characters'),
@@ -27,7 +27,7 @@
                     ]
                 ])  
                 @include('widgets._hovereffect_image', [
-                    'imageUrl' => asset('images/awards.png'),
+                    'imageUrl' => asset('images/honeyedit.png'),
                     'header' => 'Hoard',
                     'links' => [
                         'Awards' => url('awardcase'),
