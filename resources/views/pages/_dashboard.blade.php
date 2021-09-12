@@ -7,9 +7,7 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-
-
-                @include('widgets._hovereffect_image', [
+            @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/account.png'),
                     'header' => 'Account',
                     'links' => [
@@ -18,8 +16,31 @@
                         'Notifications' => url('notifications')
                     ]
                 ])
-  
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <img src="{{ asset('images/account.png') }}" />
+                <h5 class="card-title">Account</h5>
+                {{--
+                @include('widgets._hovereffect_image', [
+                    'imageUrl' => asset('images/account.png'),
+                    'header' => 'Account',
+                    'links' => [
+                        'Profile' => Auth::user()->url,
+                        'User Settings' => url('account/settings'),
+                        'Notifications' => url('notifications')
+                    ]
+                ])--}}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="{{ Auth::user()->url }}">Profile</a></li>
+                <li class="list-group-item"><a href="{{ url('account/settings') }}">User Settings</a></li>
+                <li class="list-group-item"><a href="{{ url('notifications') }}">Notifications</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body text-center">
