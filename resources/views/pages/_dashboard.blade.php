@@ -7,7 +7,6 @@
 <br>
             @include('widgets._recent_forum_posts')
 <br>
-
                 @include('widgets._hovereffect_image', [
                     'imageUrl' => asset('images/account.png'),
                     'header' => 'Account',
@@ -31,7 +30,7 @@
                     'imageUrl' => asset('images/awards.png'),
                     'header' => 'Hoard',
                     'links' => [
-                        'Awards' => url('awardcase')
+                        'Awards' => url('awardcase'),
                         'Bank' => url('bank'),
                         'Hoard' => url('inventory'),
                     ]
