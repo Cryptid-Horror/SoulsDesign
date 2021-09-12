@@ -34,7 +34,16 @@
                         'Bank' => url('bank'),
                         'Hoard' => url('inventory'),
                     ]
-                ])    
+                ])  
+                @include('widgets._hovereffect_image', [
+                    'imageUrl' => asset('images/honeyedit.png'),
+                    'header' => 'Activities',
+                    'links' => [
+                        'Prompts' => url('prompts'),
+                        'Crafting' => url('crafting'),
+                        'Dragon Registration' => url('info/dragon_Registration'),
+                    ]
+                ])   
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
