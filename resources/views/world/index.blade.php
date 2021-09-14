@@ -53,7 +53,7 @@
                     'Item Categories' => url('world/item-categories'),
                     'All Items' => url('world/items'),
                     'All Recipes' => url('world/recipes'),
-                    'Currencies' => url('world/currencies')
+                    'Currencies' => url('world/currencies'),
                     'Categories' => url('world/award-categories'),
                     'All Awards' => url('world/awards'),
                 ]
