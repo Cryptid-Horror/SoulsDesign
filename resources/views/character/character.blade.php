@@ -105,11 +105,12 @@
     </div>
 </div>
 
-{{ --@if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
+{{-- @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
     <div class="d-flex justify-content-end mt-2">
         <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
     </div>
 @endif --}}
+
 
 @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
     <hr>
