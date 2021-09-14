@@ -74,6 +74,9 @@
         </ul>
     </div>
     <div class="card-body tab-content">
+        <div class="tab-pane fade show active" id="profile">
+            @include('character._tab_profile', ['character' => $character])
+        </div>
         <div class="tab-pane fade show active" id="stats">
             @include('character._tab_stats', ['character' => $character])
         </div>
