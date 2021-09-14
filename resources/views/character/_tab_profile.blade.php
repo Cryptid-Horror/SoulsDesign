@@ -1,8 +1,4 @@
 <div class="ml-auto">
-    <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
-    <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
-    @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif
-<hr>
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Species:</b> {{ $character->has_grand_title ? 'Grand' : '' }} {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
     <b>Temperament:</b> {{ $character->temperament }}<br>
@@ -151,6 +147,9 @@
     @else
         None<br>
     @endif
+    <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
+    <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
+    @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
