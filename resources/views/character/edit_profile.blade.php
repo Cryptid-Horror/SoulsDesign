@@ -175,40 +175,11 @@
             <a href="#" class="remove-feature btn btn-danger mb-2">×</a>
         </div>
     </div>
-    
-    <div class="skill-row hide mb-2">
-    {!! Form::text('skills[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
-    <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
-    <div class="form-group">
-        {!! Form::label('Skills') !!}
-        <div id="skillsList">
-            @if($character->skills)
-                @foreach(explode(',', $character->skills) as $skill)
-                    <div class="d-flex mb-2">
-                        {!! Form::text('skills[]', $skill, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
-                        <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-        <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
-    </div>
-@endif
-</div>
 
     <h3>Genetics</h3>
     <div class="form-group">
         {!! Form::label('Sex') !!}
         {!! Form::select('sex', ['M' => 'Male', 'F' => 'Female'], $character->sex ?? 'M', ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Temperament') !!}
-        {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], $character->temperament, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('Diet') !!}
-        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], $character->diet, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -371,6 +342,16 @@
         {!! Form::label('is_adopted', 'Is Adopted', ['class' => 'form-check-label ml-3']) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('Temperament') !!}
+        {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], $character->temperament, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Diet') !!}
+        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], $character->diet, ['class' => 'form-control']) !!}
+    </div>
+
     {{--
     <div class="form-group">
         {!! Form::label('Rank') !!}
@@ -378,7 +359,21 @@
     </div>
     --}}
 
-  
+    <div class="form-group">
+        {!! Form::label('Skills') !!}
+        <div id="skillsList">
+            @if($character->skills)
+                @foreach(explode(',', $character->skills) as $skill)
+                    <div class="d-flex mb-2">
+                        {!! Form::text('skills[]', $skill, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
+                        <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
+    </div>
+@endif
 
 @if($character->user_id != Auth::user()->id)
     <div class="form-group">
@@ -395,7 +390,10 @@
     {!! Form::text('adornments[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an adornment']) !!}
     <a href="#" class="remove-adornment btn btn-danger mb-2">×</a>
 </div>
-
+<div class="skill-row hide mb-2">
+    {!! Form::text('skills[]', null, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
+    <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
+</div>
 
 {{-- Custom Value Row --}}
 <div class="form-row hide custom-value-row">
