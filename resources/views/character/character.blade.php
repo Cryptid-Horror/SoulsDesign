@@ -65,7 +65,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
                 </li>
-                    <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-user-cog"></i></a>
+                    <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-danger"><i class="fas fa-user-cog"></i></a>
                 </li>
             @endif
         </ul>
