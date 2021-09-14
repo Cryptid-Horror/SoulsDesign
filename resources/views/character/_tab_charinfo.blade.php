@@ -9,6 +9,10 @@
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
+
+    <b>Designed By:</b> {!! $character->image->displayDesigners !!}<br>
+    <b>Art By:</b> {!! $character->image->displayArtists !!}<br>
+    
     @if($character->is_trading || $character->is_gift_art_allowed || $character->is_gift_writing_allowed)
         <hr>
         <div class="card mb-3">
