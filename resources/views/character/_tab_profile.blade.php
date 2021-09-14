@@ -149,7 +149,7 @@
     @endif
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
-    @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif
+    @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif <br>
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
