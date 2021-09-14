@@ -48,7 +48,7 @@
                     'Combat Classes' => url('world/character-classes'),
                     'Gear Categories' => url('world/gear-categories'),
                     'All Gear' => url('world/gear'),
-                    'Weapon Categories' => url('world/weapon-categories',)
+                    'Weapon Categories' => url('world/weapon-categories'),
                     'All Weapons' => url('world/weapons'),
 
                 ]
