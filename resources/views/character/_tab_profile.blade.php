@@ -26,30 +26,6 @@
     <img style="height:150px;" src="{{ $character->rankImageUrl }}"><br>
     <br>
     <b>Ouroboros Emblem:</b> {{ $character->ouroboros ? 'Complete' : 'Incomplete' }}<br>
-    @if($character->ouroboros)
-        <b>Slots:</b> 
-        @if($character->rank != 'Primordial')
-            {{ $character->slots_used }} /
-            @switch($character->rank)
-                @case('Fledgling')
-                    5
-                    @break
-                @case('Primal')
-                    15
-                    @break
-                @case('Ancient')
-                    30
-                    @break
-                @default
-                    Undefined
-                    @break
-            @endswitch
-            Used
-        @else
-            ∞
-        @endif
-    @endif
-    <br>
     <b>Taming:</b> {{ $character->taming ? $character->taming.' Taming Complete' : 'Incomplete' }}<br>
     <ul>
         @switch($character->taming)
@@ -149,7 +125,30 @@
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
-    
+    @if($character->ouroboros)
+        <b>Slots:</b> 
+        @if($character->rank != 'Primordial')
+            {{ $character->slots_used }} /
+            @switch($character->rank)
+                @case('Fledgling')
+                    5
+                    @break
+                @case('Primal')
+                    15
+                    @break
+                @case('Ancient')
+                    30
+                    @break
+                @default
+                    Undefined
+                    @break
+            @endswitch
+            Used
+        @else
+            ∞
+        @endif
+    @endif
+    <br>
     <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
     <b>Lineage:</b><br>
     @include('character._lineage_tree', ['lineage' => $character->lineage()->first()])
