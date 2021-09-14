@@ -20,6 +20,14 @@
     @else 
         <div>No traits listed.</div>
     @endif
+    @if($character->skills)
+        <b>Skills:</b>
+        <ul>
+        @foreach(explode(',', $character->skills) as $skill)
+            <li>{{ $skill }}</li>
+        @endforeach
+        </ul>
+    @endif
     <b>Rank:</b> {{ $character->rank }}<br>
     <img style="height:150px;" src="{{ $character->rankImageUrl }}"><br>
     <br>
@@ -55,14 +63,7 @@
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
     <br>
-    @if($character->skills)
-        <b>Skills:</b>
-        <ul>
-        @foreach(explode(',', $character->skills) as $skill)
-            <li>{{ $skill }}</li>
-        @endforeach
-        </ul>
-    @endif
+    
     @if(count($character->pets))
         <b>Pets:</b>
         <div class="text-center row">
