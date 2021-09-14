@@ -41,23 +41,7 @@
     </div>
 </div> --}}
 
-@if(Auth::check() && Auth::user()->hasPower('manage_characters'))
 
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsequickadmin" aria-expanded="false" aria-controls="collapsequickadmin">
-    Quick Admin Controls
-  </button>
-</p>
-<div class="collapse" id="collapsequickadmin">
-  <div class="card card-body">
-    <h3>[Admin] Edit Image Details</h3>
-        <div class="alert alert-info">
-            This section is for easy editing of details relating to the active character image at the top of the page.
-        </div>
-        @include('character._image_info', ['image' => $character->image])
-        @endif
-        @endsection 
-    </div>
-</div>
 {{--Technical Information--}}
 <h3>Character Details</h3>
 <div class="card character-bio">
