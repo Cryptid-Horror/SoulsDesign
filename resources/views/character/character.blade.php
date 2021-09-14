@@ -56,7 +56,7 @@
                 <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
+                <a class="nav-link" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
