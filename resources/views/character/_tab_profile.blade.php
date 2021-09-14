@@ -1,8 +1,7 @@
 <div class="ml-auto">
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
-    <br>
-    <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
+    <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Species:</b> {{ $character->has_grand_title ? 'Grand' : '' }} {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
     <b>Temperament:</b> {{ $character->temperament }}<br>
     <b>Diet:</b> {{ $character->diet ?? 'Undefined' }}<br>
@@ -22,10 +21,42 @@
     @else 
         <div>No traits listed.</div>
     @endif
+    @if($character->skills)
+        <b>Skills:</b>
+        <ul>
+        @foreach(explode(',', $character->skills) as $skill)
+            <li>{{ $skill }}</li>
+        @endforeach
+        </ul>
     <b>Rank:</b> {{ $character->rank }}<br>
     <img style="height:150px;" src="{{ $character->rankImageUrl }}"><br>
     <br>
     <b>Ouroboros Emblem:</b> {{ $character->ouroboros ? 'Complete' : 'Incomplete' }}<br>
+    <br>
+    @if($character->ouroboros)
+        <b>Slots:</b> 
+        @if($character->rank != 'Primordial')
+            {{ $character->slots_used }} /
+            @switch($character->rank)
+                @case('Fledgling')
+                    5
+                    @break
+                @case('Primal')
+                    15
+                    @break
+                @case('Ancient')
+                    30
+                    @break
+                @default
+                    Undefined
+                    @break
+            @endswitch
+            Used
+        @else
+            ∞
+        @endif
+    @endif
+    <br>
     <b>Taming:</b> {{ $character->taming ? $character->taming.' Taming Complete' : 'Incomplete' }}<br>
     <ul>
         @switch($character->taming)
@@ -57,13 +88,7 @@
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
     <br>
-    @if($character->skills)
-        <b>Skills:</b>
-        <ul>
-        @foreach(explode(',', $character->skills) as $skill)
-            <li>{{ $skill }}</li>
-        @endforeach
-        </ul>
+   
     @endif
     @if(count($character->pets))
         <b>Pets:</b>
@@ -130,30 +155,7 @@
     @endif
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
-    <br><br>
-    @if($character->ouroboros)
-        <b>Slots:</b> 
-        @if($character->rank != 'Primordial')
-            {{ $character->slots_used }} /
-            @switch($character->rank)
-                @case('Fledgling')
-                    5
-                    @break
-                @case('Primal')
-                    15
-                    @break
-                @case('Ancient')
-                    30
-                    @break
-                @default
-                    Undefined
-                    @break
-            @endswitch
-            Used
-        @else
-            ∞
-        @endif
-    @endif
+    <br>
     <br>
     <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
     <b>Lineage:</b><br>
