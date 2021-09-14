@@ -6,7 +6,19 @@
 {!! breadcrumbs(['Encyclopedia' => 'world']) !!}
 
 <h1>World</h1>
-
+<div class="row">
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/xdd.png'),
+                'header' => 'Account',
+                'links' => [
+                    'Profile' => Auth::user()->url,
+                    'User Settings' => url('account/settings'),
+                    'Notifications' => url('notifications')
+                ]
+            ])
+        </div>
+                </div>
 {{--
 
 <div class="row">
