@@ -1,8 +1,5 @@
 <div class="ml-auto">
-    <b>Name:</b> {{ $character->name ? $character->name : 'Unnamed' }}<br>
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
-    <b>ID:</b> {{ $character->slug }}<br>
-    <b>Owner:</b> {!! $character->displayOwner !!}<br>
     <br>
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
