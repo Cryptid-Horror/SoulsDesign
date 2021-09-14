@@ -33,13 +33,32 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Character and Player Levels',
+                'links' => [
+                    'Player Levels' => url('world/levels/user'),
+                    'Dragon Levels' => url('world/levels/characters'),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/honeyedit.png'),
                 'header' => 'Combat Stats',
                 'links' => [
                     'Combat Classes' => url('world/character-classes'),
                     'Gear Categories' => url('world/gear-categories'),
                     'All Gear' => url('world/gear'),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Pets and Familiars',
+                'links' => [
                     'Pet Categories' => url('world/pet-categories'),
                     'All Pets' => url('world/pets'),
+                    'Familiars' => url('world/items?item_category_id=2'),
                 ]
             ])
         </div>
@@ -50,8 +69,15 @@
                 'links' => [
                     'Item Categories' => url('world/item-categories'),
                     'All Items' => url('world/items'),
-                    'All Recipes' => url('world/recipes'),
-                    'Currencies' => url('world/currencies'),
+ 
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Awards',
+                'links' => [
                     'Award Categories' => url('world/award-categories'),
                     'All Awards' => url('world/awards'),
                 ]
@@ -60,14 +86,10 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/flower2.png'),
-                'header' => 'Items Etc',
+                'header' => 'Currency & Recipes',
                 'links' => [
-                    'Item Categories' => url('world/item-categories'),
-                    'All Items' => url('world/items'),
                     'All Recipes' => url('world/recipes'),
                     'Currencies' => url('world/currencies'),
-                    'Award Categories' => url('world/award-categories'),
-                    'All Awards' => url('world/awards'),
                 ]
             ])
         </div>
