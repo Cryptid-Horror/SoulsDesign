@@ -10,15 +10,15 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/xdd.png'),
-                'header' => 'Account',
+                'header' => 'Species',
                 'links' => [
-                    'Profile' => Auth::user()->url,
-                    'User Settings' => url('account/settings'),
-                    'Notifications' => url('notifications')
+                    'Species' => url('world/species'),
+                    'Subtypes' => url('world/subtypes'),
+                    'Character Categories' => url('world/character-categories'),
                 ]
             ])
         </div>
-                </div>
+</div>
 {{--
 
 <div class="row">
