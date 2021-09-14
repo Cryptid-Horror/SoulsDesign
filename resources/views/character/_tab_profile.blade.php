@@ -150,8 +150,8 @@
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
     @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif <br>
-    @if($image->character->factionSetting)
-    <b>Faction:</b> {!! $image->character->faction ? $image->character->currentFaction : 'None' !!}{!! $character->factionRank ? ' ('.$character->factionRank->name.')' : null !!}
+    @if($character->factionSetting)
+    <b>Faction:</b> {!! $character->faction ? $character->currentFaction : 'None' !!}{!! $character->factionRank ? ' ('.$character->factionRank->name.')' : null !!}
     @endif
     <br>
     <b>Personality:</b><br>
