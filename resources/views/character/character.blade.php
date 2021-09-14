@@ -48,7 +48,10 @@
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
@@ -75,6 +78,9 @@
     <div class="card-body tab-content">
         <div class="tab-pane fade show active" id="profile">
             @include('character._tab_profile', ['character' => $character])
+        </div>
+        <div class="tab-pane fade" id="charinfo">
+            @include('character._tab_charinfo', ['character' => $character])
         </div>
         <div class="tab-pane fade" id="notes">
             @include('character._tab_notes', ['character' => $character])
