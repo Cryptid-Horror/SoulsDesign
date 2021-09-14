@@ -156,7 +156,7 @@
         {!! Form::label('Character Rarity') !!} @if($isMyo) {!! add_help('This will lock the slot into a particular rarity. Leave it blank if you would like to give the user more choices.') !!} @endif
         {!! Form::select('rarity_id', $rarities, $character->image->rarity_id, ['class' => 'form-control']) !!}
     </div>
-    
+
     <div class="form-group">
         {!! Form::label('Temperament') !!}
         {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], $character->temperament, ['class' => 'form-control']) !!}
@@ -210,11 +210,6 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('Slots used') !!}
-        {!! Form::text('slots_used', $character->slots_used, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
         {!! Form::label('Health Status') !!}
         {!! Form::text('health_status', $character->health_status, ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
     </div>
@@ -225,6 +220,11 @@
     <div class="form-group">
         {!! Form::checkbox('ouroboros', 1, $character->ouroboros, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
         {!! Form::label('ouroboros', 'Has Achieved Ouroboros Emblem', ['class' => 'form-check-label ml-3']) !!}
+    </div>
+    
+    <div class="form-group">
+        {!! Form::label('Slots used') !!}
+        {!! Form::text('slots_used', $character->slots_used, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
