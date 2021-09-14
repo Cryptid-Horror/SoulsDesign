@@ -20,7 +20,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/characters2.png'),
+                'imageUrl' => asset('images/traits.png'),
                 'header' => 'Traits',
                 'links' => [
                     'Categories' => url('world/trait-categories'),
@@ -32,7 +32,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/honeyedit.png'),
+                'imageUrl' => asset('images/levels.png'),
                 'header' => 'Levels',
                 'links' => [
                     'Player Levels' => url('world/levels/user'),
@@ -78,7 +78,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('images/awards2.png'),
                 'header' => 'Awards',
                 'links' => [
                     'Award Categories' => url('world/award-categories'),
@@ -88,7 +88,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('recipes.png'),
                 'header' => 'Currency & Recipes',
                 'links' => [
                     'All Recipes' => url('world/recipes'),
