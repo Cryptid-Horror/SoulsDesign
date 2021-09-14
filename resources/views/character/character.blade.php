@@ -25,7 +25,7 @@
     @endif
 </div>
 
-{{-- Profile --}}
+{{-- Profile 
 <div class="card character-bio">
     <div class="card-header d-flex align-items-center justify-content-between">
         <h3 class="mb-0">Profile</h3>
@@ -39,7 +39,7 @@
     <div class="card-body">
         @include('character._tab_profile', ['character' => $character])
     </div>
-</div>
+</div> --}}
 @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
     <div class="d-flex justify-content-end mt-2">
         <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
@@ -48,7 +48,7 @@
 <br>
 
 {{--Technical Information--}}
-<h3>Technical Details</h3>
+<h3>Character Details</h3>
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
@@ -76,7 +76,6 @@
     </div>
     <div class="card-body tab-content">
         <div class="tab-pane fade show active" id="profile">
-        <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
             @include('character._tab_profile', ['character' => $character])
         </div>
         <div class="tab-pane fade show active" id="stats">
