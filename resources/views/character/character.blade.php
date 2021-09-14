@@ -111,6 +111,7 @@
     </div>
 @endif --}}
 
+<hr>
 
 @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
 
