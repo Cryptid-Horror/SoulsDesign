@@ -24,7 +24,18 @@
         <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
-
+<div class="row">
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/xdd.png'),
+                'header' => 'Account',
+                'links' => [
+                    'Profile' => Auth::user()->url,
+                    'User Settings' => url('account/settings'),
+                    'Notifications' => url('notifications')
+                ]
+            ])
+        </div>
 {{-- Profile --}}
 <div class="card character-bio">
     <div class="card-header d-flex align-items-center justify-content-between">
