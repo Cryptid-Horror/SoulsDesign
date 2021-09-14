@@ -37,10 +37,12 @@
         ]])
 @endif
 
+<hr>
+
 <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
-    <b>Lineage:</b><br>
+    <b>Pretty Lineage View</b><br>
     @include('character._lineage_tree', ['lineage' => $character->lineage()->first()])
-    
+
 @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
     <div class="mt-3">
         <a href="#" class="btn btn-outline-info btn-sm edit-lineage" data-{{ $character->is_myo_slot ? 'id' : 'slug' }}="{{ $character->is_myo_slot ? $character->id : $character->slug }}"><i class="fas fa-cog"></i> Edit</a>
