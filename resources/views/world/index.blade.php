@@ -88,7 +88,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('rec.png'),
+                'imageUrl' => asset('images/rec.png'),
                 'header' => 'Currency & Recipes',
                 'links' => [
                     'All Recipes' => url('world/recipes'),
