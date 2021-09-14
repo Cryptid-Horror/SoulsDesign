@@ -15,7 +15,7 @@ function items(){
 
 if (document.getElementById("barrely").checked == true){ // Free rolls 
 		lootSize = rand(2,4);}
-	else {lootSize = rand(2,6);} // Entry rolls are default
+	else {lootSize = rand(3,6);} // Entry rolls are default
 	if (document.getElementById("mimicy").checked == true){
 		lootSize += 1;
 		itemlist += "<i>Golden Chest of Mimicry Returned an extra item!</i><br>";}
