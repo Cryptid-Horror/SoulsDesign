@@ -82,6 +82,14 @@
     </ul>
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
+    <div class="col-lg-4 col-md-6 col-4"><h5>Class</h5></div>
+        <div class="col-lg-8 col-md-6 col-8">{!! $image->character->class_id ? $image->character->class->displayName : 'None' !!} 
+            @if(Auth::check())
+                @if(Auth::user()->isStaff || Auth::user()->id == $image->character->user_id && $image->character->class_id == null) 
+                     <a href="#" class="btn btn-outline-info btn-sm edit-class ml-1" data-id="{{ $image->character->id }}"><i class="fas fa-cog"></i></a>
+                @endif
+             @endif
+        </div>
     <br>
     
     @if(count($character->pets))
@@ -150,6 +158,7 @@
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
     @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif <br>
+
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
