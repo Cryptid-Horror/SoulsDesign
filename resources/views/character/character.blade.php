@@ -75,10 +75,10 @@
             @include('character._tab_profile', ['character' => $character])
         </div>
         <div class="tab-pane fade show active" id="stats">
-            @include('character._tab_stats', ['character' => $character])
         </div>
         <div class="tab-pane fade" id="notes">
             @include('character._tab_notes', ['character' => $character])
+            @include('character._tab_stats', ['character' => $character])
         </div>
         @if($character->getLineageBlacklistLevel() < 2)
             <div class="tab-pane fade" id="lineage">
