@@ -21,18 +21,11 @@
     @else 
         <div>No traits listed.</div>
     @endif
-    @if($character->skills)
-        <b>Skills:</b>
-        <ul>
-        @foreach(explode(',', $character->skills) as $skill)
-            <li>{{ $skill }}</li>
-        @endforeach
-        </ul>
+    
     <b>Rank:</b> {{ $character->rank }}<br>
     <img style="height:150px;" src="{{ $character->rankImageUrl }}"><br>
     <br>
     <b>Ouroboros Emblem:</b> {{ $character->ouroboros ? 'Complete' : 'Incomplete' }}<br>
-    <br>
     @if($character->ouroboros)
         <b>Slots:</b> 
         @if($character->rank != 'Primordial')
@@ -155,8 +148,8 @@
     @endif
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
-    <br>
-    <br>
+    <br><br>
+    
     <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
     <b>Lineage:</b><br>
     @include('character._lineage_tree', ['lineage' => $character->lineage()->first()])
