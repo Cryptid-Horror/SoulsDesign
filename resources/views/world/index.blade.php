@@ -20,6 +20,34 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/characters2.png'),
+                'header' => 'Traits',
+                'links' => [
+                    'Categories' => url('world/trait-categories'),
+                    'All Traits' => url('world/traits'),
+                    'Rarities' => url('world/rarities'),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Combat Stats',
+                'links' => [
+                    'Combat Classes' => url('world/character-classes'),
+                    'Gear Categories' => url('world/gear-categories'),
+                    'All Gear' => url('world/gear'),
+                    'Pet Categories' => url('world/pet-categories'),
+                    'All Pets' => url)('world/pets'),
+                ]
+            ])
+        </div>
+</div>
+{{--
+
+<div class="row">
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/xdd.png'),
                 'header' => 'Species',
                 'links' => [
@@ -29,11 +57,6 @@
                 ]
             ])
         </div>
-</div>
-{{--
-
-<div class="row">
-        
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/characters2.png'),
@@ -41,6 +64,7 @@
                 'links' => [
                     'Categories' => url('world/trait-categories'),
                     'All Traits' => url('world/traits'),
+                    'Rarities' => url('world/rarities'),
                 ]
             ])
         </div>
