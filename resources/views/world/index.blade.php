@@ -33,7 +33,7 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/honeyedit.png'),
-                'header' => 'Character and Player Levels',
+                'header' => 'Levels',
                 'links' => [
                     'Player Levels' => url('world/levels/user'),
                     'Dragon Levels' => url('world/levels/characters'),
@@ -48,6 +48,9 @@
                     'Combat Classes' => url('world/character-classes'),
                     'Gear Categories' => url('world/gear-categories'),
                     'All Gear' => url('world/gear'),
+                    'Weapon Categories' => url('world/weapon-categories',)
+                    'All Weapons' => url('world/weapons'),
+
                 ]
             ])
         </div>
