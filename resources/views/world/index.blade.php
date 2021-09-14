@@ -29,6 +29,33 @@
                 ]
             ])
         </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Combat Stats',
+                'links' => [
+                    'Combat Classes' => url('world/character-classes'),
+                    'Gear Categories' => url('world/gear-categories'),
+                    'All Gear' => url('world/gear'),
+                    'Pet Categories' => url('world/pet-categories'),
+                    'All Pets' => url('world/pets'),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Items Etc',
+                'links' => [
+                    'Item Categories' => url('world/item-categories'),
+                    'All Items' => url('world/items'),
+                    'All Recipes' => url('world/recipes'),
+                    'Currencies' => url('world/currencies'),
+                    'Categories' => url('world/award-categories'),
+                    'All Awards' => url('world/awards'),
+                ]
+            ])
+        </div>
       
 </div>
 {{--
@@ -65,7 +92,7 @@
                     'Gear Categories' => url('world/gear-categories'),
                     'All Gear' => url('world/gear'),
                     'Pet Categories' => url('world/pet-categories'),
-                    'All Pets' => url)('world/pets'),
+                    'All Pets' => url('world/pets'),
                 ]
             ])
         </div>
