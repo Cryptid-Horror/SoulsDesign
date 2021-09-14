@@ -40,12 +40,7 @@
         @include('character._tab_profile', ['character' => $character])
     </div>
 </div> --}}
-@if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
-    <div class="d-flex justify-content-end mt-2">
-        <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
-    </div>
-@endif
-<br>
+
 
 {{--Technical Information--}}
 <h3>Character Details</h3>
@@ -70,7 +65,8 @@
                 <li class="nav-item">
                     <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
                 </li>
-                <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a></li>
+                    <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-user-cog"></i></a>
+                </li>
             @endif
         </ul>
     </div>
@@ -108,6 +104,13 @@
         @endif
     </div>
 </div>
+
+@if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
+    <div class="d-flex justify-content-end mt-2">
+        <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
+    </div>
+@endif
+<br>
 
 @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
     <hr>
