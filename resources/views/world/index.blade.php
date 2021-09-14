@@ -17,7 +17,7 @@
                 'links' => [
                     'Species' => url('world/species'),
                     'Subtypes' => url('world/subtypes'),
-                    'Character Categories' => url('world/character-categories')
+                    'Character Categories' => url('world/character-categories'),
                 ]
             ])
         </div>
@@ -28,7 +28,7 @@
                 'links' => [
                     'Categories' => url('world/trait-categories'),
                     'All Traits' => url('world/traits'),
-                    'Rarities' => url('world/rarities')
+                    'Rarities' => url('world/rarities'),
                 ]
             ])
         </div>
@@ -61,10 +61,9 @@
         </div>
     </div>
 
-    @endsection
 
 
-{{--
+
 <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
@@ -106,7 +105,8 @@
         </div>
     </div>
 </div>
---}}
 
+
+@endsection
 
 
