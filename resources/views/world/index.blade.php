@@ -7,7 +7,7 @@
 
 <h1>World</h1>
 
-
+{{--
 
 <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -60,7 +60,7 @@
             ])
         </div>
     </div>
-
+    --}}
 
 
 
