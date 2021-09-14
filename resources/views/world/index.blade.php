@@ -25,6 +25,7 @@
                 'links' => [
                     'Categories' => url('world/trait-categories'),
                     'All Traits' => url('world/traits'),
+                    'Genetics Portal' => url('https://www.soulsbetween.com/design'),
                     'Rarities' => url('world/rarities'),
                 ]
             ])
