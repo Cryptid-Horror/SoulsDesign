@@ -47,11 +47,8 @@
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Profile</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
+                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
@@ -67,14 +64,17 @@
                 </li>
                     <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-danger"><i class="fas fa-user-cog"></i></a>
                 </li>
+                @endif
+                <li>    
+                @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))    
+                    <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}"><i class="fas fa-skull-crossbones"></i></a>
+                </li>
             @endif
         </ul>
     </div>
     <div class="card-body tab-content">
         <div class="tab-pane fade show active" id="profile">
             @include('character._tab_profile', ['character' => $character])
-        </div>
-        <div class="tab-pane fade show active" id="stats">
         </div>
         <div class="tab-pane fade" id="notes">
             @include('character._tab_notes', ['character' => $character])
