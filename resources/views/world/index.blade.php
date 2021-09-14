@@ -5,7 +5,7 @@
 @section('content')
 {!! breadcrumbs(['Encyclopedia' => 'world']) !!}
 
-<h1>World</h1>
+<h1>Encyclopedia</h1>
 <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
