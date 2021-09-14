@@ -142,6 +142,23 @@
         {!! Form::select('species_id', $specieses, $character->image->species_id, ['class' => 'form-control', 'id' => 'species']) !!}
     </div>
 
+    
+    <div class="form-group">
+        {!! Form::label('Skills') !!}
+        <div id="skillsList">
+            @if($character->skills)
+                @foreach(explode(',', $character->skills) as $skill)
+                    <div class="d-flex mb-2">
+                        {!! Form::text('skills[]', $skill, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
+                        <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
+    </div>
+@endif
+
     <div class="form-group">
         {!! Form::checkbox('has_grand_title', 1, $character->has_grand_title, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
         {!! Form::label('has_grand_title', 'Has Grand Title', ['class' => 'form-check-label ml-3']) !!}
@@ -361,21 +378,6 @@
     </div>
     --}}
 
-    <div class="form-group">
-        {!! Form::label('Skills') !!}
-        <div id="skillsList">
-            @if($character->skills)
-                @foreach(explode(',', $character->skills) as $skill)
-                    <div class="d-flex mb-2">
-                        {!! Form::text('skills[]', $skill, ['class' => 'form-control mr-2', 'placeholder' => 'Enter an skill']) !!}
-                        <a href="#" class="remove-skill btn btn-danger mb-2">×</a>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-        <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
-    </div>
-@endif
 
 @if($character->user_id != Auth::user()->id)
     <div class="form-group">
