@@ -75,6 +75,7 @@
     </div>
     <div class="card-body tab-content">
         <div class="tab-pane fade show active" id="profile">
+        <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
             @include('character._tab_profile', ['character' => $character])
         </div>
         <div class="tab-pane fade show active" id="stats">
