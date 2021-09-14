@@ -57,7 +57,7 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/familiars.png'),
-                'header' => 'Pets and Familiars',
+                'header' => 'Pets & Familiars',
                 'links' => [
                     'Pet Categories' => url('world/pet-categories'),
                     'All Pets' => url('world/pets'),
