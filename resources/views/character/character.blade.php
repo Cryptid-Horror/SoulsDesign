@@ -26,39 +26,18 @@
 </div>
 
 {{-- Profile --}}
-<h3>Technical Details</h3>
 <div class="card character-bio">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" id="statsTab" data-toggle="tab" href="#stats" role="tab">Profile</a>
-                    <div>
-                        @if(isset($character->image->ext_url))
-                            <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm mr-2 d-none d-sm-inline"><i class="fas fa-link"></i> View Image On DeviantArt</a>
-                         @endif
-                        <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
-                    </div>
-                </div>
-            <div class="card-body">
-         @include('character._tab_profile', ['character' => $character])
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
-            </li>
-            @if($character->getLineageBlacklistLevel() < 2)
-                <li class="nav-item">
-                    <a class="nav-link" id="lineageTab" data-toggle="tab" href="#lineage" role="tab">Lineage</a>
-                </li>
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h3 class="mb-0">Profile</h3>
+        <div>
+            @if(isset($character->image->ext_url))
+                <a href="{{ $character->image->ext_url }}" class="btn btn-outline-secondary btn-sm mr-2 d-none d-sm-inline"><i class="fas fa-link"></i> View Image On DeviantArt</a>
             @endif
-            @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-                <li class="nav-item">
-                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
-                </li>
-            @endif
-        </ul>
+            <a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-info btn-sm"><i class="fas fa-cog"></i> Edit Profile</a>
+        </div>
+    </div>
+    <div class="card-body">
+        @include('character._tab_profile', ['character' => $character])
     </div>
 </div>
 @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
@@ -73,6 +52,9 @@
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Profile</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link active" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
             </li>
