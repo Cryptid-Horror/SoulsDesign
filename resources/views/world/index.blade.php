@@ -42,7 +42,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/honeyedit.png'),
+                'imageUrl' => asset('images/combat.png'),
                 'header' => 'Combat Stats',
                 'links' => [
                     'Combat Classes' => url('world/character-classes'),
@@ -56,7 +56,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/honeyedit.png'),
+                'imageUrl' => asset('images/familiars.png'),
                 'header' => 'Pets and Familiars',
                 'links' => [
                     'Pet Categories' => url('world/pet-categories'),
@@ -67,8 +67,8 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
-                'header' => 'Items Etc',
+                'imageUrl' => asset('images/honeyedit.png'),
+                'header' => 'Items',
                 'links' => [
                     'Item Categories' => url('world/item-categories'),
                     'All Items' => url('world/items'),
