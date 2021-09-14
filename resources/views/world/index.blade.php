@@ -48,7 +48,7 @@
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/flower2.png'),
-                'header' => 'Items, Etc',
+                'header' => 'Items Etc',
                 'links' => [
                     'Item Categories' => url('world/item-categories'),
                     'All Items' => url('world/items'),
@@ -61,6 +61,7 @@
         </div>
     </div>
 
+    @endsection
 
 
 {{--
@@ -109,4 +110,3 @@
 
 
 
-@endsection
