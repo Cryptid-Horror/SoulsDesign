@@ -150,16 +150,11 @@
     <b>Nicknames:</b> {{ $character->nicknames ? $character->nicknames : 'N/A' }}<br>
     <b>Gender/Pronouns:</b> {{ $character->gender_pronouns ? $character->gender_pronouns : '-' }}<br>
     @if($character->homeSetting)<b>Location:</b> {{ $character->homeSetting }}@endif <br>
-
+    
     <b>Personality:</b><br>
     {!! $character->profile->parsed_text ?? 'N/A' !!}
     <br><br>
-    <div>
-                <strong>Uploaded:</strong> {!! pretty_date($image->created_at) !!}
-            </div>
-            <div>
-                <strong>Last Edited:</strong> {!! pretty_date($image->updated_at) !!}
-            </div>
+   
     <br>
     <b>Generation:</b> {!! $character->rarity->displayName ?? '-' !!}<br>
     <b>Lineage:</b><br>
