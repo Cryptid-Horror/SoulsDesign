@@ -54,12 +54,13 @@
     @endif
     
     @if($report->status == 'Assigned' && $report->user_id == Auth::user()->id || Auth::user()->hasPower('manage_reports'))
+    <div class="alert alert-danger">Note that users cannot see comments when the report is closed. Please included all important information in the Staff Comments section below.</div>
     @comments([ 'model' => $report, 'perPage' => 5 ])
     @endif
     
     {!! Form::open(['url' => url()->current(), 'id' => 'reportForm']) !!}
     @if($report->status == 'Assigned' && auth::user()->id == $report->staff_id)
-    @if(Auth::user()->hasPower('manage_reports'))<div class="alert alert-warning">Please include a small paragraph on the solution and as many important details as you deem necessary, as the user will no longer be able to view the comments after the report is closed</div>@endif
+    @if(Auth::user()->hasPower('manage_reports'))<div class="alert alert-warning">Please include a small paragraph on the solution in the Staff Comments  and as many important details as you deem necessary, as the user will no longer be able to view the comments after the report is closed.</div>@endif
 		<div class="form-group">
             {!! Form::label('staff_comments', 'Staff Comments (Optional)') !!}
 			{!! Form::textarea('staff_comments', $report->staffComments, ['class' => 'form-control wysiwyg']) !!}
