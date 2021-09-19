@@ -9,6 +9,15 @@
         New Report 
 </h1>
 
+<div class="alert alert-info">
+    Please submit a <a href="{{ url('claims/new') }}">claim</a> if there is a mistake with your items/dragons/rolls etc. (e.g. missing items, missing traits, incorrect rolls).
+    <br>
+    Reports should be used for:
+    <ul class="mb-0">
+        <li>Inappropriate content on dragons/user profiles etc.
+        <li>Bugs, such as 404/500 etc. pages, typos in guides, broken images, or if you otherwise believe that a site feature is broken
+    </ul>
+</div>
 @if($closed)
     <div class="alert alert-danger">
         The report queue is currently closed. You cannot make a new report at this time.

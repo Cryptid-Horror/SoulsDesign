@@ -54,15 +54,18 @@
     @endif
     
     @if($report->status == 'Assigned' && $report->user_id == Auth::user()->id || Auth::user()->hasPower('manage_reports'))
-    <div class="alert alert-danger">Note that users cannot see comments when the report is closed. Please included all important information in the Staff Comments section below.</div>
-    @comments([ 'model' => $report, 'perPage' => 5 ])
+    <div class="alert alert-danger">Note that users cannot see the thread when the report is closed. Please include all important information in the Staff Comments section below.</div>
+    <a id= "openThreadButton" class="btn btn-primary mb-3">Open Discussion Thread</a>
+    <div id="discussionThread" class="hide">
+        @comments([ 'model' => $report, 'perPage' => 5 ])
+    </div>
     @endif
     
     {!! Form::open(['url' => url()->current(), 'id' => 'reportForm']) !!}
     @if($report->status == 'Assigned' && auth::user()->id == $report->staff_id)
     @if(Auth::user()->hasPower('manage_reports'))<div class="alert alert-warning">Please include a small paragraph on the solution in the Staff Comments  and as many important details as you deem necessary, as the user will no longer be able to view the comments after the report is closed.</div>@endif
 		<div class="form-group">
-            {!! Form::label('staff_comments', 'Staff Comments (Optional)') !!}
+            {!! Form::label('staff_comments', 'Staff Comments') !!}
 			{!! Form::textarea('staff_comments', $report->staffComments, ['class' => 'form-control wysiwyg']) !!}
         </div>
     @endif
@@ -127,6 +130,9 @@
             var $assignButton = $('#assignButton');
             var $assignContent = $('#assignContent');
             var $assignSubmit = $('#assignSubmit');
+
+            var $openThreadButton = $('#openThreadButton');
+            var $discussionThread = $('#discussionThread');
             
             $closalButton.on('click', function(e) {
                 e.preventDefault();
@@ -148,10 +154,10 @@
                 $reportForm.submit();
             });
 
-            $assignSubmit.on('click', function(e) {
+            $openThreadButton.on('click', function(e) {
                 e.preventDefault();
-                $reportForm.attr('action', '{{ url()->current() }}/assign');
-                $reportForm.submit();
+                $openThreadButton.addClass('hide');
+                $discussionThread.removeClass('hide');
             });
         });
 
