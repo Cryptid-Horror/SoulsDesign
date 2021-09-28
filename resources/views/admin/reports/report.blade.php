@@ -154,6 +154,12 @@
                 $reportForm.submit();
             });
 
+            $assignSubmit.on('click', function(e) {
+                e.preventDefault();
+                $reportForm.attr('action', '{{ url()->current() }}/assign');
+                $reportForm.submit();
+            });
+
             $openThreadButton.on('click', function(e) {
                 e.preventDefault();
                 $openThreadButton.addClass('hide');
