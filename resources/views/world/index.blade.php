@@ -9,7 +9,7 @@
 <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/xdd.png'),
+                'imageUrl' => asset('images/specoes.png'),
                 'header' => 'Species',
                 'links' => [
                     'Species' => url('world/species'),
@@ -67,7 +67,7 @@
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/honeyedit.png'),
+                'imageUrl' => asset('images/itemd.png'),
                 'header' => 'Items',
                 'links' => [
                     'Item Categories' => url('world/item-categories'),
