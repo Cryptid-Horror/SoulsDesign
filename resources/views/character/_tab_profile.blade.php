@@ -155,7 +155,6 @@
     <div class="progress">
         <div class="progress-bar progress-bar-striped active" role="progressbar"
         aria-valuenow="{{ $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{ $next->exp_required }}" style="width:{{$width}}%">
-        {{ $character->level->current_exp}}/{{ $next->exp_required }}
         </div>
     </div>
   
