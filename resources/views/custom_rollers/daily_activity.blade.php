@@ -55,9 +55,8 @@
 			<br>
 			<b>Temperament</b>
 			<select id="temp" name="temp">
-				<option value="other">Other</option>
-				<option value="aggressive">Aggressive or Sinister</option>
 				<option value="timid">Vigilant or Calm</option>
+				<option value="aggressive">Aggressive or Sinister</option>
 			</select>
 		</form>
 	</td>
@@ -77,7 +76,7 @@
 			<td><input type="radio" name="satchel" id="bagy"><label for="bagy">Yes</label></td>
 			<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn">No</label></td>
 		
-			<td>Item Familiar</td>
+			<td> Extra Item Familiar</td>
 			<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
 			<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
 		</tr>
