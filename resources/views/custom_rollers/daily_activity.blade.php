@@ -22,8 +22,9 @@
 <div id="container1" align="center">
 	<table>
 	<td>
-		<form id="activitytype" align="center">
-			<select id="activity" name="activity" align="center">
+		<form id="activitytype">
+			<b>Activity</b>
+			<select id="activity" name="activity">
 				<option value="hunting">Hunting</option>
 				<option value="fishing">Fishing</option>
 				<option value="foraging">Foraging</option>
