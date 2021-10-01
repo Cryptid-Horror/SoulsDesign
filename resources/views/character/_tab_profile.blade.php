@@ -160,6 +160,7 @@
         {{ $character->level->current_exp}}/{{ $next->exp_required }}
         </div>
     </div>
+    @endif
 
    
     @if($character->profile->custom_values->count() > 0)
