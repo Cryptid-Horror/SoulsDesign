@@ -149,15 +149,7 @@
         None<br>
     @endif
    
-    <h1><span class="badge badge-dark float-center text-white mx-1" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h1>
-    
-    
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped active" role="progressbar"
-        aria-valuenow="{{ $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{ $next->exp_required }}" style="width:{{$width}}%">
-        </div>
-    </div>
-  
+
 
    
     @if($character->profile->custom_values->count() > 0)
