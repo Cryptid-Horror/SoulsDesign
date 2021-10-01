@@ -406,8 +406,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Arowana";}
             else if(i <= 25){itemlist += "Jellyfish";}//CHARMY
             else if(i <= 30){itemlist += "Arcane Frog";}
-            else if(i <= 33){itemlist += "Arcane Shark";} 
-            else if(i <= 36){itemlist += "Prime Fish Meat";}
+            else if(i <= 35){itemlist += "Prime Fish Meat";}
             else if(i <= 39){itemlist += "Undulated Moray Eel";}
             else if(i <= 40){itemlist += "Fishing Chest";}//BLUE
             else if(i <= 41){itemlist += "Mysterious Bag";}
