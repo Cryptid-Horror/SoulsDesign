@@ -19,18 +19,17 @@
 <body>
 <div id="title" align="center"><h1>Activity Roller</h1></div>
 
-<form id="activitytype" align="center">
-	<select id="activity" name="activity" align="center">
-		<option value="hunting">Hunting</option>
-		<option value="fishing">Fishing</option>
-		<option value="foraging">Foraging</option>
-		<option value="caving">Caving</option>
-	</select>
-</form>
-
 <div id="container1" align="center">
 	<table>
 	<td>
+		<form id="activitytype" align="center">
+			<select id="activity" name="activity" align="center">
+				<option value="hunting">Hunting</option>
+				<option value="fishing">Fishing</option>
+				<option value="foraging">Foraging</option>
+				<option value="caving">Caving</option>
+			</select>
+		</form>
 		<form id=playerinfo" align="left">
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
@@ -56,8 +55,8 @@
 			<b>Temperament</b>
 			<select id="temp" name="temp">
 				<option value="other">Other</option>
-				<option value="aggressive">Aggressive</option>
-				<option value="timid">Vigilant</option>
+				<option value="aggressive">Aggressive or Sinister</option>
+				<option value="timid">Vigilant or Calm</option>
 			</select>
 		</form>
 	</td>
