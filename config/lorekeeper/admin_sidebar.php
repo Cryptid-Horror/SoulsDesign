@@ -241,13 +241,16 @@ return [
                 'url' => 'admin/data/items'
             ],
             [
-
                 'name' => 'Recipes',
                 'url' => 'admin/data/recipes'
             ],
             [
                 'name' => 'Forums',
                 'url' => 'admin/forums'
+            ],
+            [
+            'name' => 'Advent Calendars',
+            'url' => 'admin/data/advent-calendars'
             ]
         ],
     ],
@@ -303,7 +306,6 @@ return [
                 'name' => 'Character Classes',
                 'url' => 'admin/character-classes'
             ],
-
         ]
     ],
     'Raffles' => [

@@ -298,3 +298,12 @@ Route::group(['prefix' => 'forum'], function() {
 Route::group(['prefix' => 'user', 'namespace' => 'Users'], function() {
     Route::get('{name}/forum', 'UserController@getUserForumPosts'); // Placed here so I don't have to mess with
 });
+
+/**************************************************************************************************
+    Advent Calendars
+**************************************************************************************************/
+
+Route::group(['prefix' => 'advent-calendars'], function() {
+    Route::get('{id}', 'AdventController@getAdvent');
+    Route::post('{id}', 'AdventController@postClaimPrize');
+});
