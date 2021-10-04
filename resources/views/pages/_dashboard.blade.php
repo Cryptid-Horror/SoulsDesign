@@ -5,6 +5,7 @@
         <i class="far fa-clock"></i> {!! format_date(Carbon\Carbon::now()) !!}
     </div>
 </div>
+<h2><a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Annual%20Events') }}">Current Event</a></li></h2>
 <img src="{{ asset('images/fright.png') }}"/>
 
 <br>
