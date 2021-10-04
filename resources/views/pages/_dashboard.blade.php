@@ -5,6 +5,8 @@
         <i class="far fa-clock"></i> {!! format_date(Carbon\Carbon::now()) !!}
     </div>
 </div>
+<img src="{{ asset('images/fright.png') }}"/>
+
 <br>
             @include('widgets._recent_forum_posts')
 <br>
