@@ -14,8 +14,8 @@
     </a>
 </div>
 
-{{-- Profile --}}
-<div class="card character-bio mb-3">
+{{-- Profile 
+<div class="card character-bio">
     <div class="card-header d-flex align-items-center justify-content-between">
         <h3 class="mb-0">Profile</h3>
         <div>
@@ -28,15 +28,19 @@
     <div class="card-body">
         @include('character._tab_profile', ['character' => $character])
     </div>
-</div>
+</div> --}}
+
 
 {{--Technical Information--}}
-<h3>Technical Details</h3>
+<h3>Character Details</h3>
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" id="statsTab" data-toggle="tab" href="#stats" role="tab">Stats</a>
+                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
@@ -48,17 +52,28 @@
             @endif
             @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
                 <li class="nav-item">
-                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-all" role="tab"><i class="fas fa-cog"></i></a>
+                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
+                </li>
+                    <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-primary"><i class="fas fa-user-cog"></i></a>
+                </li>
+                @endif
+                <li>    
+                @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))    
+                    <a href="#" class="btn btn-outline-danger" data-slug="{{ $character->slug }}"><i class="fas fa-skull-crossbones"></i></a>
                 </li>
             @endif
         </ul>
     </div>
     <div class="card-body tab-content">
-        <div class="tab-pane fade show active" id="stats">
-            @include('character._tab_stats', ['character' => $character])
+        <div class="tab-pane fade show active" id="profile">
+            @include('character._tab_profile', ['character' => $character])
+        </div>
+        <div class="tab-pane fade" id="charinfo">
+            @include('character._tab_charinfo', ['character' => $character])
         </div>
         <div class="tab-pane fade" id="notes">
             @include('character._tab_notes', ['character' => $character])
+            @include('character._tab_stats', ['character' => $character])
         </div>
         @if($character->getLineageBlacklistLevel() < 2)
             <div class="tab-pane fade" id="lineage">
@@ -66,7 +81,7 @@
             </div>
         @endif
         @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-            <div class="tab-pane fade" id="settings-all">
+            <div class="tab-pane fade" id="settings-{{ $character->slug }}">
                 {!! Form::open(['url' => $character->is_myo_slot ? 'admin/myo/'.$character->id.'/settings' : 'admin/character/'.$character->slug.'/settings']) !!}
                     <div class="form-group">
                         {!! Form::checkbox('is_visible', 1, $character->is_visible, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
@@ -78,23 +93,38 @@
                 {!! Form::close() !!}
                 <hr />
                 <div class="text-right">
-                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-id="{{ $character->id }}">Delete</a>
+                    <a href="#" class="btn btn-outline-danger btn-sm delete-character" data-slug="{{ $character->slug }}">Delete</a>
                 </div>
             </div>
         @endif
     </div>
 </div>
 
-@if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-    <hr>
-    <h3>[Admin] Edit Image Details</h3>
-    <div class="alert alert-info">
-        This section is for easy editing of details relating to the active character image at the top of the page.
+{{-- @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))
+    <div class="d-flex justify-content-end mt-2">
+        <a href="#" class="btn btn-danger float-right decease-character" data-slug="{{ $character->slug }}">Decease Dragon</a>
     </div>
-    @include('character._image_info', ['image' => $character->image])
-@endif
+@endif --}}
 
-@endsection
+<hr>
+
+@if(Auth::check() && Auth::user()->hasPower('manage_characters'))
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsequickadmin" aria-expanded="false" aria-controls="collapsequickadmin">
+    Quick Admin Controls
+  </button>
+</p>
+<div class="collapse" id="collapsequickadmin">
+  <div class="card card-body">
+    <h3>[Admin] Edit Image Details</h3>
+        <div class="alert alert-info">
+            This section is for easy editing of details relating to the active character image at the top of the page.
+        </div>
+        @include('character._image_info', ['image' => $character->image])
+        @endif
+        @endsection 
+    </div>
+</div>
 
 @section('scripts')
     @parent
