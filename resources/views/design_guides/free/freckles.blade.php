@@ -30,7 +30,7 @@
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_gradient = 'sometimes';
     $color_any = 'no';
     $edge_blending = 'yes';
     $color_dependant = 'yes';
@@ -40,8 +40,6 @@
     $behavior_examples = [
         'freckles_yes1',
         'freckles_yes2',
-        'freckles_yes3',
-        'freckles_yes4',
         'freckles_no2',
         'freckles_no1'
     ];
@@ -49,6 +47,8 @@
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
+        'Freckles is allowed a lioght gradient beneath the freckles themselves.',
+        'Freckles can be densly, or lightly, clustered in their zones.',
         'Since this is a free marking, appearing like other free markings is ok.'
 
     ];

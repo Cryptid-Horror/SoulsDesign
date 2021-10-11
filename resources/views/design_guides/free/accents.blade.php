@@ -43,7 +43,8 @@
         'accent_yes3',
         'accent_yes4',
         'accent_no2',
-        'accent_no1'
+        'accent_no1',
+        'accent_no3',
     ];
 
     // You can use html!

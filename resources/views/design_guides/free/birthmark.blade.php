@@ -41,7 +41,6 @@
         'birthmark_yes1',
         'birthmark_yes2',
         'birthmark_yes3',
-        'birthmark_yes4',
         'birthmark_no2',
         'birthmark_no1'
     ];

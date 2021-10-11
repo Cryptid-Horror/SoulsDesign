@@ -41,7 +41,6 @@
         'blush_yes1',
         'blush_yes2',
         'blush_yes3',
-        'blush_yes4',
         'blush_no2',
         'blush_no1'
     ];
