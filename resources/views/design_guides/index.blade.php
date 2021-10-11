@@ -15,7 +15,7 @@
 </head>
 
 <?php 
-	$free = [['Accents'], ['Birthmark'], ['Blush'], ['Freckles'], ['Minimal Mark'],
+	$frees = [['Accents'], ['Birthmark'], ['Blush'], ['Freckles'], ['Minimal Mark'],
 			  ['Socks'], ['Stockings'], ['Tips']];
 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
@@ -115,7 +115,7 @@
 						<div class="alert alert-info">
 							Free markings have been expanded! List these in the free markings section of your design submission!
 						</div>
-						@foreach(array_chunk($free, 4) as $free_chunk)
+						@foreach(array_chunk($frees, 4) as $free_chunk)
 							<div class="row mb-3">
 								@foreach($free_chunk as $free)
 									<div class="col-md-6 col-lg-3 mb-2">
