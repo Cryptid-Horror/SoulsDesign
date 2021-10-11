@@ -5,12 +5,14 @@
     // Please DO NOT use negative numbers
     $marking_layers = [
         0 => ['Pangare', 'Bokeh', 'Cloud', 'Marbled', 'Merle', 'Tabby'],
-        10 => ['Blanket', 'Boar', 'Collar', 'Dunstripe', 'Dusted', 'Frog Eye', 'Hood', 'Leaf', 'Points', 'Python',
+        10 => ['Accents', 'Birthmark', 'Blush', 'Freckles', 'Minimal Mark', 'Socks', 'Stockings', 'Tips', 'Blanket', 'Boar', 
+               'Collar', 'Dunstripe', 'Dusted', 'Frog Eye', 'Hood', 'Leaf', 'Points', 'Python',
                'Rimmed', 'Ringed', 'Sable', 'Scaled', 'Stained', 'Trailing', 'Underbelly', 'Banded', 'Brindled',
                'Dipped', 'Mist', 'Roan', 'Toxin', 'Glass', 'Luminescent', 'Petal', 'Aurora', 'Shimmer'],
-        20 => ['Masked', 'Skink', 'Crested', 'Inkwell', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped', 'Tobiano',
-               'Appaloosa', 'Blooded', 'Eyes', 'Lustrous', 'Painted', 'Vignette', 'Aether Marked', 'Gemstone',
+        20 => ['Masked', 'Skink', 'Crested', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped',
+               'Blooded', 'Eyes', 'Lustrous', 'Filigree', 'Aether Marked', 'Gemstone',
                'Lepir', 'Rune', 'Triquetra'],
+        30 => ['Inkwell', 'Tobiano', 'Painted', 'Appaloosa'],
         // Add more groups as necessary; example:
         // 30 => [],
     ];

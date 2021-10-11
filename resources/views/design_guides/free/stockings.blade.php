@@ -1,27 +1,22 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Free_Stockings';
+    $marking_name = 'Stockings';
+    $marking_code = 'ST';
+    $marking_desc = "A free marking that can only appear in the zone provided on the legs and membraned wing fingers. Stockings appear as a marking that does not need to cover the feet and ends of the wing fingers.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blanket',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket-Sable',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_stockings',
+        'Warden' => 'Warden_stockings',
+        'Greater' => 'Gemp_stockings',
+        'Ravager' => 'Ravager_stockings',
+        'Stalker' => 'Stalker_stockings',
     ];
 
     // Use yes or no
@@ -34,36 +29,39 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_blurred = 'yes';
+    $edge_gradient = 'sometimes';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes1',
-        'blanket_yes2',
-        'blanket_yes3',
-        'blanket_yes4',
-        'blanket_no2',
-        'blanket_no1'
+        'stock_yes1',
+        'stock_yes2',
+        'stock_yes3',
+        'stock_yes4',
+        'stock_no2',
+        'stock_no1'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
-        'The marking can be disconnected in very small portions.',
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
+        'This marking may only have a gradient if it is gradienting into Socks, it cannot gradient into the base or other markings.',
+        'Since this is a free marking, appearing like other free markings is ok.',
+        'Can lower above or below Socks. Does not have to cover the feet or ends of the wing membranes.',
+        'Stockings can haver stripes in it that are vertical, horizontal, etc.'
 
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and large cut outs are not allowed',    
+        'Should not be used to look like other genetics markings that are not in the free section.',
     ];
 
     $marking_must = [
+        'This marking may only appear in the approved regions.',
     ];
 
     // If left empty, the swatches section will not be shown
@@ -72,9 +70,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'blanket_1', 'alt' => '...', 'label' => 'SB-0957', 'caption' => 'Designer: @Skoith'],
-        ['image_name' => 'blanket_2', 'alt' => '...', 'label' => 'SB-0941', 'caption' => 'Designer: @FlawedEmperor + @Aarushii'],
-        ['image_name' => 'blanket_3', 'alt' => '...', 'label' => 'SB-0656', 'caption' => 'Designer: @Jaimep'],
+        ['image_name' => 'stock_1', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
+        ['image_name' => 'stock_2', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
+        ['image_name' => 'stock_3', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
     ];
 ?>
 

@@ -1,27 +1,22 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Free_Minimal_Mark';
+    $marking_name = 'Minimal Mark';
+    $marking_code = 'MM';
+    $marking_desc = "A free marking that can only cover up to 15% of the body. Minimal Marking is a free flowing marking that can create many types of shapes. Such as splotches on the snout, claws, horns, or small marks on the body.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blanket',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket-Sable',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_face',
+        'Warden' => 'Warden_face',
+        'Greater' => 'Gemp_face',
+        'Ravager' => 'Ravager_face',
+        'Stalker' => 'Stalker_face',
     ];
 
     // Use yes or no
@@ -29,41 +24,43 @@
     $edge_feathered = 'yes';
     $edge_border = 'no';
     $edge_textured = 'yes';
-    $edge_mottled = 'no';
+    $edge_mottled = 'yes';
     $edge_soft = 'yes';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_blurred = 'yes';
+    $edge_gradient = 'yes';
     $color_any = 'no';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes1',
-        'blanket_yes2',
-        'blanket_yes3',
-        'blanket_yes4',
-        'blanket_no2',
-        'blanket_no1'
+        'minm_yes1',
+        'minm_yes2',
+        'minm_yes3',
+        'minm_yes4',
+        'minm_no2',
+        'minm_no1'
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
-        'The marking can be disconnected in very small portions.',
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
+        'Can blend into the base.',
+        'Since this is a free marking, appearing like other free markings is ok.'
 
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and large cut outs are not allowed',    
+        'Should not be used to look like other genetics markings that are not in the free section.',
+        'Be especially catious not to create a marking on the face that appears like masked.'
     ];
 
     $marking_must = [
+        'This marking must only cover up to 15% of the body.',
     ];
 
     // If left empty, the swatches section will not be shown
@@ -72,9 +69,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'blanket_1', 'alt' => '...', 'label' => 'SB-0957', 'caption' => 'Designer: @Skoith'],
-        ['image_name' => 'blanket_2', 'alt' => '...', 'label' => 'SB-0941', 'caption' => 'Designer: @FlawedEmperor + @Aarushii'],
-        ['image_name' => 'blanket_3', 'alt' => '...', 'label' => 'SB-0656', 'caption' => 'Designer: @Jaimep'],
+        ['image_name' => 'minm_1', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
+        ['image_name' => 'minm_2', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
+        ['image_name' => 'minm_3', 'alt' => '...', 'label' => 'SB-???', 'caption' => 'Designer: @//'],
     ];
 ?>
 
