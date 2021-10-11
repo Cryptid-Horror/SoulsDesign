@@ -19,6 +19,7 @@
     $modifier_affects = [
         'Duotone' => ['All Markings'],
         'Flaxen' => ['All Markings'],
+        'Greying' => ['All Markings'],
         'Rose' => ['All Markings'],
         'Azure' => ['All Markings'],
         'Copper' => ['All Markings'],
