@@ -15,7 +15,7 @@
 </head>
 
 <?php 
-	$frees = [['Accents', 'Ac'], ['Birthmark', 'BM'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
+	$frees = [['Accents', 'AC'], ['Birthmark', 'BM'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
 			  ['Socks', 'SO'], ['Stockings', 'ST'], ['Tips', 'TI']];
 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
@@ -114,7 +114,7 @@
 				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 					<div class="card-body">
 						<div class="alert alert-info">
-							Free marks have been expanded! Add these to the free marks section of your design submission if you use them!
+							Free marks have been expanded! Add these to the free marks section of your design submission if you use them! Free markings do not get added to the genotype, and cannot be passed to offspring. They are simply design enhancers, used to make designs more interesting, or unique. You can use none, or all of them, or any combination!
 						</div>
 						@foreach(array_chunk($frees, 4) as $free_chunk)
 							<div class="row mb-3">
