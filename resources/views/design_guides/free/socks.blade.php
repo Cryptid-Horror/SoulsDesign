@@ -41,9 +41,9 @@
         'socks_yes1',
         'socks_yes2',
         'socks_yes3',
-        'socks_yes4',
         'socks_no2',
-        'socks_no1'
+        'socks_no1',
+        'socks_no3'
     ];
 
     // You can use html!

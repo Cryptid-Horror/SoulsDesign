@@ -38,12 +38,13 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'stock_yes1',
-        'stock_yes2',
-        'stock_yes3',
-        'stock_yes4',
-        'stock_no2',
-        'stock_no1'
+        'stockings_yes1',
+        'stockings_yes2',
+        'stockings_yes3',
+        'stockings_yes4',
+        'stockings_yes5',
+        'stockings_no2',
+        'stockings_no1'
     ];
 
     // You can use html!
