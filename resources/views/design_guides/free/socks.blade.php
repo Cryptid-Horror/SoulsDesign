@@ -12,11 +12,11 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_socks',
-        'Warden' => 'Warden_socks',
-        'Greater' => 'Gemp_socks',
-        'Ravager' => 'Ravager_socks',
-        'Stalker' => 'Stalker_socks',
+        'Sapiere' => 'Sapiere_Socks',
+        'Warden' => 'Warden_Socks',
+        'Greater' => 'Gemp_Socks',
+        'Ravager' => 'Ravager_Socks',
+        'Stalker' => 'Stalker_Socks',
     ];
 
     // Use yes or no
