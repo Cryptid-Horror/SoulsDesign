@@ -15,7 +15,7 @@
 </head>
 
 <?php 
-	$frees = [['Accents', 'AC'], ['Birthmark', 'BM'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
+	$frees = [['Accents', 'AC'], ['Birthmark', 'BI'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
 			  ['Socks', 'SO'], ['Stockings', 'ST'], ['Tips', 'TI']];
 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
@@ -81,7 +81,6 @@
 			<div class="btn-group-vertical">
                 <a href="{{ url('info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
                 <a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
-                <a href="{{ url('info/Free_Marks') }}" class="btn btn-secondary">Minimal & Free Markings</a>
                 <a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
                 <a href="{{ url('info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>
 			</div>
