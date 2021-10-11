@@ -100,24 +100,7 @@
 		</div>
 
 		<!-- Free Marks --> 
-		<div class="accordion" id="accordionExample">
-			<div class="card">
-				<div class="card-header" id="headingOne">
-					<h2 class="mb-0">
-						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							Free Markings
-						</button>
-					</h2>
-				</div>
 
-				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-					<div class="card-body">
-						<div class="alert alert-info">
-							<ul class="mb-0">
-								<li>Ray is now combined with Sable</li>
-								<li>Scorching and Fading have been merged to become Stained</li>
-							</ul>
-						</div>
 						@foreach(array_chunk($frees, 4) as $free_chunk)
 							<div class="row mb-3">
 								@foreach($free_chunk as $free)
@@ -128,10 +111,7 @@
 								@endforeach
 							</div>
 						@endforeach
-					</div>
-				</div>
-			</div>
-		</div>
+
 		<!-- Common Genetics -->		
 		<div class="accordion" id="accordionExample">
 			<div class="card">
