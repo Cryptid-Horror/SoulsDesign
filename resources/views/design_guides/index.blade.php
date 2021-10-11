@@ -131,7 +131,7 @@
 
 
 			<div class="card">
-				<div class="card-header" id="headingOne">
+				<div class="card-header" id="headingTwo">
 					<h2 class="mb-0">
 						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 							Common Markings
