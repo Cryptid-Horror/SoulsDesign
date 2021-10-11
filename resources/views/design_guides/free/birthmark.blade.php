@@ -12,11 +12,11 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_face',
-        'Warden' => 'Warden_face',
-        'Greater' => 'Gemp_face',
-        'Ravager' => 'Ravager_face',
-        'Stalker' => 'Stalker_face',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
@@ -42,7 +42,9 @@
         'birthmark_yes2',
         'birthmark_yes3',
         'birthmark_no2',
-        'birthmark_no1'
+        'birthmark_no1',
+        'free_mark'
+
     ];
 
     // You can use html!
