@@ -4,7 +4,7 @@
     // requiring a special layer order
     // Please DO NOT use negative numbers
     $marking_layers = [
-        0 => ['Cloud', 'Dapple,' 'Merle'],
+        0 => ['Cloud', 'Dapple,', 'Merle'],
         10 => ['Accents', 'Birthmark', 'Blush', 'Freckles', 'Minimal Mark', 'Socks', 'Stockings', 'Tips', 'Blanket', 'Boar', 
                'Collar', 'Dun', 'Dusted', 'Frog Eye', 'Hood', 'Leaf', 'Masked', 'Pangare', 'Points', 'Python',
                'Rimmed', 'Ringed', 'Sable', 'Scaled', 'Stained', 'Trailing', 'Underbelly', 'Banded', 'Brindled',
@@ -19,6 +19,15 @@
     $modifier_affects = [
         'Duotone' => ['All Markings'],
         'Flaxen' => ['All Markings'],
+        'Rose' => ['All Markings'],
+        'Azure' => ['All Markings'],
+        'Copper' => ['All Markings'],
+        'Crimson' => ['All Markings'],
+        'Jade' => ['All Markings'],
+        'Seafoam' => ['All Markings'],
+        'Lilac' => ['All Markings'],
+        'Prismatic' => ['All Markings'],
+        'Iridescent' => ['All Markings'],
         'Dripping' => ['All Free Markings', 'Blanket', 'Boar (Bars)', 'Collar', 'Dun', 'Frog Eye', 'Hood', 'Leaf', 'Masked', 'Points', 
                         'Python', 'Rimmed', 'Ringed', 'Scaled', 'Skink', 'Trailing', 'Underbelly', 'Banded', 'Border', 'Brindle',
                         'Crested', 'Inkwell', 'Marbled', 'Metallic', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped', 'Tabby', 'Tobiano', 'Toxin (bars)',
