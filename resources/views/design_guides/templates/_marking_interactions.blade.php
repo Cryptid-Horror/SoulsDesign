@@ -4,28 +4,43 @@
     // requiring a special layer order
     // Please DO NOT use negative numbers
     $marking_layers = [
-        0 => ['Pangare', 'Bokeh', 'Cloud', 'Marbled', 'Merle', 'Tabby'],
+        0 => ['Cloud', 'Dapple,' 'Merle'],
         10 => ['Accents', 'Birthmark', 'Blush', 'Freckles', 'Minimal Mark', 'Socks', 'Stockings', 'Tips', 'Blanket', 'Boar', 
-               'Collar', 'Dunstripe', 'Dusted', 'Frog Eye', 'Hood', 'Leaf', 'Points', 'Python',
+               'Collar', 'Dun', 'Dusted', 'Frog Eye', 'Hood', 'Leaf', 'Masked', 'Pangare', 'Points', 'Python',
                'Rimmed', 'Ringed', 'Sable', 'Scaled', 'Stained', 'Trailing', 'Underbelly', 'Banded', 'Brindled',
-               'Dipped', 'Mist', 'Roan', 'Toxin', 'Glass', 'Luminescent', 'Petal', 'Aurora', 'Shimmer'],
-        20 => ['Masked', 'Skink', 'Crested', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped',
-               'Blooded', 'Eyes', 'Lustrous', 'Filigree', 'Aether Marked', 'Gemstone',
-               'Lepir', 'Rune', 'Triquetra'],
-        30 => ['Inkwell', 'Tobiano', 'Painted', 'Appaloosa'],
+               'Crested', 'Dipped', 'Marbled', 'Metallic', 'Pigeon', 'Plasma', 'Roan', 'Rosettes', 'Shaped', 
+               'Smoked', 'Tabby', 'Toxin', 'Blooded', 'Eyes', 'Filigree', 'Glass', 'Luminescent', 'Lustrous',
+               'Petal', 'Aether Marked', 'Aurora', 'Gemstone', 'Iridescent', 'Lepir - Minimal', 'Rune', 'Shimmer',
+                'Triquetra'],
+        20 => ['Inkwell', 'Tobiano', 'Painted', 'Appaloosa', 'Lepir - Complex'],
         // Add more groups as necessary; example:
         // 30 => [],
     ];
     $modifier_affects = [
         'Duotone' => ['All Markings'],
         'Flaxen' => ['All Markings'],
-        'Dripping' => ['Blanket', 'Boar', 'Collar', 'Dunstripe', 'Frog Eye', 'Hood', 'Leaf', 'Points', 'Python', 'Rimmed',
-                       'Ringed', 'Scaled', 'Trailing', 'Underbelly', 'Banded', 'Toxin', 'Glass', 'Petal', 'Aurora', 'Marbled',
-                       'Tabby', 'Masked', 'Skink', 'Crested', 'Inkwell', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped', 'Tobiano', 'Appaloosa',
-                       'Blooded', 'Eyes', 'Lustrous', 'Painted', 'Vignette', 'Aether Marked', 'Gemstone', 'Lepir', 'Rune', 'Triquetra'],
+        'Rose' => ['All Markings'],
+        'Azure' => ['All Markings'],
+        'Copper' => ['All Markings'],
+        'Crimson' => ['All Markings'],
+        'Jade' => ['All Markings'],
+        'Seafoam' => ['All Markings'],
+        'Lilac' => ['All Markings'],
+        'Prismatic' => ['All Markings'],
+        'Iridescent' => ['All Markings'],
+        'Dripping' => ['All Free Markings', 'Blanket', 'Boar (Bars)', 'Collar', 'Dun', 'Frog Eye', 'Hood', 'Leaf', 'Masked', 'Points', 
+                        'Python', 'Rimmed', 'Ringed', 'Scaled', 'Skink', 'Trailing', 'Underbelly', 'Banded', 'Border', 'Brindle',
+                        'Crested', 'Inkwell', 'Marbled', 'Metallic', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped', 'Tabby', 'Tobiano', 'Toxin (bars)',
+                        'Appaloosa', 'Blooded', 'Eyes', 'Filigree', 'Glass', 'Luminescent', 'Lustrous', 'Painted', 'Petal', 'Aether Marked', 
+                        'Aurora', 'Gemstone', 'Lepir - Simple', 'Rune', 'Triquetra'],
+        'Luminescent' => ['All Free Markings', 'Boar (Bars)', 'Collar', 'Dun', 'Frog Eye', 'Leaf', 'Masked',
+                          'Python', 'Rimmed', 'Ringed', 'Scaled', 'Skink', 'Trailing', 'Banded', 'Border',
+                          'Crested', 'Metallic (If not affecting a marking)', 'Pigeon', 'Plasma', 'Rosettes', 'Shaped', 'Toxin (bars)',
+                          'Eyes', 'Filigree', 'Petal', 'Aether Marked', 'Gemstone', 'Rune', 'Triquetra', 'Teeth, Claws, horns, Gums, and Import Extras',
+                          'These marking may only have 25% of their full range affected: Brindled, Cloud, Dapple, Dipped, Marbled, Merle, and Smoke'],
         // Special groupings for some modifiers
-        'Inherits' => ['Dripping'],
-        'Color' => ['Flaxen']
+        'Inherits' => ['Dripping', 'Luminescent'],
+        'Color' => ['Flaxen', 'Rose', 'Greying', 'Azure', 'Copper', 'Crimson', 'Jade', 'Seafoam', 'Lilac', 'Prismatic', 'Iridescent']
     ];
     // Layering
     // First get the marking name and look for its layer group
