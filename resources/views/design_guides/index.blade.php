@@ -211,6 +211,29 @@
 					</div>
 				</div>
 			</div>
+			<div class="card">
+				<div class="card-header" id="headingFive">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							Free Markings
+						</button>
+					</h2>
+				</div>
+				<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+					<div class="card-body">
+						@foreach(array_chunk($frees, 4) as $free_chunk)
+							<div class="row mb-3">
+								@foreach($free_chunk as $free)
+									<div class="col-md-6 col-lg-3 mb-2">
+										<img src="{{ asset('images/design_guides/Free_'.str_replace(' ', $free[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/free/'.strtolower(str_replace(' ', $free[0]))) }}">{{ $free[0].' ('.$free[1].')' }}</a>
+									</div>
+								@endforeach
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="footer">
