@@ -1,5 +1,5 @@
 <?php
-    $marking_icon = 'Free_Minimal_Mark';
+    $marking_icon = 'Free_Minimal_mark';
     $marking_name = 'Minimal Mark';
     $marking_code = 'MM';
     $marking_desc = "A free marking that can only cover up to 15% of the body. Minimal Marking is a free flowing marking that can create many types of shapes. Such as splotches on the snout, claws, horns, or small marks on the body.";
