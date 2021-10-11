@@ -15,7 +15,7 @@
 </head>
 
 <?php 
-	$frees = [['Accents'], ['Birthmark'], ['Blush'], ['Freckles'], ['Minimal Mark'],
+	$free = [['Accents'], ['Birthmark'], ['Blush'], ['Freckles'], ['Minimal Mark'],
 			  ['Socks'], ['Stockings'], ['Tips']];
 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Collar', 'nCl/ClCl'],
