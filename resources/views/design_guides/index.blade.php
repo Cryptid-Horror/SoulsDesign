@@ -99,6 +99,38 @@
 			</div>
 		</div>
 
+		<!-- Free Marks --> 
+		<div class="accordion" id="accordionExample">
+			<div class="card">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Common Markings
+						</button>
+					</h2>
+				</div>
+
+				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+					<div class="card-body">
+						<div class="alert alert-info">
+							<ul class="mb-0">
+								<li>Ray is now combined with Sable</li>
+								<li>Scorching and Fading have been merged to become Stained</li>
+							</ul>
+						</div>
+						@foreach(array_chunk($commons, 4) as $common_chunk)
+							<div class="row mb-3">
+								@foreach($common_chunk as $common)
+									<div class="col-md-6 col-lg-3 mb-2">
+										<img src="{{ asset('images/design_guides/Common_'.str_replace(' ', '_', $common[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/common/'.strtolower(str_replace(' ', '_', $common[0]))) }}">{{ $common[0].' ('.$common[1].')' }}</a>
+									</div>
+								@endforeach
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
 		<!-- Common Genetics -->		
 		<div class="accordion" id="accordionExample">
 			<div class="card">
@@ -203,30 +235,6 @@
 									<div class="col-md-6 col-lg-3 mb-2">
 										<img src="{{ asset('images/design_guides/Mythic_'.str_replace(' ', '_', $veryrare[0]).'.png') }}" width="90%" style="max-width:200px;">
 										<a class="btn btn-info" href="{{ url('design/mythic/'.strtolower(str_replace(' ', '_', $veryrare[0]))) }}">{{ $veryrare[0].' ('.$veryrare[1].')' }}</a>
-									</div>
-								@endforeach
-							</div>
-						@endforeach
-					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-header" id="headingFive">
-					<h2 class="mb-0">
-						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-							Free Markings
-						</button>
-					</h2>
-				</div>
-				<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-					<div class="card-body">
-						@foreach(array_chunk($frees, 4) as $free_chunk)
-							<div class="row mb-3">
-								@foreach($free_chunk as $free)
-									<div class="col-md-6 col-lg-3 mb-2">
-										<img src="{{ asset('images/design_guides/Free_'.str_replace(' ', '_', $free[0]).'.png') }}" width="90%" style="max-width:200px;">
-										<a class="btn btn-info" href="{{ url('design/free/'.strtolower(str_replace(' ', '_', $free[0]))) }}">{{ $free[0].' ('.$free[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
