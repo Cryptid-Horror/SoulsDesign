@@ -5,7 +5,7 @@
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
 
 var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
-                        "nCri", "CriCri", "nDa", "DaDa", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
+                        "nCri", "CriCri", "nDl", "DlDl", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
 			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
 			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
