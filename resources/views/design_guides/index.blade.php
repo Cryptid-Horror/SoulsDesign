@@ -99,7 +99,7 @@
 			</div>
 		</div>
 
-		
+
 		<!-- Common Genetics -->		
 		<div class="accordion" id="accordionExample">
 			<div class="card">
@@ -214,7 +214,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		Copyright Livard Arts and Cryptid-Horror 2020 all Rights reserved.<br>
+		Copyright Cryptid-Horror 2020 all Rights reserved.<br>
 		Marking Icons created by ModernBeatnik<br>
         Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor<br>
 	</div>
