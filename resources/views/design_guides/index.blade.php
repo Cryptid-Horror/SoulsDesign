@@ -118,12 +118,12 @@
 								<li>Scorching and Fading have been merged to become Stained</li>
 							</ul>
 						</div>
-						@foreach(array_chunk($commons, 4) as $common_chunk)
+						@foreach(array_chunk($frees, 4) as $free_chunk)
 							<div class="row mb-3">
-								@foreach($common_chunk as $common)
+								@foreach($free_chunk as $free)
 									<div class="col-md-6 col-lg-3 mb-2">
-										<img src="{{ asset('images/design_guides/Common_'.str_replace(' ', '_', $common[0]).'.png') }}" width="90%" style="max-width:200px;">
-										<a class="btn btn-info" href="{{ url('design/common/'.strtolower(str_replace(' ', '_', $common[0]))) }}">{{ $common[0].' ('.$common[1].')' }}</a>
+										<img src="{{ asset('images/design_guides/Free_'.str_replace(' ', '_', $free[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/freee/'.strtolower(str_replace(' ', '_', $free[0]))) }}">{{ $free[0].' ('.$free[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
