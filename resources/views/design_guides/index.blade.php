@@ -104,8 +104,8 @@
 			<div class="card">
 				<div class="card-header" id="headingOne">
 					<h2 class="mb-0">
-						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							Common Markings
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Free Markings
 						</button>
 					</h2>
 				</div>
@@ -131,6 +131,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		<!-- Common Genetics -->		
 		<div class="accordion" id="accordionExample">
 			<div class="card">
