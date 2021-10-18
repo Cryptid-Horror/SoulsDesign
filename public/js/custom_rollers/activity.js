@@ -70,6 +70,8 @@ function rollHunt(){
 			else if (i <= 43){itemlist += "Small Animal Carcass";} // fox carcass
 			else if (i <= 50){itemlist += "Wolf Pelt";} // wolf pelt
 			else if (i <= 55){itemlist += "Shark Carcass";} // Shark -- CHARMY
+			else if (i <= 56){itemlist += "Antelope Meat";}
+			else if (i <= 57){itemlist += "Bison Meat";}
 			else if (i <= 58){itemlist += "Swan Carcass";} // dead swan 
 			else if (i <= 60){itemlist += "Spotted Deer Pelt";} // spotted deer pelt
 			else if (i <= 63){itemlist += "Brown Deer Pelt";} // brown deer pelt
@@ -110,7 +112,9 @@ function rollHunt(){
 			else if (i <= 60){itemlist += "Medium Animal Claws";} //medium animal claws
 			else if (i <= 63){itemlist += "Large Animal Carcass";}//deer carcass
 			else if (i <= 66){itemlist += "Heron Carcass";}//dead heron
+			else if (i <= 67){itemlist += "Deer Meat";}
 			else if (i <= 68){itemlist += "Penguin Carcass";}//dead penguin
+			else if (i <= 69){itemlist += "Bear Meat";}
 			else if (i <= 70){itemlist += "Hunting Chest";}//hunting chest
 			else if (i <= 72){itemlist += "100x Crystal";} //100x Crystals
             else if (i <= 77){itemlist += "Common Recipe Fragment";} //Common recipe fragment
@@ -142,8 +146,10 @@ function rollHunt(){
 			else if (i <= 60){itemlist += "Frigid Bear Pelt";}//frigid bear pelt -- CHARMY
 			else if (i <= 63){itemlist += "Premium Meat";}//premium meat
 			else if (i <= 66){itemlist += "Bison Pelt";}//bison pelt
+			else if (i <= 67){itemlist += "Bear Meat";}
+			else if (i <= 68){itemlist += "Wolf Meat";}
 			else if (i <= 69){itemlist += "Penguin Carcass";}//dead penguin
-			else if (i <= 71){itemlist += "200x Crystals";}//x200 Crystals
+			else if (i <= 71){itemlist += "200x Crystals";}//x200 Crystals -- BLUE
 			else if (i <= 73){itemlist += "Large Animal Skull";}//large animal skull
 			else if (i <= 76){itemlist += "Large Animal Claws";}//large animal claws
 			else if (i <= 80){itemlist += "Hunting Chest";}//hunting chest
@@ -177,7 +183,9 @@ function rollHunt(){
 			else if (i <= 54){itemlist += "Large Animal Claws";} //large animal claws
 			else if (i <= 58){itemlist += "Large Animal Skull";} //large animal skull
 			else if (i <= 60){itemlist += "Brown Moose Pelt";} //brown moose pelt
+			else if (i <= 61){itemlist += "Elk Meat";}
 			else if (i <= 62){itemlist += "Piebald Moose Pelt";} //piebald moose pelt
+			else if (i <= 63){itemlist += "Deer Meat";}
 			else if (i <= 64){itemlist += "Albino Moose Pelt";} //albino moose pelt
 			else if (i <= 68){itemlist += "Hunting Chest";} //hunting chest
             else if (i <= 73){itemlist += "Common Recipe Fragment";} //Common recipe fragment
@@ -207,7 +215,9 @@ function rollHunt(){
 			else if (i <= 53){itemlist += "Large Animal Skull";} //large animal skull -- CHARMY
 			else if (i <= 56){itemlist += "Large Animal Claws";} //large animal claws
 			else if (i <= 58){itemlist += "Heron Carcass";} //dead heron
-			else if (i <= 60){itemlist += "Vulture Carcass";} //Dead Vulture
+			else if (i <= 59){itemlist += "Caribou Meat";}
+			else if (i <= 60){itemlist += "Vulture Carcass";} //Dead Vulture'
+			else if (i <= 61){itemlist += "Bison Meat";}
 			else if (i <= 62){itemlist += "Premium Meat";} //Premium Meat
 			else if (i <= 64){itemlist += "Large Reptile Egg";} //large reptile egg
 			else if (i <= 66){itemlist += "600x Crystals";} //600x crystals
@@ -240,9 +250,13 @@ function rollHunt(){
 			else if (i <= 46){itemlist += "Premium Meat";} //premium meat
 			else if (i <= 48){itemlist += "800x Crystals";} //800x crystals
 			else if (i <= 50){itemlist += "Dragon's Talon";} //Dragon's Talon
+			else if (i <= 51){itemlist += "Wolf Meat";}
 			else if (i <= 52){itemlist += "Arcane Heart";} //Arcane Heart
+			else if (i <= 53){itemlist += "Antelope Meat";}
 			else if (i <= 54){itemlist += "Hunting Chest";} //Hunting Chest
+			else if (i <= 55){itemlist += "Caribou Meat";}
 			else if (i <= 56){itemlist += "Aether Bag";} //Mysterious Sack
+			else if (i <= 57){itemlist += "Elk Meat";}
             else if (i <= 61){itemlist += "Common Recipe Fragment";} //Common recipe fragment
             else if (i <= 64){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
             else if (i <= 66){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
@@ -253,14 +267,14 @@ function rollHunt(){
 	function rollFish(){
 		if (zone.value == "radiant"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-				var i = rand(28,55);}
+				var i = rand(28,58);}
             if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
-				var i = rand(28,55);}
+				var i = rand(28,58);}
             if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
-                var i = rand (39, 55);}
+                var i = rand (39, 58);}
             if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
-                var i = rand (39, 55);}
-			else {var i = rand(1,55);}
+                var i = rand (39, 58);}
+			else {var i = rand(1,58);}
 			
 			if(i <= 5){itemlist += "Decent Fish";} // decent fish 
             else if(i <= 10){itemlist += "Water";} //water 
@@ -271,12 +285,13 @@ function rollHunt(){
             else if(i <= 31){itemlist += "Prime Fish Meat";}//prime fish meat
             else if(i <= 34){itemlist += "Jellyfish";}//jelly fish
             else if(i <= 37){itemlist += "Dolphin Carcass";}//dolphin carcass
-            else if(i <= 39){itemlist += "Shark Carcass";}//Shark carcass - BLUE
-            else if (i <= 44){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 47){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 49){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 50){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
-            else if (i <= 55){itemlist += "200 Crystals";} // 200 crystals
+			else if(i <= 41){itemlist += "200 Crystals";} // 200 crystals
+			else if(i <= 45){itemlist += "Whale Bone";}// Whale bone
+            else if(i <= 46){itemlist += "Shark Carcass";}//Shark carcass - BLUE
+            else if(i <= 49){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 53){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if(i <= 56){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if(i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "gloom"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
@@ -302,10 +317,11 @@ function rollHunt(){
             else if(i <= 43){itemlist += "Boot";}//Boot
             else if(i <= 45){itemlist += "Fishing Chest";}//fishing chest 
             else if(i <= 46){itemlist += "200 Crystals";}//200 crystals - BLUE
-            else if (i <= 51){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 54){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 56){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 57){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+			else if(i <= 48){itemlist += "Whale Bone";} // Whale bone
+            else if(i <= 51){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 54){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if(i <= 56){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if(i <= 57){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 			
 		} else if (zone.value == "frigid"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
@@ -330,10 +346,10 @@ function rollHunt(){
             else if(i <= 40){itemlist += "Boot";} 
             else if(i <= 42){itemlist += "Fishing Chest";}//BLUE
             else if(i <= 44){itemlist += "200 Crystals";}
-			else if (i <= 49){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 52){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 54){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 55){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+			else if(i <= 49){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 52){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if(i <= 54){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if(i <= 55){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "shimmering"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
@@ -355,7 +371,8 @@ function rollHunt(){
             else if(i <= 33){itemlist += "Prime Fish Meat";}
             else if(i <= 36){itemlist += "Shark Carcass";}
             else if(i <= 38){itemlist += "Boot";}
-            else if(i <= 40){itemlist += "Fishing Chest";} //BLUE
+			else if(i <= 42){itemlist += "Whale Bone";} 
+            else if(i <= 43){itemlist += "Fishing Chest";} //BLUE
 			else if(i <= 45){itemlist += "Common Recipe Fragment";} //Common recipe fragment
             else if(i <= 48){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
             else if (i <= 50){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
@@ -381,13 +398,14 @@ function rollHunt(){
             else if(i <= 36){itemlist += "Squid Ink";}
             else if(i <= 39){itemlist += "Prime Fish Meat";}
             else if(i <= 41){itemlist += "Octopus Carcass";} 
-            else if(i <= 43){itemlist += "Boot"} // BLUE
+			else if(i <= 42){itemlist += "Whale Bone";}
+            else if(i <= 43){itemlist += "Boot";} // BLUE
             else if(i <= 45){itemlist += "Fishing Chest";}
             else if(i <= 47){itemlist += "200 Crystals";}
-			else if (i <= 52){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 55){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 57){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+			else if(i <= 52){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 55){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if(i <= 57){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if(i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "aether"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
@@ -407,14 +425,15 @@ function rollHunt(){
             else if(i <= 25){itemlist += "Jellyfish";}//CHARMY
             else if(i <= 30){itemlist += "Arcane Frog";}
             else if(i <= 35){itemlist += "Prime Fish Meat";}
+			else if(i <= 37){itemlist += "Whale Bone";}
             else if(i <= 39){itemlist += "Undulated Moray Eel";}
             else if(i <= 40){itemlist += "Fishing Chest";}//BLUE
             else if(i <= 41){itemlist += "Mysterious Bag";}
             else if(i <= 42){itemlist += "Coelacanth";}
-			else if (i <= 47){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 50){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 52){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 53){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+			else if(i <= 47){itemlist += "Common Recipe Fragment";} //Common recipe fragment
+            else if(i <= 50){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
+            else if(i <= 52){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
+            else if(i <= 53){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		}
 	}
