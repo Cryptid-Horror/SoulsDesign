@@ -733,6 +733,7 @@ function generateSpecies() {
 		    sapiBonus = 70;
 		} else if (document.getElementById("ridgeSelected").checked){
 			ridgeBonus = 70;
+		}
 	}
 	if (damBreedVal == sireBreedVal) {
 		childBreedVal = damBreedVal;
@@ -772,16 +773,8 @@ function generateSpecies() {
 						  childBreedVal = Breeds.RIDGE;
 					  } else { 
 						  childBreedVal = Breeds.WARDEN;
-					  }}
-		// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
-			// case Warden x Aitherios
-					 // if (randRange(100) < (20 + aithBonus - wardenBonus)) {
-						//  childBreedVal = Breeds.AITH;
-					 // } else { 
-					//	  childBreedVal = Breeds.WARDEN;
-					//  }
-
-				
+					  }
+					}			
 		} else if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
         if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
 			    // case Stalker x Ravager
@@ -812,13 +805,6 @@ function generateSpecies() {
 					childBreedVal = Breeds.STALKER;
 				}
 			}
-				// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
-			// case Stalker x Aitherios
-					 // if (randRange(100) < (20 + aithBonus - stalkerBonus)) {
-						//  childBreedVal = Breeds.AITH;
-					 // } else { 
-					//	  childBreedVal = Breeds.STALKER;
-					//  }
 		} else if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER) {
 		if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
       // case Ravager x Gemp
@@ -840,14 +826,8 @@ function generateSpecies() {
 						childBreedVal = Breeds.RIDGE;
 					} else { 
 						childBreedVal = Breeds.RAVAGER;
-					}}
-					// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
-			// case Ravager x Aitherios
-					 // if (randRange(100) < (20 + aithBonus - ravagerBonus)) {
-						//  childBreedVal = Breeds.AITH;
-					 // } else { 
-					//	  childBreedVal = Breeds.RAVAGER;
-					//  }
+					}
+				}
 	} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
 		if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
 		// Case GEMP x Sapiere
@@ -862,16 +842,10 @@ function generateSpecies() {
 					childBreedVal = Breeds.RIDGE;
 				} else { 
 					childBreedVal = Breeds.GEMP;
-				}}
+				}
 			}
-	// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
-			// case GEMP x Aitherios
-					 // if (randRange(100) < (20 + aithBonus - gempBonus)) {
-						//  childBreedVal = Breeds.AITH;
-					 // } else { 
-					//	  childBreedVal = Breeds.GEMP;
-					//  }
-	
+		}
+	}
 	// convert to string
 	var result = "";
 	childBreed = childBreedVal;
@@ -887,12 +861,10 @@ function generateSpecies() {
       result = "Sapiere Dragon";
 	} else if (childBreedVal == Breeds.RIDGE){
 	result = "Ridgeback Drake";
-  	} //else if (childBreedVal == Breeds.AITH){
-		//result = "Aitherius Basileus";
-	//}
+  	} 
+
 	return result;
-	}
-}}
+}
 
 function generateTemper() {
 	var damTemperVal = document.getElementById("damTemper").value;
