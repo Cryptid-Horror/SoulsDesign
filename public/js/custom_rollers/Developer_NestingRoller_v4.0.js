@@ -844,7 +844,16 @@ function generateSpecies() {
 					childBreedVal = Breeds.GEMP;
 				}
 			}
-		}
+					//Commented out template for when it's an odd number
+	//} else { 
+		// Case GEMP x Sapiere
+	//	if (randRange (100) < (50 + sapiBonus - gempBonus)) {
+				//childBreedVal = Breeds.SAPI;
+		//	} else {
+			//childBreedVal = Breeds.GEMP;
+			//	}
+	
+	}
 	}
 
 	// convert to string
