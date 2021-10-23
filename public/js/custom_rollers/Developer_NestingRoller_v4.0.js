@@ -107,7 +107,7 @@ var Ranks = Object.freeze({
 var Breeds = Object.freeze({
 		STALKER: 1,	RAVAGER: 2,
 	    WARDEN: 3, GEMP: 4, 
-	    SAPI: 5, RIDGE: 5,
+	    SAPI: 5, RIDGE: 6,
 	});
 
 var Builds = Object.freeze({
