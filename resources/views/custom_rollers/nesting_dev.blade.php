@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v4.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v4.0.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
