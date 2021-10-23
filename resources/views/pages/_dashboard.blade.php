@@ -20,7 +20,7 @@
                     'Profile' => Auth::user()->url,
                     'User Settings' => url('account/settings'),
                     'Notifications' => url('notifications'),
-                    'Player Occupations' => url(''),
+                    'Player Occupations' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Occupations'),
                 ]
             ])
         </div>
@@ -33,7 +33,7 @@
                     'My Genotypes' => url('characters/myos'),
                     'Dragon Transfers' => url('characters/transfers/incoming'),
                     'Adoption Center' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Adoption%20Center'),
-                    'Dragon Occupations' => url('')
+                    'Dragon Occupations' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Occupations')
                 ]
             ])
         </div>
