@@ -20,7 +20,7 @@
                     'Profile' => Auth::user()->url,
                     'User Settings' => url('account/settings'),
                     'Notifications' => url('notifications'),
-                    'Dragon Transfers' => url('characters/transfers/incoming'),
+                    'Player Occupations' => url(''),
                 ]
             ])
         </div>
@@ -32,6 +32,8 @@
                     'My Dragons' => url('characters'),
                     'My Genotypes' => url('characters/myos'),
                     'Dragon Transfers' => url('characters/transfers/incoming'),
+                    'Adoption Center' => url(''),
+                    'Dragon Occupations' => url('')
                 ]
             ])
         </div>
@@ -43,6 +45,20 @@
                     'Awards' => url('awardcase'),
                     'Bank' => url('bank'),
                     'Hoard' => url('inventory'),
+                    'Crafting' => url(''),
+                    'Shops' => url(''),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Design',
+                'links' => [
+                    'Import Downloads' => url(''),
+                    'Genetics Portal' => url(''),
+                    'Dragon Registration' => url('info/dragon_Registration'),
+                    'Registration Portal' => url('')
                 ]
             ])
         </div>
@@ -51,9 +67,48 @@
                 'imageUrl' => asset('images/flower2.png'),
                 'header' => 'Activities',
                 'links' => [
-                    'Prompts' => url('prompts'),
-                    'Crafting' => url('crafting'),
-                    'Dragon Registration' => url('info/dragon_Registration'),
+                    'Dailies' => url(''),
+                    'Quests' => url(''),
+                    'Annual Events' => url(''),
+                    'Rites' => url(''),
+                    'Free Rolls' => ('')
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Specialized',
+                'links' => [
+                    'Arena' => url(''),
+                    'Grand Hunt' => url(''),
+                    'Vortex' => url(''),
+                    'Healing Shrine' => url(''),
+                    'Story Events' => ('')
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Nesting',
+                'links' => [
+                    'Permissions' => url(''),
+                    'Submissions' => url(''),
+                    'Hathcery' => url(''),
+                    'Nesting Rites' => url(''),
+                ]
+            ])
+        </div>
+        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
+            @include('widgets._hovereffect_image', [
+                'imageUrl' => asset('images/flower2.png'),
+                'header' => 'Levels',
+                'links' => [
+                    'Dragon Levels' => url(''),
+                    'Player Levels' => url(''),
+                    'MP/PP' => url(''),
+                    'Non Activity PP' => url(''),
                 ]
             ])
         </div>
