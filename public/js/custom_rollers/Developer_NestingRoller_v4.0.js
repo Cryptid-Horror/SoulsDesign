@@ -1464,7 +1464,7 @@ function generateTrait(traitToGen) {
 	if (document.getElementById("AT").checked) {
 		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
 			destroyedModifiers += "Aether Tonic destroyed.<br>";
-		bonus = 80;
+		bonus = 60;
 	}
 	
 	var roll = randRange(100);
