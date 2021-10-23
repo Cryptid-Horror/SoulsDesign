@@ -32,7 +32,7 @@
                     'My Dragons' => url('characters'),
                     'My Genotypes' => url('characters/myos'),
                     'Dragon Transfers' => url('characters/transfers/incoming'),
-                    'Adoption Center' => url(''),
+                    'Adoption Center' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Adoption%20Center'),
                     'Dragon Occupations' => url('')
                 ]
             ])
@@ -45,70 +45,69 @@
                     'Awards' => url('awardcase'),
                     'Bank' => url('bank'),
                     'Hoard' => url('inventory'),
-                    'Crafting' => url(''),
-                    'Shops' => url(''),
+                    'Crafting' => url('https://www.soulsbetween.com/crafting'),
+                    'Shops' => url('https://www.soulsbetween.com/shops'),
                 ]
             ])
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('images/design.png'),
                 'header' => 'Design',
                 'links' => [
-                    'Import Downloads' => url(''),
-                    'Genetics Portal' => url(''),
+                    'Import Downloads' => url('https://www.soulsbetween.com/world/subtypes'),
+                    'Genetics Portal' => url('https://www.soulsbetween.com/design'),
                     'Dragon Registration' => url('info/dragon_Registration'),
-                    'Registration Portal' => url('')
+                    'Registration Portal' => url('https://www.soulsbetween.com/designs')
                 ]
             ])
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('images/activities.png'),
                 'header' => 'Activities',
                 'links' => [
-                    'Dailies' => url(''),
-                    'Quests' => url(''),
-                    'Annual Events' => url(''),
-                    'Rites' => url(''),
-                    'Free Rolls' => ('')
+                    'Dailies' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Daily%20Activities'),
+                    'Quests' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Basic%20Quests'),
+                    'Taming' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Taming%20Rites'),
+                    'Aether Restoration' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Aether%20Restoration'),
+                    'Free Rolls' => ('https://www.soulsbetween.com/info/MFA')
                 ]
             ])
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
-                'header' => 'Specialized',
+                'imageUrl' => asset('images/special.png'),
+                'header' => 'Combat and Events',
                 'links' => [
-                    'Arena' => url(''),
-                    'Grand Hunt' => url(''),
-                    'Vortex' => url(''),
-                    'Healing Shrine' => url(''),
-                    'Story Events' => ('')
+                    'Arena' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena'),
+                    'Grand Hunt' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=The%20Grand%20Hunt'),
+                    'Vortex' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=The%20Vortex'),
+                    'Healing Shrine' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Healing%20Shrine'),
                 ]
             ])
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('images/nest.png'),
                 'header' => 'Nesting',
                 'links' => [
-                    'Permissions' => url(''),
-                    'Submissions' => url(''),
-                    'Hathcery' => url(''),
-                    'Nesting Rites' => url(''),
+                    'Permissions' => url('https://www.soulsbetween.com/info/Nest_perms'),
+                    'Submissions' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
+                    'Hatchery' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
+                    'Nesting Rites' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20Rites'),
                 ]
             ])
         </div>
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/flower2.png'),
+                'imageUrl' => asset('images/levels2.png'),
                 'header' => 'Levels',
                 'links' => [
-                    'Dragon Levels' => url(''),
-                    'Player Levels' => url(''),
-                    'MP/PP' => url(''),
-                    'Non Activity PP' => url(''),
+                    'Dragon Levels' => url('https://www.soulsbetween.com/world/levels/character'),
+                    'Player Levels' => url('https://www.soulsbetween.com/level'),
+                    'MP/PP' => url('https://www.soulsbetween.com/info/point_counting'),
+                    'Non Activity PP' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Rank%20Updates'),
                 ]
             ])
         </div>
