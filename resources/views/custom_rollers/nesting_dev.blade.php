@@ -51,8 +51,9 @@
 				<option value="1">Stalker Wyvern</option>
 				<option value="2">Ravager Wyvern</option>
 				<option value="3">Warden Dragon</option>
-				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
+				<option value="4">Greater Emperor</option>
+				<option value="6">Ridgeback Drake</option>
 
 			</select>
 			<select id="sireBuild" class="cellElement">
@@ -150,6 +151,7 @@
 				<option value="3">Warden Dragon</option>
 				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
+				<option value="6">Ridgeback Drake</option>
 
 			</select>
 			<select id="damBuild" class="cellElement">
