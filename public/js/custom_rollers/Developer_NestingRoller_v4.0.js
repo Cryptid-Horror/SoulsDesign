@@ -43,7 +43,7 @@ var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether M
 
 var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord" ];
+var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
