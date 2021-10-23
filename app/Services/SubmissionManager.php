@@ -264,6 +264,7 @@ class SubmissionManager extends Service
                         case 'Item':
                             $reward = Item::find($data['rewardable_id'][$key]);
                             break;
+
                         case 'Currency':
                             $reward = Currency::find($data['rewardable_id'][$key]);
                             if(!$reward->is_user_owned) throw new \Exception("Invalid currency selected.");
@@ -271,16 +272,18 @@ class SubmissionManager extends Service
 
                         case 'Award':
                             $reward = Award::find($data['rewardable_id'][$key]);
+                            break;
 
                         case 'Pet':
                             if (!$isStaff) break;
                             $reward = Pet::find($data['rewardable_id'][$key]);
-
                             break;
+
                         case 'LootTable':
                             if (!$isStaff) break;
                             $reward = LootTable::find($data['rewardable_id'][$key]);
                             break;
+
                         case 'Raffle':
                             if (!$isStaff) break;
                             $reward = Raffle::find($data['rewardable_id'][$key]);
@@ -295,6 +298,7 @@ class SubmissionManager extends Service
                             if (!$isStaff) break;
                             $reward = Gear::find($data['rewardable_id'][$key]);
                             break;
+
                         case 'Weapon':
                             if (!$isStaff) break;
                             $reward = Weapon::find($data['rewardable_id'][$key]);
@@ -390,7 +394,6 @@ class SubmissionManager extends Service
         DB::beginTransaction();
 
         try {
-
             // 1. check that the submission exists
             // 2. check that the submission is pending
             $submission = Submission::where('status', 'Pending')->where('id', $data['id'])->first();
