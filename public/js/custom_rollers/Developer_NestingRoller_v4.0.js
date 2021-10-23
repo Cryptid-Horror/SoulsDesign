@@ -229,8 +229,6 @@ function updateTraits(sireOrDam) {
 	if (document.getElementById(sireOrDam + "Breed").value != Breeds.RAVAGER) {
 		document.getElementById(sireOrDam + "Ears").style.display = "none";
 		document.getElementById(sireOrDam + "Tail").style.display = "none";
-	} else if (document.getElementById(sireOrDam + "Breed").value != Breeds.GEMP) {
-		document.getElementById(sireOrDam + "Ears").style.display = "none";
 	} else {
 		document.getElementById(sireOrDam + "Ears").style.display = "initial";
 		document.getElementById(sireOrDam + "Tail").style.display = "initial";
@@ -393,7 +391,7 @@ function validateParent(sireOrDam) {
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Horns")) != 0)
 		return result;
-	else if ((result = validateTrait(sireOrDam, "Ears")) != 0 && (document.getElementById(sireOrDam + "Breed").value == Breeds.RAVAGER + Breeds.GEMP))
+	else if ((result = validateTrait(sireOrDam, "Ears")) != 0 && (document.getElementById(sireOrDam + "Breed").value == Breeds.RAVAGER))
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Tail")) != 0 && (document.getElementById(sireOrDam + "Breed").value == Breeds.RAVAGER))
 		return result;
