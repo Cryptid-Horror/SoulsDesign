@@ -324,7 +324,7 @@ function fillUserAssets($assets, $sender, $recipient, $logType, $data)
         {
             $service = new \App\Services\AwardCaseManager;
             foreach($contents as $asset)
-                if(!$service->moveStack($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
+                if(!$service->creditAward($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
         }
         elseif($key == 'characters' && count($contents))
         {
