@@ -37,9 +37,9 @@ var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephaly" ];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental"];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature"];
 
 var veryRarePhysicalMutations = [];
 
@@ -1327,22 +1327,28 @@ function generateHealth() {
 		return "Healthy";
 	} else {
 		var roll = randRange(100);
-		if (roll < 50) {
-			childHealth += "stillborn "
+		if (roll < 40) {
+			childHealth += "Stillborn "
 		} else {
 			// determine other disabilties
 			roll = randRange(100);
-			if (roll < 70)
-				childHealth += "infertile ";
+			if (roll < 60)
+				childHealth += "Infertile ";
 			roll = randRange(100);
 			if (roll < 60)
-				childHealth += "blind ";
+				childHealth += "Blind ";
 			roll = randRange(100);
-			if (roll < 70)
-				childHealth += "crippled wings ";
+			if (roll < 50)
+				childHealth += "Crippled Wings ";
 			roll = randRange(100);
-			if (roll < 35)
-				childHealth += "mute ";
+			if (roll < 40)
+				childHealth += "Mute ";
+			roll = randRange(100);
+			if (roll < 100)
+				childHealth += "Miniature ";
+			roll = randRange(100);
+			if (roll < 100)
+				childHealth += "Polycephaly ";
 		}
 	}
 	return childHealth;
