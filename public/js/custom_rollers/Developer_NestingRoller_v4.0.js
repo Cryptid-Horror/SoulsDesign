@@ -107,7 +107,7 @@ var Ranks = Object.freeze({
 var Breeds = Object.freeze({
 		STALKER: 1,	RAVAGER: 2,
 	    WARDEN: 3, GEMP: 4, 
-	    SAPI: 5,
+	    SAPI: 5, RIDGE: 5,
 	});
 
 var Builds = Object.freeze({
@@ -122,9 +122,9 @@ var Tempers = Object.freeze({
 	});
 
 var MaxClutchSize = Object.freeze({
-		STALKER: 4,	RAVAGER: 3,
-	    WARDEN: 3, GEMP: 2, 
-	    SAPI: 3,
+		STALKER: 4,	RAVAGER: 4,
+	    WARDEN: 4, GEMP: 3, 
+	    SAPI: 3, RIDGE: 3
 	});
 
 var Rarity = Object.freeze({
@@ -453,6 +453,8 @@ function clutchSize() {
 		maxSize = MaxClutchSize.GEMP;
 	else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI)
 	    maxSize = MaxClutchSize.SAPI;
+	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
+		maxSize = MaxClutchSize.RIDGE;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
 	
@@ -714,21 +716,23 @@ function generateSpecies() {
 	var wardenBonus = 0;
     var gempBonus = 0;
   	var sapiBonus = 0;
+	var ridgeBonus =0;
 
 	if (document.getElementById("DI").checked) {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
 			destroyedModifiers += "Dragon's Instinct destroyed.<br>";
 		if (document.getElementById("stalkerSelected").checked) {
-			stalkerBonus = 40;
+			stalkerBonus = 90;
 		} else if (document.getElementById("ravagerSelected").checked) {
-			ravagerBonus = 40;
+			ravagerBonus = 90;
 		} else if (document.getElementById("wardenSelected").checked) {
-			wardenBonus = 40;
+			wardenBonus = 90;
 		} else if (document.getElementById("gempSelected").checked) {
-			gempBonus = 40;
+			gempBonus = 60;
 		} else if (document.getElementById("sapiSelected").checked){
-		    sapiBonus = 40;
-		}
+		    sapiBonus = 70;
+		} else if (document.getElementById("ridgeSelected").checked){
+			ridgeBonus = 70;
 	}
 	if (damBreedVal == sireBreedVal) {
 		childBreedVal = damBreedVal;
@@ -736,7 +740,7 @@ function generateSpecies() {
 		if (damBreedVal == Breeds.WARDEN || sireBreedVal == Breeds.WARDEN) {
 			if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
 				// case Warden x Stalker
-				if (randRange(100) < (70 + stalkerBonus - wardenBonus)) {
+				if (randRange(100) < (60 + stalkerBonus - wardenBonus)) {
 					childBreedVal = Breeds.STALKER;
 				} else {
 					childBreedVal = Breeds.WARDEN;
@@ -750,7 +754,7 @@ function generateSpecies() {
 				}
 			} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
         // case Warden x Gemp
-				if (randRange(100) < (40 + gempBonus - wardenBonus)) {
+				if (randRange(100) < (30 + gempBonus - wardenBonus)) {
 					childBreedVal = Breeds.GEMP;
 				} else {
 					childBreedVal = Breeds.WARDEN;
@@ -762,12 +766,26 @@ function generateSpecies() {
 				} else { 
 					childBreedVal = Breeds.WARDEN;
 				}
-				}
+		} else  if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
+			// case Warden x Ridgeback
+					  if (randRange(100) < (30 + ridgeBonus - wardenBonus)) {
+						  childBreedVal = Breeds.RIDGE;
+					  } else { 
+						  childBreedVal = Breeds.WARDEN;
+					  }}
+		// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
+			// case Warden x Aitherios
+					 // if (randRange(100) < (20 + aithBonus - wardenBonus)) {
+						//  childBreedVal = Breeds.AITH;
+					 // } else { 
+					//	  childBreedVal = Breeds.WARDEN;
+					//  }
+
 				
 		} else if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
         if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
 			    // case Stalker x Ravager
-			    if (randRange(100) < (40 + ravagerBonus - stalkerBonus)) {
+			    if (randRange(100) < (50 + ravagerBonus - stalkerBonus)) {
 		    		childBreedVal = Breeds.RAVAGER;
 		    	} else {
 		    		childBreedVal = Breeds.STALKER;
@@ -785,33 +803,74 @@ function generateSpecies() {
 					childBreedVal = Breeds.SAPI;
 				} else {
 					childBreedVal = Breeds.STALKER;
-				}}
+				}
+		} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE){
+			// Case Stalker x Ridgeback
+				if (randRange(100) < (30 + ridgeBonus - stalkerBonus)) {
+					childBreedVal = Breeds.RIDGE;
+				} else {
+					childBreedVal = Breeds.STALKER;
+				}
+			}
+				// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
+			// case Stalker x Aitherios
+					 // if (randRange(100) < (20 + aithBonus - stalkerBonus)) {
+						//  childBreedVal = Breeds.AITH;
+					 // } else { 
+					//	  childBreedVal = Breeds.STALKER;
+					//  }
 		} else if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER) {
 		if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
       // case Ravager x Gemp
-      if (randRange(100) < (40 + gempBonus - ravagerBonus)) {
+      if (randRange(100) < (30 + gempBonus - ravagerBonus)) {
       				childBreedVal = Breeds.GEMP;
 	      		} else {
 	      			childBreedVal = Breeds.RAVAGER;
 	      		}
     } else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) { 
 		// Case Ravager x Sapiere	
-				if (randRange (100) < (40 + sapiBonus - ravagerBonus)) { 
+				if (randRange (100) < (30 + sapiBonus - ravagerBonus)) { 
 					childBreedVal = Breeds.SAPI;
 				} else { 
 					childBreedVal = Breeds.RAVAGER;
-				}}
-	} else { 
+				}
+		} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) { 
+			// Case Ravager x Ridgeback	
+					if (randRange (100) < (30 + ridgeBonus - ravagerBonus)) { 
+						childBreedVal = Breeds.RIDGE;
+					} else { 
+						childBreedVal = Breeds.RAVAGER;
+					}}
+					// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
+			// case Ravager x Aitherios
+					 // if (randRange(100) < (20 + aithBonus - ravagerBonus)) {
+						//  childBreedVal = Breeds.AITH;
+					 // } else { 
+					//	  childBreedVal = Breeds.RAVAGER;
+					//  }
+	} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
+		if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
 		// Case GEMP x Sapiere
 		if (randRange (100) < (50 + sapiBonus - gempBonus)) {
 				childBreedVal = Breeds.SAPI;
 			} else {
 				childBreedVal = Breeds.GEMP;
+			}	
+		} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) { 
+		// Case GEMP x Ridgeback	
+				if (randRange (100) < (30 + ridgeBonus - gempBonus)) { 
+					childBreedVal = Breeds.RIDGE;
+				} else { 
+					childBreedVal = Breeds.GEMP;
+				}}
 			}
-			
-	
-	}
-    }
+	// } else  if (damBreedVal == Breeds.AITH || sireBreedVal == Breeds.AITH) {
+			// case GEMP x Aitherios
+					 // if (randRange(100) < (20 + aithBonus - gempBonus)) {
+						//  childBreedVal = Breeds.AITH;
+					 // } else { 
+					//	  childBreedVal = Breeds.GEMP;
+					//  }
 	
 	// convert to string
 	var result = "";
@@ -824,12 +883,16 @@ function generateSpecies() {
 		result = "Warden Dragon";
 	} else if (childBreedVal == Breeds.GEMP) {
     result = "Greater Emperor";
-  } else if (childBreedVal == Breeds.SAPI){
+  	} else if (childBreedVal == Breeds.SAPI){
       result = "Sapiere Dragon";
-  }
-	
+	} else if (childBreedVal == Breeds.RIDGE){
+	result = "Ridgeback Drake";
+  	} //else if (childBreedVal == Breeds.AITH){
+		//result = "Aitherius Basileus";
+	//}
 	return result;
-}
+	}
+}}
 
 function generateTemper() {
 	var damTemperVal = document.getElementById("damTemper").value;
@@ -1344,10 +1407,10 @@ function generateHealth() {
 			if (roll < 40)
 				childHealth += "Mute ";
 			roll = randRange(100);
-			if (roll < 100)
+			if (roll < 30)
 				childHealth += "Miniature ";
 			roll = randRange(100);
-			if (roll < 100)
+			if (roll < 40)
 				childHealth += "Polycephaly ";
 		}
 	}
