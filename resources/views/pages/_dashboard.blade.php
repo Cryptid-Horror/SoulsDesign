@@ -31,6 +31,7 @@
                     'My Dragons' => url('characters'),
                     'My Genotypes' => url('characters/myos'),
                     'Dragon Transfers' => url('characters/transfers/incoming')
+                    'Dragon Transfers' => url('characters/transfers/incoming')
                 ]
             ])
         </div>
