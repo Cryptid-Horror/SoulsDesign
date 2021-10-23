@@ -156,7 +156,11 @@ class GrantController extends Controller
         $data = $request->only(['names', 'award_ids', 'quantities', 'data', 'disallow_transfer', 'notes']);
         if($service->grantAwards($data, Auth::user())) {
             flash('Awards granted successfully.')->success();
-        };
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
     }
 
     /** 
