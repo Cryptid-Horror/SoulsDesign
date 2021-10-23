@@ -19,7 +19,8 @@
                 'links' => [
                     'Profile' => Auth::user()->url,
                     'User Settings' => url('account/settings'),
-                    'Notifications' => url('notifications')
+                    'Notifications' => url('notifications'),
+                    'Dragon Transfers' => url('characters/transfers/incoming'),
                 ]
             ])
         </div>
@@ -31,7 +32,6 @@
                     'My Dragons' => url('characters'),
                     'My Genotypes' => url('characters/myos'),
                     'Dragon Transfers' => url('characters/transfers/incoming'),
-                    'Dragon Transfers' => url('characters/transfers/incoming')
                 ]
             ])
         </div>
