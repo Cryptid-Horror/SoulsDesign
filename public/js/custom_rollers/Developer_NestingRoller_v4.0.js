@@ -1471,110 +1471,110 @@ function generateTrait(traitToGen) {
 	
 	if (sireRarity == Rarity.COMMON && damRarity == Rarity.COMMON) {
 	    if (roll < 40 - bonus) {
-	            childRarity = Rarity.Common;
+	            childRarity = Rarity.COMMON;
 	    } else if (roll < 30 - bonus) { 
-	            childRarity = Rarity.Uncommon;
+	            childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-				childRarity = Rarity.Rare;
+				childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-				childRarity = Rarity.VeryRare
+				childRarity = Rarity.VERY_RARE
 		}
 		childRarity = Rarity.COMMON;
 	} else if (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.UNCOMMON) {
 		if (roll <30 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 40 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if (sireRarity == Rarity.RARE && damRarity == Rarity.RARE) {
 		if (roll < 20 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 30 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 40 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.VERY_RARE) {
 		if (roll < 10 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 20 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 30 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 40 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.UNCOMMON) ||
 		       (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.COMMON)){
 		if (roll < 40 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 30 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.COMMON)) {
 		if (roll < 30 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 40 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.COMMON)) {
 		if (roll < 20 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 30 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 40 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.UNCOMMON)) {
 		if (roll < 30 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 40 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.UNCOMMON)) {
 		if (roll < 20 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 30 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 20 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 10 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.RARE && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.RARE)) {
 		if (roll < 10 - bonus) {
-			childRarity = Rarity.Common;
+			childRarity = Rarity.COMMON;
 		} else if (roll < 20 - bonus) { 
-			childRarity = Rarity.Uncommon;
+			childRarity = Rarity.UNCOMMON;
 		} else if (roll < 30 - bonus) {
-			childRarity = Rarity.Rare;
+			childRarity = Rarity.RARE;
 		} else if (roll < 40 - bonus) {
-			childRarity = Rarity.VeryRare
+			childRarity = Rarity.VERY_RARE
 		}
 	}
 	
