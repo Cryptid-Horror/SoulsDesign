@@ -15,17 +15,16 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v4.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v4.0.js') }}"></script>
 
-	<title>DEV Nesting Roller - Souls-Between</title>
+	<title>Nesting Roller - Souls-Between</title>
 </head>
 
 <body onload="initialize()">
 
 <table id="rollerTitle">
 	<tr>
-		<div id="title"><br><h1>DEVELOPER VERSION<br></h1>
-        Exists only to test new functions before public release</div>
+		<div id="title"><br><h1>Nesting Roller</h1></div>
 	</tr>
 </table>
 <table id="mainContent">
@@ -57,7 +56,7 @@
 
 			</select>
 			<select id="sireBuild" class="cellElement">
-				<option value="1">Common Coat</option>
+				<option value="1">Velour Coat</option>
                 <option value="2">Plated</option>
 				<option value="3">Feathered</option>
                 <option value="4">Angora</option>
@@ -66,28 +65,28 @@
 		</div>
 		
 		<div id="sireRowMiddle">
-			<select id="sireEyes" class="cellElement">
-				<option value="1">Common Eyes</option>
-				<option value="2">Uncmn Eyes</option>
-				<option value="3">Rare Eyes</option>
-				<option value="4">Mythic Eyes</option>
+		<select id="sireHorns" class="cellElement">
+				<option value="1">C Horns</option>
+				<option value="2">UC Horns</option>
+				<option value="3">R Horns</option>
+				<option value="4">M Horns</option>
 			</select>
-			<select id="sireHorns" class="cellElement">
-				<option value="1">Common Horns</option>
-				<option value="2">Uncmn Horns</option>
-				<option value="3">Rare Horns</option>
-				<option value="4">Mythic Horns</option>
+			<select id="sireEyes" class="cellElement">
+				<option value="1">C Eyes</option>
+				<option value="2">UC Eyes</option>
+				<option value="3">R Eyes</option>
+				<option value="4">M Eyes</option>
 			</select>
 			<!-- The following two are only for Ravagers -->
 			<select id="sireEars" class="cellElement">
-				<option value="1">Common Ears</option>
-				<option value="2">Uncmn Ears</option>
-				<option value="3">Rare Ears</option>
+				<option value="1">C Ears</option>
+				<option value="2">UC Ears</option>
+				<option value="3">R Ears</option>
 			</select>
 			<select id="sireTail" class="cellElement">
-				<option value="1">Common Tail</option>
-				<option value="2">Uncmn Tail</option>
-				<option value="3">Rare Tail</option>
+				<option value="1">C Tail</option>
+				<option value="2">UC Tail</option>
+				<option value="3">R Tail</option>
 			</select>
 		</div>
 		
@@ -154,7 +153,7 @@
 
 			</select>
 			<select id="damBuild" class="cellElement">
-				<option value="1">Common Coat</option>
+				<option value="1">Velour Coat</option>
                 <option value="2">Plated</option>
 				<option value="3">Feathered</option>
                 <option value="4">Angora</option>
@@ -162,28 +161,28 @@
 			</select>
 		</div>
 		<div id="damRowMiddle">
-			<select id="damEyes" class="cellElement">
-				<option value="1">Common Eyes</option>
-				<option value="2">Uncmn Eyes</option>
-				<option value="3">Rare Eyes</option>
-				<option value="4">Mythic Eyes</option>
+		<select id="damHorns" class="cellElement">
+				<option value="1">C Horns</option>
+				<option value="2">UC Horns</option>
+				<option value="3">R Horns</option>
+				<option value="4">M Horns</option>
 			</select>
-			<select id="damHorns" class="cellElement">
-				<option value="1">Common Horns</option>
-				<option value="2">Uncmn Horns</option>
-				<option value="3">Rare Horns</option>
-				<option value="4">Mythic Horns</option>
+			<select id="damEyes" class="cellElement">
+				<option value="1">C Eyes</option>
+				<option value="2">UC Eyes</option>
+				<option value="3">R Eyes</option>
+				<option value="4">M Eyes</option>
 			</select>
 			<!-- The following two are only for Ravagers -->
 			<select id="damEars" class="cellElement">
-				<option value="1">Common Ears</option>
-				<option value="2">Uncmn Ears</option>
-				<option value="3">Rare Ears</option>
+				<option value="1">C Ears</option>
+				<option value="2">UC Ears</option>
+				<option value="3">R Ears</option>
 			</select>
 			<select id="damTail" class="cellElement">
-			    <option value="1">Common Tail</option>
-				<option value="2">Uncmn Tail</option>
-				<option value="3">Rare Tail</option>
+			    <option value="1">C Tail</option>
+				<option value="2">U Tail</option>
+				<option value="3">R Tail</option>
 			</select>
 		</div>
 		
@@ -223,7 +222,7 @@
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
 		</div>
 	</td>
-	
+	<br>
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
@@ -254,14 +253,14 @@
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
-                               	<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
+                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
 			</span>
-            			<br>
+			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="VP" id="VP">Vigilant Parent</label>
+			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
 			</span>
-			
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
 			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
 			<div id="genderSelectionRadios">
@@ -298,9 +297,19 @@
 					<option value="crimson">Crimson</option>
 					<option disabled value="3">Rare</option>
 					<option value="jade">Jade</option>
+					<option value="Seafoam">Seafoam</option>
 					<option disabled value="4">Very Rare</option>
 					<option value="lilac">Lilac</option>
                     <option value="prismatic">Prismatic</option>
+                    <option disabled value="5">Petty(Agouti Only)</option>
+                    <option value="umber">Umber</option>
+                    <option value="haze">Haze</option>
+                    <option value="ivory">Ivory</option>
+                    <option value="vanta">Vanta</option>
+                    <option value="golden">Golden</option>
+					<option value="ivory">Hazed Umber</option>
+                    <option value="vanta">Hazed Ivory</option>
+                    <option value="golden">Hazed Golden</option>
 				</select>
 			</div>
 		</div>
@@ -312,17 +321,19 @@
 	<td>
 		<button onclick="roll()">Roll!</button>
 		<button onclick="clearForms()">Reset forms</button>
+		<button onclick="clipBoard()">Copy To Clipboard</button>
 	</td>
 </table>
 <table id="nest">
 	<td>
 		<div id="nestTextArea"></div>
+		<input id="nestClipboard" style="position:absolute;left:-9999px;">
 	</td>
 </table>
 	
 <table id="footer">
 	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
-        v4.1.0 - Maintained by Cryptid-Horror <br>
+        v5.0.0 - Maintained by Cryptid-Horror <br>
 </table>
 
 </body>
