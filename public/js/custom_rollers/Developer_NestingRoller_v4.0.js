@@ -2154,9 +2154,9 @@ function generateMutation() {
 	} if (document.getElementById("DM").checked) {
 		dmMuteBonus += 30;
 	} if (document.getElementById("smMini").checked) {
-		smMuteBonus += 90;
+		smMuteBonus += 2000;
 	} if (document.getElementById("dmMini").checked) {
-		dmMuteBonus += 90;
+		dmMuteBonus += 2000;
 	} 
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
