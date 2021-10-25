@@ -131,7 +131,7 @@ var MaxClutchSize = Object.freeze({
 var Rarity = Object.freeze({
 		COMMON: 1,	UNCOMMON: 2,
 		RARE: 3,	VERY_RARE: 4,
-        PETTY: 5,
+        PETTY: 5, MYTHIC: 6,
 	});
 
 var Breaths = Object.freeze({
@@ -2088,7 +2088,7 @@ function selectMutation(mutationRarity, physicalOnly) {
 			result = rareMutations[randRange(rareMutations.length)];
 		} else if (mutationRarity == Rarity.VERY_RARE && !physicalOnly) {
 			result = veryRareMutations[randRange(veryRareMutations.length)];
-		} else if (mutationRarity == Rarity.VERY_RARE && physicalOnly) {
+		} else if (mutationRarity == Rarity.MYTHIC && physicalOnly) {
 			result = veryRarePhysicalMutations[randRange(veryRarePhysicalMutations.length)];
 		}
 		
@@ -2168,7 +2168,7 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.VERY_RARE && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
+		else if (i == Rarity.MYTHIC && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);
