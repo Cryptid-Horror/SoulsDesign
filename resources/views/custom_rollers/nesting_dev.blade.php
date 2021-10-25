@@ -114,8 +114,7 @@
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
 				<option value="10">Adept</option>
-			</select> <br>
-			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">Weak Fertility?</label>
+			</select>
 		</div>
 		
 		<!-- Textboxes -->
@@ -262,6 +261,7 @@
 			<span style="white-space: nowrap;">
 			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
 			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">Weak Fertility?</label>
 			</span>
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
 			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
