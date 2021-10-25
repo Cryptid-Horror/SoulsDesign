@@ -1402,18 +1402,6 @@ function generateHealth() {
 				childHealth += "Polycephaly ";
 		}
 	}
-
-	if (!document.getElementById("weakFertility").checked) {
-		var roll = randRange(100);
-		if (roll < 40) {
-			childHealth += "Infertile ";
-		} else if (roll < 80) {
-			childHealth += "Weak Fertility ";
-		} else { 
-			childHealth += "";
-		}
-	}
-	return childHealth;
 }
 
 function generateEyes(childRarity) {
