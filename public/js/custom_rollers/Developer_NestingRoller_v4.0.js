@@ -37,12 +37,11 @@ var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephale" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephaler" ];
 
 var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental",];
 
-var veryRarePhysicalMutations = ["Miniature"];
-
+var veryRarePhysicalMutations = [];
 
 var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
 
@@ -131,7 +130,7 @@ var MaxClutchSize = Object.freeze({
 var Rarity = Object.freeze({
 		COMMON: 1,	UNCOMMON: 2,
 		RARE: 3,	VERY_RARE: 4,
-        PETTY: 5, MYTHIC: 6,
+        PETTY: 5,
 	});
 
 var Breaths = Object.freeze({
@@ -495,6 +494,12 @@ function clutchSize() {
 		size = maxSize;
 		if (!destroyedModifiers.includes("Fertility Potion destroyed.<br>"))
 			destroyedModifiers += "Fertility Potion destroyed.<br>";
+	}
+
+	// Remove an egg if weak fertility
+	if (document.getElementById("weakFertility").checked) {
+		if (randRange(100) < 50)
+			size = 1
 	}
 
 // Vigilant parents + dragon heart
@@ -2088,7 +2093,7 @@ function selectMutation(mutationRarity, physicalOnly) {
 			result = rareMutations[randRange(rareMutations.length)];
 		} else if (mutationRarity == Rarity.VERY_RARE && !physicalOnly) {
 			result = veryRareMutations[randRange(veryRareMutations.length)];
-		} else if (mutationRarity == Rarity.MYTHIC && physicalOnly) {
+		} else if (mutationRarity == Rarity.VERY_RARE && physicalOnly) {
 			result = veryRarePhysicalMutations[randRange(veryRarePhysicalMutations.length)];
 		}
 		
@@ -2138,8 +2143,6 @@ function generateMutation() {
 	var dragonsEyeBonus = 0;
 	var smMuteBonus = 0;
 	var dmMuteBonus = 0;
-	var smMiniBonus = 0;
-	var dmMiniBonus = 0;
 	var mutationList = [];
 	if (document.getElementById("damTemper").value == Tempers.CALM) {
 		bonus += 10;
@@ -2153,22 +2156,16 @@ function generateMutation() {
 		smMuteBonus += 30;
 	} if (document.getElementById("DM").checked) {
 		dmMuteBonus += 30;
-	} if (document.getElementById("smMini").checked) {
-		smMuteBonus += 2000;
-	} if (document.getElementById("dmMini").checked) {
-		dmMuteBonus += 2000;
-	} 
+	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
-		if (i == Rarity.COMMON && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.UNCOMMON && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		else if (i == Rarity.UNCOMMON && roll < 25 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.RARE && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
-			result = selectMutation(i, false);
-		else if (i == Rarity.MYTHIC && roll < 1000 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
+		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);

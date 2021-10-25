@@ -115,8 +115,7 @@
 				<option value="9">Healing Aura</option>
 				<option value="10">Adept</option>
 			</select> <br>
-			<label class="radioLabel"><input type="checkbox" id="smMini" name="smMini" value="smMini">Sire is Miniature?</label>
-			<label class="radioLabel"><input type="checkbox" id="dmMini" name="dmMini" value="dmMini">Dam is Miniature?</label>
+			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">Weak Fertility?</label>
 		</div>
 		
 		<!-- Textboxes -->
