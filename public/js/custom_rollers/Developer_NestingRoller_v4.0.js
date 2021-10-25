@@ -2168,7 +2168,7 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.VERY_RARE && physicalOnly && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
+		else if (i == Rarity.VERY_RARE && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);
