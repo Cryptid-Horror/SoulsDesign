@@ -498,7 +498,6 @@ function clutchSize() {
 
 	// Remove an egg if weak fertility
 	if (document.getElementById("weakFertility").checked) {
-		if (randRange(100) < 50)
 			size = 1
 	}
 
