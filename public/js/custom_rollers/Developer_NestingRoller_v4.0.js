@@ -1374,16 +1374,7 @@ function generateCoat() {
 
 function generateHealth() {
 	var childHealth = "";
-	if (!document.getElementById("weakFertility").checked) {
-		var roll = randRange(100);
-		if (roll < 40) {
-			childHealth += "Infertile ";
-		} else if (roll < 80) {
-			childHealth += "Weak Fertility ";
-		} else { 
-			childHealth += "";
-		}
-	} if (!document.getElementById("inbreeding").checked) {
+	if (!document.getElementById("inbreeding").checked) {
 		return "Healthy";
 	} else {
 		var roll = randRange(100);
@@ -1409,6 +1400,17 @@ function generateHealth() {
 			roll = randRange(100);
 			if (roll < 40)
 				childHealth += "Polycephaly ";
+		}
+	}
+
+	if (!document.getElementById("weakFertility").checked) {
+		var roll = randRange(100);
+		if (roll < 40) {
+			childHealth += "Infertile ";
+		} else if (roll < 80) {
+			childHealth += "Weak Fertility ";
+		} else { 
+			childHealth += "";
 		}
 	}
 	return childHealth;
