@@ -2160,15 +2160,15 @@ function generateMutation() {
 	} 
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
-		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		if (i == Rarity.COMMON && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.UNCOMMON && roll < 25 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		else if (i == Rarity.UNCOMMON && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		else if (i == Rarity.RARE && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
+		else if (i == Rarity.VERY_RARE && roll < 1 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.MYTHIC && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
+		else if (i == Rarity.MYTHIC && roll < 1000 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);
