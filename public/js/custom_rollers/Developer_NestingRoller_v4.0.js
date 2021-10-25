@@ -37,15 +37,12 @@ var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephale" ];
 
 var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental",];
 
-var veryRarePhysicalMutations = [];
+var veryRarePhysicalMutations = ["Miniature"];
 
-var miniMutations = ["Miniature"];
-
-var polyMutations = ["Polcephaly"];
 
 var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
 
@@ -2093,10 +2090,6 @@ function selectMutation(mutationRarity, physicalOnly) {
 			result = veryRareMutations[randRange(veryRareMutations.length)];
 		} else if (mutationRarity == Rarity.VERY_RARE && physicalOnly) {
 			result = veryRarePhysicalMutations[randRange(veryRarePhysicalMutations.length)];
-		} else if (mutationRarity == Rarity.MINI) {
-			result = miniMutations[randRange(miniMutations.length)];
-		} else if (mutationRarity == Rarity.POLY) {
-			result = polyMutations[randRange(polyMutations.length)];
 		}
 		
 		if (result == "Eagle Beak" || result == "Fisher Beak" || result == "Vulture" || result == "Warlord") {
@@ -2147,8 +2140,6 @@ function generateMutation() {
 	var dmMuteBonus = 0;
 	var smMiniBonus = 0;
 	var dmMiniBonus = 0;
-	var smPolyBonus = 0;
-	var dmPolyBonus = 0;
 	var mutationList = [];
 	if (document.getElementById("damTemper").value == Tempers.CALM) {
 		bonus += 10;
@@ -2166,12 +2157,8 @@ function generateMutation() {
 		smMuteBonus += 90;
 	} if (document.getElementById("dmMini").checked) {
 		dmMuteBonus += 90;
-	} if (document.getElementById("smPoly").checked) {
-		smMuteBonus += 90;
-	} if (document.getElementById("dmPoly").checked) {
-		dmMuteBonus += 90;
-	}
-	for (i = Rarity.COMMON; i <= Rarity.POLY; i++) {
+	} 
+	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
 		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
@@ -2181,9 +2168,7 @@ function generateMutation() {
 			result = selectMutation(i, true);
 		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
-		else if (i == Rarity.MINI && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
-			result = selectMutation(i, false);
-		else if (i == Rarity.POLY && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smPolyBonus + dmPolyBonus)
+		else if (i == Rarity.VERY_RARE && physicalOnly && roll < 10 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus + smMiniBonus + dmMiniBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);

@@ -117,8 +117,6 @@
 			</select> <br>
 			<label class="radioLabel"><input type="checkbox" id="smMini" name="smMini" value="smMini">Sire is Miniature?</label>
 			<label class="radioLabel"><input type="checkbox" id="dmMini" name="dmMini" value="dmMini">Dam is Miniature?</label>
-			<label class="radioLabel"><input type="checkbox" id="smPoly" name="smPoly" value="smPoly">Sire is Polycephale?</label>
-			<label class="radioLabel"><input type="checkbox" id="dmPoly" name="dmPoly" value="dmPoly">Dam is Polycephale?</label>
 		</div>
 		
 		<!-- Textboxes -->
