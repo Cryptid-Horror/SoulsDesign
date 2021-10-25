@@ -1574,7 +1574,7 @@ function generateTrait(traitToGen) {
 		} else if (roll < 50 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
-			childRarity = Rarity.VERY_RARE;
+			childRarity = Rarity.VERY_RARE
 		}
 	}
 	
@@ -1972,23 +1972,9 @@ function generateBreath() {
 		bonus = 30;
 	}
 	if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
-		if (roll >= 10 - bonus) {
+		if (roll >= 96 - bonus) {
 			return "Fire";
-		} else if (roll >= 20 - bonus/2) {
-			result = "Ice";
-		} else if (roll >= 30 - bonus/2) {
-			result = "Shadow";
- 		} else if (roll >= 40 - bonus/2) {
-			result = "Lightning";
-		} else if (roll >= 50 - bonus/2) {
-			result = "Radiation";
-		} else if (roll >= 60 - bonus/2) {
-			result = "Wind";
-		} else if (roll >= 70 - bonus/2) {
-			result = "Poison";
-		} else if (roll >= 80 - bonus/2) {
-			result = "Luster";
-		} 
+		}
 	} else if (damBreath == Breaths.NONE) {
 		if (roll >= 90 - bonus) {
 			result = sireBreath;
