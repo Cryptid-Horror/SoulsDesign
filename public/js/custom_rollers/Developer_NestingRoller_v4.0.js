@@ -1381,7 +1381,7 @@ function generateHealth() {
 		} else if (roll < 80) {
 			childHealth += "Weak Fertility ";
 		} else { 
-			childHealth += ""
+			childHealth += "";
 		}
 	} if (!document.getElementById("inbreeding").checked) {
 		return "Healthy";
