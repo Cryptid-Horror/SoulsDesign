@@ -93,8 +93,9 @@ Route::group(['prefix' => 'weapons', 'namespace' => 'Users'], function() {
     Route::post('detach/{id}', 'WeaponController@postDetach');
     Route::post('upgrade/{id}', 'WeaponController@postUpgrade');
     Route::post('image/{id}', 'WeaponController@postImage');
-
     Route::get('selector', 'WeaponController@getSelector');
+});
+  
 Route::group(['prefix' => 'wishlists', 'namespace' => 'Users'], function() {
     Route::get('/', 'WishlistController@getIndex');
     Route::get('create', 'WishlistController@getCreateWishlist');
