@@ -11,6 +11,7 @@
         <div class="sidebar-item"><a href="{{ url('gears') }}" class="{{ set_active('gears*') }}">Gear</a></div>
         <div class="sidebar-item"><a href="{{ url('weapons') }}" class="{{ set_active('weapons*') }}">Weapons</a></div>
         @if(Auth::check())<div class="sidebar-item"><a href="{{ url(Auth::user()->url . '/level') }}" class="{{ set_active(Auth::user()->url . '/level') }}">Level Logs</a></div>@endif
+        <div class="sidebar-item"><a href="{{ url('wishlists') }}" class="{{ set_active('wishlists*') }}">Wishlists</a></div>
     </li>
     <li class="sidebar-section">
         <div class="sidebar-section-header">Activity</div>

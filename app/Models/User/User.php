@@ -251,7 +251,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
     /** 
-     * Get the user's pets.
+     * Get the users pets.
      */
     public function pets()
     {
@@ -259,20 +259,20 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /** 
-     * Get the user's weapons.
+     * Get the users weapons.
      */
     public function weapons()
     {
         return $this->belongsToMany('App\Models\Claymore\Weapon', 'user_weapons')->withPivot('data', 'updated_at', 'id', 'character_id', 'has_image')->whereNull('user_weapons.deleted_at');
     }
-
     /**
-     * Get all of the user's character bookmarks.
+     * Get all of the users character bookmarks.
      */
     public function bookmarks()
     {
         return $this->hasMany('App\Models\Character\CharacterBookmark')->where('user_id', $this->id);
     }
+
 
     /** 
      * Get the user's gears.
@@ -281,6 +281,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Models\Claymore\Gear', 'user_gears')->withPivot('data', 'updated_at', 'id', 'character_id', 'has_image')->whereNull('user_gears.deleted_at');
     }
+
+    /**
+     * Get all of the user's wishlists.
+     */
+    public function wishlists()
+    {
+        return $this->hasMany('App\Models\User\Wishlist')->where('user_id', $this->id);
+    }
+
     /**********************************************************************************************
 
         SCOPES
@@ -531,7 +540,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getcheckBirthdayAttribute()
     {
-        $bday = $this->birthday; 
+        $bday = $this->birthday;
         if(!$bday || $bday->diffInYears(carbon::now()) < 13) return false;
         else return true;
     }

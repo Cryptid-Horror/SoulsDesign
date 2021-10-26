@@ -24,6 +24,7 @@ class CharacterImage extends Model
         'x0', 'x1', 'y0', 'y1',
         'description', 'parsed_description',
         'is_valid', 'ext_url', 'genotype', 'phenotype', 'free_markings', 'adornments'
+
     ];
 
     /**
@@ -51,6 +52,7 @@ class CharacterImage extends Model
         'image' => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
         'thumbnail' => 'nullable|mimes:jpeg,gif,png|max:20000',
         'ext_url' => 'required_without:image|nullable|url|max:20000',
+
     ];
 
     /**

@@ -21,12 +21,12 @@ use App\Models\User\UserItem;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\Item\ItemLog;
-
 use App\Models\User\UserAward;
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
 use App\Models\Award\AwardLog;
-
+use App\Models\User\Wishlist;
+use App\Models\User\WishlistItem;
 use App\Models\Gallery\GalleryFavorite;
 use App\Models\Gallery\GalleryCharacter;
 
@@ -96,8 +96,6 @@ class UserController extends Controller
         $weapons = $this->user->weapons()->orderBy('user_weapons.updated_at', 'DESC')->take(4)->get();
         $armours = $gears->union($weapons);
 
-
-
         return view('user.profile', [
             'user' => $this->user,
             'items' => $this->user->items()->where('count', '>', 0)->orderBy('user_items.updated_at', 'DESC')->take(4)->get(),
@@ -121,7 +119,7 @@ class UserController extends Controller
     {
         $aliases = $this->user->aliases();
         if(!Auth::check() || !(Auth::check() && Auth::user()->hasPower('edit_user_info'))) $aliases->visible();
-        
+
         return view('user.aliases', [
             'user' => $this->user,
             'aliases' => $aliases->orderBy('is_primary_alias', 'DESC')->orderBy('site')->get(),
@@ -317,6 +315,7 @@ class UserController extends Controller
     }
 
     /**
+
      * Shows a user's profile.
      *
      * @param  string  $name
@@ -329,11 +328,49 @@ class UserController extends Controller
             'exps' => $this->user->getExpLogs(),
             'levels' => $this->user->getLevelLogs(),
             'stats' => $this->user->getStatLogs(),
+        ]);
+    }
+     /* Shows the users wishlists.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getUserWishlists(Request $request)
+    {
+        $query = $this->user->wishlists();
+
+        $data = $request->only(['name', 'sort']);
+
+        if(isset($data['name']))
+            $query->where('name', 'LIKE', '%'.$data['name'].'%');
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->orderBy('name', 'ASC');
+                    break;
+                case 'alpha-reverse':
+                    $query->orderBy('name', 'DESC');
+                    break;
+                case 'newest':
+                    $query->orderBy('id', 'DESC');
+                    break;
+                case 'oldest':
+                    $query->orderBy('id', 'ASC');
+                    break;
+            }
+        }
+        else $query->orderBy('name', 'ASC');
+
+        return view('user.wishlists', [
+            'user' => $this->user,
+            'wishlists' => $query->paginate(20)->appends($request->query()),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get()
         ]);
     }
 
     /**
+
      * Shows a user's pets.
      *
      * @param  string  $name
@@ -356,6 +393,54 @@ class UserController extends Controller
             'user' => $this->user,
             'weaponLogs' => $this->user->getWeaponLogs(),
             'gearLogs' => $this->user->getGearLogs()
+        ]);
+    }
+     /* Shows a wishlists page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getUserWishlist($name, $id = null, Request $request)
+    {
+        if($id) {
+            $wishlist = Wishlist::where('id', $id)->where('user_id', $this->user->id)->first();
+            if(!$wishlist) abort(404);
+
+            $query = $wishlist->items();
+        }
+        else {
+            $wishlist = null;
+            $query = WishlistItem::where('wishlist_id', 0)->where('user_id', $this->user->id);
+        }
+
+        $data = $request->only(['name', 'sort']);
+
+        if(isset($data['name']))
+            $query->where(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'LIKE', '%'.$data['name'].'%');
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'ASC');
+                    break;
+                case 'alpha-reverse':
+                    $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'DESC');
+                    break;
+                case 'newest':
+                    $query->orderBy('id', 'DESC');
+                    break;
+                case 'oldest':
+                    $query->orderBy('id', 'ASC');
+                    break;
+            }
+        }
+        else $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'ASC');
+
+        return view('user.wishlist', [
+            'user' => $this->user,
+            'wishlist' => $wishlist,
+            'items' => $query->paginate(20)->appends($request->query()),
+            'sublists' => Sublist::orderBy('sort', 'DESC')->get()
         ]);
     }
 

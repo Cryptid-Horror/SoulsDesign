@@ -105,7 +105,7 @@
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body text-center">
-                <img src="{{ asset('images/characters.png') }}" />
+                <img src="{{ asset('images/characters.png') }}" alt="Characters" />
                 <h5 class="card-title">Characters</h5>
             </div>
             <ul class="list-group list-group-flush">

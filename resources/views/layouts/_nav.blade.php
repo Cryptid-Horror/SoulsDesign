@@ -71,6 +71,10 @@
                             <a class="dropdown-item" href="{{ url('info/Sales') }}">
                             <i class="fas fa-store"></i>Seasonal Sales
                             </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url('wishlists') }}">
+                                Wishlists
+                            </a>
                         </div>
                     </li>
 

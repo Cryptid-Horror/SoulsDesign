@@ -116,7 +116,7 @@
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body text-center">
-                <img src="{{ asset('images/account.png') }}" />
+                <img src="{{ asset('images/account.png') }}" alt="Account" />
                 <h5 class="card-title">Account</h5>
                 {{--
                 @include('widgets._hovereffect_image', [

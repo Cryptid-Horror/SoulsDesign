@@ -117,6 +117,7 @@ class Character extends Model
         'genotype' => 'required',
         'phenotype' => 'required',
         'owner_url' => 'url|nullable'
+
     ];
 
     /**

@@ -138,4 +138,12 @@ return [
         'version' => '1.0.0',
     ],
 
+    'wishlists' => [
+        'key' => 'wishlists',
+        'wiki_key' => 'Wishlists',
+        'creators' => json_encode([
+            'Mercury' => 'https://github.com/itinerare/',
+        ]),
+        'version' => '1.2.0',
+    ],
 ];

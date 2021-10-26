@@ -17,6 +17,7 @@
         <div class="sidebar-item"><a href="{{ $user->url.'/inventory' }}" class="{{ set_active('user/'.$user->name.'/inventory*') }}">Hoard</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/level' }}" class="{{ set_active('user/'.$user->name.'/level*') }}">User Level Area</a></div>
         <div class="sidebar-item"><a href="{{ $user->url.'/pets' }}" class="{{ set_active('user/'.$user->name.'/pets*') }}">Pets</a></div>
+        <div class="sidebar-item"><a href="{{ $user->url.'/wishlists' }}" class="{{ set_active('user/'.$user->name.'/wishlists*') }}">Wishlists</a></div>
     </li>
 
     <li class="sidebar-section">
