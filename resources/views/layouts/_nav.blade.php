@@ -70,11 +70,7 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('info/Sales') }}">
                             <i class="fas fa-store"></i>Seasonal Sales
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url('wishlists') }}">
-                                Wishlists
-                            </a>
+                            </a>                           
                         </div>
                     </li>
 
@@ -242,6 +238,9 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('account/bookmarks') }}">
                                 Bookmarks
+                            </a>
+                            <a class="dropdown-item" href="{{ url('wishlists') }}">
+                                Wishlists
                             </a>
                             <a class="dropdown-item" href="{{ url('account/settings') }}">
                                 Settings
