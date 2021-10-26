@@ -139,7 +139,6 @@
 @section('scripts')
     @parent
     @include('character._image_js', ['character' => $character])
-<<<<<<< HEAD
     <script>
         $(document).ready(function() {
             $('.decease-character').on('click', function(e) {
@@ -149,6 +148,3 @@
         });
     </script>
 @endsection
-=======
-@endsection
->>>>>>> 90ae2bbd633fda4faf34c7c86c13d18bdef9f6b6
