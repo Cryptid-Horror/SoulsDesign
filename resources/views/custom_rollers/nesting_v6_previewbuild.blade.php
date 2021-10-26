@@ -17,14 +17,14 @@
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
     <script src="{{ asset('js/custom_rollers/NestingRoller_v6_PreviewBuild.js') }}"></script>
 
-	<title>Nesting Roller - Souls-Between</title>
+	<title>V6 Nesting Roller - Souls-Between</title>
 </head>
 
 <body onload="initialize()">
 
 <table id="rollerTitle">
 	<tr>
-		<div id="title"><br><h1>Nesting Roller</h1></div>
+		<div id="title"><br><h1>Nesting Roller Version 6 Preview Build</h1></div>
 	</tr>
 </table>
 <table id="mainContent">
