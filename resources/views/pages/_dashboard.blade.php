@@ -14,7 +14,7 @@
 </div>
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Annual%20Events') }}"><img src="{{ asset('images/fright.png') }}"></a>
-<a href="{{ url('') }}"><img src="{{ asset('images/anniversary.png') }}"></a>
+<a href="{{ url('') }}"><img src="{{ asset('images/ssss.png') }}"></a>
 <br>
 <br>
             @include('widgets._recent_forum_posts')
