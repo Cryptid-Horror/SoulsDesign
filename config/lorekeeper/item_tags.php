@@ -25,7 +25,6 @@ return [
         'background_color' => '#1fd1a7'
     ],
 
-
     'recipe' => [
         'name' => 'Recipe',
         'text_color' => '#ffffff',
@@ -43,5 +42,10 @@ return [
         'text_color' => '#ffffff',
         'background_color' => '#ff5ca8'
 
+    ],
+    'choicebox' => [
+        'name' => 'Choice Box',
+        'text_color' => '#ffffff',
+        'background_color' => '#56639E'
     ],
 ];
