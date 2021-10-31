@@ -32,10 +32,10 @@ if (document.getElementById("barrely").checked == true){ // Free rolls
 function rollBchallenger(){
     if (zone.value == "basic"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-				var i = rand(95,129);}
+				var i = rand(95,130);}
             if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                    var i = rand(95,129);}
-			else {var i = rand(1,129);}
+                    var i = rand(95,130);}
+			else {var i = rand(1,130);}
 			
 			if(i <= 5){itemlist += "100 Crystals";}
 			else if (i <= 10){itemlist += "Bone Armor";} 
@@ -78,14 +78,15 @@ function rollBchallenger(){
             else if (i <= 127){itemlist += "Shadow Dire Wolf";}
             else if (i <= 128){itemlist += "Albino Dire Wolf";}
             else if (i <= 129){itemlist += "Phoenix";}
+            else if (i <= 130){itemlist += "Meat Cake";}
 
 		}
        else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(95,129);}
+            var i = rand(95,130);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(95,129);}
-        else {var i = rand(1,129);}
+                var i = rand(95,130);}
+        else {var i = rand(1,130);}
         
         if(i <= 5){itemlist += "100 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -128,6 +129,8 @@ function rollBchallenger(){
         else if (i <= 127){itemlist += "Shadow Dire Wolf";}
         else if (i <= 128){itemlist += "Albino Dire Wolf";}
         else if (i <= 129){itemlist += "Phoenix";}
+        else if (i <= 130){itemlist += "Meat Cake";}
+
 
 		}
 }
@@ -135,10 +138,10 @@ function rollBchallenger(){
 function rollBwarrior(){
     if (zone.value == "basic"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,176);}
+            var i = rand(132,177);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,176);}
-        else {var i = rand(1,176);}
+                var i = rand(132,177);}
+        else {var i = rand(1,177);}
         
         if(i <= 5){itemlist += "200 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -193,15 +196,17 @@ function rollBwarrior(){
         else if (i <= 174){itemlist += "Albino Dire Wolf";}
         else if (i <= 175){itemlist += "Skill Token";}
         else if (i <= 176){itemlist += "Phoenix";}
+        else if (i <= 177){itemlist += "Meat Cake";}
+
 
 
     }
     else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,176);}
+            var i = rand(132,177);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,176);}
-        else {var i = rand(1,176);}
+                var i = rand(132,177);}
+        else {var i = rand(1,177);}
         
         if(i <= 5){itemlist += "200 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -256,6 +261,8 @@ function rollBwarrior(){
         else if (i <= 174){itemlist += "Albino Dire Wolf";}
         else if (i <= 175){itemlist += "Skill Token";}
         else if (i <= 176){itemlist += "Phoenix";}
+        else if (i <= 177){itemlist += "Meat Cake";}
+
 
 
     }
@@ -264,10 +271,10 @@ function rollBwarrior(){
 function rollBgladiator(){
     if (zone.value == "basic"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,191);}
+            var i = rand(132,192);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,191);}
-        else {var i = rand(1,191);}
+                var i = rand(132,192);}
+        else {var i = rand(1,192);}
         
         if(i <= 5){itemlist += "300 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -333,16 +340,18 @@ function rollBgladiator(){
         else if (i <= 189){itemlist += "Nightshade Booster";}
         else if (i <= 190){itemlist += "Phoenix";}
         else if (i <= 191){itemlist += "Soul Twine";}
+        else if (i <= 192){itemlist += "Meat Cake";}
+
 
 
 
     }
     else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,191);}
+            var i = rand(132,192);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,191);}
-        else {var i = rand(1,191);}
+                var i = rand(132,192);}
+        else {var i = rand(1,192);}
         
         if(i <= 5){itemlist += "300 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -408,6 +417,8 @@ function rollBgladiator(){
         else if (i <= 189){itemlist += "Nightshade Booster";}
         else if (i <= 190){itemlist += "Phoenix";}
         else if (i <= 191){itemlist += "Soul Twine";}
+        else if (i <= 192){itemlist += "Meat Cake";}
+
 
 
     }
@@ -416,10 +427,10 @@ function rollBgladiator(){
 function rollBchampion(){
     if (zone.value == "basic"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,209);}
+            var i = rand(132,210);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,209);}
-        else {var i = rand(1,209);}
+                var i = rand(132,210);}
+        else {var i = rand(1,210);}
         
         if(i <= 5){itemlist += "400 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -496,6 +507,8 @@ function rollBchampion(){
         else if (i <= 207){itemlist += "Hotpot";}
         else if (i <= 208){itemlist += "Phoenix";}
         else if (i <= 209){itemlist += "Soul Twine";}
+        else if (i <= 210){itemlist += "Meat Cake";}
+
 
 
 
@@ -503,10 +516,10 @@ function rollBchampion(){
     }
     else if (zone.value == "copper"){
         if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-            var i = rand(132,209);}
+            var i = rand(132,210);}
         if(document.getElementById("famy").checked == true && rand(1,10) <= 5){
-                var i = rand(132,209);}
-        else {var i = rand(1,209);}
+                var i = rand(132,210);}
+        else {var i = rand(1,210);}
         
         if(i <= 5){itemlist += "400 Crystals";}
         else if (i <= 10){itemlist += "Bone Armor";} 
@@ -583,6 +596,8 @@ function rollBchampion(){
         else if (i <= 207){itemlist += "Hotpot";}
         else if (i <= 208){itemlist += "Phoenix";}
         else if (i <= 209){itemlist += "Soul Twine";}
+        else if (i <= 210){itemlist += "Meat Cake";}
+
 
 
     }
