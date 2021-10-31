@@ -13,8 +13,8 @@ var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdC
 var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
                     "nFi", "FiFi"];
 
-var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
-                        "nRu", "RuRu", "nTri", "TriTri"];
+var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
+                        "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri"];
 // doens't include rare/very rare because those preface these in the pheno.
 var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 				  "nSc", "ScSc", "nSn", "SnSn", "nBa", "BaBa", "nDi", "DiDi", "nMar", "MarMar",
@@ -31,19 +31,19 @@ var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
 var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
-var veryRareToText = ["Aether Marked", "Aurora", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
+var veryRareToText = ["Aether Marked", "Aurora", "Constellation", "Confetti", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
 var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephale" ];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental"];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental",];
 
 var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord" ];
+var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
@@ -107,7 +107,7 @@ var Ranks = Object.freeze({
 var Breeds = Object.freeze({
 		STALKER: 1,	RAVAGER: 2,
 	    WARDEN: 3, GEMP: 4, 
-	    SAPI: 5,
+	    SAPI: 5, RIDGE: 6,
 	});
 
 var Builds = Object.freeze({
@@ -122,9 +122,9 @@ var Tempers = Object.freeze({
 	});
 
 var MaxClutchSize = Object.freeze({
-		STALKER: 4,	RAVAGER: 3,
-	    WARDEN: 3, GEMP: 2, 
-	    SAPI: 3,
+		STALKER: 4,	RAVAGER: 4,
+	    WARDEN: 4, GEMP: 3, 
+	    SAPI: 3, RIDGE: 3
 	});
 
 var Rarity = Object.freeze({
@@ -453,6 +453,8 @@ function clutchSize() {
 		maxSize = MaxClutchSize.GEMP;
 	else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI)
 	    maxSize = MaxClutchSize.SAPI;
+	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
+		maxSize = MaxClutchSize.RIDGE;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
 	
@@ -492,6 +494,12 @@ function clutchSize() {
 		size = maxSize;
 		if (!destroyedModifiers.includes("Fertility Potion destroyed.<br>"))
 			destroyedModifiers += "Fertility Potion destroyed.<br>";
+	}
+
+	// Remove an egg if weak fertility
+	if (document.getElementById("weakFertility").checked) {
+		if (randRange(100) < 75)
+			size = 1
 	}
 
 // Vigilant parents + dragon heart
@@ -714,20 +722,23 @@ function generateSpecies() {
 	var wardenBonus = 0;
     var gempBonus = 0;
   	var sapiBonus = 0;
+	var ridgeBonus =0;
 
 	if (document.getElementById("DI").checked) {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
 			destroyedModifiers += "Dragon's Instinct destroyed.<br>";
 		if (document.getElementById("stalkerSelected").checked) {
-			stalkerBonus = 40;
+			stalkerBonus = 90;
 		} else if (document.getElementById("ravagerSelected").checked) {
-			ravagerBonus = 40;
+			ravagerBonus = 90;
 		} else if (document.getElementById("wardenSelected").checked) {
-			wardenBonus = 40;
+			wardenBonus = 90;
 		} else if (document.getElementById("gempSelected").checked) {
-			gempBonus = 40;
+			gempBonus = 60;
 		} else if (document.getElementById("sapiSelected").checked){
-		    sapiBonus = 40;
+		    sapiBonus = 70;
+		} else if (document.getElementById("ridgeSelected").checked){
+			ridgeBonus = 70;
 		}
 	}
 	if (damBreedVal == sireBreedVal) {
@@ -736,7 +747,7 @@ function generateSpecies() {
 		if (damBreedVal == Breeds.WARDEN || sireBreedVal == Breeds.WARDEN) {
 			if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
 				// case Warden x Stalker
-				if (randRange(100) < (70 + stalkerBonus - wardenBonus)) {
+				if (randRange(100) < (60 + stalkerBonus - wardenBonus)) {
 					childBreedVal = Breeds.STALKER;
 				} else {
 					childBreedVal = Breeds.WARDEN;
@@ -749,70 +760,108 @@ function generateSpecies() {
 					childBreedVal = Breeds.WARDEN;
 				}
 			} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
-        // case Warden x Gemp
-				if (randRange(100) < (40 + gempBonus - wardenBonus)) {
+       			// case Warden x Gemp
+				if (randRange(100) < (30 + gempBonus - wardenBonus)) {
 					childBreedVal = Breeds.GEMP;
 				} else {
 					childBreedVal = Breeds.WARDEN;
 				}
-      } else  if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
-	  // case Warden x Sapiere
+      		} else  if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
+	 			// case Warden x Sapiere
 				if (randRange(100) < (50 + sapiBonus - wardenBonus)) {
 					childBreedVal = Breeds.SAPI;
 				} else { 
 					childBreedVal = Breeds.WARDEN;
 				}
-				}
-				
+			} else  if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
+				// case Warden x Ridgeback
+				 if (randRange(100) < (30 + ridgeBonus - wardenBonus)) {
+					childBreedVal = Breeds.RIDGE;
+				} else { 
+					childBreedVal = Breeds.WARDEN;
+					  }
+			}			
 		} else if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
-        if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
+        	if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
 			    // case Stalker x Ravager
-			    if (randRange(100) < (40 + ravagerBonus - stalkerBonus)) {
+			    if (randRange(100) < (50 + ravagerBonus - stalkerBonus)) {
 		    		childBreedVal = Breeds.RAVAGER;
 		    	} else {
 		    		childBreedVal = Breeds.STALKER;
 		    	}
-        } else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
-          // case Stalker x Gemp
-			      if (randRange(100) < (30 + gempBonus - stalkerBonus)) {
+        	} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
+          		// case Stalker x Gemp
+			    if (randRange(100) < (30 + gempBonus - stalkerBonus)) {
       				childBreedVal = Breeds.GEMP;
 	      		} else {
 	      			childBreedVal = Breeds.STALKER;
 	      		}
-        } else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI){
-			// Case Stalker x Sapiere
+        	} else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI){
+				// Case Stalker x Sapiere
 				if (randRange(100) < (30 + sapiBonus - stalkerBonus)) {
 					childBreedVal = Breeds.SAPI;
 				} else {
 					childBreedVal = Breeds.STALKER;
-				}}
+				}
+			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE){
+				// Case Stalker x Ridgeback
+				if (randRange(100) < (30 + ridgeBonus - stalkerBonus)) {
+					childBreedVal = Breeds.RIDGE;
+				} else {
+					childBreedVal = Breeds.STALKER;
+				}
+			}
 		} else if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER) {
 		if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
-      // case Ravager x Gemp
-      if (randRange(100) < (40 + gempBonus - ravagerBonus)) {
+      		// case Ravager x Gemp
+      			if (randRange(100) < (30 + gempBonus - ravagerBonus)) {
       				childBreedVal = Breeds.GEMP;
 	      		} else {
 	      			childBreedVal = Breeds.RAVAGER;
 	      		}
-    } else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) { 
-		// Case Ravager x Sapiere	
-				if (randRange (100) < (40 + sapiBonus - ravagerBonus)) { 
+    		} else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) { 
+				// Case Ravager x Sapiere	
+				if (randRange (100) < (30 + sapiBonus - ravagerBonus)) { 
 					childBreedVal = Breeds.SAPI;
 				} else { 
 					childBreedVal = Breeds.RAVAGER;
-				}}
-	} else { 
-		// Case GEMP x Sapiere
-		if (randRange (100) < (50 + sapiBonus - gempBonus)) {
-				childBreedVal = Breeds.SAPI;
-			} else {
-				childBreedVal = Breeds.GEMP;
+				}
+			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) { 
+				// Case Ravager x Ridgeback	
+				if (randRange (100) < (30 + ridgeBonus - ravagerBonus)) { 
+						childBreedVal = Breeds.RIDGE;
+				} else { 
+						childBreedVal = Breeds.RAVAGER;
+				}
 			}
-			
+		} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
+			if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
+				// Case GEMP x Sapiere
+				if (randRange (100) < (50 + sapiBonus - gempBonus)) {
+				childBreedVal = Breeds.SAPI;
+				} else {
+				childBreedVal = Breeds.GEMP;
+				}	
+			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) { 
+				// Case GEMP x Ridgeback	
+				if (randRange (100) < (30 + ridgeBonus - gempBonus)) { 
+					childBreedVal = Breeds.RIDGE;
+				} else { 
+					childBreedVal = Breeds.GEMP;
+				}
+			}
+					//Commented out template for when it's an odd number
+	//} else { 
+		// Case GEMP x Sapiere
+	//	if (randRange (100) < (50 + sapiBonus - gempBonus)) {
+				//childBreedVal = Breeds.SAPI;
+		//	} else {
+			//childBreedVal = Breeds.GEMP;
+			//	}
 	
 	}
-    }
-	
+	}
+
 	// convert to string
 	var result = "";
 	childBreed = childBreedVal;
@@ -824,10 +873,12 @@ function generateSpecies() {
 		result = "Warden Dragon";
 	} else if (childBreedVal == Breeds.GEMP) {
     result = "Greater Emperor";
-  } else if (childBreedVal == Breeds.SAPI){
+  	} else if (childBreedVal == Breeds.SAPI){
       result = "Sapiere Dragon";
-  }
-	
+	} else if (childBreedVal == Breeds.RIDGE){
+		result = "Ridgeback Drake";
+  	} 
+
 	return result;
 }
 
@@ -836,7 +887,7 @@ function generateTemper() {
 	var sireTemperVal = document.getElementById("sireTemper").value;
 	var childTemperVal;
 	// bonuses
-	var bonusAmmount = 30;
+	var bonusAmmount = 60;
 	var timidBonus = 0;
 	var aggressiveBonus = 0;
 	var calmBonus = 0;
@@ -1000,7 +1051,7 @@ function generateUmber() {
 	if (document.getElementById("BU").checked) {
 		if (!destroyedModifiers.includes("Bottle of Umber destroyed.<br>"))
 			destroyedModifiers += "Bottle of Umber destroyed.<br>";
-		bonus = 20;
+		bonus = 80;
 	}
 	
 	// sanitize
@@ -1072,7 +1123,7 @@ function generateHaze() {
 	if (document.getElementById("BH").checked) {
 		if (!destroyedModifiers.includes("Bottle of Haze destroyed.<br>"))
 			destroyedModifiers += "Bottle of Haze destroyed.<br>";
-		bonus = 20;
+		bonus = 60;
 	}
 	
 	// sanitize
@@ -1146,7 +1197,7 @@ function generateIvory() {
 	if (document.getElementById("BI").checked) {
 		if (!destroyedModifiers.includes("Bottle of Ivory destroyed.<br>"))
 			destroyedModifiers += "Bottle of Ivory destroyed.<br>";
-		bonus = 20;
+		bonus = 40;
 	}
 	
 	// sanitize
@@ -1327,25 +1378,30 @@ function generateHealth() {
 		return "Healthy";
 	} else {
 		var roll = randRange(100);
-		if (roll < 50) {
-			childHealth += "stillborn "
+		if (roll < 40) {
+			childHealth += "Stillborn "
 		} else {
 			// determine other disabilties
 			roll = randRange(100);
-			if (roll < 70)
-				childHealth += "infertile ";
+			if (roll < 60)
+				childHealth += "Infertile ";
 			roll = randRange(100);
 			if (roll < 60)
-				childHealth += "blind ";
+				childHealth += "Blind ";
 			roll = randRange(100);
-			if (roll < 70)
-				childHealth += "crippled wings ";
+			if (roll < 50)
+				childHealth += "Crippled Wings ";
 			roll = randRange(100);
-			if (roll < 35)
-				childHealth += "mute ";
+			if (roll < 40)
+				childHealth += "Mute ";
+			roll = randRange(100);
+			if (roll < 30)
+				childHealth += "Miniature ";
+			roll = randRange(100);
+			if (roll < 40)
+				childHealth += "Polycephaly ";
 		}
 	}
-	return childHealth;
 }
 
 function generateEyes(childRarity) {
@@ -1413,99 +1469,117 @@ function generateTrait(traitToGen) {
 	if (document.getElementById("AT").checked) {
 		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
 			destroyedModifiers += "Aether Tonic destroyed.<br>";
-		bonus = 60;
+		bonus = 80;
 	}
 	
 	var roll = randRange(100);
 	
 	if (sireRarity == Rarity.COMMON && damRarity == Rarity.COMMON) {
-	    if (roll < 95 - bonus) {
-	            childRarity = Rarity.Common;
-	    } else { 
-	            childRarity = Rarity.Uncommon;
-	    }
+	    if (roll < 10 - bonus/3) {
+	            childRarity = Rarity.VERY_RARE;
+	    } else if (roll < 30 - bonus/3) { 
+	            childRarity = Rarity.RARE;
+		} else if (roll < 60 - bonus/3) {
+				childRarity = Rarity.UNCOMMON;
+		} else {
+				childRarity = Rarity.COMMON;
+		}
 		childRarity = Rarity.COMMON;
 	} else if (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.UNCOMMON) {
-		if (roll < 60 - bonus) {
+		if (roll <30 - bonus/3) {
 			childRarity = Rarity.COMMON;
+		} else if (roll < 50 - bonus/3) {
+			childRarity = Rarity.RARE;
+		} else if (roll < 60 - bonus/3) {
+			childRarity = Rarity.VERY_RARE;
 		} else {
-			childRarity = Rarity.UNCOMMON;
+			childRarity = Rarity.UNCOMMON;	
 		}
 	} else if (sireRarity == Rarity.RARE && damRarity == Rarity.RARE) {
-		if (roll < 60 - bonus/2) {
+		if (roll < 20 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 90 - bonus) {
+		} else if (roll < 50 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
+		} else if (roll < 60 - bonus/3) {
+			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.VERY_RARE) {
-		if (roll < 40 - bonus/3) {
+		if (roll < 10 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 60 - bonus*2/3) {
+		} else if (roll < 30 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 80 - bonus) {
+		} else if (roll < 60 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
 			childRarity = Rarity.VERY_RARE;
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.UNCOMMON) ||
 		       (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.COMMON)){
-		if (roll < 60 - bonus) {
+		if (roll < 40 - bonus/3) {
 			childRarity = Rarity.COMMON;
+		} else if (roll < 60 - bonus/3) {
+			childRarity = Rarity.RARE;
+		} else if (roll < 70 - bonus/3) {
+			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.UNCOMMON;
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.COMMON)) {
-		if (roll < 55 - bonus/2) {
+		if (roll < 30 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 90 - bonus) {
+		} else if (roll < 70 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
+		} else if (roll < 80 - bonus/3) {
+			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.COMMON)) {
-		if (roll < 55 - bonus/3) {
+		if (roll < 20 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 85 - bonus*2/3) {
+		} else if (roll < 50 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 95 - bonus) {
+		} else if (roll < 90 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
-			childRarity = Rarity.VERY_RARE;
+			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.UNCOMMON)) {
-		if (roll < 55 - bonus/2) {
+		if (roll < 30 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 85 - bonus) {
+		} else if (roll < 50 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
+		} else if (roll < 60 - bonus/3) {
+			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.UNCOMMON)) {
-		if (roll < 50 - bonus/3) {
+		if (roll < 20 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 65 - bonus*2/3) {
+		} else if (roll < 50 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 90 - bonus) {
+		} else if (roll < 70 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
 			childRarity = Rarity.VERY_RARE;
 		}
 	} else if ((sireRarity == Rarity.RARE && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.RARE)) {
-		if (roll < 45 - bonus/3) {
+		if (roll < 10 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 60 - bonus*2/3) {
+		} else if (roll < 30 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 85 - bonus) {
+		} else if (roll < 50 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
-			childRarity = Rarity.VERY_RARE;
+			childRarity = Rarity.VERY_RARE
 		}
 	}
 	
@@ -2071,30 +2145,26 @@ function generateMutation() {
 	var mutationList = [];
 	if (document.getElementById("damTemper").value == Tempers.CALM) {
 		bonus += 10;
-	}
-	if (document.getElementById("sireTemper").value == Tempers.CALM) {
+	} if (document.getElementById("sireTemper").value == Tempers.CALM) {
 		bonus += 10;
-	}
-	if (document.getElementById("DE").checked) {
+	} if (document.getElementById("DE").checked) {
 		if (!destroyedModifiers.includes("Dragon's Eye destroyed.<br>"))
 			destroyedModifiers += "Dragon's Eye destroyed.<br>";
 		dragonsEyeBonus += 50;
-	}
-	if (document.getElementById("SM").checked) {
+	} if (document.getElementById("SM").checked) {
 		smMuteBonus += 30;
-	}
-	if (document.getElementById("DM").checked) {
+	} if (document.getElementById("DM").checked) {
 		dmMuteBonus += 30;
 	}
 	for (i = Rarity.COMMON; i <= Rarity.VERY_RARE; i++) {
 		roll = randRange(2000);
-		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus)
+		if (i == Rarity.COMMON && roll < 50 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.UNCOMMON && roll < 25 + bonus + dragonsEyeBonus)
+		else if (i == Rarity.UNCOMMON && roll < 25 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus)
+		else if (i == Rarity.RARE && roll < 15 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, true);
-		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus)
+		else if (i == Rarity.VERY_RARE && roll < 5 + bonus + dragonsEyeBonus + smMuteBonus + dmMuteBonus)
 			result = selectMutation(i, false);
 		if (result != "") {
 			mutationList.push(" " + result);
@@ -2369,7 +2439,7 @@ function roll() {
 	// continue with roll...
 	// document.getElementById("nestTextArea").innerHTML = "Rolling...<br>";
 	var numEggs = clutchSize();
-	document.getElementById("nestTextArea").innerHTML = "SireLink x DamLink" + "<br>";
+	document.getElementById("nestTextArea").innerHTML = "Nest Results:" + "<br>";
 	for (i = 0; i < numEggs; i++) {
 		document.getElementById("nestTextArea").innerHTML += "" + (i + 1) + ": ";
 		generateChild();

@@ -5,9 +5,16 @@
         <i class="far fa-clock"></i> {!! format_date(Carbon\Carbon::now()) !!}
     </div>
 </div>
+<h2>Recent Announcements</h2> 
+<div class="alert alert-primary" role="alert">
+    Nesting Roller Version 6 is now RELEASED!
+</div>
+<div class="alert alert-danger" role="alert">
+    Today is the last day for the Festival of Frights and of October! Make sure to get your free and event entries in before the end of the day CST!
+</div>
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Annual%20Events') }}"><img src="{{ asset('images/fright.png') }}"></a>
-<a href="{{ url('https://www.soulsbetween.com/roller/nesting_v6_previewbuild') }}"><img src="{{ asset('images/v6preview.png') }}"></a>
+<a href="{{ url('') }}"><img src="{{ asset('images/anniversary.png') }}"></a>
 <br>
 <br>
             @include('widgets._recent_forum_posts')

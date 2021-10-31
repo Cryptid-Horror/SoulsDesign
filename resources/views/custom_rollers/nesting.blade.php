@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v4.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v6.0.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -51,8 +51,9 @@
 				<option value="1">Stalker Wyvern</option>
 				<option value="2">Ravager Wyvern</option>
 				<option value="3">Warden Dragon</option>
-				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
+				<option value="4">Greater Emperor</option>
+				<option value="6">Ridgeback Drake</option>
 
 			</select>
 			<select id="sireBuild" class="cellElement">
@@ -113,7 +114,6 @@
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
 				<option value="10">Adept</option>
-
 			</select>
 		</div>
 		
@@ -150,6 +150,7 @@
 				<option value="3">Warden Dragon</option>
 				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
+				<option value="6">Ridgeback Drake</option>
 
 			</select>
 			<select id="damBuild" class="cellElement">
@@ -260,6 +261,7 @@
 			<span style="white-space: nowrap;">
 			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
 			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">Weak Fertility?</label>
 			</span>
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
 			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
@@ -333,7 +335,7 @@
 	
 <table id="footer">
 	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
-        v5.0.0 - Maintained by Cryptid-Horror <br>
+        v6.0.0 - Maintained by Cryptid-Horror <br>
 </table>
 
 </body>
