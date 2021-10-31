@@ -49,7 +49,7 @@
                                 <i class="fas fa-clipboard-list"></i> Primal and Mastery Points
                             </a>
                             <a class="dropdown-item" href="{{ url('level') }}">
-                                <i class="fas fa-level-up-alt"></i> Level Area
+                                <i class="fas fa-level-up-alt"></i> Mastery Points
                             </a>
                             <a class="dropdown-item" href="{{ url('info/MFA') }}">
                                 <i class="fas fa-dungeon"></i> Monthly Free Activities
