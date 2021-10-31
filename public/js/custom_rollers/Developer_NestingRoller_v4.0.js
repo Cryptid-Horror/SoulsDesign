@@ -13,8 +13,8 @@ var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdC
 var rareMarkings = ["nAp", "ApAp", "nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
                     "nFi", "FiFi"];
 
-var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nCn", "CnCn", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
-                        "nRu", "RuRu", "nTri", "TriTri"];
+var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
+                        "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri"];
 // doens't include rare/very rare because those preface these in the pheno.
 var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 				  "nSc", "ScSc", "nSn", "SnSn", "nBa", "BaBa", "nDi", "DiDi", "nMar", "MarMar",
@@ -31,13 +31,13 @@ var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested",
 					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
 var rareToText = ["Appaloosa", "Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
-var veryRareToText = ["Aether Marked", "Aurora", "Constellation", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Triquetra"];
+var veryRareToText = ["Aether Marked", "Aurora", "Constellation", "Confetti", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra"];
 // List of valid markings, always 6 per row for readability and easy couting.
 var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephaler" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Polycephale" ];
 
 var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental",];
 
