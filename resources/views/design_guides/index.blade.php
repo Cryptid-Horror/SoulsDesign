@@ -44,6 +44,7 @@
 				['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'],
 				['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
 				['Triquetra', 'nTri/TriTri']];
+	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Solar Flare', 'nSf/SfSf']];
 ?>
 <body>
 
@@ -223,6 +224,7 @@
 						</button>
 					</h2>
 				</div>
+
 				<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
 					<div class="card-body">
 						@foreach(array_chunk($veryrares, 4) as $veryrare_chunk)
@@ -231,6 +233,30 @@
 									<div class="col-md-6 col-lg-3 mb-2">
 										<img src="{{ asset('images/design_guides/Mythic_'.str_replace(' ', '_', $veryrare[0]).'.png') }}" width="90%" style="max-width:200px;">
 										<a class="btn btn-info" href="{{ url('design/mythic/'.strtolower(str_replace(' ', '_', $veryrare[0]))) }}">{{ $veryrare[0].' ('.$veryrare[1].')' }}</a>
+									</div>
+								@endforeach
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header" id="headingSix">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							Legendary Markings
+						</button>
+					</h2>
+				</div>
+				<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+					<div class="card-body">
+						@foreach(array_chunk($legendarys, 4) as $legendary_chunk)
+							<div class="row mb-3">
+								@foreach($legendary_chunk as $legendary)
+									<div class="col-md-6 col-lg-3 mb-2">
+										<img src="{{ asset('images/design_guides/Legendary_'.str_replace(' ', '_', $legendary[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/legendary/'.strtolower(str_replace(' ', '_', $legendary[0]))) }}">{{ $legendary[0].' ('.$legendary[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
