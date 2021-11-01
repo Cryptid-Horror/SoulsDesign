@@ -11,8 +11,8 @@
                'Crested', 'Dipped', 'Marbled', 'Metallic', 'Pigeon', 'Plasma', 'Roan', 'Rosettes', 'Shaped', 
                'Smoked', 'Tabby', 'Toxin', 'Blooded', 'Eyes', 'Filigree', 'Glass', 'Luminescent', 'Lustrous',
                'Petal', 'Aether Marked', 'Aurora', 'Gemstone', 'Iridescent', 'Lepir - Minimal', 'Rune', 'Shimmer',
-                'Triquetra'],
-        20 => ['Inkwell', 'Tobiano', 'Painted', 'Appaloosa', 'Lepir - Complex'],
+                'Triquetra', 'Constellation', 'Confetti',],
+        20 => ['Inkwell', 'Tobiano', 'Painted', 'Appaloosa', 'Lepir - Complex', 'Solar Flare'],
         // Add more groups as necessary; example:
         // 30 => [],
     ];

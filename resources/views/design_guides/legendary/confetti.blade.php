@@ -1,27 +1,22 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Legendary_Confetti';
+    $marking_name = 'Confetti';
+    $marking_code = 'nFti/FtiFti';
+    $marking_desc = "A marking that resembles confetti- it can appear as dots, small splotches/bars, etc and look like confetti. However to keep it from looking dusted, it needs to be at least 3 different colors.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blanket',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket-Sable',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
     ];
 
     // Use yes or no
@@ -36,34 +31,39 @@
     $color_natural = 'yes';
     $edge_blurred = 'no';
     $edge_gradient = 'no';
-    $color_any = 'no';
+    $color_any = 'yes';
     $edge_blending = 'yes';
-    $color_dependant = 'no';
+    $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes1',
-        'blanket_yes2',
-        'blanket_yes3',
-        'blanket_yes4',
-        'blanket_no2',
-        'blanket_no1'
+        'confetti_yes1',
+        'confetti_yes2',
+        'confetti_yes3',
+        'confetti_no1',
+        'confetti_no2',
     ];
 
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
-        'The marking can be disconnected in very small portions.',
+        'Confetti can be any color you desire, and appear in small parts or large parts of the body. It can be dense or sparse.',
+        'Confetti can appear as dots that are the size of the eye or smaller, but not bigger. It can also appear as traditional confetti shapes.',
+        'Confetti can follow paths on the body.'
 
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and large cut outs are not allowed',    
+        'Confetti cannot be one or two single colors, to avoid looking like dusted (or dusted modified by duotone).',
+        'Confetti cannot be super tiny.',    
+        'Confetti Cannot be affected by color modifiers.',
     ];
 
     $marking_must = [
+        'Recessive Confetti can be 3 to 5 colors.',
+        'Dominant Confetti can be up to 7 colors.',
+        'Confetti must have 3 seperate colors present (not shades of a single color).'
     ];
 
     // If left empty, the swatches section will not be shown
@@ -72,9 +72,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'blanket_1', 'alt' => '...', 'label' => 'SB-0957', 'caption' => 'Designer: @Skoith'],
-        ['image_name' => 'blanket_2', 'alt' => '...', 'label' => 'SB-0941', 'caption' => 'Designer: @FlawedEmperor + @Aarushii'],
-        ['image_name' => 'blanket_3', 'alt' => '...', 'label' => 'SB-0656', 'caption' => 'Designer: @Jaimep'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
     ];
 ?>
 
