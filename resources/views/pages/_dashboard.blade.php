@@ -7,13 +7,15 @@
 </div>
 <h2>Recent Announcements</h2> 
 <div class="alert alert-primary" role="alert">
-    Nesting Roller Version 6 is now RELEASED!
+    Nesting Roller Version 6 is now RELEASED!<br>
+    Anniversary sale goes live November 1st!
 </div>
 <div class="alert alert-danger" role="alert">
-    Today is the last day for the Festival of Frights and of October! Make sure to get your free and event entries in before the end of the day CST!
+    The Festival of Frights ends tonight at midnight CST! <br>
+    The Festival of Solaris and Lunaris will begin November 1st later in the afternoon! We need to complete prompt pathways still and will have this ready ASAP! for now, make sure you get your daily advent calendar rewards!
 </div>
 <h2>Current Event</h2>
-<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Annual%20Events') }}"><img src="{{ asset('images/fright.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/advent-calendars/1') }}"><img src="{{ asset('images/ann_advent.png') }}"></a>
 <a href="{{ url('') }}"><img src="{{ asset('images/ssss.png') }}"></a>
 <br>
 <br>
