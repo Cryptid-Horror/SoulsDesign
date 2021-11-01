@@ -15,8 +15,10 @@
     The Festival of Solaris and Lunaris will begin November 1st later in the afternoon! We need to complete prompt pathways still and will have this ready ASAP! for now, make sure you get your daily advent calendar rewards!
 </div>
 <h2>Current Event</h2>
-<a href="{{ url('https://www.soulsbetween.com/advent-calendars/1') }}"><img src="{{ asset('images/ann_advent.png') }}"></a>
 <a href="{{ url('') }}"><img src="{{ asset('images/ssss.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/advent-calendars/1') }}"><img src="{{ asset('images/ann_advent.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/forum/9/~546') }}"><img src="{{ asset('images/contest.png') }}"></a>
+
 <br>
 <br>
             @include('widgets._recent_forum_posts')
