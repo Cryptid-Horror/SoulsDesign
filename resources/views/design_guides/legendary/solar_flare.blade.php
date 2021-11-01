@@ -1,5 +1,5 @@
 <?php
-    $marking_icon = 'Legendary_Constellation';
+    $marking_icon = 'Legendary_Solar_Flare';
     $marking_name = 'Solar Flare';
     $marking_code = 'nSf/SfSf';
     $marking_desc = "A marking that causes the horns, claws, or spikes on the dragon to glow and allows the horns to be any color.";
