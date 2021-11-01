@@ -53,7 +53,7 @@
         'Solar flare is allowed to make the horns, spikes, and claws any color. The horns, claws, spikes can alternate in color and do not have to all be the same color.',
         'Solar Flare can cause a gradient of colors based on if it is recessive or dominant.',
         'Solar flare causes a gold, which can appear behind or in front of the horns, claws, and spikes.',
-        'Solar flare can effect only one, or all horns/claws/spikes, including one or the other horn or alternating spikes/etc.'
+        'Solar flare can effect only one, or all horns/claws/spikes, including one or the other horn or alternating spikes/etc.',
 
     ];
 
@@ -66,7 +66,7 @@
     $marking_must = [
         'Recessive can allow the horns/spikes/claws to gradient up to four colors.',
         'Dominant can allow the horns/spikes/claws gradient up to seven colors.',
-        'Solar Flare must have a glow.'
+        'Solar Flare must have a glow.',
     ];
 
     // If left empty, the swatches section will not be shown
