@@ -61,12 +61,12 @@ var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Hor
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
 var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears"];
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
-var veryRareEars = [];
+var veryRareEars = ['Test'];
 
 var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
 var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
-var veryRareTails = [];
+var veryRareTails = ['test'];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
@@ -1435,8 +1435,8 @@ function generateEars(childRarity) {
 		return uncommonEars[randRange(uncommonEars.length)];
 	} else if (childRarity == Rarity.RARE) {
 		return rareEars[randRange(rareEars.length)];
-	//} else if (childRarity == Rarity.VERY_RARE) {
-	//	return veryRareEars[randRange(veryRareEars.length)];
+	} else if (childRarity == Rarity.VERY_RARE) {
+		return veryRareEars[randRange(veryRareEars.length)];
 	}
 }
 function generateTail(childRarity) {
@@ -1446,8 +1446,8 @@ function generateTail(childRarity) {
 		return uncommonTails[randRange(uncommonTails.length)];
 	} else if (childRarity == Rarity.RARE) {
 		return rareTails[randRange(rareTails.length)];
-	//} else if (childRarity == Rarity.VERY_RARE) {
-		//return veryRareTails[randRange(veryRareTails.length)];
+	} else if (childRarity == Rarity.VERY_RARE) {
+		return veryRareTails[randRange(veryRareTails.length)];
 	}
 }
 function generateTrait(traitToGen) {
