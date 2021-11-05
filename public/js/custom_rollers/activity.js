@@ -428,7 +428,7 @@ function rollHunt(){
 			else if(i <= 37){itemlist += "Whale Bone";}
             else if(i <= 39){itemlist += "Undulated Moray Eel";}
             else if(i <= 40){itemlist += "Fishing Chest";}//BLUE
-            else if(i <= 41){itemlist += "Mysterious Bag";}
+            else if(i <= 41){itemlist += "Aether Bag";}
             else if(i <= 42){itemlist += "Coelacanth";}
 			else if(i <= 47){itemlist += "Common Recipe Fragment";} //Common recipe fragment
             else if(i <= 50){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
