@@ -1435,8 +1435,8 @@ function generateEars(childRarity) {
 		return uncommonEars[randRange(uncommonEars.length)];
 	} else if (childRarity == Rarity.RARE) {
 		return rareEars[randRange(rareEars.length)];
-	} else if (childRarity == Rarity.VERY_RARE) {
-		return veryRareEars[randRange(veryRareEars.length)];
+	//} else if (childRarity == Rarity.VERY_RARE) {
+	//	return veryRareEars[randRange(veryRareEars.length)];
 	}
 }
 function generateTail(childRarity) {
@@ -1446,8 +1446,8 @@ function generateTail(childRarity) {
 		return uncommonTails[randRange(uncommonTails.length)];
 	} else if (childRarity == Rarity.RARE) {
 		return rareTails[randRange(rareTails.length)];
-	} else if (childRarity == Rarity.VERY_RARE) {
-		return veryRareTails[randRange(veryRareTails.length)];
+	//} else if (childRarity == Rarity.VERY_RARE) {
+		//return veryRareTails[randRange(veryRareTails.length)];
 	}
 }
 function generateTrait(traitToGen) {
