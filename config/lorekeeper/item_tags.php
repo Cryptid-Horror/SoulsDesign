@@ -43,9 +43,16 @@ return [
         'background_color' => '#ff5ca8'
 
     ],
+
     'choicebox' => [
         'name' => 'Choice Box',
         'text_color' => '#ffffff',
         'background_color' => '#56639E'
+    ],
+    
+    'breedingperm' => [
+        'name' => 'Breeding Permission',
+        'text_color' => '#ffffff',
+        'background_color' => '#cbbd8a'
     ],
 ];

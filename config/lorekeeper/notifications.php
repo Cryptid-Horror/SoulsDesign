@@ -532,4 +532,32 @@ return [
         'message' => 'You have received a staff grant of the crafting recipe {recipe_name} from <a href="{sender_url}">{sender_name}</a>. (<a href="{url}">View Unlocked Recipes</a>)',
         'url' => 'crafting'
     ],
+
+    // BREEDING_PERMISSION_GRANTED
+    517 => [
+        'name' => 'Breeding Permission Granted',
+        'message' => '<a href="{sender_url}">{sender_name}</a> has granted you a {type} breeding permission for <a href="character/{character_slug}">{character_name}</a>. (<a href="{url}">View Breeding Permissions</a>)',
+        'url' => 'breeding-permissions'
+    ],
+
+    // BREEDING_PERMISSION_USED
+    518 => [
+        'name' => 'Breeding Permission Used',
+        'message' => '<a href="{sender_url}">{sender_name}</a> has marked a {type} breeding permission (#{permission_id}) for <a href="character/{character_slug}">{character_name}</a> as used. (<a href="{url}?used=1">View Breeding Permissions</a>)',
+        'url' => 'breeding-permissions'
+    ],
+
+    // BREEDING_PERMISSION_TRANSFER
+    519 => [
+        'name' => 'Breeding Permission Transfer',
+        'message' => '<a href="{sender_url}">{sender_name}</a> has transferred a {type} breeding permission for <a href="character/{character_slug}">{character_name}</a> to you. (<a href="{url}">View Breeding Permissions</a>)',
+        'url' => 'breeding-permissions'
+    ],
+
+    // FORCED_BREEDING_PERMISSION_TRANSFER
+    520 => [
+        'name' => 'Forced Breeding Permission Transfer',
+        'message' => '<a href="{sender_url}">{sender_name}</a> has transferred a {type} breeding permission for <a href="character/{character_slug}">{character_name}</a> from you. (<a href="{url}">View Breeding Permissions</a>)',
+        'url' => 'breeding-permissions'
+    ],
 ];

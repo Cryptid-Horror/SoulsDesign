@@ -180,4 +180,8 @@ class Notification extends Model
     const GALLERY_SUBMISSION_EDITED         = 514;
     const GALLERY_SUBMISSION_PARTICIPANT    = 515;
     const RECIPE_GRANT                      = 600; // Draginraptor - Crafting
+    const BREEDING_PERMISSION_GRANTED         = 517;
+    const BREEDING_PERMISSION_USED            = 518;
+    const BREEDING_PERMISSION_TRANSFER        = 519;
+    const FORCED_BREEDING_PERMISSION_TRANSFER = 520;
 }

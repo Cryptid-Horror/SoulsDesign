@@ -38,6 +38,12 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Adoption%20Center') }}">
                                <i class="fas fa-egg"></i> Adoption Center
+                            <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
+                                Breeding Permissions
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url('inventory') }}">
+                                Inventory
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
@@ -223,7 +229,6 @@
                             </a>
                         </div>
                     </li>
-    
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ Auth::user()->url }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
