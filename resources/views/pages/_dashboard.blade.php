@@ -7,15 +7,13 @@
 </div>
 <h2>Recent Announcements</h2> 
 <div class="alert alert-primary" role="alert">
-    Nesting Roller Version 6 is now RELEASED!<br>
     Anniversary sale goes live November 1st!
+    Don't forget to claim your Advent Calendar Rewards! 
+    Festival of of Solaris and Lunaris is live!
 </div>
-<div class="alert alert-danger" role="alert">
-    The Festival of Frights ends tonight at midnight CST! <br>
-    The Festival of Solaris and Lunaris will begin November 1st later in the afternoon! We need to complete prompt pathways still and will have this ready ASAP! for now, make sure you get your daily advent calendar rewards!
-</div>
+
 <h2>Current Event</h2>
-<a href="{{ url('') }}"><img src="{{ asset('images/ssss.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=13') }}"><img src="{{ asset('images/ssss.png') }}"></a>
 <a href="{{ url('https://www.soulsbetween.com/advent-calendars/1') }}"><img src="{{ asset('images/ann_advent.png') }}"></a>
 <a href="{{ url('https://www.soulsbetween.com/forum/9/~546') }}"><img src="{{ asset('images/contest.png') }}"></a>
 
@@ -104,7 +102,7 @@
                 'imageUrl' => asset('images/nest.png'),
                 'header' => 'Nesting',
                 'links' => [
-                    'Permissions' => url('https://www.soulsbetween.com/info/Nest_perms'),
+                    'Permissions' => url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=25'),
                     'Submissions' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
                     'Hatchery' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
                     'Nesting Rites' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20Rites'),
