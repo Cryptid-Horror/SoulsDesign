@@ -348,8 +348,9 @@
 </table>
 	
 <table id="footer">
-	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
+	<td id="footerElement">
         v6.1.0 - Maintained by Cryptid-Horror <br>
+		Originally coded by Armando Montanez <br>
 </table>
 
 </body>
