@@ -105,15 +105,23 @@
 			</select>
 			<select id="sireSkill" class="cellElement">
 				<option value="1">No Skill</option>
-				<option value="2">Hoarder</option>
-				<option value="3">Friendly Giant</option>
-				<option value="4">Steadfast</option>
-				<option value="5">Swift Feet</option>
+				<option value="10">Adept</option>
 				<option value="6">Aether Walker</option>
-				<option value="7">Inner Fire</option>
+				<option value="15">Armored Hide</option>
+				<option value="11">Blessing of the Moon</option>
+				<option value="13">Confetti Dreams</option>
+				<option value="16">Frenzy</option>
+				<option value="3">Friendly Giant</option>
+				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
-				<option value="10">Adept</option>
+				<option value="2">Hoarder</option>
+				<option value="7">Inner Fire</option>
+				<option value="14">Serrated Teeth</option>
+				<option value="4">Steadfast</option>
+				<option value="5">Swift Feet</option>
+
+
 			</select>
 		</div>
 		
@@ -201,15 +209,21 @@
 			</select>
 			<select id="damSkill" class="cellElement">
 				<option value="1">No Skill</option>
-				<option value="2">Hoarder</option>
-				<option value="3">Friendly Giant</option>
-				<option value="4">Steadfast</option>
-				<option value="5">Swift Feet</option>
+				<option value="10">Adept</option>
 				<option value="6">Aether Walker</option>
-				<option value="7">Inner Fire</option>
+				<option value="15">Armored Hide</option>
+				<option value="11">Blessing of the Moon</option>
+				<option value="13">Confetti Dreams</option>
+				<option value="16">Frenzy</option>
+				<option value="3">Friendly Giant</option>
+				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
-				<option value="10">Adept</option>
+				<option value="2">Hoarder</option>
+				<option value="7">Inner Fire</option>
+				<option value="14">Serrated Teeth</option>
+				<option value="4">Steadfast</option>
+				<option value="5">Swift Feet</option>
 
 			</select>
 		</div>

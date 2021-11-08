@@ -146,6 +146,9 @@ var Skills = Object.freeze({
 	    SWIFTFEET: 5,       AETHERWALKER: 6,
 	    INNERFIRE: 7,       HAUNTINGROAR: 8,
 	    HEALINGAURA: 9,     ADEPT: 10,
+		MOONBLESSING: 11,   SUNGUIDANCE: 12,
+		CONFETTIDREAMS: 13, SERRATEDTEETH: 14,
+		ARMOREDHIDE: 15,    FRENZY: 16,
 	});
 
 // basic function to reset forms
@@ -2073,6 +2076,18 @@ function generateSkill() {
 		return "Healing Aura";
 	} else if (result == Skills.ADEPT) {
 	    return "Adept";
+	} else if (result == Skills.MOONBLESSING) {
+	    return "Blessing of the Moon";
+	} else if (result == Skills.SUNGUIDANCE) {
+	    return "Guidance of the Sun";
+	} else if (result == Skills.CONFETTIDREAMS) {
+	    return "Confetti Dreams";
+	} else if (result == Skills.SERRATEDTEETH) {
+	    return "Serrated Teeth";
+	} else if (result == Skills.ARMOREDHIDE) {
+	    return "Armored Hide";
+	} else if (result == Skills.FRENZY) {
+	    return "Frenzy";
 	} else {
 		return "UNDEFINED"
 	}
