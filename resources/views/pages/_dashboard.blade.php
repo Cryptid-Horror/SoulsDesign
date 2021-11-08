@@ -7,7 +7,7 @@
 </div>
 <h2>Recent Announcements</h2> 
 <div class="alert alert-primary" role="alert">
-    Anniversary sale goes live November 1st!<br>
+    Anniversary sale is live until December 15th!<br>
     Don't forget to claim your Advent Calendar Rewards! <br>
     Festival of of Solaris and Lunaris is live!
 </div>
