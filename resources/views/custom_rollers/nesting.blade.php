@@ -349,7 +349,7 @@
 	
 <table id="footer">
 	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
-        v6.0.0 - Maintained by Cryptid-Horror <br>
+        v6.1.0 - Maintained by Cryptid-Horror <br>
 </table>
 
 </body>
