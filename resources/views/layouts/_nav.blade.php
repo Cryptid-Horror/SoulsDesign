@@ -41,10 +41,6 @@
                             <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
                                 Breeding Permissions
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url('inventory') }}">
-                                Inventory
-                            </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
@@ -52,7 +48,7 @@
                                <i class="fas fa-paint-brush"></i>  Design Registration
                             </a>
                             <a class="dropdown-item" href="{{ url('info/point_counting') }}">
-                                <i class="fas fa-clipboard-list"></i> Primal and Mastery Points
+                                <i class="fas fa-clipboard-list"></i> PP/MP Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('level') }}">
                                 <i class="fas fa-level-up-alt"></i> Mastery Points
@@ -70,9 +66,6 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('info/Flights') }}">
                                <i class="fas fa-dragon"></i> Flights
-                            </a>
-                             <a class="dropdown-item" href="{{ url('info/Nest_perms') }}">
-                                 <i class="fas fa-egg"></i> Nesting Permissions
                             </a>
                             <a class="dropdown-item" href="{{ url('info/Sales') }}">
                             <i class="fas fa-store"></i>Seasonal Sales
@@ -112,6 +105,9 @@
                             <a class="dropdown-item" href="{{ url('raffles') }}">
                                 Raffles
                             </a>
+                            <a class="dropdown-item" href="{{ url('users') }}">
+                            Users
+                            </a>
                         </div>
                     </li>
                 <li class="nav-item">
@@ -128,10 +124,6 @@
                             Encyclopedia
                         </a>
                         <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ url('users') }}">
-                            Users
-                        </a>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
                             Dragon Masterlist
                         </a>
@@ -222,7 +214,10 @@
                                 Submit Report
                             </a>
                             <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
-                                Staff Applications
+                            <i class="fas fa-lock-open"></i>Staff Applications
+                            </a>
+                            <a class="dropdown-item" href="{{ url('info/GAP') }}">
+                            <i class="fas fa-lock-open"></i>Guest Artist Applications
                             </a>
                             <a class="dropdown-item" href="{{ url('forum/16') }}">
                                 Suggestions/Feedback
