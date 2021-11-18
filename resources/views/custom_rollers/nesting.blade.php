@@ -121,6 +121,7 @@
 				<option value="4">Steadfast</option>
 				<option value="5">Swift Feet</option>
 			</select>
+			<br>
 			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">✦Mutation</label>
 
 		</div>
@@ -226,6 +227,7 @@
 				<option value="5">Swift Feet</option>
 
 			</select>
+			<br>
 			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">✦Mutation</label>
 
 		</div>
