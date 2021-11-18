@@ -386,7 +386,7 @@ class Character extends Model
      */
     public function getDisplayOwnerAttribute()
     {
-        if($this->user_id) return $this->user->displayName;
+        if($this->user_id) return ($this->user ? $this->user->displayName : '(Deleted User)');
         else return prettyProfileLink($this->owner_url);
     }
 
