@@ -120,9 +120,9 @@
 				<option value="14">Serrated Teeth</option>
 				<option value="4">Steadfast</option>
 				<option value="5">Swift Feet</option>
-
-
 			</select>
+			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">✦Sire Mutation</label>
+
 		</div>
 		
 		<!-- Textboxes -->
@@ -226,6 +226,8 @@
 				<option value="5">Swift Feet</option>
 
 			</select>
+			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">✦Dam Mutation</label>
+
 		</div>
 		
 		<!-- Textboxes -->
@@ -246,11 +248,10 @@
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
-
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
 			</span>
@@ -258,6 +259,7 @@
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
@@ -274,8 +276,6 @@
 			<br>
 			<span style="white-space: nowrap;">
 			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
-			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">✦Sire Mutation</label>
-			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">✦Dam Mutation</label>
 			
 			</span>
 			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
