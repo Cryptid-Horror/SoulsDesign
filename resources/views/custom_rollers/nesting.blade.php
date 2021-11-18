@@ -283,7 +283,7 @@
 			<h2>Buff/Debuff</h2>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
-                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦ Egg Minimum Bonus (Starter, Serpent, etc)</label>
+                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦Starter/Serpent</label>
 				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
 			</span>
 			<div id="genderSelectionRadios">
