@@ -278,11 +278,14 @@
 			<br>
 			<span style="white-space: nowrap;">
 			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
-			
+		
 			</span>
-			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
-			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">✦ Egg Minimum Bonus (Starter, Serpent, etc)</label>
-			<br><label class="wideCheckbox"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
+			<h2>Buff/Debuff</h2>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦ Egg Minimum Bonus (Starter, Serpent, etc)</label>
+				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
+			</span>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
