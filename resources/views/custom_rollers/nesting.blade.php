@@ -278,15 +278,6 @@
 			<br>
 			<span style="white-space: nowrap;">
 			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
-		
-			</span>
-			<h2>Buff/Debuff</h2>
-			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
-                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦Starter/Serpent</label>
-				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
-			</span>
-			<br>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
@@ -336,6 +327,15 @@
                     <option value="golden">Hazed Golden</option>
 				</select>
 			</div>
+			</span>
+			<h2>Buff/Debuff</h2>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦Starter/Serpent</label>
+				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
+			</span>
+			<br>
+			
 		</div>
 	</td>
 	</tr>
