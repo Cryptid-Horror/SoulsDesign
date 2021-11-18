@@ -247,33 +247,33 @@
 		<h2>Modifiers</h2>
 		<div width="100%">
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
-			</span>
-			<br>
-			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
-			</span>
-			<br>
-			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
+			</span>
+			<br>
+			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of Ivory</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
+			</span>
+			<br>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
-                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
 			</span>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
