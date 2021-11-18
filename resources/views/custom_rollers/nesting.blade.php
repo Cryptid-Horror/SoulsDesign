@@ -247,7 +247,7 @@
 		<h2>Modifiers</h2>
 		<div width="100%">
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
+				<label class="radioLabel"><input type="checkbox" title="test" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
 			</span>
