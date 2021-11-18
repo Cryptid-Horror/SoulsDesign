@@ -246,10 +246,11 @@
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
+
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
 			</span>
@@ -257,7 +258,6 @@
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
