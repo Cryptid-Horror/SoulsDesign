@@ -273,14 +273,14 @@
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">✨Sire Mutation</label>
-			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">✨Dam Mutation</label>
-			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">✨Weak Fertility?</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
+			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">✦Sire Mutation</label>
+			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">✦Dam Mutation</label>
+			
 			</span>
-			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">✨Inbreeding present?</label>
-			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">✨2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
-			<br><label class="wideCheckbox"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
-
+			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">✦ Egg Minimum Bonus (Starter, Serpent, etc)</label>
+			<br><label class="wideCheckbox"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
