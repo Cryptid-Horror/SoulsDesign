@@ -286,6 +286,7 @@
                 <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦Starter/Serpent</label>
 				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
 			</span>
+			<br>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
