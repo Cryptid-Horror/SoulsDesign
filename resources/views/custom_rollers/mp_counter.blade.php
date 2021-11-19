@@ -69,6 +69,9 @@
 			<input type="checkbox" id="complexbackground"><label for="complexbackground" class="wide">Complex Background</label><br>
             <input type="checkbox" id="comp"><label for="comp" class="wide">Companion/Handler</label><br>
 
+			<h3>Familiars</h3>
+			<input type="checkbox" id="celestialfeline"><label for="celestialfeline" class="wide">Celestial Feline</label><br>
+
 			<h3>Extra Dragons (Stacks 4 times)</h3>
 			<input type="checkbox" id="extradragon1"><label for="extradragon1" class="wide">Extra Dragon (1)</label><br>
 			<input type="checkbox" id="extradragon2"><label for="extradragon2" class="wide">Extra Dragon (2)</label><br>
