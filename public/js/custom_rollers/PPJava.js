@@ -105,6 +105,19 @@ function calculate() {
 			log();
 		}
 		
+		//BLESSING OF THE SUN AND MOON
+		if ($("#sun").is(":checked")) {
+			tempbonus = 2;
+			text = "Guardian of the Sun";
+			log();
+		}
+
+		if ($("#moon").is(":checked")) {
+			tempbonus = 2;
+			text = "Blessing of the Moon";
+			log();
+		}
+
 		//EXTRA DRAGON
 		if ($("#added").is(":checked")) {
 			tempbonus = 2;
@@ -153,6 +166,13 @@ function calculate() {
 			text = "Event";
 			log();
 		}
+
+		//CONFETTI DREAMS
+		if ($("#confetti").is(":checked")) {
+			tempbonus = 2;
+			text = "Confetti Dreams";
+			log();
+		}
 		
 		//ARENA
 		if ($("#arena").is(":checked")) {
@@ -163,7 +183,7 @@ function calculate() {
 		
 		if ($("#monthly").is(":checked")) {
 			  tempbonus = 1;
-			  text ="Monthly Challenge";
+			  text ="Seasonal Challenge";
 			  log();
 			  }
 		
@@ -175,7 +195,7 @@ function calculate() {
 		
 		if ($("#br").is(":checked")) {
 			tempbonus = 2;
-			text = "Breeding Rite";
+			text = "Nesting Rite";
 			log();
 		}
 		

@@ -89,6 +89,10 @@
 			<input type="checkbox" id="companion"><label for="companion" class="wide">Companion Present</label><br>
 			<input type="checkbox" id="added"><label for="added" class="wide">Added Dragon</label><br>
 			<input type="checkbox" id="added2"><label for="added2" class="wide">Added Dragon #2</label><br>
+			<h3> Skills</h3> 
+			<input type="checkbox" id="moon"><label for="moon" class="wide">Blessing of the Moon</label><br>
+			<input type="checkbox" id="sun"><label for="sun" class="wide">Guardian of the Sun</label><br>
+			<input type="checkbox" id="confetti"><label for="confetti" class="wide">Confetti Dreams</label><br>
 			<h3>Participation</h3>
 			<input type="checkbox" id="activity"><label for="activity" class="wide">Activity</label><br>
 			<input type="checkbox" id="event"><label for="event" class="wide">Event</label><br>
