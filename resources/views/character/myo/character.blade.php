@@ -52,7 +52,7 @@
             @endif
             @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
                 <li class="nav-item">
-                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
+                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->id }}" role="tab"><i class="fas fa-cog"></i></a>
                 </li>
                     <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-primary"><i class="fas fa-user-cog"></i></a>
                 </li>
