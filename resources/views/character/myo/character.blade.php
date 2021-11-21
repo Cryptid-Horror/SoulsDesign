@@ -81,7 +81,7 @@
             </div>
         @endif
         @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-            <div class="tab-pane fade" id="settings-{{ $character->slug }}">
+            <div class="tab-pane fade" id="settings-all">
                 {!! Form::open(['url' => $character->is_myo_slot ? 'admin/myo/'.$character->id.'/settings' : 'admin/character/'.$character->slug.'/settings']) !!}
                     <div class="form-group">
                         {!! Form::checkbox('is_visible', 1, $character->is_visible, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
