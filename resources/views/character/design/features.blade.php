@@ -77,7 +77,7 @@
         @if($request->character->is_myo_slot && $request->character->image->title_id)
                 <div class="alert alert-secondary">{!! $request->character->image->title->displayName !!}</div>
         @else
-            <div class="row no-gutters">
+            <div class="row no-gutters hide">
                 <div class="col-md-6 pr-2">
                     <div class="form-group">
                         {!! Form::label('Character Title') !!}
@@ -98,7 +98,7 @@
             </div>
         @endif
 
-        <div class="form-group">
+        <div class="form-group hide">
             {!! Form::label('Traits') !!}
             <div id="featureList">
                 {{-- Add in the compulsory traits for Registered Dragon slots --}}
