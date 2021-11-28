@@ -36,7 +36,7 @@
 				['Shaped', 'nSp/SpSp'], ['Smoke', 'nSm/SmSm'], ['Tabby', 'nTa/TaTa'],
 				['Tobiano', 'nTo/ToTo'], ['Toxin', 'nTx/TxTx']];
 
-	$rares = [['Appaloosa', 'nAp/ApAp'], ['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Filigree', 'nFi/FiFi'], ['Glass', 'nGl/GlGl'],
+	$rares = [['Blooded', 'nBd/BdBd'], ['Eyes', 'nEy/EyEy'], ['Filigree', 'nFi/FiFi'], ['Glass', 'nGl/GlGl'],
 			['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
 			['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe']];
 
@@ -180,6 +180,7 @@
 						<div class="alert alert-info">
 							<ul class="mb-0">
 								<li>Somatic is now called Brindled</li>
+								<li>Bokeh Renamed to Dapple.</li>
 							</ul>
 						</div>
 						@foreach(array_chunk($uncommons, 4) as $uncommon_chunk)
@@ -207,6 +208,10 @@
 
 				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
 					<div class="card-body">
+						<ul>
+							<li>Appaloosa merged with Painted.</li>
+							<li>Vignette renamed to Filigree</li>
+						</ul>
 						@foreach(array_chunk($rares, 4) as $rare_chunk)
 							<div class="row mb-3">
 								@foreach($rare_chunk as $rare)
