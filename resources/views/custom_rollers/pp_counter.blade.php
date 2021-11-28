@@ -98,12 +98,10 @@
 			<h3>Participation</h3>
 			<input type="checkbox" id="activity"><label for="activity" class="wide">Activity</label><br>
 			<input type="checkbox" id="event"><label for="event" class="wide">Annual Event</label><br>
-			<input type="checkbox" id="arena"><label for="arena" class="wide">Arena</label><br>
-			<input type="checkbox" id="monthly"><label for="monthly" class="wide">Monthly Challenge</label><br>
+			<input type="checkbox" id="arena"><label for="arena" class="wide">Arena/Grand Hunt</label><br>
 			<input type="checkbox" id="story"><label for="story" class="wide">World Event</label><br>
-			<input type="checkbox" id="br"><label for="br" class="wide">Nesting/Taming Rite</label><br>
-			<input type="checkbox" id="ar"><label for="ar" class="wide">Aether Restoration</label><br>
-			<input type="checkbox" id="sl"><label for="sl" class="wide">Soul Linking</label><br>
+			<input type="checkbox" id="br"><label for="br" class="wide">Rites</label><br>
+			<div id="text">Rites are: Nesting, Taming, Aether Restoration, Soul Linking, etc<br><br></div>
 			</form>
 		</div>
 				</fieldset>
