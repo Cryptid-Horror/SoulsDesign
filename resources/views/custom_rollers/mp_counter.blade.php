@@ -67,10 +67,7 @@
             <input type="checkbox" id="shadingcomplex"><label for="shadingcomplex" class="wide">Complex Shading</label><br>
 			<input type="checkbox" id="simplebackground"><label for="simplebackground" class="wide">Simple Background</label><br>
 			<input type="checkbox" id="complexbackground"><label for="complexbackground" class="wide">Complex Background</label><br>
-            <input type="checkbox" id="comp"><label for="comp" class="wide">Companion/Handler</label><br>
-
-			<h3>Familiars</h3>
-			<input type="checkbox" id="celestialfeline"><label for="celestialfeline" class="wide">Celestial Feline</label><br>
+            <input type="checkbox" id="comp"><label for="comp" class="wide">Humanoid Handler</label><br>
 
 			<h3>Extra Dragons (Stacks 4 times)</h3>
 			<input type="checkbox" id="extradragon1"><label for="extradragon1" class="wide">Extra Dragon (1)</label><br>
@@ -78,7 +75,7 @@
             <input type="checkbox" id="extradragon3"><label for="extradragon3" class="wide">Extra Dragon (3)</label><br>
             <input type="checkbox" id="extradragon4"><label for="extradragon4" class="wide">Extra Dragon (4)</label><br>
 
-			<h3>Extra Works (Stacks 5 times)</h3>
+			<h3>Extra Words (Stacks 5 times)</h3>
 			<input type="checkbox" id="extrawords1"><label for="extrawords1" class="wide">150 Extra Words (1)</label><br>
             <input type="checkbox" id="extrawords2"><label for="extrawords2" class="wide">150 Extra Words (2)</label><br>
             <input type="checkbox" id="extrawords3"><label for="extrawords3" class="wide">150 Extra Words (3)</label><br>

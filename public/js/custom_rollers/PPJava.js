@@ -117,6 +117,12 @@ function calculate() {
 			text = "Blessing of the Moon";
 			log();
 		}
+		//FELINE
+		if ($("#feline").is(":checked")) {
+			tempbonus = 10;
+			text = "Celestial Feline";
+			log();
+		}
 
 		//EXTRA DRAGON
 		if ($("#added").is(":checked")) {

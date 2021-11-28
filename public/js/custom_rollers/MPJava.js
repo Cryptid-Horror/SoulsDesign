@@ -151,11 +151,6 @@ function calculate() {
 			log();
 		}
 
-		if ($("#celestialfeline").is(":checked")) {
-			tempbonus = 10;
-			text = "Celestial Feline";
-			log();
-		}
 	}
 	
 	var breakdowntext = "";

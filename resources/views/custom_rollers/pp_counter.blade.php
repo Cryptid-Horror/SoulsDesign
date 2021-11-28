@@ -89,22 +89,21 @@
 			<input type="checkbox" id="companion"><label for="companion" class="wide">Companion Present</label><br>
 			<input type="checkbox" id="added"><label for="added" class="wide">Added Dragon</label><br>
 			<input type="checkbox" id="added2"><label for="added2" class="wide">Added Dragon #2</label><br>
-			<h3> Skills</h3> 
+			<input type="checkbox" id="oarpg"><label for="oarpg" class="wide">Other ARPG Creature</label><br>
+			<h3> Skills and Familiars</h3> 
 			<input type="checkbox" id="moon"><label for="moon" class="wide">Blessing of the Moon</label><br>
 			<input type="checkbox" id="sun"><label for="sun" class="wide">Guardian of the Sun</label><br>
 			<input type="checkbox" id="confetti"><label for="confetti" class="wide">Confetti Dreams</label><br>
+			<input type="checkbox" id="feline"><label for="feline" class="wide">Celestial Feline</label><br>
 			<h3>Participation</h3>
 			<input type="checkbox" id="activity"><label for="activity" class="wide">Activity</label><br>
-			<input type="checkbox" id="event"><label for="event" class="wide">Event</label><br>
+			<input type="checkbox" id="event"><label for="event" class="wide">Annual Event</label><br>
 			<input type="checkbox" id="arena"><label for="arena" class="wide">Arena</label><br>
 			<input type="checkbox" id="monthly"><label for="monthly" class="wide">Monthly Challenge</label><br>
-			<input type="checkbox" id="story"><label for="story" class="wide">Story Event</label><br>
-			<h3>Character Building</h3>
-			<input type="checkbox" id="br"><label for="br" class="wide">Breeding Rite</label><br>
-			<input type="checkbox" id="taming"><label for="taming" class="wide">Taming Entry</label><br>
+			<input type="checkbox" id="story"><label for="story" class="wide">World Event</label><br>
+			<input type="checkbox" id="br"><label for="br" class="wide">Nesting/Taming Rite</label><br>
 			<input type="checkbox" id="ar"><label for="ar" class="wide">Aether Restoration</label><br>
 			<input type="checkbox" id="sl"><label for="sl" class="wide">Soul Linking</label><br>
-			<input type="checkbox" id="oarpg"><label for="oarpg" class="wide">Other ARPG Creature</label><br>
 			</form>
 		</div>
 				</fieldset>
