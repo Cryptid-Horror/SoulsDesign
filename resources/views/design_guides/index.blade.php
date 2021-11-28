@@ -98,7 +98,12 @@
                 <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance (nRad/RadRad)</a>
 			</div>
 		</div>
-
+		<div class="alert alert-danger" role="alert">
+  			The following things cannot be added to genos/dragons with items currently: 
+			  - Hydra, Minature mutations. 
+			  - New traits/markings/mutations/etc from the contest.
+			  - skills: Confettis Dreams, Guidance of the Sun, and Blessing of the Moon
+		</div>
 
 		<!-- Common Genetics -->		
 		<div class="accordion" id="accordionExample">
@@ -251,6 +256,9 @@
 				</div>
 				<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
 					<div class="card-body">
+					<ul class="mb-0">
+								<li>Legendary Markings are from special starters. These markings can only be added with Legendary vouchers or from nesting. They do not drop in eggs.</li>
+							</ul>
 						@foreach(array_chunk($legendarys, 4) as $legendary_chunk)
 							<div class="row mb-3">
 								@foreach($legendary_chunk as $legendary)
