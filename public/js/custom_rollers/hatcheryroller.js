@@ -108,7 +108,7 @@ const vr_marks = [
 const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', "Maned", 'Frilled', 'Raptor', 'Tusked',
 	'Feather Extensions', 'Webbed', 'Fluffed', 'Cherubian', 'Multi-Eyes', 'Sakura', 'Eel', 'Viper',
 	'Seraph', 'Blazer', 'Elemental', 'Albino', 'Anery', 'Leucism', 'Abundism', 'Lunar', 'Vented', 'Faceted',
-	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate"
+	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate", "Hydra", "Miniature",
 ];
 const rav_only_mutes = ['Eagle Beak', 'Fisher Beak', 'Warlord', 'Vulture Beak'];
 
