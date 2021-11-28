@@ -93,7 +93,7 @@ const uc_marks = [
     ['Tabby', 'nTa', 'suffix'], ['Tobiano', 'nTo', 'suffix'], ['Toxin', 'nTx', 'suffix']
 ];
 const r_marks = [
-	['Appaloosa', 'nAp', 'r'], ['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
+	['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
     ['Filigree', 'nFi', 'r']
