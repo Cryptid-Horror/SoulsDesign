@@ -14,8 +14,7 @@
 
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=13') }}"><img src="{{ asset('images/ssss.png') }}"></a>
-<a href="{{ url('https://www.soulsbetween.com/advent-calendars/1') }}"><img src="{{ asset('images/ann_advent.png') }}"></a>
-<a href="{{ url('https://www.soulsbetween.com/forum/9/~546') }}"><img src="{{ asset('images/contest.png') }}"></a>
+
 
 <br>
 <br>
