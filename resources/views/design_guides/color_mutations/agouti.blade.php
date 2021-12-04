@@ -49,15 +49,17 @@
         'Agouti color is picked from the sliders of the agouti color that passes plus the base coat that the color is, for example, nAg-Azure on a Vanta dragon will be any Vanta Azure Slider.',
         'Agouti when paired with another color modifier, if they are the same, can create a dominant color modifier effect. Example, having nAg-Azure and nAz in the same genome, you can have dominate Azure effects on the dragon. The base coat still needs to be the appropriate azure color though.',
         'If a design has albino or anery Agouti will not present.',
+        'Agouti can effect a percentage of the base color - meaning it does not have to effect the whole base color on the body.',
     ];
 
     $marking_cannot = [
-        'Agouti cannot effect markings by itself on the marking is base coat color depedant allowed - i.e. like Stained or Sable.',
+        'Agouti cannot effect markings by itself on the marking is base coat color depedant allowed - i.e. like Stained or Sable. If the same color modifier or radiance is present, then the whole dragon be that color modifier color.',
     ];
 
     $marking_must = [
-        'Recessive: Can only affect the base coat.',
-        'Dominant: Can effect the base and ALL markings.',
+        'Recessive: Can only affect the base coat with the single color that passes with it.',
+        'Dominant: An extra color modifier can be added with the first color. Together this can create a dominant color modifier look.',
+        'If using a percentage cover, it must cover at least 30% of the body at a minimum.', 
     ];
 
     // If left empty, the swatches section will not be shown

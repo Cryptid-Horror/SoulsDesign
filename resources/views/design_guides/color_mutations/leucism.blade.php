@@ -46,7 +46,7 @@
 
     // You can use html!
     $marking_can = [
-        'Colors can be picked from the ivory sliders, or the leucistic sliders.',
+        'Colors can be picked from the leucistic sliders.',
     ];
 
     $marking_cannot = [

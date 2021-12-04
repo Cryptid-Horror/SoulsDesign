@@ -2,7 +2,7 @@
     $marking_icon = 'placeholder';
     $marking_name = 'Albino';
     $marking_code = 'Null';
-    $marking_desc = "A mutation that causes the entire body to be white, and only rare and mythic markings can be shown on the body.";
+    $marking_desc = "A mutation that causes the entire body to be white, and only certain markings are shown based on player choice.";
      $layers_above_or_below = 'Null';
     $layers_above = 'Null';
     $layers_below = 'Null';
@@ -46,7 +46,7 @@
 
     // You can use html!
     $marking_can = [
-        'Rare and mythic markings are allowed to be present on the design at choice.',
+        'Markings can be present or hidden by albino.',
     ];
 
     $marking_cannot = [
@@ -54,8 +54,8 @@
 
     $marking_must = [
        'There is no dominant form of this mutation.',
-       'Albino causes the base to be from the ivory and leucism sliders.',
-       'All common and uncommon markings must be hidden, rare and mythic markings are allowed to present.',
+       'Albino causes the base to be from the ivory sliders.',
+       'You may choose which markings show on albino.',
     ];
 
     // If left empty, the swatches section will not be shown

@@ -2,7 +2,7 @@
     $marking_icon = 'placeholder';
     $marking_name = 'Abundism';
     $marking_code = 'Null';
-    $marking_desc = "A mutation that causes the markings to be black in coloration.";
+    $marking_desc = "A mutation that causes the markings to be black in coloration, or the base to pick from abundism sliders.";
      $layers_above_or_below = 'Null';
     $layers_above = 'Null';
     $layers_below = 'Null';
@@ -48,6 +48,8 @@
     $marking_can = [
         'Abundism makes markings dark, but not necessarily black. You can make them shades of black/dark grey, or just very dark shades of the color you use (very dark red, etc)',
         'Abundism can cause the base coat to be picked from vanta sliders or the melanistic section of the base coat you have (i.e. an umber coat, you can use melanistic umber sliders, vanta sliders, or just umber sliders).',
+        'If a color modifier is present, Abundism coat color can be picked from the abundism sliders.', 
+        'If using abundism on the base coat, the markings do not have to be abundism black/grey etc.',
     ];
 
     $marking_cannot = [
@@ -56,7 +58,7 @@
 
     $marking_must = [
        'There is no dominant form of this mutation.',
-       'All markings except tobiano need to be darker shades of their intended colors (i.e. no white or bright markings)',
+       'All markings except tobiano need to be darker shades of their intended colors (i.e. no white or bright markings) unless you are using abundism on the base color.',
        'Markings must be present on the design.',
     ];
 

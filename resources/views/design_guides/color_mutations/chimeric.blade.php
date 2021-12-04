@@ -2,7 +2,7 @@
     $marking_icon = 'placeholder';
     $marking_name = 'Chimeric';
     $marking_code = 'Null';
-    $marking_desc = "A mutation that causes two genetic strings to appear on the design in random patches.";
+    $marking_desc = "A mutation that causes two genetic strings to appear on the design in random patches.YOU MUST give design reviewers three images for design review: 1 of the combined geno strings, and 1 of each string before you combined them.";
      $layers_above_or_below = 'Null';
     $layers_above = 'Null';
     $layers_below = 'Null';

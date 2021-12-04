@@ -2,7 +2,7 @@
     $marking_icon = 'placeholder';
     $marking_name = 'Anery';
     $marking_code = 'Null';
-    $marking_desc = "A mutation that causes the entire body to be black, and only rare and mythic markings can be shown on the body.";
+    $marking_desc = "A mutation that causes the entire body to be black, and only certain markings are shown based on player choice.";
      $layers_above_or_below = 'Null';
     $layers_above = 'Null';
     $layers_below = 'Null';
@@ -46,7 +46,7 @@
 
     // You can use html!
     $marking_can = [
-        'Rare and mythic markings are allowed to be present on the design at choice.',
+        'Markings can be present or hidden by anery.',
     ];
 
     $marking_cannot = [
@@ -55,7 +55,7 @@
     $marking_must = [
        'There is no dominant form of this mutation.',
        'Anery causes the base to be from the vanta sliders.',
-       'All common and uncommon markings must be hidden, rare and mythic markings are allowed to present.',
+       'You may choose which markings show on anery.',
     ];
 
     // If left empty, the swatches section will not be shown
