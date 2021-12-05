@@ -50,15 +50,16 @@
     $marking_can = [
         'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
         'Allowed to have short bands coming off the main stripe, or along the ankles of the dragon. It appears mainly as an accent, and cannot be overdone to avoid looking like banded or dripping. These small bands may also have a gradient on them, but this gradient is not allowed on these small bars, not on the dun itself.',
+        ' Dunstripe is allowed very smalled disconnects in its shape. It should not appear as another marking like python.',
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and cutouts are not allowed, the marking must be fully connected.'
+        'Holes and cutouts are not allowed.'
     ];
 
     $marking_must = [
-        'dun must either present a stripe, or the lines on the legs/back. It can appear as both, or one or the other.'
+        'dun must be in its required zones.'
     ];
 
     // If left empty, the swatches section will not be shown

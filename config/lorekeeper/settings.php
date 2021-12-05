@@ -231,6 +231,6 @@ return [
 
     'donation_shop' => [
         'item_donations' => 0,
-        'cooldown' => 5,
+        'cooldown' => 1440,
     ]
 ];
