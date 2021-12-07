@@ -32,7 +32,7 @@
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
-    $edge_gradient = 'sometimes';
+    $edge_gradient = 'yes';
     $color_any = 'yes';
     $edge_blending = 'yes';
     $color_dependant = 'yes';
@@ -45,7 +45,7 @@
         'oilslick_yes3',
         'oilslick_no1',
         'oilslick_no2',
-        'oilslick_no3'
+        'oilslick_no3',
     ];
 
     // You can use html!
@@ -62,14 +62,14 @@
     $marking_cannot = [
         'While mottling is allowed, it is allowed only sparingly around the edges to avoid looking like inkwell, tobiano,etc.',
         'Can be any color, but one color must be not found on any specter, petrified, or pearl color allowances.',
-        'Canot mimic other markings like rosettes, tabby, etc.'
+        'Canot mimic other markings like rosettes, tabby, etc.',
          
     ];
 
     $marking_must = [
         'Recessive: May be in 4 zones and have 3 layers of color.',
         'Dominant: May be in all zones and have 4 layers of color.',
-        'Can be any color, but at least one color must be a color not found on specter, petrified, or pearl.'
+        'Can be any color, but at least one color must be a color not found on specter, petrified, or pearl.',
     ];
 
     // If left empty, the swatches section will not be shown
