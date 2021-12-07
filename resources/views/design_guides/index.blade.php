@@ -43,7 +43,7 @@
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Arcane', 'nArc/ArcArc'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'], 
 				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'], 
 				['Oilslick', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
-				['Triquetra', 'nTri/TriTri'], ['Test', 'nTe/TeTe']];
+				['Triquetra', 'nTri/TriTri'], ['Oilslick', 'nOol/OolOol']];
 	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torch(Fwoosh)', 'nTh/ThTh']];
 ?>
 <body>
