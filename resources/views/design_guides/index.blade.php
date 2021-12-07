@@ -41,8 +41,8 @@
 				['Patchwork', 'nPw/PwPw'], ['Pearl', 'nOpe/OpeOpe'], ['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe']];
 
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Arcane', 'nArc/ArcArc'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'], 
-				['Harle', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'], 
-				['Oil', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
+				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'], 
+				['Oilslick', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
 				['Triquetra', 'nTri/TriTri']];
 	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torch(Fwoosh)', 'nTh/ThTh']];
 ?>
