@@ -1,8 +1,8 @@
 <?php
-    $marking_icon = 'Rare_Patchwork';
-    $marking_name = 'Patchwork';
-    $marking_code = 'nPw/PwPw';
-    $marking_desc = "A colorful three layer marking that has up to 6 colors present. Each layer has 2 colors gradienting into each other. Patchwork needs to appear as geometric shapes. This marking was suggested by Nightshadow.";
+    $marking_icon = 'Mythic_Oilslick';
+    $marking_name = 'Oilslick';
+    $marking_code = 'nOol/OolOol';
+    $marking_desc = " Oilslick is a freeform marking that mimics oilslicks and inkblot tests. It is compromised of layers of color and is allowed to be any color.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
@@ -17,7 +17,7 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
-        'Ridgewalker'=> 'Ridgewalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
         'Abyssal' => 'Abyssal_Range',
     ];
 
@@ -26,13 +26,13 @@
     $edge_feathered = 'yes';
     $edge_border = 'no';
     $edge_textured = 'yes';
-    $edge_mottled = 'no';
+    $edge_mottled = 'yes';
     $edge_soft = 'yes';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
     $edge_blurred = 'no';
-    $edge_gradient = 'no';
+    $edge_gradient = 'yes';
     $color_any = 'yes';
     $edge_blending = 'yes';
     $color_dependant = 'yes';
@@ -40,34 +40,36 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'patchwork_yes1',
-        'patchwork_yes2',
-        'patchwork_yes3',
-        'patchwork_no1',
-        'patchwork_no2',
-        'patchwork_no3'
+        'oilslick_yes1',
+        'oilslick_yes2',
+        'oilslick_yes3',
+        'oilslick_no1',
+        'oilslick_no2',
+        'oilslick_no3',
     ];
 
     // You can use html!
     $marking_can = [
-        'Patchwork can appear as a marking with geometric shapes. Squares, Diamonds, circles etc.',
-        'Patchwork can be any colors, so long as two colors are present on the shape. In total six colors needs to be present.', 
-        'While all the shapes need to be the same, you can rotate and scale the shapes as needed.',
-        'Shapes must overlay on each other to create three layers - however they can be in patches around the body.',
-
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
+        'Oilslick can be any color, but cannot look like specter, petrified, or pearl. At least one of its color needs to be a selection not found on those markings allowed colors.',
+        'This marking can have a lighter or darker gradient beneath it - this is the only part of the marking that can gradient and it must be a gradient.', 
+        'The gradient can be color dependant, or any color.',
+        'The shape of this marking can mimic patterns found in oilslicks or inkblots. It is a very freeform marking with a lot of possibilities in shape.', 
+        '3 layers are present in this marking. In Oilslick unaltered by a color modifier, oilslick can be any color. When a color modifier is affecting it however, the color must be from that modifiers allowed colors.',
+        
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Cannot have multiple different shapes - all of Patchwork needs to be the same shape.',
-        'Patchwork cannot be made to look like Mermaid or other markings - with the exception of shaped with which it may mimic the same shapes allowed.',
+        'While mottling is allowed, it is allowed only sparingly around the edges to avoid looking like inkwell, tobiano,etc.',
+        'Can be any color, but one color must be not found on any specter, petrified, or pearl color allowances.',
+        'Canot mimic other markings like rosettes, tabby, etc.',
          
     ];
 
     $marking_must = [
-        'Recessive: Can appear in three zones.', 
-        'Dominant: Can appear in all zones and cover up to 75 of the body.',
-        'Patchwork must have three layers present, with each layer having 2 colors fully blending/gradienting into each other.',
+        'Recessive: May be in 4 zones and have 3 layers of color.',
+        'Dominant: May be in all zones and have 4 layers of color.',
+        'Can be any color, but at least one color must be a color not found on specter, petrified, or pearl.',
     ];
 
     // If left empty, the swatches section will not be shown
