@@ -24,8 +24,8 @@
 				['Leaf', 'nLf/LfLf'], ['Masked', 'nMa/MaMa'], ['Pangare', 'nPa/PaPa'],
 				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rimmed', 'nRi/Ri'],
 				['Ringed', 'nRn/RnRn'], ['Rose', 'nRos/RosRos'], ['Ripples', 'nRip/RipRip'], ['Sable', 'nSa/SaSa'],
-				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'], ['◆Stockings', 'nSo/SoSo'],
-				['◆Specter', 'nOse/OseOse'], ['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
+				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'], ['Stockings', 'nSo/SoSo'],
+				['Specter', 'nOse/OseOse'], ['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
 
 	$uncommons = [['Azure', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Border', 'nBo/BoBo'],
 				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Copper', 'nCp/CpCp'],
