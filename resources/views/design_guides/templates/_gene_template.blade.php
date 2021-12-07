@@ -64,9 +64,8 @@
                         <button id="btnGroupVerticalDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ♦ Drake Ranges
                         </button>
-                        <a class="dropdown-item" data-fancybox="gallery" href="imagehere">Coming Soon!</a>
-
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
+                        <a class="dropdown-item" data-fancybox="gallery" href="imagehere">Coming Soon!</a>
                         </div>
                     </div>
                     <div class="btn-group" role="group">
