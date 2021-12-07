@@ -65,7 +65,7 @@
                             ♦ Drake Ranges
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
-                            <a class="dropdown-item" data-fancybox="gallery" href="imagehere">Coming Soon!</a>
+                        <a class="dropdown-item" data-fancybox="gallery" href="{{ asset('images/design_guides/ranges/'.$ranges['Ridgewalker'].'.png') }}">Ridgewalker</a>
                         </div>
                     </div>
                     <div class="btn-group" role="group">
