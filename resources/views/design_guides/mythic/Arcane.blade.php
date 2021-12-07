@@ -45,7 +45,7 @@
         'arcane_yes3',
         'arcane_no1',
         'arcane_no2',
-        'arcane_no3'
+        'arcane_no3',
     ];
 
     // You can use html!
