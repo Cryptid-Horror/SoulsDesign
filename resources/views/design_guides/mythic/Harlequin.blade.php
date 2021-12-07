@@ -1,13 +1,14 @@
 <?php
-    $marking_icon = 'Mythic_Shimmer';
-    $marking_name = 'Shimmer';
-    $marking_code = 'nSh/ShSh';
-    $marking_desc = "A marking that appears as a colorful blend of colors creating a sort of 'Cloud' pattern. Shimmer is known to come from Shimmering Isles in royal dragon bloods. ";
-     $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Smoke, Roan, Tabby, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra ';
-    $layers_above = 'Bokeh, Cloud, Merle';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted, ';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'All Markings, except for Inkwell, Tobiano, Painted, and Appaloosa.';
+    $marking_icon = 'Mythic_Harlequin';
+    $marking_name = 'Harlequin';
+    $marking_code = 'nHar/HarHar';
+    $marking_desc = "Harlequin, like Lepir, is allowed to be simple or complex. Simple Harlequin presents as a cluster of lines or dots like on a Harlequin toad. Complex lets you override the geno to make
+                    the dragons design look like any toad or frog. A reference image is necessary during design approval. Suggested by MadDog.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,20 +18,22 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker'=> 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no
-    $edge_solid = 'no';
+    $edge_solid = 'yes';
     $edge_feathered = 'yes';
     $edge_border = 'no';
-    $edge_textured = 'yes';
-    $edge_mottled = 'yes';
+    $edge_textured = 'no';
+    $edge_mottled = 'no';
     $edge_soft = 'yes';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'yes';
-    $edge_gradient = 'yes';
+    $edge_blurred = 'no';
+    $edge_gradient = 'sometimes';
     $color_any = 'yes';
     $edge_blending = 'yes';
     $color_dependant = 'yes';
@@ -38,30 +41,34 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'shimmer_yes',
-        'shimmer_yes2',
-        'shimmer_no',
-        'shimmer_no2'
+        'har_yes1',
+        'har_yes2',
+        'har_yes3',
+        'har_no1',
+        'har_no2',
+        'har_no3',
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may blend into the base.',
-        'Shimmer can present in a wide variety of patterns from cloud like, to mist, or just a large section of color with swirls/etc in it.',
-        'Up to 4 colors can be present in the marking, and it can have an iridescent look to it',
-        'Shimmer can affect almost every marking, fitting into that markings range.',
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
+        'Complex Harlequin can override the geno and appear as any frog or toad design.', 
+        'Simple Harlequin does not override the geno, all markings must be present either above or beneath harlequin.',
+        'Simple harlequin can appear as clusters of squiggly lines, or as clusters of hollowed out dots/shops that show the base and markings beneath it.',
+        'The gradient on simple harlequin can appear anywhere.', 
+
     ];
 
     $marking_cannot = [
-        'Shimmer has to look different from Aurora, while the markings are similar, some differences exist between the two.',
-        'Shimmer is allowed to be any colors, including dark colors, while Aurora can only be bright colorations with some darker variations as small accents to create depth. Shimmer is allowed to be black, dark greys, or dark versions of colors.',
-        'Shimmer cannot be disconnected, like Aurora can.',
+        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
+        'Complex Harlequin cannot be made to look like non toads or frogs.', 
+        'Complex Harlequin needs to be based on real toads and frogs.',
+         
     ];
 
     $marking_must = [
-        'Recessive: Can cover up to 75% of the body',
-        'Dominant: Can cover up to 100% of the body',
-        'Shimmer must have stars/dusting/glitter within it.',
+        'Recessive: Either complex, or can appear in all zones as any colors with one gradient color allowed on harlequin.',
+        'Dominant: Either complex, or can appear in all zones with two gradient colors on Harlequin itself.'
     ];
 
     // If left empty, the swatches section will not be shown
@@ -70,9 +77,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'shimmer_1', 'alt' => '...', 'label' => 'SB-0983', 'caption' => 'Designer: @Draginraptor'],
-        ['image_name' => 'shimmer_2', 'alt' => '...', 'label' => 'SB-0533', 'caption' => 'Designer: @Cittyy'],
-        ['image_name' => 'shimmer_3', 'alt' => '...', 'label' => 'SB-0777', 'caption' => 'Designer: @Owlapin'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer:'],
     ];
 ?>
 

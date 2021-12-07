@@ -1,27 +1,24 @@
 <?php
-    $marking_icon = 'Common_Blanket';
-    $marking_name = 'Blanket';
-    $marking_code = 'nBl/BlBl';
-    $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
-                    Its name is given for the way it covers the body. The marking originated in
-                    the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_icon = 'Common_Cape';
+    $marking_name = 'Cape';
+    $marking_code = 'nCa/CaCa';
+    $marking_desc = "A marking on the dragon's chest that expands around the wing shoulders to drape over the back of the wings. This marking was suggest by KJ.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blanket',
-        'Warden' => 'Warden_Blanket',
-        'Greater' => 'Gemp_Blanket-Sable',
-        'Ravager' => 'Ravager_Blanket',
-        'Stalker' => 'Stalker_Blanket',
+        'Sapiere' => 'Sapiere_Cape',
+        'Warden' => 'Warden_Cape',
+        'Greater' => 'Gemp_Cape',
+        'Ravager' => 'Ravager_Cape',
+        'Stalker' => 'Stalker_Cape',
+        'Ridgewalker' => 'Ridgewalker_Cape',
+        'Abyssal' => 'Abyssal_Cape',
     ];
 
     // Use yes or no
@@ -34,7 +31,7 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
+    $edge_blurred = 'sometimes';
     $edge_gradient = 'no';
     $color_any = 'no';
     $edge_blending = 'yes';
@@ -43,27 +40,35 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blanket_yes1',
-        'blanket_yes2',
-        'blanket_yes3',
-        'blanket_yes4',
-        'blanket_no2',
-        'blanket_no1'
+        'cape_yes1',
+        'cape_yes2',
+        'cape_yes3',
+        'cape_no1',
+        'cape_no2',
+        'cape_no3'
     ];
 
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear to blend into the base.',
-        'The marking can be disconnected in very small portions.',
+        'Cape is consisted of two layers, a base layer and an upper layer.', 
+        'The lower cape layer must be full connected, but can have up to two small to mid sized holes around the chest region. It cannot have holes on the wing itself.',
+        'The upper layer can be disconnected, but cannot cover all of the lower layer. At most it is allowed to cover 75% of the lower layer.',
+        'Both layers can have blurred/soft edges, but cannot be gradiented. If you use blurred/soft edging you must show solid edges, whether textured or not, as well.',
+        'On creatures/dragons without wings, cape will cover the front legs.',
 
     ];
 
     $marking_cannot = [
         'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Holes and large cut outs are not allowed',    
+        'Only two small to mid sized holes are allowed in Cape.',
+        'All edges cannot be soft or blurred, some edges must be solid or textured.',    
     ];
 
     $marking_must = [
+        'Recessive: ???',
+        'Dominant: ???',
+        'Cape must have two layers to it.',
     ];
 
     // If left empty, the swatches section will not be shown
@@ -72,9 +77,9 @@
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'blanket_1', 'alt' => '...', 'label' => 'SB-0957', 'caption' => 'Designer: @Skoith'],
-        ['image_name' => 'blanket_2', 'alt' => '...', 'label' => 'SB-0941', 'caption' => 'Designer: @FlawedEmperor + @Aarushii'],
-        ['image_name' => 'blanket_3', 'alt' => '...', 'label' => 'SB-0656', 'caption' => 'Designer: @Jaimep'],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer: '],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer: '],
+        ['image_name' => '', 'alt' => '...', 'label' => '', 'caption' => 'Designer: '],
     ];
 ?>
 

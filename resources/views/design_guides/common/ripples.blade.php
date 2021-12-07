@@ -1,8 +1,8 @@
 <?php
-    $marking_icon = 'Mutation_Blacklight';
-    $marking_name = 'Blacklight';
-    $marking_code = 'No Code';
-    $marking_desc = "A mythic mutation that changes the coat color to black (or vanta color modifier if that color modifier is present) and makes the markings bright color regardless of their rules. Suggested by BreezyDraws.";
+    $marking_icon = 'Common_Ripples';
+    $marking_name = 'Ripples';
+    $marking_code = 'nRip/RipRip';
+    $marking_desc = "Ripples appear as curved lines on the dragon's body that are close to each other. Suggested by Oreleth.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
@@ -23,50 +23,51 @@
 
     // Use yes or no
     $edge_solid = 'yes';
-    $edge_feathered = 'yes';
-    $edge_border = 'yes';
+    $edge_feathered = 'no';
+    $edge_border = 'no';
     $edge_textured = 'yes';
-    $edge_mottled = 'yes';
+    $edge_mottled = 'no';
     $edge_soft = 'yes';
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'yes';
+    $edge_blurred = 'no';
     $edge_gradient = 'yes';
-    $color_any = 'yes';
+    $color_any = 'dominant';
     $edge_blending = 'yes';
     $color_dependant = 'yes';
 
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'blacklight_yes1',
-        'blacklight_yes2',
-        'blacklight_yes3',
-        'blacklight_no1',
-        'blacklight_no2',
-        'blacklight_no3'
+        'rip_yes1',
+        'rip_yes2',
+        'rip_yes3',
+        'rip_no1',
+        'rip_no2',
+        'rip_no3'
     ];
 
     // You can use html!
     $marking_can = [
-        'Blacklight can turn the base to any shade of vanta, including melanism colors.',
-        'If a color modifier if present the base can be any vanta shade off that color marking.',
-        'Markings on the body can be hidden or, but one marking has to be present at a minimum.',
-        'Markings on the body can be any BRIGHT color, such as neon colors.',
-
+        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may blend into the base.',
+        'Ripples appear as a series of curved lines that are close to each other. they can appear as simple curves or as wavey lines on the body and wings.',
+        'Ripples may gradient into the base.',
     ];
 
     $marking_cannot = [
-        'Edges cannot be too complicated, to avoid appearing looking like inkwell or other markings.',
-        'Only two small to mid sized holes are allowed in Cape.',
-        'All edges cannot be soft or blurred, some edges must be solid or textured.',    
+        'Ripples cannot appear horizontal, else they will look like trailing.',
+        'Ripples cannot connect in any place, else they may appear too much like banded.',
+     
     ];
 
     $marking_must = [
-        'One marking must be visible, but all marking can be visible.',
-        'All markings shown must be bright and vibrant colors. They can be any color.',
-        'The base coat must be pulled off vanta, melanism, or if a color modifier is present, vanta color markings.',
+        'Recessive: May appear in all zones but must be natural colors or modified by a color marking. Can be shades of the base coat.',
+        'Dominant: May appear in all zones or be any chosen color.',
+        'Ripples must be vertical in direction.',
+        'Ripples must be thin lines, they cannot be overly thick.',
+        'At a minimum, three to four ripple lines must be present.',
+
     ];
 
     // If left empty, the swatches section will not be shown
