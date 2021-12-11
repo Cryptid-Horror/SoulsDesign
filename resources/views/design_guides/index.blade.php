@@ -70,7 +70,6 @@
 			<div class="btn-group-vertical">
 				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
 				<a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
-                <a href="{{ url('world/subtypes') }}" class="btn btn-secondary">Import File Downloads</a>
                 <a href="{{ url('info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
 				<a href="{{ url('info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
 				<a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
@@ -82,17 +81,20 @@
 				<a href="{{ url('world/trait-categories') }}" class="btn btn-secondary">Physical Traits</a>
                 <a href="{{ url('world/traits?feature_category_id=7') }}" class="btn btn-secondary">Skills</a>
                 <a href="{{ url('world/traits?feature_category_id=11') }}" class="btn btn-secondary">Temperaments</a>
+
 			</div>
 			<div class="btn-group-vertical">
                 <a href="{{ url('design/color_mutations/abundism') }}" class="btn btn-secondary">Abundism</a>
                 <a href="{{ url('design/color_mutations/albino') }}" class="btn btn-secondary">Albino</a>
                 <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
 				<a href="{{ url('design/color_mutations/agouti') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
+
+			</div>
+			<div class="btn-group-vertical">
 				<a href="{{ url('design/color_mutations/blacklight') }}" class="btn btn-secondary">Blacklight</a>
                 <a href="{{ url('design/color_mutations/chimeric') }}" class="btn btn-secondary">Chimeric</a>
                 <a href="{{ url('design/color_mutations/leucism') }}" class="btn btn-secondary">Leucism</a>
                 <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance (nRad/RadRad)</a>
-
 			</div>
 		</div>
 		<div class="alert alert-danger" role="alert">
