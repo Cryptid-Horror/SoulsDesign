@@ -126,8 +126,8 @@
                         <div class="col-md-10 col-8">{!! isset($log->data[$key]['url']) ? $log->data[$key]['url'] : 'None' !!}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 col-4"><h5>URL</h5></div>
-                        <div class="col-md-10 col-8">{!! isset($log->data[$key]['text']) ? $log->data[$key]['text'] : 'None' !!}</div>
+                        <div class="col-md-2 col-4"><h5>Text</h5></div>
+                        <div class="col-md-10 col-8"><p>{!! isset($log->data[$key]['text']) ? $log->data[$key]['text'] : 'None' !!}</p></div>
                     </div>
                 @endif
             @else
