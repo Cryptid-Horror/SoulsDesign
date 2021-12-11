@@ -38,8 +38,12 @@
                             </a>
                             <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Adoption%20Center') }}">
                                <i class="fas fa-egg"></i> Adoption Center
+                            </a>
                             <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
                                 Breeding Permissions
+                            </a>
+                            <a class="dropdown-item" href="{{ url('challenges') }}">
+                                Challenges
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
@@ -131,26 +135,6 @@
                             Genotype Masterlist
                         </a>
     
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        World
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="loreDropdown">
-                        <a class="dropdown-item" href="{{ url('world') }}">
-                            Encyclopedia
-                        </a>
-                        <a class="dropdown-item" href="{{ url('prompts/prompts') }}">
-                            Prompts
-                        </a>
-                        <a class="dropdown-item" href="{{ url('challenges') }}">
-                            Challenges
-                        </a>
-                        <a class="dropdown-item" href="{{ url('shops') }}">
-                            Shops
-                        </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
