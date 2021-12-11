@@ -50,7 +50,7 @@
                         {!! Form::textarea('staff_comments', $log->staff_comments, ['class' => 'form-control']) !!}
                     </div>
                     <div class="float-right">
-                        <a href="#" class="btn btn-success mr-2" id="acceptButton">Accept</a>
+                        <a href="#" class="btn btn-success mr-2" id="acceptButton">Mark As Completed</a>
                     </div>
                     {!! Form::close() !!}
                 @endif
@@ -148,7 +148,7 @@
                 <div class="modal-body">
                     <p>This will accept the log, marking it as "old"/non-current. Awarding points is done via the standard submission flow.</p>
                     <div class="text-right">
-                        <a href="#" id="acceptSubmit" class="btn btn-success">Accept</a>
+                        <a href="#" id="acceptSubmit" class="btn btn-success">Mark As Completed</a>
                     </div>
                 </div>
             </div>
