@@ -123,10 +123,10 @@
 
                     <p>Users are required to submit <strong>either</strong> a URL or text depending on the content of the prompt!</p>
                     <div class="form-group">
-                        {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control disabled', 'placeholder' => 'URL']) !!}
+                        {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control', 'disabled', 'placeholder' => 'URL']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control disabled']) !!}
+                        {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control', 'disabled',]) !!}
                     </div>
                 @endif
             @else
