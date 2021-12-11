@@ -289,6 +289,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\User\Wishlist')->where('user_id', $this->id);
     }
+    
+    /**
+     * Get all of the user's challenge logs.
+     */
+    public function challengeLogs()
+    {
+        return $this->hasMany('App\Models\Challenge\UserChallenge');
+    }
 
     /**********************************************************************************************
 
@@ -614,6 +622,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getForumCountAttribute()
     {
         return Comment::where('commentable_type','App\Models\Forum')->where('commenter_id',$this->id)->count();
+    }
+    /**
+     * Check if the user can register for a new challenge
+     *
+     * @return bool
+     */
+    public function getCanChallengeAttribute()
+    {
+        // Check that registrations are currently open
+        if(Settings::get('challenges_concurrent') < 1) return false;
+        // Check if user has fewer active challenges than the current cap
+        if($this->challengeLogs()->active()->count() < Settings::get('challenges_concurrent')) return true;
+        return false;
     }
 
     /**********************************************************************************************

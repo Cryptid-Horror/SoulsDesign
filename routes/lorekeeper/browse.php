@@ -181,6 +181,11 @@ Route::group(['prefix' => 'prompts'], function() {
     Route::get('prompts', 'PromptsController@getPrompts');
 });
 
+Route::group(['prefix' => 'challenges'], function() {
+    Route::get('/', 'ChallengeController@getIndex');
+    Route::get('{id}', 'ChallengeController@getChallenge')->where(['id' => '[0-9]+']);
+});
+
 Route::group(['prefix' => 'shops'], function() {
     Route::get('/', 'ShopController@getIndex');
     Route::get('{id}', 'ShopController@getShop')->where(['id' => '[0-9]+']);

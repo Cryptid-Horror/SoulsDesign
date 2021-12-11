@@ -331,6 +331,15 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::post('prompts/edit/{id?}', 'PromptController@postCreateEditPrompt');
     Route::post('prompts/delete/{id}', 'PromptController@postDeletePrompt');
 
+    # CHALLENGES
+    Route::get('challenges', 'ChallengeController@getChallengeIndex');
+    Route::get('challenges/create', 'ChallengeController@getCreateChallenge');
+    Route::get('challenges/edit/{id}', 'ChallengeController@getEditChallenge');
+    Route::get('challenges/delete/{id}', 'ChallengeController@getDeleteChallenge');
+    Route::post('challenges/create', 'ChallengeController@postCreateEditChallenge');
+    Route::post('challenges/edit/{id?}', 'ChallengeController@postCreateEditChallenge');
+    Route::post('challenges/delete/{id}', 'ChallengeController@postDeleteChallenge');
+
     # ADVENT CALENDAR
     Route::get('advent-calendars', 'AdventController@getAdventIndex');
     Route::get('advent-calendars/create', 'AdventController@getCreateAdvent');
@@ -842,4 +851,11 @@ Route::group(['prefix' => 'character-classes', 'namespace' => 'Claymores', 'midd
     Route::post('edit/{id?}', 'CharacterClassController@postCreateEditCharacterClass');
     Route::post('delete/{id}', 'CharacterClassController@postDeleteCharacterClass');
     Route::post('sort', 'CharacterClassController@postSortCharacterClass');
+});
+
+# CHALLENGES
+Route::group(['prefix' => 'challenges', 'middleware' => 'power:manage_submissions'], function() {
+    Route::get('/', 'ChallengeController@getIndex');
+    Route::get('/{status}', 'ChallengeController@getIndex')->where('status', 'active|old');
+    Route::post('edit/{id}/{action}', 'ChallengeController@postChallenge');
 });

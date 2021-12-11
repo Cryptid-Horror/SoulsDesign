@@ -81,6 +81,10 @@ return [
                 'name' => 'Claim Submissions',
                 'url' => 'admin/claims'
             ],
+            [
+                'name' => 'Challenge Logs',
+                'url' => 'admin/challenges'
+            ],
         ]
     ],
     'Grants' => [
@@ -233,6 +237,10 @@ return [
                 'url' => 'admin/data/prompts'
             ],
             [
+                'name' => 'Challenges',
+                'url' => 'admin/data/challenges'
+            ],
+            [
                 'name' => 'Loot Tables',
                 'url' => 'admin/data/loot-tables'
             ],
@@ -251,7 +259,7 @@ return [
             [
             'name' => 'Advent Calendars',
             'url' => 'admin/data/advent-calendars'
-            ]
+            ],
         ],
     ],
     'World.Expanded' => [

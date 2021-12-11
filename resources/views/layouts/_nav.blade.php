@@ -133,29 +133,48 @@
     
                     </div>
                 </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Rollers
+                <li class="nav-item dropdown">
+                    <a id="loreDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        World
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="loreDropdown">
+                        <a class="dropdown-item" href="{{ url('world') }}">
+                            Encyclopedia
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                            <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
-                            <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
-                            <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
-                            <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
-                            <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Master Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
-                            <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Primal Point Counter</a>
-                            <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
-                                Hatchery Odds
-                            </a>
-                            <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
-                                Nesting Odds
-                            </a>
-                        </div>
-                    </li>
+                        <a class="dropdown-item" href="{{ url('prompts/prompts') }}">
+                            Prompts
+                        </a>
+                        <a class="dropdown-item" href="{{ url('challenges') }}">
+                            Challenges
+                        </a>
+                        <a class="dropdown-item" href="{{ url('shops') }}">
+                            Shops
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Rollers
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="queueDropdown">
+                        <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
+                        <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
+                        <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
+                        <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
+                        <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Master Point Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
+                        <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Primal Point Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
+                            Hatchery Odds
+                        </a>
+                        <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
+                            Nesting Odds
+                        </a>
+                    </div>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
