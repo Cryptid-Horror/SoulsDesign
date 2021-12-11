@@ -84,12 +84,15 @@
                 <a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
                 <a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
                 <a href="{{ url('info/Nesting_Odds') }}" class="btn btn-secondary">Nesting and Inbreeding</a>
+				<a href="{{ url('world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
+
 			</div>
 			<div class="btn-group-vertical">
-                <a href="{{ url('world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
                 <a href="{{ url('design/color_mutations/abundism') }}" class="btn btn-secondary">Abundism</a>
                 <a href="{{ url('design/color_mutations/albino') }}" class="btn btn-secondary">Albino</a>
                 <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
+				<a href="{{ url('design/color_mutations/blacklight') }}" class="btn btn-secondary">Blacklight</a>
+
 			</div>
 			<div class="btn-group-vertical">
                 <a href="{{ url('design/color_mutations/agouti') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
