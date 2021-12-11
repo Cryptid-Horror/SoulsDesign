@@ -121,12 +121,13 @@
                         </p>
                     @endif
 
-                    <p>Users are required to submit <strong>either</strong> a URL or text depending on the content of the prompt!</p>
-                    <div class="form-group">
-                        {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control', 'disabled', 'placeholder' => 'URL']) !!}
+                    <div class="row">
+                        <div class="col-md-2 col-4"><h5>URL</h5></div>
+                        <div class="col-md-10 col-8">{!! isset($log->data[$key]['url']) ? $log->data[$key]['url'] : 'None' !!}</div>
                     </div>
-                    <div class="form-group">
-                        {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control', 'disabled',]) !!}
+                    <div class="row">
+                        <div class="col-md-2 col-4"><h5>URL</h5></div>
+                        <div class="col-md-10 col-8">{!! isset($log->data[$key]['text']) ? $log->data[$key]['text'] : 'None' !!}</div>
                     </div>
                 @endif
             @else
