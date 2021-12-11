@@ -90,28 +90,45 @@
     @foreach($log->challenge->data as $key=>$prompt)
         <div id="prompt-{{ $key }}" class="tab-pane card-block pb-0" style="height: auto; overflow: auto;">
             @if(!$log->isOld)
-                {!! Form::open(['url' => 'challenges/edit/'.$log->id]) !!}
-                @if(isset($prompt['description']))
-                    <p>
-                        The description for this prompt is:
-                        {!! nl2br(htmlentities($prompt['description'])) !!}
-                    </p>
+                @if(Auth::user()->id == $log->user->id)
+                    {!! Form::open(['url' => 'challenges/edit/'.$log->id]) !!}
+                    @if(isset($prompt['description']))
+                        <p>
+                            The description for this prompt is:
+                            {!! nl2br(htmlentities($prompt['description'])) !!}
+                        </p>
+                    @endif
+
+                    <p>You must submit <strong>either</strong> a URL or text depending on the content of the prompt!</p>
+                    <div class="form-group">
+                        {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control', 'placeholder' => 'URL']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    {!! Form::hidden('log_id', $log->id) !!}
+
+                    <div class="text-right">
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                @else
+                    @if(isset($prompt['description']))
+                        <p>
+                            The description for this prompt is:
+                            {!! nl2br(htmlentities($prompt['description'])) !!}
+                        </p>
+                    @endif
+
+                    <p>Users are required to submit <strong>either</strong> a URL or text depending on the content of the prompt!</p>
+                    <div class="form-group">
+                        {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control disabled', 'placeholder' => 'URL']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control disabled']) !!}
+                    </div>
                 @endif
-
-                <p>You must submit <strong>either</strong> a URL or text depending on the content of the prompt!</p>
-                <div class="form-group">
-                    {!! Form::text('prompt_url['.$key.']', isset($log->data[$key]['url']) ? $log->data[$key]['url'] : null, ['class' => 'form-control', 'placeholder' => 'URL']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::textarea('prompt_text['.$key.']', isset($log->data[$key]['text']) ? $log->data[$key]['text'] : null, ['class' => 'form-control']) !!}
-                </div>
-
-                {!! Form::hidden('log_id', $log->id) !!}
-
-                <div class="text-right">
-                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                </div>
-                {!! Form::close() !!}
             @else
                 @if(isset($log->data[$key]))
                     @if(isset($prompt['description']))
