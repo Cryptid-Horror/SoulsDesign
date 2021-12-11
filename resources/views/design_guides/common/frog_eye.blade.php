@@ -3,11 +3,11 @@
     $marking_name = 'Frog Eye';
     $marking_code = 'nFe/FeFe';
     $marking_desc = "Marking Origin: 2019 Genetics Contest; submitted by user Athena-Tivnan. Frog Eye was a strange marking to pop up, in fact it frightened most people for its direct appearance to a frog’s actual eye. What makes this marking so different from the Eyes gene though, is its limitations and the fact that it always appears as a circle, and can never appear as an oval or a teardrop.";
-    $layers_above_or_below = ' Blanket, Boar, Collar, Dunstripe, Dusted, Hood, Leaf, Masked, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Banded, Crested, Plasma, Border, Dipped, Pigeon, Roan, Rosettes, Shaped, Tabby, Toxin, Glass, Luminescent, Lustrous, Petal, Aurora, Iridescent, Lepir, Shimmer, Blooded, Eyes, Vignette, Aether Marked, Gemstone, Rune, Triquetra';
-    $layers_above = 'Bokeh, Cloud, Marbled, Merle, Smoke, Brindled';
-    $layers_below = 'Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

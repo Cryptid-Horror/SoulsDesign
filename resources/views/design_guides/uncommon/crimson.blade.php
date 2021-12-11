@@ -3,11 +3,11 @@
     $marking_name = 'Crimson';
     $marking_code = 'nCri/CriCri';
     $marking_desc = "A color modification gene that brings out the red colors of a dragon, these dragons are noted for a higher aggression rate, but like all things, this varies among individuals. Many of the red dragons were used in past arena fights, owing to the skewed study.";
-    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
-    $layers_above = 'Null, must affect the base coat or a marking.';
-    $layers_below = ' Null, must affect the base coat or a marking.';
-    $affected_by = ' Null, must affect the base coat or a marking.';
-    $can_affect = 'All Markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

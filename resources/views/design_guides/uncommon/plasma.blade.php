@@ -3,11 +3,11 @@
     $marking_name = 'Plasma';
     $marking_code = 'nPs/PsPs';
     $marking_desc = "Plasma is said to be gifted to dragons who harness the power of lightning, or have been struck by lightning. The marking appears as a think cracking marking along the dragon's body, spreading out like a lightning strike.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Marbled, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Tabby, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $layers_above = 'Bokeh, Cloud, Merle';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa,  Painted,';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

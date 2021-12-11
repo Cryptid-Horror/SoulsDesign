@@ -3,11 +3,11 @@
     $marking_name = 'Gemstone';
     $marking_code = 'nGm/GmGm';
     $marking_desc = "Gemstone creates patterns that look like precious stones on the dragons body. It can have cracks coming off the pattern to create a look that the gemstone pattern is embedded into the scales/skin of the dragon. ";
-     $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Smoke, Roan, Tabby, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra, Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $layers_above = 'Bokeh, Cloud, Merle';
-    $layers_below = 'None';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+     $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

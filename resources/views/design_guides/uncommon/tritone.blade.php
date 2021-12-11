@@ -7,7 +7,7 @@
     $layers_above = '';
     $layers_below = '';
     $affected_by = '';
-    $can_affect = 'All markings';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'

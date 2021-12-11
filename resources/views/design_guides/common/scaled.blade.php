@@ -2,13 +2,12 @@
     $marking_icon = 'Common_Scaled';
     $marking_name = 'Scaled';
     $marking_code = 'nSc/ScSc';
-    $marking_desc = "A marking that presents crescent patterns on the body, as if they were bordering scales or feathers. Originally appearing alongside the plated and feathered coat types of dragons, the marking has solidified its place in the genetic diversity of dragons with its ability to be an accent to a design, or to be the spotlight of a design.
-";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, sable, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, Triquetra, Vignette, lepir, aether marked, gemstome, rune, petal';
-    $layers_above = 'Cloud, Smoke, bokeh, Brindled';
-    $layers_below = ' Inkwell, tobiano, painted, appaloosa';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_desc = "A marking that presents crescent patterns on the body, as if they were bordering scales or feathers. Originally appearing alongside the plated and feathered coat types of dragons, the marking has solidified its place in the genetic diversity of dragons with its ability to be an accent to a design, or to be the spotlight of a design.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -18,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

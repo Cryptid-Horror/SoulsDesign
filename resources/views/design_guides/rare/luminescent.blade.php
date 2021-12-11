@@ -3,11 +3,11 @@
     $marking_name = 'Luminescent';
     $marking_code = 'nLu/LuLu';
     $marking_desc = "A bio-luminescent marking that creates or causes markings or parts of the body to glow. This gene was thought to develop in the colder frigid areas where darkness is eternal, as a hunting method for dragons with the gene. It's also thought to be found in the ocean as many sailors tell stories of dragons that move in the sea, glowing beneath the waves.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Smoke, Roan, Tabby, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra ';
-    $layers_above = 'Bokeh, Cloud, Merle';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'Boar (not the gradient), Collar, Dunstripe, Dusted, Frog Eye, Leaf, Rimmed, Ringed, Scaled, Trailing, Banded, Tabby, Toxin (not the gradient), Petal, Masked, Skink, Pigeon, Plasma, Rosettes, Shaped, Eyes, Vignette, Gemstone, Rune, Triquetra, Crested, Free marks, Teeth, claws, horns, gums, flesh, and import extras. Additionally, the following markings can be affected up to 25% of their full range on the design: Smoke, Cloud, Brindled, Dipped, Marbled, Bokeh, Merle';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

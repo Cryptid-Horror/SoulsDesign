@@ -3,11 +3,11 @@
     $marking_name = 'Chimeric';
     $marking_code = 'Null';
     $marking_desc = "A mutation that causes two genetic strings to appear on the design in random patches.YOU MUST give design reviewers three images for design review: 1 of the combined geno strings, and 1 of each string before you combined them.";
-     $layers_above_or_below = 'Null';
-    $layers_above = 'Null';
-    $layers_below = 'Null';
-    $affected_by = 'Null';
-    $can_affect = 'Null';
+     $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

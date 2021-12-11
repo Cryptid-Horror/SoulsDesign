@@ -3,11 +3,11 @@
     $marking_name = 'Dripping';
     $marking_code = 'nDr/DrDr';
     $marking_desc = "Dripping is a modifier marking that creates an effect that looks like the marking is dripping. The dripping effect can appear in any direction. Amusingly, when it was discovered, someone thought they had spilled paint on the hatchling.";
-    $layers_above_or_below = 'None';
-    $layers_above = 'None';
-    $layers_below = 'None';
-    $affected_by = 'None, this marking takes on the behavior of what it is effecting';
-    $can_affect = 'blanket, Boar, Collar, Dunstripe, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed, Scaled, Trailing, Underbelly, Banded, Toxin, Glass, Petal, Aurora, Marbled, Tabby, Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano, Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

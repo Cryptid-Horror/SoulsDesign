@@ -3,11 +3,11 @@
     $marking_name = 'Greying';
     $marking_code = 'nGr/GrGr';
     $marking_desc = "Greying has always been a weird color modifying gene that many people of Empyrean don’t consider to be a ‘real’ gene. This is because of its properties being so similar to the Ivory base coat, however Greying is capable of being darker shades than Ivory can be. Arguments are made on both sides of the debate, but most people just chose to let it exist and accept it as a marking.";
-    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
-    $layers_above = 'Null, must affect the base coat or a marking.';
-    $layers_below = ' Null, must affect the base coat or a marking.';
-    $affected_by = ' Null, must affect the base coat or a marking.';
-    $can_affect = 'All Markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Freckles',
         'Ravager' => 'Ravager_Freckles',
         'Stalker' => 'Stalker_Freckles',
+        'Ridgewalker' => 'Ridgewalker_Freckles',
+        'Abyssal' => 'Abyssal_Freckles',
     ];
 
     // Use yes or no

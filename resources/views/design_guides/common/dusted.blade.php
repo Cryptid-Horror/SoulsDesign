@@ -3,11 +3,11 @@
     $marking_name = 'Dusted';
     $marking_code = 'nDt/DtDt';
     $marking_desc = "Originally thought to be a companion look to the Rosettes gene, Dusted struggled to become its own classified gene until it was found on dragons who did not come from rosettes bloodlines. Dusted can appear as either a speckling of dots, or ticking marks along the body. It has appeared both sporadically and in flowing lines along the body. However it has never been seen to create inorganic shapes like hearts or stars.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, leaf, masked, pangare, points, python, rimmed, ringed, sable, scaled, skink, Stained, trailing, underbelly, banded, bokeh, border, Brindled, cloud, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, smoke, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, petal, vignette, aether marked, gemstome, lepir, rune, truqetra';
-    $layers_above = 'None';
-    $layers_below = ' Inkwell, tobiano, painted, appaloosa';
-    $affected_by = 'Duo tone, flaxen, greying, rose, azure, copper, crimson, jade, lilac, prismatic, luminescent, aurora, shimmer';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Tips',
         'Ravager' => 'Ravager_Tips',
         'Stalker' => 'Stalker_Tips',
+        'Ridgewalker' => 'Ridgewalker_Tips',
+        'Abyssal' => 'Abyssal_Tips',
     ];
 
     // Use yes or no

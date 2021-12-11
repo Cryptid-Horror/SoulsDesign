@@ -3,20 +3,21 @@
     $marking_name = 'Dun';
     $marking_code = 'nDn/DnDn';
     $marking_desc = "A popular mark praised for its delicate appearance down the spine of a dragon. Its origins are difficult to trace due to its abundance among the population of dragons, and many argue it appeared first in the scorched empire. dun often has a small accenting along the marking that points downward in a stripe like pattern, as well as stripes along the leg. Unlike banding though, these stripes are thin, delicate, and very few.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Masked, Pangare, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Crested, Banded, Marbled, Merle, Pigeon, Plasma, Shaped, Tabby, Toxin, Roan, Rosettes, Luminescent, Lustrous, Aurora, Iridescent, Lepir, Blooded, Eyes, Glass, Painted, Petal, Vignette, Aether Marked, Gemstone, Rune, Triquetra';
-    $layers_above = 'Bokeh, Cloud, Smoke, Brindled';
-    $layers_below = ' Inkwell, Tobiano, Appaloosa';
-    $affected_by = 'Duo Tone, Flaxen, Greying, Rose, Azure, border, Copper, Crimson, Dripping, Jade, Luminescent, Iridescent, Lilac, Prismatic, Shimmer';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Dunstripe',
-        'Warden' => 'Warden_Dunstripe',
-        'Greater' => 'Gemp_Dunstripe',
-        'Ravager' => 'Ravager_Dunstripe',
-        'Stalker' => 'Stalker_Dunstripe',
+        'Sapiere' => 'Sapiere_Dun',
+        'Warden' => 'Warden_Dun',
+        'Greater' => 'Gemp_Dun',
+        'Ravager' => 'Ravager_Dun',
+        'Stalker' => 'Stalker_Dun',
+        'Ridgewalker' => 'Ridgewalker_Dun',
+        'Abyssal' => 'Abyssal_Dun',
     ];
 
     // Use yes or no

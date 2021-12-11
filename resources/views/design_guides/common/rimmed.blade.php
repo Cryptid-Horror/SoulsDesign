@@ -3,11 +3,11 @@
     $marking_name = 'Rimmed';
     $marking_code = 'nRi/RiRi';
     $marking_desc = "A marking that appears on the legs, tail, wings, and muzzle of the dragon. It borders these parts of the dragons, creating a nice rim on the limbs.";
-    $layers_above_or_below = 'Blanket, Dunstripe, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous,  Aether Marked';
-    $layers_above = ' Brindled, Bokeh, Cloud, Smoke, Marbled, Merle';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa,  Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Rimmed',
         'Ravager' => 'Ravager_Rimmed',
         'Stalker' => 'Stalker_Rimmed',
+        'Ridgewalker' => 'Ridgewalker_Rimmed',
+        'Abyssal' => 'Abyssal_Rimmed',
     ];
 
     // Use yes or no

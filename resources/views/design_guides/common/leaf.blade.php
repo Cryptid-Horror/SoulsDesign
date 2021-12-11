@@ -4,11 +4,11 @@
     $marking_code = 'nLf/LfLf';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Athena-Tivnan
 A gene that presents itself as leaf like markings on the body of a dragon. The leaves are not often specific to a species of tree, and has a stem or an outline found on them. Their sizes vary, and can be small or large. Dragons with this gene are thought to bring good luck, but any actual cases of this have only been seen as coincidence.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, ringed, sable, scaled, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, aether marked, gemstome, lepir, rune, truqetra, petal, vignette';
-    $layers_above = 'Bokeh, Brindled, Smoke, Cloud';
-    $layers_below = 'Inkwell, tobiano, painted, appaloosa ';
-    $affected_by = 'Duo tone, flaxen, greying, rose, azure, copper, crimson, jade, lilac, prismatic, luminescent, aurora, shimmer';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -18,6 +18,8 @@ A gene that presents itself as leaf like markings on the body of a dragon. The l
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

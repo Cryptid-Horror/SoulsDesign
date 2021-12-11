@@ -3,11 +3,11 @@
     $marking_name = 'Sable';
     $marking_code = 'nSa/SaSa';
     $marking_desc = "A soft gradient marking that rests on the back of the dragon. The marking covers a similar range to blanket, which could be considered its sibling marking. Sable can be darker or lighter than the base or what it sits over.";
-    $layers_above_or_below = 'Blanket, Dunstripe, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous, Aether Marked';
-    $layers_above = 'Brindled, Bokeh, Cloud, Marbled, Smoke, Merle';
-    $layers_below = ' Crested, Inkwell, Tobiano, Appaloosa,  Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Blanket-Sable',
         'Ravager' => 'Ravager_Sable',
         'Stalker' => 'Stalker_Sable',
+        'Ridgewalker' => 'Ridgewalker_Sable',
+        'Abyssal' => 'Abyssal_Sable',
     ];
 
     // Use yes or no

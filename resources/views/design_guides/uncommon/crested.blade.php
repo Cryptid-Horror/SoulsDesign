@@ -3,11 +3,11 @@
     $marking_name = 'Crested';
     $marking_code = 'nCr/CrCr';
     $marking_desc = "A marking that creates a bright patch of color on the throat and neck of the dragon, the pattern can be iridescent in color and must be in bright coloration. It is noted for its similarities  in the birds of paradise around the Radiant empire.";
-    $layers_above_or_below = 'Dusted, Frog Eye, Leaf, Pangare, Ringed, Sable, Scaled, Stained, Banded, Dipped, Roan, Petal, Aurora, Shimmer';
-    $layers_above = 'Blanket, Boar, Collar, Dunstripe, Hood, Masked, Skink, Points, Python, Rimmed, Trailing, Underbelly, Bokeh, Cloud, Brindled, Marbled, Merle, Tabby, Toxin, Pigeon, Plasma, Rosettes, Shaped, Glass, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $layers_below = 'Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Crested',
         'Ravager' => 'Ravager_Crested',
         'Stalker' => 'Stalker_Crested',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

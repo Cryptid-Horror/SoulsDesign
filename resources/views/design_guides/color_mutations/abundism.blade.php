@@ -3,11 +3,11 @@
     $marking_name = 'Abundism';
     $marking_code = 'Null';
     $marking_desc = "A mutation that causes the markings to be black in coloration, or the base to pick from abundism sliders.";
-     $layers_above_or_below = 'Null';
-    $layers_above = 'Null';
-    $layers_below = 'Null';
-    $affected_by = 'Null';
-    $can_affect = 'Affects all markings except for Tobiano.';
+     $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

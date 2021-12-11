@@ -3,11 +3,11 @@
     $marking_name = 'Border';
     $marking_code = 'nBo/BoBo';
     $marking_desc = "Border is seen to outline markings that previously could not have this outline on them. Border must present on another marking, but also can be seen to border the edges of claws, horns, and spikes.";
-    $layers_above_or_below = 'None';
-    $layers_above = 'None';
-    $layers_below = 'None';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'Boar, Collar, Dunstripe, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed, Scaled, Trailing, Underbelly, Banded, Toxin, Glass, Petal, Marbled, Merle, Tabby, Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano, Appaloose, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

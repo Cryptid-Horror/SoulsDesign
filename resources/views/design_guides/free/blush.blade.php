@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Blush',
         'Ravager' => 'Ravager_Blush',
         'Stalker' => 'Stalker_Blush',
+        'Ridgewalker' => 'Ridgewalker_Blush',
+        'Abyssal' => 'Abyssal_Blush',
     ];
 
     // Use yes or no

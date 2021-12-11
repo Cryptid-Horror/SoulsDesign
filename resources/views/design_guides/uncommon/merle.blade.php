@@ -3,13 +3,11 @@
     $marking_name = 'Merle';
     $marking_code = 'nMr/MrMr';
     $marking_desc = "Merle, a gene that creates a pattern where random, and sometimes, mottled, splotches of darker or lighter pigments that sit on the coat of the dragon.";
-    $layers_above_or_below = 'Bokeh, Cloud';
-    $layers_above = 'None';
-    $layers_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Pangare, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Roan, Tabby
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano, Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -19,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

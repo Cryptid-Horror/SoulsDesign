@@ -3,10 +3,10 @@
     $marking_name = 'Python';
     $marking_code = 'nPy/PyPy';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Thundering-Horses. A diamond, oval, or square/rectangular shape found on the spine of a dragon. The marking can go from the face to the tail, and in its dominant form has striping that can appear.";
-    $layers_above_or_below = ' Blanket, Boar, Collar, Dusted, Dunstripe, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Aether Marked, Blooded, Lustrous,';
-    $layers_above = 'Brindled, Bokeh, Cloud, Marbled, Merle';
-    $layers_below = ' Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
     $can_affect = 'None';
 
     // Range images should be kept in public/images/design_guides/ranges
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Python',
         'Ravager' => 'Ravager_Python',
         'Stalker' => 'Stalker_Python',
+        'Ridgewalker' => 'Ridgewalker_Python',
+        'Abyssal' => 'Abyssal_Python',
     ];
 
     // Use yes or no

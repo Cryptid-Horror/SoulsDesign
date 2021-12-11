@@ -2,15 +2,12 @@
     $marking_icon = 'Common_Stained';
     $marking_name = 'Stained';
     $marking_code = 'nSn/SnSn';
-    $marking_desc = "Important Notes: This marking is a combination of two prior markings, Fading (nFd/FdFd) and Scorching (nSo/SoSo). The marking has the versality of both, while still giving it more freedom in designs. All dragons with these markings together prior were given Dominant Stained, however genos are not given dominant markings from combined markings.
-
-A gradient or blur marking that starts from the end of joints and travels inward on the body. Stained can be lighter or darker, and is often reminescent of markings found on siamese cats, and can be seen with a darker or lighter gradient overlapping a secondary gradient on the body.
-";
-    $layers_above_or_below = 'Blanket, Dunstripe, Boar, Collar, Dusted, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Scaled, Trailing, Underbelly, Banded, Brindled, Bokeh, Crested, Cloud, Marbled, Merle, Dipped, Mist, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Blooded, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Lustrous, Aether Marked';
-    $layers_above = 'None';
-    $layers_below = 'Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $marking_desc = "Important Notes: This marking is a combination of two prior markings, Fading (nFd/FdFd) and Scorching (nSo/SoSo). The marking has the versality of both, while still giving it more freedom in designs. All dragons with these markings together prior were given Dominant Stained, however genos are not given dominant markings from combined markings. A gradient or blur marking that starts from the end of joints and travels inward on the body. Stained can be lighter or darker, and is often reminescent of markings found on siamese cats, and can be seen with a darker or lighter gradient overlapping a secondary gradient on the body.";
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -20,6 +17,8 @@ A gradient or blur marking that starts from the end of joints and travels inward
         'Greater' => 'Gemp_Stained',
         'Ravager' => 'Ravager_Stained',
         'Stalker' => 'Stalker_Stained',
+        'Ridgewalker' => 'Ridgewalker_Stained',
+        'Abyssal' => 'Abyssal_Stained',
     ];
 
     // Use yes or no

@@ -5,14 +5,11 @@
     $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
                     Its name is given for the way it covers the body. The marking originated in
                     the Radiant Empire bloodlines of the Stalker Wyvern.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Mist, Roan,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = 'Pangare, Bokeh, Cloud, Marbled, Merle, Tabby';
-    $layers_below = 'Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -22,6 +19,8 @@
         'Greater' => 'Gemp_Blanket-Sable',
         'Ravager' => 'Ravager_Blanket',
         'Stalker' => 'Stalker_Blanket',
+        'Ridgewalker' => 'Ridgewalker_Blanket',
+        'Abyssal' => 'Abyssal_Blanket',
     ];
 
     // Use yes or no

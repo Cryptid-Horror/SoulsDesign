@@ -3,11 +3,11 @@
     $marking_name = 'Tobiano';
     $marking_code = 'nTo/ToTo';
     $marking_desc = "A piebald marking that presents in white coloration, leaving patches of white over the genetic design below.";
-    $layers_above_or_below = 'Inkwell, Painted, Appaloosa';
-    $layers_above = 'All Other Markings';
-    $layers_below = 'None';
-    $affected_by = 'Iridescent(only makes it shiny), Border, Dripping, Color Modifiers';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

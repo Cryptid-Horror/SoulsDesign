@@ -3,11 +3,11 @@
     $marking_name = 'Brindled';
     $marking_code = 'nBrd/BrdBrd';
     $marking_desc = "A marking that appears of three colors presenting as very thin broken up streaks on the body in a vertical pattern. Unlike banded however, these lines are incredibly thinned. (This marking used to be called 'Somatic'.) ";
-    $layers_above_or_below = 'Sable, Stained, Dipped,  Roan, Toxin, Pangare, Bokeh, Cloud, Merle Luminescent, Aurora, Shimmer';
-    $layers_above = 'None';
-    $layers_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Masked, Points, Python, Rimmed, Ringed, Scaled, Skink, Trailing, Underbelly, Banded, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Tobiano, Appaloosa, Blooded, Eyes, Lustrous, Pained, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra Glass, Petal Marbled, Tabby,';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

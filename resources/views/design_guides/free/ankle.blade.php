@@ -12,11 +12,13 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Socks',
-        'Warden' => 'Warden_Socks',
-        'Greater' => 'Gemp_Socks',
-        'Ravager' => 'Ravager_Socks',
-        'Stalker' => 'Stalker_Socks',
+        'Sapiere' => 'Sapiere_Ankle',
+        'Warden' => 'Warden_Ankle',
+        'Greater' => 'Gemp_Ankle',
+        'Ravager' => 'Ravager_Ankle',
+        'Stalker' => 'Stalker_Ankle',
+        'Ridgewalker' => 'Ridgewalker_Ankle',
+        'Abyssal' => 'Abyssal_Ankle',
     ];
 
     // Use yes or no
@@ -38,12 +40,12 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'socks_yes1',
-        'socks_yes2',
-        'socks_yes3',
-        'socks_no2',
-        'socks_no1',
-        'socks_no3'
+        'ankle_yes1',
+        'ankle_yes2',
+        'ankle_yes3',
+        'ankle_no2',
+        'ankle_no1',
+        'ankle_no3'
     ];
 
     // You can use html!

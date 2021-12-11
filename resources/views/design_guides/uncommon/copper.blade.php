@@ -3,11 +3,11 @@
     $marking_name = 'Copper';
     $marking_code = 'nCp/CpCp';
     $marking_desc = "This gene is known for it's ability to give dragons orange and bronze colorations. The first dragon to carry this gene being Amarythine, and it has spread throughout from the Shimmering Isles to other species, not just wardens.";
-    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
-    $layers_above = 'Null, must affect the base coat or a marking.';
-    $layers_below = ' Null, must affect the base coat or a marking.';
-    $affected_by = ' Null, must affect the base coat or a marking.';
-    $can_affect = 'All Markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

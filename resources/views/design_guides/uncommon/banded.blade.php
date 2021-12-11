@@ -3,13 +3,11 @@
     $marking_name = 'Banded';
     $marking_code = 'nBa/BaBa';
     $marking_desc = "Much like that of a tiger, this marking presents vertical stripes, unless it is presenting on the legs, which will show horizontal. The marking originates from the gloom empire.";
-    $layers_above_or_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Masked, Pangare, Skink, Points, Python, Rimmed, Ringed,
-                            Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Dipped, Marbled, Tabby, Roan, Pigeon, Plasma, Rosettes, Shaped, Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, , Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $layers_above = 'Bokeh, Cloud, Merle';
-    $layers_below = 'Crested, Inkwell,  Tobiano, Appaloosa
-                   ';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -19,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

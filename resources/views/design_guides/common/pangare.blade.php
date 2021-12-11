@@ -3,11 +3,11 @@
     $marking_name = 'Pangare';
     $marking_code = 'nPa/PaPa';
     $marking_desc = "A soft, gradiented marking on the underside of a dragon. It has the ability to reach up along the underside of the wings as well. Pangare is shades of dark, or light, and is a common marking seen on many dragons. The marking has a sibling marking called 'Underbelly'.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Brindled, Bokeh, Cloud, Marbled, Merle Dipped, Mist, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous, Aether Marked';
-    $layers_above = 'None';
-    $layers_below = ' Masked, Crested, Inkwell, Tobiano, Appaloosa, Painted,';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Underbelly-Pangare',
         'Ravager' => 'Ravager_Underbelly-Pangare',
         'Stalker' => 'Stalker_Underbelly-Pangare',
+        'Ridgewalker' => 'Ridgewalker_Underbelly-Pangare',
+        'Abyssal' => 'Abyssal_Underbelly-Pangare',
     ];
 
     // Use yes or no

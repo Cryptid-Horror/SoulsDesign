@@ -3,11 +3,11 @@
     $marking_name = 'Trailing';
     $marking_code = 'nTr/TrTr';
     $marking_desc = "Trailing is a horizontal marking that appear as lines flowing along the body. Along the tip if the tail the marking can appear vertical. On the wings, the marking must appear horizontal.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, leaf, masked, pangare, points, python, rimmed, ringed, sable, scaled, skink, Stained, underbelly, banded, border, Brindled, cloud, crested, dipped, dripping, marbled, merle, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, petal, vignette, aether marked, gemstome, lepir, rune, truqetra';
-    $layers_above = 'Bokeh, Cloud, Smoke,';
-    $layers_below = ' Inkwell, tobiano, painted, appaloosa';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

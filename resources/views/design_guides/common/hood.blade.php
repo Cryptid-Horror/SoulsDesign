@@ -3,11 +3,11 @@
     $marking_name = 'Hood';
     $marking_code = 'nHd/HdHd';
     $marking_desc = "Hood covers the face and neck of the dragon. It can cover the entire zone, or just parts, so long as the hood is visible on the head and the neck together. The gene was originally thought to be a mutation of the collar gene, or a confusion of masked and collar working together. However, reliable reproductions of the marking has shown it to be its own gene with various interactions with other genes like collar and mask.";
-    $layers_above_or_below = ' Blanket, Boar, Dunstripe, Dusted, Frog Eye, Leaf, Pangare, Points, Python, Rimmed, Ringed, Sable, Scaled, Skink, Stained, Trailing, Underbelly, Banded, Dipped, Marbled, Pigeon, Plasma, Roan, Rosettes, Shaped, Tabby, Toxin, Luminescent, Lustrous, Petal, Aurora, Blooded, Eyes, Glass, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $layers_above = 'Bokeh, Cloud, Merle, Brindled, Smoke';
-    $layers_below = 'Masked, Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Hood',
         'Ravager' => 'Ravager_Hood',
         'Stalker' => 'Stalker_Hood',
+        'Ridgewalker' => 'Ridgewalker_Hood',
+        'Abyssal' => 'Abyssal_Hood',
     ];
 
     // Use yes or no

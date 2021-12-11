@@ -3,11 +3,11 @@
     $marking_name = 'Dipped';
     $marking_code = 'nDi/DiDi';
     $marking_desc = "A marking that either darkens or lightens the dragon starting from either the head, or tail, and gradienting to the mid section of the body.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Frog Eye, Hood, Leaf, Masked, Points, Python, Rimmed, Ringed, Sable, Scaled, Stained, Skink, Trailing, Underbelly, Banded, Roan, Pigeon, Plasma, Rosettes, Shaped, Toxin, Glass, Luminsecent, Petal, Aurora, Shimmer, Marbled, Tabby, Blooded, Eyes, Lustrous, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $layers_above = 'Pangare, Bokeh, Cloud, Merle, Tabby';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Dipped',
         'Ravager' => 'Ravager_Dipped',
         'Stalker' => 'Stalker_Dipped',
+        'Ridgewalker' => 'Ridgewalker_Dipped',
+        'Abyssal' => 'Abyssal_Dipped',
     ];
 
     // Use yes or no

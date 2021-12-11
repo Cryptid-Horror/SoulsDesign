@@ -3,11 +3,10 @@
     $marking_name = 'Points';
     $marking_code = 'nPo/PoPo';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user horsefreek151. A darker or lighter marking found on the legs, tail, wings, head, and chest of the dragon in specific spots. The marking is noted for its likeness to that of a doberman, and is often sought out for as a more conservative option to underbelly.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Python, Rimmed, Ringed, Sable, Scaled, Stained, Trailing, Underbelly, Banded, Dipped, Pigeon, Plasma, Rosettes, Roan, Shaped, Skink, Tabby Toxin, Glass, Eyes, Lustrous, Luminescent, Petal, Vignette, Gemstone, Lepir, Rune, Triquetra Aurora, Shimmer, Blooded, Lustrous, Aether Marked';
-    $layers_above = ' Brindled, Bokeh, Cloud, Marbled, Merle, Smoke';
-    $layers_below = 'Crested, Inkwell, Tobiano, Appaloosa, Painted';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +16,8 @@
         'Greater' => 'Gemp_Points',
         'Ravager' => 'Ravager_Points',
         'Stalker' => 'Stalker_Points',
+        'Ridgewalker' => 'Ridgewalker_Points',
+        'Abyssal' => 'Abyssal_Points',
     ];
 
     // Use yes or no

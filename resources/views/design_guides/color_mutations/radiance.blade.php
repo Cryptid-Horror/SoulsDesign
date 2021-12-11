@@ -3,11 +3,11 @@
     $marking_name = 'Radiance';
     $marking_code = 'nRad/RadRad';
     $marking_desc = "A color modifier mutation that causes a random color marking to pass to the offspring if one or both parents have the radiance gene. The gene originates from the radiant wyverns, and is seen as a gift to newborn dragons who receive it.";
-    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
-    $layers_above = 'Null, must affect the base coat or a marking.';
-    $layers_below = ' Null, must affect the base coat or a marking.';
-    $affected_by = ' Null, must affect the base coat or a marking.';
-    $can_affect = 'All Markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

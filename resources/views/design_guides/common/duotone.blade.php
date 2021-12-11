@@ -3,11 +3,11 @@
     $marking_name = 'Duotone';
     $marking_code = 'nDo/DoDo';
     $marking_desc = "Marking Origin: 2018 Genetics Contest by user JemJam. Unlike the other documented color genes, duotone doesn’t introduce new colors into the genetics of dragons. The gene instead causes colors to blend on a marking, either be them natural colors, or color genes. This strange gene is often thought to have come from the Emperor species, but it has been around Empyrean for many years.";
-    $layers_above_or_below = 'Null, must affect a marking';
-    $layers_above = 'Null, must affect a marking';
-    $layers_below = 'Null, must affect a marking';
-    $affected_by = 'Flaxen, greying, rose, azure, copper, crimson, jade, prismatic, lilac';
-    $can_affect = 'All markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Duotone',
         'Ravager' => 'Ravager_Duotone',
         'Stalker' => 'Stalker_Duotone',
+        'Ridgewalker' => 'Ridgewalker_Duotone',
+        'Abyssal' => 'Abyssal_Duotone',
     ];
 
     // Use yes or no

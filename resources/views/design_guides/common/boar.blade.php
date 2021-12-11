@@ -4,12 +4,11 @@
     $marking_code = 'nBr/BrBr';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Sciain.
 A marking that originates from the Warden bloodlines from before the fall of the Shimmering Isles. The marking appears the same as the markings found on baby wild boars, and has been documented to be seen on all parts of the body of a dragon. An interesting behavior of the gene is the gradient that is sometimes present beneath the barring and spots.";
-    $layers_above_or_below = 'Blanket, Collar, Dusted, Dunstripe, Frog Eye, Hood, Leaf, Points, Python, Ray, Rimmed, Ringed, Sable, Scaled, Stained,Pangare, Underbelly, Smoke, Roan, Rosettes, Tabby, Toxin, Luminescent, Lustrous, Petal, Aurora, Lepir,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer';
-    $layers_above = ' Brindled, Bokeh, Cloud, Marbled, Merle';
-    $layers_below = 'Masked, Skink, Trailing, Banded, Crested, Inkwell, Pigeon, Plasma, Shaped, Tobiano,  Appaloosa, Blooded, Eyes, Glass, Painted, Vignette, Aether Marked, Gemstone, Rune, Triquetra ';
-    $affected_by = ' Duotone, Flaxen, Rose, Greying, Azure, Border, Copper, Crimson, Dripping, Jade, Aurora, Iridescent, Lilac, Prismatic, Shimmer';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -19,6 +18,8 @@ A marking that originates from the Warden bloodlines from before the fall of the
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

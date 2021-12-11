@@ -3,14 +3,11 @@
     $marking_name = 'Dapple';
     $marking_code = 'nDl/nDl';
     $marking_desc = "The appeal for this marking comes from the similarities it holds with the dapple gene on horses. Bokeh appears as circles of different shades of color from the base coat, in varying sizes or minor shape differences. ";
-    $layers_above_or_below = 'Pangare, Stained, Sable, Roan, Cloud';
-    $layers_above = ' None';
-    $layers_below = 'Boar, Collar, Dunstripe, Dusted, Frog Eye, Hood, Leaf, Points, Python, Rimmed, Ringed,
-                             Scaled, Trailing, Underbelly, Banded, Brindled, Dipped,
-                            Toxin, Glass, Luminescent, Petal, Aurora, Shimmer, Masked, Skink, Crested, Inkwell, Pigeon, Plasma, Rosettes, Shaped, Marbled, Merle, Tabby Tobiano,
-                    Appaloosa, Blooded, Eyes, Lustrous, Painted, Vignette, Aether Marked, Gemstone, Lepir, Rune, Triquetra';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -20,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

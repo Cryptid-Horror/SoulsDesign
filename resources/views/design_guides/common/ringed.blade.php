@@ -3,11 +3,11 @@
     $marking_name = 'Ringed';
     $marking_code = 'nRn/RnRn';
     $marking_desc = "This marking has been shown to present two different ways on the body of a dragon. Either as unfilled circles, or as complete bands that wrap around the body of a dragon. The gene was first found on the Wardens, and quickly spread throughout different species, with the banding presentation appearing more on wyvern bloodlines. Both versions of the marking can appear at once, and are not dictated by dominant or recessive properties.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, sable, scaled, skink, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, Triquetra, Vignette, lepir, aether marked, gemstome, rune, petal';
-    $layers_above = 'Bokeh, Brindled, Cloud, Marbled, Merle, Smoke';
-    $layers_below = 'Inkwell, tobiano, painted, appaloosa ';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

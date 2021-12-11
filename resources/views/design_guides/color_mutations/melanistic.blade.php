@@ -3,11 +3,11 @@
     $marking_name = 'Melanism';
     $marking_code = 'Vv/VV';
     $marking_desc = "A modifier that is created by having vanta pass along with other coat colors. This causes bases to be darker, but not neceassirly the markings. ";
-     $layers_above_or_below = 'Null';
-    $layers_above = 'Null';
-    $layers_below = 'Null';
-    $affected_by = 'Null';
-    $can_affect = 'Null';
+     $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

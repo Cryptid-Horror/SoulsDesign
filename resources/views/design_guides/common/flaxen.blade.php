@@ -3,11 +3,11 @@
     $marking_name = 'Flaxen';
     $marking_code = 'nFl/FlFl';
     $marking_desc = "Flaxen was a confusing gene that for a long time was thought to be just dragons that were Golden in color. However Flaxen actually was deemed a color gene when it was seen on a vanta dragon with dusted compared to a golden dragon with the same gene. Flaxen appears as more yellow coloration in comparison to the richer golden color of the Gold base coat. In dominant, this marking is seen to make the entire dragon capable of being yellow in hue for it’s base and all its genes.";
-    $layers_above_or_below = 'Null, must affect the base coat or a marking.';
-    $layers_above = 'Null, must affect the base coat or a marking.';
-    $layers_below = ' Null, must affect the base coat or a marking.';
-    $affected_by = ' Null, must affect the base coat or a marking.';
-    $can_affect = 'All Markings';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no

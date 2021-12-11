@@ -65,7 +65,7 @@
                             ♦ Drake Ranges
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
-                        <a class="dropdown-item" data-fancybox="gallery" href="imagehere">Coming Soon!</a>
+                        <a class="dropdown-item" data-fancybox="gallery" href="{{ asset('images/design_guides/ranges/'.$ranges['Ridgewalker'].'.png') }}">Ridgewalker</a>
                         </div>
                     </div>
                     <div class="btn-group" role="group">
@@ -113,14 +113,12 @@
                             General Features
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop8">
-                        <a class="dropdown-item" href="https://www.deviantart.com/the-below/gallery/66157893/dragon-imports">Import File Downloads</a>
-                            <a class="dropdown-item" href="{{ url('info/Coat_Colors') }}">Coat Colors Explained</a>
+                        <a class="dropdown-item" href="https://www.soulsbetween.com/world/species">Import File Downloads</a>
+                            <a class="dropdown-item" href="{{ url('info/Coat_Colors') }}">Coat Colors</a>
                             <a class="dropdown-item" href="{{ url('world/traits?feature_category_id=6') }}">Breath Elements</a>
                             <a class="dropdown-item" href="{{ url('world/traits?feature_category_id=7') }}">Skills</a>
                             <a class="dropdown-item" href="{{ url('world/trait-categories') }}">Physical Traits</a>
-                            <a class="dropdown-item" href="{{ url('info/Lineage_guide') }}">Filling out the Lineage</a>
-                            <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">Inbreeding Consequences</a>
-                            <a class="dropdown-item" href="{{ url('info/Import_Info') }}">Registration Information</a>   
+                            <a class="dropdown-item" href="{{ url('info/Dragon_Registration') }}">Registration Information</a>   
                             <a class="dropdown-item" href="{{ url('info/Check_List') }}">Design Review checklist</a>
                         </div>
                     </div>
@@ -133,6 +131,7 @@
                             <a class="dropdown-item" href="{{ url('design/color_mutations/abundism') }}">Abundism</a>
                             <a class="dropdown-item" href="{{ url('design/color_mutations/albino') }}">Albino</a>
                             <a class="dropdown-item" href="{{ url('design/color_mutations/anery') }}">Anery</a>
+                            <a class="dropdown-item" href="{{ url('design/color_mutations/blacklight') }}">Blacklight</a>
                             <a class="dropdown-item" href="{{ url('design/color_mutations/chimeric') }}">Chimeric</a>
                             <a class="dropdown-item" href="{{ url('design/color_mutations/leucism') }}">Luecism</a>
                             <a class="dropdown-item" href="{{ url('design/color_mutations/melanistic') }}">Melanistic</a>   

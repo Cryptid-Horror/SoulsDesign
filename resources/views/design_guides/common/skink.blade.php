@@ -3,11 +3,11 @@
     $marking_name = 'Skink';
     $marking_code = 'nSk/SkSk';
     $marking_desc = "Skink is a marking that presents as a line down the body of a dragon. Skink has to appear in at least 3 zones, but can appear in all zones of the body. It also has to be fully connected and travel down the body horizontally. Skink is characterized by its starting location always being on the head, with the main skink line starting from the eyes.";
-    $layers_above_or_below = 'Blanket, Boar, Collar, dunstripe, frog eye, hood, masked, pangare, points, python, rimmed, sable, Stained, trailing, underbelly, banded, border, crested, dipped, dripping, marbled, pigeon, plasma, roan, rosettes, shaped, tabby, toxin, blooded, eyes, glass, luminescent, lustrous, Triquetra, Vignette, lepir, aether marked, gemstome, rune, petal';
-    $layers_above = ' Cloud, Smoke, bokeh, merle, brindled';
-    $layers_below = ' Inkwell, tobiano, painted, appaloosa ';
-    $affected_by = 'Duotone, Flaxen, Greying, Rose, Azure, Copper, Crimson, Jade, Lilac, Prismatic, Shimmer, Aurora, Iridescent, Border, Dripping';
-    $can_affect = 'None';
+    $layers_above_or_below = '';
+    $layers_above = '';
+    $layers_below = '';
+    $affected_by = '';
+    $can_affect = '';
 
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
@@ -17,6 +17,8 @@
         'Greater' => 'Gemp_Range',
         'Ravager' => 'Ravager_Range',
         'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no
