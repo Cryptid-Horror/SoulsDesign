@@ -116,7 +116,7 @@
 					</h2>
 				</div>
 
-				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 					<div class="card-body">
 						<div class="alert alert-info">
 							Free marks have been expanded! Add these to the free marks section of your design submission if you use them! Free markings do not get added to the genotype, and cannot be passed to offspring. They are simply design enhancers, used to make designs more interesting, or unique. You can use none, or all of them, or any combination!
