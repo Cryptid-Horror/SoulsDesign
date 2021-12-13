@@ -64,18 +64,21 @@
 			Welcome to the Genetics Portal! This is the main page of our genetics handguide. You will find links to all necessary documentations on the genes and traits of our dragons here! To view markings, click on the marking rarity names which will open a menu that shows you the different markings!<br><br>
 			In addition, we've made many new changes to our guides and how markings work. We hope you have a fun time designing your dragons!
 		</div>
-		<a href="info/Genetic_Handbook" button type="button" class="btn btn-secondary btn-lg btn-block mb-3">Genetic Portal Handbook</a></button>
-		<a href="info/Coat_Colors" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Coat Colors, Melanism, and How they Work</a></button>
-        <a href="world/species" button type="button" class="btn btn-secondary btn-lg btn-block mb-5">Dragon Species of Empyrean</a></button>
-
 
 		<div class="d-flex justify-content-around mb-5">
 			<div class="btn-group-vertical">
-				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
 				<a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
                 <a href="{{ url('info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
 				<a href="{{ url('info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
 				<a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
+
+			</div>
+			<div class="btn-group-vertical">
+				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
+                <a href="{{ url('world/species') }}" class="btn btn-secondary">Dragon Species (Imports)</a>
+				<a href="{{ url('info/Coat_Colors') }}" class="btn btn-secondary">Coat Colors and Melanism</a>
+				<a href="{{ url('info/Genetic_Handbook') }}" class="btn btn-secondary">Genetic Portal</a>
+
 
 			</div>
 			<div class="btn-group-vertical">
