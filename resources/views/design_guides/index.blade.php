@@ -99,10 +99,10 @@
 		</div>
 		<div class="alert alert-danger" role="alert">
   			The following things cannot be added to genos/dragons with items currently:<br>
-			  - Hydra, Minature mutations, or new mutations fro mthe contest! <br>
+			  - Hydra, Minature mutations, or new mutations from the contest! <br>
 			  - New traits from the contest. </br>
 			  - New Markings from the contest: Cape, Stockings, Specter, Tritone, Petrified, Patchwork, Circuit, Pearl, arcane, Oilslick, Harlequin, Torch (Fwoosh/Name pending), and Mermaid.</br>
-			  - skills: Confettis Dreams, Guidance of the Sun, and Blessing of the Moon.
+			  - Any Legendary Skills.
 		</div>
 
 		<!-- Common Genetics -->		
