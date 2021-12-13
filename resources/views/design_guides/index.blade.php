@@ -295,12 +295,12 @@
 					<ul class="mb-0">
 								<li>Genotype color mutations are non passable except for Agouti and Radiance.</li>
 							</ul>
-						@foreach(array_chunk($color_mutations, 4) as $color_mutations_chunk)
+						@foreach(array_chunk($colormutations, 4) as $colormutations_chunk)
 							<div class="row mb-3">
-								@foreach($color_muations_chunk as $color_mutations)
+								@foreach($colormuations_chunk as $colormutations)
 									<div class="col-md-6 col-lg-3 mb-2">
-										<img src="{{ asset('images/design_guides/color_mutations_'.str_replace(' ', '_', $color_mutations[0]).'.png') }}" width="90%" style="max-width:200px;">
-										<a class="btn btn-info" href="{{ url('design/color_mutations/'.strtolower(str_replace(' ', '_', $color_mutations[0]))) }}">{{ $color_mutations[0].' ('.$color_mutations[1].')' }}</a>
+										<img src="{{ asset('images/design_guides/color_mutations_'.str_replace(' ', '_', $colormutations[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/color_mutations/'.strtolower(str_replace(' ', '_', $colormutations[0]))) }}">{{ $colormutations[0].' ('.$colormutations[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
