@@ -1,5 +1,5 @@
 <?php
-    $marking_icon = 'placeholder';
+    $marking_icon = 'Color_mutations_Abundism';
     $marking_name = 'Abundism';
     $marking_code = 'Null';
     $marking_desc = "A mutation that causes the markings to be black in coloration, or the base to pick from abundism sliders.";

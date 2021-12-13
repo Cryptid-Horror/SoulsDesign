@@ -1,5 +1,5 @@
 <?php
-    $marking_icon = 'placeholder';
+    $marking_icon = 'Color_mutations_Agouti';
     $marking_name = 'Agouti';
     $marking_code = 'nAg/AgAg';
     $marking_desc = "A color modifier mutation that causes a random color marking to pass to the offspring if one or both parents have the Augoti gene. Similar to the Radiance gene, this gene is thought to come from the Frigid reaches of the empires. However, unlike Radiance, Agouti MUST be applied to the base coat, and cannot be applied to non base dependant markings.";

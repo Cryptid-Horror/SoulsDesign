@@ -1,5 +1,5 @@
 <?php
-    $marking_icon = 'placeholder';
+    $marking_icon = 'Color_mutations_Albino';
     $marking_name = 'Albino';
     $marking_code = 'Null';
     $marking_desc = "A mutation that causes the entire body to be white, and only certain markings are shown based on player choice.";

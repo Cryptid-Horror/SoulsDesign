@@ -16,8 +16,7 @@
 
 <?php 
 	$genomutes = [['Abundism', 'N/A'], ['Agouti', 'nAg/AgAg'], ['Albino', 'N/A'], ['Anery', 'N/A'], 
-				  ['Blacklight', 'N/A'], ['Chimeric', 'N/A'], ['Leucism', 'N/A'], ['Melanistic', 'N/A'], 
-				  ['Radiance', 'nRad/RadRad']];
+				  ['Blacklight', 'N/A'], ['Chimeric', 'N/A'], ['Leucism', 'N/A'], ['Radiance', 'nRad/RadRad']];
 
 	$frees = [['Accents', 'AC'], ['Birthmark', 'BI'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
 			  ['Ankle', 'AK'], ['Socks', 'SO'], ['Tips', 'TI']];
@@ -87,19 +86,7 @@
                 <a href="{{ url('world/traits?feature_category_id=11') }}" class="btn btn-secondary">Temperaments</a>
 
 			</div>
-			<div class="btn-group-vertical">
-                <a href="{{ url('design/color_mutations/abundism') }}" class="btn btn-secondary">Abundism</a>
-                <a href="{{ url('design/color_mutations/albino') }}" class="btn btn-secondary">Albino</a>
-                <a href="{{ url('design/color_mutations/anery') }}" class="btn btn-secondary">Anery</a>
-				<a href="{{ url('design/color_mutations/agouti') }}" class="btn btn-secondary">Agouti (nAg/AgAg)</a>
-
-			</div>
-			<div class="btn-group-vertical">
-				<a href="{{ url('design/color_mutations/blacklight') }}" class="btn btn-secondary">Blacklight</a>
-                <a href="{{ url('design/color_mutations/chimeric') }}" class="btn btn-secondary">Chimeric</a>
-                <a href="{{ url('design/color_mutations/leucism') }}" class="btn btn-secondary">Leucism</a>
-                <a href="{{ url('design/color_mutations/radiance') }}" class="btn btn-secondary">Radiance (nRad/RadRad)</a>
-			</div>
+	
 		</div>
 		<div class="alert alert-danger" role="alert">
   			The following things cannot be added to genos/dragons with items currently:<br>
