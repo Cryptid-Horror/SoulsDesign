@@ -299,7 +299,7 @@
 							<div class="row mb-3">
 								@foreach($genomutes_chunk as $genomutes)
 									<div class="col-md-6 col-lg-3 mb-2">
-										<img src="{{ asset('images/design_guides/color_mutations_'.str_replace(' ', '_', $genomutes[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<img src="{{ asset('images/design_guides/Color_mutations_'.str_replace(' ', '_', $genomutes[0]).'.png') }}" width="90%" style="max-width:200px;">
 										<a class="btn btn-info" href="{{ url('design/color_mutations/'.strtolower(str_replace(' ', '_', $genomutes[0]))) }}">{{ $genomutes[0].' ('.$genomutes[1].')' }}</a>
 									</div>
 								@endforeach
