@@ -44,7 +44,7 @@
 				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'], 
 				['Oilslick', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
 				['Triquetra', 'nTri/TriTri']];
-	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torch(Fwoosh)', 'nTh/ThTh']];
+	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torched', 'nTh/ThTh']];
 ?>
 <body>
 
