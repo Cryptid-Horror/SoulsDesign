@@ -281,7 +281,7 @@
 	</div>
 	<div class="footer">
 		Copyright Cryptid-Horror 2020 all Rights reserved.<br>
-		Marking Icons created by ModernBeatnik<br>
+		Marking Icons created by Cryptid-Horror, AlabasterGreen, and ModernBeatnik<br>
         Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor<br>
 	</div>
 
