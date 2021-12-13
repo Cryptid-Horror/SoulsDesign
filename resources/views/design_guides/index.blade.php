@@ -15,6 +15,10 @@
 </head>
 
 <?php 
+	$genomutes = [['Abundism', 'N/A'], ['Agouti', 'nAg/AgAg'], ['Albino', 'N/A'], ['Anery', 'N/A'], 
+				  ['Blacklight', 'N/A'], ['Chimeric', 'N/A'], ['Leucism', 'N/A'], ['Melanistic', 'N/A'], 
+				  ['Radiance', 'nRad/RadRad']];
+
 	$frees = [['Accents', 'AC'], ['Birthmark', 'BI'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
 			  ['Ankle', 'AK'], ['Socks', 'SO'], ['Tips', 'TI']];
 
@@ -270,6 +274,33 @@
 									<div class="col-md-6 col-lg-3 mb-2">
 										<img src="{{ asset('images/design_guides/Legendary_'.str_replace(' ', '_', $legendary[0]).'.png') }}" width="90%" style="max-width:200px;">
 										<a class="btn btn-info" href="{{ url('design/legendary/'.strtolower(str_replace(' ', '_', $legendary[0]))) }}">{{ $legendary[0].' ('.$legendary[1].')' }}</a>
+									</div>
+								@endforeach
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header" id="headingSeven">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+							Genotype Color Mutations
+						</button>
+					</h2>
+				</div>
+				<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+					<div class="card-body">
+					<ul class="mb-0">
+								<li>Genotype color mutations are non passable except for Agouti and Radiance.</li>
+							</ul>
+						@foreach(array_chunk($genomutes, 4) as $genomutes_chunk)
+							<div class="row mb-3">
+								@foreach($genomutes_chunk as $genomutes)
+									<div class="col-md-6 col-lg-3 mb-2">
+										<img src="{{ asset('images/design_guides/color_mutations_'.str_replace(' ', '_', $genomutes[0]).'.png') }}" width="90%" style="max-width:200px;">
+										<a class="btn btn-info" href="{{ url('design/color_mutations/'.strtolower(str_replace(' ', '_', $genomutes[0]))) }}">{{ $genomutes[0].' ('.$genomutes[1].')' }}</a>
 									</div>
 								@endforeach
 							</div>
