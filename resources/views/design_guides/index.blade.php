@@ -297,7 +297,7 @@
 							</ul>
 						@foreach(array_chunk($color_mutations, 4) as $color_mutations_chunk)
 							<div class="row mb-3">
-								@foreach($color_muations_chunk as $colormutations)
+								@foreach($color_muations_chunk as $color_mutations)
 									<div class="col-md-6 col-lg-3 mb-2">
 										<img src="{{ asset('images/design_guides/color_mutations_'.str_replace(' ', '_', $color_mutations[0]).'.png') }}" width="90%" style="max-width:200px;">
 										<a class="btn btn-info" href="{{ url('design/color_mutations/'.strtolower(str_replace(' ', '_', $color_mutations[0]))) }}">{{ $color_mutations[0].' ('.$color_mutations[1].')' }}</a>
