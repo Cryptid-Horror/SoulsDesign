@@ -74,19 +74,29 @@
 
 			</div>
 			<div class="btn-group-vertical">
-				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
-                <a href="{{ url('world/species') }}" class="btn btn-secondary">Dragon Species (Imports)</a>
-				<a href="{{ url('info/Coat_Colors') }}" class="btn btn-secondary">Coat Colors and Melanism</a>
-				<a href="{{ url('info/Genetic_Handbook') }}" class="btn btn-secondary">Genetic Portal</a>
+				<a href="{{ url('world/traits?feature_category_id=8') }}" class="btn btn-secondary">Coat Types</a>
+				<a href="{{ url('world/traits?feature_category_id=3') }}" class="btn btn-secondary">Tails</a>
+                <a href="{{ url('world/traits?feature_category_id=2') }}" class="btn btn-secondary">Eyes</a>
+                <a href="{{ url('world/traits?feature_category_id=1') }}" class="btn btn-secondary">Horns</a>
+                <a href="{{ url('world/traits?feature_category_id=4') }}" class="btn btn-secondary">Ears</a>
 
 
 			</div>
 			<div class="btn-group-vertical">
+				<a href="{{ url('') }}" class="btn btn-secondary">[Redacted]</a>
                 <a href="{{ url('world/traits?feature_category_id=6') }}" class="btn btn-secondary">Breath Elements</a>
 				<a href="{{ url('world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
-				<a href="{{ url('world/trait-categories') }}" class="btn btn-secondary">Physical Traits</a>
                 <a href="{{ url('world/traits?feature_category_id=7') }}" class="btn btn-secondary">Skills</a>
                 <a href="{{ url('world/traits?feature_category_id=11') }}" class="btn btn-secondary">Temperaments</a>
+
+
+			</div>
+			<div class="btn-group-vertical">
+				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
+                <a href="{{ url('world/species') }}" class="btn btn-secondary">Dragon Species (Imports)</a>
+				<a href="{{ url('info/Coat_Colors') }}" class="btn btn-secondary">Coat Colors and Melanism</a>
+				<a href="{{ url('info/Genetic_Handbook') }}" class="btn btn-secondary">Genetic Handbook Guide</a>
+
 
 			</div>
 	
