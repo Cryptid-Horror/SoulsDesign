@@ -27,9 +27,7 @@ function items(){
     if (document.getElementById("bagy").checked == true){
 		lootSize += 1;
 		itemlist += "<i>An extra item was stored in your container!</i><br>";}
-	if (document.getElementById("localy").checked == true && rand(1,10) <= 4){
-		lootSize += 1;
-		itemlist += "<i>Your dragon brought back an extra item!</i><br>";}
+
 
 //HUNTING//
 function rollVoTW(){
