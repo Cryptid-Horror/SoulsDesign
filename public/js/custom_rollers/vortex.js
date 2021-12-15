@@ -288,7 +288,6 @@ function rollVoTW(){
 	return itemlist;
 }
 
-
   
  function roll() { 
 	document.getElementById("result").innerHTML = "";
