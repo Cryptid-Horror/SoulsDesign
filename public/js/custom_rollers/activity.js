@@ -854,7 +854,7 @@ function injury(){
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
-			return "While diving into the :thumb743377712: for fish your dragon scraped up against a jagged rock. -10 HP";}
+			return "While diving into the water for fish your dragon scraped up against a jagged rock. -10 HP";}
 		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
 			return "Sometimes the safer places might be lakes. Sometimes lakes might have drop off abyssal points. Your dragon fell in one. -20 HP";}
 		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
