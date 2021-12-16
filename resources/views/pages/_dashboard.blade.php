@@ -5,14 +5,9 @@
         <i class="far fa-clock"></i> {!! format_date(Carbon\Carbon::now()) !!}
     </div>
 </div>
-<h2>Recent Announcements</h2> 
-<div class="alert alert-primary" role="alert">
-    Anniversary sale is live until December 15th!<br>
-    Festival of of Solaris and Lunaris is live!
-</div>
+
 
 <h2>Current Event</h2>
-<a href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=13') }}"><img src="{{ asset('images/ssss.png') }}"></a>
 <a href="{{ url('https://soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenaseason.png') }}"></a>
 
 
