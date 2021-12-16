@@ -54,7 +54,8 @@ class Character extends Model
         'is_sellable', 'is_tradeable', 'is_giftable',
         'sale_value', 'transferrable_at', 'is_visible',
         'is_gift_art_allowed', 'is_gift_writing_allowed', 'is_trading', 'sort',
-        'is_myo_slot', 'name', 'trade_id', 'owner_url', 'class_id', 'home_id', 'home_changed', 'faction_id', 'faction_changed',
+        'is_myo_slot', 'name', 'trade_id', 'owner_url',  'folder_id', 'class_id',
+         'home_id', 'home_changed', 'faction_id', 'faction_changed',
         'title_name', 'nicknames', 'is_adopted', 'health_status', 'sex', 'gender_pronouns',
         'temperament', 'diet', 'skills', /*'rank',*/ 'slots_used',
         'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
@@ -65,6 +66,7 @@ class Character extends Model
         // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug',
         'deceased', 'deceased_at', 'has_grand_title'
 
+        
     ];
 
     /**
@@ -302,6 +304,13 @@ class Character extends Model
     public function breedingPermissions()
     {
         return $this->hasMany('App\Models\Character\BreedingPermission', 'character_id');
+    /**
+     * Gets which folder the character currently resides in.
+     */
+    }
+    public function folder()
+    {
+        return $this->belongsTo('App\Models\Character\CharacterFolder', 'folder_id');
     }
 
     /**********************************************************************************************

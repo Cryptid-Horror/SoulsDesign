@@ -273,7 +273,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Character\CharacterBookmark')->where('user_id', $this->id);
     }
 
-
     /** 
      * Get the user's gears.
      */
@@ -296,6 +295,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function challengeLogs()
     {
         return $this->hasMany('App\Models\Challenge\UserChallenge');
+    }
+
+    /**
+     * gets all the user's character folders
+     */
+    public function folders()
+    {
+        return $this->hasMany('App\Models\Character\CharacterFolder');
     }
 
     /**********************************************************************************************
