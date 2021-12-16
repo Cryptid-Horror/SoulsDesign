@@ -4,8 +4,6 @@
         <div class="sidebar-section-header">Inventory</div>
         <div class="sidebar-item"><a href="{{ url('characters') }}" class="{{ set_active('characters') }}">My Dragons</a></div>
         <div class="sidebar-item"><a href="{{ url('characters/myos') }}" class="{{ set_active('characters/myos') }}">My Genotypes</a></div>
-        <div class="sidebar-item"><a href="{{ url('characters') }}" class="{{ set_active('characters') }}">My Characters</a></div>
-        <div class="sidebar-item"><a href="{{ url('characters/myos') }}" class="{{ set_active('characters/myos') }}">My MYO Slots</a></div>
         <div class="sidebar-item"><a href="{{ url('breeding-permissions') }}" class="{{ set_active('breeding-permissions') }}">Breeding Permissions</a></div>
         <div class="sidebar-item"><a href="{{ url('inventory') }}" class="{{ set_active('inventory*') }}">Inventory</a></div>
         <div class="sidebar-item"><a href="{{ url('awardcase') }}" class="{{ set_active('awardcase*') }}">Awards</a></div>
