@@ -249,9 +249,7 @@
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ Auth::user()->url.'/breeding-permissions }}">
-                                View Nesting Permissions
-                            </a>
+                        
                             <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
                                 View Dragons
                             </a>
