@@ -258,7 +258,7 @@
                             </a>
 
                             <a class="dropdown-item" href="{{ Auth::user()->url.'/breeding-permissions' }}">
-                                View Nesting Permissions
+                                Nesting Perms
                             </a>
                             
                             <a class="dropdown-item" href="{{ url('inventory') }}">
