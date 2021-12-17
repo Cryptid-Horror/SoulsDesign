@@ -28,9 +28,13 @@
                             <div class="mt-1 h5">
                                 @if(!$myo->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $myo->displayName !!}
                             </div>
-                            @endforeach
                         </div>
-                        @else
+                    @endforeach
+                </div>
+            </div>
+        </div>  
+    @endforeach
+@else
     <p>No Genotypes Found.</p> 
 @endif
 

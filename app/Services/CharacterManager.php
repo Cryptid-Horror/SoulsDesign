@@ -1288,7 +1288,8 @@ class CharacterManager extends Service
             $ids = array_reverse(explode(',', $data['sort']));
             $folders = array_reverse($data['folder_ids']);
 
-            $characters = Character::myo(0)->whereIn('id', $ids)->where('user_id', $user->id)->where('is_visible', 1)->orderByRaw(DB::raw('FIELD(id, '.implode(',', $ids).')'))->get();
+            // $characters = Character::myo(0)->whereIn('id', $ids)->where('user_id', $user->id)->where('is_visible', 1)->orderByRaw(DB::raw('FIELD(id, '.implode(',', $ids).')'))->get();
+            $characters = Character::whereIn('id', $ids)->where('user_id', $user->id)->where('is_visible', 1)->orderByRaw(DB::raw('FIELD(id, '.implode(',', $ids).')'))->get();
 
             if(count($characters) != count($ids)) throw new \Exception("Invalid character included in sorting order.");
 
@@ -2975,6 +2976,8 @@ class CharacterManager extends Service
             {
                 if(Config::get('lorekeeper.settings.clear_myo_slot_name_on_approval')) $request->character->name = null;
                 $request->character->is_myo_slot = 0;
+                // Reset sort order.
+                $request->character->sort = 0;
                 $request->user->settings->is_fto = 0;
                 $request->user->settings->save();
             }

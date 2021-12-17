@@ -183,7 +183,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function myoSlots()
     {
-        return $this->hasMany('App\Models\Character\Character')->where('is_myo_slot', 1)->orderBy('id', 'DESC');
+        return $this->hasMany('App\Models\Character\Character')->where('is_myo_slot', 1)->orderBy('sort', 'DESC')->orderBy('id', 'DESC');
     }
 
     /**

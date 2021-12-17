@@ -29,11 +29,10 @@
 </div>
 
 
-
 {!! Form::open(['url' => 'characters/sort', 'class' => 'text-right']) !!}
-<div class ="row">
+<div id="sortable" class="row sortable">
     @foreach($slots as $slot)
-        <div class="col-md-3 col-6 text-center mb-2" data-id="{{ $character->id }}">
+        <div class="col-md-3 col-6 text-center mb-2" data-id="{{ $slot->id }}">
             <div>
             <a href="{{ $slot->url }}"><img src="{{ $slot->image->thumbnailUrl }}" class="img-thumbnail" alt="Thumbnail for {{ $slot->fullName }}" /></a>
             </div>
@@ -44,14 +43,18 @@
                 {!! Form::label('folder_ids[]', 'Folder (Optional)') !!}
                 {!! Form::select('folder_ids[]', $folders, $slot->folder_id, ['class' => 'form-control']) !!}
             </div>
-            @endforeach
         </div>
-    @endsection
+    @endforeach
+</div>
+
+    {!! Form::hidden('sort', null, ['id' => 'sortableOrder']) !!}
+    {!! Form::submit('Save Order', ['class' => 'btn btn-primary']) !!}
+{!! Form::close() !!}
+
+@endsection
 
 
-
-
-<-- <div class="row">
+{{-- <div class="row">
     @foreach($slots as $slot)
         <div class="col-md-3 col-6 text-center mb-2">
             <div>
@@ -63,4 +66,40 @@
         </div>
     @endforeach
 </div>
-@endsection --> 
+--}}    
+
+@section('scripts')
+    <script>
+        $( document ).ready(function() {
+            
+            $('.create-folder').click(function(e){
+                e.preventDefault();
+                loadModal("{{ url('/characters/folder/create') }}", "Create New Folder");
+            });
+
+            $('.edit-folder').click(function(e){
+                e.preventDefault();
+                $('#folders').collapse('toggle');
+            });
+
+            $('.edit-get-button').click(function(e){
+                e.preventDefault();
+                var folder_id = $('#folders select').val();
+                var url = "{{ url('/characters/folder/edit') }}/" + folder_id;
+                loadModal(url, "Edit Folder");
+            });
+
+            $( "#sortable" ).sortable({
+                characters: '.sort-item',
+                placeholder: "sortable-placeholder col-md-3 col-6",
+                stop: function( event, ui ) {
+                    $('#sortableOrder').val($(this).sortable("toArray", {attribute:"data-id"}));
+                },
+                create: function() {
+                    $('#sortableOrder').val($(this).sortable("toArray", {attribute:"data-id"}));
+                }
+            });
+            $( "#sortable" ).disableSelection();
+        });
+    </script>
+@endsection

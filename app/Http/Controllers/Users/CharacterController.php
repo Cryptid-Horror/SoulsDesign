@@ -60,6 +60,7 @@ class CharacterController extends Controller
 
         return view('home.myos', [
             'slots' => $slots,
+            'folders' => ['None' => 'None'] + Auth::user()->folders()->pluck('name', 'id')->toArray(),
         ]);
     }
 
