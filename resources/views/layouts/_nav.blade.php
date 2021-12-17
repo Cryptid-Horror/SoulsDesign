@@ -40,10 +40,10 @@
                                <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
-                                Breeding Permissions
+                            <i class="fas fa-egg"></i> Breeding Permissions
                             </a>
                             <a class="dropdown-item" href="{{ url('challenges') }}">
-                                Challenges
+                            <i class="fas fa-dungeon"></i> Challenges
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
@@ -251,10 +251,10 @@
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ url('characters') }}">
-                                My Dragons
+                                Dragon Manager
                             </a>
                             <a class="dropdown-item" href="{{ url('characters/myos') }}">
-                                My Genotypes
+                                Geno Manager
                             </a>
                             <a class="dropdown-item" href="{{ url('inventory') }}">
                                 Hoard
