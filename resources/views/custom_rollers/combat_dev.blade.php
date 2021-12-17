@@ -201,9 +201,15 @@
             <option value="brawler_booster">Brawler Booster</option>
             <option value="nightshade_booster">Nightshade Booster</option>
             <option value="warlord_booster">Warlord Booster</option>
-           
         </select>
         <br>
+        <label>Aberrant %:</label>
+        <select id="1_aberrant_percentage" class="cellElement">
+            <option value="0">0</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
         <input type="checkbox" id="1_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>
@@ -381,6 +387,13 @@
             <option value="warlord_booster">Warlord Booster</option>
         </select>
         <br>
+        <label>Aberrant %:</label>
+        <select id="2_aberrant_percentage" class="cellElement">
+            <option value="0">0</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
         <input type="checkbox" id="2_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>

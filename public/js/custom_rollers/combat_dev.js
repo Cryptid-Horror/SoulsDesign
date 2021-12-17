@@ -353,6 +353,30 @@ const familiars = {
 
 const aberrant_chance = 1; // must roll less than or equal to this out of 10
 
+const aberrant_buffs = {
+	25: {
+		proc_chance: 1,
+		max_raw: 10,
+		max_bleed: 10,
+		max_magic: 10, 
+		max_breath: 10,
+	},
+	50: {
+		proc_chance: 2,
+		max_raw: 20,
+		max_bleed: 20,
+		max_magic: 20, 
+		max_breath: 20,
+	},
+	100: {
+		proc_chance: 3,
+		max_raw: 30,
+		max_bleed: 30,
+		max_magic: 30, 
+		max_breath: 30,
+	}
+};
+
 // Inputs are retrieved in the setupDragons function
 
 function rand(min, max) {
@@ -496,6 +520,7 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
+		aberrantPercentage: 0,
 		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
@@ -517,6 +542,7 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
+		aberrantPercentage: 0,
 		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
@@ -589,6 +615,7 @@ function setupDragons() {
 	}
 
 	// Dragon 1 Aberrant
+	dragon_1.aberrantPercentage = parseInt(document.getElementById('1_aberrant_percentage').value);
 	dragon_1.canPassAberrant = document.getElementById('1_can_pass_aberrant').checked;
 	
 	// Dragon 1 Part Break
@@ -666,6 +693,7 @@ function setupDragons() {
 	}
 
 	// Dragon 2 Aberrant
+	dragon_2.aberrantPercentage = parseInt(document.getElementById('2_aberrant_percentage').value);
 	dragon_2.canPassAberrant = document.getElementById('2_can_pass_aberrant').checked;
 	
 	// Dragon 2 Part Break
@@ -673,6 +701,86 @@ function setupDragons() {
 	if(document.getElementById('2_head_part').checked) { dragon_2.broken.push('head'); }
 	if(document.getElementById('2_tail_part').checked) { dragon_2.broken.push('tail'); }
 	if(document.getElementById('2_legs_part').checked) { dragon_2.broken.push('legs'); }
+
+	applyAberrant();
+}
+
+// Check both dragons for Aberrant. If present, try to proc, adding buffs accordingly.
+function applyAberrant()
+{
+	// Dragon 1
+	// Aberrant percentage defaults to zero.
+	if(dragon_1.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_1.aberrantPercentage];
+		// Try proc for each kind of damage.
+		var proc_roll;
+		// Raw
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_raw += aberrant_data.max_raw;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br>';
+		}
+		// Bleed
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_bleed += aberrant_data.max_bleed;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br>';
+		}
+		// Magic
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_magic += aberrant_data.max_magic;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br>';
+		}
+		// Breath
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_breath += aberrant_data.max_breath;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br>';
+		}
+	}
+
+	// Dragon 2
+	// Aberrant percentage defaults to zero.
+	if(dragon_2.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_2.aberrantPercentage];
+		// Try proc for each kind of damage.
+		var proc_roll;
+		// Raw
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_raw += aberrant_data.max_raw;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br>';
+		}
+		// Bleed
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_bleed += aberrant_data.max_bleed;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br>';
+		}
+		// Magic
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_magic += aberrant_data.max_magic;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br>';
+		}
+		// Breath
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_breath += aberrant_data.max_breath;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br>';
+		}
+	}
 }
 
 function calculateDamage(attacker, defender) {
