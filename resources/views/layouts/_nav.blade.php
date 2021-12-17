@@ -236,9 +236,6 @@
                             <a class="dropdown-item" href="{{ Auth::user()->url }}">
                                 Profile
                             </a>
-                            <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
-                                View Dragons
-                            </a>
                             <a class="dropdown-item" href="{{ url('notifications') }}">
                                 Notifications
                             </a>
@@ -252,6 +249,19 @@
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
+                                View Dragons
+                            </a>
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/myos' }}">
+                                View genotypes
+                            </a>
+                            <a class="dropdown-item" href="{{ url('inventory') }}">
+                                View Hoard
+                            </a>
+                            <a class="dropdown-item" href="{{ url('bank') }}">
+                                View Bank
+                            </a>
+                            <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ url('characters') }}">
                                 Dragon Manager
@@ -259,18 +269,12 @@
                             <a class="dropdown-item" href="{{ url('characters/myos') }}">
                                 Geno Manager
                             </a>
-                            <a class="dropdown-item" href="{{ url('inventory') }}">
-                                Hoard
-                            </a>
-                            <a class="dropdown-item" href="{{ url('bank') }}">
-                                Empyrean Bank
-                            </a>
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('<i class="fas fa-exclamation-triangle"></i>Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
