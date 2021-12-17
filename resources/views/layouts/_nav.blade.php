@@ -256,6 +256,11 @@
                             <a class="dropdown-item" href="{{ Auth::user()->url.'/myos' }}">
                                 View genotypes
                             </a>
+
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/breeding-permissions' }}">
+                                View genotypes
+                            </a>
+                            
                             <a class="dropdown-item" href="{{ url('inventory') }}">
                                 View Hoard
                             </a>
