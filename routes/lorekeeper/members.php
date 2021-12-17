@@ -207,6 +207,11 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function() 
 Route::group(['prefix' => 'myo', 'namespace' => 'Characters'], function() {
     Route::get('{id}/profile/edit', 'MyoController@getEditCharacterProfile');
     Route::post('{id}/profile/edit', 'MyoController@postEditCharacterProfile');
+    Route::get('folder/create', 'CharacterController@getCreateFolder');
+    Route::get('folder/edit/{id}', 'CharacterController@getEditFolder');
+    Route::post('folder/create', 'CharacterController@postCreateEditFolder');
+    Route::post('folder/edit/{id}', 'CharacterController@postCreateEditFolder');
+    Route::post('folder/delete/{id}', 'CharacterController@postDeleteFolder');
 
     Route::get('{id}/transfer', 'MyoController@getTransfer');
     Route::post('{id}/transfer', 'MyoController@postTransfer');

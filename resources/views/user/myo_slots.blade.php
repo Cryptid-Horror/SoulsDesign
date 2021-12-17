@@ -10,20 +10,29 @@
 </h1>
 
 @if($myos->count())
-    <div class="row">
-        @foreach($myos as $myo)
-            <div class="col-md-3 col-6 text-center mb-2">
-                <div>
-                    <a href="{{ $myo->url }}"><img src="{{ $myo->image->thumbnailUrl }}" class="img-thumbnail" alt="{{ $myo->fullName }}" /></a>
-                </div>
-                <div class="mt-1 h5">
-                    @if(!$myo->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $myo->displayName !!}
-                </div>
-            </div>
-        @endforeach
-    </div>
-@else
+    @foreach($myos as $key => $group)
+        <div class="card mb-3 inventory-category">
+            <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
+                <h5 class="card-header inventory-header">
+                    <span data-toggle="tooltip" title="{{ $group->first()->folder ? $group->first()->folder->description : 'Genotypes without a folder.'}}">{{ $key }}</span>
+                </h5>
+            </a>
+            
+            <div class="card-body inventory-body">
+                <div class="row mb-2">
+                    @foreach($group as $myo)
+                        <div class="col-md-3 col-6 text-center mb-2">
+                            <div>
+                                <a href="{{ $myo->url }}"><img src="{{ $myo->image->thumbnailUrl }}" class="img-thumbnail" alt="Thumbnail for {{ $myo->fullName }}" /></a>
+                            </div>
+                            <div class="mt-1 h5">
+                                @if(!$myo->is_visible) <i class="fas fa-eye-slash"></i> @endif {!! $myo->displayName !!}
+                            </div>
+                            @endforeach
+                        </div>
+                        @else
     <p>No Genotypes Found.</p> 
 @endif
 
 @endsection
+
