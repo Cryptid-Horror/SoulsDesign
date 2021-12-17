@@ -465,11 +465,11 @@ function fight() {
 	// Check aberrant
 	var aberrantRoll = rand(1, 10);
 	// Only applies if exactly one dragon is Aberrant
-	if(dragon_1.isAberrant && !dragon_2.isAberrant) {
+	if(dragon_1.canPassAberrant && !dragon_2.canPassAberrant) {
 		// Roll chance for dragon 2 to become Aberrant.
 		if(aberrantRoll <= aberrant_chance) results += "In the scuffle, " + dragon_2.name + " was afflicted by aberrations from " + dragon_1.name + ". They are now an Aberrant dragon (25%).<br>";
 	}
-	else if(!dragon_1.isAberrant && dragon_2.isAberrant) {
+	else if(!dragon_1.canPassAberrant && dragon_2.canPassAberrant) {
 		// Roll chance for dragon 1 to become Aberrant.
 		if(aberrantRoll <= aberrant_chance) results += "In the scuffle, " + dragon_1.name + " was afflicted by aberrations from " + dragon_2.name + ". They are now an Aberrant dragon (25%).<br>";
 	}
@@ -496,7 +496,7 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
-		isAberrant: false,
+		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
 	}
@@ -517,7 +517,7 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
-		isAberrant: false,
+		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
 	}
@@ -589,7 +589,7 @@ function setupDragons() {
 	}
 
 	// Dragon 1 Aberrant
-	dragon_1.isAberrant = document.getElementById('1_is_aberrant').checked;
+	dragon_1.canPassAberrant = document.getElementById('1_can_pass_aberrant').checked;
 	
 	// Dragon 1 Part Break
 	dragon_1.useBreakable = document.getElementById('1_use_breakable').checked;
@@ -666,7 +666,7 @@ function setupDragons() {
 	}
 
 	// Dragon 2 Aberrant
-	dragon_2.isAberrant = document.getElementById('2_is_aberrant').checked;
+	dragon_2.canPassAberrant = document.getElementById('2_can_pass_aberrant').checked;
 	
 	// Dragon 2 Part Break
 	dragon_2.useBreakable = document.getElementById('2_use_breakable').checked;

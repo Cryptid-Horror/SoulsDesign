@@ -204,7 +204,7 @@
            
         </select>
         <br>
-        <input type="checkbox" id="1_is_aberrant">Is Aberrant?<br>
+        <input type="checkbox" id="1_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>
         <i>Parts break on PvE, not PvP</i><br>
@@ -381,7 +381,7 @@
             <option value="warlord_booster">Warlord Booster</option>
         </select>
         <br>
-        <input type="checkbox" id="2_is_aberrant">Is Aberrant?<br>
+        <input type="checkbox" id="2_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>
         <i>Parts break on PvE, not PvP</i><br>
