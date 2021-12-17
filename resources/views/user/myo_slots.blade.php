@@ -16,10 +16,10 @@
                     <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
                         <span data-toggle="tooltip" title="{{ $group->first()->folder ? $group->first()->folder->description : 'Genotypes without a folder.'}}">{{ $key }}</span>
                     </a>
-                    <a class="small collapse-toggle" href="#{{ urlencode($key) }}" data-toggle="collapse">Show</a></h3>
+                    <a class="small collapse-toggle" href="#{{ clean($key) }}" data-toggle="collapse">Show</a></h3>
                 </h5>
             
-            <div class="card-body inventory-body collapse show" id="{{ urlencode($key) }}">
+            <div class="card-body inventory-body collapse show" id="{{ clean($key) }}">
                 <div class="row mb-2">
                     @foreach($group as $myo)
                         <div class="col-md-3 col-6 text-center mb-2">

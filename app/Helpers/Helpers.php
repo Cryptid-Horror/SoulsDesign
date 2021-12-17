@@ -290,3 +290,16 @@ function prettyProfileName($url)
     if(isset($name) && isset($site)) return $name.'@'.(Config::get('lorekeeper.sites.'.$site.'.display_name') != null ? Config::get('lorekeeper.sites.'.$site.'.display_name') : $site);
     else return $url;
 }
+
+/**
+ * Removes special characters and replaces spaces with hyphens.
+ * https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string
+ *
+ * @param  string  $string
+ * @return string
+ */
+function clean($string) {
+    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+ 
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+ }
