@@ -12,13 +12,14 @@
 @if($myos->count())
     @foreach($myos as $key => $group)
         <div class="card mb-3 inventory-category">
-            <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
                 <h5 class="card-header inventory-header">
-                    <span data-toggle="tooltip" title="{{ $group->first()->folder ? $group->first()->folder->description : 'Genotypes without a folder.'}}">{{ $key }}</span>
+                    <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
+                        <span data-toggle="tooltip" title="{{ $group->first()->folder ? $group->first()->folder->description : 'Genotypes without a folder.'}}">{{ $key }}</span>
+                    </a>
+                    <a class="small collapse-toggle" href="#{{ $key }}" data-toggle="collapse">Show</a></h3>
                 </h5>
-            </a>
             
-            <div class="card-body inventory-body">
+            <div class="card-body inventory-body collapse show" id="{{ $key }}">
                 <div class="row mb-2">
                     @foreach($group as $myo)
                         <div class="col-md-3 col-6 text-center mb-2">

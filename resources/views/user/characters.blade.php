@@ -12,13 +12,14 @@
 @if($characters->count())
     @foreach($characters as $key => $group)
         <div class="card mb-3 inventory-category">
-            <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
-                <h5 class="card-header inventory-header">
+            <h5 class="card-header inventory-header">
+                <a href="{{ $group->first()->folder ? $group->first()->folder->url : '#' }}">
                     <span data-toggle="tooltip" title="{{ $group->first()->folder ? $group->first()->folder->description : 'Characters without a folder.'}}">{{ $key }}</span>
-                </h5>
-            </a>
+                </a>
+                <a class="small collapse-toggle" href="#{{ $key }}" data-toggle="collapse">Show</a></h3>
+            </h5>
             
-            <div class="card-body inventory-body">
+            <div class="card-body inventory-body collapse show" id="{{ $key }}">
                 <div class="row mb-2">
                     @foreach($group as $character)
                         <div class="col-md-3 col-6 text-center mb-2">
