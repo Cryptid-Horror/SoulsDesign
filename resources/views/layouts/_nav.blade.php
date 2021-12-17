@@ -249,18 +249,25 @@
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
+                                View Dragons
+                            </a>
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/myos' }}">
+                                View genotypes
+                            </a>
+                            <a class="dropdown-item" href="{{ url('inventory') }}">
+                                View Hoard
+                            </a>
+                            <a class="dropdown-item" href="{{ url('bank') }}">
+                                View Bank
+                            </a>
+                            <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ url('characters') }}">
                                 Dragon Manager
                             </a>
                             <a class="dropdown-item" href="{{ url('characters/myos') }}">
                                 Geno Manager
-                            </a>
-                            <a class="dropdown-item" href="{{ url('inventory') }}">
-                                Hoard
-                            </a>
-                            <a class="dropdown-item" href="{{ url('bank') }}">
-                                Empyrean Bank
                             </a>
                             <div class="dropdown-divider"></div>
 
