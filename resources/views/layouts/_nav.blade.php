@@ -236,6 +236,9 @@
                             <a class="dropdown-item" href="{{ Auth::user()->url }}">
                                 Profile
                             </a>
+                            <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
+                                View Dragons
+                            </a>
                             <a class="dropdown-item" href="{{ url('notifications') }}">
                                 Notifications
                             </a>
