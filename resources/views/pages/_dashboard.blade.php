@@ -10,6 +10,7 @@
 <h2>Current Event</h2>
 <a href="{{ url('https://soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenaseason.png') }}"></a>
 
+<a href="{{ url('https://soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/questboard.png') }}"></a>
 
 <br>
 <br>
