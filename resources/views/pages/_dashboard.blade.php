@@ -12,7 +12,7 @@
 <br>
 <br>
 
-<div class="bg-img">
+<-- <div class="bg-img">
   <div class="container1">
     <div class="topnav">
       <a href=""><img src="{{ asset('images/testpage.png') }}"></a>
@@ -28,7 +28,7 @@
       <a href=""><img src="{{ asset('images/testpage.png') }}"></a>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
