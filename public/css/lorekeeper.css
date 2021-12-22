@@ -656,11 +656,11 @@ main > .row {
   }
   
   .container2 {
-    position: absolute;
+    position: sticky;
     margin: 10px;
     width: auto;
     top: 119px;
-    left: 462px;
+    left: 626px;
   }
   
   
