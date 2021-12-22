@@ -656,7 +656,7 @@ main > .row {
   }
   
   .container2 {
-    position: sticky;
+    position: fixed;
     margin: 10px;
     width: auto;
     top: 119px;
