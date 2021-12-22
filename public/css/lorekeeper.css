@@ -648,11 +648,11 @@ main > .row {
   
   /* Position the navbar container inside the image */
   .container1 {
-    position: absolute;
+    position: fixed;
     margin: 10px;
     width: auto;
     top: 119px;
-    left: 50%;
+    left: 172px;
   }
   
   .container2 {
