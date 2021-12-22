@@ -648,7 +648,7 @@ main > .row {
   
   /* Position the navbar container inside the image */
   .container1 {
-    position: fixed;
+    position: relative;
     margin: 10px;
     width: auto;
     top: 119px;
