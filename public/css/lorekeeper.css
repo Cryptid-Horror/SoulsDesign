@@ -650,7 +650,7 @@ main > .row {
   .container1 {
     position: relative;
     margin: 10px;
-    width: auto;
+    width: inherit;
     top: 119px;
     left: 172px;
   }
@@ -658,7 +658,7 @@ main > .row {
   .container2 {
     position: relative;
     margin: 10px;
-    width: auto;
+    width: inherit;
     top: 119px;
     left: 626px;
   }
@@ -667,7 +667,7 @@ main > .row {
   .container3 {
     position: relative;
     margin: 10px;
-    width: auto;
+    width: inherit;
     top: 460px;
     left: 162px;
   }
