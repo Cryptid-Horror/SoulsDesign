@@ -639,7 +639,8 @@ main > .row {
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     
     /* Needed to position the navbar */
     position: relative;
