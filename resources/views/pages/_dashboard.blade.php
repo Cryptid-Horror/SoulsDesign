@@ -122,7 +122,7 @@
         </div>
     </div>
 
-   {{- @include('widgets._questboard', [
+   {{-- @include('widgets._questboard', [
         'questImage1' => asset('images/testpage.png'),
         'questUrl1' => url('crafting'),
 
