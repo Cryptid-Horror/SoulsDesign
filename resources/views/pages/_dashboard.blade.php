@@ -121,6 +121,32 @@
             ])
         </div>
     </div>
+    {{--
+    @include('widgets._questboard', [
+        'questImage1' => asset('images/Ancient.png'),
+        'questUrl1' => url('crafting'),
+
+        'questImage2' => asset('images/Ancient.png'),
+        'questUrl2' => url('level'),
+
+        'questImage3' => asset('images/Ancient.png'),
+        'questUrl3' => url('world'),
+
+        'questImage4' => asset('images/Ancient.png'),
+        'questUrl4' => url('prompts'),
+
+        'questImage5' => asset('images/Ancient.png'),
+        'questUrl5' => url('shops'),
+
+        'questImage6' => asset('images/Ancient.png'),
+        'questUrl6' => url('level'),
+
+        'questImage7' => asset('images/Ancient.png'),
+        'questUrl7' => url('level'),
+
+        'questImage8' => asset('images/Ancient.png'),
+        'questUrl8' => url('level')
+    ])--}}
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">

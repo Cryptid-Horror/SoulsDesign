@@ -630,24 +630,70 @@ main > .row {
 
 /* QUESTBOARD *********************************************************************************/
 
-.bg-img {
+
+.questboard-first-horizontal-gutter {
+    height: 18.94%
+}
+
+.questboard-second-horizontal-gutter {
+    height: 10.2%
+}
+
+.questboard-third-horizontal-gutter {
+    height: 9.93%
+}
+
+.questboard-first-vertical-gutter {
+    width: 2.58%;
+    height: 100%;
+}
+
+.questboard-second-vertical-gutter {
+    width: 11.5%;
+    height: 100%;
+}
+
+.questboard-third-vertical-gutter {
+    width: 10.5%;
+    height: 100%;
+}
+
+.questboard-fourth-vertical-gutter {
+    width: 11.66%;
+    height: 100%;
+}
+
+.questboard-fifth-vertical-gutter {
+    width: 3.33%;
+    height: 100%;
+}
+
+.questboard-poster-row {
+    height: 30.46%;
+}
+
+.questboard-poster {
+    width: 15.11%;
+    height: 90%;
+    /*height: 100%;*/
+}
+
+
+/* .bg-img { */
     /* The image used */
-    background-image: url("https://cdn.discordapp.com/attachments/800273184065716296/923225943957467176/questboardwithoutcorruption.png");
-  
-    min-height: 755px;
+    /* background-image: url("https://cdn.discordapp.com/attachments/800273184065716296/923225943957467176/questboardwithoutcorruption.png");
+
+    width: 100%; */
   
     /* Center and scale the image nicely */
-    background-position: center;
+    /* background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
-    
-    /* Needed to position the navbar */
-    position: relative;
-  }
+  } */
   
   /* Position the navbar container inside the image */
-  .container1 {
+  /* .container1 {
     position: relative;
     margin: 10px;
     width: inherit;
@@ -670,19 +716,19 @@ main > .row {
     width: inherit;
     top: 460px;
     left: 162px;
-  }
+  } */
   
   
   /* The navbar */
-  .topnav {
+  /* .topnav {
     overflow: hidden;
-  }
+  } */
   
   /* Navbar links */
-  .topnav a {
+  /* .topnav a {
     float: left;
     padding: 14px 16px;
-  }
+  } */
 
 
 /* NOTIFICATIONS *********************************************************************************/
