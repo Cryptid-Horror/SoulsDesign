@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    @include('widgets._questboard', [
+   {{- @include('widgets._questboard', [
         'questImage1' => asset('images/testpage.png'),
         'questUrl1' => url('crafting'),
 
@@ -146,7 +146,7 @@
 
         'questImage8' => asset('images/testpage.png'),
         'questUrl8' => url('level')
-    ])
+    ]) --}}
  {{-- <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
