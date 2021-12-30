@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v4.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v6.1.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -105,16 +105,34 @@
 			</select>
 			<select id="sireSkill" class="cellElement">
 				<option value="1">No Skill</option>
-				<option value="2">Hoarder</option>
-				<option value="3">Friendly Giant</option>
-				<option value="4">Steadfast</option>
-				<option value="5">Swift Feet</option>
+				<option value="10">Adept</option>
 				<option value="6">Aether Walker</option>
-				<option value="7">Inner Fire</option>
+				<option value="15">Armored Hide</option>
+				<option value="11">Blessing of the Moon</option>
+				<option value="13">Confetti Dreams</option>
+				<option value="16">Frenzy</option>
+				<option value="3">Friendly Giant</option>
+				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
-				<option value="10">Adept</option>
+				<option value="2">Hoarder</option>
+				<option value="7">Inner Fire</option>
+				<option value="14">Serrated Teeth</option>
+				<option value="4">Steadfast</option>
+				<option value="5">Swift Feet</option>
 			</select>
+			<br>
+			<select id="sireAberrant" class="cellElement">
+				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
+				be careful when changing the values, and only if necessary -->
+				<option value="1">0% Aberrant</option>
+				<option value="2">25% Aberrant</option>
+				<option value="4">50% Aberrant</option>
+				<option value="8">100% Aberrant</option>
+			</select>
+			<br>
+			<label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">✦Mutation</label>
+
 		</div>
 		
 		<!-- Textboxes -->
@@ -201,17 +219,35 @@
 			</select>
 			<select id="damSkill" class="cellElement">
 				<option value="1">No Skill</option>
-				<option value="2">Hoarder</option>
-				<option value="3">Friendly Giant</option>
-				<option value="4">Steadfast</option>
-				<option value="5">Swift Feet</option>
+				<option value="10">Adept</option>
 				<option value="6">Aether Walker</option>
-				<option value="7">Inner Fire</option>
+				<option value="15">Armored Hide</option>
+				<option value="11">Blessing of the Moon</option>
+				<option value="13">Confetti Dreams</option>
+				<option value="16">Frenzy</option>
+				<option value="3">Friendly Giant</option>
+				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
-				<option value="10">Adept</option>
+				<option value="2">Hoarder</option>
+				<option value="7">Inner Fire</option>
+				<option value="14">Serrated Teeth</option>
+				<option value="4">Steadfast</option>
+				<option value="5">Swift Feet</option>
 
 			</select>
+			<br>
+			<select id="damAberrant" class="cellElement">
+				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
+				be careful when changing the values, and only if necessary -->
+				<option value="1">0% Aberrant</option>
+				<option value="2">25% Aberrant</option>
+				<option value="4">50% Aberrant</option>
+				<option value="8">100% Aberrant</option>
+			</select>
+			<br>
+			<label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">✦Mutation</label>
+
 		</div>
 		
 		<!-- Textboxes -->
@@ -229,42 +265,37 @@
 		<h2>Modifiers</h2>
 		<div width="100%">
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
-			</span>
-			<br>
-			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
-			</span>
-			<br>
-			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BB" id="BB">Breath Potion</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="GP" id="GP">Gender Potion</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
+			</span>
+			<br>
+			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of Ivory</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
+			</span>
+			<br>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
-                <label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
 			</span>
 			<br>
-			<span style="white-space: nowrap;">
-			<label class="radioLabel"><input type="checkbox" id="SM" name="SM" value="SM">Sire Mutation</label>
-			<label class="radioLabel"><input type="checkbox" id="DM" name="DM" value="DM">Dam Mutation</label>
-			<label class="radioLabel"><input type="checkbox" id="weakFertility" name="weakFertility" value="weakFertility">Weak Fertility?</label>
-			</span>
-			<br><label class="wideCheckbox"><input type="checkbox" id="inbreeding" name="inbreeding" value="inbreeding">Inbreeding present?</label>
-			<br><label class="wideCheckbox"><input type="checkbox" id="starter" name="starter" value="starter">2 Egg Minimum Bonus (Starter, Serpent, etc)</label>
+			<label class="wideCheckbox"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="ST" id="ST">Soul Twine</label>
+			<br>
 			<div id="genderSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="1" id="maleSelected" checked>Male</label>
 				<label class="radioLabel"><input type="radio" name="genderSelector" value="2" id="femaleSelected">Female</label>
@@ -314,6 +345,15 @@
                     <option value="golden">Hazed Golden</option>
 				</select>
 			</div>
+			</span>
+			<h2>Buff/Debuff</h2>
+			<span style="white-space: nowrap;">
+				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+                <label class="radioLabel"><input type="checkbox" id="starter" name="starter" value="starter">✦Starter/Serpent</label>
+				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
+			</span>
+			<br>
+			
 		</div>
 	</td>
 	</tr>
@@ -323,7 +363,7 @@
 	<td>
 		<button onclick="roll()">Roll!</button>
 		<button onclick="clearForms()">Reset forms</button>
-		<button onclick="clipBoard()">Copy To Clipboard</button>
+		<button onclick="clipBoard()">Clipboard</button>
 	</td>
 </table>
 <table id="nest">
@@ -334,8 +374,9 @@
 </table>
 	
 <table id="footer">
-	<td id="footerElement"> v1.3.0 - Armando Montanez<br>
-        v5.0.0 - Maintained by Cryptid-Horror <br>
+	<td id="footerElement">
+        v6.1.0 - Maintained by Cryptid-Horror <br>
+		Originally coded by Armando Montanez <br>
 </table>
 
 </body>

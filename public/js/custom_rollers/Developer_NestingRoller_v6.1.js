@@ -77,6 +77,41 @@ var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "A
 					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
 var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Seafoam", "Prismatic"];
 
+// Aberrant rates
+// Rates are keyed by bitmasks; this helps prevent duplication and
+// makes the order of %s irrelevant
+// (i.e. 0% x 25% and 25% x 0% is processed the same w/o hardcoded checkings)
+// 1st bit - 0001 -	int value: 1 - 0%
+// 2nd bit - 0010 -	int value: 2 - 25%
+// 3rd bit - 0100 -	int value: 4 - 50%
+// 4th bit - 1000 -	int value: 8 - 100%
+const aberrantPassRates = {
+	// 0001 - 0% x 0%
+	1: { "0%": 100 },
+	// 0011 - 0% x 25%
+	3: { "0%": 99, "25%": 1 },
+	// 0101 - 0% x 50%
+	5: { "0%": 95, "50%": 5 },
+	// 1001 - 0% x 100%
+	9: { "0%": 85, "100%": 15 },
+
+	// 0010 - 25% x 25%
+	2: { "0%": 70, "25%": 30 },
+	// 0110 - 25% x 50%
+	6: { "0%": 60, "25%": 30, "50%": 10 },
+	// 1010 - 25% x 100%
+	10: { "0%": 50, "25%": 30, "100%": 20 },
+
+	// 0100 - 50% x 50%
+	4: { "0%": 50, "50%": 50 },
+	// 1100 - 50% x 100%
+	12: { "0%": 40, "50%": 30, "100%": 30 },
+
+	// 1000 - 100% x 100%
+	8: { "0%": 30, "100%": 70 },
+};
+
+
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
 	document.getElementById("breedSelectionRadios").style.display = "none";
@@ -84,6 +119,19 @@ function initialize() {
 	document.getElementById("sinisterSelected").style.display = "none";
 	document.getElementById("sinisterLabel").style.display = "none";
 	document.getElementById("colorSelectionMenu").style.display = "none";
+}
+
+// Roll a result from a provided object of values
+function getRollResult(roll_table) {
+	table_keys = Object.keys(roll_table);
+	total_chance = 0;
+	for(let i = 0; i < table_keys.length; i++) { total_chance += roll_table[table_keys[i]]; }
+	var rand_num = randRange(total_chance);
+	for(let i = 0; i < table_keys.length; i++) {
+		if(rand_num <= roll_table[table_keys[i]]) { return table_keys[i]; }
+		else { rand_num -= roll_table[table_keys[i]]; }
+	}
+	return "error!!?"
 }
 
 function randRange(max) {
@@ -2192,6 +2240,23 @@ function generateMutation() {
 		return "";
 }
 
+function generateAberrant() {
+	var sireAberrant = document.getElementById("sireAberrant").value;
+	var damAberrant = document.getElementById("damAberrant").value;
+
+	// Use bitwise OR to create a bitmask.
+	var key = sireAberrant | damAberrant;
+
+	// Grab the aberrant table.
+	var aberrantTable = aberrantPassRates[key];
+
+	// Roll the table.
+	var result = getRollResult(aberrantTable);
+
+	if(result == "0%") return "";
+	else return result;
+}
+
 function coatToText(coat) {
 	var result = "";
 	var vantaStr = coat.substr(9, 2);
@@ -2433,6 +2498,12 @@ function generateChild() {
 	if (skill != "") {
 		skill = "Skill: " + skill + "<br>";
 		log.innerHTML += skill.italics();
+	}
+
+	var aberrant = generateAberrant();
+	if(aberrant != "") {
+		aberrant = "[" + aberrant + " ABERRANT]<br>";
+		log.innerHTML += aberrant;
 	}
 	
 	log.innerHTML += "<br>"
