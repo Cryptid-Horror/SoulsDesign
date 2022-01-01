@@ -114,51 +114,76 @@ function rollVoTW(){
       function rollAoT(){
 		if (zone.value == "vortex"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-				var i = rand(23,48);}
+				var i = rand(2,3);}
             if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
-				var i = rand(23,48);}
-			else {var i = rand(1,48);}
-			
-			if(i <= 5){itemlist += "metal";} //metal 
-            else if(i <= 10){itemlist += "Raw Crystal";}
-            else if(i <= 15){itemlist += "Iron";}
-            else if(i <= 20){itemlist += "Garnet";}
-            else if(i <= 23){itemlist += "Jade";}//CHARMY
-            else if(i <= 26){itemlist += "Amber";}
-            else if(i <= 29){itemlist += "Gold";} 
-            else if(i <= 32){itemlist += "Geode";} 
-            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
-            else if(i <= 37){itemlist += "Caving Chest";}
-			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
+				var i = rand(2,3);}
+			else {var i = rand(1,3);}
 
-						
-        }
+			
+			if(i <= 1){itemlist += "This event is not set up currently";} 
+			else if (i <= 2){itemlist += "This event is not set up currently";}
+			else if (i <= 3){itemlist += "This event is not set up currently";}
+		}
+
 		if (zone.value == "live"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-				var i = rand(23,48);}
+				var i = rand(123,176);}
             if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
-				var i = rand(23,48);}
-			else {var i = rand(1,48);}
+				var i = rand(123,176);}
+			else {var i = rand(1,176);}
 			
-			if(i <= 5){itemlist += "metal";} //metal 
-            else if(i <= 10){itemlist += "Raw Crystal";}
-            else if(i <= 15){itemlist += "Iron";}
-            else if(i <= 20){itemlist += "Garnet";}
-            else if(i <= 23){itemlist += "Jade";}//CHARMY
-            else if(i <= 26){itemlist += "Amber";}
-            else if(i <= 29){itemlist += "Gold";} 
-            else if(i <= 32){itemlist += "Geode";} 
-            else if(i <= 35){itemlist += "200 Crystals";} //BLUE
-            else if(i <= 37){itemlist += "Caving Chest";}
-			else if (i <= 42){itemlist += "Common Recipe Fragment";} //Common recipe fragment
-            else if (i <= 45){itemlist += "Uncommon Recipe Fragment";} // Uncommon recipe fragment
-            else if (i <= 47){itemlist += "Rare Recipe Fragment";} //Rare recipe fragment 
-            else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
-
-						
+			if(i <= 5){itemlist += "100 Crystals";} 
+            else if(i <= 10){itemlist += "Armor:Bone";}
+			else if(i <= 15){itemlist += "Armor:Iron";}
+			else if(i <= 20){itemlist += "Armor:Leather";}
+			else if(i <= 25){itemlist += "Large Feathers";}
+			else if(i <= 30){itemlist += "Large Animal Claws";}
+			else if(i <= 35){itemlist += "Black Pearl";}
+			else if(i <= 40){itemlist += "White Pearl";}
+			else if(i <= 45){itemlist += "Shimmering Pearl";}
+			else if(i <= 50){itemlist += "Arcane Honey";}
+			else if(i <= 55){itemlist += "Aether Meat";}
+			else if(i <= 60){itemlist += "Arcane Fruit";}
+			else if(i <= 65){itemlist += "Aether Fish Meat";}
+			else if(i <= 70){itemlist += "Aether Quartz";}
+			else if(i <= 75){itemlist += "Aether Bones";}
+			else if(i <= 80){itemlist += "Pelt: Aether Deer";}
+			else if(i <= 85){itemlist += "Pelt: Aether Bison";}
+			else if(i <= 90){itemlist += "Pelt: Aether Feathers";}
+			else if(i <= 95){itemlist += "Aether Imbued Scales";}
+			else if(i <= 100){itemlist += "Delicate Aether Shard";}
+			else if(i <= 105){itemlist += "Rack of Ribs";}
+			else if(i <= 110){itemlist += "Mushroom Soup";}
+			else if(i <= 115){itemlist += "Hot Pot";}
+			else if(i <= 120){itemlist += "Niramish";}
+			else if(i <= 123){itemlist += "1 DSC";} // "CHARMY"
+			else if(i <= 126){itemlist += "Revival Feather";}
+			else if(i <= 129){itemlist += "Booster: Nightshade";}
+			else if(i <= 132){itemlist += "Booster: Brawler";}
+			else if(i <= 135){itemlist += "Congealed Ancient's Blood";}
+			else if(i <= 138){itemlist += "Arcane Heart";}
+			else if(i <= 141){itemlist += "Eternal Element";}
+			else if(i <= 144){itemlist += "Adept Aether Shard";}
+			else if(i <= 147){itemlist += "Soul Twine";}
+			else if(i <= 150){itemlist += "Aether Tonic";}
+			else if(i <= 153){itemlist += "Container: Backpack";}
+			else if(i <= 156){itemlist += "Shard of Ancient's Rib Cage";}
+			else if(i <= 159){itemlist += "Strange Rock";}
+			else if(i <= 162){itemlist += "Aether Imbued Pages";}
+			else if(i <= 163){itemlist += "Mysterious Ancient Dragon's Blood";} // start of rarest items
+			else if(i <= 164){itemlist += "Mark of the Aemon";}
+			else if(i <= 165){itemlist += "1 Aether Coin";}
+			else if(i <= 166){itemlist += "Aether Bag";}
+			else if(i <= 167){itemlist += "Aether Guard's Boon";}
+			else if(i <= 168){itemlist += "Mysterious Corrupted Tears";}
+			else if(i <= 169){itemlist += "Skill Token";}
+			else if(i <= 170){itemlist += "Corrupted Ancient Fang";}
+			else if(i <= 171){itemlist += "Corrupted Ancient Scales";}
+			else if(i <= 172){itemlist += "Corrupted Ancient Fur";}
+			else if(i <= 173){itemlist += "Corrupted Ancient Claw";}
+			else if(i <= 174){itemlist += "Draco Boa: Aberrant";}
+			else if(i <= 175){itemlist += "Dragon's Talon";}	
+			else if(i <= 176){itemlist += "Petty Aberrant Tincture (25%)";}											
         }
       }
 	

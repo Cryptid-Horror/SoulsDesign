@@ -37,8 +37,8 @@
 			<br>
 			<b>Vortex/Live?</b>
 			<select id="zone" name="zone">
-				<option value="vortex">Vortex</option>
 				<option value="live">Live</option>
+				<option value="vortex">Vortex</option>
 			</select>
 			<br>
 		</form>
