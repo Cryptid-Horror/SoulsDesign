@@ -48,8 +48,8 @@
 		<table>
 		<tr>
 			<td>Live Event?</td>
-			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
-			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
+			<td><input type="radio" name="barrel" id="barrely" checked><label for="barrely">Yes</label></td>
+			<td><input type="radio" name="barrel" id="barreln"><label for="barreln">No</label></td>
 		
 			<td>Hoarder-Skill</td>
 			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
@@ -88,7 +88,7 @@
 		<div id="result"></div>
 	</div>
 	<div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
-    Version 2.0.0</div>
+    Version 1.0.0</div>
 </div>
 	
 <!-- Found in the public/js folder -->
