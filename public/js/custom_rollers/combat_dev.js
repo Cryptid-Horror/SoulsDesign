@@ -755,28 +755,28 @@ function applyAberrant()
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_1.stats.max_raw += aberrant_data.max_raw;
-			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br>';
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br><br>';
 		}
 		// Bleed
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_1.stats.max_bleed += aberrant_data.max_bleed;
-			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br>';
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br><br>';
 		}
 		// Magic
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_1.stats.max_magic += aberrant_data.max_magic;
-			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br>';
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br><br>';
 		}
 		// Breath
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_1.stats.max_breath += aberrant_data.max_breath;
-			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br>';
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br><br>';
 		}
 	}
 
@@ -792,28 +792,28 @@ function applyAberrant()
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_2.stats.max_raw += aberrant_data.max_raw;
-			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br>';
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br><br>';
 		}
 		// Bleed
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_2.stats.max_bleed += aberrant_data.max_bleed;
-			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br>';
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br><br>';
 		}
 		// Magic
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_2.stats.max_magic += aberrant_data.max_magic;
-			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br>';
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br><br>';
 		}
 		// Breath
 		proc_roll = rand(1, 10);
 		if(proc_roll <= aberrant_data.proc_chance)
 		{
 			dragon_2.stats.max_breath += aberrant_data.max_breath;
-			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br>';
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br><br>';
 		}
 	}
 }
@@ -831,7 +831,7 @@ function checkAberrantSelfDamage()
 			var selfDmg = rand(aberrant_data.min_self_dmg, aberrant_data.max_self_dmg);
 			dragon_1.health -= selfDmg;
 			if(dragon_1.health < 0) dragon_1.health = 0;
-			var resultString = dragon_1.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_1.health + ' HP.<br>';
+			var resultString = dragon_1.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_1.health + ' HP.<br><br>';
 			results += resultString;
 			detailed_breakdown += resultString;
 		}
@@ -848,7 +848,7 @@ function checkAberrantSelfDamage()
 			var selfDmg = rand(aberrant_data.min_self_dmg, aberrant_data.max_self_dmg);
 			dragon_2.health -= selfDmg;
 			if(dragon_2.health < 0) dragon_2.health = 0;
-			var resultString = dragon_2.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_2.health + ' HP.<br>';
+			var resultString = dragon_2.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_2.health + ' HP.<br><br>';
 			results += resultString;
 			detailed_breakdown += resultString;
 		}
