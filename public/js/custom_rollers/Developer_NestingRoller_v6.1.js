@@ -518,6 +518,7 @@ function clutchSize() {
 	if (size < 2 && document.getElementById("starter").checked) {
 		size = 2;
 	}
+
 	
 
 	
