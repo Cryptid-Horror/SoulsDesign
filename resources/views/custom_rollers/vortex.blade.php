@@ -35,14 +35,6 @@
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
 			<br>
-			<b>Rank</b>
-			<select id="rank" name="rank">
-				<option value="beginner">Beginner</option>
-				<option value="stablehand">Stable-Hand</option>
-				<option value="tamer">Dragon Tamer</option>
-				<option value="master">Dragon Master</option>
-			</select>
-			<br>
 			<b>Vortex/Live?</b>
 			<select id="zone" name="zone">
 				<option value="vortex">Vortex</option>
@@ -55,7 +47,7 @@
 		<form id="modifiers" align="right">
 		<table>
 		<tr>
-			<td>Free Roll</td>
+			<td>Live Event?</td>
 			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
 			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
 		
@@ -72,7 +64,7 @@
 			<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
 		</tr>
 		<tr>
-			<td>Charm</td>
+			<td>Item Rarity Familiar</td>
 			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
 			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
 	
