@@ -1,23 +1,23 @@
 const aberrantDmg = {
 	'25%':	{
-		'proc': 1,	// roll out of 10; equal to or less than to proc
-		'min':	10,
-		'max':	30,
-		'flavortext': 'They managed to regain control quickly,\
+		proc_chance: 1,	// roll out of 10; equal to or less than to proc
+		min_dmg:	10,
+		max_dmg:	30,
+		flavortext: 'They managed to regain control quickly,\
 						but the damage had already been done.'
 	},
 	'50%':	{
-		'proc': 3,	// roll out of 10; equal to or less than to proc
-		'min':	20,
-		'max':	60,
-		'flavortext': 'With some effort, they regain control of their magic,\
+		proc_chance: 3,	// roll out of 10; equal to or less than to proc
+		min_dmg:	20,
+		max_dmg:	60,
+		flavortext: 'With some effort, they regain control of their magic,\
 						though not without consequence.'
 	},
 	'100%':	{
-		'proc': 5,	// roll out of 10; equal to or less than to proc
-		'min':	30,
-		'max':	100,
-		'flavortext': 'It was a struggle, but they were able to regain control.\
+		proc_chance: 5,	// roll out of 10; equal to or less than to proc
+		min_dmg:	30,
+		max_dmg:	100,
+		flavortext: 'It was a struggle, but they were able to regain control.\
 						However, there was no undoing the havoc it had wrought.'
 	}
 };
@@ -924,12 +924,12 @@ function aberrantInjury()
 
 		var procRoll = rand(1, 10);
 
-		if(procRoll <= aberrantData['proc'])
+		if(procRoll <= aberrantData.proc_chance)
 		{
 			return dragonName.value + "'s aberrations act up and their magic runs wild,\
 			lashing out at everything in the vicinity - including its master. "
-			+ aberrantData['flavortext']
-			+ " -" + rand(aberrantData['min'], aberrantData['max']) + " HP";
+			+ aberrantData.flavortext
+			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP";
 		}
 	}
 
