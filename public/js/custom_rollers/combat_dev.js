@@ -53,7 +53,7 @@ const classes = {
 		base_res: 45,
 		mag_crit: 5
 	},
-	'1_champion': {
+	'2_champion': {
 		phys_crit: 3, // out of 10
 		min_raw: 37,
 		max_raw: 75,
