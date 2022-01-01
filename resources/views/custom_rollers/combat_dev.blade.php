@@ -46,6 +46,7 @@
         <input type="number" id="1_health" min="1" value=600>
         <label for="1_class">Class:</label>
         <select id="1_class">
+            <option value="aberrant">AoT Ancient</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
@@ -114,7 +115,7 @@
             <option value="aether">Aether Armor</option>
         </select>
         <br>
-         <label>Familiars:</label>
+         <label>Battle Pets:</label>
         <select id="1_familiar_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire Wolf</option>
@@ -178,7 +179,7 @@
             <option value="skill_dps">Frenzy</option>
         </select>
         <br>
-        <label>Items:</label>
+        <label>Boosters:</label>
         <select id="1_item_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="strength_tonic">Strength Booster</option>
@@ -232,6 +233,7 @@
         <input type="number" id="2_health" min="1" value=600>
         <label for="2_class">Class:</label>
         <select id="2_class">
+            <option value="aberrant">AoT Ancient</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
@@ -299,7 +301,7 @@
             <option value="aether">Aether Armor</option>
         </select>
         <br>
-        <label>Familiars:</label>
+        <label>Battle Pets:</label>
         <select id="2_familiar_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire wolf</option>
@@ -363,7 +365,7 @@
             <option value="skill_dps">Frenzy</option>
         </select>
         <br>
-        <label>Items:</label>
+        <label>Boosters:</label>
         <select id="2_item_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="strength_tonic">Strength Booster</option>
@@ -448,7 +450,7 @@
 
 
 <table id="footer">
-	<td id="footerElement"> v2.0.0 - Created By Draginraptor<br>
+	<td id="footerElement"> v3.0.0 - Created By Draginraptor<br>
 	Souls-Between 2020<br>
 	Return Home<br>
 </table>

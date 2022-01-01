@@ -35,14 +35,14 @@ const classes = {
 		base_res: 50,
 		mag_crit: 3
 	},
-	'grand_sap': {
-		phys_crit: 5, // out of 10
-		min_raw: 50,
-		max_raw: 135,
-		max_bleed: 40, // min is always 1
-		max_dps: 1,
-		base_res: 40,
-		mag_crit: 5
+	'aberrant': {
+		phys_crit: 7, // out of 10
+		min_raw: 60,
+		max_raw: 200,
+		max_bleed: 70, // min is always 1
+		max_dps: 2,
+		base_res: 70,
+		mag_crit: 7
 	},
 	'1_champion': {
 		phys_crit: 5, // out of 10
