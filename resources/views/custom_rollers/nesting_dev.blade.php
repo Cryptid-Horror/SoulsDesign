@@ -54,6 +54,8 @@
 				<option value="5">Sapiere Dragon</option>
 				<option value="4">Greater Emperor</option>
 				<option value="6">Ridgeback Drake</option>
+				<option value="7">Abyssal Basileus</option>
+
 
 			</select>
 			<select id="sireBuild" class="cellElement">
@@ -169,6 +171,8 @@
 				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
 				<option value="6">Ridgeback Drake</option>
+				<option value="7">Abyssal Basileus</option>
+
 
 			</select>
 			<select id="damBuild" class="cellElement">
