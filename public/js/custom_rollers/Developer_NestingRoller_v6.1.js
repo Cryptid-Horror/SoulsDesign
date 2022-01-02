@@ -162,6 +162,7 @@ var Breeds = Object.freeze({
 		STALKER: 1,	RAVAGER: 2,
 	    WARDEN: 3, GEMP: 4, 
 	    SAPI: 5, RIDGE: 6,
+		ABYSS: 7,
 	});
 
 var Builds = Object.freeze({
@@ -178,7 +179,8 @@ var Tempers = Object.freeze({
 var MaxClutchSize = Object.freeze({
 		STALKER: 4,	RAVAGER: 4,
 	    WARDEN: 4, GEMP: 3, 
-	    SAPI: 3, RIDGE: 3
+	    SAPI: 3, RIDGE: 3,
+		ABYSS: 3
 	});
 
 var Rarity = Object.freeze({
@@ -512,6 +514,8 @@ function clutchSize() {
 	    maxSize = MaxClutchSize.SAPI;
 	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
 		maxSize = MaxClutchSize.RIDGE;
+	else if (damBreedVal == Breeds.ABYSS || SireBreedVal == Breeds.ABYSS)
+		maxSize = MaxClutchSize.ABYSS;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
 	
@@ -780,7 +784,8 @@ function generateSpecies() {
 	var wardenBonus = 0;
     var gempBonus = 0;
   	var sapiBonus = 0;
-	var ridgeBonus =0;
+	var ridgeBonus = 0;
+	var abyssBonus = 0;
 
 	if (document.getElementById("DI").checked) {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
@@ -797,6 +802,8 @@ function generateSpecies() {
 		    sapiBonus = 70;
 		} else if (document.getElementById("ridgeSelected").checked){
 			ridgeBonus = 70;
+		} else if (document.getElementById("abyssSelected").checked) {
+			gempBonus = 60;
 		}
 	}
 	if (damBreedVal == sireBreedVal) {
@@ -838,7 +845,14 @@ function generateSpecies() {
 				} else { 
 					childBreedVal = Breeds.WARDEN;
 					  }
-			}			
+			} else  if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) {
+				// case Warden x Abyssal
+			   if (randRange(100) < (30 + abyssBonus - wardenBonus)) {
+				   childBreedVal = Breeds.ABYSS;
+			   } else { 
+				   childBreedVal = Breeds.WARDEN;
+			   }	
+			}	
 		} else if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
         	if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
 			    // case Stalker x Ravager
@@ -868,7 +882,14 @@ function generateSpecies() {
 				} else {
 					childBreedVal = Breeds.STALKER;
 				}
-			}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) {
+				// case Stalker x Abyssal
+			  if (randRange(100) < (30 + abyssBonus - stalkerBonus)) {
+					childBreedVal = Breeds.ABYSS;
+				} else {
+					childBreedVal = Breeds.STALKER;
+				}
+		  } 
 		} else if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER) {
 		if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
       		// case Ravager x Gemp
@@ -891,7 +912,14 @@ function generateSpecies() {
 				} else { 
 						childBreedVal = Breeds.RAVAGER;
 				}
-			}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+				// Case Ravager x Abyss
+				if (randRange (100) < (30 + abyssBonus - ravagerBonus)) { 
+					childBreedVal = Breeds.ABYSS;
+				} else { 
+					childBreedVal = Breeds.RAVAGER;
+				}
+			} 
 		} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
 			if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
 				// Case GEMP x Sapiere
@@ -907,18 +935,26 @@ function generateSpecies() {
 				} else { 
 					childBreedVal = Breeds.GEMP;
 				}
-			}
-					//Commented out template for when it's an odd number
-	//} else { 
-		// Case GEMP x Sapiere
-	//	if (randRange (100) < (50 + sapiBonus - gempBonus)) {
-				//childBreedVal = Breeds.SAPI;
-		//	} else {
-			//childBreedVal = Breeds.GEMP;
-			//	}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+				// Case GEMP x Abyssal
+				if (randRange (100) < (30 + abyssBonus - gempBonus)) { 
+						childBreedVal = Breeds.ABYSS;
+				} else { 
+						childBreedVal = Breeds.GEMP;
+				}
+			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
+				if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.RIDGE) {
+					  // case Ridgeback x Abyssal
+						  if (randRange(100) < (30 + abyssBonus - ridgeBonus)) {
+							  childBreedVal = Breeds.ABYSS;
+						  } else {
+							  childBreedVal = Breeds.RIDGE;
+						  }
+					}	
 	
+		}
 	}
-	}
+}
 
 	// convert to string
 	var result = "";
@@ -930,11 +966,13 @@ function generateSpecies() {
 	} else if (childBreedVal == Breeds.WARDEN) {
 		result = "Warden Dragon";
 	} else if (childBreedVal == Breeds.GEMP) {
-    result = "Greater Emperor";
+    	result = "Greater Emperor";
   	} else if (childBreedVal == Breeds.SAPI){
-      result = "Sapiere Dragon";
+      	result = "Sapiere Dragon";
 	} else if (childBreedVal == Breeds.RIDGE){
 		result = "Ridgeback Drake";
+  	}  else if (childBreedVal == Breeds.ABYSS){
+		result = "Abyssal Basileus";
   	} 
 
 	return result;
