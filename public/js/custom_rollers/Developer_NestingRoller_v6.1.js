@@ -2,44 +2,50 @@
 // licensed to Cryptid Horror and Livard
 
 // List of valid markings, always 8 per row for readability and easy couting.
-var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
+var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
+					"FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", 
+					"nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nRip", "RipRip", "nSa", "SaSa", "nSc", "ScSc", "nSk",
+					"SkSk", "nSn", "SnSn", "nSo", "SoSo", "nOse", "OseOse", "nTr", "TrTr", "nUn", "UnUn"];
 
 var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
                         "nCri", "CriCri", "nDl", "DlDl", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
-			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
-			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
-			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
+						"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nOpr", "OprOpr", "nPg", "PgPg", 
+						"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
+						"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx", "nTt", "TtTt"];
 
-var rareMarkings = ["nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
-                    "nFi", "FiFi"];
+var rareMarkings = ["nBd", "BdBd", "nCi", "CiCi", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs",
+					 "nPn", "PnPn", "nPw", "PwPw", "nOpe", "OpeOpe", "nSe", "SeSe", "nFi", "FiFi"];
 
-var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
-                        "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri"];
+var veryRareMarkings = ["nAm", "AmAm", "nArc", "ArcArc", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nHar", "HarHar", "nIr", "IrIr",
+						 "nLe", "LeLe", "nLi", "LiLi", "nOol", "OolOol", "nPr", "PrPr", "nSh", "ShSh", "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri",
+						"nMer", "MerMer", "nTh", "ThTh"];
 // doens't include rare/very rare because those preface these in the pheno.
 var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 				  "nSc", "ScSc", "nSn", "SnSn", "nBa", "BaBa", "nDi", "DiDi", "nMar", "MarMar",
-				  "nSp", "SpSp", "nBrd", "BrdBrd"];
-var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled"];
+				  "nSp", "SpSp", "nBrd", "BrdBrd", "nTh", "ThTh", "nOpr", "OprOpr"];
+var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled", "Torched", "Petrified"];
 
 // markings map 2:1 with ___ToText array indexes.
-var commonToText = ["Blanket", "Boar", "Collar", "Dun", "Dusted", "Duo Tone", 
+var commonToText = ["Blanket", "Boar", "Cape", "Collar", "Dun", "Dusted", "Duo Tone", 
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
-					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
+					"Ringed", "Rose", "Ripples", "Sable", "Scaled", "Skink", "Stained",
+					"Stockings", "Specter", "Trailing", "Underbelly"];
 var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested", 
 					  "Crimson", "Dapple", "Dipped", "Dripping", "Inkwell",
-					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
-					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
-var rareToText = ["Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
-var veryRareToText = ["Aether Marked", "Aurora", "Constellation", "Confetti", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra"];
+					  "Marbled", "Merle", "Metallic", "Petrified", "Pigeon", "Plasma",
+					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin", "Tritone"];
+var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Seafoam", "Filigree"];
+var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
+					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril"];
 
-var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
+var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate", "Overbite", "Wisp"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra", "Flesh", "Angler", "Ghoul"];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature",];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature", "Shark", "Arcana", "Blacklight"];
 
 var veryRarePhysicalMutations = [];
 
@@ -48,25 +54,25 @@ var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlor
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
 
-var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
-var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
-var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes"];
-var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes"];
+var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes", "Starry Eyes", "Wither Eyes"];
+var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes", "Crackled Eyes", "Low Light Eyes"];
+var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes", "Spiral Eyes", "Electric Eyes"];
+var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes", "Nebula Eyes", "Arcane Eyes", "Teary Eyes"];
 
-var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
-var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns"];
-var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
-var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns"];
+var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn", "Axe Horn", "Loop Horns"];
+var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns", "Imp Horns"];
+var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns", "Moth Horns"];
+var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns", "Forsaken Horns", "Luna Horn"];
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
-var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears"];
+var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "Bat Ears"];
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
-var veryRareEars = ['Test'];
+var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
-var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
-var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
-var veryRareTails = ['test'];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail"];
+var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
+var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
+var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail"];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
