@@ -942,6 +942,23 @@ function generateSpecies() {
 				} else { 
 						childBreedVal = Breeds.GEMP;
 				}
+			} else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
+				if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.SAPI) {
+					  // case Sapiere x Ridgeback
+						  if (randRange(100) < (30 + ridgeBonus - sapiBonus)) {
+							  childBreedVal = Breeds.RIDGE;
+						  } else {
+							  childBreedVal = Breeds.SAPI;
+						  }
+					}	
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+					// Case Sapiere x Abyssal
+					if (randRange (100) < (30 + abyssBonus - sapiBonus)) { 
+							childBreedVal = Breeds.ABYSS;
+					} else { 
+							childBreedVal = Breeds.SAPI;
+					}
+	
 			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
 				if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.RIDGE) {
 					  // case Ridgeback x Abyssal
@@ -951,8 +968,7 @@ function generateSpecies() {
 							  childBreedVal = Breeds.RIDGE;
 						  }
 					}	
-	
-		}
+			}
 	}
 }
 
