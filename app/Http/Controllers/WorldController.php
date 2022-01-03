@@ -278,6 +278,35 @@ class WorldController extends Controller
     public function getItems(Request $request)
     {
         $query = Item::with('category')->released();
+        $data = $request->only(['item_category_id', 'name', 'sort', 'artist']);
+        if(isset($data['item_category_id']) && $data['item_category_id'] != 'none')
+            $query->where('item_category_id', $data['item_category_id']);
+        if(isset($data['name']))
+            $query->where('name', 'LIKE', '%'.$data['name'].'%');
+        if(isset($data['artist']) && $data['artist'] != 'none')
+            $query->where('artist_id', $data['artist']);
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->sortAlphabetical();
+                    break;
+                case 'alpha-reverse':
+                    $query->sortAlphabetical(true);
+                    break;
+                case 'category':
+                    $query->sortCategory();
+                    break;
+                case 'newest':
+                    $query->sortNewest();
+                    break;
+                case 'oldest':
+                    $query->sortOldest();
+                    break;
+            }
+        }
+        else $query->sortCategory();
 
         return view('world.items', [
             'items' => $query->paginate(20)->appends($request->query()),
