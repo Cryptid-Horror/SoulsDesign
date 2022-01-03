@@ -286,7 +286,6 @@ class WorldController extends Controller
         if(isset($data['artist']) && $data['artist'] != 'none')
             $query->where('artist_id', $data['artist']);
 
-            dd($query->get()->splice(0, 10));
         if(isset($data['sort']))
         {
             switch($data['sort']) {
@@ -308,6 +307,7 @@ class WorldController extends Controller
             }
         }
         else $query->sortCategory();
+        dd($query->get()->splice(0, 40));
 
         return view('world.items', [
             'items' => $query->paginate(20)->appends($request->query()),
