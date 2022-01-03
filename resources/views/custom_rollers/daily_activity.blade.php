@@ -153,7 +153,7 @@
 </div>
 	
 <!-- Found in the public/js folder -->
-<script src="{{ asset('js/custom_rollers/activity_dev.js') }}"></script>
+<script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
 
 </body>
 
