@@ -307,7 +307,6 @@ class WorldController extends Controller
             }
         }
         else $query->sortCategory();
-        dd($query->get()->splice(0, 40));
 
         return view('world.items', [
             'items' => $query->paginate(20)->appends($request->query()),
