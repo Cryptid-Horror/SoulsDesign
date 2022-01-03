@@ -239,7 +239,7 @@ function rollHunt(){
 			else if (i <= 35){itemlist += "Diamond Python Skin";} //diamond python skin
 			else if (i <= 40){itemlist += "River Snake Skin";} //river snake skin
 			else if (i <= 45){itemlist += "Coral Snake Skin";} //coral snake skin
-			else if (i <= 50){itemlist += "Reptile Hide";} //reptile hide
+			else if (i <= 50){itemlist += "Large Reptile Hide";} //Large reptile hide
 			else if (i <= 53){itemlist += "Large Animal Skull";} //large animal skull -- CHARMY
 			else if (i <= 56){itemlist += "Large Animal Claws";} //large animal claws
 			else if (i <= 58){itemlist += "Heron Carcass";} //dead heron
