@@ -278,7 +278,6 @@ class WorldController extends Controller
     public function getItems(Request $request)
     {
         $query = Item::with('category')->released();
-        dd($query->get()->splice(0, 10));
         $data = $request->only(['item_category_id', 'name', 'sort', 'artist']);
         if(isset($data['item_category_id']) && $data['item_category_id'] != 'none')
             $query->where('item_category_id', $data['item_category_id']);
@@ -287,6 +286,7 @@ class WorldController extends Controller
         if(isset($data['artist']) && $data['artist'] != 'none')
             $query->where('artist_id', $data['artist']);
 
+            dd($query->get()->splice(0, 10));
         if(isset($data['sort']))
         {
             switch($data['sort']) {
