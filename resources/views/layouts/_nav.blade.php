@@ -150,6 +150,7 @@
                         <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
                         <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Primal Point Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
+                        <a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
                             Hatchery Odds
