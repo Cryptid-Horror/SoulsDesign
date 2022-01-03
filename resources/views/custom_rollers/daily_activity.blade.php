@@ -58,6 +58,14 @@
 				<option value="timid">Vigilant or Calm</option>
 				<option value="aggressive">Aggressive or Sinister</option>
 			</select>
+			<br>
+			<b>Aberrant %</b>
+			<select id="aberrant" name="aberrant">
+				<option value="0%">0%</option>
+				<option value="25%">25%</option>
+				<option value="50%">50%</option>
+				<option value="100%">100%</option>
+			</select>
 		</form>
 	</td>
 	<td>
@@ -120,6 +128,10 @@
 			<td>Temperament Location Buff</td>
 			<td><input type="radio" name="local" id="localy"><label for="localy">Yes</label></td>
 			<td><input type="radio" name="local" id="localn" checked><label for="localn">No</label></td>
+			
+			<td>Aberrant Dragon?</td>
+			<td><input type="radio" name="cor" id="cory"><label for="cory">Yes</label></td>
+			<td><input type="radio" name="cor" id="corn" checked><label for="corn">No</label></td>
 		</tr>
 		</table>
 		</form>
@@ -141,7 +153,7 @@
 </div>
 	
 <!-- Found in the public/js folder -->
-<script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+<script src="{{ asset('js/custom_rollers/activity_dev.js') }}"></script>
 
 </body>
 

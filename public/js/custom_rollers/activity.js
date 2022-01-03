@@ -1,8 +1,33 @@
+const aberrantDmg = {
+	'25%':	{
+		proc_chance: 1,	// roll out of 10; equal to or less than to proc
+		min_dmg:	10,
+		max_dmg:	30,
+		flavortext: 'They managed to regain control quickly,\
+						but the damage had already been done.'
+	},
+	'50%':	{
+		proc_chance: 3,	// roll out of 10; equal to or less than to proc
+		min_dmg:	20,
+		max_dmg:	60,
+		flavortext: 'With some effort, they regain control of their magic,\
+						though not without consequence.'
+	},
+	'100%':	{
+		proc_chance: 5,	// roll out of 10; equal to or less than to proc
+		min_dmg:	30,
+		max_dmg:	100,
+		flavortext: 'It was a struggle, but they were able to regain control.\
+						However, there was no undoing the havoc it had wrought.'
+	}
+};
+
 var dragonName = document.getElementById('dName');
 var activity = document.getElementById('activity');
 var rank = document.getElementById('rank');
 var zone = document.getElementById('zone');
 var temp = document.getElementById('temp');
+var aberrant = document.getElementById('aberrant');
 
 function rand(min, max) {
   var min = min || 0,
@@ -46,6 +71,9 @@ function items(){
 	if (document.getElementById("localy").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Your dragon brought back an extra item!</i><br>";}
+	if (document.getElementById("cory").checked == true && rand(1,10) <= 5){
+		lootSize += 1;
+		itemlist += "<i>Your Aberrant Dragon returned an extra item</i><br>";}
 
 //HUNTING//
 function rollHunt(){
@@ -891,6 +919,26 @@ function injury(){
 	}
 }
 
+function aberrantInjury()
+{
+	// Injury specific to aberrant dragons.
+	if(aberrant.value != "0%") {
+		var aberrantData = aberrantDmg[aberrant.value];
+
+		var procRoll = rand(1, 10);
+
+		if(procRoll <= aberrantData.proc_chance)
+		{
+			return dragonName.value + "'s aberrations act up and their magic runs wild,\
+			lashing out at everything in the vicinity - including its master. "
+			+ aberrantData.flavortext
+			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP";
+		}
+	}
+
+	return "";
+}
+
   
  function roll() { 
 	document.getElementById("result").innerHTML = "";
@@ -905,7 +953,11 @@ function injury(){
 	
 	document.getElementById("result").innerHTML += "<br>" + injury();
 
-
+	var aberrantInjuryRoll = aberrantInjury();
+	if(aberrantInjuryRoll)
+	{
+		document.getElementById("result").innerHTML += "<br><br>" + aberrantInjuryRoll;
+	}
 }
 
 function clearForms() {

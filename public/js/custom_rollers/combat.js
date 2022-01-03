@@ -35,14 +35,14 @@ const classes = {
 		base_res: 50,
 		mag_crit: 3
 	},
-	'grand_sap': {
-		phys_crit: 5, // out of 10
-		min_raw: 50,
-		max_raw: 135,
-		max_bleed: 40, // min is always 1
-		max_dps: 1,
-		base_res: 40,
-		mag_crit: 5
+	'aberrant': {
+		phys_crit: 7, // out of 10
+		min_raw: 60,
+		max_raw: 200,
+		max_bleed: 70, // min is always 1
+		max_dps: 2,
+		base_res: 70,
+		mag_crit: 7
 	},
 	'1_champion': {
 		phys_crit: 5, // out of 10
@@ -351,6 +351,41 @@ const familiars = {
 	}
 }
 
+const aberrant_chance = 1; // must roll less than or equal to this out of 10
+
+const aberrant_buffs = {
+	25: {
+		proc_chance: 1,
+		max_raw: 10,
+		max_bleed: 10,
+		max_magic: 10, 
+		max_breath: 10,
+		self_dmg_proc_chance: 1,
+		min_self_dmg: 10,
+		max_self_dmg: 30
+	},
+	50: {
+		proc_chance: 2,
+		max_raw: 20,
+		max_bleed: 20,
+		max_magic: 20, 
+		max_breath: 20,
+		self_dmg_proc_chance: 3,
+		min_self_dmg: 20,
+		max_self_dmg: 60
+	},
+	100: {
+		proc_chance: 3,
+		max_raw: 30,
+		max_bleed: 30,
+		max_magic: 30, 
+		max_breath: 30,
+		self_dmg_proc_chance: 5,
+		min_self_dmg: 30,
+		max_self_dmg: 100
+	}
+};
+
 // Inputs are retrieved in the setupDragons function
 
 function rand(min, max) {
@@ -370,6 +405,33 @@ var detailed_breakdown = "";
 function fight() {
 	// Assign the needed data to the dragon vars
 	setupDragons();
+	results = dragon_1.link + " vs " + dragon_2.link + "<br>";
+	// Check for aberrant self damage.
+	checkAberrantSelfDamage();
+	if(dragon_1.health == 0 && dragon_2.health == 0)
+	{
+		results += "<br>Both dragons have been knocked out, and cannot continue!<br>";
+		// Display final health
+		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
+		return results;
+	}
+	else if(dragon_1.health == 0)
+	{
+		results += "<br>" + dragon_1.name + " been knocked out, and cannot continue!<br>";
+		// Display final health
+		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
+		return results;
+	}
+	else if(dragon_2.health == 0)
+	{
+		results += "<br>" + dragon_2.name + " been knocked out, and cannot continue!<br>";
+		// Display final health
+		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
+		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
+		return results;
+	}
 	// Roll to determine who goes first
 	var first;
 	var second;
@@ -406,9 +468,8 @@ function fight() {
 		var first = dragon_2;
 		var second = dragon_1;
 	}
-	
+	results += first.name + " goes first.<br><br>"
 	detailed_breakdown += first.name + " goes first.<br><br>";
-	results = dragon_1.link + " vs " + dragon_2.link + "<br>" + first.name + " goes first.<br><br>";
 	var first_dmg = calculateDamage(first, second);
 	var second_part_attacked = rollBreakable(second);
 	// Print damage of first dragon
@@ -428,36 +489,50 @@ function fight() {
 		// Display final health
 		results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
 		results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
-		return results;
-	}
-	results += "<br>";
-	// Otherwise, repeat steps done for first (calc dmg, check for break, print health)
-	var second_dmg = calculateDamage(second, first);
-	var first_part_attacked = rollBreakable(first);
-	// Print damage of second dragon
-	if(first_part_attacked == 'none') { results += second.name + " deals <b>" + second_dmg + "</b> damage to " + first.name + "!<br>"; }
-	else { results += second.name + " aims for " + first.name + "'s " + first_part_attacked + ", dealing <b>" + second_dmg + "</b> damage!<br>"; }
-	// Check if any of the 1st dragon's armor breaks, adding to the results if it did
-	results += armorCheck(first);
-	// Add a statement like 'first has x health left!
-	first.health = (first.health - second_dmg) < 0 ? 0 : first.health - second_dmg;
-	results += first.name + " has " + first.health + " health left.<br><br>";
-	// Check if first gets K.O.-ed
-	if(first.health == 0) {
-		// Second gets to check for Healing Aura
-		applyHealing(second);
-		results += "<br>" + first.name + " was knocked out, and the battle ends."
 	}
 	else {
-		// Both dragons get to check for Healing Aura
-		applyHealing(first);
-		applyHealing(second);
-		results += "<br>The battle ends.<br><br>";
+		results += "<br>";
+		// Otherwise, repeat steps done for first (calc dmg, check for break, print health)
+		var second_dmg = calculateDamage(second, first);
+		var first_part_attacked = rollBreakable(first);
+		// Print damage of second dragon
+		if(first_part_attacked == 'none') { results += second.name + " deals <b>" + second_dmg + "</b> damage to " + first.name + "!<br>"; }
+		else { results += second.name + " aims for " + first.name + "'s " + first_part_attacked + ", dealing <b>" + second_dmg + "</b> damage!<br>"; }
+		// Check if any of the 1st dragon's armor breaks, adding to the results if it did
+		results += armorCheck(first);
+		// Add a statement like 'first has x health left!
+		first.health = (first.health - second_dmg) < 0 ? 0 : first.health - second_dmg;
+		results += first.name + " has " + first.health + " health left.<br><br>";
+		// Check if first gets K.O.-ed
+		if(first.health == 0) {
+			// Second gets to check for Healing Aura
+			applyHealing(second);
+			results += "<br>" + first.name + " was knocked out, and the battle ends."
+		}
+		else {
+			// Both dragons get to check for Healing Aura
+			applyHealing(first);
+			applyHealing(second);
+			results += "<br>The battle ends.<br><br>";
+		}
 	}
 
 	// Display final health
 	results += dragon_1.name + " Final Health: " + dragon_1.health + "<br>";
 	results += dragon_2.name + " Final Health: " + dragon_2.health + "<br>";
+
+	// Check aberrant
+	var aberrantRoll = rand(1, 10);
+	// Only applies if exactly one dragon is Aberrant
+	if(dragon_1.canPassAberrant && !dragon_2.canPassAberrant) {
+		// Roll chance for dragon 2 to become Aberrant.
+		if(aberrantRoll <= aberrant_chance) results += "In the scuffle, " + dragon_2.name + " was afflicted by aberrations from " + dragon_1.name + ". They are now an Aberrant dragon (25%).<br>";
+	}
+	else if(!dragon_1.canPassAberrant && dragon_2.canPassAberrant) {
+		// Roll chance for dragon 1 to become Aberrant.
+		if(aberrantRoll <= aberrant_chance) results += "In the scuffle, " + dragon_1.name + " was afflicted by aberrations from " + dragon_2.name + ". They are now an Aberrant dragon (25%).<br>";
+	}
+	
 	return results;
 }
 
@@ -480,6 +555,8 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
+		aberrantPercentage: 0,
+		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
 	}
@@ -500,6 +577,8 @@ function setupDragons() {
 			bleed_res: 0,
 			magic_res: 0
 		},
+		aberrantPercentage: 0,
+		canPassAberrant: false,
 		useBreakable: false,
 		broken: [] // array of strings of alr broken parts
 	}
@@ -569,7 +648,12 @@ function setupDragons() {
 		dragon_1.armor.bleed_res += chest_type_1.bleed_res;
 		dragon_1.armor.magic_res += chest_type_1.magic_res;
 	}
+
+	// Dragon 1 Aberrant
+	dragon_1.aberrantPercentage = parseInt(document.getElementById('1_aberrant_percentage').value);
+	dragon_1.canPassAberrant = document.getElementById('1_can_pass_aberrant').checked;
 	
+	// Dragon 1 Part Break
 	dragon_1.useBreakable = document.getElementById('1_use_breakable').checked;
 	if(document.getElementById('1_head_part').checked) { dragon_1.broken.push('head'); }
 	if(document.getElementById('1_tail_part').checked) { dragon_1.broken.push('tail'); }
@@ -642,11 +726,133 @@ function setupDragons() {
 		dragon_2.armor.bleed_res += chest_type_2.bleed_res;
 		dragon_2.armor.magic_res += chest_type_2.magic_res;
 	}
+
+	// Dragon 2 Aberrant
+	dragon_2.aberrantPercentage = parseInt(document.getElementById('2_aberrant_percentage').value);
+	dragon_2.canPassAberrant = document.getElementById('2_can_pass_aberrant').checked;
 	
+	// Dragon 2 Part Break
 	dragon_2.useBreakable = document.getElementById('2_use_breakable').checked;
 	if(document.getElementById('2_head_part').checked) { dragon_2.broken.push('head'); }
 	if(document.getElementById('2_tail_part').checked) { dragon_2.broken.push('tail'); }
 	if(document.getElementById('2_legs_part').checked) { dragon_2.broken.push('legs'); }
+
+	applyAberrant();
+}
+
+// Check both dragons for Aberrant. If present, try to proc, adding buffs accordingly.
+function applyAberrant()
+{
+	// Dragon 1
+	// Aberrant percentage defaults to zero.
+	if(dragon_1.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_1.aberrantPercentage];
+		// Try proc for each kind of damage.
+		var proc_roll;
+		// Raw
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_raw += aberrant_data.max_raw;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br><br>';
+		}
+		// Bleed
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_bleed += aberrant_data.max_bleed;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br><br>';
+		}
+		// Magic
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_magic += aberrant_data.max_magic;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br><br>';
+		}
+		// Breath
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_1.stats.max_breath += aberrant_data.max_breath;
+			detailed_breakdown += dragon_1.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br><br>';
+		}
+	}
+
+	// Dragon 2
+	// Aberrant percentage defaults to zero.
+	if(dragon_2.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_2.aberrantPercentage];
+		// Try proc for each kind of damage.
+		var proc_roll;
+		// Raw
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_raw += aberrant_data.max_raw;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_raw + ' point buff to their maximum possible Raw damage!<br><br>';
+		}
+		// Bleed
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_bleed += aberrant_data.max_bleed;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_bleed + ' point buff to their maximum possible Bleed damage!<br><br>';
+		}
+		// Magic
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_magic += aberrant_data.max_magic;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_magic + ' point buff to their maximum possible Magic damage!<br><br>';
+		}
+		// Breath
+		proc_roll = rand(1, 10);
+		if(proc_roll <= aberrant_data.proc_chance)
+		{
+			dragon_2.stats.max_breath += aberrant_data.max_breath;
+			detailed_breakdown += dragon_2.name + '\'s Aberrant affliction have given them a ' + aberrant_data.max_breath + ' point buff to their maximum possible Breath damage!<br><br>';
+		}
+	}
+}
+
+function checkAberrantSelfDamage()
+{
+	// Check for dragon 1.
+	if(dragon_1.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_1.aberrantPercentage];
+		var proc_roll = rand(1, 10);
+		
+		if(proc_roll <= aberrant_data.self_dmg_proc_chance)
+		{
+			var selfDmg = rand(aberrant_data.min_self_dmg, aberrant_data.max_self_dmg);
+			dragon_1.health -= selfDmg;
+			if(dragon_1.health < 0) dragon_1.health = 0;
+			var resultString = dragon_1.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_1.health + ' HP.<br><br>';
+			results += resultString;
+			detailed_breakdown += resultString;
+		}
+	}
+
+	// Check for dragon 2.
+	if(dragon_2.aberrantPercentage > 0)
+	{
+		var aberrant_data = aberrant_buffs[dragon_2.aberrantPercentage];
+		var proc_roll = rand(1, 10);
+		
+		if(proc_roll <= aberrant_data.self_dmg_proc_chance)
+		{
+			var selfDmg = rand(aberrant_data.min_self_dmg, aberrant_data.max_self_dmg);
+			dragon_2.health -= selfDmg;
+			if(dragon_2.health < 0) dragon_2.health = 0;
+			var resultString = dragon_2.name + '\'s Aberrant affliction causes them to momentarily lose control of their magic, and it deals ' + selfDmg + ' damage to them, leaving them with ' + dragon_2.health + ' HP.<br><br>';
+			results += resultString;
+			detailed_breakdown += resultString;
+		}
+	}
 }
 
 function calculateDamage(attacker, defender) {

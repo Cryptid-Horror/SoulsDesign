@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v6.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v6.1.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -54,6 +54,8 @@
 				<option value="5">Sapiere Dragon</option>
 				<option value="4">Greater Emperor</option>
 				<option value="6">Ridgeback Drake</option>
+				<option value="7">Abyssal Basileus</option>
+
 
 			</select>
 			<select id="sireBuild" class="cellElement">
@@ -122,6 +124,15 @@
 				<option value="5">Swift Feet</option>
 			</select>
 			<br>
+			<select id="sireAberrant" class="cellElement">
+				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
+				be careful when changing the values, and only if necessary -->
+				<option value="1">0% Aberrant</option>
+				<option value="2">25% Aberrant</option>
+				<option value="4">50% Aberrant</option>
+				<option value="8">100% Aberrant</option>
+			</select>
+			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">✦Mutation</label>
 
 		</div>
@@ -160,6 +171,8 @@
 				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
 				<option value="6">Ridgeback Drake</option>
+				<option value="7">Abyssal Basileus</option>
+
 
 			</select>
 			<select id="damBuild" class="cellElement">
@@ -226,6 +239,15 @@
 				<option value="4">Steadfast</option>
 				<option value="5">Swift Feet</option>
 
+			</select>
+			<br>
+			<select id="damAberrant" class="cellElement">
+				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
+				be careful when changing the values, and only if necessary -->
+				<option value="1">0% Aberrant</option>
+				<option value="2">25% Aberrant</option>
+				<option value="4">50% Aberrant</option>
+				<option value="8">100% Aberrant</option>
 			</select>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">✦Mutation</label>
@@ -357,7 +379,7 @@
 	
 <table id="footer">
 	<td id="footerElement">
-        v6.1.0 - Maintained by Cryptid-Horror <br>
+        v7.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
 		Originally coded by Armando Montanez <br>
 </table>
 

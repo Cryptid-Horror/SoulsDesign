@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--Bootstrap JS --> 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
    <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/combat.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/combat.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/combat_dev.js') }}"></script>
     
 
 
@@ -46,6 +46,7 @@
         <input type="number" id="1_health" min="1" value=600>
         <label for="1_class">Class:</label>
         <select id="1_class">
+            <option value="aberrant">AoT Ancient</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
@@ -114,7 +115,7 @@
             <option value="aether">Aether Armor</option>
         </select>
         <br>
-         <label>Familiars:</label>
+         <label>Battle Pets:</label>
         <select id="1_familiar_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire Wolf</option>
@@ -178,7 +179,7 @@
             <option value="skill_dps">Frenzy</option>
         </select>
         <br>
-        <label>Items:</label>
+        <label>Boosters:</label>
         <select id="1_item_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="strength_tonic">Strength Booster</option>
@@ -201,9 +202,16 @@
             <option value="brawler_booster">Brawler Booster</option>
             <option value="nightshade_booster">Nightshade Booster</option>
             <option value="warlord_booster">Warlord Booster</option>
-           
         </select>
         <br>
+        <label>Aberrant %:</label>
+        <select id="1_aberrant_percentage" class="cellElement">
+            <option value="0">0</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <input type="checkbox" id="1_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>
         <i>Parts break on PvE, not PvP</i><br>
@@ -225,6 +233,7 @@
         <input type="number" id="2_health" min="1" value=600>
         <label for="2_class">Class:</label>
         <select id="2_class">
+            <option value="aberrant">AoT Ancient</option>
             <option value="light">Light</option>
             <option value="medium">Medium</option>
             <option value="heavy">Heavy</option>
@@ -292,7 +301,7 @@
             <option value="aether">Aether Armor</option>
         </select>
         <br>
-        <label>Familiars:</label>
+        <label>Battle Pets:</label>
         <select id="2_familiar_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire wolf</option>
@@ -356,7 +365,7 @@
             <option value="skill_dps">Frenzy</option>
         </select>
         <br>
-        <label>Items:</label>
+        <label>Boosters:</label>
         <select id="2_item_1" class="cellElement">
             <option value="NA">NA</option>
             <option value="strength_tonic">Strength Booster</option>
@@ -380,6 +389,14 @@
             <option value="warlord_booster">Warlord Booster</option>
         </select>
         <br>
+        <label>Aberrant %:</label>
+        <select id="2_aberrant_percentage" class="cellElement">
+            <option value="0">0</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <input type="checkbox" id="2_can_pass_aberrant">Can Pass Aberrant?<br>
         <hr>
         <b>Part Break</b><br>
         <i>Parts break on PvE, not PvP</i><br>
@@ -433,7 +450,7 @@
 
 
 <table id="footer">
-	<td id="footerElement"> v2.0.0 - Created By Draginraptor<br>
+	<td id="footerElement"> v3.0.0 - Created By Draginraptor<br>
 	Souls-Between 2020<br>
 	Return Home<br>
 </table>

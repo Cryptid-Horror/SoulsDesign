@@ -2,44 +2,50 @@
 // licensed to Cryptid Horror and Livard
 
 // List of valid markings, always 8 per row for readability and easy couting.
-var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", "FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", "nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nSa", "SaSa", "nSc", "ScSc", "nSk", "SkSk", "nSn", "SnSn", "nTr", "TrTr", "nUn", "UnUn"];
+var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
+					"FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", 
+					"nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nRip", "RipRip", "nSa", "SaSa", "nSc", "ScSc", "nSk",
+					"SkSk", "nSn", "SnSn", "nSo", "SoSo", "nOse", "OseOse", "nTr", "TrTr", "nUn", "UnUn"];
 
 var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
                         "nCri", "CriCri", "nDl", "DlDl", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
-			"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nPg", "PgPg", 
-			"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
-			"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx"];
+						"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nOpr", "OprOpr", "nPg", "PgPg", 
+						"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
+						"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx", "nTt", "TtTt"];
 
-var rareMarkings = ["nBd", "BdBd", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs", "nPn", "PnPn", "nSe", "SeSe",
-                    "nFi", "FiFi"];
+var rareMarkings = ["nBd", "BdBd", "nCi", "CiCi", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs",
+					 "nPn", "PnPn", "nPw", "PwPw", "nOpe", "OpeOpe", "nSe", "SeSe", "nFi", "FiFi"];
 
-var veryRareMarkings = ["nAm", "AmAm", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nIr", "IrIr", "nLe", "LeLe", "nLi", "LiLi", "nPr", "PrPr", "nSh", "ShSh",
-                        "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri"];
+var veryRareMarkings = ["nAm", "AmAm", "nArc", "ArcArc", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nHar", "HarHar", "nIr", "IrIr",
+						 "nLe", "LeLe", "nLi", "LiLi", "nOol", "OolOol", "nPr", "PrPr", "nSh", "ShSh", "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri",
+						"nMer", "MerMer", "nTh", "ThTh"];
 // doens't include rare/very rare because those preface these in the pheno.
 var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 				  "nSc", "ScSc", "nSn", "SnSn", "nBa", "BaBa", "nDi", "DiDi", "nMar", "MarMar",
-				  "nSp", "SpSp", "nBrd", "BrdBrd"];
-var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled"];
+				  "nSp", "SpSp", "nBrd", "BrdBrd", "nTh", "ThTh", "nOpr", "OprOpr"];
+var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled", "Torched", "Petrified"];
 
 // markings map 2:1 with ___ToText array indexes.
-var commonToText = ["Blanket", "Boar", "Collar", "Dun", "Dusted", "Duo Tone", 
+var commonToText = ["Blanket", "Boar", "Cape", "Collar", "Dun", "Dusted", "Duo Tone", 
 					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
-					"Ringed", "Rose", "Sable", "Scaled", "Skink", "Stained", "Trailing", "Underbelly"];
+					"Ringed", "Rose", "Ripples", "Sable", "Scaled", "Skink", "Stained",
+					"Stockings", "Specter", "Trailing", "Underbelly"];
 var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested", 
 					  "Crimson", "Dapple", "Dipped", "Dripping", "Inkwell",
-					  "Marbled", "Merle", "Metallic", "Pigeon", "Plasma",
-					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin"];
-var rareToText = ["Blooded", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Seafoam", "Filigree"];
-var veryRareToText = ["Aether Marked", "Aurora", "Constellation", "Confetti", "Gemstone", "Iridescent", "Lepir", "Lilac", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra"];
+					  "Marbled", "Merle", "Metallic", "Petrified", "Pigeon", "Plasma",
+					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin", "Tritone"];
+var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Seafoam", "Filigree"];
+var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
+					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril"];
 
-var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate"];
+var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate", "Overbite", "Wisp"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra" ];
+var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra", "Flesh", "Angler", "Ghoul"];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature",];
+var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature", "Shark", "Arcana", "Blacklight"];
 
 var veryRarePhysicalMutations = [];
 
@@ -48,25 +54,25 @@ var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlor
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
 
-var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes"];
-var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes"];
-var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes"];
-var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes"];
+var commonEyes = ["Round Eyes", "Slit Eyes", "Beaded Eyes", "Starry Eyes", "Wither Eyes"];
+var uncommonEyes = ["Pale Eyes", "Pupiless Eyes", "Crescent Eyes", "Crackled Eyes", "Low Light Eyes"];
+var rareEyes = ["Glowing Eyes", "Goat Eyes", "Cuttlefish Eyes", "Spiral Eyes", "Electric Eyes"];
+var veryRareEyes = ["Solar Eyes", "Eclipse Eyes", "Omen Eyes", "Ether Eyes", "Nebula Eyes", "Arcane Eyes", "Teary Eyes"];
 
-var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn"];
-var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns"];
-var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns"];
-var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns"];
+var commonHorns = ["Hornless", "Smooth Horns", "Nub Horns", "Bull Horns", "Rhino Horn", "Ram Horns", "Segmented Horns", "Parasaur Horn", "Axe Horn", "Loop Horns"];
+var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns", "Twisted Horns", "Ceratopsian Horns", "Imp Horns"];
+var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns", "Moth Horns"];
+var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns", "Forsaken Horns", "Luna Horn"];
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
-var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears"];
+var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "Bat Ears"];
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
-var veryRareEars = ['Test'];
+var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail"];
-var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail"];
-var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail"];
-var veryRareTails = ['test'];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail"];
+var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
+var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
+var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail"];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
@@ -77,6 +83,41 @@ var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "A
 					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
 var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Seafoam", "Prismatic"];
 
+// Aberrant rates
+// Rates are keyed by bitmasks; this helps prevent duplication and
+// makes the order of %s irrelevant
+// (i.e. 0% x 25% and 25% x 0% is processed the same w/o hardcoded checkings)
+// 1st bit - 0001 -	int value: 1 - 0%
+// 2nd bit - 0010 -	int value: 2 - 25%
+// 3rd bit - 0100 -	int value: 4 - 50%
+// 4th bit - 1000 -	int value: 8 - 100%
+const aberrantPassRates = {
+	// 0001 - 0% x 0%
+	1: { "0%": 100 },
+	// 0011 - 0% x 25%
+	3: { "0%": 99, "25%": 1 },
+	// 0101 - 0% x 50%
+	5: { "0%": 95, "50%": 5 },
+	// 1001 - 0% x 100%
+	9: { "0%": 85, "100%": 15 },
+
+	// 0010 - 25% x 25%
+	2: { "0%": 70, "25%": 30 },
+	// 0110 - 25% x 50%
+	6: { "0%": 60, "25%": 30, "50%": 10 },
+	// 1010 - 25% x 100%
+	10: { "0%": 50, "25%": 30, "100%": 20 },
+
+	// 0100 - 50% x 50%
+	4: { "0%": 50, "50%": 50 },
+	// 1100 - 50% x 100%
+	12: { "0%": 40, "50%": 30, "100%": 30 },
+
+	// 1000 - 100% x 100%
+	8: { "0%": 30, "100%": 70 },
+};
+
+
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
 	document.getElementById("breedSelectionRadios").style.display = "none";
@@ -84,6 +125,19 @@ function initialize() {
 	document.getElementById("sinisterSelected").style.display = "none";
 	document.getElementById("sinisterLabel").style.display = "none";
 	document.getElementById("colorSelectionMenu").style.display = "none";
+}
+
+// Roll a result from a provided object of values
+function getRollResult(roll_table) {
+	table_keys = Object.keys(roll_table);
+	total_chance = 0;
+	for(let i = 0; i < table_keys.length; i++) { total_chance += roll_table[table_keys[i]]; }
+	var rand_num = randRange(total_chance);
+	for(let i = 0; i < table_keys.length; i++) {
+		if(rand_num <= roll_table[table_keys[i]]) { return table_keys[i]; }
+		else { rand_num -= roll_table[table_keys[i]]; }
+	}
+	return "error!!?"
 }
 
 function randRange(max) {
@@ -108,6 +162,7 @@ var Breeds = Object.freeze({
 		STALKER: 1,	RAVAGER: 2,
 	    WARDEN: 3, GEMP: 4, 
 	    SAPI: 5, RIDGE: 6,
+		ABYSS: 7,
 	});
 
 var Builds = Object.freeze({
@@ -124,7 +179,8 @@ var Tempers = Object.freeze({
 var MaxClutchSize = Object.freeze({
 		STALKER: 4,	RAVAGER: 4,
 	    WARDEN: 4, GEMP: 3, 
-	    SAPI: 3, RIDGE: 3
+	    SAPI: 3, RIDGE: 3,
+		ABYSS: 3
 	});
 
 var Rarity = Object.freeze({
@@ -458,6 +514,8 @@ function clutchSize() {
 	    maxSize = MaxClutchSize.SAPI;
 	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
 		maxSize = MaxClutchSize.RIDGE;
+	else if (damBreedVal == Breeds.ABYSS || SireBreedVal == Breeds.ABYSS)
+		maxSize = MaxClutchSize.ABYSS;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
 	
@@ -470,6 +528,7 @@ function clutchSize() {
 	if (size < 2 && document.getElementById("starter").checked) {
 		size = 2;
 	}
+
 	
 
 	
@@ -725,7 +784,8 @@ function generateSpecies() {
 	var wardenBonus = 0;
     var gempBonus = 0;
   	var sapiBonus = 0;
-	var ridgeBonus =0;
+	var ridgeBonus = 0;
+	var abyssBonus = 0;
 
 	if (document.getElementById("DI").checked) {
 		if (!destroyedModifiers.includes("Dragon's Instinct destroyed.<br>"))
@@ -742,6 +802,8 @@ function generateSpecies() {
 		    sapiBonus = 70;
 		} else if (document.getElementById("ridgeSelected").checked){
 			ridgeBonus = 70;
+		} else if (document.getElementById("abyssSelected").checked) {
+			gempBonus = 60;
 		}
 	}
 	if (damBreedVal == sireBreedVal) {
@@ -783,7 +845,14 @@ function generateSpecies() {
 				} else { 
 					childBreedVal = Breeds.WARDEN;
 					  }
-			}			
+			} else  if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) {
+				// case Warden x Abyssal
+			   if (randRange(100) < (30 + abyssBonus - wardenBonus)) {
+				   childBreedVal = Breeds.ABYSS;
+			   } else { 
+				   childBreedVal = Breeds.WARDEN;
+			   }	
+			}	
 		} else if (damBreedVal == Breeds.STALKER || sireBreedVal == Breeds.STALKER) {
         	if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER){
 			    // case Stalker x Ravager
@@ -813,7 +882,14 @@ function generateSpecies() {
 				} else {
 					childBreedVal = Breeds.STALKER;
 				}
-			}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) {
+				// case Stalker x Abyssal
+			  if (randRange(100) < (30 + abyssBonus - stalkerBonus)) {
+					childBreedVal = Breeds.ABYSS;
+				} else {
+					childBreedVal = Breeds.STALKER;
+				}
+		  } 
 		} else if (damBreedVal == Breeds.RAVAGER || sireBreedVal == Breeds.RAVAGER) {
 		if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
       		// case Ravager x Gemp
@@ -836,7 +912,14 @@ function generateSpecies() {
 				} else { 
 						childBreedVal = Breeds.RAVAGER;
 				}
-			}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+				// Case Ravager x Abyss
+				if (randRange (100) < (30 + abyssBonus - ravagerBonus)) { 
+					childBreedVal = Breeds.ABYSS;
+				} else { 
+					childBreedVal = Breeds.RAVAGER;
+				}
+			} 
 		} else if (damBreedVal == Breeds.GEMP || sireBreedVal == Breeds.GEMP) {
 			if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
 				// Case GEMP x Sapiere
@@ -852,17 +935,40 @@ function generateSpecies() {
 				} else { 
 					childBreedVal = Breeds.GEMP;
 				}
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+				// Case GEMP x Abyssal
+				if (randRange (100) < (30 + abyssBonus - gempBonus)) { 
+						childBreedVal = Breeds.ABYSS;
+				} else { 
+						childBreedVal = Breeds.GEMP;
+				}
 			}
-					//Commented out template for when it's an odd number
-	//} else { 
-		// Case GEMP x Sapiere
-	//	if (randRange (100) < (50 + sapiBonus - gempBonus)) {
-				//childBreedVal = Breeds.SAPI;
-		//	} else {
-			//childBreedVal = Breeds.GEMP;
-			//	}
-	
-	}
+		}  else if (damBreedVal == Breeds.SAPI || sireBreedVal == Breeds.SAPI) {
+				if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
+					  // case Sapiere x Ridgeback
+						  if (randRange(100) < (30 + ridgeBonus - sapiBonus)) {
+							  childBreedVal = Breeds.RIDGE;
+						  } else {
+							  childBreedVal = Breeds.SAPI;
+						  }
+			} else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) { 
+					// Case Sapiere x Abyssal
+					if (randRange (100) < (30 + abyssBonus - sapiBonus)) { 
+							childBreedVal = Breeds.ABYSS;
+					} else { 
+							childBreedVal = Breeds.SAPI;
+					}
+				}
+			} else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE) {
+			if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS) {
+				// Case RIDGE X ABYSS
+				if (randRange (100) < (50 + abyssBonus - ridgeBonus)) {
+					childBreedVal = Breeds.ABYSS;
+				} else {
+					childBreedVal = Breeds.RIDGE;
+				}
+			}
+		}	
 	}
 
 	// convert to string
@@ -875,11 +981,13 @@ function generateSpecies() {
 	} else if (childBreedVal == Breeds.WARDEN) {
 		result = "Warden Dragon";
 	} else if (childBreedVal == Breeds.GEMP) {
-    result = "Greater Emperor";
+    	result = "Greater Emperor";
   	} else if (childBreedVal == Breeds.SAPI){
-      result = "Sapiere Dragon";
+      	result = "Sapiere Dragon";
 	} else if (childBreedVal == Breeds.RIDGE){
 		result = "Ridgeback Drake";
+  	}  else if (childBreedVal == Breeds.ABYSS){
+		result = "Abyssal Basileus";
   	} 
 
 	return result;
@@ -2192,6 +2300,23 @@ function generateMutation() {
 		return "";
 }
 
+function generateAberrant() {
+	var sireAberrant = document.getElementById("sireAberrant").value;
+	var damAberrant = document.getElementById("damAberrant").value;
+
+	// Use bitwise OR to create a bitmask.
+	var key = sireAberrant | damAberrant;
+
+	// Grab the aberrant table.
+	var aberrantTable = aberrantPassRates[key];
+
+	// Roll the table.
+	var result = getRollResult(aberrantTable);
+
+	if(result == "0%") return "";
+	else return result;
+}
+
 function coatToText(coat) {
 	var result = "";
 	var vantaStr = coat.substr(9, 2);
@@ -2433,6 +2558,12 @@ function generateChild() {
 	if (skill != "") {
 		skill = "Skill: " + skill + "<br>";
 		log.innerHTML += skill.italics();
+	}
+
+	var aberrant = generateAberrant();
+	if(aberrant != "") {
+		aberrant = "[" + aberrant + " ABERRANT]<br>";
+		log.innerHTML += aberrant;
 	}
 	
 	log.innerHTML += "<br>"
