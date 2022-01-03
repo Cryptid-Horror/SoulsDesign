@@ -285,7 +285,28 @@ class WorldController extends Controller
             $query->where('name', 'LIKE', '%'.$data['name'].'%');
         if(isset($data['artist']) && $data['artist'] != 'none')
             $query->where('artist_id', $data['artist']);
-$query->sortCategory();
+
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
+                case 'alpha':
+                    $query->sortAlphabetical();
+                    break;
+                case 'alpha-reverse':
+                    $query->sortAlphabetical(true);
+                    break;
+                case 'category':
+                    $query->sortCategory();
+                    break;
+                case 'newest':
+                    $query->sortNewest();
+                    break;
+                case 'oldest':
+                    $query->sortOldest();
+                    break;
+            }
+        }
+        else $query->sortCategory();
 
         return view('world.items', [
             'items' => $query->paginate(20)->appends($request->query()),
