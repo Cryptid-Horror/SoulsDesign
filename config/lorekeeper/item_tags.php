@@ -55,4 +55,10 @@ return [
         'text_color' => '#ffffff',
         'background_color' => '#cbbd8a'
     ],
+    
+    'background' => [
+        'name' => 'Background',
+        'text_color' => 'antiquewhite',
+        'background_color' => 'slategrey'
+    ],
 ];

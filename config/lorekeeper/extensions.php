@@ -60,4 +60,10 @@ return [
     //Forum Posts Editable by Author - Wych
     'forum_author_edit' => 1,
 
+    // Character Backgrounds - Uri
+    'character_backgrounds' => [
+        'enabled' => 1, // 0 for disabled
+        'profiles_enabled' => 1 // 0 to disable this effect on Character Profiles (versus their masterlist page)
+    ],
+
 ];
