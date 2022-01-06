@@ -547,7 +547,8 @@ class CharacterManager extends Service
     private function processImage($characterImage)
     {
         // Trim transparent parts of image.
-        $image = Image::make($characterImage->imagePath . '/' . $characterImage->imageFileName)->trim('transparent');
+        // $image = Image::make($characterImage->imagePath . '/' . $characterImage->imageFileName)->trim('transparent');
+        $image = Image::make($characterImage->imagePath . '/' . $characterImage->imageFileName);
 
         if (Config::get('lorekeeper.settings.masterlist_image_automation') == 1)
         {
