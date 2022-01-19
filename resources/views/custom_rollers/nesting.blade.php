@@ -85,11 +85,14 @@
 				<option value="1">C Ears</option>
 				<option value="2">UC Ears</option>
 				<option value="3">R Ears</option>
+				<option value="4">M Ears</option>
+
 			</select>
 			<select id="sireTail" class="cellElement">
 				<option value="1">C Tail</option>
 				<option value="2">UC Tail</option>
 				<option value="3">R Tail</option>
+				<option value="4">M Tail</option>
 			</select>
 		</div>
 		
@@ -201,11 +204,13 @@
 				<option value="1">C Ears</option>
 				<option value="2">UC Ears</option>
 				<option value="3">R Ears</option>
+				<option value="4">M Ears</option>
 			</select>
 			<select id="damTail" class="cellElement">
 			    <option value="1">C Tail</option>
 				<option value="2">U Tail</option>
 				<option value="3">R Tail</option>
+				<option value="4">M Tail</option>
 			</select>
 		</div>
 		
