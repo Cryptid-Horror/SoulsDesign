@@ -3,6 +3,7 @@
 @else
     <div class="text-center mb-3">
         <div class="mb-1"><a href="{{ $stock->item->idUrl }}"><img src="{{ $stock->item->imageUrl }}" alt="{{ $stock->item->name }}" /></a></div>
+
         <div>
             <a href="{{ $stock->item->idUrl }}"><strong>{{ $stock->item->name }}</strong></a>
             @if(Auth::check())
@@ -10,6 +11,7 @@
             @endif
         </div>
         <div><strong>Cost: </strong> {!! $stock->currency->display($stock->cost) !!}</div>
+
         @if($stock->is_limited_stock) <div>Stock: {{ $stock->quantity }}</div> @endif
         @if($stock->purchase_limit) <div class="text-danger">Max {{ $stock->purchase_limit }} per user</div> @endif
     </div>
@@ -30,14 +32,12 @@
     @endif
 
     @if(Auth::check())
-        <h5>
-            Purchase
+
+        @if($stock->is_fto && Auth::user()->settings->is_fto || !$stock->is_fto)
+            <h5>Purchase</h5>
             <span class="float-right">
                 In Inventory: {{ $userOwned->pluck('count')->sum() }}
             </span>
-        </h5>
-        @if($stock->is_fto && Auth::user()->settings->is_fto || !$stock->is_fto)
-            <h5>Purchase</h5>
             @if($stock->is_limited_stock && $stock->quantity == 0)
                 <div class="alert alert-warning mb-0">This item is out of stock.</div>
             @elseif($purchaseLimitReached)
@@ -64,6 +64,7 @@
                                             {!! Form::label('slug', 'Character Code') !!}
                                             {!! Form::text('slug', null, ['class' => 'form-control']) !!}
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -93,11 +94,22 @@
                     @elseif($stock->shop->use_coupons && $userCoupons == Null)
                     <div class="alert alert-danger">You do not own any coupons.</div>
                     @endif
-                    <div class="text-right">
-                        {!! Form::submit('Purchase', ['class' => 'btn btn-primary']) !!}
-                    </div>
-                {!! Form::close() !!}
-            @endif
+
+                <div class="form-group">
+                    {!! Form::checkbox('use_coupon', 1,  0, ['class' => 'is-coupon-class form-control', 'data-toggle' => 'toggle']) !!}
+                    {!! Form::label('use_coupon', 'Do you want to use a coupon?', ['class' => 'form-check-label  ml-3 mb-2']) !!}
+                </div>
+                <div class="br-form-group" style="display: none">
+                    {!! Form::select('coupon', $userCoupons, null, ['class' => 'form-control mb-2', 'placeholder' => 'Select a Coupon to Use']) !!}
+                </div>
+                @elseif($stock->shop->use_coupons && $userCoupons == Null)
+                <div class="alert alert-danger">You do not own any coupons.</div>
+                @endif
+                <div class="text-right">
+                    {!! Form::submit('Purchase', ['class' => 'btn btn-primary']) !!}
+                </div>
+            {!! Form::close() !!}
+        @endif
         @else
             <div class="alert alert-danger">You must be a FTO to purchase this item.</div>
         @endif
