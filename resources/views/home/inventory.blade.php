@@ -17,8 +17,9 @@
 @foreach($items as $categoryId=>$categoryItems)
     <div class="card mb-3 inventory-category">
         <ul class="nav nav-tabs card-header-tabs">
-            {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
+           <li> {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
             <a class="small inventory-collapse-toggle collapse-toggle collapsed" href="#{!! clean(isset($categories[$categoryId]) ? str_replace(' ', '', $categories[$categoryId]->name) : 'miscellaneous') !!}" data-toggle="collapse">Show</a></h3>
+            </li>
         </ul>
         <div class="card-body inventory-body collapse show" id="{!! clean(isset($categories[$categoryId]) ? str_replace(' ', '', $categories[$categoryId]->name) : 'miscellaneous') !!}">
             @foreach($categoryItems->chunk(4) as $chunk)
