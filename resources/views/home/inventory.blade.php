@@ -14,22 +14,13 @@
 
 <p>This is your inventory. Click on an item to view more details and actions you can perform on it.</p>
 
-
-<div class="card character-bio">
-    <div class="card-header">
+@foreach($items as $categoryId=>$categoryItems)
+    <div class="card mb-3 inventory-category">
         <ul class="nav nav-tabs card-header-tabs">
-            @foreach($items as $categoryId=>$categoryItems)
-                <li class="nav-item">
-                    <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="categoryTab-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}" data-toggle="tab" href="#category-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}" role="tab">
-                        {!! isset($categories[$categoryId]) ? $categories[$categoryId]->name : 'Miscellaneous' !!}
-                    </a>
-                </li>
-            @endforeach
+            {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
+            <a class="small inventory-collapse-toggle collapse-toggle collapsed" href="#{!! clean(isset($categories[$categoryId]) ? str_replace(' ', '', $categories[$categoryId]->name) : 'miscellaneous') !!}" data-toggle="collapse">Show</a></h3>
         </ul>
-    </div>
-    <div class="card-body tab-content">
-        @foreach($items as $categoryId=>$categoryItems)
-            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="category-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}">
+        <div class="card-body inventory-body collapse show" id="{!! clean(isset($categories[$categoryId]) ? str_replace(' ', '', $categories[$categoryId]->name) : 'miscellaneous') !!}">
             @foreach($categoryItems->chunk(4) as $chunk)
                 <div class="row mb-3">
                     @foreach($chunk as $itemId=>$stack)
@@ -49,8 +40,6 @@
         </div>
     </div>
 @endforeach
-</div>
-
 
 {-- @foreach($items as $categoryId=>$categoryItems)
     <div class="card mb-3 inventory-category">
