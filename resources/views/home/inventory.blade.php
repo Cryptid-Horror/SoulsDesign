@@ -29,19 +29,18 @@
     <div class="card-body tab-content">
         @foreach($items as $categoryId=>$categoryItems)
             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="category-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}">
-                @foreach($categoryItems->chunk(4) as $chunk)
-                    <div class="row mb-3">
-                        @foreach($chunk as $item)
-                            <div class="col-sm-3 col-6 text-center inventory-item" data-id="{{ $item->pivot->id }}">
+            @foreach($categoryItems->chunk(4) as $chunk)
+                <div class="row mb-3">
+                    @foreach($chunk as $itemId=>$stack)
+                        <div class="col-sm-3 col-6 text-center inventory-item" data-id="{{ $stack->first()->pivot->id }}" data-name="{{ $user->name }}'s {{ $stack->first()->name }}">
+                            @if($stack->first()->has_image)
                                 <div class="mb-1">
-                                    <a href="#" class="inventory-stack"><img src="{{ $item->imageUrl }}" alt="{{ $item->name }}" /></a>
+                                    <a href="#" class="inventory-stack"><img src="{{ $stack->first()->imageUrl }}" alt="{{ $stack->first()->name }}"/></a>
                                 </div>
-                                <div>
-                                    <a href="#" class="inventory-stack inventory-stack-name"><strong>{{ $item->name }}</strong></a>
-                                    <div><strong>Cost: </strong> {!! $currencies[$item->pivot->currency_id]->display((int)$item->pivot->cost) !!}</div>
-                                    @if($item->pivot->is_limited_stock) <div>Stock: {{ $item->pivot->quantity }}</div> @endif
-                                    @if($item->pivot->purchase_limit) <div class="text-danger">Max {{ $item->pivot->purchase_limit }} per user</div> @endif
-                                </div>
+                            @endif
+                            <div>
+                                <a href="#" class="inventory-stack inventory-stack-name">{{ $stack->first()->name }} x{{ $stack->sum('pivot.count') }}</a>
+                            </div>
                             </div>
                         @endforeach
                     </div>
