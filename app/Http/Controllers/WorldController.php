@@ -35,6 +35,7 @@ use App\Models\Claymore\Weapon;
 use App\Models\Claymore\GearCategory;
 use App\Models\Claymore\Gear;
 use App\Models\Character\CharacterClass;
+use Illuminate\Support\Facades\Auth;
 
 class WorldController extends Controller
 {
