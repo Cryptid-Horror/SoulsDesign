@@ -50,7 +50,7 @@
     </div>
 </div>
 
-{-- @foreach($items as $categoryId=>$categoryItems)
+{{-- @foreach($items as $categoryId=>$categoryItems)
     <div class="card mb-3 inventory-category">
         <h5 class="card-header inventory-header">
             {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
@@ -75,7 +75,7 @@
             @endforeach
         </div>
     </div>
-@endforeach --}
+@endforeach --}}
 <div class="text-right mb-4">
     <a href="{{ url(Auth::user()->url.'/item-logs') }}">View logs...</a>
 </div>
