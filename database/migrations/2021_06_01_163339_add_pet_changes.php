@@ -15,11 +15,11 @@ class AddPetChanges extends Migration
     {
         //
         Schema::table('pet_categories', function (Blueprint $table) { 
-            $table->boolean('allow_attach')->default(1);
+            // $table->boolean('allow_attach')->default(1);
         });
 
         Schema::table('user_pets', function (Blueprint $table) { 
-            $table->timestamp('attached_at')->nullable()->default(null);
+            // $table->timestamp('attached_at')->nullable()->default(null);
             $table->integer('variant_id')->nullable()->default(null);
         });
 
