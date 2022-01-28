@@ -110,17 +110,8 @@
         <div class="mb-3">
             @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
         </div>
-    @else
-        <h2>Rewards</h2>
-        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true])
-        @if($submission->prompt_id)
-            <div class="mb-3">
-                @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
-            </div>
-        @endif
         
         <h2>Characters</h2>
-        @if(!$submission->prompt_id)
         <p>Focus characters will receive skill rewards and EXP/stat rewards.</p>
         <div class="alert alert-warning">Only input values here if the focus characters in the submission is supposed to get more than the above value points</div>
         <div class="row">
@@ -137,7 +128,24 @@
                 </div>
             </div>
         </div>
+        <div id="characters" class="mb-3">
+            @foreach($submission->characters as $character)
+                @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
+            @endforeach
+        </div>
+        <div class="text-right mb-3">
+            <a href="#" class="btn btn-outline-info" id="addCharacter">Add Character</a>
+        </div>
+    @else
+        <h2>Rewards</h2>
+        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true])
+        @if($submission->prompt_id)
+            <div class="mb-3">
+                @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
+            </div>
         @endif
+        
+        <h2>Characters</h2>
         <div id="characters" class="mb-3">
             @foreach($submission->characters as $character)
                 @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
