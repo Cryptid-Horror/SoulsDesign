@@ -138,6 +138,7 @@
                 </div>
             </div>
         </div>
+    @endif
         <div id="characters" class="mb-3">
             @foreach($submission->characters as $character)
                 @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
@@ -278,7 +279,6 @@
     </div>
 
     @include('widgets._loot_select_row', ['items' => $items, 'currencies' => $currencies, 'pets' => $pets, 'gears' => $gears, 'weapons' => $weapons, 'awards' => $awards, 'showLootTables' => true, 'showRaffles' => true, 'showRecipes' => true])
-
 
     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
