@@ -41,7 +41,7 @@
         </div>
     </div>
     <h2>Comments</h2>
-    <div class="card mb-3"><div class="card-body text-break">{!! nl2br(htmlentities($submission->comments)) !!}</div></div>
+    <div class="card mb-3"><div class="card-body">{!! nl2br(htmlentities($submission->comments)) !!}</div></div>
     @if(Auth::check() && $submission->staff_comments && ($submission->user_id == Auth::user()->id || Auth::user()->hasPower('manage_submissions')))
         <h2>Staff Comments ({!! $submission->staff->displayName !!})</h2>
         <div class="card mb-3"><div class="card-body">
@@ -55,66 +55,8 @@
 
     {!! Form::open(['url' => url()->current(), 'id' => 'submissionForm']) !!}
 
-    @if($submission->prompt_id)
-    <div class="row">
-        <div class="col-6">
-            <h2>Rewards</h2>
-            @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true, 'showRecipes' => true])
-        </div>
-        <div class="col-6">
-            <h3>Stat & Level Rewards</h3>
-            @if(!$submission->focus_chara_id && $submission->prompt->expreward->chara_exp || !$submission->focus_chara_id && $submission->prompt->expreward->chara_points)
-            <div class="alert alert-danger">This prompt has character rewards but the user has not added a focus character. If this is a mistake, please decline.</div>
-            @endif
-            <div class="card m-1">
-                <div class="row m-2">
-                    <div class="col">
-                        <h5>User Rewards</h5>
-                        @if(!$submission->prompt->expreward->user_exp && !$submission->prompt->expreward->user_points)
-                        No user rewards.
-                        @else
-                        {{ $submission->prompt->expreward->user_exp ? $submission->prompt->expreward->user_exp : 0  }} user EXP
-                            <br>
-                        {{ $submission->prompt->expreward->user_points ? $submission->prompt->expreward->user_points : 0  }} user points
-                        @endif
-                    </div>
-                    <div class="col">
-                        <h5>Character Rewards</h5>
-                        @if(!$submission->prompt->expreward->chara_exp && !$submission->prompt->expreward->chara_points)
-                        No character rewards.
-                        @else
-                        {{ $submission->prompt->expreward->chara_exp ? $submission->prompt->expreward->chara_exp : 0  }} character EXP
-                            <br>
-                        {{ $submission->prompt->expreward->chara_points ? $submission->prompt->expreward->chara_points : 0  }} character points
-                        @endif
-                    </div>
-                </div>
-                <div class="alert alert-warning">Only input values here if the user is supposed to get more than the amount listed above.</div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {!! Form::label('bonus_user_exp', 'Bonus User Exp Reward', ['class' => 'form-control-label ml-3']) !!}
-                                {!! Form::number('bonus_user_exp', null, ['class' => 'form-control ml-1',]) !!}
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                {!! Form::label('bonus_user_points', 'Bonus User Stat Point Reward', ['class' => 'form-control-label ml-3']) !!}
-                                {!! Form::number('bonus_user_points', null, ['class' => 'form-control mr-1',]) !!}
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-        @if($submission->prompt_id)
-        <div class="mb-3">
-            @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
-        </div>
-        @endif
-    @else
         <h2>Rewards</h2>
-        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true, 'showRecipes' => true])
+        @include('widgets._loot_select', ['loots' => $submission->rewards, 'showLootTables' => true, 'showRaffles' => true])
         @if($submission->prompt_id)
             <div class="mb-3">
                 @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
@@ -138,7 +80,6 @@
                 </div>
             </div>
         </div>
-    @endif
         <div id="characters" class="mb-3">
             @foreach($submission->characters as $character)
                 @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
