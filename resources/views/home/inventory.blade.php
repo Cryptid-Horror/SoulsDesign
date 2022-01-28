@@ -18,9 +18,9 @@
         <a class="btn btn-primary" href="{{ url('inventory/account-search') }}"><i class="fas fa-search"></i> Account Search</a>
     </div>
 </h1>
-<br>
-<p>This is your inventory. Click on an item to view more details and actions you can perform on it.</p>
 <br><br>
+<p>This is your inventory. Click on an item to view more details and actions you can perform on it.</p>
+
 <div class="card character-bio">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
