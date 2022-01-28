@@ -4,7 +4,7 @@
 
 @section('home-content')
 {!! breadcrumbs(['Inventory' => 'inventory']) !!}
-
+<h1>Welcome, {!! Auth::user()->displayName !!}!</h1>
 <h1>
     Inventory
     <div class="float-right mb-3">
