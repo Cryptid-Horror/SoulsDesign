@@ -6,8 +6,7 @@
 {!! breadcrumbs(['Inventory' => 'inventory']) !!}
 <h1>{!! Auth::user()->displayName !!}'s Hoard</h1>
 <h1>
-    <br><br><br><br>
-    <div class="float-right mb-3">
+    <div class="float-left mb-3">
         <a class="btn btn-primary" href="{{ url('inventory/account-search') }}"><i class="fas fa-search"></i> Account Search</a>
     </div>
 </h1>
