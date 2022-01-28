@@ -120,7 +120,7 @@
         @endif
         
         <h2>Characters</h2>
-        @if($submission->prompt_id)
+        @if(!$submission->prompt_id)
         <p>Focus characters will receive skill rewards and EXP/stat rewards.</p>
         <div class="alert alert-warning">Only input values here if the focus characters in the submission is supposed to get more than the above value points</div>
         <div class="row">
