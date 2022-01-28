@@ -120,6 +120,7 @@
         @endif
         
         <h2>Characters</h2>
+        @if($submission->prompt_id)
         <p>Focus characters will receive skill rewards and EXP/stat rewards.</p>
         <div class="alert alert-warning">Only input values here if the focus characters in the submission is supposed to get more than the above value points</div>
         <div class="row">
@@ -136,6 +137,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <div id="characters" class="mb-3">
             @foreach($submission->characters as $character)
                 @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
