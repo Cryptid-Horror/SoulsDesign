@@ -1,4 +1,8 @@
 
+@section('meta-img') {{ asset('/images/avatars/'.$user->avatar) }} @endsection
+<h1>
+    <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;" alt="{{ $user->name }}" ></h1>
+
 <h1>Welcome, {!! Auth::user()->displayName !!}!</h1>
 <div class="card mb-4 timestamp">
     <div class="card-body">
