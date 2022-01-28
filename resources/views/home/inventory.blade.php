@@ -3,7 +3,24 @@
 @section('home-title') Inventory @endsection
 
 @section('home-content')
+
 {!! breadcrumbs(['Inventory' => 'inventory']) !!}
+
+@section('profile-title') {{ $user->name }}'s Profile @endsection
+
+@section('meta-img') {{ asset('/images/avatars/'.$user->avatar) }} @endsection
+
+@section('profile-content')
+{!! breadcrumbs(['Users' => 'users', $user->name => $user->url]) !!}
+
+@if($user->is_banned)
+    <div class="alert alert-danger">This user has been banned.</div>
+@endif
+<h1>
+    <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;" alt="{{ $user->name }}" >
+    {!! $user->displayName !!}
+    {!! $user->isOnline() !!}
+
 <h1>{!! Auth::user()->displayName !!}'s Hoard</h1>
 <h1>
     <div class="float-left mb-3">
