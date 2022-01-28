@@ -10,6 +10,7 @@
 <h1>
     <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;" alt="{{ $user->name }}" ></h1>
 
+<h1>{!! $user->displayName !!}'s Hoard</h1>
 <h1>
     <div class="float-left mb-3">
         <a class="btn btn-primary" href="{{ url('inventory/account-search') }}"><i class="fas fa-search"></i> Account Search</a>
