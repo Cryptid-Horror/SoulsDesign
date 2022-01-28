@@ -116,7 +116,7 @@ return [
         'creators' => json_encode([
             'Newt' => 'https://github.com/ne-wt/',
         ]),
-        'version' => '1.1.0',
+        'version' => '1.2.0',
     ],
 
     'Claymores and Companions' => [
@@ -124,7 +124,18 @@ return [
         'wiki_key' => 'Claymores_and_Companions',
         'creators' => json_encode([
             'Newt' => 'https://github.com/ne-wt/',
+            'Mercury' => 'https://github.com/itinerare/',
+            'Uri' => 'https://github.com/preimpression/',
         ]),
+        'version' => '1.1.0',
+    ],
+
+    'character_skills' => [
+        'key' => 'character_skills',
+        'wiki_key' => 'Character_Skills',
+            'creators' => json_encode([
+                'Newt' => 'https://github.com/ne-wt/',
+            ]),
         'version' => '1.0.0',
     ],
 

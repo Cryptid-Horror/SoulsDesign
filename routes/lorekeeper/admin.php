@@ -140,6 +140,7 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::post('species/edit/{id?}', 'SpeciesController@postCreateEditSpecies');
     Route::post('species/delete/{id}', 'SpeciesController@postDeleteSpecies');
     Route::post('species/sort', 'SpeciesController@postSortSpecies');
+
     Route::get('subtypes', 'SpeciesController@getSubtypeIndex');
     Route::get('subtypes/create', 'SpeciesController@getCreateSubtype');
     Route::get('subtypes/edit/{id}', 'SpeciesController@getEditSubtype');
@@ -148,6 +149,14 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::post('subtypes/edit/{id?}', 'SpeciesController@postCreateEditSubtype');
     Route::post('subtypes/delete/{id}', 'SpeciesController@postDeleteSubtype');
     Route::post('subtypes/sort', 'SpeciesController@postSortSubtypes');
+
+    Route::get('pet-drops', 'PetController@getDropIndex');
+    Route::get('pet-drops/create', 'PetController@getCreateDrop');
+    Route::get('pet-drops/edit/{id}', 'PetController@getEditDrop');
+    Route::get('pet-drops/delete/{id}', 'PetController@getDeleteDrop');
+    Route::post('pet-drops/create', 'PetController@postCreateEditDrop');
+    Route::post('pet-drops/edit/{id?}', 'PetController@postCreateEditDrop');
+    Route::post('pet-drops/delete/{id}', 'PetController@postDeleteDrop');
 
     # ITEMS
     Route::get('item-categories', 'ItemController@getIndex');
@@ -252,6 +261,8 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::post('pets/edit/{id?}', 'PetController@postCreateEditPet');
     Route::post('pets/delete/{id}', 'PetController@postDeletePet');
 
+    Route::post('pets/variants/{id?}', 'PetController@postEditVariants');
+
     # SHOPS
     Route::get('shops', 'ShopController@getIndex');
     Route::get('shops/create', 'ShopController@getCreateShop');
@@ -343,6 +354,23 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::post('prompts/edit/{id?}', 'PromptController@postCreateEditPrompt');
     Route::post('prompts/delete/{id}', 'PromptController@postDeletePrompt');
 
+    # SKILLS
+    Route::get('skills', 'SkillController@getIndex');
+    Route::get('skills/create', 'SkillController@getCreateSkill');
+    Route::get('skills/edit/{id}', 'SkillController@getEditSkill');
+    Route::get('skills/delete/{id}', 'SkillController@getDeleteSkill');
+    Route::post('skills/create', 'SkillController@postCreateEditSkill');
+    Route::post('skills/edit/{id?}', 'SkillController@postCreateEditSkill');
+    Route::post('skills/delete/{id}', 'SkillController@postDeleteSkill');
+    # SKILL CATEGORIES
+    Route::get('skill-categories', 'SkillController@getCategoryIndex');
+    Route::get('skill-categories/create', 'SkillController@getCreateSkillCategory');
+    Route::get('skill-categories/edit/{id}', 'SkillController@getEditSkillCategory');
+    Route::get('skill-categories/delete/{id}', 'SkillController@getDeleteSkillCategory');
+    Route::post('skill-categories/create', 'SkillController@postCreateEditSkillCategory');
+    Route::post('skill-categories/edit/{id?}', 'SkillController@postCreateEditSkillCategory');
+    Route::post('skill-categories/delete/{id}', 'SkillController@postDeleteSkillCategory');\
+
     # CHALLENGES
     Route::get('challenges', 'ChallengeController@getChallengeIndex');
     Route::get('challenges/create', 'ChallengeController@getCreateChallenge');
@@ -424,7 +452,7 @@ Route::group(['prefix' => 'grants', 'namespace' => 'Users', 'middleware' => 'pow
 
     Route::get('weapons', 'GrantController@getWeapons');
     Route::post('weapons', 'GrantController@postWeapons');
-    
+
     Route::get('gear', 'GrantController@getGear');
     Route::post('gear', 'GrantController@postGear');
     
@@ -439,6 +467,11 @@ Route::group(['prefix' => 'grants', 'namespace' => 'Users', 'middleware' => 'pow
 
     Route::get('awards', 'GrantController@getAwards');
     Route::post('awards', 'GrantController@postAwards');
+});
+
+# PETS
+Route::group(['prefix' => 'pets', 'middleware' => 'power:edit_inventories'], function() {
+    Route::post('pet/{id}', 'Data\PetController@postEditPetDrop');
 });
 
 
@@ -498,13 +531,6 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters', 'middleware'
     Route::post('image/{id}/delete', 'CharacterImageController@postImageDelete');
 
     Route::post('{slug}/images/sort', 'CharacterImageController@postSortImages');
-
-
-    Route::post('image/{id}/refresh', 'CharacterImageController@refreshImage');
-
-    # CLASS
-    Route::get('class/edit/{id}', 'CharacterController@getClassModal');
-    Route::post('class/edit/{id}', 'CharacterController@postClassModal');
 
     # CHARACTER
     Route::get('{slug}/stats', 'CharacterController@getEditCharacterStats');
@@ -781,7 +807,7 @@ Route::group(['prefix' => 'stats', 'namespace' => 'Stats', 'middleware' => 'powe
 });
 # STATS - LEVELS
 Route::group(['prefix' => 'levels', 'namespace' => 'Stats', 'middleware' => 'power:edit_levels'], function() {
-    # USER 
+    # USER
     // GET
     Route::get('/user', 'LevelController@getIndex');
     Route::get('/create', 'LevelController@getCreateLevel');
@@ -790,7 +816,7 @@ Route::group(['prefix' => 'levels', 'namespace' => 'Stats', 'middleware' => 'pow
     // POST
     Route::post('/create', 'LevelController@postCreateEditLevel');
     Route::post('/edit/{id}', 'LevelController@postCreateEditLevel');
-    Route::post('/delete/{id}', 'LevelController@postDeleteLevel');    
+    Route::post('/delete/{id}', 'LevelController@postDeleteLevel');
     # ---------------------------------------------
     # CHARACTER
     // GET
@@ -801,7 +827,7 @@ Route::group(['prefix' => 'levels', 'namespace' => 'Stats', 'middleware' => 'pow
         // POST
     Route::post('character/create', 'LevelController@postCharaCreateEditLevel');
     Route::post('character/edit/{id}', 'LevelController@postCharaCreateEditLevel');
-    Route::post('character/delete/{id}', 'LevelController@postCharaDeleteLevel');    
+    Route::post('character/delete/{id}', 'LevelController@postCharaDeleteLevel');
 });
 
 /***********************************************************************************

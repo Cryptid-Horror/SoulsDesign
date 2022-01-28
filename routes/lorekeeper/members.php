@@ -68,8 +68,11 @@ Route::group(['prefix' => 'pets', 'namespace' => 'Users'], function() {
     Route::post('name/{id}', 'PetController@postName');
     Route::post('attach/{id}', 'PetController@postAttach');
     Route::post('detach/{id}', 'PetController@postDetach');
+    Route::post('variant/{id}', 'PetController@postVariant');
 
     Route::get('selector', 'PetController@getSelector');
+
+    Route::post('pet/{id}', 'PetController@postClaimPetDrops');
 });
 
 Route::group(['prefix' => 'gears', 'namespace' => 'Users'], function() {
@@ -126,6 +129,10 @@ Route::group(['prefix' => 'characters', 'namespace' => 'Users'], function() {
     Route::post('transfer/act/{id}', 'CharacterController@postHandleTransfer');
 
     Route::get('myos', 'CharacterController@getMyos');
+
+    # CLASS
+    Route::get('class/edit/{id}', 'CharacterController@getClassModal');
+    Route::post('class/edit/{id}', 'CharacterController@postClassModal');
 });
 
 Route::group(['prefix' => 'bank', 'namespace' => 'Users'], function() {
@@ -204,6 +211,7 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function() 
     Route::post('{slug}/level-area/stat-grant', 'LevelController@postStatGrant');
 
 });
+
 Route::group(['prefix' => 'myo', 'namespace' => 'Characters'], function() {
     Route::get('{id}/profile/edit', 'MyoController@getEditCharacterProfile');
     Route::post('{id}/profile/edit', 'MyoController@postEditCharacterProfile');

@@ -312,6 +312,14 @@ class Character extends Model
     {
         return $this->belongsTo('App\Models\Character\CharacterFolder', 'folder_id');
     }
+    
+    /** 
+     * Get the character's skills.
+     */
+    public function skills()
+    {
+        return $this->hasMany('App\Models\Character\CharacterSkill', 'character_id');
+    }
 
     /**********************************************************************************************
 
@@ -795,7 +803,18 @@ class Character extends Model
      */
     public function getCharacterLogs()
     {
-        $query = CharacterLog::with('sender.rank')->where('character_id', $this->id)->orderBy('id', 'DESC');
+        $query = CharacterLog::with('sender.rank')->where('character_id', $this->id)->where('log_type', '!=', 'Skill Awarded')->orderBy('id', 'DESC');
+        return $query->paginate(30);
+    }
+
+    /**
+     * Get the character's update logs.
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getCharacterSkillLogs()
+    {
+        $query = CharacterLog::with('sender.rank')->where('character_id', $this->id)->where('log_type', 'Skill Awarded')->orderBy('id', 'DESC');
         return $query->paginate(30);
     }
 
@@ -806,8 +825,7 @@ class Character extends Model
      */
     public function getSubmissions()
     {
-        $first = Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->where('focus_chara_id', $this->id)->pluck('id');
-        return Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->whereIn('id', SubmissionCharacter::where('character_id', $this->id)->pluck('submission_id')->union($first)->toArray())->paginate(30);
+        return Submission::with('user.rank')->with('prompt')->where('status', 'Approved')->whereIn('id', SubmissionCharacter::where('character_id', $this->id)->pluck('submission_id')->toArray())->paginate(30);
 
         // Untested
         //$character = $this;

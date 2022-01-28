@@ -82,6 +82,11 @@ class UserController extends Controller
 
         $this->user->updateCharacters();
         $this->user->updateArtDesignCredits();
+        if(!$this->user->level) {
+            $this->user->level()->create([
+                'user_id' => $this->user->id
+            ]);
+        }
     }
 
     /**

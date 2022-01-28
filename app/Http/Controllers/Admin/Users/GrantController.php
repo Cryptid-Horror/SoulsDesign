@@ -202,7 +202,7 @@ class GrantController extends Controller
         ]);
     }
 
-    /** 
+    /**
      * Grants or removes pets from multiple users.
      *
      * @param  \Illuminate\Http\Request        $request
@@ -234,7 +234,7 @@ class GrantController extends Controller
         ]);
     }
 
-    /** 
+    /**
      * Grants or removes gear from multiple users.
      *
      * @param  \Illuminate\Http\Request        $request
@@ -266,7 +266,7 @@ class GrantController extends Controller
         ]);
     }
 
-    /** 
+    /**
      * Grants or removes gear from multiple users.
      *
      * @param  \Illuminate\Http\Request        $request

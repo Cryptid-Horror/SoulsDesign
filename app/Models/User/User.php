@@ -133,7 +133,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get user settings.
      */
-    public function level() 
+    public function level()
     {
         return $this->hasOne('App\Models\Stats\User\UserLevel');
     }
@@ -249,22 +249,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Gallery\GalleryFavorite')->where('user_id', $this->id);
     }
-    
-    /** 
-     * Get the users pets.
+
+    /**
+     * Get the user's pets.
      */
     public function pets()
     {
-        return $this->belongsToMany('App\Models\Pet\Pet', 'user_pets')->withPivot('data', 'updated_at', 'id')->whereNull('user_pets.deleted_at');
+        return $this->belongsToMany('App\Models\Pet\Pet', 'user_pets')->withPivot('data', 'updated_at', 'id', 'variant_id', 'chara_id', 'pet_name')->whereNull('user_pets.deleted_at');
     }
 
-    /** 
-     * Get the users weapons.
+    /**
+     * Get the user's weapons.
      */
     public function weapons()
     {
         return $this->belongsToMany('App\Models\Claymore\Weapon', 'user_weapons')->withPivot('data', 'updated_at', 'id', 'character_id', 'has_image')->whereNull('user_weapons.deleted_at');
     }
+    
     /**
      * Get all of the users character bookmarks.
      */
@@ -273,7 +274,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Character\CharacterBookmark')->where('user_id', $this->id);
     }
 
-    /** 
+    /**
      * Get the user's gears.
      */
     public function gears()

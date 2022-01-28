@@ -120,42 +120,10 @@
                 @include('home._prompt', ['prompt' => $submission->prompt, 'staffView' => true])
             </div>
         @endif
-    @endif
+        
         <h2>Characters</h2>
-    @if($submission->prompt_id)
-        @if($submission->focus_chara_id)
-        <h5>Focus Character</h5>
-        <div class="submission-character-row mb-2">
-            <div class="submission-character-thumbnail"><a href="{{ $submission->focus->url }}"><img src="{{ $submission->focus->image->thumbnailUrl }}" class="img-thumbnail" /></a></div>
-            @if($submission->prompt_id)
-            <div class="submission-character-info card ml-2">
-                <div class="card-body">
-                    <div class="submission-character-info-content">
-                        <h3 class="mb-2 submission-character-info-header"><a href="{{ $submission->focus->url }}">{{ $submission->focus->fullName }}</a></h3>
-                        <div class="submission-character-info-body">
-                        <table class="table table-sm mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Reward</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ $submission->prompt->chara_exp ? $submission->prompt->chara_exp : 0 }} EXP
-                                    <br>
-                                    {{ $submission->prompt->chara_points ? $submission->prompt->chara_points : 0  }} Stat Point
-                                    <p class="text-muted mt-1">(This is pre-defined by the prompt, you may add bonuses below)</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
-                </div>
-                @endif
-            </div>
-        </div>
-        <div class="alert alert-warning">Only input values here if the character in the submission is supposed to get more than the above value points</div>
+        <p>Focus characters will receive skill rewards and EXP/stat rewards.</p>
+        <div class="alert alert-warning">Only input values here if the focus characters in the submission is supposed to get more than the above value points</div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -170,12 +138,9 @@
                 </div>
             </div>
         </div>
-        <hr>
-        @endif
-    @endif
         <div id="characters" class="mb-3">
             @foreach($submission->characters as $character)
-                @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards])
+                @include('widgets._character_select_entry', ['characterCurrencies' => $characterCurrencies, 'items' => $items, 'tables' => $tables, 'character' => $character, 'expanded_rewards' => $expanded_rewards, 'submission' => true])
             @endforeach
         </div>
         <div class="text-right mb-3">
@@ -255,6 +220,10 @@
                         <div class="form-group">
                             {!! Form::label('slug[]', 'Character Code') !!}
                             {!! Form::text('slug[]', null, ['class' => 'form-control character-code']) !!}
+                        </div>
+                        <div class="form-group col-6">
+                            {!! Form::label('is_focus[]', 'Focus Character?', ['class' => 'form-check-label'] ) !!}
+                            {!! Form::select('is_focus[]', [0 => 'No' , 1 => 'Yes' ], 0, ['class' => 'form-control']) !!}
                         </div>
                         <div class="character-rewards hide">
                             <h4>Character Rewards</h4>

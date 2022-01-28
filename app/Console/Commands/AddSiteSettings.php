@@ -34,10 +34,10 @@ class AddSiteSettings extends Command
 
     /**
      * Add a site setting.
-     * 
+     *
      * Example usage:
      * $this->addSiteSetting("site_setting_key", 1, "0: does nothing. 1: does something.");
-     * 
+     *
      * @param  string  $key
      * @param  int     $value
      * @param  string  $description
@@ -177,6 +177,7 @@ class AddSiteSettings extends Command
             $this->info("Added:   claymore_cooldown / Default: 0");
         }
         else $this->line("Skipped: claymore_cooldown");
+        $this->addSiteSetting('claymore_cooldown', 0, 'Number of days to add to the cooldown timer when a pet/weapon/gear is attached.');
 
         $this->addSiteSetting('featured_character', 1, 'ID of the currently featured character.');
 

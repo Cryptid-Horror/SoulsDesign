@@ -108,6 +108,7 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function() 
     Route::get('{slug}/item-logs', 'CharacterController@getCharacterItemLogs');
     Route::get('{slug}/ownership', 'CharacterController@getCharacterOwnershipLogs');
     Route::get('{slug}/change-log', 'CharacterController@getCharacterLogs');
+    Route::get('{slug}/skill-logs', 'CharacterController@getCharacterSkillLogs');
     Route::get('{slug}/submissions', 'CharacterController@getCharacterSubmissions');
     Route::get('{slug}/exp-logs', 'CharacterController@getCharacterExpLogs');
     Route::get('{slug}/stat-logs', 'CharacterController@getCharacterStatLogs');
@@ -174,6 +175,9 @@ Route::group(['prefix' => 'world'], function() {
     Route::get('gear', 'WorldController@getGears');
     Route::get('gear/{id}', 'WorldController@getGear');
     Route::get('character-classes', 'WorldController@getCharacterClasses');
+    Route::get('skill-categories', 'WorldController@getSkillCategories');
+    Route::get('skills', 'WorldController@getSkills');
+    Route::get('skills/{id}', 'WorldController@getSkill');
 });
 
 Route::group(['prefix' => 'prompts'], function() {
@@ -205,6 +209,11 @@ Route::get('design/{folder}/{file}', 'DesignGuideController@getGuide');
     Browsers
 **************************************************************************************************/
 Route::get('roller/{file}', 'CustomRollerController@getRoller');
+
+/**************************************************************************************************
+    Pet Drops
+**************************************************************************************************/
+Route::get('pets/pet/{id}', 'Users\PetController@getPetDrops');
 
 /**************************************************************************************************
     Site Pages

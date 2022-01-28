@@ -102,7 +102,6 @@ class Notification extends Model
 
     **********************************************************************************************/
 
-
     const CURRENCY_GRANT                    = 0;
     const ITEM_GRANT                        = 1;
     const CURRENCY_REMOVAL                  = 2;
@@ -152,7 +151,7 @@ class Notification extends Model
     const AWARD_REMOVAL                     = 342;
     const AWARD_TRANSFER                    = 343;
     const FORCED_AWARD_TRANSFER             = 344;
-     const PET_REMOVAL                     = 241;
+    const PET_REMOVAL                     = 241;
     const PET_TRANSFER                    = 242;
     const FORCED_PET_TRANSFER             = 243;
     const PET_GRANT                       = 244;

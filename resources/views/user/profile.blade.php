@@ -15,10 +15,10 @@
     {!! $user->displayName !!}
     {!! $user->isOnline() !!}
     <a href="{{ url('reports/new?url=') . $user->url }}"><i class="fas fa-exclamation-triangle fa-xs" data-toggle="tooltip" title="Click here to report this user." style="opacity: 50%; font-size:0.5em;"></i></a>
-    <span class="badge badge-info float-right text-white mx-1" data-toggle="tooltip" title="Current user level. Checkout the level area for more info.">Lvl: {{ $user->level->current_level }}</span>
     @if($user->settings->is_fto)
         <span class="badge badge-success float-right" data-toggle="tooltip" title="This user has not owned any characters from this world before.">FTO</span>
     @endif
+    <span class="badge badge-info float-right text-white mx-1" data-toggle="tooltip" title="Current user level. Checkout the level area for more info.">Lvl: {{ $user->level->current_level }}</span>
 </h1>
 <div class="mb-1">
     <div class="row">
@@ -131,16 +131,12 @@
                 @if(count($pets))
                     <div class="row">
                         @foreach($pets as $pet)
-                            <div class="col-md-3 col-6 profile-inventory-item">
-                                @if($pet->imageUrl)
-                                <img src="{{ $pet->imageUrl }}" data-toggle="tooltip" title="{{ $pet->name }}" />
-                                @else
-                                    <p>{{ $pet->name }}</p>
-                                @endif
+                            <div class="col profile-inventory-item">
+                                <a href="#" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:25%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
                             </div>
                         @endforeach
                     </div>
-                @else 
+                @else
                     <div>No pets owned.</div>
                 @endif
             </div>
@@ -156,14 +152,14 @@
                         @foreach($armours as $armour)
                             <div class="col-md-3 col-6 profile-inventory-item">
                                 @if($armour->imageUrl)
-                                <img src="{{ $armour->imageUrl }}" data-toggle="tooltip" title="{{ $armour->name }}" />
+                                <img src="{{ $armour->imageUrl }}" data-toggle="tooltip" title="{{ $armour->name }}" alt="{{ $armour->name }}"/>
                                 @else
                                     <p>{{ $armour->name }}</p>
                                 @endif
                             </div>
                         @endforeach
                     </div>
-                @else 
+                @else
                     <div>No weapons or gear owned.</div>
                 @endif
             </div>
