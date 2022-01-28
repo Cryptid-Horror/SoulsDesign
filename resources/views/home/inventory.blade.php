@@ -4,8 +4,8 @@
 
 @section('home-content')
 {!! breadcrumbs(['Inventory' => 'inventory']) !!}
-<h1>{!! Auth::user()->displayName !!}'s Hoard</h1>
-<h1>
+<h1>{!! Auth::user()->displayName !!}'s Hoard
+<br>
     <div class="float-right mb-3">
         <a class="btn btn-primary" href="{{ url('inventory/account-search') }}"><i class="fas fa-search"></i> Account Search</a>
     </div>
