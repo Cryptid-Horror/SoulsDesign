@@ -7,8 +7,8 @@
     </div>
 </div>
 
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  Please do not open any recipes or the background recipe chest currently! These items are bugged and we are working on a fix! Thank you!
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  All Recipes are now fixed! You may open your recipes again!
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
