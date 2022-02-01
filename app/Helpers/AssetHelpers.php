@@ -67,7 +67,7 @@ function calculateGroupCurrency($data)
  */
 function getAssetKeys($isCharacter = false)
 {
-    if(!$isCharacter) return ['items', 'currencies', 'pets', 'weapons', 'gears', 'raffle_tickets', 'loot_tables', 'user_items', 'characters'];
+    if(!$isCharacter) return ['items', 'awards', 'currencies', 'pets', 'weapons', 'gears', 'raffle_tickets', 'loot_tables', 'user_items', 'characters', 'recipes'];
     else return ['currencies', 'items', 'character_items', 'loot_tables'];
 }
 
@@ -88,6 +88,11 @@ function getAssetModelString($type, $namespaced = true)
             else return 'Item';
             break;
 
+        case 'awards':
+            if($namespaced) return '\App\Models\Award\Award';
+            else return 'Award';
+            break;
+
         case 'currencies':
             if($namespaced) return '\App\Models\Currency\Currency';
             else return 'Currency';
@@ -97,7 +102,7 @@ function getAssetModelString($type, $namespaced = true)
             if($namespaced) return '\App\Models\Pet\Pet';
             else return 'Pet';
             break;
-
+            
         case 'weapons':
             if($namespaced) return '\App\Models\Claymore\Weapon';
             else return 'Weapon';
@@ -107,12 +112,11 @@ function getAssetModelString($type, $namespaced = true)
             if($namespaced) return '\App\Models\Claymore\Gear';
             else return 'Gear';
             break;
-
+            
         case 'raffle_tickets':
             if($namespaced) return '\App\Models\Raffle\Raffle';
             else return 'Raffle';
             break;
-
         case 'loot_tables':
             if($namespaced) return '\App\Models\Loot\LootTable';
             else return 'LootTable';
@@ -123,9 +127,19 @@ function getAssetModelString($type, $namespaced = true)
             else return 'UserItem';
             break;
 
+        case 'user_awards':
+            if($namespaced) return '\App\Models\User\UserAward';
+            else return 'UserAward';
+            break;
+
         case 'characters':
             if($namespaced) return '\App\Models\Character\Character';
             else return 'Character';
+            break;
+
+        case 'recipes':
+            if($namespaced) return '\App\Models\Recipe\Recipe';
+            else return 'Recipe';
             break;
 
         case 'character_items':
@@ -264,6 +278,12 @@ function fillUserAssets($assets, $sender, $recipient, $logType, $data)
             foreach($contents as $asset)
                 if(!$service->creditItem($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
         }
+        elseif($key == 'awards' && count($contents))
+        {
+            $service = new \App\Services\AwardCaseManager;
+            foreach($contents as $asset)
+                if(!$service->creditAward($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
+        }
         elseif($key == 'currencies' && count($contents))
         {
             $service = new \App\Services\CurrencyManager;
@@ -300,11 +320,23 @@ function fillUserAssets($assets, $sender, $recipient, $logType, $data)
             foreach($contents as $asset)
                 if(!$service->moveStack($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
         }
+        elseif($key == 'user_awards' && count($contents))
+        {
+            $service = new \App\Services\AwardCaseManager;
+            foreach($contents as $asset)
+                if(!$service->moveStack($sender, $recipient, $logType, $data, $asset['asset'], $asset['quantity'])) return false;
+        }
         elseif($key == 'characters' && count($contents))
         {
             $service = new \App\Services\CharacterManager;
             foreach($contents as $asset)
                 if(!$service->moveCharacter($asset['asset'], $recipient, $data, $asset['quantity'], $logType)) return false;
+        }
+        if($key == 'recipes' && count($contents))
+        {
+            $service = new \App\Services\RecipeService;
+            foreach($contents as $asset)
+                if(!$service->creditRecipe($sender, $recipient, null, $logType, $data, $asset['asset'])) return false;
         }
     }
     return $assets;
