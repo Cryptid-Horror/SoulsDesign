@@ -39,7 +39,7 @@ var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Lumin
 var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
 					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril"];
+var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril", "Dewlap"];
 
 var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate", "Overbite", "Wisp"];
 
@@ -66,8 +66,8 @@ var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Hor
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
 var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "Bat Ears"];
-var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
-var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
+var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears", "Devilish Ears"];
+var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears", "Enchanted Ears"];
 
 var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail"];
 var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
