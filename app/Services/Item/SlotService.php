@@ -149,6 +149,17 @@ class SlotService extends Service
                         $characterData['feature_id'][0] = null;
                         $characterData['feature_data'][0] = null;
 
+                        // Souls specific
+                        $characterData['slots_used'] = 0;
+                        $characterData['ouroboros'] = false;
+                        $characterData['basic_aether'] = false;
+                        $characterData['soul_link_type'] = null;
+                        $characterData['soul_link_target'] = null;
+                        $characterData['soul_link_target_link'] = null;
+                        $characterData['is_adopted'] = false;
+                        $characterData['skills'] = null;
+                        $characterData['has_grand_title'] = false;
+
                         //DB has 'true' and 'false' as strings, so need to set them to true/null
                         if( $stack->item->tag('slot')->data['is_sellable'] == "true") { $characterData['is_sellable'] = true; } else $characterData['is_sellable'] = null;
                         if( $stack->item->tag('slot')->data['is_tradeable'] == "true") { $characterData['is_tradeable'] = true; } else $characterData['is_tradeable'] = null;
