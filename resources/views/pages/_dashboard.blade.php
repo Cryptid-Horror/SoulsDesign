@@ -16,6 +16,9 @@
 
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/world/events/4') }}"><img src="{{ asset('images/aotevent.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=11') }}"><img src="{{ asset('images/torchedbutton.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=11') }}"><img src="{{ asset('images/sirenbutton.png') }}"></a>
+
 
 <br>
 <br>
