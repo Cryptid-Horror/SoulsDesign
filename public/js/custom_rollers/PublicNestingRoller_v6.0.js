@@ -69,10 +69,10 @@ var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "B
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears", "Devilish Ears"];
 var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears", "Enchanted Ears"];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail", "Tailless Tail"];
 var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
-var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail"];
+var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail", "Crocodilia Tail"];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
