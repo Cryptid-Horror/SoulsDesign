@@ -134,28 +134,28 @@ const breaths = ['Fire', 'Ice', 'Shadow', 'Lightning', 'Radiation', 'Wind', 'Poi
 // Store trait arrays according to the rarity - ensure that the way rarity is write is the same as
 // is written in the egg
 const eyes = {
-	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes', 'Wither', 'Starry'],
-	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes', 'Low Light', 'Crackled'],
-	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes', 'Electric', 'Spiral'],
-	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes', 'Nebula', 'Arcane', 'Teary']
+	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes', 'Wither Eyes', 'Starry Eyes'],
+	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes', 'Low Light Eyes', 'Crackled Eyes'],
+	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes', 'Electric Eyes', 'Spiral Eyes'],
+	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes', 'Nebula Eyes', 'Arcane Eyes', 'Teary Eyes']
 }
 const horns = {
-	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns', 'Axe', 'Loop'],
-	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns', 'Imp'],
-	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns', 'Moth'],
-	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns', 'Forsaken', 'Luna']
+	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns', 'Axe Horns', 'Loop Horns'],
+	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns', 'Imp Horns'],
+	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns', 'Moth Horns'],
+	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns', 'Forsaken Horns', 'Luna Horns']
 }
 const ears = {
 	common: ['Earless', 'Fox Ears', 'Hyena Ears', 'Wild Ears', 'Equine Ears'],
-	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears', 'Bat'],
-	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears', 'Devilish'],
-	vrare: ['Hare', 'Spaniel', 'Papillion', 'Elven', 'Axolotl', 'Enchanted']
+	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears', 'Bat Ears'],
+	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears', 'Devilish Ears'],
+	vrare: ['Hare Ears', 'Spaniel Ears', 'Papillion Ears', 'Elven Ears', 'Axolotl Ears', 'Enchanted Ears']
 }
 const tails = {
-	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail', 'Weaver', 'Tailless'],
-	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail', 'Quill'],
-	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail', 'Frond'],
-	vrare: ['Scorpio', 'Aquatic', 'Phoenix', 'Caudal', 'Bone', 'Crocodilia']
+	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail', 'Weaver Tail', 'Tailless'],
+	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail', 'Quill Tail'],
+	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail', 'Frond Tail'],
+	vrare: ['Scorpio Tail', 'Aquatic Tail', 'Phoenix Tail', 'Caudal Tail', 'Bone Tail', 'Crocodilia Tail']
 }
 
 const coat_genos = {
