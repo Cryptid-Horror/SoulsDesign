@@ -105,10 +105,20 @@ const vr_marks = [
 	['Triquetra', 'nTri', 'vr']
 ];
 
-const mutations = ['Whiskers', 'Spined', 'Barbed', 'Fanged', 'Spiked', "Maned", 'Frilled', 'Raptor', 'Tusked',
-	'Feather Extensions', 'Webbed', 'Fluffed', 'Cherubian', 'Multi-Eyes', 'Sakura', 'Eel', 'Viper',
-	'Seraph', 'Blazer', 'Elemental', 'Albino', 'Anery', 'Leucism', 'Abundism', 'Lunar', 'Vented', 'Faceted',
-	'Aether Mane', 'Overgrowth', 'Maned', 'Finned', 'Triclops', 'Crocodile', "Finned", "Polycerate", "Hydra", "Miniature",
+const mutations = [
+	//Start of common
+	'Spiked', 'Spined', 'Barbed', 'Fanged', 'Maned', 'Luecism', 'Abundism', 'Tendril', 'Whiskers', 
+
+	//Start of uncommon
+	'Feather Extnesions', 'Frilled', 'Polycerate', 'Raptor', 'Tusked', 'Lunar', 'Wisp', 'Overbite', 'Albino', 'Anery', 
+
+	//Start of Rare
+	'Fluffed', 'Viper', 'Hydra', 'Flesh', 'Angler', 'Finned', 'Ghoul', 'Multi-Eyes', 'Faceted', 'Vented', 'Webbed',
+	'Sakura', 'Cherubian', 
+
+	//Start of Mythic
+	'Arcana', 'Shark', 'Miniature', 'Blacklight', 'Elemental', 'Eel', 'Blazer', 'Overgrowth', 'Aether Mane', 'Crocodile', 
+	'Triclops', 'Seraph'
 ];
 const rav_only_mutes = ['Eagle Beak', 'Fisher Beak', 'Warlord', 'Vulture Beak'];
 
@@ -118,32 +128,34 @@ const rad_opts = [
 ]
 
 const skills = ['Friendly Giant', 'Hoarder', 'Adept', 'Steadfast', 'Swift Feet', 'Aether Walker',
-	'Inner Fire', 'Haunting Roar', 'Healing Aura'];
+	'Inner Fire', 'Haunting Roar', 'Healing Aura', 'Armored Hide', 'Frenzy', 'Serrated Teeth'];
 const breaths = ['Fire', 'Ice', 'Shadow', 'Lightning', 'Radiation', 'Wind', 'Poison', 'Luster']
 
 // Store trait arrays according to the rarity - ensure that the way rarity is write is the same as
 // is written in the egg
 const eyes = {
-	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes'],
-	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes'],
-	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes'],
-	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes']
+	common: ['Round Eyes', 'Slit Eyes', 'Beaded Eyes', 'Wither', 'Starry'],
+	uncommon: ['Pale Eyes', 'Pupiless Eyes', 'Crescent Eyes', 'Low Light', 'Crackled'],
+	rare: ['Glowing Eyes', 'Goat Eyes', 'Cuttlefish Eyes', 'Electric', 'Spiral'],
+	vrare: ['Omen Eyes', 'Solar Eyes', 'Eclipse Eyes', 'Ether Eyes', 'Nebula', 'Arcane', 'Teary']
 }
 const horns = {
-	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns'],
-	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns'],
-	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns'],
-	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns']
+	common: ['Hornless', 'Smooth Horns', 'Nub Horns', 'Bull Horns', 'Rhino Horns', 'Ram Horns', 'Segmented Horns', 'Parasaur Horns', 'Axe', 'Loop'],
+	uncommon: ['Ibex Horns', 'Ridge Horns', 'Devil Horns', 'Curled Horns', 'Ceratopsian Horns', 'Twisted Horns', 'Imp'],
+	rare: ['Crowned Horns', 'Qilin Horns', 'Stag Horns', 'Royal Horns', 'Ascended Horns', 'Moth'],
+	vrare: ['Eland Horns', 'Unicorn Horns', 'Fallow Horns', 'Beastly Horns', 'Aether Horns', 'Forsaken', 'Luna']
 }
 const ears = {
 	common: ['Earless', 'Fox Ears', 'Hyena Ears', 'Wild Ears', 'Equine Ears'],
-	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears'],
-	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears']
+	uncommon: ['Dragon Ears', 'Tuft Ears', 'Fluffy Ears', 'Drop Fold Ears', 'Bat'],
+	rare: ['Tapir Ears', 'Clipped Ears', 'Button Ears', 'Silky Ears', 'Devilish'],
+	vrare: ['Hare', 'Spaniel', 'Papillion', 'Elven', 'Axolotl', 'Enchanted']
 }
 const tails = {
-	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail'],
-	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail'],
-	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail']
+	common: ['Slender Tail', 'Plume Tail', 'Stub Tail', 'Prehensile Tail', 'Weaver', 'Tailless'],
+	uncommon: ['Lemur Tail', 'Whip Tail', 'Split Tail', 'Crocuta Tail', 'Fan Tail', 'Quill'],
+	rare: ['Peacock Tail', 'Kitsune Tail', 'Drape Tail', 'Armored Tail', 'Spade Tail', 'Frond'],
+	vrare: ['Scorpio', 'Aquatic', 'Phoenix', 'Caudal', 'Bone', 'Crocodilia']
 }
 
 const coat_genos = {
