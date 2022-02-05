@@ -40,28 +40,26 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'lepir_yes',
-        'lepir_yes2',
-        'lepir_no',
-        'lepir_no2'
+        'lepir_yes1',
+    
     ];
 
     // You can use html!
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may blend into the base.',
-        'The marking may fade into the base coat',
-        '"Minimal Lepir" may present as darker or lighter lines varying in thickness that appear like that on many species of butterflies. These lines can be connected or disconnected, but if they create a connected shape the shape can be filled with a color that is allowed to gradient between colors.',
-        '"Complex Lepir" may present as you choosing any reptile, fish, butterfly, or moth to recreate its design on your dragon. This overwrite the appearance of all markings on your dragon, to make them look like your chosen reference. It should match closely, but you are free to take artistic liberities as well.',
+        'Is allowed to blend into 4 different colors in the marking, and is allowed to fade into the base coat, or what it sits over.',
+        '"Complex Lepir" may present as you choosing any reptile, fish, butterfly, or moth to recreate its design on your dragon. It should match closely, but you are free to take artistic liberities as well.',
+        'Simple Lepir may appear as lines that create the shapes of butterfly wings, or may be shapes with lines around them. these lines may be teardrops, squares, etc. The lines around the shape may be solid, soft, blurred, or gradient.',
+        'Rare, Mythic and Legendary markings may appear over complex lepir.',
     ];
 
     $marking_cannot = [
-        'Minimal and complex lepir cannot appear at the same time, it is on or the other.',
+        'Common and uncommon markings may not present over Complex Lepir.',
         'Complex lepir must match your reference closely, and only come from the approved types of animals.',
     ];
 
     $marking_must = [
-        'Recessive: Minimal lepir may cover up to 70% of the design. Complex lepir will override the design completely.',
-        'Dominant: Same as recessive, however dusting may come off of the design (like blazer), an iridescent shine can be applied to the design. In Minimal lepir, this is the color that fills the border shapes, and the border itself. In complex, this is the design as a whole. The iridescence must be blended fully with no solid or soft edges.',
+        'Recessive: Simple lepir may cover up to 70% of the design.',
+        'Dominant: Simple Lepir may cover up to 90% of the design, and may have a dusted-esque or sparkle like shapes on the lepir dusted. It may also have two additional colors to blend into. Dominant form may also have an effect like blazer, where dust comes off the dragons.',
         'The reference for your complex lepir must be provided in design review.',
     ];
 

@@ -48,20 +48,22 @@
 
     // You can use html!
     $marking_can = [
-        'Markings can be present or hidden by albino.',
+        'Albino may either come from ivory sliders, or it may be from the provided slider below.',
+        'You may decide what markings show on albino.', 
     ];
 
     $marking_cannot = [
+        'No black or dark markings should appear on an albino dragon.',
     ];
 
     $marking_must = [
        'There is no dominant form of this mutation.',
-       'Albino causes the base to be from the ivory sliders.',
-       'You may choose which markings show on albino.',
-    ];
+       'Albinism causes the eyes to be shade of red, pink, bright lilac, and bright blues.',
+        ];
 
     // If left empty, the swatches section will not be shown
     $swatches = [
+        'rainbow_pastel',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

@@ -48,7 +48,9 @@
 
     // You can use html!
     $marking_can = [
-        'Markings can be present or hidden by anery.',
+        'Anery may either come from vanta sliders, or it may be from the provided slider below.',
+        'You may decide what markings show on anery.', 
+        'White markings can/will present on Anery as white unless modifier with a color gene.',
     ];
 
     $marking_cannot = [
@@ -56,12 +58,13 @@
 
     $marking_must = [
        'There is no dominant form of this mutation.',
-       'Anery causes the base to be from the vanta sliders.',
-       'You may choose which markings show on anery.',
+       'Unlike Albinism, Anery does not effect the eyes.',
+
     ];
 
     // If left empty, the swatches section will not be shown
     $swatches = [
+        'rainbow_dark',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

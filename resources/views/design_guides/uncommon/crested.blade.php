@@ -48,9 +48,9 @@
 
     // You can use html!
     $marking_can = [
-        'Is allowed to blend between any number of bright colored markings.',
+        'Is allowed to blend between any number of colors, bright or dark.',
         'Is allowed to be flat coloration, or iridescent, but if multiple colors, must gradient smoothly.',
-        'Is allowed to be any bright color, and can gradient even if not iridescent.',
+        'Is allowed to be any color, and can gradient even if not iridescent.',
         'Can blend into the base/marking it sits over.',
     ];
 
@@ -60,7 +60,7 @@
     ];
 
     $marking_must = [
-        'Must be bright colors, cannot be dark colors UNLESS modified by a color modifier marking (azure, flaxen, jade, etc)',
+        'Dominant form gets more range.',
     ];
 
     // If left empty, the swatches section will not be shown

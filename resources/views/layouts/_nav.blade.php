@@ -207,9 +207,6 @@
                             <a class="dropdown-item" href="{{ url('designs') }}">
                                 Design Review
                             </a>
-                            <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
-                                Dragon Transfers
-                            </a>
                             <a class="dropdown-item" href="{{ url('trades/open') }}">
                                 Trades
                             </a>
@@ -269,7 +266,9 @@
                                 View Bank
                             </a>
                             <div class="dropdown-divider"></div>
-
+                            <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
+                                Dragon Transfers
+                            </a>
                             <a class="dropdown-item" href="{{ url('characters') }}">
                                 Dragon Manager
                             </a>

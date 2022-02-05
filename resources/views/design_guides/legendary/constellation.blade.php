@@ -51,7 +51,7 @@
     $marking_can = [
         'Is allowed up to a 12 value and saturation point gradient difference inside the marking',
         'Constellation can have a subtle glow',
-        'Constellation is allowed a dark gradient under the stars and connecting lines',
+        'Constellation is allowed a dark, or bright, gradient under the stars and connecting lines',
         'The dots/stars can appear as either a dot shape, or a star/sparkle shape.',
         'Constellations can be made up, or based on real constellations.',
     ];
@@ -62,7 +62,7 @@
 
     $marking_must = [
         'Recessive Constellation may have up to 3 colors present.',
-        'Dominant Constellation may have up to 7 colors present.',
+        'Dominant Constellation may have up to 7 colors present, and may have a dusted effect around each constellation in a limited range. The dusted is allowed to be different colors to match the constellation. Additionally, the constellation itself may be iridescent.',
     ];
 
     // If left empty, the swatches section will not be shown
