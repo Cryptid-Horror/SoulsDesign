@@ -51,6 +51,7 @@
     $marking_can = [
         'If you pick a color modifier for the base coat, then it has to be picked from the sliders provided below. However, if you apply it on a marking, it can be any shade of allowed colors in that modifiers range, not just from a slider!',
         'If a design has no markings, you either have to apply the color modifier to the base or to minimal marks. Unlike Duo-tone, it is not allowed to not appear under these conditions.',
+        'Greying has a very special ability where it can modify other color genes, when modifying other color genes, you can use the slides below for the base coats (or markings! You do not need to use the sliders for the marking).'
     ];
 
     $marking_cannot = [
@@ -67,7 +68,7 @@ Flaxen is applied to the base. Smoke is base dependant and is now shades of flax
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'GREYING'
+        'GREYING', 'Grey_lilac_single', 'Grey_lilac_double', 'Grey_lilac_abundism'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
