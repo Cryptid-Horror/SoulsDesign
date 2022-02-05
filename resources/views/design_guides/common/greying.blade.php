@@ -42,7 +42,7 @@
     $behavior_examples = [
         'grey_yes1',
         'grey_yes2',
-        'frey_yes3',
+        'grey_yes3',
         'grey_yes4',
         'grey_dom'
     ];
