@@ -2237,7 +2237,7 @@ function selectMutation(mutationRarity, physicalOnly) {
 				childHasTeeth = true;
 				mutationNotFound = false;
 			}
-		} else if (result == "Albino" || result == "Anery") {
+		} else if (result == "Albino" || result == "Anery" || result == "Leucism" || result == "Abundism") {
 		// same rarity, so technically no need to check but;
 			if (childHasSkin) {
 				// re-roll
