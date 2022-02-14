@@ -4,7 +4,7 @@
         $health =$stats->shift();
     @endphp
     <center><b>Character Health</b></center>
-    <div class="progress bg-dark rounded-0 mt-2 clip-br" style="height: 20px;" >
+    <div class="progress" style="height: 20px;" >
         <div class="progress-bar bg-success text-dark progress-bar-striped progress-bar-animated active h3" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}% 
         </div>
