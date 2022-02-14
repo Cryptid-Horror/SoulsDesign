@@ -1,15 +1,15 @@
 <div class="ml-auto">
-
+@php
+        $stats = $character->stats;
+        $health =$stats->shift();
+    @endphp
     <div class="progress bg-dark rounded-0 mt-2 clip-br" style="height: 3em;">
         <div class="progress-bar bg-danger text-dark progress-bar-striped active h3" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}% 
         </div>
     </div>
 
-    @php
-        $stats = $character->stats;
-        $health =$stats->shift();
-    @endphp
+  
 
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
     <b>Species:</b> {{ $character->has_grand_title ? 'Grand' : '' }} {!! $character->image->subtype_id ? $character->image->subtype->displayName : 'Undefined' !!} {!! $character->image->species_id ? $character->image->species->displayName : 'Undefined' !!}<br>
