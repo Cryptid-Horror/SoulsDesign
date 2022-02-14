@@ -185,7 +185,7 @@ class ShopManager extends Service
      */
     public function checkUserPurchases($shopStock, $user)
     {
-        return ShopLog::where('shop_id', $shopStock->shop_id)->where('cost', $shopStock->cost)->where('item_id', $shopStock->item_id)->where('user_id', $user->id)->sum('quantity');
+        return ShopLog::where('shop_id', $shopStock->shop_id)->whereRaw('( cost / quantity ) = '.$shopStock->cost)->where('item_id', $shopStock->item_id)->where('user_id', $user->id)->sum('quantity');
     }
 
     public function getStockPurchaseLimit($shopStock, $user)

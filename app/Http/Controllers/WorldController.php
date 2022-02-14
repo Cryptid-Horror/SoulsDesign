@@ -227,6 +227,8 @@ class WorldController extends Controller
         }
         else $query->sortCategory();
 
+        $query->orderBy('id');
+
         return view('world.features', [
             'features' => $query->paginate(20)->appends($request->query()),
             'rarities' => ['none' => 'Any Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
