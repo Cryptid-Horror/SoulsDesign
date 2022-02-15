@@ -33,7 +33,7 @@
         <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
-@php
+{{--@php
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
@@ -43,7 +43,7 @@
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}%
         </div>
     </div>
-    </center>
+    </center>--}}
 
 {{-- Profile 
 <div class="card character-bio">
