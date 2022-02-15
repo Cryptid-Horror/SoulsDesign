@@ -33,6 +33,17 @@
         <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
+@php
+        $stats = $character->stats;
+        $health =$stats->shift();
+    @endphp
+    <center><b>Character Health</b>
+    <div class="progress" style="height: 20px; width: 50%;" >
+        <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
+        {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}% 
+        </div>
+    </div>
+    </center>
 
 {{-- Profile 
 <div class="card character-bio">
