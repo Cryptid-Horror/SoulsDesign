@@ -1,5 +1,5 @@
 <div class="ml-auto">
-{{--@php
+@php
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
@@ -9,7 +9,7 @@
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}% 
         </div>
     </div>
-    </center>--}}
+    </center>
   
 
     <b>Sex:</b> {{ $character->sex == 'M' ? 'Male' : 'Female' }}<br>
