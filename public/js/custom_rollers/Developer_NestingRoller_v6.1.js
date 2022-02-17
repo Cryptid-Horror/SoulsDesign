@@ -514,7 +514,7 @@ function clutchSize() {
 	    maxSize = MaxClutchSize.SAPI;
 	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
 		maxSize = MaxClutchSize.RIDGE;
-	else if (damBreedVal == Breeds.ABYSS || SireBreedVal == Breeds.ABYSS)
+	else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS)
 		maxSize = MaxClutchSize.ABYSS;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
