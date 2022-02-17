@@ -39,17 +39,18 @@ var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Lumin
 var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
 					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril"];
+var commonMutations = ["Dewlap", "Tendrils", "Fanged", "Maned", "Raptor", "Spined"];
 
-var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate", "Overbite", "Wisp"];
+var uncommonMutations = ["Membrane", "Viper", "Polycerate", "Leucistic", "Abundism", "Ophanim"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra", "Flesh", "Angler", "Ghoul"];
+var rareMutations = ["Ghostly", "Anery", "Albino", "Cherubian", "Faceted", "Glimmer", "Hydra"];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature", "Shark", "Arcana", "Blacklight"];
+var veryRareMutations = ["Elemental", "Arcana", "Blacklight", "Nautical", "Chimera", "Miniature"];
+//Avian to be added to mythic
 
 var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
+var ravagerOnlyMutations = ["Avian", "Warlord"];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
@@ -69,10 +70,10 @@ var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "B
 var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
 var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Tailless", "Weaver Tail"];
 var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
-var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail"];
+var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail", "Crocodilia Tail"];
 
 var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
 var commonColorMods = ["Flaxen", "Greying", "Rose"];
