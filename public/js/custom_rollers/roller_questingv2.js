@@ -29,7 +29,7 @@ const magic_level_pass = {
 // also have the 'extras' class on them
 const extra_pass = {
     "domestic_taming": 5,
-    "scoria_komodo": 5,
+    "bunny": 5,
     "pearl_necklace": 100
 }
 
@@ -43,8 +43,10 @@ const base_injury = {
 const temper_injury = {
     "na": 0,
     "timid": -5,
-    "aggressive": 5
+    "aggressive": 5,
+    "pine": -20
 }
+
 
 class Quest {
     constructor(name, quest_types, loot_table) {
@@ -64,363 +66,382 @@ class Quest {
 const quests = {
     "b1": new Quest("Meet Meat", ["non-magic"], 
         {
-            "MEat: Elk <br>": 5,
-            "Meat: Antelope <br>": 2, // Pearl Neck
-            "Meat: Caribou <br>": 3, // Cooking Pot
-            "Meat: Bison <br>": 5, // Tea
-            "Meat: Bear<br>": 5, // Beef Stew
-            "Meat: Deer <br>": 3, // Premium Meat
-            "Meat: Wolf<br>": 2  // Inkwell
-            Charred Meat 
-            Spoiled Meat 
-            Frozen Meat 
-            Aether Meat 
-            Decent Meat 
-            Premium Meat 
-            Large Reptile Egg
+            "Meat: Elk <br>": 2,
+            "Meat: Antelope <br>": 2, 
+            "Meat: Caribou <br>": 2, 
+            "Meat: Bison <br>": 2, 
+            "Meat: Bear<br>": 2, 
+            "Meat: Deer <br>": 2, 
+            "Meat: Wolf<br>": 2,  
+            "Charred Meat<br>": 5, 
+            "Spoiled Meat<br>":5,
+            "Frozen Meat<br>": 5,
+            "Aether Meat<br>": 5, 
+            "Decent Meat<br>": 3,
+            "Premium Meat<br>": 3,
+            "Large Reptile Egg<br>": 3,
 
         }
     ),
-    "b2": new Quest("The Garderner's Knowledghe", ["non-magic"], 
+    "b2": new Quest("The Garderner's Knowledge", ["non-magic"], 
         {
-            "Conocybe Filaris<br>": 10, // 100 Crystals
-            "Bananas <br>": 1, // Diminished Coin
-            "Sanguine Fruit <br>": 2, // Unfertilised Dragon Egg
-            "Limes <br>": 4, // Cloth
-            "Grapes <br>": 2  // Leather
-            Fly Agaric
-            Dragon Fruit 
-            Coconut 
-            Cactus
-            Honey 
-            Glowing Mushrooms 
-            Arcane honey 
-            Long Beans 
-            Wheat 
-            Black Berries 
-            blueberries 
-            Sugar Cane 
-            Small Beans 
-            Coffee Beans 
-            Arcane Fruit
-            Salt 
-            Seawood
-            Mint 
-            Herbs
-
-
+            "Conocybe Filaris<br>": 3, 
+            "Bananas <br>": 5, 
+            "Sanguine Fruit <br>": 2, 
+            "Limes <br>": 5, 
+            "Grapes <br>": 5, 
+            "Fly Agaric<br>": 3,
+            "Dragon Fruit<br>": 2,
+            "Coconut<br>": 5,
+            "Cactus<br>": 5,
+            "Honey<br>": 3,
+            "Glowing Mushrooms<br>": 3,  
+            "Arcane honey<br>": 1,
+            "Long Beans<br>": 3,
+            "Wheat<br>": 3,
+            "Black Berries<br>": 5, 
+            "blueberries<br>": 5,
+            "Sugar Cane<br>": 1,
+            "Small Beans<br>": 2,
+            "Coffee Beans<br>": 1,
+            "Arcane Fruit<br>": 1,
+            "Salt<br>": 4,
+            "Seawood<br>": 4,
+            "Mint<br>": 5,
+            "Herbs<br>": 5,
         }
     ),
     "b3": new Quest("Fishing Trophies", ["non-magic"], 
         {
-            "Large Fish Egg<br>": 1, // Revival Feather
-            "Snowflake Moray Eel<br>": 2, // Dragon Roll Sushi
-            "Aether Fish Meat<br>": 5, // Beef Stew
-            "Charred fish Meat<br>": 6, // Tea
-            "Jellyfish <br>": 5  // Water
-            Arapima
-            Lobster
-            Gar
-            Frigid Fish Meat 
-            Catfish
-            Giant Moray Eel 
-            Spoiled fish meat 
-            Trout 
-            Undulated Moray Eel 
-            Decent Fish
-            Premium Fish 
-            Arowana
-            Crab
-            Glowing Crab
+            "Large Fish Egg<br>": 3, 
+            "Snowflake Moray Eel<br>": 2, 
+            "Aether Fish Meat<br>": 1, 
+            "Charred fish Meat<br>": 5, 
+            "Jellyfish <br>": 2, 
+            "Arapima<br>": 4,
+            "Lobster<br>": 2,
+            "Gar<br>": 4,
+            "Frigid Fish Meat<br>": 5,
+            "Catfish<br>:": 4,
+            "Giant Moray Eel<br>": 2, 
+            "Spoiled fish meat<br>": 5,
+            "Trout<br>": 3,
+            "Undulated Moray Eel<br>": 2, 
+            "Decent Fish<br>": 4,
+            "Premium Fish<br>": 3,
+            "Arowana<br>": 3,
+            "Crab<br>": 2,
+            "Glowing Crab<br>": 1,
 
         }
     ),
     "b4": new Quest("New Discoveries", ["non-magic"], 
         {
-            Sapphire 
-            Emerald 
-            Garnet 
-            Raw Crystal 
-            Quartz
-            Iron 
-            Amber 
-            Gold 
-            Metal 
+            "Sapphire<br>": 5, 
+            "Emerald<br>": 5, 
+            "Garnet<br>": 5, 
+            "Raw Crystal<br>": 4, 
+            "Quartz<br>": 4,
+            "Iron<br>": 3, 
+            "Amber<br>": 3, 
+            "Gold<br>": 2, 
+            "Metal<br>": 1,
         }
     ),
     "b5": new Quest("Tanning the Hide", ["non-magic"], 
         {
-            Hide: Diamond Python 
-            Hide: river snake 
-            Hide: Coral Snake 
-            Pelt: Bison 
-            Pelt: Wolf 
-            Pelt: Fox
-            Pelt: Raccoon 
-            Pelt: Aether Deer 
-            Pelt: Brown Deer 
-            Pelt: Red Deer 
-            Pelt: Spotted Deer 
-            Pelt: Aether bison 
-            Pelt: Albino Moose 
-            Pelt: brown Bear 
-            Pelt: black Bear 
-            Pelt: Frigid Bear 
-            Pelt: Grey Rabbit 
-            Pelt: Cream Rabbit 
-            Pelt: Brown Rabbit 
-            Pelt: Piebald Moose 
-            Pelt: Brown Moose 
+            "Hide: Diamond Python<br>": 5,
+            "Hide: river snake<br>": 5, 
+            "Hide: Coral Snake<br>": 5,
+            "Pelt: Bison<br>": 5, 
+            "Pelt: Wolf<br>": 5, 
+            "Pelt: Fox<br>": 5,
+            "Pelt: Raccoon<br>": 5, 
+            "Pelt: Aether Deer<br>": 5, 
+            "Pelt: Brown Deer<br>": 5, 
+            "Pelt: Red Deer<br>": 5, 
+            "Pelt: Spotted Deer<br>": 5, 
+            "Pelt: Aether bison<br>": 5,
+            "Pelt: Albino Moose<br>": 5, 
+            "Pelt: brown Bear<br>": 5,
+            "Pelt: black Bear<br>": 5, 
+            "Pelt: Frigid Bear<br>": 5, 
+            "Pelt: Grey Rabbit<br>": 5, 
+            "Pelt: Cream Rabbit<br>": 5,
+            "Pelt: Brown Rabbit<br>": 5, 
+            "Pelt: Piebald Moose<br>": 5, 
+            "Pelt: Brown Moose<br>": 5, 
         }
     ),
     "b6": new Quest("A Dragon's Hoard", ["non-magic"], 
         {
-           Butterfly 
-           Plant Fiber 
-           Exotic Scales 
-           Chitin 
-           Glass 
-           Seaweed 
-           Paper 
-           Mortar and Pestal 
-           Turtle Shell 
-           Trilobite 
-           arcane Frog 
-           Squid Ink 
-           crystals 100 
+           "Moth<br>": 5, 
+           "Plant Fiber<br>": 5, 
+           "Exotic Scales<br>": 1, 
+           "Chitin<br>": 4, 
+           "Glass<br>": 2, 
+           "Seaweed<br>": 3, 
+           "Paper<br>": 2, 
+           "Mortar and Pestal<br>": 1, 
+           "Turtle Shell<br>": 2, 
+           "Trilobite<br>": 2, 
+           "Arcane Frog<br>": 1,
+           "Squid Ink<br>": 2, 
+           "Crystals 100<br>": 4, 
         }
     ),
     "i1": new Quest("Fboners mores", ["arcane", "elementalist", "enchantment"], 
         {
-           
+           "Large Feathers<br>": 5,
+           "Elder Beetle<br>": 5,
+           "Small Featheres<br>": 5,
+           "Small Animal Claws<br>": 4,
+           "Medium Animal Claws<br>": 4,
+           "Large Animal Claws<br>": 4,
+           "Teeth<br>": 4,
+           "Bones<br>": 5,
+           "Large Animal Skull<br>": 2, 
+           "Skull<br>": 4,
+           "Large Animal Horns<br>": 2,
+           "Medium Animal Horns<br>": 2, 
+           "Small Animal Horns<br>": 2, 
+           "Chitin<br>": 3, 
+           "Whale Bone <br>": 1, 
+           "Turtle Shell<br>": 3, 
+           "Carcass: Large Animal<br>": 1, 
+           "Carcass: Small Animal<br>": 4, 
+           "Carcass: Eagle<br>": 4, 
+           "Carcass: Heron<br>": 3, 
+           "Carecass: Penguin<br>": 5, 
+           "Carcass: Snow Owl<br>": 5, 
+           "Carcass: Vulture<br>": 1, 
+           "Carcass: Swan<br>": 1, 
+           "Carcass: Brown Owl<br>": 5, 
+           "Carcass: Hawk<br>": 3, 
+           "Carcass: Dolphin<br>": 1, 
+           "Carcass: Sea Serpent<br>": 1, 
+           "Carcass: Shark<br>": 3, 
+           "Carcass: Octupus<br>": 2, 
+           "Carcass: Crocodile<br>": 1, 
+
         }
     ),
     "i2": new Quest("Missing Friends", ["arcane", "healing"], 
         {
-         Container: Duffel bag 
-         Pearl Necklace 
-         Charm: Fishing 
-         Charm: Foraging 
-         Charm: Hunting 
-         Charm: Caving 
-         Container: Satchel 
-         Container: Cooler 
-         Container: Basket 
-         Blueprint 
-         Container: barrel 
+         "Container: Duffel Bag<br>": 5, 
+         "Pearl Necklace<br>": 1, 
+         "Charm: Fishing<br>": 3, 
+         "Charm: Foraging<br>": 3, 
+         "Charm: Hunting<br>": 3, 
+         "Charm: Caving<br>": 3, 
+         "Container: Satchel<br>": 5, 
+         "Container: Cooler<br>": 5, 
+         "Container: Basket<br>": 5,  
+         "Blueprint<br>": 1, 
+         "Container: Barrel<br>": 5, 
     
         }
     ),
     "i3": new Quest("Aiding the Injured", ["illusionist", "arcane"], 
         {
-           Tea 
-           Hemlock Syrup 
-           Bandages 
-           Healing Salve 
-           Antidote 
-           Revival Feather 
+           "Tea<br>": 5, 
+           "Hemlock Syrup<br>": 1, 
+           "Bandages<br>": 5, 
+           "Healing Salve<br>": 5, 
+           "Antidote<br>": 5,
+           "Aberrant Cleanser<br>": 1, 
+           "Revival Feather<br>": 1, 
         }
     ),
     "i4": new Quest("Wyvern Wrath", ["non-magic"], 
         {
-            Booster: Aether 
-            Goblet of wind 
-            Goblet of Poison 
-            Goblet of Luster 
-            Armor: Leather 
-            Armor: Iron 
-            Armor: Bone 
-            Booster: Strength 
-            Booster: Bleed 
-            Booster: Breath 
-            Booster: DPS 
-            Aether book 
-            Goblet of Ice 
-            goblet of Shadow 
-            Goblet of Radiation 
-            Goblet of Lightning 
-            Goblet of Fire 
-            Delicate Aether Shard
+            "Booster: Aether<br>": 4, 
+            "Goblet of wind<br>": 5,
+            "Goblet of Poison<br>": 5,
+            "Goblet of Luster<br>": 5, 
+            "Armor: Leather<br>": 3, 
+            "Armor: Iron<br>": 2, 
+            "Armor: Bone<br>": 4, 
+            "Booster: Strength<br>": 4,
+            "Booster: Bleed<br>": 4, 
+            "Booster: Breath<br>": 4, 
+            "Booster: DPS<br>": 4,
+            "Aether book<br>": 1, 
+            "Goblet of Ice<br>": 5, 
+            "Goblet of Shadow<br>": 5, 
+            "Goblet of Radiation<br>": 5, 
+            "Goblet of Lightning<br>": 5, 
+            "Goblet of Fire<br>": 5, 
+            "Delicate Aether Shard<br>": 1,
         }
     ),
     "i5": new Quest("Clockmaker's Friend", ["healing"], 
         {
-           Malachite
-           Selenite 
-           Chrysocolla
-           Serpentine 
-           Blue Goldstone 
-           Aquamarine 
-           Ruby 
-           Sunstone 
-           Moonstone 
-           Aether Quartz
-           Amethyst
-           Lapis Lazuli 
-           Limestone 
-           Jade 
+           "Malachite<br>": 5,
+           "Selenite<br>": 5, 
+           "Chrysocolla<br>": 5,
+           "Serpentine<br>": 5, 
+           "Blue Goldstone<br>": 4,
+           "Aquamarine<br>": 4, 
+           "Ruby<br>": 4, 
+           "Sunstone<br>": 3, 
+           "Moonstone<br>": 3, 
+           "Aether Quartz<br>": 2,
+           "Amethyst<br>": 2,
+           "Lapis Lazuli<br>": 1, 
+           "Limestone<br>": 1, 
+           "Jade<br>": 1, 
         }
     ),
     "i6": new Quest("The Perfect Nest", ["enchantment"], 
         {
-            Breath Potion 
-            Genotype blocker 
-            Radiance Bond: Petty 
-            Aether tonic 
-            Soul Twine 
-            Gender Potion 
-            Temper Potion 
-            Fertility Potion 
-            Dragon's talon 
-            Dragon's Eye 
-            Dragon's Heart 
-            Skill Charm 
-            Bottle of Vanta 
-            Bottle of Ivory 
-            Bottle of Umber 
-            Bottle of Haze 
-            Radiance bond: Mythic 
-            Radiance bond: Uncommon 
-            Radiance Bond: common 
-            Radiance Bond: rare 
-            Dragon's Instinct
+            "Breath Potion<br>": 5, 
+            "Genotype blocker<br>": 5, 
+            "Radiance Bond: Petty<br>": 5, 
+            "Aether tonic<br>": 1, 
+            "Soul Twine<br>": 1, 
+            "Gender Potion<br>": 1, 
+            "Temper Potion<br>": 4, 
+            "Fertility Potion<br>": 3, 
+            "Dragon's talon<br>": 1, 
+            "Dragon's Eye<br>": 2, 
+            "Dragon's Heart<br>": 3, 
+            "Skill Charm<br>": 5, 
+            "Bottle of Vanta<br>": 1, 
+            "Bottle of Ivory<br>": 2, 
+            "Bottle of Umber<br>": 4, 
+            "Bottle of Haze<br>": 3, 
+            "Radiance bond: Mythic<br>": 1, 
+            "Radiance bond: Uncommon<br>": 3, 
+            "Radiance Bond: Common<br>": 4,
+            "Radiance Bond: Rare<br>": 2, 
+            "Dragon's Instinct<br>": 4,
         }
     ),
  "m1": new Quest("Lurking in the Waters", ["arcane", "healing"], 
         {
-            Fire Elixir 
-            Wind Elixir 
-            Poison Elixir 
-            Luster Elixir 
-            Crystalline Armor 
-            Booster Nightshade 
-            Booster brawler 
-            Ice Elixir 
-            Shadow Elixir 
-            Radiation Elixir 
-            Lightning Elixir 
-            Revival Feather 
-            Aether Book 
-            Adept aether Shard
+            "Fire Elixir<br>": 5, 
+            "Wind Elixir<br>": 5, 
+            "Poison Elixir<br>": 5,
+            "Luster Elixir<br>": 5, 
+            "Crystalline Armor<br>": 1, 
+            "Booster Nightshade<br>": 4, 
+            "Booster brawler<br>": 4, 
+            "Ice Elixir<br>": 5,
+            "Shadow Elixir<br>": 5, 
+            "Radiation Elixir<br>": 5, 
+            "Lightning Elixir<br>": 5, 
+            "Revival Feather<br>": 2, 
+            "Aether Book<br>": 1, 
+            "Adept aether Shard<br>": 2,
         }
     ),
     "m2": new Quest("Surveying the Aether", ["arcane", "illusionist"], 
         {
-            Aether Bird Carcass 
-            Aether book 
-            Aether Quartz
-            Aether Bones 
-            Aether Deer Pelt 
-            Aether bison Pelt 
-            Aether Feathers 
-            Aether Imbued Pages 
-            Aether Imbued Scales 
-            Delicate Aether Shard 
-            Adept Aether shard
-            Aether Meat 
-            Aether fish meat 
-            Aether tonic 
+            "Aether Bird Carcass<br>": 2, 
+            "Aether book<br>": 1, 
+            "Aether Quartz<br>": 2,
+            "Aether Bones<br>": 5, 
+            "Aether Deer Pelt<br>": 4, 
+            "Aether bison Pelt<br>": 5, 
+            "Aether Feathers<br>": 5, 
+            "Aether Imbued Pages<br>": 1, 
+            "Aether Imbued Scales<br>": 5,
+            "Delicate Aether Shard<br>": 2, 
+            "Adept Aether Shard<br>": 1,
+            "Aether Meat<br>": 5, 
+            "Aether Fish Meat": 5, 
+            "Aether Tonic<br>": 2, 
         }
     ),
     "m3": new Quest("Feast of the Ages", ["elementalist", "enchantment"], 
         {
-            Fried rice 
-            Meat Cake 
-            Hot Pot 
-            Mushroom Soup 
-            Rack of Ribs 
-            Niramish
-            Dumpling Stir Fry 
-            Ramen 
-            Fruit Salad 
-            Premium Cured Meat 
-            Crab Cake 
-            Meatballs 
-            Veggie Skewer 
-            Dragon rolll sushi 
-            Meat stew 
-            Decently Preserved Fish 
-            PRemium Preserved Fish 
-            Decently cured Meat
+            "Fried Rice<br>": 5,
+            "Meat Cake<br>": 1, 
+            "Hot Pot<br>": 2, 
+            "Mushroom Soup<br>": 2, 
+            "Rack of Ribs<br>": 2, 
+            "Niramish<br>": 2,
+            "Dumpling Stir Fry<br>": 3, 
+            "Ramen<br>": 4, 
+            "Fruit Salad<br>": 4, 
+            "Premium Cured Meat<br>": 3, 
+            "Crab Cake<br>": 5, 
+            "Meatballs<br>": 5, 
+            "Veggie Skewer<br>": 5, 
+            "Dragon rolll sushi<br>": 2, 
+            "Meat stew<br>": 3, 
+            "Decently Preserved Fish<br>": 4, 
+            "Premium Preserved Fish<br>": 3, 
+            "Decently Cured Meat<br>": 4,
         }
     ),
-    "m4": new Quest("Zookeeper", ["healing" ,"elementalist"], 
+    "m4": new Quest("Into Familiar Territory", ["healing" ,"elementalist"], 
         {
-           Diamond Nymph
-           Golden chest of Mimcry 
-           Draco Otter: Albino 
-           Draco Otter: River 
-           Draco Otter: Sea 
-           Humminggriffin Jade
-           Hummingriffin crimson
-           Diamond Mantis 
-           Diamond Treehopper 
-           Diamond Trilobite 
-           Diamond Butterfly
-           Diamond Beetle 
-           Royal Glimmer Deer Gloom 
-           Reticulated Crocodile aether 
-           Ret croc shimering 
-           ret crock gloom 
-           ret crock frigid 
-           ret crock scorching 
-           ret crock radiant 
-           Secoria aether 
-           scoria komodo scorching 
-           scoria shimmering 
-           scoria gloom 
-           scoria frigid 
-           scoria radiant 
-           royal aether 
-           roytal shimmering 
-           royal frigid 
-           royal scorching 
-           royal radiant 
-           ret crock melanistic 
-           bear aether 
-           highborn ursus shimmering 
-           gloom 
-           frigid 
-           scorched 
-           radiant 
-           gleaming newt aether 
-           shimmering 
-           gloom 
-           frigid 
-           scorching 
-           radiant 
-
+           "Highborn Urses<br>": 5,
+           "Snow Leopard<br>": 4,
+           "Gleaming Newt<br>": 3,
+           "Vulture<br>": 3,
+           "Fox<br>": 1,
+           "Boar<br>": 2,
+           "Reticulated Crocodile<br>": 5,
+           "Glinting Eel<br>": 4,
+           "Draco Otter<br>": 3,
+           "Axolotl<br>": 1,
+           "Jellyfish<br>": 2,
+           "Royal Glimmer Deer<br>": 5,
+           "Humminggriffon<br>": 4,
+           "Toucan<br>": 3,
+           "Sapient Sunflower<br>": 1,
+           "Badger<br>": 2,
+           "Cane Toad<br>": 5,
+           "Diamond Moth<br>": 4,
+           "Draco Bat<br>": 3,
+           "Salamander<br>": 1, 
+           "Scoria Komodo<br>": 2,
+           "Bunny<br>": 5,
+           "Raccoon<br>": 3,
+           "Red Panda<br>": 1,
+           "Porcupine<br>": 2,
+           "Jerboa<br>": 4,
+           "Golden Chest of Mimicy<br>": 3,
+           "Sprite<br>": 1,
+           "Owl<br>": 4,
+           "Magpie<br>": 3,
+           "Crow<br>": 1,
+           "Draco Boa<br>": 5,
+           "Aberrant Draco Boa<br>": 1,
         }
     ),
     "m5": new Quest("Mirror Mirror", ["enchantment"], 
         {
-           paint 
-           paint kit 
-           Shears 
-           delicate aether shard 
-           adept aether shard 
-           shampoo 
-           do over kit 
-           touch up kit 
-           large item kit 
-           small item kit 
-           nail polish 
-           dragon tears 
+           "Paint<br>": 5,
+           "Paint Kit<br>": 4, 
+           "Shears<br>": 5, 
+           "Delicate Aether Shard<br>": 3, 
+           "Adept Aether Shard<br>": 1, 
+           "Shampoo<br>": 5, 
+           "Do Over Kit<br>": 1, 
+           "Touch Up Kit<br>": 3,
+           "Large Item Kit<br>": 1, 
+           "Small Item Kit<br>": 3, 
+           "Nail polish<br>": 5, 
+           "Dragon Tears<br>": 4, 
         }
     ),
     "m5": new Quest("Fury of Dragons", ["enchantment"], 
         {
-           Common egg (player chosen)
-           uncommon egg 
-           Rare egg 
-           arcane heart 
-           aether book 
-           congealed ancient's blood 
-           shard of ancients rib cage 
-           eternal element 
-           crystalline armor 
-           aether armor 
-           Booster Warlord 
+           "Egg: Chosen Common<br>": 1,
+           "Egg: Chosen Uncommon<br>": 1,
+           "Egg: Chosen Rare<br>": 1, 
+           "Arcane Heart<br>": 2,
+           "Aether Book<br>": 2, 
+           "Congealed Ancients Blood<br>": 3, 
+           "Shard of Ancients Ribcage<br>": 3,
+           "Eternal Element<br>": 4, 
+           "Crystalline Armor<br>": 1, 
+           "Aether Armor<br>": 1,
+           "Booster Warlord<br>": 5, 
         }
     )
 }
@@ -476,6 +497,7 @@ var magic_type;
 var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass chance)
 var has_other_dragon; // +5% (to pass chance)
 var is_hoarder; // Chance to return with one more item
+var fam_raccoon // returns with one more item 100%
 
 var extras; // Array of strings, if input was true, add id to this array, later used to get value from index
 
@@ -495,6 +517,8 @@ function readInputs() {
     has_bonded = document.querySelector("[name=bonded]:checked") ? document.querySelector("[name=bonded]:checked").value == "Y" : false;
     has_other_dragon = document.querySelector("[name=other_dragon]:checked") ? document.querySelector("[name=other_dragon]:checked").value == "Y" : false;
     is_hoarder = document.querySelector("[name=hoarder]:checked") ? document.querySelector("[name=hoarder]:checked").value == "Y" : false;
+    fam_raccoon = document.querySelector("[name=raccoon]:checked") ? document.querySelector("[name=raccoon]:checked").value == "Y" : false;
+
     
     // Get extras
     extras = []
@@ -538,7 +562,9 @@ function rollQuest() {
         // Roll amount of loot
         var max_loot = 3;
         if(is_hoarder) { max_loot += 1; }
+        else if (fam_raccoon) {max_loot += 1;}
         var num_loot = rand(1, max_loot);
+        
     
         var loot_result = dragonName + " has succeeded in their quest! They found:<br><br>"
     
@@ -550,8 +576,7 @@ function rollQuest() {
     }
     
     function rollSide() {
-        var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest</i>. \
-        Only " + dragonName + " may complete this quest chain.<br><br>"
+        var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest</i>.<br><br>"
         var rand_index = rand(0, side_quests.length-1);
         side_result += side_quests[rand_index];
         side_result += "To submit your side quest, please submit a side quest prompt, with the title of the side quest in the url box. Add your dragon to the character section. <br><br>\
