@@ -70,6 +70,7 @@
                         <option value="na">N/A</option>
                         <option value="timid">Timid/Calm</option>
                         <option value="aggressive">Aggressive/Sinister</option>
+                        <option value="pine">Porcupine Familiar<option>
                     </select>
                     <br>
 
@@ -135,11 +136,6 @@
                             <td>Pearl Necklace</td>
                             <td><input type="radio" name="pearl_necklace" value="Y" class="extras"><label for="pearl_necklace">Yes</label></td>
                             <td><input type="radio" name="pearl_necklace" value="N" class="extras" checked><label for="pearl_necklace">No</label></td>
-                        </tr>
-                        <tr>
-                            <td>Porcupine</td>
-                            <td><input type="radio" name="fam_pine" value="Y" class="extras"><label for="pine">Yes</label></td>
-                            <td><input type="radio" name="fam_pine" value="N" class="extras" checked><label for="pine">No</label></td>
                         </tr>
                     </table>
                 </form>

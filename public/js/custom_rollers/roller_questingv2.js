@@ -30,9 +30,7 @@ const magic_level_pass = {
 const extra_pass = {
     "domestic_taming": 5,
     "bunny": 5,
-    "pearl_necklace": 100,
-    "pine": -20
-
+    "pearl_necklace": 100
 }
 
 const base_injury = {
@@ -46,6 +44,7 @@ const temper_injury = {
     "na": 0,
     "timid": -5,
     "aggressive": 5,
+    "pine": -20
 }
 
 
@@ -515,8 +514,6 @@ function readInputs() {
     has_other_dragon = document.querySelector("[name=other_dragon]:checked") ? document.querySelector("[name=other_dragon]:checked").value == "Y" : false;
     is_hoarder = document.querySelector("[name=hoarder]:checked") ? document.querySelector("[name=hoarder]:checked").value == "Y" : false;
     fam_raccoon = document.querySelector("[name=raccoon]:checked") ? document.querySelector("[name=raccoon]:checked").value == "Y" : false;
-    fam_pine = document.querySelector("[name=pine]:checked") ? document.querySelector("[name=pine]:checked").value == "Y" : false;
-
 
     
     // Get extras
@@ -587,7 +584,6 @@ function rollInjury() {
     // Get injury chance based on rank and temper (possibly from extras as well)
     var injury_chance = base_injury[rank];
     injury_chance += temper_injury[temper];
-    injury_chance += pine[extra_pass];
 
     // Roll injury
     var injury_result;
