@@ -80,7 +80,7 @@
                         <option value="low">Low</option>
                         <option value="high">High</option>
                     </select>
-                    <br>
+ 
 
                     <b>Magic Type</b>
                     <select id="magic_type" name="magic_type">
