@@ -54,7 +54,7 @@
                             <option value="m5">Mirror, Mirror</option>
                             <option value="m6">Fury of Dragons</option>
                     </select>
-                   
+                    <br>
 
                     <b>Rank</b>
                     <select id="rank" name="rank">
@@ -63,7 +63,7 @@
                         <option value="ancient">Ancient</option>
                         <option value="primordial">Primordial</option>
                     </select>
-                 
+                    <br>
 
                     <b>Temper</b>
                     <select id="temper" name="temper">
@@ -72,6 +72,7 @@
                         <option value="aggressive">Aggressive/Sinister</option>
                         <option value="pine">Porcupine Familiar<option>
                     </select>
+                    <br>
 
                     <b>Magic Level</b>
                     <select id="magic_level" name="magic_level">
@@ -79,7 +80,7 @@
                         <option value="low">Low</option>
                         <option value="high">High</option>
                     </select>
- 
+                    <br>
 
                     <b>Magic Type</b>
                     <select id="magic_type" name="magic_type">
