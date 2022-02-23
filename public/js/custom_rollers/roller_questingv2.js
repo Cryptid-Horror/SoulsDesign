@@ -479,10 +479,9 @@ const side_quests = [
 const injuries = {
     "Your dragon was injured while questing!": 85,
     "Your dragon feels a little bit sick, they will need an antidote to continue questing.": 10,
-    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 2,
+    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 3,
     "Your dragon has been hit by heat stroke! They cannot go questing until given milk or water!": 1,
     "Your dragon was attacked by a wild dragon while questing!": 1,
-    "While questing, your dragon fell from a high place and was unable to catch themselves. They have many scrapes and will need Bandages to continue questing.": 1,
 }
 
 var dragonName;
