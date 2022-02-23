@@ -448,41 +448,37 @@ const quests = {
 
 // List of strings
 const side_quests = [
-    "The Butcher's Order",
+    "<b>The Butcher's Order</b><br>",
     
-    "Gardener's Delight",
+    "<b>Gardener's Delight</b><br>",
     
-    "Mushroom Delicacy ",
+    "<b>Mushroom Delicacy</b><br> ",
     
-    "Fisherman's aid",
+    "<b>Fisherman's aid</b><br>",
     
-    "Courier's Request",
+    "<b>Courier's Request</b><br>",
     
-    "Blacksmith's Inquiry",
+    "<b>Blacksmith's Inquiry</b><br>",
     
-    "Healing Shrine Delivery",
+    "<b>Healing Shrine Delivery</b><br>",
     
-    "Salon Quality",
+    "<b>Salon Quality</b><br>",
     
-    "Nesting Aid",
+    "<b>Nesting Aid</b><br>",
     
-    "Take This...",
+    "<b>Take This...</b><br>",
     
-    "Training Montage",
+    "<b>Training Montage</b><br>",
 
-    "Granny's Recipe",
+    "<b>Granny's Recipe</b><br>",
 
     ];
 
 // Structure: <full_sentence>: <chance>
 const injuries = {
     "Your dragon got a scratch while questing!": 85,
-    "Your dragon feels a little bit sick... \
-    Their health will be reduced by 10 points for \
-    every quest they embark on until they get an antidote!": 10,
-    "Your dragon feels terribly ill... \
-    Their health will be reduced by 20 points for \
-    every quest they embark on until they get an antidote!": 3,
+    "Your dragon feels a little bit sick, they will need an antidote to continue questing.": 10,
+    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 3,
     "Your dragon has been hit by heat stroke! They cannot go questing until \
     given milk or water!": 1,
     "Your dragon was attacked by a wild dragon while questing!": 1
@@ -560,7 +556,7 @@ function rollQuest() {
 
     function rollLoot(){
         // Roll amount of loot
-        var max_loot = 3;
+        var max_loot = 4;
         if(is_hoarder) { max_loot += 1; }
         else if (fam_raccoon) {max_loot += 1;}
         var num_loot = rand(1, max_loot);
@@ -576,15 +572,10 @@ function rollQuest() {
     }
     
     function rollSide() {
-        var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest</i>.<br><br>"
+        var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest item</i>.<br><br>"
         var rand_index = rand(0, side_quests.length-1);
         side_result += side_quests[rand_index];
-        side_result += "To submit your side quest, please submit a side quest prompt, with the title of the side quest in the url box. Add your dragon to the character section. <br><br>\
-        <b>Link to Entry:</b> [Link the image with the entry!]<br>\
-        <b>Side Quest Title:</b> [what is the title?]<br>\
-        <b>Side Quest claim ID:</b> (The id of the original claim that you got the side quest from)<br><br>\
-        Side quests cannot be failed, you are guaranteed one of the two rewards."
-
+        side_result += "To submit your side quest, please see the side quest prompt under activities."
         return side_result;
     }
 }
