@@ -67,6 +67,7 @@
 
                     <b>Temper</b>
                     <select id="temper" name="temper">
+                        <option value="na">N/A</option>
                         <option value="timid">Timid/Calm</option>
                         <option value="aggressive">Aggressive/Sinister</option>
                         <option value="pine">Porcupine Familiar<option>
