@@ -113,7 +113,7 @@
                             <td><input type="radio" name="hoarder" value="N"><label for="is_hoarder">No</label></td>
                         </tr>
                         <tr>
-                            <td>Hoarder</td>
+                            <td>Raccoon</td>
                             <td><input type="radio" name="fam_raccoon" value="Y"><label for="fam_racoon">Yes</label></td>
                             <td><input type="radio" name="fam_raccoon" value="N"><label for="fam_racoon">No</label></td>
                         </tr>
