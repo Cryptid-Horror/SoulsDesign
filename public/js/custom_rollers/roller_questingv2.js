@@ -20,8 +20,9 @@ const base_pass = {
 // Pass rate boosts based on magic level
 const magic_level_pass = {
     "none": 0,
-    "low": 5,
-    "high": 10
+    "basic": 10,
+    "low": 20,
+    "high": 30
 }
 
 // Pass rate boosts based on items, familiars, or taming
@@ -489,7 +490,7 @@ var dragonName;
 var quest;
 var rank;
 var temper; // -5% for timid, +5% for aggressive (to injury chance)
-var magic_level; // +5% for low, +10% for high (but what about basic?) (to pass chance)
+var magic_level; // +10 for Basic, +20% for low, +30% for high (but what about basic?(added)) (to pass chance)
 var magic_type;
 var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass chance)
 var has_other_dragon; // +5% (to pass chance)
@@ -551,7 +552,7 @@ function rollQuest() {
     result += "<br><br>";
 
     result += rollInjury();
-    if(pass_roll < pass_chance) { result += "<br>Items have been deposited to hoard."; }
+    if(pass_roll < pass_chance) { result += "<br>Items have been deposited to your hoard."; }
 
     document.getElementById("result").innerHTML = result;
 
@@ -576,7 +577,7 @@ function rollQuest() {
         var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest item</i>.<br><br>"
         var rand_index = rand(0, side_quests.length-1);
         side_result += side_quests[rand_index];
-        side_result += "To submit your side quest, please see the side quest prompt under activities."
+        side_result += "To submit your side quest, please see the side quest prompt under activities, or the item itself."
         return side_result;
     }
 }

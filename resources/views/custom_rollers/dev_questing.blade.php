@@ -76,6 +76,7 @@
                     <b>Magic Level</b>
                     <select id="magic_level" name="magic_level">
                         <option value="none">None</option>
+                        <option value="basic">Basic</option>
                         <option value="low">Low</option>
                         <option value="high">High</option>
                     </select>
