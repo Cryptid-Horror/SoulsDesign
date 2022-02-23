@@ -95,7 +95,7 @@
             </td>
            
             <td>
-                <form id="modifiers" align="left">
+                <form id="modifiers" align="right">
                     <table>
                         <tr>
                             <td>Bonded</td>
