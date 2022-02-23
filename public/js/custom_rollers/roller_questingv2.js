@@ -448,40 +448,41 @@ const quests = {
 
 // List of strings
 const side_quests = [
-    "<b>The Butcher's Order</b><br>",
+    "<b>Quest Letter: The Butcher's Order</b><br>",
     
-    "<b>Gardener's Delight</b><br>",
+    "<b>Quest Letter: Gardener's Delight</b><br>",
     
-    "<b>Mushroom Delicacy</b><br> ",
+    "<b>Quest Letter: Mushroom Delicacy</b><br> ",
     
-    "<b>Fisherman's aid</b><br>",
+    "<b>Quest Letter: Fisherman's aid</b><br>",
     
-    "<b>Courier's Request</b><br>",
+    "<b>Quest Letter: Courier's Request</b><br>",
     
-    "<b>Blacksmith's Inquiry</b><br>",
+    "<b>Quest Letter: Blacksmith's Inquiry</b><br>",
     
-    "<b>Healing Shrine Delivery</b><br>",
+    "<b>Quest Letter: Healing Shrine Delivery</b><br>",
     
-    "<b>Salon Quality</b><br>",
+    "<b>Quest Letter: Salon Quality</b><br>",
     
-    "<b>Nesting Aid</b><br>",
+    "<b>Quest Letter: Nesting Aid</b><br>",
     
-    "<b>Take This...</b><br>",
+    "<b>Quest Letter: Take This...</b><br>",
     
-    "<b>Training Montage</b><br>",
+    "<b>Quest Letter: Training Montage</b><br>",
 
-    "<b>Granny's Recipe</b><br>",
+    "<b>Quest Letter: Granny's Recipe</b><br>",
 
     ];
 
 // Structure: <full_sentence>: <chance>
 const injuries = {
-    "Your dragon got a scratch while questing!": 85,
+    "Your dragon was injured while questing!": 85,
     "Your dragon feels a little bit sick, they will need an antidote to continue questing.": 10,
-    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 3,
+    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 2,
     "Your dragon has been hit by heat stroke! They cannot go questing until \
     given milk or water!": 1,
-    "Your dragon was attacked by a wild dragon while questing!": 1
+    "Your dragon was attacked by a wild dragon while questing!": 1,
+    "While questing, your dragon fell from a high place and was unable to catch themselves. They have many scrapes and will need Bandages to continue questing.": 1,
 }
 
 var dragonName;
