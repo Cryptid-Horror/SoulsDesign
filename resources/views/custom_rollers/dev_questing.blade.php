@@ -113,9 +113,14 @@
                             <td><input type="radio" name="hoarder" value="N"><label for="is_hoarder">No</label></td>
                         </tr>
                         <tr>
-                            <td>Raccoon</td>
-                            <td><input type="radio" name="fam_raccoon" value="Y"><label for="fam_racoon">Yes</label></td>
-                            <td><input type="radio" name="fam_raccoon" value="N"><label for="fam_racoon">No</label></td>
+                            <td>Raccoon (+1 Item)</td>
+                            <td><input type="radio" name="raccoon" value="Y"><label for="fam_racoon">Yes</label></td>
+                            <td><input type="radio" name="raccoon" value="N"><label for="fam_racoon">No</label></td>
+                        </tr>
+                        <tr>
+                            <td>Bunny (Pass chance)</td>
+                            <td><input type="radio" name="bunny" value="Y" class="extras"><label for="bunny">Yes</label></td>
+                            <td><input type="radio" name="bunny" value="N" class="extras"><label for="bunny">No</label></td>
                         </tr>
                         <tr>
                             <td>Domestic Taming</td>
