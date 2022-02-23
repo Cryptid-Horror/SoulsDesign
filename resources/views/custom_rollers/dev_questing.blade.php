@@ -70,7 +70,6 @@
                         <option value="na">N/A</option>
                         <option value="timid">Timid/Calm</option>
                         <option value="aggressive">Aggressive/Sinister</option>
-                        <option value="pine">Porcupine Familiar<option>
                     </select>
                     <br>
 
