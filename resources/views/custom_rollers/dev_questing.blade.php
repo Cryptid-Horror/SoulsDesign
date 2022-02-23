@@ -19,14 +19,14 @@
 </head>
 
 <body>
-    <a id="ddmenuLink" href="NavBar.html">Menu</a>
+    <a id="ddmenuLink" href="https://www.soulsbetween.com/">Return Home</a>
     <div id="title" align="center"><h1>Quest Roller</h1></div>
 
     <div id="container1" align="center">
         <table>
             <td>
                 <form id="playerinfo" align="left">
-                    <b>Import Name</b>
+                    <b>Character Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
 
