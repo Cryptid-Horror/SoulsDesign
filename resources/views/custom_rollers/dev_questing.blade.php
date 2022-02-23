@@ -101,8 +101,7 @@
                             <td>Bonded</td>
                             <td><input type="radio" name="bonded" value="Y"><label for="bonded">Yes</label></td>
                             <td><input type="radio" name="bonded" value="N"><label for="bonded">No</label></td>
-                        </tr>
-                        <tr>
+
                             <td>Extra Dragon</td>
                             <td><input type="radio" name="other_dragon" value="Y"><label for="other_dragon">Yes</label></td>
                             <td><input type="radio" name="other_dragon" value="N" checked><label for="other_dragon">No</label></td>
@@ -130,8 +129,7 @@
                             <td>Scoria Komodo</td>
                             <td><input type="radio" name="scoria_komodo" value="Y" class="extras"><label for="scoria_komodo">Yes</label></td>  
                             <td><input type="radio" name="scoria_komodo" value="N" class="extras"><label for="scoria_komodo">No</label></td> 
-                        </tr>
-                        <tr>
+
                             <td>Pearl Necklace</td>
                             <td><input type="radio" name="pearl_necklace" value="Y" class="extras"><label for="pearl_necklace">Yes</label></td>
                             <td><input type="radio" name="pearl_necklace" value="N" class="extras" checked><label for="pearl_necklace">No</label></td>
