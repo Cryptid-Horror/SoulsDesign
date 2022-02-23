@@ -42,7 +42,6 @@ const base_injury = {
 }
 
 const temper_injury = {
-    "na": 0,
     "timid": -5,
     "aggressive": 5,
     "pine": -20
