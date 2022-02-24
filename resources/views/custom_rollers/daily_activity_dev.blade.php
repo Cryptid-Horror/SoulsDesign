@@ -31,7 +31,7 @@
 				<option value="caving">Caving</option>
 			</select>
 		</form>
-		<form id=playerinfo" align="left">
+		<form id="playerinfo" align="left">
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
 			<br>
