@@ -958,7 +958,7 @@ function aberrantInjury()
 }
 
 function clearForms() {
-	document.getElementById("activity").reset();
+	document.getElementById("activitytype").reset();
     document.getElementById("dName").reset();
 	document.getElementById("rank").reset();
     document.getElementById("zone").reset();
