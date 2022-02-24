@@ -958,8 +958,12 @@ function aberrantInjury()
 }
 
 function clearForms() {
-	document.getElementById("activitytype").reset();
-    document.getElementById("playerinfo").reset();
+	document.getElementById("activity").reset();
+    document.getElementById("dName").reset();
+	document.getElementById("rank").reset();
+    document.getElementById("zone").reset();
+	document.getElementById("aberrant").reset();
+    document.getElementById("temp").reset();
     document.getElementById("modifiers").reset();
     document.getElementById("result").innerHTML = "";
 }
