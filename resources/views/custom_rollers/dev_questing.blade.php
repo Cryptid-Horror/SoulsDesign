@@ -128,6 +128,11 @@
                             <td><input type="radio" name="porcupine" value="N" class="extras" checked><label for="porcupine">No</label></td>
                         </tr>
                         <tr>
+                            <td>Fairy (Status Injury chance)</td>
+                            <td><input type="radio" name="fairy" value="Y" class="extras"><label for="fairy">Yes</label></td>
+                            <td><input type="radio" name="fairy" value="N" class="extras" checked><label for="fairy">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Domestic Taming</td>
                             <td><input type="radio" name="domestic_taming" value="Y" class="extras"><label for="domestic_taming">Yes</label></td>  
                             <td><input type="radio" name="domestic_taming" value="N" class="extras" checked><label for="domestic_taming">No</label></td>
@@ -141,6 +146,11 @@
                             <td>Pearl Necklace</td>
                             <td><input type="radio" name="pearl_necklace" value="Y" class="extras"><label for="pearl_necklace">Yes</label></td>
                             <td><input type="radio" name="pearl_necklace" value="N" class="extras" checked><label for="pearl_necklace">No</label></td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Supplies</td>
+                            <td><input type="radio" name="emergency_supplies" value="Y" class="extras"><label for="emergency_supplies">Yes</label></td>
+                            <td><input type="radio" name="emergency_supplies" value="N" class="extras" checked><label for="emergency_supplies">No</label></td>
                         </tr>
                     </table>
                 </form>

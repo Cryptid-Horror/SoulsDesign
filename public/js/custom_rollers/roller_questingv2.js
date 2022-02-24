@@ -54,6 +54,13 @@ const extra_injury = {
     "porcupine": -20
 }
 
+// Proc chance to negate status injuries based on items, familiars, or taming
+// These refer to the inputs (must be of type 'radio') that
+// also have the 'extras' class on them
+const extra_status_injury = {
+    "emergency_supplies": -40,
+    "fairy": -60
+}
 
 class Quest {
     constructor(name, quest_types, loot_table) {
@@ -489,27 +496,32 @@ const injuries = {
     "Your dragon was injured while questing!":
     {
         'chance': 85,
-        'severity': 'mild'
+        'severity': 'mild',
+        'status': false
     },
     "Your dragon feels a little bit sick, they will need an antidote to continue questing.":
     {
         'chance': 10,
-        'severity': 'mild'
+        'severity': 'mild',
+        'status': true
     },
     "Your dragon feels terribly ill, they will need an antidote to continue any activity.":
     {
         'chance': 3,
-        'severity': 'moderate'
+        'severity': 'moderate',
+        'status': true
     },
     "Your dragon has been hit by heat stroke! They cannot go questing until given milk or water!":
     {
         'chance': 1,
-        'severity': 'severe'
+        'severity': 'severe',
+        'status': true
     },
     "Your dragon was attacked by a wild dragon while questing!":
     {
         'chance': 1,
-        'severity': 'severe'
+        'severity': 'severe',
+        'status': false
     },
 }
 
@@ -585,7 +597,8 @@ function rollQuest() {
     if(has_bonded) { pass_chance += 10; }               // The bonded bonus overwrites the has_other_dragon bonus
     else if(has_other_dragon) { pass_chance += 5; }
     for(let i = 0; i < extras.length; i++) {
-        pass_chance += extra_pass[extras[i]];
+        if(extra_pass[extras[i]])
+            pass_chance += extra_pass[extras[i]];
     }
 
     var result = "";
@@ -632,9 +645,9 @@ function rollInjury() {
     var injury_chance = base_injury[rank];
     injury_chance += temper_injury[temper];
     for(let i = 0; i < extras.length; i++) {
-        injury_chance += extra_injury[extras[i]];
+        if(extra_injury[extras[i]])
+            injury_chance += extra_injury[extras[i]];
     }
-
 
     // Roll injury
     var injury_result = "";
@@ -642,10 +655,22 @@ function rollInjury() {
     var injury_roll = rand(1, 100);
     // If roll is less than chance, dragon is injured
     if(injury_roll <= injury_chance) {
+        // Determine if status injuries should apply.
+        var status_injury_chance = 100;
+        for(let i = 0; i < extras.length; i++) {
+            if(extra_status_injury[extras[i]])
+                status_injury_chance += extra_status_injury[extras[i]];
+        }
+        var status_injury_roll = rand(1, 100);
+        var has_status_injury = status_injury_roll <= status_injury_chance;
         // Create the roll table.
         var injury_table = {};
+        var first_injury = Object.keys(injuries)[0];
         Object.keys(injuries).forEach(item => {
-            injury_table[item] = injuries[item].chance;
+            if(!has_status_injury && injuries[item].status)
+                injury_table[first_injury] += injuries[item].chance;
+            else
+                injury_table[item] = injuries[item].chance;
         });
         injury_key_roll = getRollResult(injury_table);
         injury_result += injury_key_roll + "<br>";
@@ -686,10 +711,11 @@ function getRollResult(roll_table) {
 		if(rand_num <= roll_table[table_keys[i]]) { return table_keys[i]; }
 		else { rand_num -= roll_table[table_keys[i]]; }
 	}
-	function clearForms() {
-	document.getElementById("playerinfo").reset();
-	document.getElementById("modifiers").reset();
-	document.getElementById("result").innerHTML = "";
-	}
 	return "error!!?"
+}
+
+function clearForms() {
+    document.getElementById("playerinfo").reset();
+    document.getElementById("modifiers").reset();
+    document.getElementById("result").innerHTML = "";
 }
