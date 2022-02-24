@@ -47,6 +47,13 @@ const temper_injury = {
     "aggressive": 5,
 }
 
+// Injury chance based on items, familiars, or taming
+// These refer to the inputs (must be of type 'radio') that
+// also have the 'extras' class on them
+const extra_injury = {
+    "porcupine": -20
+}
+
 
 class Quest {
     constructor(name, quest_types, loot_table) {
@@ -624,13 +631,17 @@ function rollInjury() {
     // Get injury chance based on rank and temper (possibly from extras as well)
     var injury_chance = base_injury[rank];
     injury_chance += temper_injury[temper];
+    for(let i = 0; i < extras.length; i++) {
+        injury_chance += extra_injury[extras[i]];
+    }
+
 
     // Roll injury
     var injury_result = "";
     var injury_key_roll = "";
     var injury_roll = rand(1, 100);
     // If roll is less than chance, dragon is injured
-    if(injury_roll < injury_chance) {
+    if(injury_roll <= injury_chance) {
         // Create the roll table.
         var injury_table = {};
         Object.keys(injuries).forEach(item => {

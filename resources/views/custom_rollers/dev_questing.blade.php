@@ -123,6 +123,11 @@
                             <td><input type="radio" name="bunny" value="N" class="extras" checked><label for="bunny">No</label></td>
                         </tr>
                         <tr>
+                            <td>Porcupine (Injury chance)</td>
+                            <td><input type="radio" name="porcupine" value="Y" class="extras"><label for="porcupine">Yes</label></td>
+                            <td><input type="radio" name="porcupine" value="N" class="extras" checked><label for="porcupine">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Domestic Taming</td>
                             <td><input type="radio" name="domestic_taming" value="Y" class="extras"><label for="domestic_taming">Yes</label></td>  
                             <td><input type="radio" name="domestic_taming" value="N" class="extras" checked><label for="domestic_taming">No</label></td>
