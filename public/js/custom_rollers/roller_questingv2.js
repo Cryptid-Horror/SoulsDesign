@@ -474,13 +474,54 @@ const side_quests = [
 
     ];
 
-// Structure: <full_sentence>: <chance>
+// Structure: <full_sentence>: 
+// {
+//      'chance': <chance>
+// 
 const injuries = {
-    "Your dragon was injured while questing!": 85,
-    "Your dragon feels a little bit sick, they will need an antidote to continue questing.": 10,
-    "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 3,
-    "Your dragon has been hit by heat stroke! They cannot go questing until given milk or water!": 1,
-    "Your dragon was attacked by a wild dragon while questing!": 1,
+    "Your dragon was injured while questing!":
+    {
+        'chance': 85,
+        'severity': 'mild'
+    },
+    "Your dragon feels a little bit sick, they will need an antidote to continue questing.":
+    {
+        'chance': 10,
+        'severity': 'mild'
+    },
+    "Your dragon feels terribly ill, they will need an antidote to continue any activity.":
+    {
+        'chance': 3,
+        'severity': 'moderate'
+    },
+    "Your dragon has been hit by heat stroke! They cannot go questing until given milk or water!":
+    {
+        'chance': 1,
+        'severity': 'severe'
+    },
+    "Your dragon was attacked by a wild dragon while questing!":
+    {
+        'chance': 1,
+        'severity': 'severe'
+    },
+}
+
+const injury_severity = {
+    "mild":
+    {
+        'min_damage': 10,
+        'max_damage': 50
+    },
+    "moderate":
+    {
+        'min_damage': 30,
+        'max_damage': 100
+    },
+    "severe":
+    {
+        'min_damage': 50,
+        'max_damage': 150
+    }
 }
 
 var dragonName;
@@ -585,17 +626,27 @@ function rollInjury() {
     injury_chance += temper_injury[temper];
 
     // Roll injury
-    var injury_result;
+    var injury_result = "";
+    var injury_key_roll = "";
     var injury_roll = rand(1, 100);
     // If roll is less than chance, dragon is injured
     if(injury_roll < injury_chance) {
-        injury_result = getRollResult(injuries);
-        if(injury_result == "Your dragon got a scratch while questing!") { 
-            injury_result += " -" + rand(10, 50) + "HP";
-        }
-        if(injury_result == "Your dragon was attacked by a wild dragon while questing!") { 
-            injury_result += " -" + rand(50, 150) + "HP";
-        }
+        // Create the roll table.
+        var injury_table = {};
+        Object.keys(injuries).forEach(item => {
+            injury_table[item] = injuries[item].chance;
+        });
+        injury_key_roll = getRollResult(injury_table);
+        injury_result += injury_key_roll + "<br>";
+
+        var severity = injuries[injury_key_roll].severity;
+
+        injury_result += "Your dragon suffers a " + severity + " injury.";
+
+        var min_injury = injury_severity[severity].min_damage;
+        var max_injury = injury_severity[severity].max_damage;
+
+        injury_result += " -" + rand(min_injury, max_injury) + "HP";
     }
     else {
         injury_result = "Your dragon was not injured."
