@@ -221,6 +221,10 @@ return [
                 'url' => 'admin/data/character-titles'
             ],
             [
+                'name' => 'Status Effects',
+                'url' => 'admin/data/status-effects'
+            ],
+            [
                 'name' => 'Shops',
                 'url' => 'admin/data/shops'
             ],

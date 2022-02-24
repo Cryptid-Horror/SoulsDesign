@@ -28,6 +28,7 @@ use App\Models\Claymore\Weapon;
 use App\Services\SubmissionManager;
 
 use App\Http\Controllers\Controller;
+use App\Models\Status\StatusEffect;
 
 class SubmissionController extends Controller
 {
@@ -117,6 +118,7 @@ class SubmissionController extends Controller
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
+            'statuses' => StatusEffect::orderBy('name')->pluck('name', 'id'),
             'inventory' => $inventory,
             'page' => 'submission',
             'expanded_rewards' => Config::get('lorekeeper.extensions.character_reward_expansion.expanded'),
@@ -248,6 +250,7 @@ class SubmissionController extends Controller
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
+            'statuses' => StatusEffect::orderBy('name')->pluck('name', 'id'),
             'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
             'recipes'=> Recipe::orderBy('name')->pluck('name', 'id'),
             'page' => 'submission',

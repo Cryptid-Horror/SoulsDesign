@@ -23,6 +23,7 @@ use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopStock;
+use App\Models\Status\StatusEffect;
 use App\Models\User\User;
 use App\Models\Stats\Character\CharacterLevel;
 use App\Models\Stats\User\Level;
@@ -271,6 +272,23 @@ class WorldController extends Controller
             'categories' => $categories->keyBy('id'),
             'rarities' => $rarities->keyBy('id'),
             'features' => $features,
+        ]);
+    }
+
+    /**
+     * Shows the status effects page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getStatusEffects(Request $request)
+    {
+        $query = StatusEffect::query();
+        $name = $request->get('name');
+        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
+
+        return view('world.status_effects', [
+            'statuses' => $query->orderBy('name')->paginate(20)->appends($request->query()),
         ]);
     }
 

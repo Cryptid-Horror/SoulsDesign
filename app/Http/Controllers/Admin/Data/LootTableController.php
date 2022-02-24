@@ -18,6 +18,7 @@ use App\Models\Loot\LootTable;
 use App\Services\LootService;
 
 use App\Http\Controllers\Controller;
+use App\Models\Status\StatusEffect;
 
 class LootTableController extends Controller
 {
@@ -61,6 +62,7 @@ class LootTableController extends Controller
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
+            'statuses' => StatusEffect::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),
         ]);
@@ -89,6 +91,7 @@ class LootTableController extends Controller
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
             'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
             'currencies' => Currency::orderBy('name')->pluck('name', 'id'),
+            'statuses' => StatusEffect::orderBy('name')->pluck('name', 'id'),
             'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
             'rarities' => array_filter($rarities),
         ]);
@@ -106,8 +109,7 @@ class LootTableController extends Controller
     {
         $id ? $request->validate(LootTable::$updateRules) : $request->validate(LootTable::$createRules);
         $data = $request->only([
-            'name', 'display_name', 'rewardable_type', 'rewardable_id', 'quantity', 'weight',
-            'criteria', 'rarity'
+            'name', 'display_name', 'rewardable_type', 'rewardable_id', 'quantity', 'weight', 'subtable_id', 'criteria', 'rarity', 'sublist_status_id', 'sublist_criteria', 'sublist_quantity'
         ]);
         if($id && $service->updateLootTable(LootTable::find($id), $data)) {
             flash('Loot table updated successfully.')->success();
