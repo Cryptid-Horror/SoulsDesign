@@ -543,6 +543,30 @@ const injury_severity = {
     }
 }
 
+const aberrantDmg = {
+	'25%':	{
+		proc_chance: 1,	// roll out of 10; equal to or less than to proc
+		min_dmg:	10,
+		max_dmg:	30,
+		flavortext: 'They managed to regain control quickly,\
+						but the damage had already been done.'
+	},
+	'50%':	{
+		proc_chance: 3,	// roll out of 10; equal to or less than to proc
+		min_dmg:	20,
+		max_dmg:	60,
+		flavortext: 'With some effort, they regain control of their magic,\
+						though not without consequence.'
+	},
+	'100%':	{
+		proc_chance: 5,	// roll out of 10; equal to or less than to proc
+		min_dmg:	30,
+		max_dmg:	100,
+		flavortext: 'It was a struggle, but they were able to regain control.\
+						However, there was no undoing the havoc it had wrought.'
+	}
+};
+
 var dragonName;
 var quest;
 var rank;
@@ -553,6 +577,7 @@ var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass ch
 var has_other_dragon; // +5% (to pass chance)
 var is_hoarder; // Chance to return with one more item
 var fam_raccoon // returns with one more item 100%
+var aberrant;
 
 var extras; // Array of strings, if input was true, add id to this array, later used to get value from index
 
@@ -573,6 +598,7 @@ function readInputs() {
     has_other_dragon = document.querySelector("[name=other_dragon]:checked") ? document.querySelector("[name=other_dragon]:checked").value == "Y" : false;
     is_hoarder = document.querySelector("[name=hoarder]:checked") ? document.querySelector("[name=hoarder]:checked").value == "Y" : false;
     fam_raccoon = document.querySelector("[name=raccoon]:checked") ? document.querySelector("[name=raccoon]:checked").value == "Y" : false;
+    aberrant = document.getElementById('aberrant').value;
 
     
     // Get extras
@@ -610,6 +636,11 @@ function rollQuest() {
     result += "<br><br>";
 
     result += rollInjury();
+    result += "<br>";
+
+    result += rollAberrantInjury();
+    result += "<br>";
+
     if(pass_roll < pass_chance) { result += "<br>Items have been deposited to your hoard."; }
 
     document.getElementById("result").innerHTML = result;
@@ -689,6 +720,26 @@ function rollInjury() {
     }
 
     return injury_result;
+}
+
+function rollAberrantInjury()
+{
+	// Injury specific to aberrant dragons.
+	if(aberrant != "0%") {
+		var aberrantData = aberrantDmg[aberrant];
+
+		var procRoll = rand(1, 10);
+
+		if(procRoll <= aberrantData.proc_chance)
+		{
+			return dragonName + "'s aberrations act up and their magic runs wild,\
+			lashing out at everything in the vicinity - including its master. "
+			+ aberrantData.flavortext
+			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP";
+		}
+	}
+
+	return "";
 }
 
 function rand(min, max) {

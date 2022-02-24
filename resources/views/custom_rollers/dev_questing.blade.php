@@ -91,6 +91,15 @@
                         <option value="healing">Healing</option>
                         <option value="enchantment">Enchantment</option>
                     </select>
+                    <br>
+                    
+                    <b>Aberrant %</b>
+                    <select id="aberrant" name="aberrant">
+                        <option value="0%">0%</option>
+                        <option value="25%">25%</option>
+                        <option value="50%">50%</option>
+                        <option value="100%">100%</option>
+                    </select>
                 </form>
             </td>
            
