@@ -20,8 +20,9 @@ const base_pass = {
 // Pass rate boosts based on magic level
 const magic_level_pass = {
     "none": 0,
-    "low": 5,
-    "high": 10
+    "basic": 10,
+    "low": 20,
+    "high": 30
 }
 
 // Pass rate boosts based on items, familiars, or taming
@@ -44,7 +45,6 @@ const temper_injury = {
     "na": 0,
     "timid": -5,
     "aggressive": 5,
-    "pine": -20
 }
 
 
@@ -448,47 +448,46 @@ const quests = {
 
 // List of strings
 const side_quests = [
-    "<b>The Butcher's Order</b><br>",
+    "<b>Quest Letter: The Butcher's Order</b><br>",
     
-    "<b>Gardener's Delight</b><br>",
+    "<b>Quest Letter: Gardener's Delight</b><br>",
     
-    "<b>Mushroom Delicacy</b><br> ",
+    "<b>Quest Letter: Mushroom Delicacy</b><br> ",
     
-    "<b>Fisherman's aid</b><br>",
+    "<b>Quest Letter: Fisherman's aid</b><br>",
     
-    "<b>Courier's Request</b><br>",
+    "<b>Quest Letter: Courier's Request</b><br>",
     
-    "<b>Blacksmith's Inquiry</b><br>",
+    "<b>Quest Letter: Blacksmith's Inquiry</b><br>",
     
-    "<b>Healing Shrine Delivery</b><br>",
+    "<b>Quest Letter: Healing Shrine Delivery</b><br>",
     
-    "<b>Salon Quality</b><br>",
+    "<b>Quest Letter: Salon Quality</b><br>",
     
-    "<b>Nesting Aid</b><br>",
+    "<b>Quest Letter: Nesting Aid</b><br>",
     
-    "<b>Take This...</b><br>",
+    "<b>Quest Letter: Take This...</b><br>",
     
-    "<b>Training Montage</b><br>",
+    "<b>Quest Letter: Training Montage</b><br>",
 
-    "<b>Granny's Recipe</b><br>",
+    "<b>Quest Letter: Granny's Recipe</b><br>",
 
     ];
 
 // Structure: <full_sentence>: <chance>
 const injuries = {
-    "Your dragon got a scratch while questing!": 85,
+    "Your dragon was injured while questing!": 85,
     "Your dragon feels a little bit sick, they will need an antidote to continue questing.": 10,
     "Your dragon feels terribly ill, they will need an antidote to continue any activity.": 3,
-    "Your dragon has been hit by heat stroke! They cannot go questing until \
-    given milk or water!": 1,
-    "Your dragon was attacked by a wild dragon while questing!": 1
+    "Your dragon has been hit by heat stroke! They cannot go questing until given milk or water!": 1,
+    "Your dragon was attacked by a wild dragon while questing!": 1,
 }
 
 var dragonName;
 var quest;
 var rank;
 var temper; // -5% for timid, +5% for aggressive (to injury chance)
-var magic_level; // +5% for low, +10% for high (but what about basic?) (to pass chance)
+var magic_level; // +10 for Basic, +20% for low, +30% for high (but what about basic?(added)) (to pass chance)
 var magic_type;
 var has_bonded; // or same flight; overwrites has_other_dragon; +10% (to pass chance)
 var has_other_dragon; // +5% (to pass chance)
@@ -550,7 +549,7 @@ function rollQuest() {
     result += "<br><br>";
 
     result += rollInjury();
-    if(pass_roll < pass_chance) { result += "<br>Items have been deposited to hoard."; }
+    if(pass_roll < pass_chance) { result += "<br>Items have been deposited to your hoard."; }
 
     document.getElementById("result").innerHTML = result;
 
@@ -575,7 +574,7 @@ function rollQuest() {
         var side_result = "Your dragon failed the quest, however you have found an <i>optional side quest item</i>.<br><br>"
         var rand_index = rand(0, side_quests.length-1);
         side_result += side_quests[rand_index];
-        side_result += "To submit your side quest, please see the side quest prompt under activities."
+        side_result += "To submit your side quest, please see the side quest prompt under activities, or the item itself."
         return side_result;
     }
 }

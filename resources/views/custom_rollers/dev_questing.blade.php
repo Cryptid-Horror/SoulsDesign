@@ -19,14 +19,14 @@
 </head>
 
 <body>
-    <a id="ddmenuLink" href="NavBar.html">Menu</a>
+    <a id="ddmenuLink" href="https://www.soulsbetween.com/">Return Home</a>
     <div id="title" align="center"><h1>Quest Roller</h1></div>
 
     <div id="container1" align="center">
         <table>
             <td>
                 <form id="playerinfo" align="left">
-                    <b>Import Name</b>
+                    <b>Character Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
 
@@ -70,13 +70,13 @@
                         <option value="na">N/A</option>
                         <option value="timid">Timid/Calm</option>
                         <option value="aggressive">Aggressive/Sinister</option>
-                        <option value="pine">Porcupine Familiar<option>
                     </select>
                     <br>
 
                     <b>Magic Level</b>
                     <select id="magic_level" name="magic_level">
                         <option value="none">None</option>
+                        <option value="basic">Basic</option>
                         <option value="low">Low</option>
                         <option value="high">High</option>
                     </select>
@@ -95,42 +95,42 @@
             </td>
            
             <td>
-                <form id="modifiers" align="left">
+                <form id="modifiers" align="right">
                     <table>
                         <tr>
                             <td>Bonded</td>
                             <td><input type="radio" name="bonded" value="Y"><label for="bonded">Yes</label></td>
-                            <td><input type="radio" name="bonded" value="N"><label for="bonded">No</label></td>
+                            <td><input type="radio" name="bonded" value="N" checked><label for="bonded">No</label></td>
                         </tr>
                         <tr>
                             <td>Extra Dragon</td>
                             <td><input type="radio" name="other_dragon" value="Y"><label for="other_dragon">Yes</label></td>
-                            <td><input type="radio" name="other_dragon" value="N"><label for="other_dragon">No</label></td>
+                            <td><input type="radio" name="other_dragon" value="N" checked><label for="other_dragon">No</label></td>
                         </tr>
                         <tr>
                             <td>Hoarder</td>
                             <td><input type="radio" name="hoarder" value="Y"><label for="is_hoarder">Yes</label></td>
-                            <td><input type="radio" name="hoarder" value="N"><label for="is_hoarder">No</label></td>
+                            <td><input type="radio" name="hoarder" value="N" checked><label for="is_hoarder">No</label></td>
                         </tr>
                         <tr>
                             <td>Raccoon (+1 Item)</td>
                             <td><input type="radio" name="raccoon" value="Y"><label for="fam_racoon">Yes</label></td>
-                            <td><input type="radio" name="raccoon" value="N"><label for="fam_racoon">No</label></td>
+                            <td><input type="radio" name="raccoon" value="N" checked><label for="fam_racoon">No</label></td>
                         </tr>
                         <tr>
                             <td>Bunny (Pass chance)</td>
                             <td><input type="radio" name="bunny" value="Y" class="extras"><label for="bunny">Yes</label></td>
-                            <td><input type="radio" name="bunny" value="N" class="extras"><label for="bunny">No</label></td>
+                            <td><input type="radio" name="bunny" value="N" class="extras" checked><label for="bunny">No</label></td>
                         </tr>
                         <tr>
                             <td>Domestic Taming</td>
                             <td><input type="radio" name="domestic_taming" value="Y" class="extras"><label for="domestic_taming">Yes</label></td>  
-                            <td><input type="radio" name="domestic_taming" value="N" class="extras"><label for="domestic_taming">No</label></td>
+                            <td><input type="radio" name="domestic_taming" value="N" class="extras" checked><label for="domestic_taming">No</label></td>
                         </tr>
                         <tr>
                             <td>Scoria Komodo</td>
                             <td><input type="radio" name="scoria_komodo" value="Y" class="extras"><label for="scoria_komodo">Yes</label></td>  
-                            <td><input type="radio" name="scoria_komodo" value="N" class="extras"><label for="scoria_komodo">No</label></td> 
+                            <td><input type="radio" name="scoria_komodo" value="N" class="extras" checked><label for="scoria_komodo">No</label></td> 
                         </tr>
                         <tr>
                             <td>Pearl Necklace</td>
