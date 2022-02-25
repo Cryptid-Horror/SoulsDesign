@@ -1,5 +1,21 @@
 <ul>
     <li class="sidebar-header"><a href="{{ $character->url }}" class="card-link">{{ $character->slug }}</a></li>
+   
+    @if(Auth::check() && (Auth::user()->id == $character->user_id || Auth::user()->hasPower('manage_characters')))
+        <li class="sidebar-section">
+            <div class="sidebar-section-header">Level + Stats</div>
+            <div class="sidebar-item"><a href="{{ $character->url . '/level-area' }}" class="{{ set_active('character/'.$character->slug.'/level-area') }}">Celestial Experience</a></div>
+            <div class="sidebar-item"><a href="{{ $character->url . '/stats-area' }}" class="{{ set_active('character/'.$character->slug.'/stats-area') }}">Health Tracker</a></div>
+        </li>
+        <li class="sidebar-section">
+            <div class="sidebar-section-header">Settings</div>
+            <div class="sidebar-item"><a href="{{ $character->url . '/profile/edit' }}" class="{{ set_active('character/'.$character->slug.'/profile/edit') }}">Edit Profile</a></div>
+            <div class="sidebar-item"><a href="{{ $character->url . '/transfer' }}" class="{{ set_active('character/'.$character->slug.'/transfer') }}">Transfer</a></div>
+            @if(Auth::user()->id == $character->user_id)
+                <div class="sidebar-item"><a href="{{ $character->url . '/approval' }}" class="{{ set_active('character/'.$character->slug.'/approval') }}">Update Design</a></div>
+            @endif
+        </li>
+    @endif
     <li class="sidebar-section">
         <div class="sidebar-section-header">Character</div>
         <div class="sidebar-item"><a href="{{ $character->url }}" class="{{ set_active('character/'.$character->slug) }}">Information</a></div>
@@ -25,21 +41,4 @@
         <div class="sidebar-item"><a href="{{ $character->url . '/status-effect-logs' }}" class="{{ set_active('character/'.$character->slug.'/status-effect-logs') }}">Status Effect Logs</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/submissions' }}" class="{{ set_active('character/'.$character->slug.'/submissions') }}">Submissions</a></div>
     </li>
-    @if(Auth::check() && (Auth::user()->id == $character->user_id || Auth::user()->hasPower('manage_characters')))
-        <li class="sidebar-section">
-            <div class="sidebar-section-header">Level + Stats</div>
-            <div class="sidebar-item"><a href="{{ $character->url . '/level-area' }}" class="{{ set_active('character/'.$character->slug.'/level-area') }}">Celestial Experience</a></div>
-            <div class="sidebar-item"><a href="{{ $character->url . '/stats-area' }}" class="{{ set_active('character/'.$character->slug.'/stats-area') }}">Health Tracker</a></div>
-        </li>
-        <li class="sidebar-section">
-            <div class="sidebar-section-header">Settings</div>
-            <div class="sidebar-item"><a href="{{ $character->url . '/profile/edit' }}" class="{{ set_active('character/'.$character->slug.'/profile/edit') }}">Edit Profile</a></div>
-            <div class="sidebar-item"><a href="{{ $character->url . '/transfer' }}" class="{{ set_active('character/'.$character->slug.'/transfer') }}">Transfer</a></div>
-            @if(Auth::user()->id == $character->user_id)
-                <div class="sidebar-item"><a href="{{ $character->url . '/approval' }}" class="{{ set_active('character/'.$character->slug.'/approval') }}">Update Design</a></div>
-            @endif
-        </li>
-    @endif
-
-    
 </ul>
