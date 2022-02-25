@@ -7,12 +7,12 @@
     </div>
 </div>
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{--<div class="alert alert-success alert-dismissible fade show" role="alert">
   All Recipes are now fixed! You may open your recipes again!
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
+</div>--}}
 
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/sales/3.winter-sale-20212022') }}"><img src="{{ asset('images/sale.png') }}"></a>
