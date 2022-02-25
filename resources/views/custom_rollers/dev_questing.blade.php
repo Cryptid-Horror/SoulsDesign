@@ -108,53 +108,58 @@
                     <table>
                         <tr>
                             <td>Bonded</td>
-                            <td><input type="radio" name="bonded" value="Y"><label for="bonded">Yes</label></td>
-                            <td><input type="radio" name="bonded" value="N" checked><label for="bonded">No</label></td>
-                        
+                            <td><input type="radio" name="bonded" id="bonded_Y" value="Y"><label for="bonded_Y">Yes</label></td>
+                            <td><input type="radio" name="bonded" id="bonded_N" value="N" checked><label for="bonded_N">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Extra Dragon</td>
-                            <td><input type="radio" name="other_dragon" value="Y"><label for="other_dragon">Yes</label></td>
-                            <td><input type="radio" name="other_dragon" value="N" checked><label for="other_dragon">No</label></td>
+                            <td><input type="radio" name="other_dragon" id="other_dragon_Y" value="Y"><label for="other_dragon_Y">Yes</label></td>
+                            <td><input type="radio" name="other_dragon" id="other_dragon_N" value="N" checked><label for="other_dragon_N">No</label></td>
                         </tr>
                         <tr>
                             <td>Hoarder</td>
-                            <td><input type="radio" name="hoarder" value="Y"><label for="is_hoarder">Yes</label></td>
-                            <td><input type="radio" name="hoarder" value="N" checked><label for="is_hoarder">No</label></td>
-                        
+                            <td><input type="radio" name="hoarder" id="hoarder_Y" value="Y"><label for="hoarder_Y">Yes</label></td>
+                            <td><input type="radio" name="hoarder" id="hoarder_N" value="N" checked><label for="hoarder_N">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Raccoon (+1 Item)</td>
-                            <td><input type="radio" name="raccoon" value="Y"><label for="fam_racoon">Yes</label></td>
-                            <td><input type="radio" name="raccoon" value="N" checked><label for="fam_racoon">No</label></td>
+                            <td><input type="radio" name="raccoon" id="raccoon_Y" value="Y"><label for="raccoon_Y">Yes</label></td>
+                            <td><input type="radio" name="raccoon" id="raccoon_N" value="N" checked><label for="raccoon_N">No</label></td>
                         </tr>
                         <tr>
                             <td>Bunny (Pass chance)</td>
-                            <td><input type="radio" name="bunny" value="Y" class="extras"><label for="bunny">Yes</label></td>
-                            <td><input type="radio" name="bunny" value="N" class="extras" checked><label for="bunny">No</label></td>
-                        
+                            <td><input type="radio" name="bunny" id="bunny_Y" value="Y" class="extras"><label for="bunny_Y">Yes</label></td>
+                            <td><input type="radio" name="bunny" id="bunny_N" value="N" class="extras" checked><label for="bunny_N">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Porcupine (Injury chance)</td>
-                            <td><input type="radio" name="porcupine" value="Y" class="extras"><label for="porcupine">Yes</label></td>
-                            <td><input type="radio" name="porcupine" value="N" class="extras" checked><label for="porcupine">No</label></td>
+                            <td><input type="radio" name="porcupine" id="porcupine_Y" value="Y" class="extras"><label for="porcupine_Y">Yes</label></td>
+                            <td><input type="radio" name="porcupine" id="porcupine_N" value="N" class="extras" checked><label for="porcupine_N">No</label></td>
                         </tr>
                         <tr>
                             <td>Fairy (Status Injury chance)</td>
-                            <td><input type="radio" name="fairy" value="Y" class="extras"><label for="fairy">Yes</label></td>
-                            <td><input type="radio" name="fairy" value="N" class="extras" checked><label for="fairy">No</label></td>
-                        
+                            <td><input type="radio" name="fairy" id="fairy_Y" value="Y" class="extras"><label for="fairy_Y">Yes</label></td>
+                            <td><input type="radio" name="fairy" id="fairy_N" value="N" class="extras" checked><label for="fairy_N">No</label></td>
+                        </tr>
+                        <tr>
                             <td>Domestic Taming</td>
-                            <td><input type="radio" name="domestic_taming" value="Y" class="extras"><label for="domestic_taming">Yes</label></td>  
-                            <td><input type="radio" name="domestic_taming" value="N" class="extras" checked><label for="domestic_taming">No</label></td>
+                            <td><input type="radio" name="domestic_taming" id="domestic_taming_Y" value="Y" class="extras"><label for="domestic_taming_Y">Yes</label></td>  
+                            <td><input type="radio" name="domestic_taming" id="domestic_taming_N" value="N" class="extras" checked><label for="domestic_taming_N">No</label></td>
                         </tr>
                         <tr>
                             <td>Scoria Komodo</td>
-                            <td><input type="radio" name="scoria_komodo" value="Y" class="extras"><label for="scoria_komodo">Yes</label></td>  
-                            <td><input type="radio" name="scoria_komodo" value="N" class="extras" checked><label for="scoria_komodo">No</label></td> 
-                        
+                            <td><input type="radio" name="scoria_komodo" id="scoria_komodo_Y" value="Y" class="extras"><label for="scoria_komodo_Y">Yes</label></td>  
+                            <td><input type="radio" name="scoria_komodo" id="scoria_komodo_N" value="N" class="extras" checked><label for="scoria_komodo_N">No</label></td> 
+                        </tr>
+                        <tr>
                             <td>Pearl Necklace</td>
-                            <td><input type="radio" name="pearl_necklace" value="Y" class="extras"><label for="pearl_necklace">Yes</label></td>
-                            <td><input type="radio" name="pearl_necklace" value="N" class="extras" checked><label for="pearl_necklace">No</label></td>
+                            <td><input type="radio" name="pearl_necklace" id="pearl_necklace_Y" value="Y" class="extras"><label for="pearl_necklace_Y">Yes</label></td>
+                            <td><input type="radio" name="pearl_necklace" id="pearl_necklace_N" value="N" class="extras" checked><label for="pearl_necklace_N">No</label></td>
                         </tr>
                         <tr>
                             <td>Emergency Supplies</td>
-                            <td><input type="radio" name="emergency_supplies" value="Y" class="extras"><label for="emergency_supplies">Yes</label></td>
-                            <td><input type="radio" name="emergency_supplies" value="N" class="extras" checked><label for="emergency_supplies">No</label></td>
+                            <td><input type="radio" name="emergency_supplies" id="emergency_supplies_Y" value="Y" class="extras"><label for="emergency_supplies_Y">Yes</label></td>
+                            <td><input type="radio" name="emergency_supplies" id="emergency_supplies_N" value="N" class="extras" checked><label for="emergency_supplies_N">No</label></td>
                         </tr>
                     </table>
                 </form>
