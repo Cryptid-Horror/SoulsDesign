@@ -32,6 +32,8 @@ use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Character\Stats\ExpLog;
+
 use App\Models\WorldExpansion\FactionRank;
 use App\Models\WorldExpansion\FactionRankMember;
 
