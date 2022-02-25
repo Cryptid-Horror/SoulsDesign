@@ -52,7 +52,7 @@
                     </div>
                 </div>
             @else
-                Health data not yet initialized! Please visit the stats tab to initialize.
+                Health data not yet initialized! Please visit the Health Tracker tab to initialize.
             @endif
         </center>
        <br><br>
