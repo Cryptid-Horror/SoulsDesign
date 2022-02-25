@@ -83,7 +83,7 @@
                 <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="charlevelTab" data-toggle="tab" href="#charlevel" role="tab">level</a>
+                <a class="nav-link" id="levelTab" data-toggle="tab" href="#level" role="tab">level</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
@@ -92,7 +92,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="lineageTab" data-toggle="tab" href="#lineage" role="tab">Lineage</a>
                 </li>
-            @endif>
+            @endif
             @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
                 <li class="nav-item">
                     <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
