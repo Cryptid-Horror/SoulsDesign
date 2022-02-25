@@ -158,8 +158,8 @@
 
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsequickadmin" aria-expanded="false" aria-controls="collapsequickadmin">
     Quick Admin Controls
-  
-</p>
+  </button>
+
 <div class="collapse" id="collapsequickadmin">
   <div class="card card-body">
     <h3>[Admin] Edit Image Details</h3>
@@ -182,5 +182,5 @@
             });
         });
     </script>
-    </button>
 @endsection
+</p>
