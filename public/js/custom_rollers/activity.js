@@ -71,9 +71,6 @@ function items(){
 	if (document.getElementById("localy").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Your dragon brought back an extra item!</i><br>";}
-	if (document.getElementById("cory").checked == true && rand(1,10) <= 5){
-		lootSize += 1;
-		itemlist += "<i>Your Aberrant Dragon returned an extra item</i><br>";}
 
 //HUNTING//
 function rollHunt(){
@@ -97,7 +94,7 @@ function rollHunt(){
 			else if (i <= 40){itemlist += "Fox Pelt";} // fox pelt
 			else if (i <= 43){itemlist += "Small Animal Carcass";} // fox carcass
 			else if (i <= 50){itemlist += "Wolf Pelt";} // wolf pelt
-			else if (i <= 55){itemlist += "Shark Carcass";} // Shark -- CHARMY
+			else if (i <= 55){itemlist += "Carcass Eagle";} // Eagle - CHARMY
 			else if (i <= 56){itemlist += "Antelope Meat";}
 			else if (i <= 57){itemlist += "Bison Meat";}
 			else if (i <= 58){itemlist += "Swan Carcass";} // dead swan 
@@ -239,7 +236,7 @@ function rollHunt(){
 			else if (i <= 35){itemlist += "Diamond Python Skin";} //diamond python skin
 			else if (i <= 40){itemlist += "River Snake Skin";} //river snake skin
 			else if (i <= 45){itemlist += "Coral Snake Skin";} //coral snake skin
-			else if (i <= 50){itemlist += "Large Reptile Hide";} //Large reptile hide
+			else if (i <= 50){itemlist += "Reptile Hide";} //reptile hide
 			else if (i <= 53){itemlist += "Large Animal Skull";} //large animal skull -- CHARMY
 			else if (i <= 56){itemlist += "Large Animal Claws";} //large animal claws
 			else if (i <= 58){itemlist += "Heron Carcass";} //dead heron
@@ -310,7 +307,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Arowana";} //Arowana
             else if(i <= 25){itemlist += "Boot";} //boot
             else if(i <= 28){itemlist += "Fishing Chest";} // Fishing chest - CHARMY
-            else if(i <= 31){itemlist += "Premium Fish Meat";}//premium fish meat
+            else if(i <= 31){itemlist += "Prime Fish Meat";}//prime fish meat
             else if(i <= 34){itemlist += "Jellyfish";}//jelly fish
             else if(i <= 37){itemlist += "Dolphin Carcass";}//dolphin carcass
 			else if(i <= 41){itemlist += "200 Crystals";} // 200 crystals
@@ -338,7 +335,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Catfish";}//catfish
             else if(i <= 25){itemlist += "Arowana";}//Arowana
             else if(i <= 30){itemlist += "Arapaima";}//Arapaima
-            else if(i <= 33){itemlist += "Premium fish Meat";}//premium fish meat -CHARMY
+            else if(i <= 33){itemlist += "Prime fish Meat";}//prime fish meat -CHARMY
             else if(i <= 36){itemlist += "Giant Moray Eel";}//Giant Moray Eel
             else if(i <= 39){itemlist += "Jellyfish";}//Jellyfish
             else if(i <= 41){itemlist += "Crocodile Carcass";}//Crocodile Carcass
@@ -368,7 +365,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Seaweed";}
             else if(i <= 25){itemlist += "Lobster";}
             else if(i <= 30){itemlist += "Gar";}
-            else if(i <= 33){itemlist += "Premium Fish Meat";} // CHARMY
+            else if(i <= 33){itemlist += "Prime Fish Meat";} // CHARMY
             else if(i <= 36){itemlist += "Jellyfish";}
             else if(i <= 38){itemlist += "Whalebone";}
             else if(i <= 40){itemlist += "Boot";} 
@@ -396,7 +393,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Snowflake Moray Eel";}
             else if(i <= 25){itemlist += "Trilobite";}
             else if(i <= 30){itemlist += "Large Fish Egg";} //CHARMY
-            else if(i <= 33){itemlist += "Premium Fish Meat";}
+            else if(i <= 33){itemlist += "Prime Fish Meat";}
             else if(i <= 36){itemlist += "Shark Carcass";}
             else if(i <= 38){itemlist += "Boot";}
 			else if(i <= 42){itemlist += "Whale Bone";} 
@@ -424,7 +421,7 @@ function rollHunt(){
             else if(i <= 30){itemlist += "Turtle Shell";}
             else if(i <= 33){itemlist += "Jellyfish";} //CHARMY
             else if(i <= 36){itemlist += "Squid Ink";}
-            else if(i <= 39){itemlist += "Premium Fish Meat";}
+            else if(i <= 39){itemlist += "Prime Fish Meat";}
             else if(i <= 41){itemlist += "Octopus Carcass";} 
 			else if(i <= 42){itemlist += "Whale Bone";}
             else if(i <= 43){itemlist += "Boot";} // BLUE
@@ -452,7 +449,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Arowana";}
             else if(i <= 25){itemlist += "Jellyfish";}//CHARMY
             else if(i <= 30){itemlist += "Arcane Frog";}
-            else if(i <= 35){itemlist += "Premium Fish Meat";}
+            else if(i <= 35){itemlist += "Prime Fish Meat";}
 			else if(i <= 37){itemlist += "Whale Bone";}
             else if(i <= 39){itemlist += "Undulated Moray Eel";}
             else if(i <= 40){itemlist += "Fishing Chest";}//BLUE
@@ -961,7 +958,8 @@ function aberrantInjury()
 }
 
 function clearForms() {
-	document.getElementById("playerinfo").reset();
-	document.getElementById("modifiers").reset();
-	document.getElementById("result").innerHTML = "";
-    }
+	document.getElementById("activitytype").reset();
+    document.getElementById("playerinfo").reset();
+    document.getElementById("modifiers").reset();
+    document.getElementById("result").innerHTML = "";
+}

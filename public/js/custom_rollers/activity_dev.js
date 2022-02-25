@@ -94,7 +94,7 @@ function rollHunt(){
 			else if (i <= 40){itemlist += "Fox Pelt";} // fox pelt
 			else if (i <= 43){itemlist += "Small Animal Carcass";} // fox carcass
 			else if (i <= 50){itemlist += "Wolf Pelt";} // wolf pelt
-			else if (i <= 55){itemlist += "Shark Carcass";} // Shark -- CHARMY
+			else if (i <= 55){itemlist += "Carcass Eagle";} // Eagle - CHARMY
 			else if (i <= 56){itemlist += "Antelope Meat";}
 			else if (i <= 57){itemlist += "Bison Meat";}
 			else if (i <= 58){itemlist += "Swan Carcass";} // dead swan 

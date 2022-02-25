@@ -31,7 +31,7 @@
 				<option value="caving">Caving</option>
 			</select>
 		</form>
-		<form id=playerinfo" align="left">
+		<form id="playerinfo" align="left">
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
 			<br>
@@ -128,10 +128,6 @@
 			<td>Temperament Location Buff</td>
 			<td><input type="radio" name="local" id="localy"><label for="localy">Yes</label></td>
 			<td><input type="radio" name="local" id="localn" checked><label for="localn">No</label></td>
-			
-			<td>Aberrant Dragon?</td>
-			<td><input type="radio" name="cor" id="cory"><label for="cory">Yes</label></td>
-			<td><input type="radio" name="cor" id="corn" checked><label for="corn">No</label></td>
 		</tr>
 		</table>
 		</form>
@@ -153,7 +149,7 @@
 </div>
 	
 <!-- Found in the public/js folder -->
-<script src="{{ asset('js/custom_rollers/activity.js') }}"></script>
+<script src="{{ asset('js/custom_rollers/activity_dev.js') }}"></script>
 
 </body>
 
