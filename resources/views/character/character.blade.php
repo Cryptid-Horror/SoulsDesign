@@ -34,20 +34,20 @@
     @endif
 </div>
 <div class="mb-4 mt-2 text-center">
-        <div class="card text-center">  
-        <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
+        <div class="card text-center">
+            <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
             @php
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
-    <b><h4>Health</h4></b>
+    <center><b><h4>Character Health</h4></b>
     <div class="progress" style="height: 20px; width: 50%;" >
         <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}%
         </div>
     </div>
-   
+    </center>
        <br><br>
         </div>
     </div>
@@ -81,6 +81,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="level" data-toggle="tab" href="#level" role="tab">level</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
