@@ -35,7 +35,8 @@
 </div>
 <div class="mb-4 mt-2 text-center">
         <div class="card text-center">
-        <h4><span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 10%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h4>
+            <br>
+        <h4><span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 15%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h4>
             <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
     @php
