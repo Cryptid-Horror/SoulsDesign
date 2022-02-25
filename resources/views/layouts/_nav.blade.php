@@ -46,7 +46,7 @@
                             <i class="fas fa-dungeon"></i> Challenges
                             </a>
                             <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Experience%20Claims') }}">
-                            <i class="fas fa-level-up-alt"></i> Celestial and Ethereal EXP
+                            <i class="fas fa-level-up-alt"></i> Celestial & Ethereal EXP
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
@@ -140,10 +140,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
                         <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
-                        <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Celestial Experience Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/ce_counter') }}">Celestial Exp Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
                         <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
-                        <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Ethereal Experience Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/ee_counter') }}">Ethereal Exp Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
                         <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
                         <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
