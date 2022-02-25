@@ -1,9 +1,3 @@
-@extends('character.layout', ['isMyo' => $character->is_myo_slot])
-
-@section('profile-title') Level Area @endsection
-
-@section('profile-content')
-{!! breadcrumbs(['Level Area' => $character->url . '/level-area']) !!}
 
 <h1>
    Celestial Rank Area
@@ -69,4 +63,3 @@
     {!! Form::close() !!}
 @endif
 
-@endsection
