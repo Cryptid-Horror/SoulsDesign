@@ -34,10 +34,7 @@
     @endif
 </div>
 <div class="mb-4 mt-2 text-center">
-        <div class="card text-center">
-        <div class="progress-bar progress-bar-striped active" role="progressbar"
-        aria-valuenow="{{ $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{ $next->exp_required }}" style="width:{{$width}}%">
-        </div>    
+        <div class="card text-center">  
         <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
             @php
