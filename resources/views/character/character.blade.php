@@ -36,8 +36,8 @@
 <div class="mb-4 mt-2 text-center">
         <div class="card text-center">
             <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
-        </div>
-        @php
+       
+            @php
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
@@ -48,6 +48,8 @@
         </div>
     </div>
     </center>
+       
+        </div>
     </div>
 
 
