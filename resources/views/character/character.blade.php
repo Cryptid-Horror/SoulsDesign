@@ -62,6 +62,7 @@
                     {{ $health->current_count ?? '?' }}/{{ $health->count }}
                     </div>
                 </div>
+                @if(!$health->current_count) Please <a href="{{ url('claims/new') }}" target="_blank">submit a claim</a> to get the Health set! @endif
             @else
                 Health data not yet initialized! Please visit the Health Tracker tab to initialize.
             @endif
