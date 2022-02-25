@@ -59,7 +59,7 @@
                 <b><h4>Character Health</h4></b>
                 <div class="progress" style="height: 20px; width: 50%;" >
                     <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count }}" aria-valuemin="0" aria-valuemax="{{ $health->count }}" style="height:100%; width:{{ $health->current_count / $health->count * 100 }}%">
-                    {{ $health->current_count }}/{{ $health->count }}
+                    {{ $health->current_count ?? '?' }}/{{ $health->count }}
                     </div>
                 </div>
             @else
@@ -91,37 +91,35 @@
 {{--Technical Information--}}
 <h3>Character Details</h3>
 <div class="card character-bio">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
+    <ul class="p-4 nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
+        </li>
+        @if($character->getLineageBlacklistLevel() < 2)
             <li class="nav-item">
-                <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Details</a>
+                <a class="nav-link" id="lineageTab" data-toggle="tab" href="#lineage" role="tab">Lineage</a>
             </li>
+        @endif
+        @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
             <li class="nav-item">
-                <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
+                <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
+                <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-primary"><i class="fas fa-user-cog"></i></a>
             </li>
-            @if($character->getLineageBlacklistLevel() < 2)
-                <li class="nav-item">
-                    <a class="nav-link" id="lineageTab" data-toggle="tab" href="#lineage" role="tab">Lineage</a>
-                </li>
-            @endif
-            @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
-                <li class="nav-item">
-                    <a class="nav-link" id="settingsTab" data-toggle="tab" href="#settings-{{ $character->slug }}" role="tab"><i class="fas fa-cog"></i></a>
-                </li>
-                    <li><a href="{{ $character->url . '/profile/edit' }}" class="btn btn-outline-primary"><i class="fas fa-user-cog"></i></a>
-                </li>
-                @endif
-                <li>    
-                @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))    
-                    <a href="#" class="btn btn-outline-danger" data-slug="{{ $character->slug }}"><i class="fas fa-skull-crossbones"></i></a>
-                </li>
-            @endif
-        </ul>
-    </div>
-    <div class="card-body tab-content">
+        @endif
+        @if(Auth::check() && !$character->deceased && ($character->user_id == Auth::user()->id || Auth::user()->hasPower('manage_characters')))    
+            <li>    
+                <a href="#" class="btn btn-outline-danger" data-slug="{{ $character->slug }}"><i class="fas fa-skull-crossbones"></i></a>
+            </li>
+        @endif
+    </ul>
+    <div class="p-4 tab-content">
         <div class="tab-pane fade show active" id="profile">
             @include('character._tab_profile', ['character' => $character])
         </div>
