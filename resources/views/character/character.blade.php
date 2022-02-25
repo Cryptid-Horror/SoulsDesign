@@ -52,12 +52,8 @@
         </div>
     </div>
 
+    <h1><span class="badge badge-dark float-center text-white mx-1" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h1>
 
-    @if($character->level->current_exp >= $next->exp_required)
-        <div class="text-center m-1">
-            <b><p>You have enough EXP to advance to the nex level!</p></b>
-        </div>
-        @endif
 
 
 
