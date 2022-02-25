@@ -165,7 +165,7 @@
 
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsequickadmin" aria-expanded="false" aria-controls="collapsequickadmin">
     Quick Admin Controls
-  </button>
+</button>
 
 <div class="collapse" id="collapsequickadmin">
   <div class="card card-body">
@@ -174,10 +174,12 @@
             This section is for easy editing of details relating to the active character image at the top of the page.
         </div>
         @include('character._image_info', ['image' => $character->image])
-        @endif
-        @endsection 
     </div>
 </div>
+@endif
+
+@endsection 
+
 @section('scripts')
     @parent
     @include('character._image_js', ['character' => $character])
