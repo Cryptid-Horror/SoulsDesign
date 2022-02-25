@@ -89,7 +89,7 @@
                 <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="levelTab" data-toggle="tab" href="levelinfo" role="tab">Level</a>
+                <a class="nav-link" id="levelTab" data-toggle="tab" href="#level" role="tab">Level</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
