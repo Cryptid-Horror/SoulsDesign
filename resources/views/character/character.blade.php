@@ -41,14 +41,6 @@
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
-    <center><b><h4>Character Health</h4></b>
-    <div class="progress" style="height: 20px; width: 50%;" >
-        <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{  $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{  $character->level->current_exp }}" style="height:100%; width:{{ isset( $character->level->current_exp) ?  $character->level->current_exp : 100 }}%">
-        {{ isset( $character->level->current_exp) ? round(( $character->level->current_exp/$character->level->count),3)*100 : 100 }}%
-        </div>
-    </div>
-    </center>
-       <br><br>
        <center><b><h4>Character Health</h4></b>
     <div class="progress" style="height: 20px; width: 50%;" >
         <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
