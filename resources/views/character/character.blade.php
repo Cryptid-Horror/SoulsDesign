@@ -53,6 +53,13 @@
     </div>
 
 
+    @if($character->level->current_exp >= $next->exp_required)
+        <div class="text-center m-1">
+            <b><p>You have enough EXP to advance to the nex level!</p></b>
+        </div>
+        @endif
+
+
 
 {{-- Profile 
 <div class="card character-bio">
@@ -81,9 +88,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="levelTab" data-toggle="tab" href="#level" role="tab">level</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
@@ -156,7 +160,9 @@
 
 @if(Auth::check() && Auth::user()->hasPower('manage_characters'))
 
-
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsequickadmin" aria-expanded="false" aria-controls="collapsequickadmin">
+    Quick Admin Controls
+  </button>
 
 <div class="collapse" id="collapsequickadmin">
   <div class="card card-body">
