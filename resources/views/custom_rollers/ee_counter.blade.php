@@ -24,7 +24,7 @@
 <!-- Navigation -->
    
     <!-- CONTENT -->
-<div id="title">Mastery Point Calculator</div>
+<div id="title">Ethereal Experience Calculator</div>
 	<div class="credit">
 	All coding credit goes to Livard (Liv Schneider)<br>
 	Primal Points and Values Copyright Souls-Between 2019<br></div>
@@ -49,9 +49,8 @@
 		</form>
 	</div>
 	<div class="boxed box3 center"><h1>Final Count</h1>
-		Copy this text into your tracker!<br>
+		Copy this text into your prompt submission!<br>
 		<textarea rows= "15" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
-		<div id="text">For artwork created for someone else of their dragon participating in an activity, all points will be halved except: Advent, Hunting and foraging (Which is reduced to 2). If you have a dragon present, no values are halved. <br><br><br></div>
 		<a class="big button" onclick="reset()">Reset</a>
 		<p>
 			

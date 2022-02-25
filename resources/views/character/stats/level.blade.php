@@ -6,13 +6,13 @@
 {!! breadcrumbs(['Characters' => 'characters', $character->slug => $character->url, 'Level' => $character->url . '/level']) !!}
 
 <h1>
-    {!! $character->displayName !!}'s Level Logs
+    {!! $character->displayName !!}'s Celestial Logs
 </h1>
 
 <div class="mb-4 text-center">
     <div class="card text-center">
-        <div class="m-4"><strong>Level:</strong> <br>{{ $character->level->current_level }}</div>
-        <div class="m-4"><strong>Current EXP:</strong> <br>{{ $character->level->current_exp }} </div>
+        <div class="m-4"><strong>Celestial Rank:</strong> <br>{{ $character->level->current_level }}</div>
+        <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
         <div class="m-4"><strong>Current Available Stat Points:</strong> <br>{{ $character->level->current_points }}</div>
     </div>
 </div>

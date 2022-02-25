@@ -6,7 +6,7 @@
 {!! breadcrumbs(['Level Area' => $character->url . '/level-area']) !!}
 
 <h1>
-    Level Area
+   Celestial Rank Area
 </h1>
 
 <div class="container text-center">
@@ -37,7 +37,7 @@
 
     <div class="mb-4 mt-2 text-center">
         <div class="card text-center">
-            <div class="m-4"><strong>Current EXP:</strong> <br>{{ $character->level->current_exp }} </div>
+            <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
             <div class="m-4"><strong>Current Available Stat Points:</strong> <br>{{ $character->level->current_points }}</div>
         </div>
     </div>

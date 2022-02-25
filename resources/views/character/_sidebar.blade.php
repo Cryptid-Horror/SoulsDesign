@@ -10,7 +10,7 @@
         @if($character->getLineageBlacklistLevel() < 1)
             <div class="sidebar-item"><a href="{{ $character->url . '/lineage' }}" class="{{ set_active('character/'.$character->slug.'/lineage') }}">Lineage</a></div>
         @endif
-        <div class="sidebar-item"><a href="{{ $character->url . '/level' }}" class="{{ set_active('character/'.$character->slug.'/level') }}">Primal Point Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $character->url . '/level' }}" class="{{ set_active('character/'.$character->slug.'/level') }}">Celestial Logs</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/breeding-permissions' }}" class="{{ set_active('character/'.$character->slug.'/breeding-permissions') }}">Breeding Permissions</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/status-effects' }}" class="{{ set_active('character/'.$character->slug.'/status-effects') }}">Status Effects</a></div>
     </li>
@@ -28,7 +28,7 @@
     @if(Auth::check() && (Auth::user()->id == $character->user_id || Auth::user()->hasPower('manage_characters')))
         <li class="sidebar-section">
             <div class="sidebar-section-header">Level + Stats</div>
-            <div class="sidebar-item"><a href="{{ $character->url . '/level-area' }}" class="{{ set_active('character/'.$character->slug.'/level-area') }}">Primal Points</a></div>
+            <div class="sidebar-item"><a href="{{ $character->url . '/level-area' }}" class="{{ set_active('character/'.$character->slug.'/level-area') }}">Celestial Experience</a></div>
             <div class="sidebar-item"><a href="{{ $character->url . '/stats-area' }}" class="{{ set_active('character/'.$character->slug.'/stats-area') }}">Health Tracker</a></div>
         </li>
         <li class="sidebar-section">

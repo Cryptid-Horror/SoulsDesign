@@ -6,7 +6,7 @@
 {!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Level' => $user->url . '/level', 'Logs' => $user->url.'/exp-logs']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s EXP Logs
+    {!! $user->displayName !!}'s Ethereal Experience Logs
 </h1>
 
 {!! $logs->render() !!}

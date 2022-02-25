@@ -24,7 +24,7 @@
 <!-- Navigation -->
     <!-- CONTENT -->
 	
-<div id="title">Primal Point Calculator</div>
+<div id="title">Celestial Experience Calculator</div>
 	<div class="credit">
 	All coding credit goes to Livard (Liv Schneider)<br>
 	Primal Points and Values Copyright Souls-Between 2019<br></div>
@@ -71,7 +71,7 @@
 	</div>
 	</div>
 	<div class="boxed box3 center"><h1>Final Count</h1>
-		Copy this text into your tracker!<br>
+		Copy this text into your prompt submission!<br>
 		<textarea rows= "10" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
 		<a class="big button" onclick="reset()">Reset</a>
 		<p>

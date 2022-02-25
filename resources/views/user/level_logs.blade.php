@@ -1,12 +1,12 @@
 @extends('user.layout')
 
-@section('profile-title') {{ $user->name }}'s Level Logs @endsection
+@section('profile-title') {{ $user->name }}'s Ethereal Rank Logs @endsection
 
 @section('profile-content')
 {!! breadcrumbs(['Users' => 'users', $user->name => $user->url, 'Level' => $user->url . '/level', 'Logs' => $user->url.'/level-logs']) !!}
 
 <h1>
-    {!! $user->displayName !!}'s Level Logs
+    {!! $user->displayName !!}'s Ethereal Rank Logs
 </h1>
 
 {!! $logs->render() !!}

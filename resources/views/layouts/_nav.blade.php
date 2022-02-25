@@ -45,17 +45,14 @@
                             <a class="dropdown-item" href="{{ url('challenges') }}">
                             <i class="fas fa-dungeon"></i> Challenges
                             </a>
+                            <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Experience%20Claims') }}">
+                            <i class="fas fa-level-up-alt"></i> Celestial and Ethereal EXP
+                            </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
                                <i class="fas fa-mortar-pestle"></i> Crafting
                             </a>
                             <a class="dropdown-item" href="{{ url('info/dragon_registration') }}">
                                <i class="fas fa-paint-brush"></i>  Design Registration
-                            </a>
-                            <a class="dropdown-item" href="{{ url('info/point_counting') }}">
-                                <i class="fas fa-clipboard-list"></i> PP/MP Guide
-                            </a>
-                            <a class="dropdown-item" href="{{ url('level') }}">
-                                <i class="fas fa-level-up-alt"></i> Mastery Points
                             </a>
                             <a class="dropdown-item" href="{{ url('info/MFA') }}">
                                 <i class="fas fa-dungeon"></i> Monthly Free Activities
@@ -143,12 +140,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
                         <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
+                        <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Celestial Experience Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
                         <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
+                        <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Ethereal Experience Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
-                        <a class="dropdown-item" href="{{ url('roller/mp_counter') }}">Master Point Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
-                        <a class="dropdown-item" href="{{ url('roller/pp_counter') }}">Primal Point Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
                         <a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
                         <div class="dropdown-divider"></div>
@@ -233,6 +230,9 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ Auth::user()->url }}">
                                 Profile
+                            </a>
+                            <a class="dropdown-item" href="{{ url('level') }}">
+                                </i> Ethereal Rank
                             </a>
                             <a class="dropdown-item" href="{{ url('notifications') }}">
                                 Notifications
