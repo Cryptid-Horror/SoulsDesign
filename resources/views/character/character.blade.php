@@ -41,7 +41,7 @@
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
-    <span class="badge badge-dark float-center text-white mx-1" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span>
+    <span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 50%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span>
        <center><b><h4>Character Health</h4></b>
     <div class="progress" style="height: 20px; width: 50%;" >
         <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
