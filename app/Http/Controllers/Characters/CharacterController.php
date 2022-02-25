@@ -93,10 +93,14 @@ class CharacterController extends Controller
         $background = new \App\Services\Item\BackgroundService;
         $bg = $background->checkBackground($this->character);
 
+        $level = $this->character->level->current_level + 1;
+        $next = CharacterLevel::where('level', $level)->first();
+
         return view('character.character', [
             'character' => $this->character,
             'background' => $bg,
-            'skills' => Skill::where('parent_id', null)->orderBy('name', 'ASC')->get()
+            'skills' => Skill::where('parent_id', null)->orderBy('name', 'ASC')->get(),
+            'next' => $next
         ]);
     }
 

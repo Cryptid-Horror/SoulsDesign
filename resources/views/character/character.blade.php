@@ -34,14 +34,27 @@
 </div>
 <div class="mb-4 mt-2 text-center">
     <div class="card text-center">
-        <h4><span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 15%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h4>
-        <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
-       
-        @php
-            $stats = $character->stats;
-            $health = $stats->shift();
-        @endphp
+        <h1><span class="badge badge-dark float-center text-white mx-1" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h1>
+        
         <center>
+            @if($next)
+                <p>Next Level: {{ $next->level}}</p>
+                {{ $character->level->current_exp}}/{{ $next->exp_required }}
+                <div class="progress" style="height: 20px; width: 50%;">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                    aria-valuenow="{{ $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{ $next->exp_required }}" style="width:{{ $character->level->current_exp / $next->exp_required * 100 }}%">
+                    {{ $character->level->current_exp}}/{{ $next->exp_required }}
+                    </div>
+                </div>
+            @else
+                <p>You are at the max level!</p>
+            @endif
+        
+            @php
+                $stats = $character->stats;
+                $health = $stats->shift();
+            @endphp
+            <br/>
             @if($health)
                 <b><h4>Character Health</h4></b>
                 <div class="progress" style="height: 20px; width: 50%;" >
