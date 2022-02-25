@@ -41,25 +41,4 @@
     <a href="{{ url($character->url.'/level') }}">View logs...</a>
 </div>
 
-@if(Auth::check() && Auth::user()->isStaff)
-<div class="alert alert-warning">
-    You can see this area as a member of staff
-</div>
-    <h3>
-        Take/Give EXP
-    </h3>
-    {!! Form::open(['url' => $character->url.'/level-area/exp-grant']) !!}
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-6">
-                    {!! Form::label('quantity', 'Quantity') !!}
-                    {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
-                </div>
-            </div>
-        </div>
-        <div class="text-right">
-            {!! Form::submit('Grant', ['class' => 'btn btn-primary']) !!}
-        </div>
-    {!! Form::close() !!}
-@endif
 

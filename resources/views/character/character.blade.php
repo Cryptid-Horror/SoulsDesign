@@ -37,7 +37,7 @@
         <div class="card text-center">
             <br>
         <h4><span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 15%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h4>
-            <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
+        <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
     @php
         $stats = $character->stats;
@@ -87,6 +87,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="levelTab" data-toggle="tab" href="levelinfo" role="tab">Level</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="notesTab" data-toggle="tab" href="#notes" role="tab">Description</a>
