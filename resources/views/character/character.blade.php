@@ -28,14 +28,12 @@
             </a>
         </div>
     @endif
-    </div>
     @if($character->image->canViewFull(Auth::check() ? Auth::user() : null) && file_exists( public_path($character->image->imageDirectory.'/'.$character->image->fullsizeFileName)))
         <div class="text-right">You are viewing the full-size image. <a href="{{ $character->image->imageUrl }}">View watermarked image</a>?</div>
     @endif
 </div>
 <div class="mb-4 mt-2 text-center">
-        <div class="card text-center">
-            <br>
+    <div class="card text-center">
         <h4><span class="badge badge-dark float-center text-white mx-1" style="height: 20px; width: 15%;" data-toggle="tooltip" title="Current Character level.">Current Lvl: {{ $character->level->current_level }}</span></h4>
         <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
@@ -56,12 +54,8 @@
             @endif
         </center>
        <br><br>
-        </div>
     </div>
-
-    <h1></h1>
-
-
+</div>
 
 
 {{-- Profile 
@@ -168,8 +162,8 @@
 </button>
 
 <div class="collapse" id="collapsequickadmin">
-  <div class="card card-body">
-    <h3>[Admin] Edit Image Details</h3>
+    <div class="card card-body">
+        <h3>[Admin] Edit Image Details</h3>
         <div class="alert alert-info">
             This section is for easy editing of details relating to the active character image at the top of the page.
         </div>
@@ -192,4 +186,3 @@
         });
     </script>
 @endsection
-</p>
