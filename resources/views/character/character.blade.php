@@ -35,20 +35,24 @@
 </div>
 <div class="mb-4 mt-2 text-center">
         <div class="card text-center">
-            <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
+        <div class="progress-bar progress-bar-striped active" role="progressbar"
+        aria-valuenow="{{ $character->level->current_exp}}" aria-valuemin="0" aria-valuemax="{{ $next->exp_required }}" style="width:{{$width}}%">
+        {{ $character->level->current_exp}}/{{ $next->exp_required }}
+        </div>    
+        <div class="m-4"><strong>Current Celestial Experience:</strong> <br>{{ $character->level->current_exp }} </div>
        
             @php
         $stats = $character->stats;
         $health =$stats->shift();
     @endphp
-    <center><b><h4>Character Health</h4></b>
+    <b><h4>Health</h4></b>
     <div class="progress" style="height: 20px; width: 50%;" >
         <div class="progress-bar bg-success text-dark h4" role="progressbar" aria-valuenow="{{ $health->current_count}}" aria-valuemin="0" aria-valuemax="{{ $health->current_count }}" style="height:100%; width:{{ isset($health->current_count) ? $health->current_count : 100 }}%">
         {{ isset($health->current_count) ? round(($health->current_count/$health->count),3)*100 : 100 }}%
         </div>
     </div>
-    </center>
-       
+   
+       <br><br>
         </div>
     </div>
 
