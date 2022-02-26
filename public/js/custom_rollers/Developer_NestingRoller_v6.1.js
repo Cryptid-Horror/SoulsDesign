@@ -1506,12 +1506,6 @@ function generateHealth() {
 			roll = randRange(100);
 			if (roll < 40)
 				childHealth += "Mute ";
-			roll = randRange(100);
-			if (roll < 30)
-				childHealth += "Miniature ";
-			roll = randRange(100);
-			if (roll < 40)
-				childHealth += "Polycephaly ";
 		}
 	}
 }
