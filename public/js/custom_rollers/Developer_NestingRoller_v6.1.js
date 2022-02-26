@@ -1498,13 +1498,13 @@ function generateHealth() {
 			if (roll < 60)
 				childHealth += "Infertile ";
 			roll = randRange(100);
-			if (roll < 60)
+			if (roll < 30)
 				childHealth += "Blind ";
 			roll = randRange(100);
-			if (roll < 50)
+			if (roll < 5)
 				childHealth += "Crippled Wings ";
 			roll = randRange(100);
-			if (roll < 40)
+			if (roll < 5)
 				childHealth += "Mute ";
 		}
 	}
