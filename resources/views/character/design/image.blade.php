@@ -54,7 +54,13 @@
 
 @if(($request->status == 'Draft' && $request->user_id == Auth::user()->id) || ($request->status == 'Pending' && Auth::user()->hasPower('manage_characters')))
     @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
-        <p>Select the image you would like to use on the masterlist and an optional thumbnail. Please only upload images that you are allowed to use AND are able to credit to the artist! Note that while staff members cannot edit your uploaded image, they may choose to recrop or upload a different thumbnail.</p>
+        <p>Upload the import image for your dragon. Ensure it is the correct size - 3k by 2040-  and updated import lines if necessary. Please only upload images that you are allowed to use AND are able to credit to the artist! Note that while staff members cannot edit your uploaded image, they may choose to recrop or upload a different thumbnail. 
+            Follow the following directions: 
+            - Upload your dragon's import in the choose file selection. 
+            - Ensure the cropper is turned OFF. 
+            - With the cropper off, reupload the EXACT SAME image you uploaded in the first file selection. Do not resize it. Do not crop it. 
+            - Add any credits and select "save."
+        </p>
     @else
         <p>As a staff member, you may modify the thumbnail of the uploaded image and/or the credits, but not the image itself. If you have recropped the thumbnail, you may need to hard refresh to see the new one.</p>
     @endif
@@ -73,7 +79,7 @@
 @if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
         <div class="form-group">
             {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
-            {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). You can use the Thumbnail Automation, or upload a custom thumbnail.') !!}
+            {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). Reupload the exact same image you are using for the import - do not resize it!.') !!}
         </div>
         <div class="card mb-3" id="thumbnailCrop">
             <div class="card-body">
@@ -104,7 +110,7 @@
             <div class="card-body">
                 {!! Form::label('Thumbnail Image') !!} {!! add_help('This image is shown on the masterlist page.') !!}
                 <div>{!! Form::file('thumbnail') !!}</div>
-                <div class="text-muted">Recommended size: {{ Config::get('lorekeeper.settings.masterlist_thumbnails.width') }}px x {{ Config::get('lorekeeper.settings.masterlist_thumbnails.height') }}px</div>
+                <div class="text-muted">Reupload the exact same image that you are submitting for design review!x</div>
             </div>
         </div>
         <p>
