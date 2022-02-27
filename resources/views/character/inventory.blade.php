@@ -19,7 +19,7 @@
 </h3>
 
     
-   
+<div class="card character-bio">   
 <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             @foreach($items as $categoryId=>$categoryItems)
@@ -31,7 +31,7 @@
             @endforeach
         </ul>
     </div>
-@foreach($items as $categoryId=>$categoryItems)
+    @foreach($items as $categoryId=>$categoryItems)
     <div class="card mb-3 inventory-category">
         <h5 class="card-header inventory-header">
             {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
@@ -63,7 +63,9 @@
             @endforeach
         </div>
     </div>
-@endforeach 
+    @endforeach 
+</div>
+</div>
 
 <h3>Latest Activity</h3>
 <div class="row ml-md-2 mb-4">
