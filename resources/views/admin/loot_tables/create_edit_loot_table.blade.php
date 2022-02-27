@@ -27,7 +27,7 @@
 
 <h3>Loot</h3>
 
-{{-- <p>These are the potential rewards from rolling on this loot table. You can add items, currencies or even another loot table. Chaining multiple loot tables is not recommended, however, and may run the risk of creating an infinite loop. @if(!$table->id) You can test loot rolling after the loot table is created. @endif</p>
+ <p>These are the potential rewards from rolling on this loot table. You can add items, currencies or even another loot table. Chaining multiple loot tables is not recommended, however, and may run the risk of creating an infinite loop. @if(!$table->id) You can test loot rolling after the loot table is created. @endif</p>
 <p>You can add any kind of currencies (both user- and character-attached), but be sure to keep track of which are being distributed! Character-only currencies cannot be given to users.</p>
 
 <div>
@@ -53,7 +53,7 @@
             @endif
         </tbody>
     </table>
-</div> --}}
+</div> 
 
 <h4>Status Effect Adjustments</h4>
 
