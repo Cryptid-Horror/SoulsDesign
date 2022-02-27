@@ -32,7 +32,7 @@
         </ul>
     </div>
     @foreach($items as $categoryId=>$categoryItems)
-    <div class="card mb-3 inventory-category">
+    <div class="card-body tab-content">
         <h5 class="card-header inventory-header">
             {!! isset($categories[$categoryId]) ? '<a href="'.$categories[$categoryId]->searchUrl.'">'.$categories[$categoryId]->name.'</a>' : 'Miscellaneous' !!}
         </h5>
