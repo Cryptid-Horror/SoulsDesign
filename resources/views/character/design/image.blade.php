@@ -54,11 +54,11 @@
 
 @if(($request->status == 'Draft' && $request->user_id == Auth::user()->id) || ($request->status == 'Pending' && Auth::user()->hasPower('manage_characters')))
     @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
-        <p>Upload the import image for your dragon. Ensure it is the correct size - 3k by 2040-  and updated import lines if necessary. Please only upload images that you are allowed to use AND are able to credit to the artist! Note that while staff members cannot edit your uploaded image, they may choose to recrop or upload a different thumbnail. 
-            Follow the following directions: 
-            - Upload your dragon's import in the choose file selection. 
-            - Ensure the cropper is turned OFF. 
-            - With the cropper off, reupload the EXACT SAME image you uploaded in the first file selection. Do not resize it. Do not crop it. 
+        <p>Upload the import image for your dragon. Ensure it is the correct size - 3k by 2040-  and updated import lines if necessary. Please only upload images that you are allowed to use AND are able to credit to the artist! Note that while staff members cannot edit your uploaded image, they may choose to recrop or upload a different thumbnail. <br>
+            Follow the following directions: <br>
+            - Upload your dragon's import in the choose file selection. <br>
+            - Ensure the cropper is turned OFF. <br>
+            - With the cropper off, reupload the EXACT SAME image you uploaded in the first file selection. Do not resize it. Do not crop it. <br>
             - Add any credits and select "save."
         </p>
     @else
