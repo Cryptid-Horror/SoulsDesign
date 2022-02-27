@@ -15,10 +15,10 @@
 
 <h3>Basic Information</h3>
 
-{{-- <div class="form-group">
+<div class="form-group">
     {!! Form::label('Name') !!} {!! add_help('This is the name you will use to identify this table internally. This name will not be shown to users and does not have to be unique, but a name that can be easily identified is recommended.') !!}
     {!! Form::text('name', $table->name, ['class' => 'form-control']) !!}
-</div> --}}
+</div>
 
 <div class="form-group">
     {!! Form::label('Display Name') !!} {!! add_help('This is the name that will be shown to users, for example when displaying the rewards for doing a prompt. This is for display purposes and can be something more vague than the above, e.g. "A Random Rare Item"') !!}
