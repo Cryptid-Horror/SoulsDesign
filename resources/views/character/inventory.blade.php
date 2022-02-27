@@ -18,6 +18,19 @@
     Items
 </h3>
 
+    
+   
+<div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            @foreach($items as $categoryId=>$categoryItems)
+                <li class="nav-item">
+                    <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="categoryTab-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}" data-toggle="tab" href="#category-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}" role="tab">
+                        {!! isset($categories[$categoryId]) ? $categories[$categoryId]->name : 'Miscellaneous' !!}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 @foreach($items as $categoryId=>$categoryItems)
     <div class="card mb-3 inventory-category">
         <h5 class="card-header inventory-header">
@@ -50,7 +63,7 @@
             @endforeach
         </div>
     </div>
-@endforeach
+@endforeach 
 
 <h3>Latest Activity</h3>
 <div class="row ml-md-2 mb-4">
