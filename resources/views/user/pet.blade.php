@@ -24,7 +24,7 @@
         </ul>
     </div>
     <div class="card-body tab-content">
-        @foreach($items as $categoryId=>$categoryItems)
+        @foreach($items as $categoryId=>$categoryPets)
             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="category-{{ isset($categories[$categoryId]) ? $categoryId : 'misc'}}">
             @foreach($categoryPets->chunk(4) as $chunk)
                 <div class="row mb-3">
