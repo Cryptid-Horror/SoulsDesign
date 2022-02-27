@@ -10,7 +10,7 @@
 <h2>Comments</h2>
 
 @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
-    <p>Enter an optional comment about your submission (e.g. calculations) that staff will consider when reviewing your request. If you don't have a comment, click the Save button once to mark this section complete regardless.</p>
+    <p>The comment section is NOT optional! Please refer to the design registration guide under the activity drop down for the forms necessary to submit your design! Not including this form will cause your design to be sent back! </p>
     {!! Form::open(['url' => 'designs/'.$request->id.'/comments']) !!}
         <div class="form-group">
             {!! Form::label('Comments (Optional)') !!}
