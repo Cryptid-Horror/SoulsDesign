@@ -72,13 +72,13 @@
             </div>
         @else
             <div class="form-group">
-                {!! Form::checkbox('modify_thumbnail', 0, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+                {!! Form::checkbox('modify_thumbnail', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
                 {!! Form::label('modify_thumbnail', 'Modify Thumbnail', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Toggle this option to modify the thumbnail, otherwise only the credits will be saved.') !!}
             </div>
         @endif
 @if (Config::get('lorekeeper.settings.masterlist_image_automation') === 1)
         <div class="form-group">
-            {!! Form::checkbox('use_cropper', 1, 1, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
+            {!! Form::checkbox('use_cropper', 0, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle', 'id' => 'useCropper']) !!}
             {!! Form::label('use_cropper', 'Use Thumbnail Automation', ['class' => 'form-check-label ml-3']) !!} {!! add_help('A thumbnail is required for the upload (used for the masterlist). Reupload the exact same image you are using for the import - do not resize it!.') !!}
         </div>
         <div class="card mb-3" id="thumbnailCrop">
