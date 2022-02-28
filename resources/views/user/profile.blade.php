@@ -127,7 +127,7 @@
             <div class="text-right"><a href="{{ $user->url.'/inventory' }}">View all...</a></div>
         </div>
     </div>
-    <div class="card mb-3">
+    <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Awards</h5>
             <div class="card-body">
