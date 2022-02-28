@@ -171,6 +171,7 @@
             <div class="text-right"><a href="{{ $user->url.'/pets' }}">View all...</a></div>
         </div>
     </div>
+</div>
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Armoury</h5>
