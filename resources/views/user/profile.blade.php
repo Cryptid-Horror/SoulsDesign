@@ -127,27 +127,6 @@
             <div class="text-right"><a href="{{ $user->url.'/inventory' }}">View all...</a></div>
         </div>
     </div>
-</div>
-<div class="card-deck mb-4 profile-assets">
-    <div class="card profile-currencies profile-assets-card">
-        <div class="card-body text-center">
-            <h5 class="card-title">Pets</h5>
-            <div class="card-body">
-                @if(count($pets))
-                    <div class="row">
-                        @foreach($pets as $pet)
-                            <div class="col-md-4 col-4 profile-inventory-item">
-                                <a href="" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:100%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div>No pets owned.</div>
-                @endif
-            </div>
-            <div class="text-right"><a href="{{ $user->url.'/pets' }}">View all...</a></div>
-        </div>
-    </div>
     <div class="card mb-3">
         <div class="card-body text-center">
             <h5 class="card-title">Awards</h5>
@@ -169,6 +148,27 @@
                 @endif
             </div>
             <div class="text-right"><a href="{{ $user->url.'/awardcase' }}">View all...</a></div>
+        </div>
+    </div>
+</div>
+<div class="card-deck mb-4 profile-assets">
+    <div class="card profile-currencies profile-assets-card">
+        <div class="card-body text-center">
+            <h5 class="card-title">Pets</h5>
+            <div class="card-body">
+                @if(count($pets))
+                    <div class="row">
+                        @foreach($pets as $pet)
+                            <div class="col-md-4 col-4 profile-inventory-item">
+                                <a href="" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:100%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div>No pets owned.</div>
+                @endif
+            </div>
+            <div class="text-right"><a href="{{ $user->url.'/pets' }}">View all...</a></div>
         </div>
     </div>
     <div class="card profile-inventory profile-assets-card">
