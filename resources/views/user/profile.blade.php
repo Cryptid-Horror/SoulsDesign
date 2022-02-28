@@ -63,6 +63,35 @@
     </div>
 @endif
 
+<h2>
+    <a href="{{ $user->url.'/characters' }}">Characters</a>
+    @if(isset($sublists) && $sublists->count() > 0)
+        @foreach($sublists as $sublist)
+        / <a href="{{ $user->url.'/sublist/'.$sublist->key }}">{{ $sublist->name }}</a>
+        @endforeach
+    @endif
+</h2>
+
+@foreach($characters->take(4)->get()->chunk(4) as $chunk)
+    <div class="row mb-4">
+        @foreach($chunk as $character)
+            <div class="col-md-3 col-6 text-center">
+                <div>
+                    <a href="{{ $character->url }}"><img src="{{ $character->image->thumbnailUrl }}" class="img-thumbnail" alt="{{ $character->fullName }}" /></a>
+                </div>
+                <div class="mt-1">
+                    <a href="{{ $character->url }}" class="h5 mb-0"> @if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {{ $character->fullName }}</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+@endforeach
+
+<div class="text-right"><a href="{{ $user->url.'/characters' }}">View all...</a></div>
+<hr>
+
+
+
 <div class="card-deck mb-4 profile-assets" style="clear:both;">
     <div class="card profile-currencies profile-assets-card">
         <div class="card-body text-center">
@@ -132,7 +161,7 @@
                     <div class="row">
                         @foreach($pets as $pet)
                             <div class="col-md-4 col-4 profile-inventory-item">
-                                <a href="#" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:100%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
+                                <a href="" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:100%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
                             </div>
                         @endforeach
                     </div>
@@ -168,32 +197,7 @@
     </div>
 </div>
 
-<h2>
-    <a href="{{ $user->url.'/characters' }}">Characters</a>
-    @if(isset($sublists) && $sublists->count() > 0)
-        @foreach($sublists as $sublist)
-        / <a href="{{ $user->url.'/sublist/'.$sublist->key }}">{{ $sublist->name }}</a>
-        @endforeach
-    @endif
-</h2>
 
-@foreach($characters->take(4)->get()->chunk(4) as $chunk)
-    <div class="row mb-4">
-        @foreach($chunk as $character)
-            <div class="col-md-3 col-6 text-center">
-                <div>
-                    <a href="{{ $character->url }}"><img src="{{ $character->image->thumbnailUrl }}" class="img-thumbnail" alt="{{ $character->fullName }}" /></a>
-                </div>
-                <div class="mt-1">
-                    <a href="{{ $character->url }}" class="h5 mb-0"> @if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {{ $character->fullName }}</a>
-                </div>
-            </div>
-        @endforeach
-    </div>
-@endforeach
-
-<div class="text-right"><a href="{{ $user->url.'/characters' }}">View all...</a></div>
-<hr>
 <br><br>
 
 @comments(['model' => $user->profile,
