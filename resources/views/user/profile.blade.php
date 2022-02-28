@@ -155,7 +155,7 @@
     <div class="card profile-currencies profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Pets</h5>
-            <div class="profile-assets-content">
+            <div class="card-body">
                 @if(count($pets))
                     <div class="row">
                         @foreach($pets as $pet)
@@ -171,11 +171,10 @@
             <div class="text-right"><a href="{{ $user->url.'/pets' }}">View all...</a></div>
         </div>
     </div>
-</div>
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Armoury</h5>
-            <div class="profile-assets-content">
+            <div class="card-body">
                 @if(count($armours))
                     <div class="row">
                         @foreach($armours as $armour)
