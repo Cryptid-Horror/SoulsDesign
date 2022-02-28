@@ -130,7 +130,7 @@
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Awards</h5>
-            <div class="card-body">
+            <div class="profile-assets-content">
                 @if(count($awards))
                     <div class="row">
                         @foreach($awards as $award)
