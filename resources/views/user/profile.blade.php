@@ -111,7 +111,7 @@
                 @if(count($items))
                     <div class="row">
                         @foreach($items as $item)
-                            <div class="col-md-4 col-6 profile-inventory-item">
+                            <div class="col-md-3 col-6 profile-inventory-item">
                                 @if($item->imageUrl)
                                     <img src="{{ $item->imageUrl }}" data-toggle="tooltip" title="{{ $item->name }}" alt="{{ $item->name }}"/>
                                 @else
@@ -151,15 +151,15 @@
         </div>
     </div>
 </div>
-<div class="card-deck mb-4 profile-assets">
+<div class="card profile-inventory profile-assets-card">
     <div class="card profile-currencies profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Pets</h5>
-            <div class="card-body">
+            <div class="profile-assets-content">
                 @if(count($pets))
                     <div class="row">
                         @foreach($pets as $pet)
-                            <div class="col-md-4 col-4 profile-inventory-item">
+                            <div class="col-md-3 col-6 profile-inventory-item">
                                 <a href="" class="inventory-stack"><img src="{{ $pet->variantimage($pet->pivot->variant_id) }}" class="img-fluid" style="width:100%;" data-toggle="tooltip" title="{{ $pet->name }}" alt="{{ $pet->name }}" />
                             </div>
                         @endforeach
@@ -174,11 +174,11 @@
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Armoury</h5>
-            <div class="card-body">
+            <div class="profile-assets-content">
                 @if(count($armours))
                     <div class="row">
                         @foreach($armours as $armour)
-                            <div class="col-md-4 col-4 profile-inventory-item">
+                            <div class="col-md-3 col-6 profile-inventory-item">
                                 @if($armour->imageUrl)
                                 <img src="{{ $armour->imageUrl }}" data-toggle="tooltip" title="{{ $armour->name }}" alt="{{ $armour->name }}"/>
                                 @else
