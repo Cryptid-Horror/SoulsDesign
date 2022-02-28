@@ -111,7 +111,7 @@
                 @if(count($items))
                     <div class="row">
                         @foreach($items as $item)
-                            <div class="col-md-3 col-6 profile-inventory-item">
+                            <div class="col-md-4 col-6 profile-inventory-item">
                                 @if($item->imageUrl)
                                     <img src="{{ $item->imageUrl }}" data-toggle="tooltip" title="{{ $item->name }}" alt="{{ $item->name }}"/>
                                 @else
