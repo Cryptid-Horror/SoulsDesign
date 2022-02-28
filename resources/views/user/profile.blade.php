@@ -148,6 +148,29 @@
             <div class="text-right"><a href="{{ $user->url.'/pets' }}">View all...</a></div>
         </div>
     </div>
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <h5 class="card-title">Awards</h5>
+            <div class="card-body">
+                @if(count($awards))
+                    <div class="row">
+                        @foreach($awards as $award)
+                            <div class="col-md-3 col-6 profile-inventory-item">
+                                @if($award->imageUrl)
+                                    <img src="{{ $award->imageUrl }}" data-toggle="tooltip" title="{{ $award->name }}" />
+                                @else
+                                    <p>{{ $award->name }}</p>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                @else 
+                    <div>No awards earned.</div>
+                @endif
+            </div>
+            <div class="text-right"><a href="{{ $user->url.'/awardcase' }}">View all...</a></div>
+        </div>
+    </div>
     <div class="card profile-inventory profile-assets-card">
         <div class="card-body text-center">
             <h5 class="card-title">Armoury</h5>
@@ -172,31 +195,7 @@
         </div>
     </div>
 </div>
-    <div class="card mb-3">
-        <div class="card-body text-center">
-            <h5 class="card-title">Awards</h5>
-            <div class="card-body">
-                @if(count($awards))
-                    <div class="row">
-                        @foreach($awards as $award)
-                            <div class="col-md-3 col-6 profile-inventory-item">
-                                @if($award->imageUrl)
-                                    <img src="{{ $award->imageUrl }}" data-toggle="tooltip" title="{{ $award->name }}" />
-                                @else
-                                    <p>{{ $award->name }}</p>
-                                @endif
-                            </div>
-                        @endforeach
-                    </div>
-                @else 
-                    <div>No awards earned.</div>
-                @endif
-            </div>
-            <div class="text-right"><a href="{{ $user->url.'/awardcase' }}">View all...</a></div>
-        </div>
-    </div>
-
-
+   
 </div>
 
 
