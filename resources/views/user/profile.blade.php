@@ -196,10 +196,10 @@
     </div>
 </div>
    
-</div>
 
 
-<br><br>
+<hr>
+<br>
 
 @comments(['model' => $user->profile,
         'perPage' => 5
