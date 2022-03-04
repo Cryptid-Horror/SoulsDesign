@@ -1508,6 +1508,7 @@ function generateHealth() {
 				childHealth += "Mute ";
 		}
 	}
+        return childHealth;
 }
 
 function generateEyes(childRarity) {
