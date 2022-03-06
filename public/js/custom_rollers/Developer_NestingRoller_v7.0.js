@@ -1233,8 +1233,8 @@ function generateHaze() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BH").checked) {
-		if (!destroyedModifiers.includes("Bottle of Tarnish destroyed.<br>"))
-			destroyedModifiers += "Bottle of Tarnish destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Tarnished destroyed.<br>"))
+			destroyedModifiers += "Bottle of Tarnished destroyed.<br>";
 		bonus = 60;
 	}
 	
@@ -1445,12 +1445,12 @@ function generateVanta() {
 }
 
 function generateCoat() {
-	var bronze, tarnish, silver, obsidian;
+	var bronze, Tarnished, silver, obsidian;
 	bronze = generateUmber();
-	tarnish = generateHaze();
+	Tarnished = generateHaze();
 	silver = generateIvory();
 	obsidian = generateVanta();
-	var result = "" + bronze + "/" + tarnish + "/" + silver + "/" + obsidian ;
+	var result = "" + bronze + "/" + Tarnished + "/" + silver + "/" + obsidian ;
 	// handle default coats
 	if (result == "bb/tt/ss/nn") {
 		var damGenome = document.getElementById("damGenoType").value;
@@ -2321,7 +2321,7 @@ function coatToText(coat) {
 	if (baseStr == "Bb/tt/ss" || baseStr == "BB/tt/ss") {
 		result = "Bronze ";
 	} else if (baseStr == "bb/Tt/ss" || baseStr == "bb/TT/ss") {
-		result = "Tarnish ";
+		result = "Tarnished ";
 	} else if (baseStr == "bb/tt/Ss" || baseStr == "bb/tt/SS") {
 		result = "Silver ";
 	} else if (baseStr == "Bb/Tt/ss" || baseStr == "BB/TT/ss" ||
