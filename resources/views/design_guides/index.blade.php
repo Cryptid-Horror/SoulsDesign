@@ -22,17 +22,17 @@
 			  ['Ankle', 'AK'], ['Socks', 'SO'], ['Tips', 'TI']];
 
 	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Cape', 'nCa/CaCa'], ['Collar', 'nCl/ClCl'],
-				['Dun', 'nDn/DnDn'], ['Duotone', 'nDo/DoDo'], ['Dusted', 'nDt/DtDt'], ['Flaxen', 'nFla/FlaFla'],
-				['Frog Eye', 'nFe/FeFe'], ['Greying', 'nGr/GrGr'], ['Hood', 'nHd/HdHd'],
+				['Dun', 'nDn/DnDn'], ['Duotone', 'nDo/DoDo'], ['Dusted', 'nDt/DtDt'], ['Citrine', 'nCt/CtCt'],
+				['Frog Eye', 'nFe/FeFe'], ['Steel', 'nSl/SlSl'], ['Hood', 'nHd/HdHd'],
 				['Leaf', 'nLf/LfLf'], ['Masked', 'nMa/MaMa'], ['Pangare', 'nPa/PaPa'],
 				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rimmed', 'nRi/Ri'],
-				['Ringed', 'nRn/RnRn'], ['Rose', 'nRos/RosRos'], ['Ripples', 'nRip/RipRip'], ['Sable', 'nSa/SaSa'],
+				['Ringed', 'nRn/RnRn'], ['Rhodonite', 'nRd/RdRd'], ['Ripples', 'nRip/RipRip'], ['Sable', 'nSa/SaSa'],
 				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'], ['Stockings', 'nSo/SoSo'],
 				['Specter', 'nOse/OseOse'], ['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
 
-	$uncommons = [['Azure', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Border', 'nBo/BoBo'],
-				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Copper', 'nCp/CpCp'],
-				['Crested', 'nCr/CrCr'], ['Crimson', 'nCr/CrCr'], ['Dapple', 'nDl/DlDl'], ['Dipped', 'nDi/DiDi'],
+	$uncommons = [['Azurite', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Border', 'nBo/BoBo'],
+				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Topaz', 'nTz/TzTz'],
+				['Crested', 'nCr/CrCr'], ['Garnet', 'nGt/GtGt'], ['Dapple', 'nDl/DlDl'], ['Dipped', 'nDi/DiDi'],
 				['Dripping', 'nDr/DrDr'], ['Inkwell', 'nIn/InIn'], ['Marbled', 'nMar/MarMar'],
 				['Merle', 'nMr/MrMr'], ['Metallic', 'nMe/MeMe'], ['Petrified', 'nOpr/OprOpr'], ['Pigeon', 'nPg/PgPg'],
 				['Plasma', 'nPs/PsPs'], ['Roan', 'nRo/RoRo'], ['Rosettes', 'nRs/RsRs'],
@@ -41,10 +41,10 @@
 
 	$rares = [['Blooded', 'nBd/BdBd'], ['Circuit', 'nCi/CiCi'], ['Eyes', 'nEy/EyEy'], ['Filigree', 'nFi/FiFi'], ['Glass', 'nGl/GlGl'],
 				['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
-				['Patchwork', 'nPw/PwPw'], ['Pearl', 'nOpe/OpeOpe'], ['Petal', 'nPl/PlPl'], ['Seafoam', 'nSe/SeSe']];
+				['Patchwork', 'nPw/PwPw'], ['Pearl', 'nOpe/OpeOpe'], ['Petal', 'nPl/PlPl'], ['Turquoise', 'nTu/TuTu']];
 
 	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Arcane', 'nArc/ArcArc'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'], 
-				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Lilac', 'nLi/LiLi'], 
+				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Amethyst', 'nAy/AyAy'], 
 				['Oilslick', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
 				['Triquetra', 'nTri/TriTri']];
 	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torched', 'nTh/ThTh']];
@@ -106,7 +106,8 @@
 			  - Hydra, Minature mutations, or new mutations from the contest! <br>
 			  - New traits from the contest. </br>
 			  - New Markings from the contest: Cape, Stockings, Specter, Tritone, Petrified, Patchwork, Circuit, Pearl, arcane, Oilslick, Harlequin, Torch (Fwoosh/Name pending), and Mermaid.</br>
-			  - Any Legendary Skills.
+			  - Any Legendary Skills.<br>
+			  Base coats and Color modifer marking names have changed names and IDs! 
 		</div>
 
 		<!-- Common Genetics -->		

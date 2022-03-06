@@ -1,8 +1,8 @@
 <?php
-    $marking_icon = 'Common_Flaxen';
-    $marking_name = 'Flaxen';
-    $marking_code = 'nFl/FlFl';
-    $marking_desc = "Flaxen was a confusing gene that for a long time was thought to be just dragons that were Golden in color. However Flaxen actually was deemed a color gene when it was seen on a vanta dragon with dusted compared to a golden dragon with the same gene. Flaxen appears as more yellow coloration in comparison to the richer golden color of the Gold base coat. In dominant, this marking is seen to make the entire dragon capable of being yellow in hue for it’s base and all its genes.";
+    $marking_icon = 'Uncommon_Azurite';
+    $marking_name = 'Azurite';
+    $marking_code = 'nAz/AzAz';
+    $marking_desc = "A color modification gene that is prized for its blue tones, the color seems to have come from those who lived within the boundaries of the ocean, and is most noted in the Warden species.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
@@ -40,11 +40,10 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'flaxen_yes1',
-        'flaxen_yes2',
-        'flaxen_yes3',
-        'flaxen_yes4',
-        'flaxen_dom'
+        'ColorMod_yes',
+        'ColorMod_yes2',
+        'ColorMod_no',
+        'ColorMod_no2'
     ];
 
     // You can use html!
@@ -59,22 +58,22 @@
     $marking_must = [
         'Recessive: Can either effect the base coat and all marking/base dependant colors, or two markings (or one marking and the base).',
         'Dominant: Can effect the base and ALL markings.',
-        'Flaxen is shades of yellow and cream. It can bleed into "yellow-oranges" but the yellow tint must overpower the orange coloration. The same applies to "yellow-green" ranges.',
+        'Azurite is shades of blue. It can bleed into blue-reds, etc, but the blue coloration must be strongest.',
         ' Color modifier markings like this one can only affect certain markings when the color modifier is applied to the base. A marking that has the "marking/base dependant" swatch as allowed is a marking that can be altered to be shades of the color modifier, if the color modifier is applied to the base coat. Otherwise, it is not allowed.
-A huge example of the power behind a color modifier marking is in this kind of combination, however keep in mind we cannot detail every possible combination! This example uses flaxen, but applies to all color modifiers. This examples is even for a Recessive gene!
-Flaxen is applied to the base. Smoke is base dependant and is now shades of flaxen. Stained is layered above smoke and is now also shades of flaxen overtop of smoke. Duotone is applied to stained, and now stained has two shades of flaxen applies. Ontop of this, dusted is residing above all these markings, and is allowed to be shades of flaxen as well.',
+A huge example of the power behind a color modifier marking is in this kind of combination, however keep in mind we cannot detail every possible combination! This example uses Citrine, but applies to all color modifiers. This examples is even for a Recessive gene!
+Citrine is applied to the base. Smoke is base dependant and is now shades of Citrine. Stained is layered above smoke and is now also shades of Citrine overtop of smoke. Duotone is applied to stained, and now stained has two shades of Citrine applies. Ontop of this, dusted is residing above all these markings, and is allowed to be shades of Citrine as well.',
     ];
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'FLAXEN_1','FLAXEN_2','FLAXEN_3',
+        'Azurite_1','Azurite_2','Azurite_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'flaxen_1', 'alt' => '...', 'label' => 'SB-0890', 'caption' => 'Designer: @Dorosaury'],
-        ['image_name' => 'flaxen_2', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
-        ['image_name' => 'flaxen_3', 'alt' => '...', 'label' => 'SB-1065', 'caption' => 'Designer: @Tromacom'],
+        ['image_name' => 'azurite_1', 'alt' => '...', 'label' => 'SB-0936', 'caption' => 'Designer: @Tromacom'],
+        ['image_name' => 'azurite_2', 'alt' => '...', 'label' => 'SB-0748', 'caption' => 'Designer: @Cameil'],
+        ['image_name' => 'azurite_3', 'alt' => '...', 'label' => 'SB-0636', 'caption' => 'Designer: @Thessur'],
     ];
 ?>
 

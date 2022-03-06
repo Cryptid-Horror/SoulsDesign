@@ -1,8 +1,8 @@
 <?php
-    $marking_icon = 'Uncommon_Copper';
-    $marking_name = 'Copper';
-    $marking_code = 'nCp/CpCp';
-    $marking_desc = "This gene is known for it's ability to give dragons orange and bronze colorations. The first dragon to carry this gene being Amarythine, and it has spread throughout from the Shimmering Isles to other species, not just wardens.";
+    $marking_icon = 'Mythic_Amethyst';
+    $marking_name = 'Amethyst';
+    $marking_code = 'nAy/AyAy';
+    $marking_desc = "A color modification gene that brings out the purple colors of a dragon, these dragons are regarded as royalty, along with their Jade counterparts.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
@@ -58,23 +58,24 @@
     $marking_must = [
         'Recessive: Can either effect the base coat and all marking/base dependant colors, or two markings (or one marking and the base).',
         'Dominant: Can effect the base and ALL markings.',
-        'Copper is shades of orange. It can bleed into orange-yellows, etc, but the orange coloration must be strongest.',
+        'Amethyst is shades of purple. It can bleed into purple-reds, etc, but the purple coloration must be strongest.',
         ' Color modifier markings like this one can only affect certain markings when the color modifier is applied to the base. A marking that has the "marking/base dependant" swatch as allowed is a marking that can be altered to be shades of the color modifier, if the color modifier is applied to the base coat. Otherwise, it is not allowed.
-A huge example of the power behind a color modifier marking is in this kind of combination, however keep in mind we cannot detail every possible combination! This example uses flaxen, but applies to all color modifiers. This examples is even for a Recessive gene!
-Flaxen is applied to the base. Smoke is base dependant and is now shades of flaxen. Stained is layered above smoke and is now also shades of flaxen overtop of smoke. Duotone is applied to stained, and now stained has two shades of flaxen applies. Ontop of this, dusted is residing above all these markings, and is allowed to be shades of flaxen as well.',
+A huge example of the power behind a color modifier marking is in this kind of combination, however keep in mind we cannot detail every possible combination! This example uses Citrine, but applies to all color modifiers. This examples is even for a Recessive gene!
+Citrine is applied to the base. Smoke is base dependant and is now shades of Citrine. Stained is layered above smoke and is now also shades of Citrine overtop of smoke. Duotone is applied to stained, and now stained has two shades of Citrine applies. Ontop of this, dusted is residing above all these markings, and is allowed to be shades of Citrine as well.',
     ];
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'COPPER_1','COPPER_2','COPPER_3'
+        'Amethyst_single','Amethyst_double','Amethyst_abundism'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'copper_1', 'alt' => '...', 'label' => 'SB-0311', 'caption' => 'Designer: @Askila-Deamon'],
-        ['image_name' => 'copper_2', 'alt' => '...', 'label' => 'SB-0840', 'caption' => 'Designer: @Rhith'],
-        ['image_name' => 'copper_3', 'alt' => '...', 'label' => 'SB-0212', 'caption' => 'Designer: @Cameil'],
+        ['image_name' => 'Amethyst_1', 'alt' => '...', 'label' => 'SB-0821', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'Amethyst_2', 'alt' => '...', 'label' => 'SB-0661', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'Amethyst_3', 'alt' => '...', 'label' => 'SB-0168', 'caption' => 'Designer: @GryAdventures + @Oreleth'],
     ];
 ?>
 
 @include('design_guides.templates._gene_template')
+
