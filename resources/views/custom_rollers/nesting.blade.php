@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v6.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v6.1.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -85,14 +85,11 @@
 				<option value="1">C Ears</option>
 				<option value="2">UC Ears</option>
 				<option value="3">R Ears</option>
-				<option value="4">M Ears</option>
-
 			</select>
 			<select id="sireTail" class="cellElement">
 				<option value="1">C Tail</option>
 				<option value="2">UC Tail</option>
 				<option value="3">R Tail</option>
-				<option value="4">M Tail</option>
 			</select>
 		</div>
 		
@@ -143,7 +140,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
+			<input type="text" id="sireGenoType" class="cellElement" placeholder="Sire geno" autocomplete="off"><br>
 
 			<a>Echo</a><br>
 			<textarea rows="1" id="sireGenoEcho" class="cellElement" readonly spellcheck="false"></textarea><br>
@@ -204,13 +201,11 @@
 				<option value="1">C Ears</option>
 				<option value="2">UC Ears</option>
 				<option value="3">R Ears</option>
-				<option value="4">M Ears</option>
 			</select>
 			<select id="damTail" class="cellElement">
 			    <option value="1">C Tail</option>
 				<option value="2">U Tail</option>
 				<option value="3">R Tail</option>
-				<option value="4">M Tail</option>
 			</select>
 		</div>
 		
@@ -262,7 +257,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
+			<input type="text" id="damGenoType" class="cellElement" placeholder="Dam geno" autocomplete="off"><br>
 			
 			<a>Echo</a><br>
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
@@ -272,9 +267,6 @@
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
-		If your dragon's genome is not updated to the <br>
-		newest base coat and color modifer codes<br>
-		 you will need to submit a claim to have them updated!
 		<div width="100%">
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
@@ -347,14 +339,14 @@
 					<option value="lilac">Lilac</option>
                     <option value="prismatic">Prismatic</option>
                     <option disabled value="5">Petty(Agouti Only)</option>
-                    <option value="umber">Brass</option>
-                    <option value="haze">Bronze</option>
-                    <option value="ivory">Silver</option>
-                    <option value="vanta">Obsidian</option>
-                    <option value="golden">Gold</option>
-					<option value="ivory">Bronzed Brass</option>
-                    <option value="vanta">Bronzed Silver</option>
-                    <option value="golden">Bronzed Gold</option>
+                    <option value="umber">Umber</option>
+                    <option value="haze">Haze</option>
+                    <option value="ivory">Ivory</option>
+                    <option value="vanta">Vanta</option>
+                    <option value="golden">Golden</option>
+					<option value="ivory">Hazed Umber</option>
+                    <option value="vanta">Hazed Ivory</option>
+                    <option value="golden">Hazed Golden</option>
 				</select>
 			</div>
 			</span>
@@ -387,7 +379,7 @@
 	
 <table id="footer">
 	<td id="footerElement">
-        v7.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
+        v6.1.0 - Maintained by Cryptid-Horror <br>
 		Originally coded by Armando Montanez <br>
 </table>
 
