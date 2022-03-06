@@ -71,9 +71,9 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Amethyst_1', 'alt' => '...', 'label' => 'SB-0821', 'caption' => 'Designer: @Rhith'],
-        ['image_name' => 'Amethyst_2', 'alt' => '...', 'label' => 'SB-0661', 'caption' => 'Designer: @Rhith'],
-        ['image_name' => 'Amethyst_3', 'alt' => '...', 'label' => 'SB-0168', 'caption' => 'Designer: @GryAdventures + @Oreleth'],
+        ['image_name' => 'amethyst_1', 'alt' => '...', 'label' => 'SB-0821', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'amethyst_2', 'alt' => '...', 'label' => 'SB-0661', 'caption' => 'Designer: @Rhith'],
+        ['image_name' => 'amethyst_3', 'alt' => '...', 'label' => 'SB-0168', 'caption' => 'Designer: @GryAdventures + @Oreleth'],
     ];
 ?>
 
