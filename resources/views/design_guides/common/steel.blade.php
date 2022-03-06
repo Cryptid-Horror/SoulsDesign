@@ -40,11 +40,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'grey_yes1',
-        'grey_yes2',
-        'grey_yes3',
-        'grey_yes4',
-        'grey_dom'
+        'steel_yes1',
+        'steel_yes2',
+        'steel_yes3',
+        'steel_yes4',
+        'steel_dom'
     ];
 
     // You can use html!
@@ -68,7 +68,7 @@ citrine is applied to the base. Smoke is base dependant and is now shades of cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'steel',
+        'Grey',
          'Grey_lilac_single', 'Grey_lilac_double', 'Grey_lilac_abundism'
     ];
 

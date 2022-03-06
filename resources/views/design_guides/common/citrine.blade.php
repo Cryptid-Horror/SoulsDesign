@@ -40,11 +40,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'Citrine_yes1',
-        'Citrine_yes2',
-        'Citrine_yes3',
-        'Citrine_yes4',
-        'Citrine_dom'
+        'flaxen_yes1',
+        'flaxen_yes2',
+        'flaxen_yes3',
+        'flaxen_yes4',
+        'flaxen_dom'
     ];
 
     // You can use html!
@@ -67,14 +67,14 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Citrine_1','Citrine_2','Citrine_3',
+        'flaxen_1','flaxen_2','flaxen_3',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
     $design_carousel = [
-        ['image_name' => 'Citrine_1', 'alt' => '...', 'label' => 'SB-0890', 'caption' => 'Designer: @Dorosaury'],
-        ['image_name' => 'Citrine_2', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
-        ['image_name' => 'Citrine_3', 'alt' => '...', 'label' => 'SB-1065', 'caption' => 'Designer: @Tromacom'],
+        ['image_name' => 'citrine_1', 'alt' => '...', 'label' => 'SB-0890', 'caption' => 'Designer: @Dorosaury'],
+        ['image_name' => 'citrine_2', 'alt' => '...', 'label' => 'SB-1000', 'caption' => 'Designer: @Xialthia'],
+        ['image_name' => 'citrine_3', 'alt' => '...', 'label' => 'SB-1065', 'caption' => 'Designer: @Tromacom'],
     ];
 ?>
 
