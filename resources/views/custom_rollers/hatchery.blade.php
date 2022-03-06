@@ -27,6 +27,10 @@
             <option value="Warden Dragon">Warden</option>
             <option value="Greater Emperor">Greater Emperor</option>
             <option value="Sapiere Dragon">Sapiere Dragon</option>
+            <option value="Ridgewalker Drake">Ridgewalker Drake</option>
+            <option value="Abyssal Basileus">Abyssal Basileus</option>
+
+
 
         </select>
         <br>
