@@ -127,10 +127,10 @@ function rollVoTW(){
 
 		if (zone.value == "live"){
 			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
-				var i = rand(123,177);}
+				var i = rand(123,179);}
             if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
-				var i = rand(123,177);}
-			else {var i = rand(1,177);}
+				var i = rand(123,179);}
+			else {var i = rand(1,179);}
 			
 			if(i <= 5){itemlist += "100 Crystals";} 
             else if(i <= 10){itemlist += "Armor:Bone";}
@@ -184,7 +184,8 @@ function rollVoTW(){
 			else if(i <= 174){itemlist += "Draco Boa: Aberrant";}
 			else if(i <= 175){itemlist += "Dragon's Talon";}	
 			else if(i <= 176){itemlist += "Petty Aberrant Tincture (25%)";}	
-			else if(i <= 177){itemlist += "Minor Aberrant Tincture (50%)";}										
+			else if(i <= 177){itemlist += "Minor Aberrant Tincture (50%)";}	
+			else if(i <= 179){itemlist += "1 Aether Coin";}									
         }
       }
 	
