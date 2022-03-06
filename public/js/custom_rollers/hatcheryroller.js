@@ -74,18 +74,18 @@ const myst_egg = {
 const c_marks = [
 	['Blanket', 'nBl', 'suffix'], ['Boar', 'nBr', 'suffix'], ['Collar', 'nCl', 'suffix'],
 	['Dun', 'nDn', 'suffix'], ['Duo Tone', 'nDo', 'suffix'], ['Dusted', 'nDt', 'ed'],
-    ['Flaxen', 'nFla', 'color'], ['Frog Eye', 'nFe', 'suffix'],
-	['Greying', 'nGr', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
+    ['Citrine', 'nCt', 'color'], ['Frog Eye', 'nFe', 'suffix'],
+	['Steel', 'nSl', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
 	['Masked', 'nMa', 'ed'], ['Pangare', 'nPa', 'suffix'], ['Points', 'nPo', 'suffix'],
 	['Python', 'nPy', 'suffix'], ['Rimmed', 'nRi', 'ed'],
-	['Ringed', 'nRn', 'ed'], ['Rose', 'nRos', 'color'],	['Sable', 'nSa', 'suffix'],
+	['Ringed', 'nRn', 'ed'], ['Rhodonite', 'nRd', 'color'],	['Sable', 'nSa', 'suffix'],
 	['Scaled', 'nSc', 'ed'], ['Stained', 'nSn', 'suffix'], ['Skink', 'nSk', 'suffix'],
 	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
 ];
 const uc_marks = [
-    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
-	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Copper', 'nCp', 'color'],
-	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
+    ['Azurite', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
+	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Topaz', 'nTz', 'color'],
+	['Crested', 'nCr', 'ed'], ['Garnet', 'nGt', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
 	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
     ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],
@@ -96,11 +96,11 @@ const r_marks = [
 	['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
-    ['Filigree', 'nFi', 'r']
+    ['Filigree', 'nFi', 'r'], ['Turquoise', 'nTu', 'color']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
-	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'color'],
+	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Amethyst', 'nAy', 'color'],
 	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
 	['Triquetra', 'nTri', 'vr']
 ];
