@@ -66,7 +66,7 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Amethyst_single','Amethyst_double','Amethyst_abundism'
+        'lilac_single','lilac_double','lilac_abundism'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

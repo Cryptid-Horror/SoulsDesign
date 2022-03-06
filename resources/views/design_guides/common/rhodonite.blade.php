@@ -67,7 +67,7 @@ citrine is applied to the base. Smoke is base dependant and is now shades of cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'rhodonite_1','rhodonite_2','rhodonite_3'
+        'ROSE_1','ROSE_2','ROSE_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

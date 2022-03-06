@@ -66,7 +66,7 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Azurite_1','Azurite_2','Azurite_3'
+        'AZURE_1','AZURE_2','AZURE_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs

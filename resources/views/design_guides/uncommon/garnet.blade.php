@@ -66,7 +66,7 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'Garnet_1','Garnet_2','Garnet_3'
+        'CRIMSON_1','CRIMSON_2','CRIMSON_3'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
