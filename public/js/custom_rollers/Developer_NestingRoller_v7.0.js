@@ -367,12 +367,12 @@ function validateGeno(sireOrDam) {
 	
 	// ensure using '/' at correct location.
 	if (genome.charAt(2) != '/' || genome.charAt(5) != '/' || genome.charAt(8) != '/')
-		return "Invalid " + sireOrDam + " geno. use bb/rr/ss/nn format.";
+		return "Invalid " + sireOrDam + " geno. use bb/tt/ss/nn format.";
 	
-	// ensure base coat geno is BB/RR/SS/NN format.
+	// ensure base coat geno is BB/TT/SS/NN format.
 	var inUppercase = genome.toUpperCase();
-	if (inUppercase.substr(0, 2) != 'BB' || inUppercase.substr(3, 2) != 'RR' ||  inUppercase.substr(6, 2) != 'SS' || inUppercase.substr(9, 2) != 'NN')
-		return "Invalid " + sireOrDam + " geno. Please use this order: bb/rr/ss/nn.";
+	if (inUppercase.substr(0, 2) != 'BB' || inUppercase.substr(3, 2) != 'TT' ||  inUppercase.substr(6, 2) != 'SS' || inUppercase.substr(9, 2) != 'NN')
+		return "Invalid " + sireOrDam + " geno. Please use this order: bb/tt/ss/nn.";
 	
 	// At this point, basic geno is confirmed.
 	// Now we need to verify markings.
@@ -426,8 +426,8 @@ function validateGeno(sireOrDam) {
 	} else {
 		document.getElementById(sireOrDam + "GenoEcho").value = genome.substr(0, 11) + "+";
 	}
-	if (genome.substr(0, 11) == "bb/rr/ss/nn") {
-		return "" + sireOrDam + " geno is bb/rr/ss/nn, which isn't a valid base coat.";
+	if (genome.substr(0, 11) == "bb/tt/ss/nn") {
+		return "" + sireOrDam + " geno is bb/tt/ss/nn, which isn't a valid base coat.";
 	}
 	return 0;
 }
@@ -2425,7 +2425,7 @@ function genoToString(coat) {
 	var vantaStr = coat.substr(9, 2);
 	var baseStr = coat.substr(0, 8);
 	if (vantaStr == "Nn" || vantaStr == "NN") {
-		if (baseStr != "bb/rr/ss")
+		if (baseStr != "bb/tt/ss")
 			result += "Melanistic ";
 	}
 	
