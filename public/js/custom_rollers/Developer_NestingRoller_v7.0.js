@@ -2318,7 +2318,7 @@ function coatToText(coat) {
 	var vantaStr = coat.substr(9, 2);
 	var baseStr = coat.substr(0, 8);
 	// make base coat readable
-	if (baseStr == "Bb/rr/oss" || baseStr == "BB/rr/ss") {
+	if (baseStr == "Bb/rr/ss" || baseStr == "BB/rr/ss") {
 		result = "Brass ";
 	} else if (baseStr == "bb/Rr/ss" || baseStr == "bb/RR/ss") {
 		result = "Bronze ";
