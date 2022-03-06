@@ -2335,7 +2335,7 @@ function coatToText(coat) {
 		result = "Gold ";
 	} else if (baseStr == "Bb/Rr/Ss" || baseStr == "BB/RR/SS" ||
 			   baseStr == "BB/Rr/Ss" || baseStr == "Bb/RR/Ss" ||
-			   baseStr == "Bb/Rr/Ss" || baseStr == "BB/RR/Ss" ||
+			   baseStr == "Bb/Rr/SS" || baseStr == "BB/RR/Ss" ||
 			   baseStr == "BB/Rr/SS" || baseStr == "Bb/RR/SS") {
          result = "Bronzed Gold ";
 	} else if (vantaStr == "Nn" || vantaStr == "NN") {
