@@ -143,7 +143,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="sireGenoType" class="cellElement" placeholder="Sire geno" autocomplete="off"><br>
+			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
 
 			<a>Echo</a><br>
 			<textarea rows="1" id="sireGenoEcho" class="cellElement" readonly spellcheck="false"></textarea><br>
@@ -262,7 +262,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="damGenoType" class="cellElement" placeholder="Dam geno" autocomplete="off"><br>
+			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
 			
 			<a>Echo</a><br>
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
