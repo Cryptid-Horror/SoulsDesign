@@ -272,7 +272,8 @@
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
-		If your dragon's genome is not updated to the newest base coat and color modifer codes<br>
+		If your dragon's genome is not updated to the <br>
+		newest base coat and color modifer codes<br>
 		 you will need to submit a claim to have them updated!
 		<div width="100%">
 			<span style="white-space: nowrap;">
