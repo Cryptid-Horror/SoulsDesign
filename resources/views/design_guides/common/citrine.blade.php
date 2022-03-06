@@ -40,11 +40,11 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
-        'flaxen_yes1',
-        'flaxen_yes2',
-        'flaxen_yes3',
-        'flaxen_yes4',
-        'flaxen_dom'
+        'citrine_yes1',
+        'citrine_yes2',
+        'citrine_yes3',
+        'citrine_yes4',
+        'citrine_dom'
     ];
 
     // You can use html!
