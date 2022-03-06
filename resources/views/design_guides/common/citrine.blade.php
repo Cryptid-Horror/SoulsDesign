@@ -67,7 +67,7 @@ Citrine is applied to the base. Smoke is base dependant and is now shades of Cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'flaxen_1','flaxen_2','flaxen_3',
+        'FLAXEN_1','FLAXEN_2','FLAXEN_3',
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
