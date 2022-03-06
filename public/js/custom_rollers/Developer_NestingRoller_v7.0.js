@@ -27,17 +27,17 @@ var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Ba
 
 // markings map 2:1 with ___ToText array indexes.
 var commonToText = ["Blanket", "Boar", "Cape", "Collar", "Dun", "Dusted", "Duo Tone", 
-					 "Frog Eye", "Flaxen", "Greying", "Hood", "Leaf",
+					 "Frog Eye", "Rutile", "Steeled", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
-					"Ringed", "Rose", "Ripples", "Sable", "Scaled", "Skink", "Stained",
+					"Ringed", "Morganite", "Ripples", "Sable", "Scaled", "Skink", "Stained",
 					"Stockings", "Specter", "Trailing", "Underbelly"];
-var uncommonToText = ["Azure", "Banded", "Border", "Cloud", "Copper", "Crested", 
-					  "Crimson", "Dapple", "Dipped", "Dripping", "Inkwell",
+var uncommonToText = ["Kyanite", "Banded", "Border", "Cloud", "Amber", "Crested", 
+					  "Eudilyte", "Dapple", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Petrified", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin", "Tritone"];
-var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Seafoam", "Filigree"];
+var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Variscite", "Filigree"];
 var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
-					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
+					 "Lepir", "Amethyst", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
 var commonMutations = ["Dewlap", "Tendrils", "Fanged", "Maned", "Raptor", "Spined"];
 
@@ -75,14 +75,14 @@ var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "F
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
 var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail", "Crocodilia Tail"];
 
-var pettyColorMods = ["Umber", "Haze", "Ivory", "Vanta", "Golden", "Hazed Umber", "Hazed Ivory", "Hazed Golden"]
-var commonColorMods = ["Flaxen", "Greying", "Rose"];
-var uncommonColorMods = ["Azure", "Crimson"];
-var rareColorMods = ["Jade", "Seafoam"];
-var veryRareColorMods = ["Lilac", "Prismatic"];
+var pettyColorMods = ["Brass", "Bronze", "Silver", "Obsidian", "Gold", "Bronzed Brass", "Bronzed Silver", "Bronzed Gold"]
+var commonColorMods = ["Rutile", "Steeled", "Morganite"];
+var uncommonColorMods = ["Kyanite", "Eudilyte", "Amber"];
+var rareColorMods = ["Jade", "Variscite"];
+var veryRareColorMods = ["Amethyst", "Prismatic"];
 var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "AzAz", "nCri", "CriCri", "nCp", "CpCp", 
 					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
-var colorModsToText = ["Flaxen", "Greying", "Rose", "Azure", "Crimson", "Copper", "Jade", "Lilac", "Seafoam", "Prismatic"];
+var colorModsToText = ["Rutile", "Steeled", "Morganite", "Kyanite", "Eudilyte", "Amber", "Jade", "Amethyst", "Variscite", "Prismatic"];
 
 // Aberrant rates
 // Rates are keyed by bitmasks; this helps prevent duplication and
@@ -367,12 +367,12 @@ function validateGeno(sireOrDam) {
 	
 	// ensure using '/' at correct location.
 	if (genome.charAt(2) != '/' || genome.charAt(5) != '/' || genome.charAt(8) != '/')
-		return "Invalid " + sireOrDam + " geno. use uu/hh/oo/vv format.";
+		return "Invalid " + sireOrDam + " geno. use bb/rr/ss/nn format.";
 	
-	// ensure base coat geno is UU/HH/OO/VV format.
+	// ensure base coat geno is BB/RR/SS/NN format.
 	var inUppercase = genome.toUpperCase();
-	if (inUppercase.substr(0, 2) != 'UU' || inUppercase.substr(3, 2) != 'HH' ||  inUppercase.substr(6, 2) != 'OO' || inUppercase.substr(9, 2) != 'VV')
-		return "Invalid " + sireOrDam + " geno. Please use this order: uu/hh/oo/vv.";
+	if (inUppercase.substr(0, 2) != 'BB' || inUppercase.substr(3, 2) != 'RR' ||  inUppercase.substr(6, 2) != 'SS' || inUppercase.substr(9, 2) != 'NN')
+		return "Invalid " + sireOrDam + " geno. Please use this order: bb/rr/ss/nn.";
 	
 	// At this point, basic geno is confirmed.
 	// Now we need to verify markings.
@@ -426,8 +426,8 @@ function validateGeno(sireOrDam) {
 	} else {
 		document.getElementById(sireOrDam + "GenoEcho").value = genome.substr(0, 11) + "+";
 	}
-	if (genome.substr(0, 11) == "uu/hh/oo/vv") {
-		return "" + sireOrDam + " geno is uu/hh/oo/vv, which isn't a valid base coat (geno has no umber, haze, ivory, or vanta).";
+	if (genome.substr(0, 11) == "bb/rr/ss/nn") {
+		return "" + sireOrDam + " geno is bb/rr/ss/nn, which isn't a valid base coat.";
 	}
 	return 0;
 }
@@ -1161,17 +1161,17 @@ function generateUmber() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BU").checked) {
-		if (!destroyedModifiers.includes("Bottle of Umber destroyed.<br>"))
-			destroyedModifiers += "Bottle of Umber destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Brass destroyed.<br>"))
+			destroyedModifiers += "Bottle of Brass destroyed.<br>";
 		bonus = 80;
 	}
 	
 	// sanitize
-	if (damCoat == "uU") {
-		damCoat = "Uu";
+	if (damCoat == "bB") {
+		damCoat = "Bb";
 	}
-	if (sireCoat == "uU") {
-		sireCoat = "Uu";
+	if (sireCoat == "bB") {
+		sireCoat = "Bb";
 	}
 	
 	// roll
@@ -1179,46 +1179,46 @@ function generateUmber() {
 	var result = "";
 	
 	// determine dominance
-	if (damCoat == "uu" && sireCoat == "uu") {
-		return "uu";
-	} else if (damCoat == "Uu" && sireCoat == "Uu") {
+	if (damCoat == "bb" && sireCoat == "bb") {
+		return "bb";
+	} else if (damCoat == "Bb" && sireCoat == "Bb") {
 		if (roll < 5) {
-			result = "UU";
+			result = "BB";
 		} else if (roll < (60 + bonus)) {
-			result = "Uu";
+			result = "Bb";
 		} else {
-			result = "uu";
+			result = "bb";
 		}
-	} else if (damCoat == "UU" && sireCoat == "UU") {
+	} else if (damCoat == "BB" && sireCoat == "BB") {
 		if (roll < 25) {
-			result = "UU";
+			result = "BB";
 		} else if (roll < (90 + bonus)) {
-			result = "Uu";
+			result = "Bb";
 		} else {
-			result = "uu";
+			result = "bb";
 		}
-	} else if ((damCoat == "Uu" && sireCoat == "UU") ||
-		       (damCoat == "UU" && sireCoat == "Uu")) {
+	} else if ((damCoat == "Bb" && sireCoat == "BB") ||
+		       (damCoat == "BB" && sireCoat == "Bb")) {
 		if (roll < 10) {
-			result = "UU";
+			result = "BB";
 		} else if (roll < (80 + bonus)) {
-			result = "Uu";
+			result = "Bb";
 		} else {
-			result = "uu";
+			result = "bb";
 		}
-	} else if ((damCoat == "uu" && sireCoat == "UU") ||
-		       (damCoat == "UU" && sireCoat == "uu")) {
+	} else if ((damCoat == "bb" && sireCoat == "BB") ||
+		       (damCoat == "BB" && sireCoat == "bb")) {
 		if (roll < (60 + bonus)) {
-			result = "Uu";
+			result = "Bb";
 		} else {
-			result = "uu";
+			result = "bb";
 		}
-	} else if ((damCoat == "uu" && sireCoat == "Uu") ||
-		       (damCoat == "Uu" && sireCoat == "uu")) {
+	} else if ((damCoat == "bb" && sireCoat == "Bb") ||
+		       (damCoat == "Bb" && sireCoat == "bb")) {
 		if (roll < (40 + bonus)) {
-			result = "Uu";
+			result = "Bb";
 		} else {
-			result = "uu";
+			result = "bb";
 		}
 	}
 	
@@ -1233,17 +1233,17 @@ function generateHaze() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BH").checked) {
-		if (!destroyedModifiers.includes("Bottle of Haze destroyed.<br>"))
-			destroyedModifiers += "Bottle of Haze destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Bronze destroyed.<br>"))
+			destroyedModifiers += "Bottle of Bronze destroyed.<br>";
 		bonus = 60;
 	}
 	
 	// sanitize
-	if (damCoat == "hH") {
-		damCoat = "Hh";
+	if (damCoat == "rR") {
+		damCoat = "Rr";
 	}
-	if (sireCoat == "hH") {
-		sireCoat = "Hh";
+	if (sireCoat == "rR") {
+		sireCoat = "Rr";
 	}
 	
 	// roll
@@ -1251,46 +1251,46 @@ function generateHaze() {
 	var result = "";
 	
 	// determine dominance
-	if (damCoat == "hh" && sireCoat == "hh") {
-		return "hh";
-	} else if (damCoat == "Hh" && sireCoat == "Hh") {
+	if (damCoat == "rr" && sireCoat == "rr") {
+		return "rr";
+	} else if (damCoat == "Rr" && sireCoat == "Rr") {
 		if (roll < 4) {
-			result = "HH";
+			result = "RR";
 		} else if (roll < (65 + bonus)) {
-			result = "Hh";
+			result = "Rr";
 		} else {
-			result = "hh";
+			result = "rr";
 		}
-	} else if (damCoat == "HH" && sireCoat == "HH") {
+	} else if (damCoat == "RR" && sireCoat == "RR") {
 		if (roll < 20) {
-			result = "HH";
+			result = "RR";
 		} else if (roll < (85 + bonus)) {
-			result = "Hh";
+			result = "Rr";
 		} else {
-			result = "hh";
+			result = "rr";
 		}
-	} else if ((damCoat == "Hh" && sireCoat == "HH") ||
-		       (damCoat == "HH" && sireCoat == "Hh")) {
+	} else if ((damCoat == "Rr" && sireCoat == "RR") ||
+		       (damCoat == "RR" && sireCoat == "Rr")) {
 		if (roll < 8) {
-			result = "HH";
+			result = "RR";
 		} else if (roll < (75 + bonus)) {
-			result = "Hh";
+			result = "Rr";
 		} else {
-			result = "hh";
+			result = "rr";
 		}
-	} else if ((damCoat == "hh" && sireCoat == "HH") ||
-		       (damCoat == "HH" && sireCoat == "hh")) {
+	} else if ((damCoat == "rr" && sireCoat == "RR") ||
+		       (damCoat == "RR" && sireCoat == "rr")) {
 		if (roll < (55 + bonus)) {
-			result = "Hh";
+			result = "Rr";
 		} else {
-			result = "hh";
+			result = "rr";
 		}
-	} else if ((damCoat == "hh" && sireCoat == "Hh") ||
-		       (damCoat == "Hh" && sireCoat == "hh")) {
+	} else if ((damCoat == "rr" && sireCoat == "Rr") ||
+		       (damCoat == "Rr" && sireCoat == "rr")) {
 		if (roll < (35 + bonus)) {
-			result = "Hh";
+			result = "Rr";
 		} else {
-			result = "hh";
+			result = "rr";
 		}
 	}
 	
@@ -1307,17 +1307,17 @@ function generateIvory() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BI").checked) {
-		if (!destroyedModifiers.includes("Bottle of Ivory destroyed.<br>"))
-			destroyedModifiers += "Bottle of Ivory destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Silver destroyed.<br>"))
+			destroyedModifiers += "Bottle of Silver destroyed.<br>";
 		bonus = 40;
 	}
 	
 	// sanitize
-	if (damCoat == "oO") {
-		damCoat = "Oo";
+	if (damCoat == "sS") {
+		damCoat = "Ss";
 	}
-	if (sireCoat == "oO") {
-		sireCoat = "Oo";
+	if (sireCoat == "sS") {
+		sireCoat = "Ss";
 	}
 	
 	// roll
@@ -1325,46 +1325,46 @@ function generateIvory() {
 	var result = "";
 	
 	// determine dominance
-	if (damCoat == "oo" && sireCoat == "oo") {
-		return "oo";
-	} else if (damCoat == "Oo" && sireCoat == "Oo") {
+	if (damCoat == "ss" && sireCoat == "ss") {
+		return "ss";
+	} else if (damCoat == "Ss" && sireCoat == "Ss") {
 		if (roll < 3) {
-			result = "OO";
+			result = "SS";
 		} else if (roll < (30 + bonus)) {
-			result = "Oo";
+			result = "Ss";
 		} else {
-			result = "oo";
+			result = "ss";
 		}
-	} else if (damCoat == "OO" && sireCoat == "OO") {
+	} else if (damCoat == "SS" && sireCoat == "SS") {
 		if (roll < 20) {
-			result = "OO";
+			result = "SS";
 		} else if (roll < (80 + bonus)) {
-			result = "Oo";
+			result = "Ss";
 		} else {
-		        result = "oo";
+		        result = "ss";
 		  }      
-	} else if ((damCoat == "Oo" && sireCoat == "OO") ||
-		       (damCoat == "OO" && sireCoat == "Oo")) {
+	} else if ((damCoat == "Ss" && sireCoat == "SS") ||
+		       (damCoat == "SS" && sireCoat == "Ss")) {
 		if (roll < 5) {
-			result = "OO";
+			result = "ss";
 		} else if (roll < (50 + bonus)) {
-			result = "Oo";
+			result = "Ss";
 		} else {
-			result = "oo";
+			result = "ss";
 		}
-	} else if ((damCoat == "oo" && sireCoat == "OO") ||
-		       (damCoat == "OO" && sireCoat == "oo")) {
+	} else if ((damCoat == "ss" && sireCoat == "SS") ||
+		       (damCoat == "SS" && sireCoat == "ss")) {
 		if (roll < (50 + bonus)) {
-			result = "Oo";
+			result = "Ss";
 		} else {
-			result = "oo";
+			result = "ss";
 		}
-	} else if ((damCoat == "oo" && sireCoat == "Oo") ||
-		       (damCoat == "Oo" && sireCoat == "oo")) {
+	} else if ((damCoat == "ss" && sireCoat == "Ss") ||
+		       (damCoat == "Ss" && sireCoat == "ss")) {
 		if (roll < (25 + bonus)) {
-			result = "Oo";
+			result = "Ss";
 		} else {
-			result = "oo";
+			result = "ss";
 		}
 	}
 	
@@ -1380,17 +1380,17 @@ function generateVanta() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BV").checked) {
-		if (!destroyedModifiers.includes("Bottle of Vanta destroyed.<br>"))
-			destroyedModifiers += "Bottle of Vanta destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Obsidian destroyed.<br>"))
+			destroyedModifiers += "Bottle of Obsidian destroyed.<br>";
 		bonus = 20;
 	}
 	
 	// sanitize
-	if (damCoat == "vV") {
-		damCoat = "Vv";
+	if (damCoat == "nN") {
+		damCoat = "Nn";
 	}
-	if (sireCoat == "vV") {
-		sireCoat = "Vv";
+	if (sireCoat == "nN") {
+		sireCoat = "Nn";
 	}
 	
 	// roll
@@ -1398,46 +1398,46 @@ function generateVanta() {
 	var result = "";
 	
 	// determine dominance
-	if (damCoat == "vv" && sireCoat == "vv") {
-		return "vv";
-	} else if (damCoat == "Vv" && sireCoat == "Vv") {
+	if (damCoat == "nn" && sireCoat == "nn") {
+		return "nn";
+	} else if (damCoat == "Nn" && sireCoat == "Nn") {
 		if (roll < 2) {
-			result = "VV";
+			result = "NN";
 		} else if (roll < (10 + bonus)) {
-			result = "Vv";
+			result = "Nn";
 		} else {
-			result = "vv";
+			result = "nn";
 		}
-	} else if (damCoat == "VV" && sireCoat == "VV") {
+	} else if (damCoat == "NN" && sireCoat == "NN") {
 		if (roll < 6) {
-			result = "VV";
+			result = "NN";
 		} else if (roll < (70 + bonus)) { 
-			result = "Vv";
+			result = "Nn";
 		} else {
-		        result = "vv";
+		        result = "nn";
 		 }       
-	} else if ((damCoat == "Vv" && sireCoat == "VV") ||
-		       (damCoat == "VV" && sireCoat == "Vv")) {
+	} else if ((damCoat == "Nn" && sireCoat == "NN") ||
+		       (damCoat == "NN" && sireCoat == "Nn")) {
 		if (roll < 3) {
-			result = "VV";
+			result = "NN";
 		} else if (roll < (15 + bonus)) {
-			result = "Vv";
+			result = "Nn";
 		} else {
-			result = "vv";
+			result = "nn";
 		}
-	} else if ((damCoat == "vv" && sireCoat == "VV") ||
-		       (damCoat == "VV" && sireCoat == "vv")) {
+	} else if ((damCoat == "nn" && sireCoat == "NN") ||
+		       (damCoat == "NN" && sireCoat == "nn")) {
 		if (roll < (30 + bonus)) {
-			result = "Vv";
+			result = "Nn";
 		} else {
-			result = "vv";
+			result = "nn";
 		}
-	} else if ((damCoat == "vv" && sireCoat == "Vv") ||
-		       (damCoat == "Vv" && sireCoat == "vv")) {
+	} else if ((damCoat == "nn" && sireCoat == "Nn") ||
+		       (damCoat == "Nn" && sireCoat == "nn")) {
 		if (roll < (5 + bonus)) {
-			result = "Vv";
+			result = "Nn";
 		} else {
-			result = "vv";
+			result = "nn";
 		}
 	}
 	
@@ -1445,37 +1445,37 @@ function generateVanta() {
 }
 
 function generateCoat() {
-	var umber, haze, ivory, vanta;
-	umber = generateUmber();
-	haze = generateHaze();
-	ivory = generateIvory();
-	vanta = generateVanta();
-	var result = "" + umber + "/" + haze + "/" + ivory + "/" + vanta ;
+	var brass, bronze, silver, obsidian;
+	brass = generateUmber();
+	bronze = generateHaze();
+	silver = generateIvory();
+	obsidian = generateVanta();
+	var result = "" + brass + "/" + bronze + "/" + silver + "/" + obsidian ;
 	// handle default coats
-	if (result == "uu/hh/oo/vv") {
+	if (result == "bb/rr/ss/nn") {
 		var damGenome = document.getElementById("damGenoType").value;
 		var sireGenome = document.getElementById("sireGenoType").value;
 		var damCoat = damGenome.substr(0, 2);
 		var sireCoat = sireGenome.substr(0, 2);
-		if (damCoat != "uu" || sireCoat != "uu") {
-			result = "Uu/hh/oo/vv";
+		if (damCoat != "bb" || sireCoat != "bb") {
+			result = "Bb/rr/ss/nn";
 		} else {
 			damCoat = damGenome.substr(3, 2);
 			sireCoat = sireGenome.substr(3, 2);
-			if (damCoat != "hh" || sireCoat != "hh") {
-				result = "uu/Hh/oo/vv";
+			if (damCoat != "rr" || sireCoat != "rr") {
+				result = "bb/Rr/ss/nn";
 			} else {
 				damCoat = damGenome.substr(6, 2);
 				sireCoat = sireGenome.substr(6, 2);
-				if (damCoat != "oo" || sireCoat != "oo") {
-					result = "uu/hh/Oo/vv";
+				if (damCoat != "ss" || sireCoat != "ss") {
+					result = "bb/rr/Ss/nn";
 				} else {
 					damCoat = damGenome.substr(9, 2);
 					sireCoat = sireGenome.substr(9, 2);
-					if (damCoat != "vv" || sireCoat != "vv") {
-						result = "uu/hh/oo/Vv";
+					if (damCoat != "nn" || sireCoat != "nn") {
+						result = "bb/rr/ss/Nn";
 					} else {
-						result = "INVALID COAT: IS PARENT uu/hh/oo/vv?"
+						result = "INVALID COAT: IS PARENT bb/hrr/ss/nn?"
 					}
 				}
 			}
@@ -2318,28 +2318,28 @@ function coatToText(coat) {
 	var vantaStr = coat.substr(9, 2);
 	var baseStr = coat.substr(0, 8);
 	// make base coat readable
-	if (baseStr == "Uu/hh/oo" || baseStr == "UU/hh/oo") {
-		result = "Umber ";
-	} else if (baseStr == "uu/Hh/oo" || baseStr == "uu/HH/oo") {
-		result = "Haze ";
-	} else if (baseStr == "uu/hh/Oo" || baseStr == "uu/hh/OO") {
-		result = "Ivory ";
-	} else if (baseStr == "Uu/Hh/oo" || baseStr == "UU/HH/oo" ||
-                   baseStr == "UU/Hh/oo" || baseStr == "Uu/HH/oo") {
-		result = "Hazed Umber ";
-	} else if (baseStr == "uu/Hh/Oo" || baseStr == "uu/HH/OO" || 
-                   baseStr == "uu/Hh/OO" || baseStr == "uu/HH/Oo") {
-		result = "Hazed Ivory ";
-	} else if (baseStr == "Uu/hh/Oo" || baseStr == "UU/hh/Oo" ||
-	           baseStr == "Uu/hh/OO" || baseStr == "UU/hh/OO") {
-		result = "Golden ";
-	} else if (baseStr == "Uu/Hh/Oo" || baseStr == "UU/HH/OO" ||
-			   baseStr == "UU/Hh/Oo" || baseStr == "Uu/HH/Oo" ||
-			   baseStr == "Uu/Hh/OO" || baseStr == "UU/HH/Oo" ||
-			   baseStr == "UU/Hh/OO" || baseStr == "Uu/HH/OO") {
-         result = "Hazed Golden ";
-	} else if (vantaStr == "Vv" || vantaStr == "VV") {
-		result = "Vanta ";
+	if (baseStr == "Bb/rr/oss" || baseStr == "BB/rr/ss") {
+		result = "Brass ";
+	} else if (baseStr == "bb/Rr/ss" || baseStr == "bb/RR/ss") {
+		result = "Bronze ";
+	} else if (baseStr == "bb/rr/Ss" || baseStr == "bb/rr/SS") {
+		result = "Silver ";
+	} else if (baseStr == "Bb/Rr/ss" || baseStr == "BB/RR/ss" ||
+                   baseStr == "BB/Rr/ss" || baseStr == "Bb/RR/ss") {
+		result = "Bronzed Brass ";
+	} else if (baseStr == "bb/Rr/Ss" || baseStr == "bb/RR/SS" || 
+                   baseStr == "bb/Rr/SS" || baseStr == "bb/RR/Ss") {
+		result = "Bronzed Silver ";
+	} else if (baseStr == "Bb/rr/Ss" || baseStr == "BB/rr/Ss" ||
+	           baseStr == "Bb/rr/SS" || baseStr == "BB/rr/SS") {
+		result = "Gold ";
+	} else if (baseStr == "Bb/Rr/Ss" || baseStr == "BB/RR/SS" ||
+			   baseStr == "BB/Rr/Ss" || baseStr == "Bb/RR/Ss" ||
+			   baseStr == "Bb/Rr/Ss" || baseStr == "BB/RR/Ss" ||
+			   baseStr == "BB/Rr/SS" || baseStr == "Bb/RR/SS") {
+         result = "Bronzed Gold ";
+	} else if (vantaStr == "Nn" || vantaStr == "NN") {
+		result = "Obsidian ";
 	} else {
 		result = "[INVALID COAT!] ";
 	}
@@ -2424,8 +2424,8 @@ function genoToString(coat) {
 	// melanistic
 	var vantaStr = coat.substr(9, 2);
 	var baseStr = coat.substr(0, 8);
-	if (vantaStr == "Vv" || vantaStr == "VV") {
-		if (baseStr != "uu/hh/oo")
+	if (vantaStr == "Nn" || vantaStr == "NN") {
+		if (baseStr != "bb/rr/ss")
 			result += "Melanistic ";
 	}
 	
