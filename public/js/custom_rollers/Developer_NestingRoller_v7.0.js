@@ -1452,7 +1452,7 @@ function generateCoat() {
 	obsidian = generateVanta();
 	var result = "" + bronze + "/" + tarnish + "/" + silver + "/" + obsidian ;
 	// handle default coats
-	if (result == "bb/rr/ss/nn") {
+	if (result == "bb/tt/ss/nn") {
 		var damGenome = document.getElementById("damGenoType").value;
 		var sireGenome = document.getElementById("sireGenoType").value;
 		var damCoat = damGenome.substr(0, 2);
