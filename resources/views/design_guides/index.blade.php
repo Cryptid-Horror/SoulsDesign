@@ -21,30 +21,29 @@
 	$frees = [['Accents', 'AC'], ['Birthmark', 'BI'], ['Blush', 'BL'], ['Freckles', 'FL'], ['Minimal Mark', 'MM'],
 			  ['Ankle', 'AK'], ['Socks', 'SO'], ['Tips', 'TI']];
 
-	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Cape', 'nCa/CaCa'], ['Collar', 'nCl/ClCl'],
-				['Dun', 'nDn/DnDn'], ['Duotone', 'nDo/DoDo'], ['Dusted', 'nDt/DtDt'], ['Citrine', 'nCt/CtCt'],
-				['Frog Eye', 'nFe/FeFe'], ['Steel', 'nSl/SlSl'], ['Hood', 'nHd/HdHd'],
+	$commons = [['Blanket', 'nBl/BlBl'], ['Boar', 'nBr/BrBr'], ['Cape', 'nCa/CaCa'], ['Citrine', 'nCt/CtCt'], ['Collar', 'nCl/ClCl'],
+				['Dun', 'nDn/DnDn'], ['Duotone', 'nDo/DoDo'], ['Dusted', 'nDt/DtDt'], ['Frog Eye', 'nFe/FeFe'], ['Hood', 'nHd/HdHd'],
 				['Leaf', 'nLf/LfLf'], ['Masked', 'nMa/MaMa'], ['Pangare', 'nPa/PaPa'],
-				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rimmed', 'nRi/Ri'],
-				['Ringed', 'nRn/RnRn'], ['Rhodonite', 'nRd/RdRd'], ['Ripples', 'nRip/RipRip'], ['Sable', 'nSa/SaSa'],
-				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'], ['Stockings', 'nSo/SoSo'],
+				['Points', 'nPo/PoPo'], ['Python', 'nPy/PyPy'], ['Rhodonite', 'nRd/RdRd'], ['Rimmed', 'nRi/Ri'],
+				['Ringed', 'nRn/RnRn'], ['Ripples', 'nRip/RipRip'], ['Sable', 'nSa/SaSa'],
+				['Scaled', 'nSc/ScSc'], ['Skink', 'nSk/SkSk'], ['Stained', 'nSn/SnSn'], ['Steel', 'nSl/SlSl'], ['Stockings', 'nSo/SoSo'],
 				['Specter', 'nOse/OseOse'], ['Trailing', 'nTr/TrTr'], ['Underbelly', 'nUn/UnUn']];
 
 	$uncommons = [['Azurite', 'nAz/AzAz'], ['Banded', 'nBa/BaBa'], ['Border', 'nBo/BoBo'],
-				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'], ['Topaz', 'nTz/TzTz'],
-				['Crested', 'nCr/CrCr'], ['Garnet', 'nGt/GtGt'], ['Dapple', 'nDl/DlDl'], ['Dipped', 'nDi/DiDi'],
-				['Dripping', 'nDr/DrDr'], ['Inkwell', 'nIn/InIn'], ['Marbled', 'nMar/MarMar'],
+				['Brindle', 'nBrd/BrdBrd'], ['Cloud', 'nCd/CdCd'],
+				['Crested', 'nCr/CrCr'], ['Dapple', 'nDl/DlDl'], ['Dipped', 'nDi/DiDi'],
+				['Dripping', 'nDr/DrDr'], ['Garnet', 'nGt/GtGt'], ['Inkwell', 'nIn/InIn'], ['Marbled', 'nMar/MarMar'],
 				['Merle', 'nMr/MrMr'], ['Metallic', 'nMe/MeMe'], ['Petrified', 'nOpr/OprOpr'], ['Pigeon', 'nPg/PgPg'],
 				['Plasma', 'nPs/PsPs'], ['Roan', 'nRo/RoRo'], ['Rosettes', 'nRs/RsRs'],
 				['Shaped', 'nSp/SpSp'], ['Smoke', 'nSm/SmSm'], ['Tabby', 'nTa/TaTa'],
-				['Tobiano', 'nTo/ToTo'], ['Toxin', 'nTx/TxTx'], ['Tritone', 'nTt/TtTt']];
+				['Tobiano', 'nTo/ToTo'], ['Topaz', 'nTz/TzTz'], ['Toxin', 'nTx/TxTx'], ['Tritone', 'nTt/TtTt']];
 
 	$rares = [['Blooded', 'nBd/BdBd'], ['Circuit', 'nCi/CiCi'], ['Eyes', 'nEy/EyEy'], ['Filigree', 'nFi/FiFi'], ['Glass', 'nGl/GlGl'],
 				['Jade', 'nJa/JaJa'], ['Luminescent', 'nLu/LuLu'], ['Lustrous', 'nLs/LsLs'], ['Painted', 'nPn/PnPn'],
 				['Patchwork', 'nPw/PwPw'], ['Pearl', 'nOpe/OpeOpe'], ['Petal', 'nPl/PlPl'], ['Turquoise', 'nTu/TuTu']];
 
-	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Arcane', 'nArc/ArcArc'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'], 
-				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'], ['Amethyst', 'nAy/AyAy'], 
+	$veryrares = [['Aether Marked', 'nAm/AmAm'], ['Amethyst', 'nAy/AyAy'], ['Arcane', 'nArc/ArcArc'], ['Aurora', 'nAu/AuAu'], ['Gemstone', 'nGm/GmGm'], 
+				['Harlequin', 'nHar/HarHar'], ['Iridescent', 'nIr/IrIr'], ['Lepir', 'nLe/LeLe'],
 				['Oilslick', 'nOol/OolOol'], ['Prismatic', 'nPr/PrPr'], ['Rune', 'nRu/RuRu'], ['Shimmer', 'nSh/ShSh'],
 				['Triquetra', 'nTri/TriTri']];
 	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torched', 'nTh/ThTh']];
