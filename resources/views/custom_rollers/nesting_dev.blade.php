@@ -143,7 +143,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
+			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 
 			<a>Echo</a><br>
 			<textarea rows="1" id="sireGenoEcho" class="cellElement" readonly spellcheck="false"></textarea><br>
@@ -262,7 +262,7 @@
 		<!-- Textboxes -->
 		<div class="leftAligned">
 			<br><a>Genotype</a><br>
-			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/rr/ss/nn" autocomplete="off"><br>
+			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 			
 			<a>Echo</a><br>
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
@@ -283,25 +283,25 @@
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Haze</label>
+			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BH" id="BH">Bottle of Tarnish</label>
 			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DE" id="DE">Dragon's Eye</label>
 			<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="FP" id="FP">Fertility Potion</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of Ivory</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BI" id="BI">Bottle of Silver</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DH" id="DH">Dragon's Heart</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="RB" id="RB">Radiance Bond</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Umber</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BU" id="BU">Bottle of Bronze</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DI" id="DI">Dragon's Instinct</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="SB" id="SB">Skill Charm</label>
 			</span>
 			<br>
 			<span style="white-space: nowrap;">
-				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Vanta</label>
+				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BV" id="BV">Bottle of Obsidian</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="DT" id="DT">Dragon's Talon</label>
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="BF" id="BF">Temper Potion</label>
 			</span>
@@ -316,10 +316,15 @@
 			<div id="breedSelectionRadios">
 				<label class="radioLabel"><input type="radio" name="breedSelector" value="1" id="stalkerSelected" checked>Stalker</label>
 				<label class="radioLabel"><input type="radio" name="breedSelector" value="2" id="ravagerSelected">Ravager</label>
-				<br>
 				<label class="radioLabel"><input type="radio" name="breedSelector" value="3" id="wardenSelected">Warden</label>
-				<label class="radioLabel"><input type="radio" name="breedSelector" value="3" id="gempSelected">Greater Emperor</label>
-				<label class="radioLabel"><input type="radio" name="breedSelector" value="4" id="sapiSelected">Sapiere</label>
+				<br>
+				<label class="radioLabel"><input type="radio" name="breedSelector" value="4" id="gempSelected">G. Emperor</label>
+				<label class="radioLabel"><input type="radio" name="breedSelector" value="5" id="sapiSelected">Sapiere</label>
+				<label class="radioLabel"><input type="radio" name="breedSelector" value="6" id="ridgeSelected">Ridgewalker</label>
+				<br>
+				<label class="radioLabel"><input type="radio" name="breedSelector" value="7" id="abyssSelected">Abyssal</label>
+
+
 				<br>
 			</div>
 			<div id="temperSelectionRadios">
@@ -334,27 +339,28 @@
 				<select id="colorMod" class="cellElement">
 					<option disabled selected value="0">Color Modifier</option>
 					<option disabled value="1">Common</option>
-					<option value="flaxen">Flaxen</option>
-					<option value="greying">Greying</option>
-					<option value="rose">Rose</option>
+					<option value="citrine">Citrine</option>
+					<option value="steel">Steel</option>
+					<option value="rhodonite">Rhodonite</option>
 					<option disabled value="2">Uncommon</option>
-					<option value="azure">Azure</option>
-					<option value="crimson">Crimson</option>
+					<option value="azurite">Azurite</option>
+					<option value="garnet">Garnet</option>
+					<option value="topaz">Topaz</option>
 					<option disabled value="3">Rare</option>
 					<option value="jade">Jade</option>
-					<option value="Seafoam">Seafoam</option>
+					<option value="turquoise">Turquoise</option>
 					<option disabled value="4">Very Rare</option>
-					<option value="lilac">Lilac</option>
+					<option value="amethyst">Amethyst</option>
                     <option value="prismatic">Prismatic</option>
                     <option disabled value="5">Petty(Agouti Only)</option>
-                    <option value="umber">Brass</option>
-                    <option value="haze">Bronze</option>
-                    <option value="ivory">Silver</option>
-                    <option value="vanta">Obsidian</option>
-                    <option value="golden">Gold</option>
-					<option value="ivory">Bronzed Brass</option>
-                    <option value="vanta">Bronzed Silver</option>
-                    <option value="golden">Bronzed Gold</option>
+                    <option value="bronze">Bronze</option>
+                    <option value="tarnish">Tarnish</option>
+                    <option value="silver">Silver</option>
+                    <option value="obsidian">Obsidian</option>
+                    <option value="gold">Gold</option>
+					<option value="silver">Tarnished Bronze</option>
+                    <option value="tarnished silver">Tarnished Silver</option>
+                    <option value="tarnished gold">Tarnished Gold</option>
 				</select>
 			</div>
 			</span>

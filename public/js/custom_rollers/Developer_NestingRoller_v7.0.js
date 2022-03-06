@@ -3,21 +3,21 @@
 
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
-					"FeFe", "nFla", "FlaFla", "nGr", "GrGr", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", 
-					"nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRos", "RosRos", "nRip", "RipRip", "nSa", "SaSa", "nSc", "ScSc", "nSk",
+					"FeFe", "nCt", "CtCt", "nSl", "SlSl", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", 
+					"nPy", "PyPy", "nRi", "RiRi", "nRn", "RnRn", "nRd", "RdRd", "nRip", "RipRip", "nSa", "SaSa", "nSc", "ScSc", "nSk",
 					"SkSk", "nSn", "SnSn", "nSo", "SoSo", "nOse", "OseOse", "nTr", "TrTr", "nUn", "UnUn"];
 
-var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nCp", "CpCp", "nCr", "CrCr", 
-                        "nCri", "CriCri", "nDl", "DlDl", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
+var uncommonMarkings = ["nAz", "AzAz", "nBa", "BaBa", "nBo", "BoBo", "nCd", "CdCd", "nTz", "TzTz", "nCr", "CrCr", 
+                        "nGt", "GtGt", "nDl", "DlDl", "nDi", "DiDi", "nDr", "DrDr", "nIn", "InIn",
 						"nMar", "MarMar", "nMr", "MrMr", "nMe", "MeMe", "nOpr", "OprOpr", "nPg", "PgPg", 
 						"nPs", "PsPs", "nRo", "RoRo", "nRs", "RsRs", "nSp", "SpSp",
 						"nSm", "SmSm", "nBrd", "BrdBrd", "nTa", "TaTa", "nTo", "ToTo", "nTx", "TxTx", "nTt", "TtTt"];
 
 var rareMarkings = ["nBd", "BdBd", "nCi", "CiCi", "nEy", "EyEy", "nPl", "PlPl", "nGl", "GlGl", "nJa", "JaJa", "nLu", "LuLu", "nLs", "LsLs",
-					 "nPn", "PnPn", "nPw", "PwPw", "nOpe", "OpeOpe", "nSe", "SeSe", "nFi", "FiFi"];
+					 "nPn", "PnPn", "nPw", "PwPw", "nOpe", "OpeOpe", "nTu", "TuTu", "nFi", "FiFi"];
 
 var veryRareMarkings = ["nAm", "AmAm", "nArc", "ArcArc", "nAu", "AuAu", "nCn", "CnCn", "nFti", "FtiFti", "nGm", "GmGm", "nHar", "HarHar", "nIr", "IrIr",
-						 "nLe", "LeLe", "nLi", "LiLi", "nOol", "OolOol", "nPr", "PrPr", "nSh", "ShSh", "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri",
+						 "nLe", "LeLe", "nAy", "AyAy", "nOol", "OolOol", "nPr", "PrPr", "nSh", "ShSh", "nRu", "RuRu", "nSf", "SfSf", "nTri", "TriTri",
 						"nMer", "MerMer", "nTh", "ThTh"];
 // doens't include rare/very rare because those preface these in the pheno.
 var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
@@ -26,16 +26,16 @@ var edMarkings = ["nDt", "DtDt", "nMa", "MaMa", "nRi", "RiRi", "nRn", "RnRn",
 var edToText = ["Dusted", "Masked", "Rimmed", "Ringed", "Scaled", "Stained", "Banded", "Dipped", "Marbled", "Shaped", "Brindled", "Torched", "Petrified"];
 
 // markings map 2:1 with ___ToText array indexes.
-var commonToText = ["Blanket", "Boar", "Cape", "Collar", "Dun", "Dusted", "Duo Tone", 
-					 "Frog Eye", "Rutile", "Steeled", "Hood", "Leaf",
+var commonToText = ["Blanket", "Boar", "Cape", "Collar", "Dun", "Dusted", "Duo Tone",
+					 "Frog Eye", "Citrine", "Steel", "Hood", "Leaf",
 					"Masked", "Pangare", "Points", "Python", "Rimmed",
-					"Ringed", "Morganite", "Ripples", "Sable", "Scaled", "Skink", "Stained",
+					"Ringed", "Rhodonite", "Ripples", "Sable", "Scaled", "Skink", "Stained",
 					"Stockings", "Specter", "Trailing", "Underbelly"];
-var uncommonToText = ["Kyanite", "Banded", "Border", "Cloud", "Amber", "Crested", 
-					  "Eudilyte", "Dapple", "Dipped", "Dripping", "Inkwell",
+var uncommonToText = ["Azurite", "Banded", "Border", "Cloud", "Topaz", "Crested", 
+					  "Garnet", "Dapple", "Dipped", "Dripping", "Inkwell",
 					  "Marbled", "Merle", "Metallic", "Petrified", "Pigeon", "Plasma",
 					  "Roan", "Rosettes", "Shaped", "Smoke", "Brindled", "Tabby", "Tobiano", "Toxin", "Tritone"];
-var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Variscite", "Filigree"];
+var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Luminescent", "Lustrous", "Painted", "Patchwork", "Pearl", "Turquoise", "Filigree"];
 var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
 					 "Lepir", "Amethyst", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
@@ -75,14 +75,14 @@ var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "F
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
 var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail", "Crocodilia Tail"];
 
-var pettyColorMods = ["Brass", "Bronze", "Silver", "Obsidian", "Gold", "Bronzed Brass", "Bronzed Silver", "Bronzed Gold"]
-var commonColorMods = ["Rutile", "Steeled", "Morganite"];
-var uncommonColorMods = ["Kyanite", "Eudilyte", "Amber"];
-var rareColorMods = ["Jade", "Variscite"];
+var pettyColorMods = ["Bronze", "Tarnished", "Silver", "Obsidian", "Gold", "Tarnished Bronze", "Tarnished Silver", "Tarnished Gold"]
+var commonColorMods = ["Citrine", "Steel", "Rhodonite"];
+var uncommonColorMods = ["Azurite", "Garnet", "Topaz"];
+var rareColorMods = ["Jade", "Turquoise"];
 var veryRareColorMods = ["Amethyst", "Prismatic"];
-var allColorMods = ["nFla", "FlaFla", "nGr", "GrGr", "nRos", "RosRos", "nAz", "AzAz", "nCri", "CriCri", "nCp", "CpCp", 
-					"nJa", "JaJa", "nLi", "LiLi", "nSe", "SeSe", "nPr", "PrPr"];
-var colorModsToText = ["Rutile", "Steeled", "Morganite", "Kyanite", "Eudilyte", "Amber", "Jade", "Amethyst", "Variscite", "Prismatic"];
+var allColorMods = ["nCt", "CtCt", "nSl", "SlSl", "nRd", "RdRd", "nAz", "AzAz", "nGt", "GtGt", "nTz", "TzTz", 
+					"nJa", "JaJa", "nAy", "AyAy", "nTu", "TuTu", "nPr", "PrPr"];
+var colorModsToText = ["Citrine", "Steel", "Rhodonite", "Azurite", "Garnet", "Topaz", "Jade", "Amethyst", "Turquoise", "Prismatic"];
 
 // Aberrant rates
 // Rates are keyed by bitmasks; this helps prevent duplication and
@@ -1161,8 +1161,8 @@ function generateUmber() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BU").checked) {
-		if (!destroyedModifiers.includes("Bottle of Brass destroyed.<br>"))
-			destroyedModifiers += "Bottle of Brass destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Bronze destroyed.<br>"))
+			destroyedModifiers += "Bottle of Bronze destroyed.<br>";
 		bonus = 80;
 	}
 	
@@ -1233,17 +1233,17 @@ function generateHaze() {
 	// check for modifier
 	var bonus = 0;
 	if (document.getElementById("BH").checked) {
-		if (!destroyedModifiers.includes("Bottle of Bronze destroyed.<br>"))
-			destroyedModifiers += "Bottle of Bronze destroyed.<br>";
+		if (!destroyedModifiers.includes("Bottle of Tarnish destroyed.<br>"))
+			destroyedModifiers += "Bottle of Tarnish destroyed.<br>";
 		bonus = 60;
 	}
 	
 	// sanitize
-	if (damCoat == "rR") {
-		damCoat = "Rr";
+	if (damCoat == "tT") {
+		damCoat = "Tt";
 	}
-	if (sireCoat == "rR") {
-		sireCoat = "Rr";
+	if (sireCoat == "tT") {
+		sireCoat = "Tt";
 	}
 	
 	// roll
@@ -1251,46 +1251,46 @@ function generateHaze() {
 	var result = "";
 	
 	// determine dominance
-	if (damCoat == "rr" && sireCoat == "rr") {
-		return "rr";
-	} else if (damCoat == "Rr" && sireCoat == "Rr") {
+	if (damCoat == "tt" && sireCoat == "tt") {
+		return "tt";
+	} else if (damCoat == "Tt" && sireCoat == "Tt") {
 		if (roll < 4) {
-			result = "RR";
+			result = "TT";
 		} else if (roll < (65 + bonus)) {
-			result = "Rr";
+			result = "Tt";
 		} else {
-			result = "rr";
+			result = "tt";
 		}
-	} else if (damCoat == "RR" && sireCoat == "RR") {
+	} else if (damCoat == "TT" && sireCoat == "TT") {
 		if (roll < 20) {
-			result = "RR";
+			result = "TT";
 		} else if (roll < (85 + bonus)) {
-			result = "Rr";
+			result = "Tt";
 		} else {
-			result = "rr";
+			result = "tt";
 		}
-	} else if ((damCoat == "Rr" && sireCoat == "RR") ||
-		       (damCoat == "RR" && sireCoat == "Rr")) {
+	} else if ((damCoat == "Tt" && sireCoat == "TT") ||
+		       (damCoat == "TT" && sireCoat == "Tt")) {
 		if (roll < 8) {
-			result = "RR";
+			result = "TT";
 		} else if (roll < (75 + bonus)) {
-			result = "Rr";
+			result = "Tt";
 		} else {
-			result = "rr";
+			result = "tt";
 		}
-	} else if ((damCoat == "rr" && sireCoat == "RR") ||
-		       (damCoat == "RR" && sireCoat == "rr")) {
+	} else if ((damCoat == "tt" && sireCoat == "TT") ||
+		       (damCoat == "TT" && sireCoat == "tt")) {
 		if (roll < (55 + bonus)) {
-			result = "Rr";
+			result = "Tt";
 		} else {
-			result = "rr";
+			result = "tt";
 		}
-	} else if ((damCoat == "rr" && sireCoat == "Rr") ||
-		       (damCoat == "Rr" && sireCoat == "rr")) {
+	} else if ((damCoat == "tt" && sireCoat == "Tt") ||
+		       (damCoat == "Tt" && sireCoat == "tt")) {
 		if (roll < (35 + bonus)) {
-			result = "Rr";
+			result = "Tt";
 		} else {
-			result = "rr";
+			result = "tt";
 		}
 	}
 	
@@ -1445,12 +1445,12 @@ function generateVanta() {
 }
 
 function generateCoat() {
-	var brass, bronze, silver, obsidian;
-	brass = generateUmber();
-	bronze = generateHaze();
+	var bronze, tarnish, silver, obsidian;
+	bronze = generateUmber();
+	tarnish = generateHaze();
 	silver = generateIvory();
 	obsidian = generateVanta();
-	var result = "" + brass + "/" + bronze + "/" + silver + "/" + obsidian ;
+	var result = "" + bronze + "/" + tarnish + "/" + silver + "/" + obsidian ;
 	// handle default coats
 	if (result == "bb/rr/ss/nn") {
 		var damGenome = document.getElementById("damGenoType").value;
@@ -1458,24 +1458,24 @@ function generateCoat() {
 		var damCoat = damGenome.substr(0, 2);
 		var sireCoat = sireGenome.substr(0, 2);
 		if (damCoat != "bb" || sireCoat != "bb") {
-			result = "Bb/rr/ss/nn";
+			result = "Bb/tt/ss/nn";
 		} else {
 			damCoat = damGenome.substr(3, 2);
 			sireCoat = sireGenome.substr(3, 2);
-			if (damCoat != "rr" || sireCoat != "rr") {
-				result = "bb/Rr/ss/nn";
+			if (damCoat != "tt" || sireCoat != "tt") {
+				result = "bb/Tt/ss/nn";
 			} else {
 				damCoat = damGenome.substr(6, 2);
 				sireCoat = sireGenome.substr(6, 2);
 				if (damCoat != "ss" || sireCoat != "ss") {
-					result = "bb/rr/Ss/nn";
+					result = "bb/tt/Ss/nn";
 				} else {
 					damCoat = damGenome.substr(9, 2);
 					sireCoat = sireGenome.substr(9, 2);
 					if (damCoat != "nn" || sireCoat != "nn") {
-						result = "bb/rr/ss/Nn";
+						result = "bb/tt/ss/Nn";
 					} else {
-						result = "INVALID COAT: IS PARENT bb/hrr/ss/nn?"
+						result = "INVALID COAT: IS PARENT bb/tt/ss/nn?"
 					}
 				}
 			}
@@ -2318,26 +2318,26 @@ function coatToText(coat) {
 	var vantaStr = coat.substr(9, 2);
 	var baseStr = coat.substr(0, 8);
 	// make base coat readable
-	if (baseStr == "Bb/rr/ss" || baseStr == "BB/rr/ss") {
-		result = "Brass ";
-	} else if (baseStr == "bb/Rr/ss" || baseStr == "bb/RR/ss") {
+	if (baseStr == "Bb/tt/ss" || baseStr == "BB/tt/ss") {
 		result = "Bronze ";
-	} else if (baseStr == "bb/rr/Ss" || baseStr == "bb/rr/SS") {
+	} else if (baseStr == "bb/Tt/ss" || baseStr == "bb/TT/ss") {
+		result = "Tarnish ";
+	} else if (baseStr == "bb/tt/Ss" || baseStr == "bb/tt/SS") {
 		result = "Silver ";
-	} else if (baseStr == "Bb/Rr/ss" || baseStr == "BB/RR/ss" ||
-                   baseStr == "BB/Rr/ss" || baseStr == "Bb/RR/ss") {
-		result = "Bronzed Brass ";
-	} else if (baseStr == "bb/Rr/Ss" || baseStr == "bb/RR/SS" || 
-                   baseStr == "bb/Rr/SS" || baseStr == "bb/RR/Ss") {
-		result = "Bronzed Silver ";
-	} else if (baseStr == "Bb/rr/Ss" || baseStr == "BB/rr/Ss" ||
-	           baseStr == "Bb/rr/SS" || baseStr == "BB/rr/SS") {
+	} else if (baseStr == "Bb/Tt/ss" || baseStr == "BB/TT/ss" ||
+                   baseStr == "BB/Tt/ss" || baseStr == "Bb/TT/ss") {
+		result = "Tarnished Bronze ";
+	} else if (baseStr == "bb/Tt/Ss" || baseStr == "bb/TT/SS" || 
+                   baseStr == "bb/Tt/SS" || baseStr == "bb/TT/Ss") {
+		result = "Tarnished Silver ";
+	} else if (baseStr == "Bb/tt/Ss" || baseStr == "BB/tt/Ss" ||
+	           baseStr == "Bb/tt/SS" || baseStr == "BB/tt/SS") {
 		result = "Gold ";
-	} else if (baseStr == "Bb/Rr/Ss" || baseStr == "BB/RR/SS" ||
-			   baseStr == "BB/Rr/Ss" || baseStr == "Bb/RR/Ss" ||
-			   baseStr == "Bb/Rr/SS" || baseStr == "BB/RR/Ss" ||
-			   baseStr == "BB/Rr/SS" || baseStr == "Bb/RR/SS") {
-         result = "Bronzed Gold ";
+	} else if (baseStr == "Bb/Tt/Ss" || baseStr == "BB/TT/SS" ||
+			   baseStr == "BB/Tt/Ss" || baseStr == "Bb/TT/Ss" ||
+			   baseStr == "Bb/Tt/SS" || baseStr == "BB/TT/Ss" ||
+			   baseStr == "BB/Tt/SS" || baseStr == "Bb/TT/SS") {
+         result = "Tarnished Gold ";
 	} else if (vantaStr == "Nn" || vantaStr == "NN") {
 		result = "Obsidian ";
 	} else {
