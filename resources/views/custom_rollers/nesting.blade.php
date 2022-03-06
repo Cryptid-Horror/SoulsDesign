@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v6.1.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/PublicNestingRoller_v6.0.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -272,6 +272,7 @@
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
+		If your dragon's genome is not updated to the newest base coat and color modifer codes you will need to submit a claim to have them updated!
 		<div width="100%">
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
@@ -344,14 +345,14 @@
 					<option value="lilac">Lilac</option>
                     <option value="prismatic">Prismatic</option>
                     <option disabled value="5">Petty(Agouti Only)</option>
-                    <option value="umber">Umber</option>
-                    <option value="haze">Haze</option>
-                    <option value="ivory">Ivory</option>
-                    <option value="vanta">Vanta</option>
-                    <option value="golden">Golden</option>
-					<option value="ivory">Hazed Umber</option>
-                    <option value="vanta">Hazed Ivory</option>
-                    <option value="golden">Hazed Golden</option>
+                    <option value="umber">Brass</option>
+                    <option value="haze">Bronze</option>
+                    <option value="ivory">Silver</option>
+                    <option value="vanta">Obsidian</option>
+                    <option value="golden">Gold</option>
+					<option value="ivory">Bronzed Brass</option>
+                    <option value="vanta">Bronzed Silver</option>
+                    <option value="golden">Bronzed Gold</option>
 				</select>
 			</div>
 			</span>
