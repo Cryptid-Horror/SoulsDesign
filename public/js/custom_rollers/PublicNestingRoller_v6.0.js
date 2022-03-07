@@ -39,17 +39,18 @@ var rareToText = ["Blooded", "Circuit", "Eyed", "Petal", "Glass", "Jade", "Lumin
 var veryRareToText = ["Aether Marked", "Arcane", "Aurora", "Constellation", "Confetti", "Gemstone", "Harlequin", "Iridescent",
 					 "Lepir", "Lilac", "Oilslick", "Prismatic", "Shimmering", "Rune", "Solar Flare", "Triquetra", "Mermaid", "Torched"];
 // List of valid markings, always 6 per row for readability and easy couting.
-var commonMutations = ["Barbed", "Fanged", "Maned", "Spiked", "Spined", "Leucism", "Abundism", "Eagle Beak", "Whiskers", "Tendril", "Dewlap"];
+var commonMutations = ["Dewlap", "Tendrils", "Fanged", "Maned", "Raptor", "Spined"];
 
-var uncommonMutations = ["Tusked", "Fisher Beak", "Feathered Extensions", "Frilled", "Raptor", "Lunar", "Albino", "Anery", "Polycerate", "Overbite", "Wisp"];
+var uncommonMutations = ["Membrane", "Viper", "Polycerate", "Leucistic", "Abundism", "Ophanim"];
 
-var rareMutations = ["Multi-Eyes", "Cherubian", "Vulture Beak", "Fluffed", "Sakura", "Webbed", "Vented", "Faceted", "Finned", "Viper", "Hydra", "Flesh", "Angler", "Ghoul"];
+var rareMutations = ["Ghostly", "Anery", "Albino", "Cherubian", "Faceted", "Glimmer", "Hydra"];
 
-var veryRareMutations = ["Warlord", "Seraph", "Triclops", "Crocodile", "Aether Mane", "Overgrowth", "Blazer", "Chimera", "Eel", "Elemental", "Miniature", "Shark", "Arcana", "Blacklight"];
+var veryRareMutations = ["Elemental", "Arcana", "Blacklight", "Nautical", "Chimera", "Miniature"];
+//Avian to be added to mythic
 
 var veryRarePhysicalMutations = [];
 
-var ravagerOnlyMutations = ["Eagle Beak", "Fisher Beak", "Vulture Beak", "Warlord"];
+var ravagerOnlyMutations = ["Avian", "Warlord"];
 
 // note: melanism isn't really a passable mutation; it's determined by base coat.
 var passableMutations = ["nRad", "RadRad", "nAg", "AgAg"]; 
@@ -66,10 +67,10 @@ var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Hor
 
 var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
 var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "Bat Ears"];
-var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears", "Devilish Ears"];
-var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears", "Enchanted Ears"];
+var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
+var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
 
-var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Weaver Tail", "Tailless Tail"];
+var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Tailless", "Weaver Tail"];
 var uncommonTails = ["Lemur Tail", "Whip Tail", "Split Tail", "Crocuta Tail", "Fan Tail", "Quill Tail"];
 var rareTails = ["Peacock Tail", "Kitsune Tail", "Drape Tail", "Armored Tail", "Spade Tail", "Frond Tail"];
 var veryRareTails = ["Scorpio Tail", "Aquatic Tail", "Phoenix Tail", "Caudal Tail", "Bone Tail", "Crocodilia Tail"];
@@ -514,7 +515,7 @@ function clutchSize() {
 	    maxSize = MaxClutchSize.SAPI;
 	else if (damBreedVal == Breeds.RIDGE || sireBreedVal == Breeds.RIDGE)
 		maxSize = MaxClutchSize.RIDGE;
-	else if (damBreedVal == Breeds.ABYSS || SireBreedVal == Breeds.ABYSS)
+	else if (damBreedVal == Breeds.ABYSS || sireBreedVal == Breeds.ABYSS)
 		maxSize = MaxClutchSize.ABYSS;
 	else // stalker size
 		maxSize = MaxClutchSize.STALKER;
@@ -1497,22 +1498,17 @@ function generateHealth() {
 			if (roll < 60)
 				childHealth += "Infertile ";
 			roll = randRange(100);
-			if (roll < 60)
+			if (roll < 30)
 				childHealth += "Blind ";
 			roll = randRange(100);
-			if (roll < 50)
+			if (roll < 5)
 				childHealth += "Crippled Wings ";
 			roll = randRange(100);
-			if (roll < 40)
+			if (roll < 5)
 				childHealth += "Mute ";
-			roll = randRange(100);
-			if (roll < 30)
-				childHealth += "Miniature ";
-			roll = randRange(100);
-			if (roll < 40)
-				childHealth += "Polycephaly ";
 		}
 	}
+        return childHealth;
 }
 
 function generateEyes(childRarity) {
@@ -2237,7 +2233,7 @@ function selectMutation(mutationRarity, physicalOnly) {
 				childHasTeeth = true;
 				mutationNotFound = false;
 			}
-		} else if (result == "Albino" || result == "Anery" || result == "Leucism" || result == "Abundism") {
+		} else if (result == "Albino" || result == "Anery") {
 		// same rarity, so technically no need to check but;
 			if (childHasSkin) {
 				// re-roll

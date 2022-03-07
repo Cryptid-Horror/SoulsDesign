@@ -2,7 +2,7 @@
 // Egg data has one entry for each characteristic to roll,
 // which each have their own set of chances for specific outcomes
 // e.g. common egg twin chances have 10 in 'identical', 10 in 'non-identical' and 80 in 'no_twins'
-// When rolled the chance values are totalled and then a random number is rolled between 1 and that total
+// When rolled the chance values are totalled and then a random nBronze is rolled between 1 and that total
 // In this case it's 100 (i.e. 10/100 chance for identical etc)
 const common_egg = {
 	twins: { 'identical': 10, 'non_identical': 10, 'no_twins': 80 },
@@ -11,7 +11,7 @@ const common_egg = {
 	skill_breath: { 'no': 90, 'yes': 10 },
 	trait: { 'common': 70, 'uncommon': 30 },
 	temper: { 'Vigilant': 70, 'Aggressive': 30 },
-	base: { 'Umber': 70, 'Haze': 15, 'Ivory': 5, 'Vanta': 10 },
+	base: { 'Bronze': 70, 'Tarnished': 15, 'Silver': 5, 'Obsidian': 10 },
 	coat: { 'Velour': 80, 'Feathered': 10, 'Plated': 10 },
 	lineage: { 'yes': 90, 'no': 10 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
@@ -27,7 +27,7 @@ const uncommon_egg = {
 	skill_breath: { 'no': 80, 'yes': 20 },
 	trait: { 'common': 60, 'uncommon': 40 },
 	temper: { 'Vigilant': 60, 'Aggressive': 30, 'Calm': 10 },
-	base: { 'Umber': 40, 'Haze': 30, 'Ivory': 15, 'Vanta': 15 },
+	base: { 'Bronze': 40, 'Tarnished': 30, 'Silver': 15, 'Obsidian': 15 },
 	coat: { 'Velour': 75, 'Feathered': 10, 'Plated': 15 },
 	lineage: { 'yes': 85, 'no': 15 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
@@ -43,7 +43,7 @@ const rare_egg = {
 	skill_breath: { 'no': 70, 'yes': 30 },
 	trait: { 'common': 55, 'uncommon': 35, 'rare': 10 },
 	temper: { 'Vigilant': 50, 'Aggressive': 35, 'Calm': 10, 'Sinister': 5 },
-	base: { 'Haze': 40, 'Ivory': 30, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 2, 'Melanistic Haze': 1, 'Melanistic Ivory': 1, 'Melanistic Golden': 1 },
+	base: { 'Tarnished': 40, 'Silver': 30, 'Obsidian': 15, 'Gold': 10, 'Melanistic Bronze': 2, 'Melanistic Tarnished': 1, 'Melanistic Silver': 1, 'Melanistic Gold': 1 },
 	coat: { 'Velour': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
 	lineage: { 'yes': 75, 'no': 25 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
@@ -59,7 +59,7 @@ const myst_egg = {
 	skill_breath: { 'no': 40, 'yes': 60 },
 	trait: { 'common': 30, 'uncommon': 45, 'rare': 15, 'vrare': 10 },
 	temper: { 'Vigilant': 15, 'Aggressive': 50, 'Calm': 20, 'Sinister': 15 },
-	base: { 'Haze': 30, 'Ivory': 35, 'Vanta': 15, 'Golden': 10, 'Melanistic Umber': 3, 'Melanistic Haze': 3, 'Melanistic Ivory': 2, 'Melanistic Golden': 2 },
+	base: { 'Tarnished': 30, 'Silver': 35, 'Obsidian': 15, 'Gold': 10, 'Melanistic Bronze': 3, 'Melanistic Tarnished': 3, 'Melanistic Silver': 2, 'Melanistic Gold': 2 },
 	coat: { 'Velour': 25, 'Feathered': 35, 'Plated': 25, 'Angora': 10, 'Imperial': 5 },
 	lineage: { 'yes': 70, 'no': 30 },
 	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
@@ -74,18 +74,18 @@ const myst_egg = {
 const c_marks = [
 	['Blanket', 'nBl', 'suffix'], ['Boar', 'nBr', 'suffix'], ['Collar', 'nCl', 'suffix'],
 	['Dun', 'nDn', 'suffix'], ['Duo Tone', 'nDo', 'suffix'], ['Dusted', 'nDt', 'ed'],
-    ['Flaxen', 'nFla', 'color'], ['Frog Eye', 'nFe', 'suffix'],
-	['Greying', 'nGr', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
+    ['Citrine', 'nCt', 'color'], ['Frog Eye', 'nFe', 'suffix'],
+	['Steel', 'nSl', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
 	['Masked', 'nMa', 'ed'], ['Pangare', 'nPa', 'suffix'], ['Points', 'nPo', 'suffix'],
 	['Python', 'nPy', 'suffix'], ['Rimmed', 'nRi', 'ed'],
-	['Ringed', 'nRn', 'ed'], ['Rose', 'nRos', 'color'],	['Sable', 'nSa', 'suffix'],
+	['Ringed', 'nRn', 'ed'], ['Rhodonite', 'nRd', 'color'],	['Sable', 'nSa', 'suffix'],
 	['Scaled', 'nSc', 'ed'], ['Stained', 'nSn', 'suffix'], ['Skink', 'nSk', 'suffix'],
 	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
 ];
 const uc_marks = [
-    ['Azure', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
-	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Copper', 'nCp', 'color'],
-	['Crested', 'nCr', 'ed'], ['Crimson', 'nCri', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
+    ['Azurite', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
+	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Topaz', 'nTz', 'color'],
+	['Crested', 'nCr', 'ed'], ['Garnet', 'nGt', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
 	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
     ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],
@@ -96,11 +96,11 @@ const r_marks = [
 	['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
-    ['Filigree', 'nFi', 'r']
+    ['Filigree', 'nFi', 'r'], ['Turquoise', 'nTu', 'color']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
-	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Lilac', 'nLi', 'color'],
+	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Amethyst', 'nAy', 'color'],
 	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
 	['Triquetra', 'nTri', 'vr']
 ];
@@ -157,15 +157,15 @@ const tails = {
 }
 
 const coat_genos = {
-	Umber: 'Uu/hh/oo/vv',
-	Haze: 'uu/Hh/oo/vv',
-	Ivory: 'uu/hh/Oo/vv',
-	Vanta: 'uu/hh/oo/Vv',
-	Golden: 'Uu/hh/Oo/vv',
-	Melanistic_Umber: 'Uu/hh/oo/Vv',
-	Melanistic_Haze: 'uu/Hh/oo/Vv',
-	Melanistic_Ivory: 'uu/hh/Oo/Vv',
-	Melanistic_Golden: 'Uu/hh/Oo/Vv',
+	Bronze: 'Bb/tt/ss/nn',
+	Tarnished: 'bb/Tt/ss/nn',
+	Silver: 'bb/tt/Ss/nn',
+	Obsidian: 'bb/tt/ss/Nn',
+	Gold: 'Bb/tt/Ss/nn',
+	Melanistic_Bronze: 'Bb/tt/ss/Nn',
+	Melanistic_Tarnished: 'bb/Tt/ss/Nn',
+	Melanistic_Silver: 'bb/Tt/Ss/Nn',
+	Melanistic_Gold: 'Bb/tt/Ss/Nn',
 }
 
 // Inputs
@@ -175,7 +175,7 @@ var activity_check = document.getElementById('activity')
 
 function rand(min, max) {
     var min = min || 0,
-        max = max || Number.MAX_SAFE_INTEGER;
+        max = max || NBronze.MAX_SAFE_INTEGER;
 
     return Math.floor(Math.random() * (max - min + 1)) + min;}
 
