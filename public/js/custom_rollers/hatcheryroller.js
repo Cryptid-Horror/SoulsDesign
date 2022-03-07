@@ -121,8 +121,8 @@ const mutations = [
 const rav_only_mutes = ['Avian', 'Warlord'];
 
 const rad_opts = [
-	['Flaxen', 'Fla'], ['Greying', 'Gr'], ['Rose', 'Ros'], ['Azure', 'Az'], ['Copper', 'Cp'],
-	['Crimson', 'Cri'], ['Jade', 'Ja'], ['Lilac', 'Li'], ['Prismatic', 'Pr']
+	['Citrine', 'Ct'], ['Steel', 'Sl'], ['Rhodonite', 'Rd'], ['Azurite', 'Az'], ['Topaz', 'Tz'],
+	['Garnet', 'Gt'], ['Jade', 'Ja'], ['Amethyst', 'Ay'], ['Prismatic', 'Pr']
 ]
 
 const skills = ['Friendly Giant', 'Hoarder', 'Adept', 'Steadfast', 'Swift Feet', 'Aether Walker',
