@@ -1690,13 +1690,14 @@ class CharacterManager extends Service
             $character->save();
 
             // Update the character's location
-            if(isset($data['location']) && $data['location']) $character->home_id = $data['location'];
+            if(isset($data['location']) && $data['location']) $character->home_id = (int)$data['location'];
+            $character->save();
 
             // Update the character's faction
             if(isset($data['faction']) && $data['faction']) {
                 if($character->faction_id) $old = $character->faction_id;
 
-                $character->faction_id = $data['faction'];
+                $character->faction_id = (int)$data['faction'];
                 $character->save();
 
                 // Reset standing/remove from closed rank
