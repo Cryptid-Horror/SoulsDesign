@@ -73,7 +73,7 @@
     <a href="{{ url($character->url.'/level-logs') }}">View all...</a>
 </div>
 
-<h3>Latest Current Count Activity</h3>
+<h3 id="health-logs">Latest Health Activity</h3>
 <table class="table table-sm">
     <thead>
         <th>Sender</th>
