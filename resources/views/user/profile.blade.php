@@ -63,6 +63,9 @@
     </div>
 @endif
 
+<br>
+<hr>
+
 <h2>
     @if(isset($sublists) && $sublists->count() > 0)
         @foreach($sublists as $sublist)
