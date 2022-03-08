@@ -125,9 +125,9 @@
                 'imageUrl' => asset('images/levels2.png'),
                 'header' => 'Levels',
                 'links' => [
-                    'Dragon Levels' => url('https://www.soulsbetween.com/world/levels/character'),
-                    'Player Levels' => url('https://www.soulsbetween.com/level'),
-                    'MP/PP' => url('https://www.soulsbetween.com/info/point_counting'),
+                    'Dragon Levels (CE)' => url('https://www.soulsbetween.com/world/levels/character'),
+                    'Player Levels (EE)' => url('https://www.soulsbetween.com/level'),
+                    'CE & EE' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Experience%20Claims'),
                     'Non Activity PP' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Rank%20Updates'),
                 ]
             ])
