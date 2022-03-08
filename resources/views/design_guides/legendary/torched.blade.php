@@ -12,13 +12,13 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Range',
-        'Warden' => 'Warden_Range',
-        'Greater' => 'Gemp_Range',
-        'Ravager' => 'Ravager_Range',
-        'Stalker' => 'Stalker_Range',
-        'Ridgewalker'=> 'Ridgewalker_Range',
-        'Abyssal' => 'Abyssal_Range',
+        'Sapiere' => 'Sapiere_Torched',
+        'Warden' => 'Warden_Torched',
+        'Greater' => 'Gemp_Torched',
+        'Ravager' => 'Ravager_Torched',
+        'Stalker' => 'Stalker_Torched',
+        'Ridgewalker'=> 'Ridgewalker_Torched',
+        'Abyssal' => 'Abyssal_Torched',
     ];
 
     // Use yes or no

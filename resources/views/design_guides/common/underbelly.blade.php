@@ -17,7 +17,7 @@
         'Greater' => 'Gemp_Underbelly-Pangare',
         'Ravager' => 'Ravager_Underbelly-Pangare',
         'Stalker' => 'Stalker_Underbelly-Pangare',
-        'Ridgewalker' => 'Ridgewalker_Underbelly-Pangare',
+        'Ridgewalker' => 'Ridgewalker_Underbelly',
         'Abyssal' => 'Abyssal_Underbelly-Pangare',
     ];
 

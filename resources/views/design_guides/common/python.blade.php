@@ -12,13 +12,13 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Python',
-        'Warden' => 'Warden_Python',
-        'Greater' => 'Gemp_Python',
-        'Ravager' => 'Ravager_Python',
-        'Stalker' => 'Stalker_Python',
-        'Ridgewalker' => 'Ridgewalker_Python',
-        'Abyssal' => 'Abyssal_Python',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no
@@ -62,6 +62,9 @@
     ];
 
     $marking_must = [
+        'Recessive: 3 Zones', 
+        'Dominant: All Zones', 
+        'This marking must come down from the spine.'
     ];
 
     // If left empty, the swatches section will not be shown

@@ -16,7 +16,7 @@
         'Greater' => 'Gemp_Stockings',
         'Ravager' => 'Ravager_Stockings',
         'Stalker' => 'Stalker_Stockings',
-        'Ridgewalker' => 'Ridgwalker_Sotckings',
+        'Ridgewalker' => 'Ridgwalker_Stockings',
         'Abyssal' => 'Abyssal_Stockings',
     ];
 

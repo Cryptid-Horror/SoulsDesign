@@ -2,7 +2,7 @@
     $marking_icon = 'Rare_Blooded';
     $marking_name = 'Blooded';
     $marking_code = 'nBd/BdBd';
-    $marking_desc = "A marking that creates a 'Wound' style marking on the chest that can trail up towards the jaw, or down the tail. The marking is composed of two parts, the 'Heart' and the 'Base'. The gene is thought to originate from those dragons who have lost something dear to them. The properities section refers to the base, please see the rules for the mark itself.";
+    $marking_desc = "A marking that creates a 'Wound' style marking on the body that appears as a three part marking. The gene is thought to originate from those dragons who have lost something dear to them. The properities section refers to the base, please see the rules for the mark itself.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
@@ -12,13 +12,13 @@
     // Range images should be kept in public/images/design_guides/ranges
     // 'species' => 'imagename'
     $ranges = [
-        'Sapiere' => 'Sapiere_Blooded',
-        'Warden' => 'Warden_Blooded',
-        'Greater' => 'Gemp_Blooded',
-        'Ravager' => 'Ravager_Blooded',
-        'Stalker' => 'Stalker_Blooded',
-        'Ridgewalker' => 'Ridgewalker_Blooded',
-        'Abyssal' => 'Abyssal_Blooded',
+        'Sapiere' => 'Sapiere_Range',
+        'Warden' => 'Warden_Range',
+        'Greater' => 'Gemp_Range',
+        'Ravager' => 'Ravager_Range',
+        'Stalker' => 'Stalker_Range',
+        'Ridgewalker' => 'Ridgewalker_Range',
+        'Abyssal' => 'Abyssal_Range',
     ];
 
     // Use yes or no
@@ -49,19 +49,20 @@
     // You can use html!
     $marking_can = [
         'Is allowed up to a 12 point value and saturation point gradient difference inside the marking. This gradient may not blend into the base, or appear too blend into the base.',
-        'The mark of this gene can appear as a dot, diamond, heart, or other shape.',
-        'The base of this marking can blend into the base coat, while the heart can blend into the base of blooded.',
+        'The first layer of this marking is a gradient, or heavily blurred, that is lighter or darker than the body and sits below the second and third layer. It may have varying edges.', 
+        'The second layer of the marking is a flat colored marking that is allowed a single color gradient. It must sit above the first layer, but below the third.',
+        'The third layer of this mark of this gene can appear as a dot, diamond, heart, or other shape. It is allowed to blend into the second layer and is allowed edge blending properities (meaning it doesnt have to blend in all spots etc)',
+        'The marking does not have to be fully connected and can be in patches across the body.',
+        
     ];
 
     $marking_cannot = [
-        'This gene should not appear like tobiano/etc, as it is restricted to an area.',
-        'This gene should not look like underbelly/pangare.',
+        'Blooded should not mimic other markings.',
     ];
 
     $marking_must = [
-        'The "Heart" of this marking has all the same properities as the base, except for the addition that is can be soft edged, and have a small border.', 
-        'Recessive: Covers only the specific recessive min/max portion',
-        'Dominant: covers all portions, plus the heart can be iridescent.',
+        'Recessive: Can appear in 3 zones.',
+        'Dominant: Can appear in all zones and the third layer is allowed to be iridescent.',
     ];
 
     // If left empty, the swatches section will not be shown

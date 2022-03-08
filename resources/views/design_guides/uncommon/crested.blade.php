@@ -17,8 +17,8 @@
         'Greater' => 'Gemp_Crested',
         'Ravager' => 'Ravager_Crested',
         'Stalker' => 'Stalker_Crested',
-        'Ridgewalker' => 'Ridgewalker_Range',
-        'Abyssal' => 'Abyssal_Range',
+        'Ridgewalker' => 'Ridgewalker_Crested',
+        'Abyssal' => 'Abyssal_Crested',
     ];
 
     // Use yes or no
