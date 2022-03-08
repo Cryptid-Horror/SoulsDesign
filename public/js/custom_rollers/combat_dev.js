@@ -11,16 +11,16 @@ const classes = {
 	'light': {
 		phys_crit: 3, // out of 10
 		min_raw: 40,
-		max_raw: 100,
-		max_bleed: 30, // min is always 1
-		max_dps: 3,
+		max_raw: 125,
+		max_bleed: 35, // min is always 1
+		max_dps: 4,
 		base_res: 30,
-		mag_crit: 5
+		mag_crit: 7
 	},
 	'medium': {
 		phys_crit: 4, // out of 10
 		min_raw: 50,
-		max_raw: 120,
+		max_raw: 135,
 		max_bleed: 40, // min is always 1
 		max_dps: 3,
 		base_res: 40,
