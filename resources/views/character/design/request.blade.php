@@ -59,6 +59,13 @@
             </div>
         </div>
     @endif
+
+    <h2 class="mt-3">Feedback Thread</h2>
+    <div class="alert alert-info mb-3">
+        Players and admins can communicate updates/fixes with this thread for minor issues.
+    </div>
+    @comments([ 'model' => $request, 'perPage' => 5 ])
+
 @elseif($request->status == 'Approved')
     <p>This request has been approved. The data is preserved as a record of this submission.</p>
 @endif
