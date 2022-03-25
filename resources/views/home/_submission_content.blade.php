@@ -31,6 +31,15 @@
 </div>
 <h2>Comments</h2>
 <div class="card mb-3"><div class="card-body text-break">{!! nl2br(htmlentities($submission->comments)) !!}</div></div>
+
+<h2>Feedback Thread</h2>
+<div class="card mb-3"><div class="card-body text-break">
+<div class="alert alert-info mb-3">
+    You may provide minor updates/changes via this thread. Admins may also contact you for clarifications/fixes here.
+</div>
+@comments([ 'model' => $submission, 'perPage' => 5 ])
+</div></div>
+
 @if(Auth::check() && $submission->staff_comments && ($submission->user_id == Auth::user()->id || Auth::user()->hasPower('manage_submissions')))
     <h2>Staff Comments</h2>
     <div class="card mb-3"><div class="card-body">

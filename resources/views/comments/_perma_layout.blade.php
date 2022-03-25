@@ -10,6 +10,7 @@
     Comments on
     @if($comment->commentable_type == 'App\Models\User\UserProfile') {!! $comment->commentable->user->displayName !!}
     @elseif($comment->commentable_type == 'App\Models\Forum') {!! $comment->topComment->displayName !!} in {!! $comment->commentable->displayName !!}
+    @elseif($comment->commentable_type == 'App\Models\Submission\Submission') <a href="{{ $comment->commentable->viewUrl }}">Submission {!! $comment->commentable->id !!}</a>
     @else {!! $comment->commentable->displayName !!}
     @endif
 </h1>

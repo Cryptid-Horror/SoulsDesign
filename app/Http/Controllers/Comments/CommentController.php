@@ -22,6 +22,7 @@ use App\Models\Gallery\GallerySubmission;
 use App\Models\Report\Report;
 use App\Models\SitePage;
 use App\Models\TradeListing;
+use App\Models\Submission\Submission;
 
 use Notifications;
 
@@ -143,6 +144,12 @@ class CommentController extends Controller implements CommentControllerInterface
                 flash('Thread created successfully.')->success();
                 return redirect('/forum/'.$comment->commentable_id.'/~'.$comment->id);
                 break;
+            case 'App\Models\Submission\Submission':
+                $submission = Submission::find($comment->commentable_id);
+                $recipient = $submission->user;
+                $post = 'your submission';
+                $link = $submission->viewUrl . '/#comment-' . $comment->getKey();
+                break;  
             }
 
 

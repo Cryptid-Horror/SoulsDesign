@@ -41,7 +41,16 @@
         </div>
     </div>
     <h2>Comments</h2>
-    <div class="card mb-3"><div class="card-body">{!! nl2br(htmlentities($submission->comments)) !!}</div></div>
+    <div class="card mb-3"><div class="card-body text-break">{!! nl2br(htmlentities($submission->comments)) !!}</div></div>
+
+    <h2>Feedback Thread</h2>
+    <div class="card mb-3"><div class="card-body text-break">
+    <div class="alert alert-info mb-3">
+        You may communicate to users through this thread. They may also provide their own updates/fixes here. Note that the comment thread will be unavailable once the submission is approved/rejected, so please include any important details from the thread in the staff comments.
+    </div>
+    @comments([ 'model' => $submission, 'perPage' => 5 ])
+    </div></div>
+
     @if(Auth::check() && $submission->staff_comments && ($submission->user_id == Auth::user()->id || Auth::user()->hasPower('manage_submissions')))
         <h2>Staff Comments ({!! $submission->staff->displayName !!})</h2>
         <div class="card mb-3"><div class="card-body">
