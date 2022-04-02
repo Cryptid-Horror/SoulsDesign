@@ -116,7 +116,7 @@
 				<option value="11">Blessing of the Moon</option>
 				<option value="13">Confetti Dreams</option>
 				<option value="16">Frenzy</option>
-				<option value="3">Friendly Giant</option>
+				<option value="3">Life of the Party</option>
 				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
@@ -234,7 +234,7 @@
 				<option value="11">Blessing of the Moon</option>
 				<option value="13">Confetti Dreams</option>
 				<option value="16">Frenzy</option>
-				<option value="3">Friendly Giant</option>
+				<option value="3">Life of the Party</option>
 				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>

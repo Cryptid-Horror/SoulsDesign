@@ -125,7 +125,7 @@ const rad_opts = [
 	['Garnet', 'Gt'], ['Jade', 'Ja'], ['Amethyst', 'Ay'], ['Prismatic', 'Pr']
 ]
 
-const skills = ['Friendly Giant', 'Hoarder', 'Adept', 'Steadfast', 'Swift Feet', 'Aether Walker',
+const skills = ['Life of the Party', 'Hoarder', 'Adept', 'Steadfast', 'Swift Feet', 'Aether Walker',
 	'Inner Fire', 'Haunting Roar', 'Healing Aura', 'Armored Hide', 'Frenzy', 'Serrated Teeth'];
 const breaths = ['Fire', 'Ice', 'Shadow', 'Lightning', 'Radiation', 'Wind', 'Poison', 'Luster']
 
