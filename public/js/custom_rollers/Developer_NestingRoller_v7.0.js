@@ -43,9 +43,9 @@ var commonMutations = ["Dewlap", "Tendrils", "Fanged", "Maned", "Raptor", "Spine
 
 var uncommonMutations = ["Membrane", "Viper", "Polycerate", "Leucistic", "Abundism", "Ophanim"];
 
-var rareMutations = ["Ghostly", "Anery", "Albino", "Cherubian", "Faceted", "Glimmer", "Hydra"];
+var rareMutations = ["Ghostly", "Anery", "Albino", "Cherubian", "Faceted", "Glimmer", "Hydra", "Warlord"];
 
-var veryRareMutations = ["Elemental", "Arcana", "Blacklight", "Nautical", "Chimera", "Miniature"];
+var veryRareMutations = ["Elemental", "Arcana", "Blacklight", "Nautical", "Chimera", "Miniature", "Avian"];
 //Avian to be added to mythic
 
 var veryRarePhysicalMutations = [];
