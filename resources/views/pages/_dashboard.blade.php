@@ -7,12 +7,12 @@
     </div>
 </div>
 
-{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+{{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
   Due to our server host's unexpected downtime and errors, march free entries (dailies, nesting, etc) may be submitted throughout April first and be counted as March entries. Ensure you label them a correctly! We apologize for this downtime.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div> --}
+</div> --}}
 
 <h2>Current Event</h2>
 <a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
