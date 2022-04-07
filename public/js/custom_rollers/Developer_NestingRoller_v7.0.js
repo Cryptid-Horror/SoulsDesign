@@ -986,7 +986,7 @@ function generateSpecies() {
   	} else if (childBreedVal == Breeds.SAPI){
       	result = "Sapiere Dragon";
 	} else if (childBreedVal == Breeds.RIDGE){
-		result = "Ridgeback Drake";
+		result = "Ridgewalker Drake";
   	}  else if (childBreedVal == Breeds.ABYSS){
 		result = "Abyssal Basileus";
   	} 
