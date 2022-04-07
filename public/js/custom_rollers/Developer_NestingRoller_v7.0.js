@@ -65,9 +65,9 @@ var uncommonHorns = ["Ibex Horns", "Ridge Horns", "Devil Horns", "Curled Horns",
 var rareHorns = ["Crowned Horns", "Qillin Horn", "Stag Horns", "Royal Horns", "Ascended Horns", "Moth Horns"];
 var veryRareHorns = ["Eland Horns", "Unicorn Horn", "Fallow Horns", "Beastly Horns", "Aether Horns", "Forsaken Horns", "Luna Horn"];
 
-var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears"];
-var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Button Ears", "Bat Ears"];
-var rareEars = ["Tapir Ears", "Clipped Ears", "Drop Fold Ears", "Silky Ears"];
+var commonEars = ["Earless", "Fox Ears", "Hyena Ears", "Wild Ears", "Equine Ears", "Bear Ears"];
+var uncommonEars = ["Dragon Ears", "Tuft Ears", "Fluffy Ears", "Drop Fold Ears", "Bat Ears"];
+var rareEars = ["Tapir Ears", "Clipped Ears", "Devilish Ears", "Silky Ears", "Button Ears"];
 var veryRareEars = ["Hare Ears", "Spaniel Ears", "Papillion Ears", "Elven Ears", "Axolotl Ears"];
 
 var commonTails = ["Slender Tail", "Plume Tail", "Stub Tail", "Prehensile Tail", "Tailless", "Weaver Tail"];
