@@ -337,6 +337,7 @@ function rollHunt(){
             else if(i <= 30){itemlist += "Arapaima";}//Arapaima
             else if(i <= 33){itemlist += "Premium Fish Meat";}//Premium Fish Meat -CHARMY
             else if(i <= 36){itemlist += "Giant Moray Eel";}//Giant Moray Eel
+			else if(i <= 38){itemlist += "Swamp Eel";}//Swamp eel
             else if(i <= 39){itemlist += "Jellyfish";}//Jellyfish
             else if(i <= 41){itemlist += "Crocodile Carcass";}//Crocodile Carcass
             else if(i <= 43){itemlist += "Boot";}//Boot
@@ -394,6 +395,7 @@ function rollHunt(){
             else if(i <= 25){itemlist += "Trilobite";}
             else if(i <= 30){itemlist += "Large Fish Egg";} //CHARMY
             else if(i <= 33){itemlist += "Premium Fish Meat";}
+			else if(i <= 35){itemlist += "Ribbon Eel";}
             else if(i <= 36){itemlist += "Shark Carcass";}
             else if(i <= 38){itemlist += "Boot";}
 			else if(i <= 42){itemlist += "Whale Bone";} 
