@@ -306,6 +306,7 @@ function rollHunt(){
             else if(i <= 15){itemlist += "Trout";} // trout
             else if(i <= 20){itemlist += "Arowana";} //Arowana
             else if(i <= 25){itemlist += "Boot";} //boot
+			else if(i <= 27){itemlist += "Goldfish";}
             else if(i <= 28){itemlist += "Fishing Chest";} // Fishing chest - CHARMY
             else if(i <= 31){itemlist += "Premium Fish Meat";}//Premium Fish Meat
             else if(i <= 34){itemlist += "Jellyfish";}//jelly fish
@@ -335,6 +336,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Catfish";}//catfish
             else if(i <= 25){itemlist += "Arowana";}//Arowana
             else if(i <= 30){itemlist += "Arapaima";}//Arapaima
+			else if(i <= 32){itemlist += "Goldfish";}
             else if(i <= 33){itemlist += "Premium Fish Meat";}//Premium Fish Meat -CHARMY
             else if(i <= 36){itemlist += "Giant Moray Eel";}//Giant Moray Eel
 			else if(i <= 38){itemlist += "Swamp Eel";}//Swamp eel
@@ -366,6 +368,7 @@ function rollHunt(){
             else if(i <= 20){itemlist += "Seaweed";}
             else if(i <= 25){itemlist += "Lobster";}
             else if(i <= 30){itemlist += "Gar";}
+			else if(i <= 32){itemlist += "Goldfish";}
             else if(i <= 33){itemlist += "Premium Fish Meat";} // CHARMY
             else if(i <= 36){itemlist += "Jellyfish";}
             else if(i <= 38){itemlist += "Whalebone";}
