@@ -56,9 +56,9 @@
     @if($request->status == 'Draft' && $request->user_id == Auth::user()->id)
         <p>Upload the import image for your dragon. Ensure it is the correct size - 3k by 2040-  and updated import lines if necessary. Please only upload images that you are allowed to use AND are able to credit to the artist! Note that while staff members cannot edit your uploaded image, they may choose to recrop or upload a different thumbnail. <br>
             Follow the following directions: <br>
+            - Save out two versions of your import - one that is max size, and one that is 300x204 image resolution.
             - Upload your dragon's import in the choose file selection. <br>
-            - Ensure the cropper is turned OFF. <br>
-            - With the cropper off, reupload the EXACT SAME image you uploaded in the first file selection. Do not resize it. Do not crop it. <br>
+            - With the cropper ON, Upload a png of the same desing with the image resolution of 300x204 pixels. <br>
             - Add any credits and select "save."
         </p>
     @else
