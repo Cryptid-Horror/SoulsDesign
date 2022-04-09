@@ -19,7 +19,8 @@
                 <a class="small collapse-toggle" href="#{{ clean($key) }}" data-toggle="collapse">Show</a></h3>
             </h5>
             
-            <div class="card-body tab-content" id="{{ clean($key) }}">
+            <div class="card-body inventory-body collapse show" id="{{ clean($key) }}">
+                <div class="row mb-2">
                     @foreach($group as $character)
                         <div class="col-md-3 col-6 text-center mb-2">
                             <div>
