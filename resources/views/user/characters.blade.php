@@ -20,7 +20,6 @@
             </h5>
             
             <div class="card-body tab-content" id="{{ clean($key) }}">
-                <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="category-{{ isset($categories[$categoryId]) ? $categoryId : 'unsorted'}}">
                     @foreach($group as $character)
                         <div class="col-md-3 col-6 text-center mb-2">
                             <div>
