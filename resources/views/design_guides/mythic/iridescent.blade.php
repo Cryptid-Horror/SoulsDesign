@@ -68,6 +68,7 @@
 
     // If left empty, the swatches section will not be shown
     $swatches = [
+        'rainbow_normal', 'rainbow_pastel', 'rainbow_dark'
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
