@@ -1716,6 +1716,7 @@ function generateTraits() {
 function commonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	var result = "";
 	var roll = randRange(100);
+	// REC X NULL + DOM X NULL
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
 			if (roll < 70)
@@ -1724,23 +1725,25 @@ function commonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 			if (roll < 35)
 				result = "n" + markID;
 		}
+	// REC X REC
 	} else if (!sireDom && !damDom) {
 		if (roll < 15)
 			result = markID + "" + markID;
 		else if (roll < 40) 
 			result = "n" + markID;
+	//DOM X REC
 	} else if (sireDom && damDom) {
 		if (roll < 20)
 			result = markID + "" + markID;
 		else if (roll < 60) 
 			result = "n" + markID;
+	//DOM X DOM
 	} else {
 		if (roll < 25)
 			result = markID + "" + markID;
 		else if (roll < 80) 
 			result = "n" + markID;
 	}
-	
 	return result;
 }
 
@@ -1811,10 +1814,10 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	var roll = randRange(100);
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
-			if (roll < 98)
+			if (roll < 2)
 				result = "n" + markID;
 		} else {
-			if (roll < 2)
+			if (roll < 98)
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
