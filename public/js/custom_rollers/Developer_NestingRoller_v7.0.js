@@ -1727,13 +1727,13 @@ function commonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 		}
 	// REC X REC
 	} else if (!sireDom && !damDom) {
-		if (roll < 20)
+		if (roll < 15)
 			result = markID + "" + markID;
 		else if (roll < 55) 
 			result = "n" + markID;
 	//DOM X REC
 	} else if (sireDom && damDom) {
-		if (roll < 30)
+		if (roll < 25)
 			result = markID + "" + markID;
 		else if (roll < 65) 
 			result = "n" + markID;
@@ -1769,7 +1769,7 @@ function uncommonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 		else if (roll < 65) 
 			result = "n" + markID;
 	} else {
-		if (roll < 25)
+		if (roll < 30)
 			result = markID + "" + markID;
 		else if (roll < 75) 
 			result = "n" + markID;
