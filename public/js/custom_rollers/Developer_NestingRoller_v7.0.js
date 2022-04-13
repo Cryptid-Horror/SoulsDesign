@@ -1759,17 +1759,17 @@ function uncommonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
-		if (roll < 15)
+		if (roll < 10)
 			result = markID + "" + markID;
 		else if (roll < 55) 
 			result = "n" + markID;
 	} else if (sireDom && damDom) {
-		if (roll < 25)
+		if (roll < 20)
 			result = markID + "" + markID;
 		else if (roll < 65) 
 			result = "n" + markID;
 	} else {
-		if (roll < 30)
+		if (roll < 25)
 			result = markID + "" + markID;
 		else if (roll < 75) 
 			result = "n" + markID;
@@ -1790,7 +1790,7 @@ function rareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
-		if (roll < 10)
+		if (roll < 5)
 			result = markID + "" + markID;
 		else if (roll < 30) 
 			result = "n" + markID;
@@ -1821,7 +1821,7 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
-		if (roll < 5)
+		if (roll < 3)
 			result = markID + "" + markID;
 		else if (roll < 10) 
 			result = "n" + markID;
