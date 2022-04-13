@@ -1795,12 +1795,12 @@ function rareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 		else if (roll < 30) 
 			result = "n" + markID;
 	} else if (sireDom && damDom) {
-		if (roll < 15)
+		if (roll < 10)
 			result = markID + "" + markID;
 		else if (roll < 40) 
 			result = "n" + markID;
 	} else {
-		if (roll < 20)
+		if (roll < 15)
 			result = markID + "" + markID;
 		else if (roll < 50) 
 			result = "n" + markID;
@@ -1826,12 +1826,12 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 		else if (roll < 10) 
 			result = "n" + markID;
 	} else if (sireDom && damDom) {
-		if (roll < 10)
+		if (roll < 5)
 			result = markID + "" + markID;
 		else if (roll < 20) 
 			result = "n" + markID;
 	} else {
-		if (roll < 15)
+		if (roll < 10)
 			result = markID + "" + markID;
 		else if (roll < 30) 
 			result = "n" + markID;
