@@ -11,10 +11,17 @@
     <b>Phenotype:</b> {{ $character->image->phenotype }}<br>
     @if($character->image->free_markings)<b>Free Markings:</b> {{ $character->image->free_markings }}<br>@endif
     <b>Traits:</b>
-    <?php $features = $character->image->features()->with('feature.category')->get(); ?>
-    @if($features->count())
-        @foreach($features as $feature)
-            <div>@if($feature->feature->feature_category_id) <strong>{!! $feature->feature->category->displayName !!}:</strong> @endif {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif</div> 
+    <?php $feature_categories = $character->image->features()->with('feature.category')->get()->groupBy('feature_category_id'); ?>
+    @if($feature_categories->count())
+        @foreach($feature_categories as $features)
+            <div>
+                @if($features[0]->feature->feature_category_id)
+                    <strong>{!! $features[0]->feature->category->displayName !!}:</strong>
+                @endif
+                @foreach($features as $feature)
+                    {!! $feature->feature->displayName !!} @if($feature->data) ({{ $feature->data }}) @endif
+                @endforeach
+            </div> 
         @endforeach
     @else 
         <div>No traits listed.</div>
