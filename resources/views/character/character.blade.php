@@ -97,9 +97,6 @@
             <a class="nav-link active" id="profileTab" data-toggle="tab" href="#profile" role="tab">Details</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="skillsTab" data-toggle="tab" href="#skills" role="tab">Skills</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" id="charinfoTab" data-toggle="tab" href="#charinfo" role="tab">Profile</a>
         </li>
         <li class="nav-item">
