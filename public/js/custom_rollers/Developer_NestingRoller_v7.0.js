@@ -2143,22 +2143,22 @@ function generateSkill() {
 	if (document.getElementById("SB").checked) {
 		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
 			destroyedModifiers += "Skill Charm destroyed.<br>";
-		bonus = 10;
+		bonus = 20;
 	}
 	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
 		return "";
 	} else if (damSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
+		if (roll >= 20 - bonus) {
 			result = sireSkill;
 		}
 	} else if (sireSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
+		if (roll >= 20 - bonus) {
 			result = damSkill;
 		}
 	} else {
-		if (roll >= 85 - bonus) {
+		if (roll >= 60 - bonus) {
 			result = damSkill;
-		} else if (roll >= 70 - bonus/2) {
+		} else if (roll >= 30 - bonus/2) {
 			result = sireSkill;
 		}
 	}
