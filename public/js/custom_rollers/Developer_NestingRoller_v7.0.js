@@ -2143,7 +2143,7 @@ function generateSkill() {
 	if (document.getElementById("SB").checked) {
 		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
 			destroyedModifiers += "Skill Charm destroyed.<br>";
-		bonus = 30;
+		bonus = 10;
 	}
 	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
 		return "";
