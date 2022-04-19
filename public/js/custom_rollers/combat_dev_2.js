@@ -95,56 +95,62 @@ const breath_weaknesses = {
 	'lightning': 'wind'
 };
 
-const breath_tier_dmgs = { 1: 10, 2: 20, 3: 30, 4: 40 };
+const breath_tier_dmgs = { 1: 30, 2: 60, 3: 90, 4: 120 };
 
 const breath_crit = 4; // blanket value for all
 
 const magic_classes = {
 	'basic': {
-		min_dmg: 15,
-		max_dmg: 30
+		min_dmg: 20,
+		max_dmg: 50
 	},
 	'low': {
-		min_dmg: 20,
-		max_dmg: 60
+		min_dmg: 30,
+		max_dmg: 100
 	},
 	'high': {
-		min_dmg: 35,
-		max_dmg: 100
+		min_dmg: 40,
+		max_dmg: 200
 	}
 }
 
 const armor_sets = {
 	'leather': {
-		chest: 30,
+		chest: 125,
 		break_chance: 5,
 		bleed_res: 0,
 		magic_res: 0
 	},
-	'sturdy': {
-		chest: 60,
+	'sturdy': { //BONE//
+		chest: 150,
 		break_chance: 3,
-		bleed_res: 0,
+		bleed_res: 10,
 		magic_res: 0
 	},
 	'iron': {
-		chest: 75,
+		chest: 175,
 		break_chance: 1,
 		bleed_res: 0,
-		magic_res: 0
+		magic_res: 10
 	},
 	'crystalline': {
-		chest: 90,
+		chest: 165,
 		break_chance: 0,
-		bleed_res: 20,
-		magic_res: 5
-	},
-	'aether': {
-		chest: 90,
-		break_chance: 0,
-		bleed_res: 5,
+		bleed_res: 40,
 		magic_res: 20
 	},
+	'aether': {
+		chest: 165,
+		break_chance: 0,
+		bleed_res: 20,
+		magic_res: 40
+	},
+	//'??? Raw': {
+	//	chest: 200,
+	//	break_chance: 0,
+	//	bleed_res: 20,
+	//	magic_res: 20
+	//},
 }
 
 
@@ -324,22 +330,22 @@ const familiars = {
 		'dire_wolf': {
 			name: 'Dire Wolf',
 			raw: 30,
-			bleed: 10,
-			magic: 20,
+			bleed: 0,
+			magic: 10,
 			breath: 0
 		},
 		'basilisk': {
 			name: 'Basilisk',
-			raw: 20,
-			bleed: 10,
-			magic: 30,
+			raw: 10,
+			bleed: 30,
+			magic: 0,
 			breath: 0
 		},
 		'phoenix': {
 			name: 'Phoenix',
-			raw: 20,
-			bleed: 10,
-			magic: 40, 
+			raw: 10,
+			bleed: 0,
+			magic: 30, 
 			breath: 0,
 		}
 	},
