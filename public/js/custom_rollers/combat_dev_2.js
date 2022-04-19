@@ -95,7 +95,7 @@ const breath_weaknesses = {
 	'lightning': 'wind'
 };
 
-const breath_tier_dmgs = { 1: 30, 2: 60, 3: 90, 4: 120 };
+const breath_tier_dmgs = { 1: 10, 2: 60, 3: 90, 4: 120 };
 
 const breath_crit = 4; // blanket value for all
 
