@@ -415,7 +415,7 @@
 	
 <table id="footer">
 	<td id="footerElement">
-        v7.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
+        v8.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
 		Originally coded by Armando Montanez <br>
 </table>
 
