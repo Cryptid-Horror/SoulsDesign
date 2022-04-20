@@ -184,6 +184,12 @@ class PetController extends Controller
                 return redirect()->back();
             }
         }
+        else
+        {
+            flash('A valid splice item was not selected.')->error();
+            return redirect()->back();
+        }
+        
         if($service->editVariant($request->input('variant_id'), $pet)) {
             flash('Pet variant changed successfully.')->success();
         }
