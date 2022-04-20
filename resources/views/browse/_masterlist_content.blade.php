@@ -94,7 +94,7 @@
                     <div id="featureBody" class="row">
                         @if(Request::get('feature_id'))
                             @foreach(Request::get('feature_id') as $featureId)
-                                <div class="feature-block col-12">
+                                <div class="feature-block col-md-4 col-sm-3 col-6 mt-3">
                                     <div class="card">
                                         <div class="card-body d-flex">
                                             {!! Form::select('feature_id[]', $features, $featureId, ['class' => 'form-control feature-select selectize', 'placeholder' => 'Select Trait']) !!}
@@ -124,7 +124,7 @@
     {!! Form::close() !!}
 </div>
 <div class="hide" id="featureContent">
-    <div class="feature-block col-md-4 col-sm- col-6 mt-3">
+    <div class="feature-block col-md-4 col-sm-3 col-6 mt-3">
         <div class="card">
             <div class="card-body d-flex">
                 {!! Form::select('feature_id[]', $features, null, ['class' => 'form-control feature-select selectize', 'placeholder' => 'Select Trait']) !!}
