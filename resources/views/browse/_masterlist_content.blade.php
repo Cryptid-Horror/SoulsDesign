@@ -124,7 +124,7 @@
     {!! Form::close() !!}
 </div>
 <div class="hide" id="featureContent">
-    <div class="feature-block col-md-3 col-sm-4 col-6 mt-3">
+    <div class="feature-block col-12">
         <div class="card">
             <div class="card-body d-flex">
                 {!! Form::select('feature_id[]', $features, null, ['class' => 'form-control feature-select selectize', 'placeholder' => 'Select Trait']) !!}
