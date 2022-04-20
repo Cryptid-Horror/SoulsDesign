@@ -2148,17 +2148,17 @@ function generateSkill() {
 	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
 		return "";
 	} else if (damSkill == Skills.NONE) {
-		if (roll >= 60 - bonus) {
+		if (roll >= 10 - bonus) {
 			result = sireSkill;
 		}
 	} else if (sireSkill == Skills.NONE) {
-		if (roll >= 60 - bonus) {
+		if (roll >= 10 - bonus) {
 			result = damSkill;
 		}
 	} else {
-		if (roll >= 55 - bonus) {
+		if (roll >= 20 - bonus) {
 			result = damSkill;
-		} else if (roll >= 40 - bonus/2) {
+		} else if (roll >= 10 - bonus/2) {
 			result = sireSkill;
 		}
 	}
