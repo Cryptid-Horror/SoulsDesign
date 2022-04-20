@@ -1738,10 +1738,10 @@ function commonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	// DOM X NULL + REC X NULL
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
-			if (roll < 75)
+			if (roll < 65)
 				result = "n" + markID;
 		} else {
-			if (roll < 45)
+			if (roll < 40)
 				result = "n" + markID;
 		}
 	// REC X REC
@@ -1754,13 +1754,13 @@ function commonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	} else if (sireDom && damDom) {
 		if (roll < 15)
 			result = markID + "" + markID;
-		else if (roll < 65) 
+		else if (roll < 70) 
 			result = "n" + markID;
 	//DOM X DOM
 	} else {
 		if (roll < 25)
 			result = markID + "" + markID;
-		else if (roll < 75) 
+		else if (roll < 80) 
 			result = "n" + markID;
 	}
 	return result;
@@ -1771,26 +1771,26 @@ function uncommonMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	var roll = randRange(100);
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
-			if (roll < 65)
+			if (roll < 45)
 				result = "n" + markID;
 		} else {
-			if (roll < 35)
+			if (roll < 30)
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
 		if (roll < 5)
 			result = markID + "" + markID;
-		else if (roll < 45) 
+		else if (roll < 40) 
 			result = "n" + markID;
 	} else if (sireDom && damDom) {
 		if (roll < 10)
 			result = markID + "" + markID;
-		else if (roll < 55) 
+		else if (roll < 50) 
 			result = "n" + markID;
 	} else {
 		if (roll < 30)
 			result = markID + "" + markID;
-		else if (roll < 70) 
+		else if (roll < 60) 
 			result = "n" + markID;
 	}
 	
@@ -1802,26 +1802,26 @@ function rareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	var roll = randRange(100);
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
-			if (roll < 35)
+			if (roll < 20)
 				result = "n" + markID;
 		} else {
-			if (roll < 20)
+			if (roll < 5)
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
 		if (roll < 4)
 			result = markID + "" + markID;
-		else if (roll < 30) 
+		else if (roll < 15) 
 			result = "n" + markID;
 	} else if (sireDom && damDom) {
 		if (roll < 10)
 			result = markID + "" + markID;
-		else if (roll < 40) 
+		else if (roll < 25) 
 			result = "n" + markID;
 	} else {
 		if (roll < 15)
 			result = markID + "" + markID;
-		else if (roll < 50) 
+		else if (roll < 40) 
 			result = "n" + markID;
 	}
 	
@@ -1833,10 +1833,10 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	var roll = randRange(100);
 	if (oneParentMissing) {
 		if (sireDom || damDom) {
-			if (roll < 15)
+			if (roll < 10)
 				result = "n" + markID;
 		} else {
-			if (roll < 5)
+			if (roll < 3)
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
@@ -1847,7 +1847,7 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 	} else if (sireDom && damDom) {
 		if (roll < 5)
 			result = markID + "" + markID;
-		else if (roll < 20) 
+		else if (roll < 15) 
 			result = "n" + markID;
 	} else {
 		if (roll < 10)
