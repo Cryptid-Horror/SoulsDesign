@@ -97,7 +97,7 @@
                                 <div class="feature-block col-md-3 col-sm-4 col-6 mt-3">
                                     <div class="card">
                                         <div class="card-body d-flex">
-                                            {!! Form::select('feature_id[]', $features, $featureId, ['class' => 'form-control feature-select selectize', 'placeholder' => 'Select Trait', 'data-width' => '202']) !!}
+                                            {!! Form::select('feature_id[]', $features, $featureId, ['class' => 'form-control feature-select selectize', 'placeholder' => 'Select Trait']) !!}
                                             <a href="#" class="btn feature-remove ml-2"><i class="fas fa-times"></i></a>
                                         </div>
                                     </div>
