@@ -98,16 +98,14 @@
     @if(count($character->pets))
         <b>Pets:</b>
         <div class="text-center row">
-        @foreach($character->pets as $pet)
+        @foreach($character->pets as $userPet)
             <div class="ml-3 mr-3">
-                @if($pet->has_image)
-                <img src="{{ $pet->imageUrl }}" data-toggle="tooltip" title="{{ $pet->pet->name }}" style="max-width: 75px;"/>
-                @elseif($pet->pet->imageurl)
-                <img src="{{ $pet->pet->imageUrl }}" data-toggle="tooltip" title="{{ $pet->pet->name }}" style="max-width: 75px;"/>
-                @else {!!$pet->pet->displayName !!}
+                @if($userPet->pet->imageurl)
+                <img src="{{ $userPet->pet->VariantImage($userPet->variant_id) }}" data-toggle="tooltip" title="{{ $userPet->pet->name }}" style="max-width: 75px;"/>
+                @else {!!$userPet->pet->displayName !!}
                 @endif
                 <br>
-                <span class="text-light badge badge-dark" style="font-size:95%;">{!! $pet->pet_name !!}</span>
+                <span class="text-light badge badge-dark" style="font-size:95%;">{!! $userPet->pet_name !!}</span>
             </div>
         @endforeach
         </div>
