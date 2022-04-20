@@ -140,10 +140,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
                         <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
-                        <a class="dropdown-item" href="{{ url('roller/ce_counter') }}">Celestial Exp Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
-                        <a class="dropdown-item" href="{{ url('roller/daily_activity') }}">Daily Activities</a>
-                        <a class="dropdown-item" href="{{ url('roller/ee_counter') }}">Ethereal Exp Counter</a>
+                        <a class="dropdown-item" href="{{ url('roller/daily') }}">Daily Activities</a>
+                        <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
                         <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
                         <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
                         <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>

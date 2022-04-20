@@ -94,7 +94,7 @@
 </div>
 
 <!-- Found in the public/js folder -->
-<script type="text/javascript" src="{{ asset('js/custom_rollers/arena.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
 
 </body>
 

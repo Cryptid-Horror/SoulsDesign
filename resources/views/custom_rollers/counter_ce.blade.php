@@ -16,7 +16,7 @@
    <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/counterstyle.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/PPJava.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/counterCE.js') }}"></script>
 
 </head>
 

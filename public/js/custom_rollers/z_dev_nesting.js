@@ -1,6 +1,10 @@
 // designed by Armando Montanez (c) 2016-2017
 // licensed to Cryptid Horror and Livard
 
+// edits added by Draginraptor (c) 2022
+// - Aberrant passing (2022)
+// - Breaths pass logic update (04 Apr 2022)
+
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
 					"FeFe", "nCt", "CtCt", "nSl", "SlSl", "nHd", "HdHd", "nLf", "LfLf", "nMa", "MaMa", "nPa", "PaPa", "nPo", "PoPo", 
@@ -117,6 +121,19 @@ const aberrantPassRates = {
 	// 1000 - 100% x 100%
 	8: { "0%": 10, "25%": 40, "50%": 30, "100%": 20 },
 };
+
+
+// All available breaths
+// Used if a random breath should be rolled
+const breathList = [
+	"Fire", "Ice", "Shadow", "Lightning",
+	"Radiation", "Wind", "Poison", "Luster"
+];
+// Breath rates
+const breathBaseRate = 20;			// Split over all available breaths.
+const breathAggressiveBoost = 10;	// Applied per parent, split evenly.
+const breathParentBoost = 10;		// Applied per parent, to their respective breaths.
+const breathPotionBoost = 30;		// Applied and split evenly.
 
 
 function initialize() {
@@ -455,7 +472,9 @@ function validateParent(sireOrDam) {
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Tail")) != 0 && (document.getElementById(sireOrDam + "Breed").value == Breeds.RAVAGER))
 		return result;
-	else if ((result = validateTrait(sireOrDam, "Breath")) != 0)
+	else if ((result = validateTrait(sireOrDam, "Breath1")) != 0)
+		return result;
+	else if ((result = validateTrait(sireOrDam, "Breath2")) != 0)
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Skill")) != 0)
 		return result;
@@ -2071,62 +2090,143 @@ function generateMarkings() {
 }
 
 function generateBreath() {
-	var damBreath = document.getElementById("damBreath").value;
-	var sireBreath = document.getElementById("sireBreath").value;
-	var result = 1;
-	var roll = randRange(100);
-	var bonus = 0;
-         if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
-         bonus += 10;
-     } if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
-         bonus += 10;
-     }
+	// Gather all the breaths.
+	var damBreaths = [];
+	if(document.getElementById("damBreath1").value != Breaths.NONE)
+		damBreaths.push(document.getElementById("damBreath1").value);
+	if(document.getElementById("damBreath2").value != Breaths.NONE)
+		damBreaths.push(document.getElementById("damBreath2").value);
+
+	var sireBreaths = [];
+	if(document.getElementById("sireBreath1").value != Breaths.NONE)
+		sireBreaths.push(document.getElementById("sireBreath1").value);
+	if(document.getElementById("sireBreath2").value != Breaths.NONE)
+		sireBreaths.push(document.getElementById("sireBreath2").value);
+
+	var damBreath = damBreaths.length == 0 ? Breaths.NONE : damBreaths[randRange(damBreaths.length)];
+	var sireBreath = sireBreaths.length == 0 ? Breaths.NONE : sireBreaths[randRange(sireBreaths.length)];
+
+	// Calculate the bonuses that would be evenly distributed.
+	var generalBonus = 0;
+	if (document.getElementById("damTemper").value == Tempers.AGGRESSIVE) {
+		generalBonus += breathAggressiveBoost;
+	}
+	if (document.getElementById("sireTemper").value == Tempers.AGGRESSIVE) {
+		generalBonus += breathAggressiveBoost;
+	}
 	if (document.getElementById("BB").checked) {
 		if (!destroyedModifiers.includes("Breath Potion destroyed.<br>"))
 			destroyedModifiers += "Breath Potion destroyed.<br>";
-		bonus = 30;
+		generalBonus += breathPotionBoost;
 	}
-	if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
-		if (roll >= 96 - bonus) {
-			return "Fire";
-		}
-	} else if (damBreath == Breaths.NONE) {
-		if (roll >= 90 - bonus) {
-			result = sireBreath;
-		}
-	} else if (sireBreath == Breaths.NONE) {
-		if (roll >= 90 - bonus) {
-			result = damBreath;
-		}
-	} else {
-		if (roll >= 85 - bonus) {
-			result = damBreath;
-		} else if (roll >= 70 - bonus/2) {
-			result = sireBreath;
+
+	var maxBreaths = 1;
+	var totalBreathRate = breathBaseRate + generalBonus;
+	// Create a pool of breath results to roll from.
+	var breathPool = {};
+	if(damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
+		// Breath pool should contain all breaths.
+		var splitBonus = totalBreathRate / (Object.keys(Breaths).length - 1);	// -1 to exclude NONE.
+		for(let breath in Breaths)
+		{
+			breathPool[Breaths[breath]] = splitBonus;
 		}
 	}
+	else if(damBreath == Breaths.NONE)
+	{
+		// NO dam breath, only sire.
+		// Sire will boost the breath pass rate by having it.
+		totalBreathRate += breathParentBoost;
+		breathPool[sireBreath] = totalBreathRate;
+	}
+	else if(sireBreath == Breaths.NONE)
+	{
+		// NO sire breath, only dam.
+		// Dam will boost the breath pass rate by having it.
+		totalBreathRate += breathParentBoost;
+		breathPool[damBreath] = totalBreathRate;
+	}
+	else
+	{
+		// Both dragons have a breath.
+		// Each parent applies a boost.
+		totalBreathRate += 2 * breathParentBoost;
+		// Check if same or different
+		if(sireBreath == damBreath)
+		{
+			// Same
+			breathPool[damBreath] = totalBreathRate;
+		}
+		else
+		{
+			// Different
+			breathPool[damBreath] = totalBreathRate / 2;
+			breathPool[sireBreath] = totalBreathRate / 2;
+			// Offspring may have up to 2 breaths.
+			maxBreaths = 2;
+		}
+	}
+	// Manually set the NONE value.
+	breathPool[Breaths.NONE] = 100 - totalBreathRate;
+
+	var results = [];
+
+	for(let i = 0; i < maxBreaths; ++i)
+	{
+		var result = getRollResult(breathPool);
 	
-	if (result == Breaths.NONE) {
-		return "";
-	} else if (result == Breaths.FIRE) {
-		return "Fire";
-	} else if (result == Breaths.ICE) {
-		return "Ice";
-	} else if (result == Breaths.SHADOW) {
-		return "Shadow";
-	} else if (result == Breaths.LIGHTNING) {
-		return "Lightning";
-	} else if (result == Breaths.RADIATION) {
-		return "Radiation";
-	} else if (result == Breaths.WIND) {
-		return "Wind";
-	} else if (result == Breaths.POISON) {
-		return "Poison";
-	} else if (result == Breaths.LUSTER) {
-		return "Luster";
-	} else {
-		return "UNDEFINED"
+		// NONE does nothing.
+		if (result == Breaths.FIRE) {
+			results.push("Fire");
+		} else if (result == Breaths.ICE) {
+			results.push("Ice");
+		} else if (result == Breaths.SHADOW) {
+			results.push("Shadow");
+		} else if (result == Breaths.LIGHTNING) {
+			results.push("Lightning");
+		} else if (result == Breaths.RADIATION) {
+			results.push("Radiation");
+		} else if (result == Breaths.WIND) {
+			results.push("Wind");
+		} else if (result == Breaths.POISON) {
+			results.push("Poison");
+		} else if (result == Breaths.LUSTER) {
+			results.push("Luster");
+		}
 	}
+
+	// Process and return result.
+	switch(results.length)
+	{
+		case 0: return "";
+		case 1: return results[0];
+		case 2:
+			// Check if a duplicate was rolled.
+			if(results[0] == results[1]) return results[0];
+			else return results[0] + ", " + results[1];
+		default: return "UNDEFINED;"
+	}
+
+
+	// if (damBreath == Breaths.NONE && sireBreath == Breaths.NONE) {
+	// 	if (roll >= 96 - bonus) {
+	// 		return "Fire";
+	// 	}
+	// } else if (damBreath == Breaths.NONE) {
+	// 	if (roll >= 90 - bonus) {
+	// 		result = sireBreath;
+	// 	}
+	// } else if (sireBreath == Breaths.NONE) {
+	// 	if (roll >= 90 - bonus) {
+	// 		result = damBreath;
+	// 	}
+	// } else {
+	// 	if (roll >= 85 - bonus) {
+	// 		result = damBreath;
+	// 	} else if (roll >= 70 - bonus/2) {
+	// 		result = sireBreath;
+	// 	}
+	// }
 }
 
 function generateSkill() {

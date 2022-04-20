@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom_roller_css/nesting.css') }}" rel="stylesheet">
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/featherlight.min.js') }}"></script>
-    <script src="{{ asset('js/custom_rollers/Developer_NestingRoller_v7.0.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/z_dev_nesting.js') }}"></script>
 
 	<title>Nesting Roller - Souls-Between</title>
 </head>
@@ -97,7 +97,18 @@
 		</div>
 		
 		<div id="sireRowBottom">
-			<select id="sireBreath" class="cellElement">
+			<select id="sireBreath1" class="cellElement">
+				<option value="1">No Breath</option>
+				<option value="2">Fire</option>
+				<option value="3">Ice</option>
+				<option value="4">Shadow</option>
+				<option value="5">Lightning</option>
+				<option value="6">Radiation</option>
+			    <option value="7">Wind</option>
+				<option value="8">Poison</option>
+				<option value="9">Luster</option>
+			</select>
+			<select id="sireBreath2" class="cellElement">
 				<option value="1">No Breath</option>
 				<option value="2">Fire</option>
 				<option value="3">Ice</option>
@@ -116,7 +127,7 @@
 				<option value="11">Blessing of the Moon</option>
 				<option value="13">Confetti Dreams</option>
 				<option value="16">Frenzy</option>
-				<option value="3">Life of the Party</option>
+				<option value="3">Friendly Giant</option>
 				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>
@@ -215,7 +226,18 @@
 		</div>
 		
 		<div id="damRowBottom">
-			<select id="damBreath" class="cellElement">
+			<select id="damBreath1" class="cellElement">
+				<option value="1">No Breath</option>
+				<option value="2">Fire</option>
+				<option value="3">Ice</option>
+				<option value="4">Shadow</option>
+				<option value="5">Lightning</option>
+				<option value="6">Radiation</option>
+				<option value="7">Wind</option>
+				<option value="8">Poison</option>
+				<option value="9">Luster</option>
+			</select>
+			<select id="damBreath2" class="cellElement">
 				<option value="1">No Breath</option>
 				<option value="2">Fire</option>
 				<option value="3">Ice</option>
@@ -234,7 +256,7 @@
 				<option value="11">Blessing of the Moon</option>
 				<option value="13">Confetti Dreams</option>
 				<option value="16">Frenzy</option>
-				<option value="3">Life of the Party</option>
+				<option value="3">Friendly Giant</option>
 				<option value="12">Guidance of the Sun</option>
 				<option value="8">Haunting Roar</option>
 				<option value="9">Healing Aura</option>

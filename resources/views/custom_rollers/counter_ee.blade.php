@@ -24,7 +24,7 @@
 <!-- Navigation -->
    
     <!-- CONTENT -->
-<div id="title">Mastery Point Calculator</div>
+<div id="title">Ethereal Experience Calculator</div>
 	<div class="credit">
 	All coding credit goes to Livard (Liv Schneider)<br>
 	Primal Points and Values Copyright Souls-Between 2019<br></div>
@@ -34,8 +34,8 @@
 		<form id="mpcount">
 			<fieldset id="type">
 				<table>
-					<td><input type="radio" id="release"><label for="release" class="wide">Wild Relase</label></td>
-					<td><input type="radio" id="donate"><label for="donate" class="wide">Donate</label></td>
+					<td><input type="radio" id="personal"><label for="personal" class="wide">Free Roll</label></td>
+					<td><input type="radio" id="nonpersonal"><label for="nonpersonal" class="wide">Entry Roll</label></td>
 				</table>
 			</fieldset>
 			<input type="checkbox" id="dailyquests"><label for="dailyquests" class="wide">Daily Activities and Quests</label><br>
@@ -49,9 +49,8 @@
 		</form>
 	</div>
 	<div class="boxed box3 center"><h1>Final Count</h1>
-		Copy this text into your tracker!<br>
+		Copy this text into your prompt submission!<br>
 		<textarea rows= "15" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
-		<div id="text">For artwork created for someone else of their dragon participating in an activity, all points will be halved except: Advent, Hunting and foraging (Which is reduced to 2). If you have a dragon present, no values are halved. <br><br><br></div>
 		<a class="big button" onclick="reset()">Reset</a>
 		<p>
 			
@@ -67,7 +66,7 @@
             <input type="checkbox" id="shadingcomplex"><label for="shadingcomplex" class="wide">Complex Shading</label><br>
 			<input type="checkbox" id="simplebackground"><label for="simplebackground" class="wide">Simple Background</label><br>
 			<input type="checkbox" id="complexbackground"><label for="complexbackground" class="wide">Complex Background</label><br>
-            <input type="checkbox" id="addedcompanion"><label for="addecompanion" class="wide">Added Companion</label><br>
+            <input type="checkbox" id="comp"><label for="comp" class="wide">Humanoid Handler</label><br>
 
 			<h3>Extra Dragons (Stacks 4 times)</h3>
 			<input type="checkbox" id="extradragon1"><label for="extradragon1" class="wide">Extra Dragon (1)</label><br>
@@ -75,7 +74,7 @@
             <input type="checkbox" id="extradragon3"><label for="extradragon3" class="wide">Extra Dragon (3)</label><br>
             <input type="checkbox" id="extradragon4"><label for="extradragon4" class="wide">Extra Dragon (4)</label><br>
 
-			<h3>Extra Works (Stacks 5 times)</h3>
+			<h3>Extra Words (Stacks 5 times)</h3>
 			<input type="checkbox" id="extrawords1"><label for="extrawords1" class="wide">150 Extra Words (1)</label><br>
             <input type="checkbox" id="extrawords2"><label for="extrawords2" class="wide">150 Extra Words (2)</label><br>
             <input type="checkbox" id="extrawords3"><label for="extrawords3" class="wide">150 Extra Words (3)</label><br>
@@ -88,6 +87,6 @@
 <br><br>
 
     <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/ACcalc.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/counterEE.js') }}"></script>
 </body>
 </html>
