@@ -2156,9 +2156,9 @@ function generateSkill() {
 			result = damSkill;
 		}
 	} else {
-		if (roll >= 20 - bonus) {
+		if (roll >= 85 - bonus) {
 			result = damSkill;
-		} else if (roll >= 10 - bonus/2) {
+		} else if (roll >= 70 - bonus/2) {
 			result = sireSkill;
 		}
 	}
