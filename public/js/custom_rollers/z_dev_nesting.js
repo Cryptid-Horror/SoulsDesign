@@ -137,6 +137,29 @@ const breathParentBoost = 10;		// Applied per parent, to their respective breath
 const breathPotionBoost = 30;		// Applied and split evenly.
 
 
+const skillPassRates = {
+	'general': {
+		// Pass rate of general skill, if only present on one parent
+		1: 40,
+		// Pass rate of general skill, if present on both parents
+		2: 50
+	},
+	'combat': {
+		// Pass rate of combat skill, if only present on one parent
+		1: 20,
+		// Pass rate of combat skill, if present on both parents
+		2: 30
+	},
+	'legendary': {
+		// Pass rate of legendary skill, if only present on one parent
+		1: 10,
+		// Pass rate of legendary skill, if present on both parents
+		2: 15
+	}
+}
+
+const skillMaxPerOffspring = 2;
+
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
 	document.getElementById("breedSelectionRadios").style.display = "none";
@@ -162,6 +185,18 @@ function getRollResult(roll_table) {
 function randRange(max) {
 	return Math.floor(Math.random() * max);
 }
+
+function shuffle(array)
+{
+	for(let i = array.length - 1; i > 0; --i)
+	{
+		var tmp = array[i];
+		var randIndex = randRange(i);
+		array[i] = array[randIndex];
+		array[randIndex] = tmp;
+	}
+}
+
 // global variables
 var destroyedModifiers = "";
 var damMarkings = [];
@@ -474,34 +509,37 @@ function validateGeno(sireOrDam) {
 function validateSkills(sireOrDam) {
 	var skillString = document.getElementById(sireOrDam + "Skills").value;
 
-	// If no skills are entered, assume no skills.
-	if (skillString == 0)
-		return 0;
-	
-	// Try to split by ), which should split it up into "skill name (skill rarity"
-	var skillFragments = skillString.split(')');
-	// Check for an empty fragment in the last slot
-	if(skillFragments[skillFragments.length - 1].trim() === "") skillFragments.pop();
-	console.log(skillFragments)
-	// Iterate over all framents
 	var skills = [];
-	for(let i = 0; i < skillFragments.length; ++i)
+	// If no skills are entered, assume no skills.
+	if (skillString != 0)
 	{
-		var fragment = skillFragments[i];
-		var shards = fragment.split('(');
-		var skillName = shards[0].trim();
-		var skillRarity = shards[1].trim();
+		// Try to split by ), which should split it up into "skill name (skill rarity"
+		var skillFragments = skillString.split(')');
+		// Check for an empty fragment in the last slot
+		if(skillFragments[skillFragments.length - 1].trim() === "") skillFragments.pop();
+		// Iterate over all framents
+		for(let i = 0; i < skillFragments.length; ++i)
+		{
+			var fragment = skillFragments[i];
+			var shards = fragment.split('(');
+			var skillName = shards[0].trim();
+			var skillRarity = shards[1].trim();
 
-		// Check if the given skill name actually exists
-		if(!Object.keys(SkillNames).includes(skillName.toLowerCase()))
-			return skillName + " is an invalid skill.";
-
-		// Check if the skill rarity matches
-		if(SkillNames[skillName.toLowerCase()] != skillRarity.toLowerCase())
-			return skillName + " rarity does not match expected value.";
-
-		// Otherwise, skill should be valid.
-		skills.push(skillName);
+			// Special handling for Adept.
+			var adeptCheck = skillName.split('-');
+			if(adeptCheck[0].trim() == "Adept") skillName = "Adept";
+	
+			// Check if the given skill name actually exists
+			if(!Object.keys(SkillNames).includes(skillName.toLowerCase()))
+				return skillName + " is an invalid skill.";
+	
+			// Check if the skill rarity matches
+			if(SkillNames[skillName.toLowerCase()] != skillRarity.toLowerCase())
+				return skillName + " rarity does not match expected value.";
+	
+			// Otherwise, skill should be valid.
+			skills.push(skillName);
+		}
 	}
 
 	// At this point, skills should be confirmed.
@@ -514,8 +552,12 @@ function validateSkills(sireOrDam) {
 	}
 
 	var skillEchoString = skills.join(", ");
-	// Append to the value in GenoEcho; assumes that geno was validated first.
-	document.getElementById(sireOrDam + "GenoEcho").value += "; Skills: " + skillEchoString;
+
+	if(skills.length > 0)
+	{
+		// Append to the value in GenoEcho; assumes that geno was validated first.
+		document.getElementById(sireOrDam + "GenoEcho").value += "; Skills: " + skillEchoString;
+	}
 
 	return 0;
 }
@@ -2303,75 +2345,45 @@ function generateBreath() {
 }
 
 function generateSkill() {
-	var damSkill = document.getElementById("damSkill").value;
-	var sireSkill = document.getElementById("sireSkill").value;
-	var result = 1;
-	var roll = randRange(100);
-	var bonus = 0;
-    if (document.getElementById("damTemper").value == Tempers.SINISTER) {
-         bonus += 10;
-     } if (document.getElementById("sireTemper").value == Tempers.SINISTER) {
-         bonus += 10;
-     }
-	if (document.getElementById("SB").checked) {
-		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
-			destroyedModifiers += "Skill Charm destroyed.<br>";
-		bonus = 10;
+	// Get all unique skills shared between the parents.
+	// Start on dam skills.
+	var skillPool = damSkills.slice();
+	for(let i = 0; i < sireSkills.length; ++i)
+	{
+		// Add to pool if not already present.
+		if(!skillPool.includes(sireSkills[i]))
+			skillPool.push(sireSkills[i]);
 	}
-	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
-		return "";
-	} else if (damSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
-			result = sireSkill;
-		}
-	} else if (sireSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
-			result = damSkill;
-		}
-	} else {
-		if (roll >= 85 - bonus) {
-			result = damSkill;
-		} else if (roll >= 70 - bonus/2) {
-			result = sireSkill;
+
+	// Shuffle the skill pool before rolling.
+	shuffle(skillPool)
+
+	// Iterate over and roll for each skill.
+	var skillsRolled = [];
+	for(let i = 0; i < skillPool.length; ++i)
+	{
+		var skillName = skillPool[i];
+		var skillRarity = SkillNames[skillName.toLowerCase()];
+
+		// Can either be present on 1 or 2 (both) parents
+		var numPresent = 0;
+		if(damSkills.includes(skillName)) ++numPresent;
+		if(sireSkills.includes(skillName)) ++numPresent;
+
+		var skillPassRate = skillPassRates[skillRarity][numPresent];
+
+		var roll = randRange(100);
+		if(roll < skillPassRate)
+		{
+			skillsRolled.push(skillName);
+			if(skillsRolled.length >= skillMaxPerOffspring) break;
 		}
 	}
-	
-	if (result == Skills.NONE) {
-		return "";
-	} else if (result == Skills.HOARDER) {
-		return "Hoarder";
-	} else if (result == Skills.FRIENDLY_GIANT) {
-		return "Life of the Party";
-	} else if (result == Skills.STEADFAST) {
-		return "Steadfast";
-	} else if (result == Skills.SWIFTFEET) {
-		return "Swift Feet";
-	} else if (result == Skills.AETHERWALKER) {
-		return "Aether Walker";
-	} else if (result == Skills.INNERFIRE) {
-		return "Inner Fire";
-	} else if (result == Skills.HAUNTINGROAR) {
-		return "Haunting Roar";
-	} else if (result == Skills.HEALINGAURA) {
-		return "Healing Aura";
-	} else if (result == Skills.ADEPT) {
-	    return "Adept";
-	} else if (result == Skills.MOONBLESSING) {
-	    return "Blessing of the Moon";
-	} else if (result == Skills.SUNGUIDANCE) {
-	    return "Guidance of the Sun";
-	} else if (result == Skills.CONFETTIDREAMS) {
-	    return "Confetti Dreams";
-	} else if (result == Skills.SERRATEDTEETH) {
-	    return "Serrated Teeth";
-	} else if (result == Skills.ARMOREDHIDE) {
-	    return "Armored Hide";
-	} else if (result == Skills.FRENZY) {
-	    return "Frenzy";
-	} else {
-		return "UNDEFINED"
-	}
+
+	// Concat the results to be printed.
+	return skillsRolled.join(", ");
 }
+
 function selectMutation(mutationRarity, physicalOnly) {
 	var mutationNotFound = true;
 	var result = "";
