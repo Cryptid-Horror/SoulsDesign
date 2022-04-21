@@ -119,6 +119,7 @@
 				<option value="8">Poison</option>
 				<option value="9">Luster</option>
 			</select>
+			<!-- 
 			<select id="sireSkill" class="cellElement">
 				<option value="1">No Skill</option>
 				<option value="10">Adept</option>
@@ -137,6 +138,7 @@
 				<option value="4">Steadfast</option>
 				<option value="5">Swift Feet</option>
 			</select>
+			-->
 			<br>
 			<select id="sireAberrant" class="cellElement">
 				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
@@ -156,6 +158,9 @@
 			<br><a>Genotype</a><br>
 			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 
+			<a>Skills</a><br>
+			<input type="text" id="sireSkills" class="cellElement" placeholder="skill name (skill rarity) skill name (skill rarity) ..." autocomplete="off"><br>
+			
 			<a>Echo</a><br>
 			<textarea rows="1" id="sireGenoEcho" class="cellElement" readonly spellcheck="false"></textarea><br>
 		</div>
@@ -248,6 +253,7 @@
 				<option value="8">Poison</option>
 				<option value="9">Luster</option>
 			</select>
+			<!-- 
 			<select id="damSkill" class="cellElement">
 				<option value="1">No Skill</option>
 				<option value="10">Adept</option>
@@ -267,6 +273,7 @@
 				<option value="5">Swift Feet</option>
 
 			</select>
+			-->
 			<br>
 			<select id="damAberrant" class="cellElement">
 				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
@@ -286,6 +293,9 @@
 			<br><a>Genotype</a><br>
 			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 			
+			<a>Skills</a><br>
+			<input type="text" id="damSkills" class="cellElement" placeholder="skill name (skill rarity) skill name (skill rarity) ..." autocomplete="off"><br>
+
 			<a>Echo</a><br>
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
 		</div>

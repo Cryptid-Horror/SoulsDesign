@@ -4,6 +4,7 @@
 // edits added by Draginraptor (c) 2022
 // - Aberrant passing (2022)
 // - Breaths pass logic update (04 Apr 2022)
+// - Skills pass logic update (05 Apr 2022)
 
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
@@ -165,6 +166,8 @@ function randRange(max) {
 var destroyedModifiers = "";
 var damMarkings = [];
 var sireMarkings = [];
+var damSkills = [];
+var sireSkills = [];
 var childMarkings = [];
 var childColorMods = [];
 var childBreed;
@@ -224,6 +227,25 @@ var Skills = Object.freeze({
 		CONFETTIDREAMS: 13, SERRATEDTEETH: 14,
 		ARMOREDHIDE: 15,    FRENZY: 16,
 	});
+
+// Uses lowercaps only so input will NOT be case-sensitive
+var SkillNames = Object.freeze({
+	"adept": "general",
+	"aether walker": "combat",
+	"armored hide": "combat",
+	"blessing of the moon": "legendary",
+	"confetti dreams": "legendary",
+	"frenzy": "combat",
+	"guidance of the sun": "legendary",
+	"haunting roar": "combat",
+	"healing aura": "combat",
+	"hoarder": "general",
+	"inner fire": "combat",
+	"life of the party": "general",
+	"serrated teeth": "combat",
+	"steadfast": "combat",
+	"swift feet": "combat"
+});
 
 // basic function to reset forms
 function clearForms() {
@@ -449,10 +471,63 @@ function validateGeno(sireOrDam) {
 	return 0;
 }
 
+function validateSkills(sireOrDam) {
+	var skillString = document.getElementById(sireOrDam + "Skills").value;
+
+	// If no skills are entered, assume no skills.
+	if (skillString == 0)
+		return 0;
+	
+	// Try to split by ), which should split it up into "skill name (skill rarity"
+	var skillFragments = skillString.split(')');
+	// Check for an empty fragment in the last slot
+	if(skillFragments[skillFragments.length - 1].trim() === "") skillFragments.pop();
+	console.log(skillFragments)
+	// Iterate over all framents
+	var skills = [];
+	for(let i = 0; i < skillFragments.length; ++i)
+	{
+		var fragment = skillFragments[i];
+		var shards = fragment.split('(');
+		var skillName = shards[0].trim();
+		var skillRarity = shards[1].trim();
+
+		// Check if the given skill name actually exists
+		if(!Object.keys(SkillNames).includes(skillName.toLowerCase()))
+			return skillName + " is an invalid skill.";
+
+		// Check if the skill rarity matches
+		if(SkillNames[skillName.toLowerCase()] != skillRarity.toLowerCase())
+			return skillName + " rarity does not match expected value.";
+
+		// Otherwise, skill should be valid.
+		skills.push(skillName);
+	}
+
+	// At this point, skills should be confirmed.
+
+	// Store for later
+	if (sireOrDam == "sire") {
+		sireSkills = skills;
+	} else {
+		damSkills = skills;
+	}
+
+	var skillEchoString = skills.join(", ");
+	// Append to the value in GenoEcho; assumes that geno was validated first.
+	document.getElementById(sireOrDam + "GenoEcho").value += "; Skills: " + skillEchoString;
+
+	return 0;
+}
+
 function validateParent(sireOrDam) {
 	var result;
 	// first validate geno
 	if ((result = validateGeno(sireOrDam)) != 0)
+		return result;
+
+	// validate skills
+	if((result = validateSkills(sireOrDam)) != 0)
 		return result;
 	
 	// validate traits
@@ -475,8 +550,6 @@ function validateParent(sireOrDam) {
 	else if ((result = validateTrait(sireOrDam, "Breath1")) != 0)
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Breath2")) != 0)
-		return result;
-	else if ((result = validateTrait(sireOrDam, "Skill")) != 0)
 		return result;
 	
 	// we reach here if all of parent's traits are valid.
