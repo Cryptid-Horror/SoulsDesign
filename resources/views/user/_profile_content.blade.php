@@ -1,4 +1,13 @@
 @if($deactivated)<div style="filter:grayscale(1); opacity:0.75">@endif
+
+@if(isset($user->profile->parsed_text))
+    <div class="card mb-3" style="clear:both;">
+        <div class="card-body">
+            {!! $user->profile->parsed_text !!}
+        </div>
+    </div>
+@endif
+
 <br>
 <hr>
 
