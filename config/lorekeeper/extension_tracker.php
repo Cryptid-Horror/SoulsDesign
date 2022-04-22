@@ -212,4 +212,14 @@ return [
         ]),
         'version' => '1.0.2',
     ],
+
+    'deactivate_account' => [
+        'key'       => 'deactivate_account',
+        'wiki_key'  =>  'Deactivate_Account',
+        'creators'  =>  json_encode([
+            'Uri'       =>  'https://github.com/preimpression/',
+        ]),
+        'version'   => '1.0.0',
+    ],
+
 ];

@@ -38,6 +38,10 @@ Route::group(['prefix' => 'account', 'namespace' => 'Users'], function() {
     Route::post('dob', 'AccountController@postBirthday');
     Route::post('theme', 'AccountController@postTheme');
 
+    Route::get('deactivate', 'AccountController@getDeactivate');
+    Route::get('deactivate-confirm', 'AccountController@getDeactivateConfirmation');
+    Route::post('deactivate', 'AccountController@postDeactivate');
+
     Route::get('bookmarks', 'BookmarkController@getBookmarks');
     Route::get('bookmarks/create', 'BookmarkController@getCreateBookmark');
     Route::get('bookmarks/edit/{id}', 'BookmarkController@getEditBookmark');
