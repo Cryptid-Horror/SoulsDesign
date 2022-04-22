@@ -6,10 +6,11 @@ use Config;
 use DB;
 use App\Models\Model;
 use App\Models\Award\AwardCategory;
-
-use App\Models\User\User;
+use App\Models\Character\CharacterAward;
 use App\Models\Shop\Shop;
 use App\Models\Prompt\Prompt;
+use App\Models\User\User;
+use App\Models\User\UserAward;
 
 class Award extends Model
 {
@@ -20,7 +21,8 @@ class Award extends Model
      */
     protected $fillable = [
         'award_category_id', 'name', 'has_image', 'description', 'parsed_description',
-        'data', 'reference_url', 'artist_alias', 'artist_url', 'artist_id'
+        'data', 'is_released', 'is_featured', 'is_user_owned', 'is_character_owned',
+        'user_limit', 'character_limit', 'allow_transfer', 'extension',
     ];
 
     /**
@@ -31,6 +33,15 @@ class Award extends Model
     protected $table = 'awards';
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'credits' => 'array'
+    ];
+
+    /**
      * Validation rules for creation.
      *
      * @var array
@@ -39,9 +50,8 @@ class Award extends Model
         'award_category_id' => 'nullable',
         'name' => 'required|unique:awards|between:3,100',
         'description' => 'nullable',
-        'image' => 'mimes:png',
+        'image' => 'mimes:png,jpeg,jpg,gif',
         'rarity' => 'nullable',
-        'reference_url' => 'nullable|between:3,200',
         'uses' => 'nullable|between:3,250',
         'release' => 'nullable|between:3,100'
     ];
@@ -55,8 +65,7 @@ class Award extends Model
         'award_category_id' => 'nullable',
         'name' => 'required|between:3,100',
         'description' => 'nullable',
-        'image' => 'mimes:png',
-        'reference_url' => 'nullable|between:3,200',
+        'image' => 'mimes:png,jpeg,jpg,gif',
         'uses' => 'nullable|between:3,250',
         'release' => 'nullable|between:3,100'
     ];
@@ -75,21 +84,6 @@ class Award extends Model
         return $this->belongsTo('App\Models\Award\AwardCategory', 'award_category_id');
     }
 
-    /**
-     * Get the award's tags.
-     */
-    public function tags()
-    {
-        return $this->hasMany('App\Models\Award\AwardTag', 'award_id');
-    }
-
-    /**
-     * Get the user that drew the award art.
-     */
-    public function artist()
-    {
-        return $this->belongsTo('App\Models\User\User', 'artist_id');
-    }
 
     /**********************************************************************************************
 
@@ -117,8 +111,8 @@ class Award extends Model
      */
     public function scopeSortCategory($query)
     {
-        $ids = AwardCategory::orderBy('sort', 'DESC')->pluck('id')->toArray();
-        return count($ids) ? $query->orderByRaw(DB::raw('FIELD(award_category_id, '.implode(',', $ids).')')) : $query;
+        if(AwardCategory::all()->count()) return $query->orderBy(AwardCategory::select('sort')->whereColumn('awards.award_category_id', 'award_categories.id'), 'DESC');
+        return $query;
     }
 
     /**
@@ -143,6 +137,21 @@ class Award extends Model
         return $query->orderBy('id');
     }
 
+    /**
+     * Scope a query to show only released or "released" (at least one user-owned stack has ever existed) items.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeReleased($query)
+    {
+        $users = UserAward::pluck('award_id')->toArray();
+        $characters = CharacterAward::pluck('award_id')->toArray();
+        $array = array_merge($users, $characters);
+        return $query->whereIn('id', $array)->orWhere('is_released', 1);
+    }
+
+
     /**********************************************************************************************
 
         ACCESSORS
@@ -156,7 +165,7 @@ class Award extends Model
      */
     public function getDisplayNameAttribute()
     {
-        return '<a href="'.$this->url.'" class="display-award">'.$this->name.'</a>';
+        return '<a href="'.$this->idUrl.'" class="display-award">'.$this->name.'</a>';
     }
 
     /**
@@ -176,7 +185,7 @@ class Award extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '-image.png';
+        return $this->id . '-image.' . $this->extension;
     }
 
     /**
@@ -231,44 +240,6 @@ class Award extends Model
     }
 
     /**
-     * Get the artist of the award's image.
-     *
-     * @return string
-     */
-    public function getAwardArtistAttribute()
-    {
-        if(!$this->artist_url && !$this->artist_id) return null;
-
-        // Check to see if the artist exists on site
-        $artist = checkAlias($this->artist_url, false);
-        if(is_object($artist)) {
-            $this->artist_id = $artist->id;
-            $this->artist_url = null;
-            $this->save();
-        }
-
-        if($this->artist_id)
-        {
-            return $this->artist->displayName;
-        }
-        else if ($this->artist_url)
-        {
-            return prettyProfileLink($this->artist_url);
-        }
-    }
-
-    /**
-     * Get the reference url attribute.
-     *
-     * @return string
-     */
-    public function getReferenceAttribute()
-    {
-        if (!$this->reference_url) return null;
-        return $this->reference_url;
-    }
-
-    /**
      * Get the data attribute as an associative array.
      *
      * @return array
@@ -277,6 +248,23 @@ class Award extends Model
     {
         if (!$this->id) return null;
         return json_decode($this->attributes['data'], true);
+    }
+
+    public function getCreditsAttribute(){
+        return $this->data['credits'];
+    }
+    public function getPrettyCreditsAttribute(){
+
+        $creds = [];
+        $credits = [];
+
+        foreach($this->credits as $credit){
+            $text = isset($credit['name']) ? $credit['name'] :  (isset($credit['id']) ? User::find($credit['id'])->name : (isset($credit['url']) ? $credit['url'] : 'artist'));
+            $link = isset($credit['url']) ? $credit['url'] :  (isset($credit['id']) ? User::find($credit['id'])->url : '#');
+            $role = isset($credit['role']) ? '<small>('.$credit['role'].')</small>' : null;
+            $credits[] = '<a href="'.$link.'" target="_blank">'.$text.'</a> '. $role;
+        }
+        return $credits;
     }
 
     /**
@@ -291,17 +279,6 @@ class Award extends Model
     }
 
     /**
-     * Get the uses attribute.
-     *
-     * @return string
-     */
-    public function getUsesAttribute()
-    {
-        if (!$this->data) return null;
-        return $this->data['uses'];
-    }
-
-    /**
      * Get the source attribute.
      *
      * @return string
@@ -310,18 +287,6 @@ class Award extends Model
     {
         if (!$this->data) return null;
         return $this->data['release'];
-    }
-
-    /**
-     * Get the shops attribute as an associative array.
-     *
-     * @return array
-     */
-    public function getShopsAttribute()
-    {
-        if (!$this->data) return null;
-        $awardShops = $this->data['shops'];
-        return Shop::whereIn('id', $awardShops)->get();
     }
 
     /**
@@ -342,23 +307,4 @@ class Award extends Model
 
     **********************************************************************************************/
 
-    /**
-     * Checks if the award has a particular tag.
-     *
-     * @return bool
-     */
-    public function hasTag($tag)
-    {
-        return $this->tags()->where('tag', $tag)->where('is_active', 1)->exists();
-    }
-
-    /**
-     * Gets a particular tag attached to the award.
-     *
-     * @return \App\Models\Award\AwardTag
-     */
-    public function tag($tag)
-    {
-        return $this->tags()->where('tag', $tag)->where('is_active', 1)->first();
-    }
 }

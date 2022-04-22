@@ -164,9 +164,10 @@ class Notification extends Model
     const GEAR_REMOVAL                    = 255;
     const GEAR_TRANSFER                   = 256;
     const FORCED_GEAR_TRANSFER            = 257;
+    const CHARACTER_AWARD_GRANT             = 345;
+    const CHARACTER_AWARD_REMOVAL           = 346;
     const CHARACTER_ITEM_GRANT            = 501;
     const CHARACTER_ITEM_REMOVAL          = 502;
-
     const GALLERY_SUBMISSION_COLLABORATOR   = 505;
     const GALLERY_COLLABORATORS_APPROVED    = 506;
     const GALLERY_SUBMISSION_ACCEPTED       = 507;

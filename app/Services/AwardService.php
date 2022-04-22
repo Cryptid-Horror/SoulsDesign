@@ -21,7 +21,7 @@ class AwardService extends Service
     */
 
     /**********************************************************************************************
-     
+
         AWARD CATEGORIES
 
     **********************************************************************************************/
@@ -56,7 +56,7 @@ class AwardService extends Service
             if ($image) $this->handleImage($image, $category->categoryImagePath, $category->categoryImageFileName);
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -82,7 +82,7 @@ class AwardService extends Service
 
             isset($data['character_limit']) && $data['character_limit'] ? $data['character_limit'] : $data['character_limit'] = 0;
 
-            $image = null;            
+            $image = null;
             if(isset($data['image']) && $data['image']) {
                 $data['has_image'] = 1;
                 $image = $data['image'];
@@ -94,7 +94,7 @@ class AwardService extends Service
             if ($category) $this->handleImage($image, $category->categoryImagePath, $category->categoryImageFileName);
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -110,13 +110,13 @@ class AwardService extends Service
     private function populateCategoryData($data, $category = null)
     {
         if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-        
+
         if(isset($data['remove_image']))
         {
-            if($category && $category->has_image && $data['remove_image']) 
-            { 
-                $data['has_image'] = 0; 
-                $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName); 
+            if($category && $category->has_image && $data['remove_image'])
+            {
+                $data['has_image'] = 0;
+                $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName);
             }
             unset($data['remove_image']);
         }
@@ -137,12 +137,12 @@ class AwardService extends Service
         try {
             // Check first if the category is currently in use
             if(Award::where('award_category_id', $category->id)->exists()) throw new \Exception("An award with this category exists. Please change its category first.");
-            
-            if($category->has_image) $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName); 
+
+            if($category->has_image) $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName);
             $category->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -167,14 +167,14 @@ class AwardService extends Service
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
-    
+
     /**********************************************************************************************
-     
+
         AWARDS
 
     **********************************************************************************************/
@@ -182,7 +182,7 @@ class AwardService extends Service
     /**
      * Creates a new award.
      *
-     * @param  array                  $data 
+     * @param  array                  $data
      * @param  \App\Models\User\User  $user
      * @return bool|\App\Models\Award\Award
      */
@@ -210,17 +210,20 @@ class AwardService extends Service
             $award->update([
                 'data' => json_encode([
                     'rarity' => isset($data['rarity']) && $data['rarity'] ? $data['rarity'] : null,
-                    'uses' => isset($data['uses']) && $data['uses'] ? $data['uses'] : null,
                     'release' => isset($data['release']) && $data['release'] ? $data['release'] : null,
-                    'shops' => isset($data['shops']) && $data['shops'] ? $data['shops'] : null,
-                    'prompts' => isset($data['prompts']) && $data['prompts'] ? $data['prompts'] : null
-                    ]) // rarity, availability info (original source, purchase locations, drop locations)
+                    'prompts' => isset($data['prompts']) && $data['prompts'] ? $data['prompts'] : null,
+                    'credits' => isset($data['credits']) && $data['credits'] ? $data['credits'] : null,
+                    ]) // rarity, availability info (original source, drop locations), credits
             ]);
 
-            if ($image) $this->handleImage($image, $award->imagePath, $award->imageFileName);
+            if ($image) {
+                $award->extension = $image->getClientOriginalExtension();
+                $award->update();
+                $this->handleImage($image, $award->imagePath, $award->imageFileName, null);
+            }
 
             return $this->commitReturn($award);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -230,7 +233,7 @@ class AwardService extends Service
      * Updates an award.
      *
      * @param  \App\Models\Award\Award  $award
-     * @param  array                  $data 
+     * @param  array                  $data
      * @param  \App\Models\User\User  $user
      * @return bool|\App\Models\Award\Award
      */
@@ -245,13 +248,23 @@ class AwardService extends Service
             if(Award::where('name', $data['name'])->where('id', '!=', $award->id)->exists()) throw new \Exception("The name has already been taken.");
             if((isset($data['award_category_id']) && $data['award_category_id']) && !AwardCategory::where('id', $data['award_category_id'])->exists()) throw new \Exception("The selected award category is invalid.");
 
-            $data = $this->populateData($data);
+            $data = $this->populateData($data, $award);
 
-            $image = null;            
-            if(isset($data['image']) && $data['image']) {
-                $data['has_image'] = 1;
+            $image = null;
+
+            if (isset($data['image']) && $data['image']) {
+                if (isset($award->extension)) {
+                    $old = $award->imageFileName;
+                } else {
+                    $old = null;
+                }
                 $image = $data['image'];
                 unset($data['image']);
+            }
+            if ($image) {
+                $award->extension = $image->getClientOriginalExtension();
+                $award->update();
+                $this->handleImage($image, $award->imagePath, $award->imageFileName, $old);
             }
 
             $award->update($data);
@@ -259,17 +272,14 @@ class AwardService extends Service
             $award->update([
                 'data' => json_encode([
                     'rarity' => isset($data['rarity']) && $data['rarity'] ? $data['rarity'] : null,
-                    'uses' => isset($data['uses']) && $data['uses'] ? $data['uses'] : null,
                     'release' => isset($data['release']) && $data['release'] ? $data['release'] : null,
-                    'shops' => isset($data['shops']) && $data['shops'] ? $data['shops'] : null,
-                    'prompts' => isset($data['prompts']) && $data['prompts'] ? $data['prompts'] : null
-                    ]) // rarity, availability info (original source, purchase locations, drop locations)
+                    'prompts' => isset($data['prompts']) && $data['prompts'] ? $data['prompts'] : null,
+                    'credits' => isset($data['credits']) && $data['credits'] ? $data['credits'] : null,
+                    ]) // rarity, availability info (original source, drop locations)
             ]);
 
-            if ($award) $this->handleImage($image, $award->imagePath, $award->imageFileName);
-
             return $this->commitReturn($award);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -278,29 +288,52 @@ class AwardService extends Service
     /**
      * Processes user input for creating/updating an award.
      *
-     * @param  array                  $data 
+     * @param  array                  $data
      * @param  \App\Models\Award\Award  $award
      * @return array
      */
     private function populateData($data, $award = null)
     {
+
         if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-        
-        if(!isset($data['allow_transfer'])) $data['allow_transfer'] = 0;
+        else $data['parsed_description'] = null;
+
+        $data['allow_transfer'] = ((isset($data['allow_transfer']) && $data['allow_transfer']) ? 1 : 0);
+        $data['is_released'] = ((isset($data['is_released']) && $data['is_released']) ? 1 : 0);
+        $data['is_featured'] = ((isset($data['is_featured']) && $data['is_featured']) ? 1 : 0);
+        $data['is_character_owned'] = ((isset($data['is_character_owned']) && $data['is_character_owned']) ? 1 : 0);
+        $data['is_user_owned'] = ((isset($data['is_user_owned']) && $data['is_user_owned']) ? 1 : 0);
+
+        $data['credits'] = [];
+        if(isset($data['credit-name']))
+            foreach($data['credit-name'] as $key => $name) {
+                $data['credits'][] = [
+                    'name'  => $name,
+                    'url'   => $data['credit-url'][$key],
+                    'id'    => (int)$data['credit-id'][$key],
+                    'role'  => $data['credit-role'][$key],
+                ];
+            }
+
+        unset($data['credit-name']);
+        unset($data['credit-url']);
+        unset($data['credit-id']);
+        unset($data['credit-role']);
 
         if(isset($data['remove_image']))
         {
-            if($award && $award->has_image && $data['remove_image']) 
-            { 
-                $data['has_image'] = 0; 
-                $this->deleteImage($award->imagePath, $award->imageFileName); 
+            if($award && $award->has_image && $data['remove_image'])
+            {
+                $data['has_image'] = 0;
+                $data['extension'] = null;
+                $this->deleteImage($award->imagePath, $award->imageFileName);
             }
             unset($data['remove_image']);
         }
 
         return $data;
     }
-    
+
     /**
      * Deletes an award.
      *
@@ -317,127 +350,19 @@ class AwardService extends Service
             if(DB::table('character_awards')->where([['award_id', '=', $award->id], ['count', '>', 0]])->exists()) throw new \Exception("At least one character currently owns this award. Please remove the award(s) before deleting it.");
             if(DB::table('loots')->where('rewardable_type', 'Award')->where('rewardable_id', $award->id)->exists()) throw new \Exception("A loot table currently distributes this award as a potential reward. Please remove the award before deleting it.");
             if(DB::table('prompt_rewards')->where('rewardable_type', 'Award')->where('rewardable_id', $award->id)->exists()) throw new \Exception("A prompt currently distributes this award as a reward. Please remove the award before deleting it.");
-            if(DB::table('shop_stock')->where('award_id', $award->id)->exists()) throw new \Exception("A shop currently stocks this award. Please remove the award before deleting it.");
-            
+
             DB::table('awards_log')->where('award_id', $award->id)->delete();
             DB::table('user_awards')->where('award_id', $award->id)->delete();
             DB::table('character_awards')->where('award_id', $award->id)->delete();
             $award->tags()->delete();
-            if($award->has_image) $this->deleteImage($award->imagePath, $award->imageFileName); 
+            if($award->has_image) $this->deleteImage($award->imagePath, $award->imageFileName);
             $award->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
     }
-    
-    /**********************************************************************************************
-     
-        AWARD TAGS
 
-    **********************************************************************************************/
-    
-    /**
-     * Gets a list of award tags for selection.
-     *
-     * @return array
-     */
-    public function getAwardTags()
-    {
-        $tags = Config::get('lorekeeper.award_tags');
-        $result = [];
-        foreach($tags as $tag => $tagData)
-            $result[$tag] = $tagData['name'];
-
-        return $result;
-    }
-    
-    /**
-     * Adds an award tag to an award.
-     *
-     * @param  \App\Models\Award\Award  $award
-     * @param  string                 $tag
-     * @return string|bool
-     */
-    public function addAwardTag($award, $tag)
-    {
-        DB::beginTransaction();
-
-        try {
-            if(!$award) throw new \Exception("Invalid award selected.");
-            if($award->tags()->where('tag', $tag)->exists()) throw new \Exception("This award already has this tag attached to it.");
-            if(!$tag) throw new \Exception("No tag selected.");
-            
-            $tag = AwardTag::create([
-                'award_id' => $award->id,
-                'tag' => $tag
-            ]);
-
-            return $this->commitReturn($tag);
-        } catch(\Exception $e) { 
-            $this->setError('error', $e->getMessage());
-        }
-        return $this->rollbackReturn(false);
-    }
-    
-    /**
-     * Edits the data associated with an award tag on an award.
-     *
-     * @param  \App\Models\Award\Award  $award
-     * @param  string                 $tag
-     * @param  array                  $data
-     * @return string|bool
-     */
-    public function editAwardTag($award, $tag, $data)
-    {
-        DB::beginTransaction();
-
-        try {
-            if(!$award) throw new \Exception("Invalid award selected.");
-            if(!$award->tags()->where('tag', $tag)->exists()) throw new \Exception("This award does not have this tag attached to it.");
-            
-            $tag = $award->tags()->where('tag', $tag)->first();
-
-            $service = $tag->service;
-            if(!$service->updateData($tag, $data)) {
-                $this->setErrors($service->errors());
-                throw new \Exception('sdlfk');
-            }
-
-            // Update the tag's active setting
-            $tag->is_active = isset($data['is_active']);
-            $tag->save();
-
-            return $this->commitReturn($tag);
-        } catch(\Exception $e) { 
-            $this->setError('error', $e->getMessage());
-        }
-        return $this->rollbackReturn(false);
-    }
-    
-    /**
-     * Removes an award tag from an award.
-     *
-     * @param  \App\Models\Award\Award  $award
-     * @param  string                 $tag
-     * @return string|bool
-     */
-    public function deleteAwardTag($award, $tag)
-    {
-        DB::beginTransaction();
-
-        try {
-            if(!$award) throw new \Exception("Invalid award selected.");
-            if(!$award->tags()->where('tag', $tag)->exists()) throw new \Exception("This award does not have this tag attached to it.");
-            
-            $award->tags()->where('tag', $tag)->delete();
-
-            return $this->commitReturn(true);
-        } catch(\Exception $e) { 
-            $this->setError('error', $e->getMessage());
-        }
-        return $this->rollbackReturn(false);
-    }
 }

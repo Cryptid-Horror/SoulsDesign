@@ -25,6 +25,7 @@
             <div class="sidebar-item"><a href="{{ $character->url . '/lineage' }}" class="{{ set_active('character/'.$character->slug.'/lineage') }}">Lineage</a></div>
         @endif
         <div class="sidebar-item"><a href="{{ $character->url . '/breeding-permissions' }}" class="{{ set_active('character/'.$character->slug.'/breeding-permissions') }}">Breeding Permissions</a></div>
+        <div class="sidebar-item"><a href="{{ $character->url . '/awards' }}" class="{{ set_active('character/'.$character->slug.'/awards') }}">Awards</a></div>
     </li>
     <div id="accordion">
     <li class="sidebar-section">
@@ -37,7 +38,7 @@
         <div class="sidebar-item"><a href="{{ $character->url . '/item-logs' }}" class="{{ set_active('character/'.$character->slug.'/item-logs') }}">Item Logs</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/currency-logs' }}" class="{{ set_active('character/'.$character->slug.'/currency-logs') }}">Currency Logs</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/status-effect-logs' }}" class="{{ set_active('character/'.$character->slug.'/status-effect-logs') }}">Status Effect Logs</a></div>
+        <div class="sidebar-item"><a href="{{ $character->url . '/award-logs' }}" class="{{ set_active('character/'.$character->slug.'/award-logs') }}">Award Logs</a></div>
         <div class="sidebar-item"><a href="{{ $character->url . '/submissions' }}" class="{{ set_active('character/'.$character->slug.'/submissions') }}">Submissions</a></div>
-        </div>
     </li>
 </ul>

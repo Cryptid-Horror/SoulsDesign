@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\User\User;
+use App\Models\Character\Character;
 use App\Models\User\UserAward;
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
@@ -35,7 +36,7 @@ class AwardCaseController extends Controller
     public function getIndex()
     {
         $categories = AwardCategory::orderBy('sort', 'DESC')->get();
-        $awards = count($categories) ? 
+        $awards = count($categories) ?
             Auth::user()->awards()
                 ->where('count', '>', 0)
                 ->orderByRaw('FIELD(award_category_id,'.implode(',', $categories->pluck('id')->toArray()).')')
@@ -43,7 +44,7 @@ class AwardCaseController extends Controller
                 ->orderBy('updated_at')
                 ->get()
                 ->groupBy(['award_category_id', 'id']) :
-            Auth::user()->awards() 
+            Auth::user()->awards()
                 ->where('count', '>', 0)
                 ->orderBy('name')
                 ->orderBy('updated_at')
@@ -67,7 +68,7 @@ class AwardCaseController extends Controller
     public function getStack(Request $request, $id)
     {
         $first_instance = UserAward::withTrashed()->where('id', $id)->first();
-        $readOnly = $request->get('read_only') ? : ((Auth::check() && $first_instance && ($first_instance->user_id == Auth::user()->id || Auth::user()->hasPower('edit_awardcases'))) ? 0 : 1);
+        $readOnly = $request->get('read_only') ? : ((Auth::check() && $first_instance && ($first_instance->user_id == Auth::user()->id || Auth::user()->hasPower('edit_inventories'))) ? 0 : 1);
         $stack = UserAward::where([['user_id', $first_instance->user_id], ['award_id', $first_instance->award_id], ['count', '>', 0]])->get();
         $award = Award::where('id', $first_instance->award_id)->first();
 
@@ -76,6 +77,7 @@ class AwardCaseController extends Controller
             'award' => $award,
             'user' => Auth::user(),
             'userOptions' => ['' => 'Select User'] + User::visible()->where('id', '!=', $first_instance ? $first_instance->user_id : 0)->orderBy('name')->get()->pluck('verified_name', 'id')->toArray(),
+            'characterOptions' => ['' => 'Select Character'] + Character::visible()->myo(0)->where('user_id', optional(Auth::user())->id)->orderBy('sort','DESC')->get()->pluck('fullName','id')->toArray(),
             'readOnly' => $readOnly
         ]);
     }
@@ -97,10 +99,10 @@ class AwardCaseController extends Controller
         isset($stack->first()->character->user_id) ?
         $ownerId = $stack->first()->character->user_id : null;
 
-        $hasPower = Auth::user()->hasPower('edit_awardcases');
+        $hasPower = Auth::user()->hasPower('edit_inventories');
         $readOnly = $request->get('read_only') ? : ((Auth::check() && $first_instance && (isset($ownerId) == TRUE || $hasPower == TRUE)) ? 0 : 1);
 
-        return view('character._awardcase_stack', [
+        return view('character._award_stack', [
             'stack' => $stack,
             'award' => $award,
             'user' => Auth::user(),
@@ -122,7 +124,7 @@ class AwardCaseController extends Controller
     {
         if(!$request->ids) { flash('No awards selected.')->error(); }
         if(!$request->quantities) { flash('Quantities not set.')->error(); }
-        
+
         if($request->ids && $request->quantities) {
             switch($request->action) {
                 default:
@@ -131,17 +133,17 @@ class AwardCaseController extends Controller
                 case 'transfer':
                     return $this->postTransfer($request, $service);
                     break;
+                case 'characterTransfer':
+                    return $this->postTransferToCharacter($request, $service);
+                    break;
                 case 'delete':
                     return $this->postDelete($request, $service);
-                    break;
-                case 'act':
-                    return $this->postAct($request);
                     break;
             }
         }
         return redirect()->back();
     }
-    
+
     /**
      * Transfers awardcase awards to another user.
      *
@@ -159,7 +161,25 @@ class AwardCaseController extends Controller
         }
         return redirect()->back();
     }
-    
+
+    /**
+     * Transfers inventory items to another user.
+     *
+     * @param  \Illuminate\Http\Request       $request
+     * @param  App\Services\InventoryManager  $service
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function postTransferToCharacter(Request $request, AwardCaseManager $service)
+    {
+        if($service->transferCharacterStack(Auth::user(), Character::visible()->where('id', $request->get('character_id'))->first(), UserAward::find($request->get('ids')), $request->get('quantities'))) {
+            flash('Award transferred successfully.')->success();
+        }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
+    }
+
     /**
      * Deletes an awardcase stack.
      *
@@ -190,7 +210,7 @@ class AwardCaseController extends Controller
             'user' => Auth::user(),
         ]);
     }
-    
+
     /**
      * Acts on an award based on the award's tag.
      *

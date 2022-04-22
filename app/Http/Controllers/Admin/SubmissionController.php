@@ -82,7 +82,8 @@ class SubmissionController extends Controller
         ] + ($submission->status == 'Pending' ? [
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->released()->where('is_user_owned',1)->pluck('name', 'id'),
+            'characterAwards' => Award::orderBy('name')->released()->where('is_character_owned',1)->pluck('name', 'id'),
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),
@@ -143,7 +144,8 @@ class SubmissionController extends Controller
         ] + ($submission->status == 'Pending' ? [
             'characterCurrencies' => Currency::where('is_character_owned', 1)->orderBy('sort_character', 'DESC')->pluck('name', 'id'),
             'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
+            'awards' => Award::orderBy('name')->released()->where('is_user_owned',1)->pluck('name', 'id'),
+            'characterAwards' => Award::orderBy('name')->released()->where('is_character_owned',1)->pluck('name', 'id'),
             'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
             'gears' => Gear::orderBy('name')->pluck('name', 'id'),

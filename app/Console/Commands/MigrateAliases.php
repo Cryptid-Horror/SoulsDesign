@@ -247,7 +247,7 @@ class MigrateAliases extends Command
 
             if($aliasAwardArtists->count()) {
                 foreach($aliasAwardArtists as $awardArtist) {
-                    $userAlias = UserAlias::where('site', 'dA')->where('alias', $awardArtist->artist_alias)->first();
+                    $userAlias = UserAlias::where('site', 'deviantart')->where('alias', $awardArtist->artist_alias)->first();
                     if($userAlias) {
                         $awardArtist->update(['artist_alias' => null, 'artist_id' => $userAlias->user_id]);
                     }

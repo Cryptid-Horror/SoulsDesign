@@ -24,6 +24,7 @@ use App\Models\User\UserItem;
 use App\Models\Stats\Character\Stat;
 use App\Models\Character\BreedingPermission;
 
+use App\Services\AwardCaseManager;
 use App\Services\CharacterManager;
 use App\Services\CurrencyManager;
 use App\Services\TradeManager;

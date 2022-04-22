@@ -68,7 +68,7 @@ function calculateGroupCurrency($data)
 function getAssetKeys($isCharacter = false)
 {
     if(!$isCharacter) return ['items', 'awards', 'currencies', 'pets', 'weapons', 'gears', 'raffle_tickets', 'loot_tables', 'user_items', 'characters', 'recipes'];
-    else return ['currencies', 'items', 'character_items', 'loot_tables', 'statuses'];
+    else return ['currencies', 'items', 'character_items', 'loot_tables', 'awards', 'statuses'];
 }
 
 /**
@@ -393,6 +393,12 @@ function fillCharacterAssets($assets, $sender, $recipient, $logType, $data, $sub
             $service = new \App\Services\StatusEffectManager;
             foreach($contents as $asset)
                 if(!$service->creditStatusEffect($sender, $recipient, $logType, $data['data'], $asset['asset'], $asset['quantity'])) return false;
+        }
+        elseif($key == 'awards' && count($contents))
+        {
+            $service = new \App\Services\AwardCaseManager;
+            foreach($contents as $asset)
+                if(!$service->creditAward($sender, ( $asset['asset']->is_character_owned ? $recipient : $item_recipient), $logType, $data, $asset['asset'], $asset['quantity'])) return false;
         }
     }
     return $assets;

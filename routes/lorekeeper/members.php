@@ -181,6 +181,8 @@ Route::group(['prefix' => 'crafting', 'namespace' => 'Users'], function() {
 Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function() {
     Route::get('{slug}/profile/edit', 'CharacterController@getEditCharacterProfile');
     Route::post('{slug}/profile/edit', 'CharacterController@postEditCharacterProfile');
+
+    Route::post('{slug}/awardcase/edit', 'CharacterController@postAwardEdit');
     Route::post('{slug}/inventory/edit', 'CharacterController@postInventoryEdit');
 
     Route::get('{slug}/breeding-permissions/new', 'CharacterController@getNewBreedingPermission');

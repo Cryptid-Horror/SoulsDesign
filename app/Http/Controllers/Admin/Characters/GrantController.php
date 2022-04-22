@@ -12,6 +12,7 @@ use App\Models\Item\Item;
 
 use App\Services\CurrencyManager;
 use App\Services\InventoryManager;
+use App\Services\AwardCaseManager;
 
 use App\Http\Controllers\Controller;
 use App\Services\StatusEffectManager;
@@ -71,6 +72,22 @@ class GrantController extends Controller
         $data = $request->only(['status_id', 'quantity', 'data']);
         if($service->grantCharacterStatusEffects($data, Character::where('slug', $slug)->first(), Auth::user())) {
             flash('Status effect granted successfully.')->success();
+        }
+    }
+
+    /**
+     * Grants awards to characters.
+     *
+     * @param  string                          $slug
+     * @param  \Illuminate\Http\Request        $request
+     * @param  App\Services\InventoryManager   $service
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postCharacterAwards($slug, Request $request, AwardCaseManager $service)
+    {
+        $data = $request->only(['award_ids', 'quantities', 'data', 'disallow_transfer', 'notes']);
+        if($service->grantCharacterAwards($data,  Character::where('slug', $slug)->first(), Auth::user())) {
+            flash('Awards granted successfully.')->success();
         }
         else {
             foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
