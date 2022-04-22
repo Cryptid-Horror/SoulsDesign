@@ -171,6 +171,7 @@ class ShopService extends Service
                 'restock_quantity'      => isset($data['restock']) && isset($data['quantity']) ? $data['quantity'] : 1,
                 'restock_interval'      => isset($data['restock_interval']) ? $data['restock_interval'] : 2,
                 'range'                 => isset($data['range']) ? $data['range'] : 0,
+                'disallow_transfer'     => isset($data['disallow_transfer']) ? $data['disallow_transfer'] : 0
             ]);
 
             return $this->commitReturn($stock);
@@ -208,6 +209,7 @@ class ShopService extends Service
         $data['is_active'] = isset($data['is_active']);
         $data['is_staff'] = isset($data['is_staff']);
         $data['use_coupons'] = isset($data['use_coupons']);
+        $data['allowed_coupons'] = isset($data['allowed_coupons']) ? $data['allowed_coupons'] : null;
         
         if(isset($data['remove_image']))
         {

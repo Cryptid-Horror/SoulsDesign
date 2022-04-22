@@ -12,6 +12,7 @@
         <div><strong>Cost: </strong> {!! $stock->currency->display($stock->cost) !!}</div>
         @if($stock->is_limited_stock) <div>Stock: {{ $stock->quantity }}</div> @endif
         @if($stock->purchase_limit) <div class="text-danger">Max {{ $stock->purchase_limit }} per user</div> @endif
+        @if($stock->disallow_transfer) <div class="text-danger">Cannot be transferred after purchase</div> @endif
     </div>
 
     @if($stock->item->parsed_description)
@@ -27,6 +28,9 @@
 
     @if($stock->shop->use_coupons)
         <div class="alert alert-success">You can use coupons in this store!</div>
+        @if($shop->allowed_coupons && count(json_decode($shop->allowed_coupons, 1)))
+            <div class="alert alert-info">You can use the following coupons: @foreach($shop->allAllowedCoupons as $coupon) {!! $coupon->displayName !!}{{$loop->last ? '' : ','}} @endforeach</div>
+        @endif
     @endif
 
     @if(Auth::check())

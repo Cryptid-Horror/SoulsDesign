@@ -65,6 +65,8 @@ class ShopManager extends Service
                 if(!isset($data['coupon'])) throw new \Exception('Please select a coupon to use.');
                 // finding the users tag
                 $userItem = UserItem::find($data['coupon']);
+                // check if the item id is inside allowed_coupons
+                if($shop->allowed_coupons && count(json_decode($shop->allowed_coupons, 1)) > 0 && !in_array($userItem->item_id, json_decode($shop->allowed_coupons, 1))) throw new \Exception('Sorry! You can\'t use this coupon.');
                 // finding bought item
                 $item = Item::find($userItem->item_id);
                 $tag = $item->tags()->where('tag', 'Coupon')->first();
@@ -131,29 +133,36 @@ class ShopManager extends Service
 
             // Add a purchase log
             $shopLog = ShopLog::create([
-                'shop_id' => $shop->id,
-                'character_id' => $character ? $character->id : null,
-                'user_id' => $user->id,
-                'currency_id' => $shopStock->currency->id,
-                'cost' => $total_cost,
-                'item_id' => $shopStock->item_id,
+                'shop_id' => $shop->id, 
+                'character_id' => $character ? $character->id : null, 
+                'user_id' => $user->id, 
+                'currency_id' => $shopStock->currency->id, 
+                'cost' => isset($data['use_coupon']) ? $total_cost : $shopStock->cost,
+                'item_id' => $shopStock->item_id, 
                 'quantity' => $quantity
             ]);
 
             // Give the user the item, noting down 1. whose currency was used (user or character) 2. who purchased it 3. which shop it was purchased from
 
-            if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
-               'data' => $shopLog->itemData,
-                'notes' => 'Purchased ' . format_date($shopLog->created_at)
-            ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
-            // this bottom one is from the shop extension, unsure if I should remove?  
-           // if($shopStock->stock_type == 'Item') {
-               // if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
-               //     'data' => $shopLog->itemData, 
-              //      'notes' => 'Purchased ' . format_date($shopLog->created_at)
-            //    ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
-            //}
+        //     if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
+        //        'data' => $shopLog->itemData,
+        //         'notes' => 'Purchased ' . format_date($shopLog->created_at)
+        //     ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
+        //     // this bottom one is from the shop extension, unsure if I should remove?  
+        //    // if($shopStock->stock_type == 'Item') {
+        //        // if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
+        //        //     'data' => $shopLog->itemData, 
+        //       //      'notes' => 'Purchased ' . format_date($shopLog->created_at)
+        //     //    ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
+        //     //}
 
+            if($shopStock->stock_type == 'Item') {
+                if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
+                    'data' => $shopLog->itemData, 
+                    'notes' => 'Purchased ' . format_date($shopLog->created_at),
+                    'disallow_transfer' => $shopStock->disallow_transfer ? 1 : null,
+                ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
+            }
 
             return $this->commitReturn($shop);
         } catch(\Exception $e) {

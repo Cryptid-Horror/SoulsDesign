@@ -49,8 +49,14 @@
 </div>
 
 <div class="form-group">
-    {!! Form::checkbox('use_coupons', 1, $shop->id ? $shop->use_coupons : 0, ['class' => 'form-check-label', 'data-toggle' => 'toggle']) !!}
-    {!! Form::label('use_coupons', 'Allow Coupons?', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Note that ALL coupons will be allowed to be used.') !!}
+    {!! Form::checkbox('use_coupons', 1, $shop->id ? $shop->use_coupons : 0, ['class' => 'form-check-label', 'data-toggle' => 'toggle', 'id' => 'use_coupons']) !!}
+    {!! Form::label('use_coupons', 'Allow Coupons?', ['class' => 'form-check-label ml-3']) !!} {!! add_help('Note that ALL coupons will be allowed to be used, unless specified otherwise.') !!}
+</div>
+<div class="form-group coupon-row {{ $shop->use_coupons ? '' : 'hide'}}">
+    {!! Form::label('allowed_coupons', 'Allowed Coupon(s)', ['class' => 'form-check-label']) !!}
+    <p>Leave blank to allow ALL coupons.</p>
+    {!! Form::select('allowed_coupons[]', $coupons, json_decode($shop->allowed_coupons, 1), ['multiple', 'class' => 'form-check-label', 'placeholder' => 'Select Coupons', 'id' => 'allowed_coupons']) !!}
+
 </div>
 
 <div class="form-group">
@@ -120,6 +126,7 @@
                 @if($stock->is_limited_stock) <div>Stock: {{ $stock->quantity }}</div> @endif
                 @if($stock->is_limited_stock) <div>Restock: {!! $stock->restock ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' !!}</div> @endif
                 @if($stock->purchase_limit) <div class="text-danger">Max {{ $stock->purchase_limit }} per user</div> @endif
+                @if($stock->disallow_transfer) <div class="text-danger">Cannot be transferred</div> @endif
                 <div class="text-right">
                     <button class="btn btn-primary" onclick="editStock({{$stock->id}})">
                         {{-- pencil icon --}}
@@ -157,6 +164,18 @@
     }
 $( document ).ready(function() {
 
+    $('#use_coupons').change(function() {
+        if($(this).is(':checked')) {
+            $('.coupon-row').removeClass('hide');
+        } else {
+            $('.coupon-row').addClass('hide');
+        }
+    });
+
+    $('#allowed_coupons').selectize({
+        maxItems: 5
+    });
+
     $('.delete-shop-button').on('click', function(e) {
         e.preventDefault();
         loadModal("{{ url('admin/data/shops/delete') }}/{{ $shop->id }}", 'Delete Shop');
@@ -190,11 +209,10 @@ $( document ).ready(function() {
         $trigger.parent().remove();
     }
 
-    $('.is-restricted-class').change(function(e){
-            console.log(this.checked)
-            $('.br-form-group').css('display',this.checked ? 'block' : 'none')
-                })
-            $('.br-form-group').css('display',$('.is-restricted-class').prop('checked') ? 'block' : 'none')
+    $('.is-restricted-class').change(function(e)    {
+        $('.br-form-group').css('display',this.checked ? 'block' : 'none')
+        })
+        $('.br-form-group').css('display',$('.is-restricted-class').prop('checked') ? 'block' : 'none')
 });
     
 </script>
