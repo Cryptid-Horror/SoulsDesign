@@ -23,7 +23,6 @@
     <span class="badge badge-info float-right text-white mx-1" data-toggle="tooltip" title="Current user level. Checkout the level area for more info.">Lvl: {{ $user->level->current_level }}</span>
 </h1>
 <div class="mb-1">
-    <div class="row">
         <div class="row col-md-6">
             <div class="col-md-4 col-4"><h5>Alias</h5></div>
             <div class="col-md-8 col-8">{!! $user->displayAlias !!}</div>
@@ -54,7 +53,6 @@
                 <div class="col-md-8 col-8">{!! $user->faction ? $user->faction->fullDisplayName : '-Deleted Faction-' !!}{!! $user->factionRank ? ' ('.$user->factionRank->name.')' : null !!}</div>
             </div>
         @endif
-    </div>
 </div>
 
 @if($user->is_deactivated)
