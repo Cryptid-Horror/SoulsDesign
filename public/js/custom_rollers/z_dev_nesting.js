@@ -624,7 +624,7 @@ function validateModifiers() {
 
 		// Check if both are either none or 0, which would be invalid input.
 		if((sireSkillOption == "0" || sireSkillOption == "None")
-		&& damSkillOption == "0" || damSkillOption == "None")
+		&& (damSkillOption == "0" || damSkillOption == "None"))
 		{
 			return "When using Skill Charms, a skill needs to be selected for the sire/dam accordingly, at minimum."
 		}
