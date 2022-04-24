@@ -624,7 +624,7 @@ function validateModifiers() {
 
 		// Check if both are either none or 0, which would be invalid input.
 		if((sireSkillOption == "0" || sireSkillOption == "None")
-		&& damSkillOption == "0" || damSkillOption == "None")
+		&& (damSkillOption == "0" || damSkillOption == "None"))
 		{
 			return "When using Skill Charms, a skill needs to be selected for the sire/dam accordingly, at minimum."
 		}
@@ -1669,18 +1669,32 @@ function generateHealth() {
 			roll = randRange(100);
 			if (roll < 60)
 				childHealth += "Infertile ";
+
 			roll = randRange(100);
 			if (roll < 30)
 				childHealth += "Blind ";
+
+			roll = randRange(100);
+			if (roll < 10)
+				childHealth += "Hydra ";
+
 			roll = randRange(100);
 			if (roll < 5)
 				childHealth += "Crippled Wings ";
+
 			roll = randRange(100);
 			if (roll < 5)
 				childHealth += "Mute ";
+
+			roll = randRange(100);
+			if (roll < 5)
+				childHealth += "Mini ";
 		}
 	}
-        return childHealth;
+	
+	// If at this point still empty, default to Healthy.
+	if(childHealth == "") return "Healthy";
+    return childHealth;
 }
 
 function generateEyes(childRarity) {
@@ -1958,11 +1972,11 @@ function rareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 			if (roll < 20)
 				result = "n" + markID;
 		} else {
-			if (roll < 5)
+			if (roll < 4)
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
-		if (roll < 4)
+		if (roll < 5)
 			result = markID + "" + markID;
 		else if (roll < 15) 
 			result = "n" + markID;
@@ -1993,7 +2007,7 @@ function veryRareMarkingPass(markID, sireDom, damDom, oneParentMissing) {
 				result = "n" + markID;
 		}
 	} else if (!sireDom && !damDom) {
-		if (roll < 3)
+		if (roll < 4)
 			result = markID + "" + markID;
 		else if (roll < 10) 
 			result = "n" + markID;
@@ -2427,6 +2441,10 @@ function generateSkill() {
 			{
 				skillPassRate += skillCharmPassBoost;
 			}
+
+			// Add to destroyed modifiers.
+			if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
+				destroyedModifiers += "Skill Charm destroyed.<br>";
 		}
 
 		var roll = randRange(100);
@@ -2827,6 +2845,7 @@ function roll() {
 	// document.getElementById("nestTextArea").innerHTML = "Rolling...<br>";
 	var numEggs = clutchSize();
 	document.getElementById("nestTextArea").innerHTML = "Nest Results:" + "<br>";
+	if(numEggs == 0) document.getElementById("nestTextArea").innerHTML += "Only one unfertilized was produced. It has been deposited into your hoard."
 	for (i = 0; i < numEggs; i++) {
 		document.getElementById("nestTextArea").innerHTML += "" + (i + 1) + ": ";
 		generateChild();
