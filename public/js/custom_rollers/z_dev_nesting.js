@@ -159,6 +159,7 @@ const skillPassRates = {
 }
 
 const skillMaxPerOffspring = 2;
+const skillCharmPassBoost = 5;
 
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
@@ -167,6 +168,7 @@ function initialize() {
 	document.getElementById("sinisterSelected").style.display = "none";
 	document.getElementById("sinisterLabel").style.display = "none";
 	document.getElementById("colorSelectionMenu").style.display = "none";
+	document.getElementById("skillCharmMenu").style.display = "none";
 }
 
 // Roll a result from a provided object of values
@@ -326,6 +328,12 @@ function updateModifiers() {
 		document.getElementById("colorSelectionMenu").style.display = "initial";
 	else
 		document.getElementById("colorSelectionMenu").style.display = "none";
+
+	// show skill selections for sire/dam if using Skill Charm
+	if (document.getElementById("SB").checked)
+		document.getElementById("skillCharmMenu").style.display = "initial";
+	else
+		document.getElementById("skillCharmMenu").style.display = "none";
 }
 
 function updateTempers() {
@@ -608,6 +616,36 @@ function validateModifiers() {
 		return "Color modifier for Radiance Bond or Agouti not selected.";
 	}
 	
+	// Check if Skill Charm is being used and validate as needed.
+	if(document.getElementById("SB").checked)
+	{
+		var sireSkillOption = document.getElementById("sireSkillCharmOptions").value;
+		var damSkillOption = document.getElementById("damSkillCharmOptions").value;
+
+		// Check if both are either none or 0, which would be invalid input.
+		if((sireSkillOption == "0" || sireSkillOption == "None")
+		&& damSkillOption == "0" || damSkillOption == "None")
+		{
+			return "When using Skill Charms, a skill needs to be selected for the sire/dam accordingly, at minimum."
+		}
+		
+		// Check if option chosen is actually present in the parents.
+
+		// Sire option.
+		if(sireSkillOption != "0" && sireSkillOption != "None" &&
+			!sireSkills.includes(sireSkillOption))
+		{
+			return "Sire must have " + sireSkillOption + " for Skill Charm to be applied.";
+		}
+		
+		// Dam option.
+		if(damSkillOption != "0" && damSkillOption != "None" &&
+			!damSkills.includes(damSkillOption))
+		{
+			return "Dam must have " + damSkillOption + " for Skill Charm to be applied.";
+		}
+	}
+
 	return 0;
 }
 function formIsValid() {
@@ -2371,6 +2409,25 @@ function generateSkill() {
 		if(sireSkills.includes(skillName)) ++numPresent;
 
 		var skillPassRate = skillPassRates[skillRarity][numPresent];
+
+		// Check for Skill Charm usage.
+		if(document.getElementById("SB").checked)
+		{
+			var sireSkillOption = document.getElementById("sireSkillCharmOptions").value;
+			var damSkillOption = document.getElementById("damSkillCharmOptions").value;
+
+			// Check sire.
+			if(skillName == sireSkillOption)
+			{
+				skillPassRate += skillCharmPassBoost;
+			}
+
+			// Check dam.
+			if(skillName == damSkillOption)
+			{
+				skillPassRate += skillCharmPassBoost;
+			}
+		}
 
 		var roll = randRange(100);
 		if(roll < skillPassRate)
