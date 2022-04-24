@@ -119,6 +119,7 @@
 				<option value="8">Poison</option>
 				<option value="9">Luster</option>
 			</select>
+			<!-- 
 			<select id="sireSkill" class="cellElement">
 				<option value="1">No Skill</option>
 				<option value="10">Adept</option>
@@ -137,6 +138,7 @@
 				<option value="4">Steadfast</option>
 				<option value="5">Swift Feet</option>
 			</select>
+			-->
 			<br>
 			<select id="sireAberrant" class="cellElement">
 				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
@@ -156,6 +158,9 @@
 			<br><a>Genotype</a><br>
 			<input type="text" id="sireGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 
+			<a>Skills</a><br>
+			<input type="text" id="sireSkills" class="cellElement" placeholder="skill name (skill rarity) skill name (skill rarity) ..." autocomplete="off"><br>
+			
 			<a>Echo</a><br>
 			<textarea rows="1" id="sireGenoEcho" class="cellElement" readonly spellcheck="false"></textarea><br>
 		</div>
@@ -248,6 +253,7 @@
 				<option value="8">Poison</option>
 				<option value="9">Luster</option>
 			</select>
+			<!-- 
 			<select id="damSkill" class="cellElement">
 				<option value="1">No Skill</option>
 				<option value="10">Adept</option>
@@ -267,6 +273,7 @@
 				<option value="5">Swift Feet</option>
 
 			</select>
+			-->
 			<br>
 			<select id="damAberrant" class="cellElement">
 				<!-- Values are specifically chosen as powers of two to make use of bitwise operations;
@@ -286,6 +293,9 @@
 			<br><a>Genotype</a><br>
 			<input type="text" id="damGenoType" class="cellElement" placeholder="bb/tt/ss/nn" autocomplete="off"><br>
 			
+			<a>Skills</a><br>
+			<input type="text" id="damSkills" class="cellElement" placeholder="skill name (skill rarity) skill name (skill rarity) ..." autocomplete="off"><br>
+
 			<a>Echo</a><br>
 			<textarea id="damGenoEcho" class="cellElement" rows="1" readonly spellcheck="false"></textarea><br>
 		</div>
@@ -296,7 +306,7 @@
 		<h2>Modifiers</h2>
 		If your dragon's genome is not updated to the <br>
 		newest base coat and color modifer codes<br>
-		 you will need to submit a claim to have them updated!
+		you will need to submit a claim to have them updated!
 		<div width="100%">
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
@@ -385,6 +395,52 @@
                     <option value="tarnished gold">Tarnished Gold</option>
 				</select>
 			</div>
+			<div id="skillCharmMenu">
+				<select id="sireSkillCharmOptions" class="cellElement">
+					<option disabled selected value="0">Sire Skill</option>
+					<option value="None">None</option>
+					<option disabled value="1">General</option>
+					<option value="Adept">Adept</option>
+					<option value="Hoarder">Hoarder</option>
+					<option value="Life of the Party">Life of the Party</option>
+					<option disabled value="2">Combat</option>
+					<option value="Aether Walker">Aether Walker</option>
+					<option value="Armored Hide">Armored Hide</option>
+					<option value="Frenzy">Frenzy</option>
+					<option value="Haunting Roar">Haunting Roar</option>
+					<option value="Healing Aura">Healing Aura</option>
+					<option value="Inner Fire">Inner Fire</option>
+					<option value="Serrated Teeth">Serrated Teeth</option>
+					<option value="Steadfast">Steadfast</option>
+					<option value="Swift Feet">Swift Feet</option>
+					<option disabled value="3">Legendary</option>
+					<option value="Blessing of the Moon">Blessing of the Moon</option>
+					<option value="Confetti Dreams">Confetti Dreams</option>
+					<option value="Guidance of the Sun">Guidance of the Sun</option>
+				</select>
+				<select id="damSkillCharmOptions" class="cellElement">
+					<option disabled selected value="0">Dam Skill</option>
+					<option value="None">None</option>
+					<option disabled value="1">General</option>
+					<option value="Adept">Adept</option>
+					<option value="Hoarder">Hoarder</option>
+					<option value="Life of the Party">Life of the Party</option>
+					<option disabled value="2">Combat</option>
+					<option value="Aether Walker">Aether Walker</option>
+					<option value="Armored Hide">Armored Hide</option>
+					<option value="Frenzy">Frenzy</option>
+					<option value="Haunting Roar">Haunting Roar</option>
+					<option value="Healing Aura">Healing Aura</option>
+					<option value="Inner Fire">Inner Fire</option>
+					<option value="Serrated Teeth">Serrated Teeth</option>
+					<option value="Steadfast">Steadfast</option>
+					<option value="Swift Feet">Swift Feet</option>
+					<option disabled value="3">Legendary</option>
+					<option value="Blessing of the Moon">Blessing of the Moon</option>
+					<option value="Confetti Dreams">Confetti Dreams</option>
+					<option value="Guidance of the Sun">Guidance of the Sun</option>
+				</select>
+			</div>
 			</span>
 			<h2>Buff/Debuff</h2>
 			<span style="white-space: nowrap;">
@@ -415,7 +471,7 @@
 	
 <table id="footer">
 	<td id="footerElement">
-        v8.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
+        v7.0.0 - Maintained by Cryptid-Horror and DraginRaptor<br>
 		Originally coded by Armando Montanez <br>
 </table>
 

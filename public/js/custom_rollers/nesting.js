@@ -4,6 +4,7 @@
 // edits added by Draginraptor (c) 2022
 // - Aberrant passing (2022)
 // - Breaths pass logic update (04 Apr 2022)
+// - Skills pass logic update (05 Apr 2022)
 
 // List of valid markings, always 8 per row for readability and easy couting.
 var commonMarkings = ["nBl", "BlBl", "nBr", "BrBr", "nCa", "CaCa", "nCl", "ClCl", "nDn", "DnDn", "nDt", "DtDt", "nDo", "DoDo", "nFe", 
@@ -136,6 +137,30 @@ const breathParentBoost = 10;		// Applied per parent, to their respective breath
 const breathPotionBoost = 30;		// Applied and split evenly.
 
 
+const skillPassRates = {
+	'general': {
+		// Pass rate of general skill, if only present on one parent
+		1: 40,
+		// Pass rate of general skill, if present on both parents
+		2: 50
+	},
+	'combat': {
+		// Pass rate of combat skill, if only present on one parent
+		1: 20,
+		// Pass rate of combat skill, if present on both parents
+		2: 30
+	},
+	'legendary': {
+		// Pass rate of legendary skill, if only present on one parent
+		1: 10,
+		// Pass rate of legendary skill, if present on both parents
+		2: 15
+	}
+}
+
+const skillMaxPerOffspring = 2;
+const skillCharmPassBoost = 5;
+
 function initialize() {
 	document.getElementById("genderSelectionRadios").style.display = "none";
 	document.getElementById("breedSelectionRadios").style.display = "none";
@@ -143,6 +168,7 @@ function initialize() {
 	document.getElementById("sinisterSelected").style.display = "none";
 	document.getElementById("sinisterLabel").style.display = "none";
 	document.getElementById("colorSelectionMenu").style.display = "none";
+	document.getElementById("skillCharmMenu").style.display = "none";
 }
 
 // Roll a result from a provided object of values
@@ -161,10 +187,24 @@ function getRollResult(roll_table) {
 function randRange(max) {
 	return Math.floor(Math.random() * max);
 }
+
+function shuffle(array)
+{
+	for(let i = array.length - 1; i > 0; --i)
+	{
+		var tmp = array[i];
+		var randIndex = randRange(i);
+		array[i] = array[randIndex];
+		array[randIndex] = tmp;
+	}
+}
+
 // global variables
 var destroyedModifiers = "";
 var damMarkings = [];
 var sireMarkings = [];
+var damSkills = [];
+var sireSkills = [];
 var childMarkings = [];
 var childColorMods = [];
 var childBreed;
@@ -225,6 +265,25 @@ var Skills = Object.freeze({
 		ARMOREDHIDE: 15,    FRENZY: 16,
 	});
 
+// Uses lowercaps only so input will NOT be case-sensitive
+var SkillNames = Object.freeze({
+	"adept": "general",
+	"aether walker": "combat",
+	"armored hide": "combat",
+	"blessing of the moon": "legendary",
+	"confetti dreams": "legendary",
+	"frenzy": "combat",
+	"guidance of the sun": "legendary",
+	"haunting roar": "combat",
+	"healing aura": "combat",
+	"hoarder": "general",
+	"inner fire": "combat",
+	"life of the party": "general",
+	"serrated teeth": "combat",
+	"steadfast": "combat",
+	"swift feet": "combat"
+});
+
 // basic function to reset forms
 function clearForms() {
 	document.getElementById("rollerForm").reset();
@@ -269,6 +328,12 @@ function updateModifiers() {
 		document.getElementById("colorSelectionMenu").style.display = "initial";
 	else
 		document.getElementById("colorSelectionMenu").style.display = "none";
+
+	// show skill selections for sire/dam if using Skill Charm
+	if (document.getElementById("SB").checked)
+		document.getElementById("skillCharmMenu").style.display = "initial";
+	else
+		document.getElementById("skillCharmMenu").style.display = "none";
 }
 
 function updateTempers() {
@@ -449,10 +514,70 @@ function validateGeno(sireOrDam) {
 	return 0;
 }
 
+function validateSkills(sireOrDam) {
+	var skillString = document.getElementById(sireOrDam + "Skills").value;
+
+	var skills = [];
+	// If no skills are entered, assume no skills.
+	if (skillString != 0)
+	{
+		// Try to split by ), which should split it up into "skill name (skill rarity"
+		var skillFragments = skillString.split(')');
+		// Check for an empty fragment in the last slot
+		if(skillFragments[skillFragments.length - 1].trim() === "") skillFragments.pop();
+		// Iterate over all framents
+		for(let i = 0; i < skillFragments.length; ++i)
+		{
+			var fragment = skillFragments[i];
+			var shards = fragment.split('(');
+			var skillName = shards[0].trim();
+			var skillRarity = shards[1].trim();
+
+			// Special handling for Adept.
+			var adeptCheck = skillName.split('-');
+			if(adeptCheck[0].trim() == "Adept") skillName = "Adept";
+	
+			// Check if the given skill name actually exists
+			if(!Object.keys(SkillNames).includes(skillName.toLowerCase()))
+				return skillName + " is an invalid skill.";
+	
+			// Check if the skill rarity matches
+			if(SkillNames[skillName.toLowerCase()] != skillRarity.toLowerCase())
+				return skillName + " rarity does not match expected value.";
+	
+			// Otherwise, skill should be valid.
+			skills.push(skillName);
+		}
+	}
+
+	// At this point, skills should be confirmed.
+
+	// Store for later
+	if (sireOrDam == "sire") {
+		sireSkills = skills;
+	} else {
+		damSkills = skills;
+	}
+
+	var skillEchoString = skills.join(", ");
+
+	if(skills.length > 0)
+	{
+		// Append to the value in GenoEcho; assumes that geno was validated first.
+		document.getElementById(sireOrDam + "GenoEcho").value += "; Skills: " + skillEchoString;
+	}
+
+	return 0;
+}
+
 function validateParent(sireOrDam) {
 	var result;
 	// first validate geno
 	if ((result = validateGeno(sireOrDam)) != 0)
+		return result;
+
+	// validate skills
+	if((result = validateSkills(sireOrDam)) != 0)
 		return result;
 	
 	// validate traits
@@ -476,8 +601,6 @@ function validateParent(sireOrDam) {
 		return result;
 	else if ((result = validateTrait(sireOrDam, "Breath2")) != 0)
 		return result;
-	else if ((result = validateTrait(sireOrDam, "Skill")) != 0)
-		return result;
 	
 	// we reach here if all of parent's traits are valid.
 	return 0;
@@ -493,6 +616,36 @@ function validateModifiers() {
 		return "Color modifier for Radiance Bond or Agouti not selected.";
 	}
 	
+	// Check if Skill Charm is being used and validate as needed.
+	if(document.getElementById("SB").checked)
+	{
+		var sireSkillOption = document.getElementById("sireSkillCharmOptions").value;
+		var damSkillOption = document.getElementById("damSkillCharmOptions").value;
+
+		// Check if both are either none or 0, which would be invalid input.
+		if((sireSkillOption == "0" || sireSkillOption == "None")
+		&& damSkillOption == "0" || damSkillOption == "None")
+		{
+			return "When using Skill Charms, a skill needs to be selected for the sire/dam accordingly, at minimum."
+		}
+		
+		// Check if option chosen is actually present in the parents.
+
+		// Sire option.
+		if(sireSkillOption != "0" && sireSkillOption != "None" &&
+			!sireSkills.includes(sireSkillOption))
+		{
+			return "Sire must have " + sireSkillOption + " for Skill Charm to be applied.";
+		}
+		
+		// Dam option.
+		if(damSkillOption != "0" && damSkillOption != "None" &&
+			!damSkills.includes(damSkillOption))
+		{
+			return "Dam must have " + damSkillOption + " for Skill Charm to be applied.";
+		}
+	}
+
 	return 0;
 }
 function formIsValid() {
@@ -2230,75 +2383,64 @@ function generateBreath() {
 }
 
 function generateSkill() {
-	var damSkill = document.getElementById("damSkill").value;
-	var sireSkill = document.getElementById("sireSkill").value;
-	var result = 1;
-	var roll = randRange(100);
-	var bonus = 0;
-    if (document.getElementById("damTemper").value == Tempers.SINISTER) {
-         bonus += 10;
-     } if (document.getElementById("sireTemper").value == Tempers.SINISTER) {
-         bonus += 10;
-     }
-	if (document.getElementById("SB").checked) {
-		if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
-			destroyedModifiers += "Skill Charm destroyed.<br>";
-		bonus = 10;
+	// Get all unique skills shared between the parents.
+	// Start on dam skills.
+	var skillPool = damSkills.slice();
+	for(let i = 0; i < sireSkills.length; ++i)
+	{
+		// Add to pool if not already present.
+		if(!skillPool.includes(sireSkills[i]))
+			skillPool.push(sireSkills[i]);
 	}
-	if (damSkill == Skills.NONE && sireSkill == Skills.NONE) {
-		return "";
-	} else if (damSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
-			result = sireSkill;
+
+	// Shuffle the skill pool before rolling.
+	shuffle(skillPool)
+
+	// Iterate over and roll for each skill.
+	var skillsRolled = [];
+	for(let i = 0; i < skillPool.length; ++i)
+	{
+		var skillName = skillPool[i];
+		var skillRarity = SkillNames[skillName.toLowerCase()];
+
+		// Can either be present on 1 or 2 (both) parents
+		var numPresent = 0;
+		if(damSkills.includes(skillName)) ++numPresent;
+		if(sireSkills.includes(skillName)) ++numPresent;
+
+		var skillPassRate = skillPassRates[skillRarity][numPresent];
+
+		// Check for Skill Charm usage.
+		if(document.getElementById("SB").checked)
+		{
+			var sireSkillOption = document.getElementById("sireSkillCharmOptions").value;
+			var damSkillOption = document.getElementById("damSkillCharmOptions").value;
+
+			// Check sire.
+			if(skillName == sireSkillOption)
+			{
+				skillPassRate += skillCharmPassBoost;
+			}
+
+			// Check dam.
+			if(skillName == damSkillOption)
+			{
+				skillPassRate += skillCharmPassBoost;
+			}
 		}
-	} else if (sireSkill == Skills.NONE) {
-		if (roll >= 90 - bonus) {
-			result = damSkill;
-		}
-	} else {
-		if (roll >= 85 - bonus) {
-			result = damSkill;
-		} else if (roll >= 70 - bonus/2) {
-			result = sireSkill;
+
+		var roll = randRange(100);
+		if(roll < skillPassRate)
+		{
+			skillsRolled.push(skillName);
+			if(skillsRolled.length >= skillMaxPerOffspring) break;
 		}
 	}
-	
-	if (result == Skills.NONE) {
-		return "";
-	} else if (result == Skills.HOARDER) {
-		return "Hoarder";
-	} else if (result == Skills.FRIENDLY_GIANT) {
-		return "Life of the Party";
-	} else if (result == Skills.STEADFAST) {
-		return "Steadfast";
-	} else if (result == Skills.SWIFTFEET) {
-		return "Swift Feet";
-	} else if (result == Skills.AETHERWALKER) {
-		return "Aether Walker";
-	} else if (result == Skills.INNERFIRE) {
-		return "Inner Fire";
-	} else if (result == Skills.HAUNTINGROAR) {
-		return "Haunting Roar";
-	} else if (result == Skills.HEALINGAURA) {
-		return "Healing Aura";
-	} else if (result == Skills.ADEPT) {
-	    return "Adept";
-	} else if (result == Skills.MOONBLESSING) {
-	    return "Blessing of the Moon";
-	} else if (result == Skills.SUNGUIDANCE) {
-	    return "Guidance of the Sun";
-	} else if (result == Skills.CONFETTIDREAMS) {
-	    return "Confetti Dreams";
-	} else if (result == Skills.SERRATEDTEETH) {
-	    return "Serrated Teeth";
-	} else if (result == Skills.ARMOREDHIDE) {
-	    return "Armored Hide";
-	} else if (result == Skills.FRENZY) {
-	    return "Frenzy";
-	} else {
-		return "UNDEFINED"
-	}
+
+	// Concat the results to be printed.
+	return skillsRolled.join(", ");
 }
+
 function selectMutation(mutationRarity, physicalOnly) {
 	var mutationNotFound = true;
 	var result = "";
