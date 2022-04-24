@@ -45,7 +45,7 @@
 			<p id="result"></p>
 	</div>
         <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/hatcheryroller.js') }}"></script>
+    <script src="{{ asset('js/custom_rollers/hatchery.js') }}"></script>
     </body>
     
 	<center><div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
