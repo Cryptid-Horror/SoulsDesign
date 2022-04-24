@@ -2831,6 +2831,7 @@ function roll() {
 	// document.getElementById("nestTextArea").innerHTML = "Rolling...<br>";
 	var numEggs = clutchSize();
 	document.getElementById("nestTextArea").innerHTML = "Nest Results:" + "<br>";
+	if(numEggs == 0) document.getElementById("nestTextArea").innerHTML += "Only one unfertilized was produced. It has been deposited into your hoard."
 	for (i = 0; i < numEggs; i++) {
 		document.getElementById("nestTextArea").innerHTML += "" + (i + 1) + ": ";
 		generateChild();
