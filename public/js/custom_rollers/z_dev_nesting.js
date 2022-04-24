@@ -1689,7 +1689,7 @@ function generateHealth() {
 			roll = randRange(100);
 			if (roll < 5)
 				childHealth += "Mini ";
-	}
+		}
 	}
 	
 	// If at this point still empty, default to Healthy.
