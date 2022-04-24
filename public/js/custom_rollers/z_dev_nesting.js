@@ -2427,6 +2427,10 @@ function generateSkill() {
 			{
 				skillPassRate += skillCharmPassBoost;
 			}
+
+			// Add to destroyed modifiers.
+			if (!destroyedModifiers.includes("Skill Charm destroyed.<br>"))
+				destroyedModifiers += "Skill Charm destroyed.<br>";
 		}
 
 		var roll = randRange(100);
