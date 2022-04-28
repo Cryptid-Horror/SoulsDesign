@@ -40,6 +40,7 @@
     // Examples should be kept in public/images/design_guides/examples/genes
     // List out the image names in the order in which they should show up
     $behavior_examples = [
+        'free_mark'
         'minm_yes1',
         'minm_yes2',
         'minm_yes3',
@@ -55,7 +56,6 @@
         'minm_no4',
         'minm_no5',
         'minm_no6',
-        'free_mark'
 
     ];
 
@@ -65,7 +65,7 @@
     ];
 
     $marking_can = [
-        'Allowed up to a 12 point value and saturation point gradient difference inside the marking.
+        'Allowed up to a 12 point value and saturation point gradient difference inside the marking. <br>
          Can blend into the base.
          Since this is a free marking, appearing like other free markings is ok.',
 
