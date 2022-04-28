@@ -1508,9 +1508,9 @@ function generateIvory() {
 			result = "ss";
 		}
 	} else if (damCoat == "SS" && sireCoat == "SS") {
-		if (roll < 20) {
+		if (roll < 15) {
 			result = "SS";
-		} else if (roll < (80 + bonus)) {
+		} else if (roll < (75 + bonus)) {
 			result = "Ss";
 		} else {
 		        result = "ss";
