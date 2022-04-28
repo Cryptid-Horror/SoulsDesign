@@ -65,7 +65,7 @@
     ];
 
     $marking_can = [
-        'Allowed up to a 12 point value and saturation point gradient difference inside the marking. <br>
+        'Allowed up to a 12 point value and saturation point gradient difference inside the marking.
          Can blend into the base.
          Since this is a free marking, appearing like other free markings is ok.',
 
