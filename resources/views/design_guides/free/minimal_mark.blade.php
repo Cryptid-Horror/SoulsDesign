@@ -45,29 +45,38 @@
         'minm_yes3',
         'minm_yes4',
         'minm_yes5',
+        'minm_yes6',
+        'minm_yes7',
+        'minm_yes8',
+        'minm_yes9',
         'minm_no2',
         'minm_no1',
         'minm_no3',
+        'minm_no4',
+        'minm_no5',
+        'minm_no6',
         'free_mark'
 
     ];
 
     // You can use html!
+    $marking_must = [
+        'This marking must only cover up to 15% of the body.',
+    ];
+
     $marking_can = [
-        'Is allowed up to a 12 point value and saturation point gradient difference inside the marking.',
-        'Can blend into the base.',
-        'Since this is a free marking, appearing like other free markings is ok.'
+        'Allowed up to a 12 point value and saturation point gradient difference inside the marking.
+         Can blend into the base.
+         Since this is a free marking, appearing like other free markings is ok.',
 
     ];
 
     $marking_cannot = [
-        'Should not be used to look like other genetics markings that are not in the free section.',
-        'Be especially catious not to create a marking on the face that appears like masked.'
+        'Should not be used to look like other genetics markings that are not in the free section.
+        Be especially catious not to create a marking on the face that appears like masked.'
     ];
 
-    $marking_must = [
-        'This marking must only cover up to 15% of the body.',
-    ];
+
 
     // If left empty, the swatches section will not be shown
     $swatches = [
