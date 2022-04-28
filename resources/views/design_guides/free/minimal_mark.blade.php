@@ -63,20 +63,21 @@
     
 
     $marking_can = [
-        '12 point value and saturation gradient is allowed to blend from one side to the other on this marking. This marking is allowed to blend into the coat color.  <br>
-        ♦ Since this is a free marking, appearing like other free markings is ok. <br>
+        '<b>Value and Saturation Gradient Blend</b> = Yes; 12 Points.<br>
+        ♦ Since this is a free marking, appearing like other <b>free</b> markings is ok. <br>
         ♦ Minimal Mark is allowed to be modified by color modifiers and special modifiers.',
 
     ];
 
     $marking_cannot = [
         'Should not be used to look like other genetics markings that are not in the free section.<br>
-        ♦ You may not recreate non-free markings with this marking. Be especially cautious of mimicing masked, which is defined by the marking covering the eye. While minmark can border the eye or create an accent around it, it should not be larger than the eye itself, nor should it connect across the face.',
+        ♦ You may not recreate non-free markings with this marking. <br>
+        ♦ <i>Be especially cautious of mimicing masked, which is defined by the marking covering the eye. While minmark can border the eye or create an accent around it, it should not be larger than the eye itself, nor should it connect across the face.</i>',
     ];
 
     $marking_must = [
-        'Maximum Coverage: 15% of the body.<b>
-         Minimum Coverage: There is no minimum coverage.',
+        '<b>Maximum Coverage:</b> 15% of the body.<br>,
+        ♦ <b>Minimum Coverage:</b> There is no minimum coverage.',
     ];
 
 
