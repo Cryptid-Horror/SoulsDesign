@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-xl-9 mb-3">
                 <!-- Marking Name and Code -->
-                <h3>{{ $marking_name }}<center>{{ $marking_code }}</center></h3>
+                <h3>{{ $marking_name }}<center>{{ $marking_code }} <br> {{ $marking_type }}</center></h3>
 
                 <!-- Marking Description -->
                 {{ $marking_desc }}
