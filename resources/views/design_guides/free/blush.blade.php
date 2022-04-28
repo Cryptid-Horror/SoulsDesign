@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Blush';
     $marking_name = 'Blush';
     $marking_code = 'BL';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can appear in the designated area. It appears as a blush like spot on the face.";
     $layers_above_or_below = '';
     $layers_above = '';

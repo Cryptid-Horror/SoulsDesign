@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Stockings';
     $marking_name = 'Stockings';
     $marking_code = 'ST';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only appear in the zone provided on the legs and membraned wing fingers. Stockings appear as a marking that does not need to cover the feet and ends of the wing fingers.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Accents';
     $marking_name = 'Accents';
     $marking_code = 'AC';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only cover 5% of the body. It is used only as an accent to certain features, such the eyes, claws, or mouth.";
     $layers_above_or_below = '';
     $layers_above = '';

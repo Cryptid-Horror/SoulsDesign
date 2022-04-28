@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Freckles';
     $marking_name = 'Freckles';
     $marking_code = 'FL';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only appear in specific zones. It appears as freckles, and unlike dusted cannot be all over the body and must be clustered close together.";
     $layers_above_or_below = '';
     $layers_above = '';

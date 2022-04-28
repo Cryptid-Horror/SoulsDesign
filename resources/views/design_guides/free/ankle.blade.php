@@ -1,7 +1,8 @@
 <?php
-    $marking_icon = 'Free_Socks';
-    $marking_name = 'Socks';
-    $marking_code = 'SO';
+    $marking_icon = 'Free_Ankle';
+    $marking_name = 'Ankle';
+    $marking_code = 'AK';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only appear in the zone provided on the legs and membraned wing fingers. Socks appear as a marking that must cover the ends of the feet and the wing fingers.";
     $layers_above_or_below = '';
     $layers_above = '';

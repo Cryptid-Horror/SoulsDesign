@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Birthmark';
     $marking_name = 'Birthmark';
     $marking_code = 'BI';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only be 5% in individual size, but can appear in three places on the body at once. This marking is a birthmark, meaning it was born with the mark.";
     $layers_above_or_below = '';
     $layers_above = '';

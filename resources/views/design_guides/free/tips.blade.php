@@ -2,6 +2,7 @@
     $marking_icon = 'Free_Tips';
     $marking_name = 'Tips';
     $marking_code = 'TI';
+    $marking_type = 'Free Marking';
     $marking_desc = "A free marking that can only cover a specified range on wings, feathers, and other small features. Tips is used as a small marking to accent edges of feathers and limbs.";
     $layers_above_or_below = '';
     $layers_above = '';
