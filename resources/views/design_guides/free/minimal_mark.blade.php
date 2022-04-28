@@ -65,13 +65,14 @@
     $marking_can = [
         '<b>Value and Saturation Gradient Blend</b> = Yes; 12 Points.<br>
         ♦ Since this is a free marking, appearing like other <b>free</b> markings is ok. <br>
-        ♦ Minimal Mark is allowed to be modified by color modifiers and special modifiers.',
+        ♦ Minimal Mark is allowed to be modified by color modifiers and special modifiers.<br>
+        ♦ Minimal Mark can be the same color as a marking it is "attached" to. See what it cannot do for the limitations on this.',
 
     ];
 
     $marking_cannot = [
-        'Should not be used to look like other genetics markings that are not in the free section.<br>
-        ♦ You may not recreate non-free markings with this marking. <br>
+        'You may not recreate non-free markings with this marking. This means you cannot make your minimal mark look dusted or shaped. Single shapes are ok but multiple shapes are not. <br>
+        ♦ While it may be attached to a marking, You may not use minimal mark to extend another marking into its dominant zone, or beyond where that markings is allowed to go.<br>
         ♦ <i>Be especially cautious of mimicing masked, which is defined by the marking covering the eye. While minmark can border the eye or create an accent around it, it should not be larger than the eye itself, nor should it connect across the face.</i>',
     ];
 
