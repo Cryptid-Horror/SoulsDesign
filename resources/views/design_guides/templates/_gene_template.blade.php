@@ -212,7 +212,11 @@
         </center>
 
         <br>
-
+        @foreach($marking_must as $must)
+            <div class="alert alert-warning" role="alert">
+                ♦ {!! $must !!}<br>
+            </div>
+        @endforeach
         @foreach($marking_can as $can)
             <div class="alert alert-success" role="alert">
                 ♦ {!! $can !!}<br>
@@ -223,11 +227,7 @@
                 ♦ {!! $cannot !!}<br>
             </div>
         @endforeach
-        @foreach($marking_must as $must)
-            <div class="alert alert-warning" role="alert">
-                ♦ {!! $must !!}<br>
-            </div>
-        @endforeach
+
         <hr>
 
         <!-- Marking Color Swatches (if needed) -->
