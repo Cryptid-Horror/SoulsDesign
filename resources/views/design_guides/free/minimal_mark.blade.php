@@ -77,7 +77,7 @@
     ];
 
     $marking_must = [
-        '<b>Maximum Coverage:</b> 15% of the body.<br>,
+        '<b>Maximum Coverage:</b> 15% of the body.<br>
         ♦ <b>Minimum Coverage:</b> There is no minimum coverage.',
     ];
 
