@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Shaped';
     $marking_name = 'Shaped';
     $marking_code = 'nSp/SpSp';
+    $marking_type = 'Variable';
     $marking_desc = "A gene that presents as various shapes on the dragon's body. The shapes are often diamonds, squares, or other organic shapes.";
     $layers_above_or_below = '';
     $layers_above = '';

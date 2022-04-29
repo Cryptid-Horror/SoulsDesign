@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Marbled';
     $marking_name = 'Marbled';
     $marking_code = 'nMar/MarMar';
+    $marking_type = 'Variable';
     $marking_desc = "Marbled is a gene that existed among the warden dragons, and appears either like marbled stone or like a sort of 'bubbly' marking on the body.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Topaz';
     $marking_name = 'Topaz';
     $marking_code = 'nTz/TzTz';
+    $marking_type = 'Modifier';
     $marking_desc = "This gene is known for it's ability to give dragons orange and bronze colorations. The first dragon to carry this gene being Amarythine, and it has spread throughout from the Shimmering Isles to other species, not just wardens.";
     $layers_above_or_below = '';
     $layers_above = '';

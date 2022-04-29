@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Rosettes';
     $marking_name = 'Rosettes';
     $marking_code = 'nRs/RsRs';
+    $marking_type = 'Variable';
     $marking_desc = "A gene that appears like the pattern on a Jaguar. These spots, called 'Rosettes' can be circlular, square, oval, or slightly irregaular in shape. They feature a border around them, that can be disconnected, and a few small dots or filled in circles in the center of the marking. ";
     $layers_above_or_below = '';
     $layers_above = '';

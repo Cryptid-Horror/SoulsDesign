@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Dipped';
     $marking_name = 'Dipped';
     $marking_code = 'nDi/DiDi';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A marking that either darkens or lightens the dragon starting from either the head, or tail, and gradienting to the mid section of the body.";
     $layers_above_or_below = '';
     $layers_above = '';

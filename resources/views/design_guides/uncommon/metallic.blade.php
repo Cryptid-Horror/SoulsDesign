@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Metallic';
     $marking_name = 'Metallic';
     $marking_code = 'nMe/MeMe';
+    $marking_type = 'Modifier';
     $marking_desc = "A gene that has the claws, horns, spikes, and other 'special' zones of a dragon's design (fur on the elbows of greater emperors, scales on the legs/neck/wings of the Sapiere, etc) to be any color, and shiny, as if they are metallic. Dragons with gene are said to have a special place in their heart for especially shiny things... ";
     $layers_above_or_below = '';
     $layers_above = '';

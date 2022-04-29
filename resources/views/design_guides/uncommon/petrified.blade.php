@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Petrified';
     $marking_name = 'Petrified';
     $marking_code = 'nOpr/OprOpr';
+    $marking_type = 'Variable';
     $marking_desc = " Petrified is a freeform marking that mimics oilslicks and inkblot tests. It is compromised of layers of color and is 
                     restricted to brown colors, such as on umber and haze bases. Additionally, two of its color can be made of Specters allowed colors.";
     $layers_above_or_below = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Crested';
     $marking_name = 'Crested';
     $marking_code = 'nCr/CrCr';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that creates a bright patch of color on the throat and neck of the dragon, the pattern can be iridescent in color and must be in bright coloration. It is noted for its similarities  in the birds of paradise around the Radiant empire.";
     $layers_above_or_below = '';
     $layers_above = '';

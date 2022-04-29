@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Cloud';
     $marking_name = 'Cloud';
     $marking_code = 'nCd/CdCd';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A marking that creates a cloud like appearance on the body, believed to hide dragons when they are soaring through the clouds as an act of camoflauge. Cloud can present as either a splotch of color with a border, or as a smooth soft gradient of color along the body.";
     $layers_above_or_below = '';
     $layers_above = '';

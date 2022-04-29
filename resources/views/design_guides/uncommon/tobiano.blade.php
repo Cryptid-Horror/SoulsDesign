@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Tobiano';
     $marking_name = 'Tobiano';
     $marking_code = 'nTo/ToTo';
+    $marking_type = 'Prime';
     $marking_desc = "A piebald marking that presents in white coloration, leaving patches of white over the genetic design below.";
     $layers_above_or_below = '';
     $layers_above = '';

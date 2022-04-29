@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Garnet';
     $marking_name = 'Garnet';
     $marking_code = 'nGt/GtGt';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that brings out the red colors of a dragon, these dragons are noted for a higher aggression rate, but like all things, this varies among individuals. Many of the red dragons were used in past arena fights, owing to the skewed study.";
     $layers_above_or_below = '';
     $layers_above = '';

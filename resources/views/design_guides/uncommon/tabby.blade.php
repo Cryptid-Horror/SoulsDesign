@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Tabby';
     $marking_name = 'Tabby';
     $marking_code = 'nTa/TaTa';
+    $marking_type = 'Variable';
     $marking_desc = "The tabby gene presents as swirled patterns on the dragon. Additionally, a 'M' shaped marking may be present on the face, stripes around the eyes/cheeks, or along the back and around the head and tail.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Plasma';
     $marking_name = 'Plasma';
     $marking_code = 'nPs/PsPs';
+    $marking_type = 'Variable';
     $marking_desc = "Plasma is said to be gifted to dragons who harness the power of lightning, or have been struck by lightning. The marking appears as a think cracking marking along the dragon's body, spreading out like a lightning strike.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Smoke';
     $marking_name = 'Smoke';
     $marking_code = 'nSm/SmSm';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A misty or smoke like marking that is fully blended and smooth on the body.";
     $layers_above_or_below = '';
     $layers_above = '';

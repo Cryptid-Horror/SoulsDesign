@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Brindle';
     $marking_name = 'Brindled';
     $marking_code = 'nBrd/BrdBrd';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that appears of three colors presenting as very thin broken up streaks on the body in a vertical pattern. Unlike banded however, these lines are incredibly thinned. (This marking used to be called 'Somatic'.) ";
     $layers_above_or_below = '';
     $layers_above = '';

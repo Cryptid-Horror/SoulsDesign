@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Dripping';
     $marking_name = 'Dripping';
     $marking_code = 'nDr/DrDr';
+    $marking_type = 'Modifier';
     $marking_desc = "Dripping is a modifier marking that creates an effect that looks like the marking is dripping. The dripping effect can appear in any direction. Amusingly, when it was discovered, someone thought they had spilled paint on the hatchling.";
     $layers_above_or_below = '';
     $layers_above = '';

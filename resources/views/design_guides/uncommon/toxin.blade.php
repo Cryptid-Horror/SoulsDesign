@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Toxin';
     $marking_name = 'Toxin';
     $marking_code = 'nTx/TxTx';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "Toxin is a marking that appears like a posion dart frog. It has a very bright color layered over the base with darker bars, dots, or thick stripes layered over it. Most dragons are not poisonous to the touch, and many believe this marking serves more as a warning, designed by evolution, to protect dragons from being hunted by other things. This marking has two different properities based on the base gradient and the bars. The section in this guide for edges covers the bars.";
     $layers_above_or_below = '';
     $layers_above = '';

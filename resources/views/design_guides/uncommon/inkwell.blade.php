@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Inkwell';
     $marking_name = 'Inkwell';
     $marking_code = 'nIn/InIn';
+    $marking_type = 'Prime';
     $marking_desc = "A piebald marking that presents normally in a black or grey coloration leaving patches of white over the genetic design below. Color modifiers have been seen to effect this marking, making it different colors. It gets it name for its darker variation of Tobiano.";
     $layers_above_or_below = '';
     $layers_above = '';

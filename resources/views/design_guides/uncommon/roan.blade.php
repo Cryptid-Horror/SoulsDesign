@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Roan';
     $marking_name = 'Roan';
     $marking_code = 'nRo/RoRo';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A gene that lightens or darkens the design with patches of color. The gene often does not affect the legs, tail, or head, but it can do so in some cases. Roans allowed coverage is determiend by whether it is recessive or dominant.";
     $layers_above_or_below = '';
     $layers_above = '';

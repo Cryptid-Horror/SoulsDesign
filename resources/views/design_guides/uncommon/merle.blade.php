@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Merle';
     $marking_name = 'Merle';
     $marking_code = 'nMr/MrMr';
+    $marking_type = 'Variable';
     $marking_desc = "Merle, a gene that creates a pattern where random, and sometimes, mottled, splotches of darker or lighter pigments that sit on the coat of the dragon.";
     $layers_above_or_below = '';
     $layers_above = '';

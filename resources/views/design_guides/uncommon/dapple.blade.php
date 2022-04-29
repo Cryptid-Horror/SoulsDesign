@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Dapple';
     $marking_name = 'Dapple';
     $marking_code = 'nDl/nDl';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "The appeal for this marking comes from the similarities it holds with the dapple gene on horses. Bokeh appears as circles of different shades of color from the base coat, in varying sizes or minor shape differences. ";
     $layers_above_or_below = '';
     $layers_above = '';

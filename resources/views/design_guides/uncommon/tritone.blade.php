@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Tritone';
     $marking_name = 'Tritone';
     $marking_code = 'nTt/nTt';
+    $marking_type = 'Modifier';
     $marking_desc = "A marking much like duotone, but adds up to two colors instead of one. This marking was suggested by Nightshadow.";
     $layers_above_or_below = '';
     $layers_above = '';

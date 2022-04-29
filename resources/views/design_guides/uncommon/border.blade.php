@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Border';
     $marking_name = 'Border';
     $marking_code = 'nBo/BoBo';
+    $marking_type = 'Modifier';
     $marking_desc = "Border is seen to outline markings that previously could not have this outline on them. Border must present on another marking, but also can be seen to border the edges of claws, horns, and spikes.";
     $layers_above_or_below = '';
     $layers_above = '';

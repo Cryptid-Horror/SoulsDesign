@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Banded';
     $marking_name = 'Banded';
     $marking_code = 'nBa/BaBa';
+    $marking_type = 'Variable';
     $marking_desc = "Much like that of a tiger, this marking presents vertical stripes, unless it is presenting on the legs, which will show horizontal. The marking originates from the gloom empire.";
     $layers_above_or_below = '';
     $layers_above = '';

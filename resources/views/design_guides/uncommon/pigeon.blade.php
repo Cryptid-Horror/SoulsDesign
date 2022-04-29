@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Pigeon';
     $marking_name = 'Pigeon';
     $marking_code = 'nPg/PgPg';
+    $marking_type = 'Variable';
     $marking_desc = "Pigeon is a gene that flows on the wings of dragons, and appears as bar like shapes. One wonders how this marking got into the gene pool of dragons. It's presentation on dragons without wings is contested greatly, as it simply appears like the banded gene. However, small nuances to the gene's behavior presenting on wingless species, tend to lean it more towards pigeon.";
     $layers_above_or_below = '';
     $layers_above = '';

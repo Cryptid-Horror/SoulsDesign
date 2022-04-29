@@ -2,6 +2,7 @@
     $marking_icon = 'Uncommon_Azurite';
     $marking_name = 'Azurite';
     $marking_code = 'nAz/AzAz';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that is prized for its blue tones, the color seems to have come from those who lived within the boundaries of the ocean, and is most noted in the Warden species.";
     $layers_above_or_below = '';
     $layers_above = '';
