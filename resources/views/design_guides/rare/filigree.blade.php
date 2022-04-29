@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Filigree';
     $marking_name = 'Filigree';
     $marking_code = 'nFi/FiFi';
+    $marking_type = 'Variable';
     $marking_desc = "Filigree are often swirling patterns on the dragon, in a vector ornament style. They are often thin in appearance, but can be a thicker design made up of multiple swirling designs. The marking can be small, or large, made of long swirling lines, or small symbols.";
     $layers_above_or_below = '';
     $layers_above = '';

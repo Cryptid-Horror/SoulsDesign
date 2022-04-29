@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Painted';
     $marking_name = 'Painted';
     $marking_code = 'nPn/PnPn';
+    $marking_type = 'Prime';
     $marking_desc = "A piebald marking that can be any color possible, and also affected by other markings.";
     $layers_above_or_below = '';
     $layers_above = '';

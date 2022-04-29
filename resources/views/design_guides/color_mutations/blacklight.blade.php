@@ -2,6 +2,7 @@
     $marking_icon = 'Color_mutations_Blacklight';
     $marking_name = 'Blacklight';
     $marking_code = 'No Code';
+    $marking_type = 'Prime Modifier';
     $marking_desc = "A mythic mutation that changes the coat color to black (or vanta color modifier if that color modifier is present) and makes the markings bright color regardless of their rules. Suggested by BreezyDraws.";
     $layers_above_or_below = '';
     $layers_above = '';

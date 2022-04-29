@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Harlequin';
     $marking_name = 'Harlequin';
     $marking_code = 'nHar/HarHar';
+    $marking_type = 'Variable or Override';
     $marking_desc = "Harlequin, like Lepir, is allowed to be simple or complex. Simple Harlequin presents as a cluster of lines or dots like on a Harlequin toad. Complex lets you override the geno to make
                     the dragons design look like any toad or frog. A reference image is necessary during design approval. Suggested by MadDog.";
     $layers_above_or_below = '';

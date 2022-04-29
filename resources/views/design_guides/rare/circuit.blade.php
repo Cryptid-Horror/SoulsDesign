@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Circuit';
     $marking_name = 'Circuit';
     $marking_code = 'nCi/CiCi';
+    $marking_type = 'Variable';
     $marking_desc = "Circuit is made up of thin lines that connect with circles or dots at the end of the lines. It mimics a circuit board. This marking was suggested by Oreleth.";
     $layers_above_or_below = '';
     $layers_above = '';

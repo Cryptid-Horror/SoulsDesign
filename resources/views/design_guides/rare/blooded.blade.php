@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Blooded';
     $marking_name = 'Blooded';
     $marking_code = 'nBd/BdBd';
+    $marking_type = 'Prime';
     $marking_desc = "A marking that creates a 'Wound' style marking on the body that appears as a three part marking. The gene is thought to originate from those dragons who have lost something dear to them. The properities section refers to the base, please see the rules for the mark itself.";
     $layers_above_or_below = '';
     $layers_above = '';

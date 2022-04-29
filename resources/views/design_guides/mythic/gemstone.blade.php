@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Gemstone';
     $marking_name = 'Gemstone';
     $marking_code = 'nGm/GmGm';
+    $marking_type = 'Variable';
     $marking_desc = "Gemstone creates patterns that look like precious stones on the dragons body. It can have cracks coming off the pattern to create a look that the gemstone pattern is embedded into the scales/skin of the dragon. ";
      $layers_above_or_below = '';
     $layers_above = '';

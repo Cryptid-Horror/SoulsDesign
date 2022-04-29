@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Shimmer';
     $marking_name = 'Shimmer';
     $marking_code = 'nSh/ShSh';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A marking that appears as a colorful blend of colors creating a sort of 'Cloud' pattern. Shimmer is known to come from Shimmering Isles in royal dragon bloods. ";
      $layers_above_or_below = '';
     $layers_above = '';

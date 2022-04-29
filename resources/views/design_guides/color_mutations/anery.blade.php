@@ -2,6 +2,7 @@
     $marking_icon = 'Color_mutations_Anery';
     $marking_name = 'Anery';
     $marking_code = 'Null';
+    $marking_type = 'Prime Modifier';
     $marking_desc = "A mutation that causes the entire body to be black, and only certain markings are shown based on player choice.";
      $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Lepir';
     $marking_name = 'Lepir';
     $marking_code = 'nLe/LeLe';
+    $marking_type = 'Variable or Override';
     $marking_desc = "Lepir can present in two different ways, either as 'bars' connected together and filled in with a color, like that of a butterfly wing, or as an overwritten geno that is allowed to appear as a chosen fish, reptile, butterfly, or moth design.";
      $layers_above_or_below = '';
     $layers_above = '';

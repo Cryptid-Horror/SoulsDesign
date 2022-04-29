@@ -2,6 +2,7 @@
     $marking_icon = 'Color_mutations_Abundism';
     $marking_name = 'Abundism';
     $marking_code = 'Null';
+    $marking_type = 'Prime Modifier';
     $marking_desc = "A mutation that causes the markings to be black in coloration, or the base to pick from abundism sliders.";
      $layers_above_or_below = '';
     $layers_above = '';

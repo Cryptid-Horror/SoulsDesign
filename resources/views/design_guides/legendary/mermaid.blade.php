@@ -2,6 +2,7 @@
     $marking_icon = 'Legendary_Mermaid';
     $marking_name = 'Mermaid';
     $marking_code = 'nMer/MerMer';
+    $marking_type = 'Variable';
     $marking_desc = "A pearlescent scaled marking that can cover a portion or the full body of the dragon based on if it is recessive or dominant. Suggested by KJ.";
     $layers_above_or_below = '';
     $layers_above = '';

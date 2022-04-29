@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Pearl';
     $marking_name = 'Pearl';
     $marking_code = 'nOpe/OpeOpe';
+    $marking_type = 'Prime';
     $marking_desc = " Pearl is a freeform marking that mimics oilslicks and inkblot tests. It is compromised of layers of color and is allowed pastel colors, whites, and light greys.";
     $layers_above_or_below = '';
     $layers_above = '';

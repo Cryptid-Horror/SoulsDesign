@@ -2,6 +2,7 @@
     $marking_icon = 'Legendary_Torch';
     $marking_name = 'Torch';
     $marking_code = 'nTh/ThTh';
+    $marking_type = 'Variable';
     $marking_desc = "Torch is a three layer marking that appears on the tail, neck, and wing tips. While mostly free form, it needs to be in the ranges provided. Suggested by KJ.";
     $layers_above_or_below = '';
     $layers_above = '';

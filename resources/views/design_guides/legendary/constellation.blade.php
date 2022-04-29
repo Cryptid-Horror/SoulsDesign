@@ -2,6 +2,7 @@
     $marking_icon = 'Legendary_Constellation';
     $marking_name = 'Constellation';
     $marking_code = 'nCn/CnCn';
+    $marking_type = 'Variable';
     $marking_desc = "Constellation is a marking that presents as glowing connected stars on a dragon's body. Constellation does not have to glow, and can have a layer of gradient beneath it.";
     $layers_above_or_below = '';
     $layers_above = '';

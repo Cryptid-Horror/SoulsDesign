@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Luminescent';
     $marking_name = 'Luminescent';
     $marking_code = 'nLu/LuLu';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A bio-luminescent marking that creates or causes markings or parts of the body to glow. This gene was thought to develop in the colder frigid areas where darkness is eternal, as a hunting method for dragons with the gene. It's also thought to be found in the ocean as many sailors tell stories of dragons that move in the sea, glowing beneath the waves.";
     $layers_above_or_below = '';
     $layers_above = '';

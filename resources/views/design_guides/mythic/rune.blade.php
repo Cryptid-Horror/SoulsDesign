@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Rune';
     $marking_name = 'Rune';
     $marking_code = 'nRu/RuRu';
+    $marking_type = 'Variable';
     $marking_desc = "A gene that creates symbols on the dragon's body. The symbols are of older languages, and many believe that the marks spell out the dragon's future or fate.";
      $layers_above_or_below = '';
     $layers_above = '';

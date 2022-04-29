@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Arcane';
     $marking_name = 'Arcane';
     $marking_code = 'nArc/ArcArc';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that presents as arcane circles on the body. Runes may only be present in dominant, or if rune is present on the dragon. Suggested by Oreleth.";
     $layers_above_or_below = '';
     $layers_above = '';

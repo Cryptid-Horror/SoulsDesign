@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Petal';
     $marking_name = 'Petal';
     $marking_code = 'nPl/PlPl';
+    $marking_type = 'Variable';
     $marking_desc = "This gene presents as tear drops, petal, or flower shapes on the body.";
     $layers_above_or_below = '';
     $layers_above = '';

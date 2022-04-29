@@ -2,7 +2,7 @@
     $marking_icon = 'Common_Specter';
     $marking_name = 'Specter';
     $marking_code = 'nOse/OseOse';
-    $marking_type = 'Variable';
+    $marking_type = 'Prime';
     $marking_desc = " Specter is a freeform marking that mimics oilslicks and inkblot tests. It is compromised of layers of color and is restricted to whites, greys, and blacks.";
     $layers_above_or_below = '';
     $layers_above = '';

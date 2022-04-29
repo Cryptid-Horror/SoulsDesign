@@ -2,6 +2,7 @@
     $marking_icon = 'Legendary_Confetti';
     $marking_name = 'Confetti';
     $marking_code = 'nFti/FtiFti';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that resembles confetti- it can appear as dots, small splotches/bars, etc and look like confetti. However to keep it from looking dusted, it needs to be at least 3 different colors.";
     $layers_above_or_below = '';
     $layers_above = '';

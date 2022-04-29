@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Triquetra';
     $marking_name = 'Triquetra';
     $marking_code = 'nTri/TriTri';
+    $marking_type = 'Variable';
     $marking_desc = "Originally thought to not be a gene, but rather someone painting designs on their dragon, this gene creates markings that look like celtic knots, symbols, and other tribal style markings.";
      $layers_above_or_below = '';
     $layers_above = '';

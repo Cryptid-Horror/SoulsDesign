@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Turquoise';
     $marking_name = 'Turquoise';
     $marking_code = 'nTu/TuTu';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that brings out the aqua colors of a dragon, these dragons are regarded as royalty, along with their Jade counterparts.";
     $layers_above_or_below = '';
     $layers_above = '';

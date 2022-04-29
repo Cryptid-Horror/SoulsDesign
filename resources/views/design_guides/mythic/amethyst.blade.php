@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Amethyst';
     $marking_name = 'Amethyst';
     $marking_code = 'nAy/AyAy';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that brings out the purple colors of a dragon, these dragons are regarded as royalty, along with their Jade counterparts.";
     $layers_above_or_below = '';
     $layers_above = '';

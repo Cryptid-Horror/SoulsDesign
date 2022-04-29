@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Prismatic';
     $marking_name = 'Prismatic';
     $marking_code = 'nPr/PrPr';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that allows a dragon to be several different colors without any other color modifiers. Prismatic is the only color modifier than change the color of Tobiano.";
     $layers_above_or_below = '';
     $layers_above = '';

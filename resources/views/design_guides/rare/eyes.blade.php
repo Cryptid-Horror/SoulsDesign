@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Eyes';
     $marking_name = 'Eyes';
     $marking_code = 'nEy/EyEy';
+    $marking_type = 'Variable';
     $marking_desc = "This gene creates the illusion of the dragon have eyes, or 'eyelet' marking, much like that on a male peafowl. The marking is made of three parts, the bottom layer, middle layer, and top layer.";
     $layers_above_or_below = '';
     $layers_above = '';

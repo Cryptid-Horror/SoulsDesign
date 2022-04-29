@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Iridescent';
     $marking_name = 'Iridescent';
     $marking_code = 'nIr/IrIr';
+    $marking_type = 'Modifier';
     $marking_desc = "An elusive gene that makes the coat of a dragon shine, mutating it into iridescent colors, including the markings.";
      $layers_above_or_below = '';
     $layers_above = '';

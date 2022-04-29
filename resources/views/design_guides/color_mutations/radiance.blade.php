@@ -2,6 +2,7 @@
     $marking_icon = 'Color_mutations_Radiance';
     $marking_name = 'Radiance';
     $marking_code = 'nRad/RadRad';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modifier mutation that causes a random color marking to pass to the offspring if one or both parents have the radiance gene. The gene originates from the radiant wyverns, and is seen as a gift to newborn dragons who receive it.";
     $layers_above_or_below = '';
     $layers_above = '';

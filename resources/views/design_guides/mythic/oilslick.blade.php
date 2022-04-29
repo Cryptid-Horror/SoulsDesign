@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Oilslick';
     $marking_name = 'Oilslick';
     $marking_code = 'nOol/OolOol';
+    $marking_type = 'Prime';
     $marking_desc = " Oilslick is a freeform marking that mimics oilslicks and inkblot tests. It is compromised of layers of color and is allowed to be any color.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Lustrous';
     $marking_name = 'Lustrous';
     $marking_code = 'nLs/LsLs';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that appears as an iridescent patch with a border. Its behavior is seen on ducks and other similar birds.";
     $layers_above_or_below = '';
     $layers_above = '';

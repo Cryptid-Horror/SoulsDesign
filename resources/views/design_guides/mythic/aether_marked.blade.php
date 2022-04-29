@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Aether_Marked';
     $marking_name = 'Aether Marked';
     $marking_code = 'nAm/AmAm';
+    $marking_type = 'Prime';
     $marking_desc = "Dragons with this marking are thought to be cursed, or even imbued, with darker magic than your average dragon. The gene presents as an indented glowing scar that varies in size and thickness.";
     $layers_above_or_below = '';
     $layers_above = '';

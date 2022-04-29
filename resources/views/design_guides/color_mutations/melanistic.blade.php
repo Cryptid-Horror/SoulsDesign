@@ -2,6 +2,7 @@
     $marking_icon = 'placeholder';
     $marking_name = 'Melanism';
     $marking_code = 'Vv/VV';
+    $marking_type = 'Prime Modifier';
     $marking_desc = "A modifier that is created by having vanta pass along with other coat colors. This causes bases to be darker, but not neceassirly the markings. ";
      $layers_above_or_below = '';
     $layers_above = '';

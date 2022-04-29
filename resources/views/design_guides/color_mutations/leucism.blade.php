@@ -2,6 +2,7 @@
     $marking_icon = 'Color_mutations_Leucism';
     $marking_name = 'leucism';
     $marking_code = 'Null';
+    $marking_type = 'Prime Modifier';
     $marking_desc = "A mutation that causes the entire body to be white in coloration, with the markings appear as light and pastel in color.";
      $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Mythic_Aurora';
     $marking_name = 'Aurora';
     $marking_code = 'nAu/AuAu';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A gene that is thought to be bestowed on dragons for their affinity for the night. The marking often appears looking like the aurora borealis. ";
      $layers_above_or_below = '';
     $layers_above = '';

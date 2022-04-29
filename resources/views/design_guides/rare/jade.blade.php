@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Jade';
     $marking_name = 'Jade';
     $marking_code = 'nJa/JaJa';
+    $marking_type = 'Modifier';
     $marking_desc = "A color modification gene that brings out the green colors of a dragon, these dragons are regarded as royalty, along with their Lilac counterparts.";
     $layers_above_or_below = '';
     $layers_above = '';

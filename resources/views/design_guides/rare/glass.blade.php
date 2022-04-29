@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Glass';
     $marking_name = 'Glass';
     $marking_code = 'nGl/GlGl';
+    $marking_type = 'Variable';
     $marking_desc = "A gene that presents like stained glass. It has geometric shapes with a border around it. The shapes often being allowed gradient colors within it.";
     $layers_above_or_below = '';
     $layers_above = '';

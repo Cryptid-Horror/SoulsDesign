@@ -2,6 +2,7 @@
     $marking_icon = 'Rare_Patchwork';
     $marking_name = 'Patchwork';
     $marking_code = 'nPw/PwPw';
+    $marking_type = 'Variable';
     $marking_desc = "A colorful three layer marking that has up to 6 colors present. Each layer has 2 colors gradienting into each other. Patchwork needs to appear as geometric shapes. This marking was suggested by Nightshadow.";
     $layers_above_or_below = '';
     $layers_above = '';
