@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Pangare';
     $marking_name = 'Pangare';
     $marking_code = 'nPa/PaPa';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A soft, gradiented marking on the underside of a dragon. It has the ability to reach up along the underside of the wings as well. Pangare is shades of dark, or light, and is a common marking seen on many dragons. The marking has a sibling marking called 'Underbelly'.";
     $layers_above_or_below = '';
     $layers_above = '';

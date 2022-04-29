@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Ringed';
     $marking_name = 'Ringed';
     $marking_code = 'nRn/RnRn';
+    $marking_type = 'Variable';
     $marking_desc = "This marking has been shown to present two different ways on the body of a dragon. Either as unfilled circles, or as complete bands that wrap around the body of a dragon. The gene was first found on the Wardens, and quickly spread throughout different species, with the banding presentation appearing more on wyvern bloodlines. Both versions of the marking can appear at once, and are not dictated by dominant or recessive properties.";
     $layers_above_or_below = '';
     $layers_above = '';

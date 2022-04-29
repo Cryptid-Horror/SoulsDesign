@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Cape';
     $marking_name = 'Cape';
     $marking_code = 'nCa/CaCa';
+    $marking_type = 'Variable';
     $marking_desc = "A marking on the dragon's chest that expands around the wing shoulders to drape over the back of the wings. This marking was suggest by KJ.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Dun';
     $marking_name = 'Dun';
     $marking_code = 'nDn/DnDn';
+    $marking_type = 'Variable';
     $marking_desc = "A popular mark praised for its delicate appearance down the spine of a dragon. Its origins are difficult to trace due to its abundance among the population of dragons, and many argue it appeared first in the scorched empire. dun often has a small accenting along the marking that points downward in a stripe like pattern, as well as stripes along the leg. Unlike banding though, these stripes are thin, delicate, and very few.";
     $layers_above_or_below = '';
     $layers_below = '';

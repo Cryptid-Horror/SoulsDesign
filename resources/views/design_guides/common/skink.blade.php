@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Skink';
     $marking_name = 'Skink';
     $marking_code = 'nSk/SkSk';
+    $marking_type = 'Variable';
     $marking_desc = "Skink is a marking that presents as a line down the body of a dragon. Skink has to appear in at least 3 zones, but can appear in all zones of the body. It also has to be fully connected and travel down the body horizontally. Skink is characterized by its starting location always being on the head, with the main skink line starting from the eyes.";
     $layers_above_or_below = '';
     $layers_above = '';

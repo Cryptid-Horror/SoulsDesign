@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Ripples';
     $marking_name = 'Ripples';
     $marking_code = 'nRip/RipRip';
+    $marking_type = 'Variable';
     $marking_desc = "Ripples appear as curved lines on the dragon's body that are close to each other. Suggested by Oreleth.";
     $layers_above_or_below = '';
     $layers_above = '';

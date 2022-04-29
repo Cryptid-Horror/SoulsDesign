@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Python';
     $marking_name = 'Python';
     $marking_code = 'nPy/PyPy';
+    $marking_type = 'Variable';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Thundering-Horses. A diamond, oval, or square/rectangular shape found on the spine of a dragon. The marking can go from the face to the tail, and in its dominant form has striping that can appear.";
     $layers_above_or_below = '';
     $layers_above = '';

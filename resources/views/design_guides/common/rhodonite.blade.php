@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Rhodonite';
     $marking_name = 'Rhodonite';
     $marking_code = 'nRd/RdRd';
+    $marking_type = 'Modifier';
     $marking_desc = "Despite being a common gene found among dragons, Rhodonite is a cherished color modifying gene prized for its ability to create brilliantly soft pink dragons. The horrible flip side of the coin is that it creates dragons who are impossible to camouflage themselves. This originally wasn’t an issue because the dragons that were carrying the gene were domesticated, but over time the gene found a way into the wild population.";
     $layers_above_or_below = '';
     $layers_above = '';

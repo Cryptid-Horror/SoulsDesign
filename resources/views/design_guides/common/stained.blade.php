@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Stained';
     $marking_name = 'Stained';
     $marking_code = 'nSn/SnSn';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "Important Notes: This marking is a combination of two prior markings, Fading (nFd/FdFd) and Scorching (nSo/SoSo). The marking has the versality of both, while still giving it more freedom in designs. All dragons with these markings together prior were given Dominant Stained, however genos are not given dominant markings from combined markings. A gradient or blur marking that starts from the end of joints and travels inward on the body. Stained can be lighter or darker, and is often reminescent of markings found on siamese cats, and can be seen with a darker or lighter gradient overlapping a secondary gradient on the body.";
     $layers_above_or_below = '';
     $layers_above = '';

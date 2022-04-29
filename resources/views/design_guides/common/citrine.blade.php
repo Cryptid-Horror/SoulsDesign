@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Citrine';
     $marking_name = 'Citrine';
     $marking_code = 'nCt/CtCt';
+    $marking_type = 'Modifier';
     $marking_desc = "Citrine was a confusing gene that for a long time was thought to be just dragons that were Golden in color. However Citrine actually was deemed a color gene when it was seen on a vanta dragon with dusted compared to a golden dragon with the same gene. Citrine appears as more yellow coloration in comparison to the richer golden color of the Gold base coat. In dominant, this marking is seen to make the entire dragon capable of being yellow in hue for it’s base and all its genes.";
     $layers_above_or_below = '';
     $layers_above = '';

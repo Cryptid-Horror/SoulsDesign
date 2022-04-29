@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Masked';
     $marking_name = 'Masked';
     $marking_code = 'nMa/MaMa';
+    $marking_type = 'Variable';
     $marking_desc = "A marking found on the face of a dragon, it has the appearance of a helm, or mask. The marking was first noted in Wardens, and has spread to all species as it is quite popular for its look and ability to layer with other markings in remarkable ways.";
     $layers_above_or_below = '';
     $layers_above = '';

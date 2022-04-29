@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Steel';
     $marking_name = 'Steel';
     $marking_code = 'nSl/SlSl';
+    $marking_type = 'Modifier';
     $marking_desc = "steel has always been a weird color modifying gene that many people of Empyrean don’t consider to be a ‘real’ gene. This is because of its properties being so similar to the Ivory base coat, however steel is capable of being darker shades than Ivory can be. Arguments are made on both sides of the debate, but most people just chose to let it exist and accept it as a marking.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Hood';
     $marking_name = 'Hood';
     $marking_code = 'nHd/HdHd';
+    $marking_type = 'Variable';
     $marking_desc = "Hood covers the face and neck of the dragon. It can cover the entire zone, or just parts, so long as the hood is visible on the head and the neck together. The gene was originally thought to be a mutation of the collar gene, or a confusion of masked and collar working together. However, reliable reproductions of the marking has shown it to be its own gene with various interactions with other genes like collar and mask.";
     $layers_above_or_below = '';
     $layers_above = '';

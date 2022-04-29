@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Frog_Eye';
     $marking_name = 'Frog Eye';
     $marking_code = 'nFe/FeFe';
+    $marking_type = 'Variable';
     $marking_desc = "Marking Origin: 2019 Genetics Contest; submitted by user Athena-Tivnan. Frog Eye was a strange marking to pop up, in fact it frightened most people for its direct appearance to a frog’s actual eye. What makes this marking so different from the Eyes gene though, is its limitations and the fact that it always appears as a circle, and can never appear as an oval or a teardrop.";
     $layers_above_or_below = '';
     $layers_above = '';

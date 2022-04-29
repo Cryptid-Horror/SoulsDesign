@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Scaled';
     $marking_name = 'Scaled';
     $marking_code = 'nSc/ScSc';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that presents crescent patterns on the body, as if they were bordering scales or feathers. Originally appearing alongside the plated and feathered coat types of dragons, the marking has solidified its place in the genetic diversity of dragons with its ability to be an accent to a design, or to be the spotlight of a design.";
     $layers_above_or_below = '';
     $layers_above = '';

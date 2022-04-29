@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Blanket';
     $marking_name = 'Blanket';
     $marking_code = 'nBl/BlBl';
+    $marking_type = 'Variable';
     $marking_desc = "A marking found on the dorsal region of a dragon and extending to the wings.
                     Its name is given for the way it covers the body. The marking originated in
                     the Radiant Empire bloodlines of the Stalker Wyvern.";

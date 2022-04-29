@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Points';
     $marking_name = 'Points';
     $marking_code = 'nPo/PoPo';
+    $marking_type = 'Variable';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user horsefreek151. A darker or lighter marking found on the legs, tail, wings, head, and chest of the dragon in specific spots. The marking is noted for its likeness to that of a doberman, and is often sought out for as a more conservative option to underbelly.";
     $layers_above_or_below = '';
     $layers_below = '';

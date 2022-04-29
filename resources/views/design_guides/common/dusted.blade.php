@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Dusted';
     $marking_name = 'Dusted';
     $marking_code = 'nDt/DtDt';
+    $marking_type = 'Variable';
     $marking_desc = "Originally thought to be a companion look to the Rosettes gene, Dusted struggled to become its own classified gene until it was found on dragons who did not come from rosettes bloodlines. Dusted can appear as either a speckling of dots, or ticking marks along the body. It has appeared both sporadically and in flowing lines along the body. However it has never been seen to create inorganic shapes like hearts or stars.";
     $layers_above_or_below = '';
     $layers_above = '';

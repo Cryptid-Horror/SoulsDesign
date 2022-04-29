@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Leaf';
     $marking_name = 'Leaf';
     $marking_code = 'nLf/LfLf';
+    $marking_type = 'Variable';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Athena-Tivnan
 A gene that presents itself as leaf like markings on the body of a dragon. The leaves are not often specific to a species of tree, and has a stem or an outline found on them. Their sizes vary, and can be small or large. Dragons with this gene are thought to bring good luck, but any actual cases of this have only been seen as coincidence.";
     $layers_above_or_below = '';

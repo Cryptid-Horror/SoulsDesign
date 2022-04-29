@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Boar';
     $marking_name = 'Boar';
     $marking_code = 'nBr/BrBr';
+    $marking_type = 'Variable';
     $marking_desc = "Marking Origin: 2018 Genetics Contest; Submitted by user Sciain.
 A marking that originates from the Warden bloodlines from before the fall of the Shimmering Isles. The marking appears the same as the markings found on baby wild boars, and has been documented to be seen on all parts of the body of a dragon. An interesting behavior of the gene is the gradient that is sometimes present beneath the barring and spots.";
     $layers_above_or_below = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Stockings';
     $marking_name = 'Stockings';
     $marking_code = 'nSo/SoSo';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A gradient markings that covers the feet, legs, and shoulder/hips. This marking was suggested by Kazooi.";
     $layers_above_or_below = '';
     $layers_below = '';

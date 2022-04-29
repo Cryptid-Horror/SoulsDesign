@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Trailing';
     $marking_name = 'Trailing';
     $marking_code = 'nTr/TrTr';
+    $marking_type = 'Variable';
     $marking_desc = "Trailing is a horizontal marking that appear as lines flowing along the body. Along the tip if the tail the marking can appear vertical. On the wings, the marking must appear horizontal.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Rimmed';
     $marking_name = 'Rimmed';
     $marking_code = 'nRi/RiRi';
+    $marking_type = 'Variable';
     $marking_desc = "A marking that appears on the legs, tail, wings, and muzzle of the dragon. It borders these parts of the dragons, creating a nice rim on the limbs.";
     $layers_above_or_below = '';
     $layers_above = '';

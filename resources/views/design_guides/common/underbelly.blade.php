@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Underbelly';
     $marking_name = 'Underbelly';
     $marking_code = 'nUn/UnUn';
+    $marking_type = 'Variable';
     $marking_desc = "A solid marking on the underside of a dragon. It has the ability to reach up along the underside of the wings as well. Underbelly is shades of dark, or light, and is a common marking seen on many dragons. The marking has a sibling marking called 'Pangare'.";
     $layers_above_or_below = '';
     $layers_above = '';

@@ -2,6 +2,7 @@
     $marking_icon = 'Common_Sable';
     $marking_name = 'Sable';
     $marking_code = 'nSa/SaSa';
+    $marking_type = 'Variable Modifier';
     $marking_desc = "A soft gradient marking that rests on the back of the dragon. The marking covers a similar range to blanket, which could be considered its sibling marking. Sable can be darker or lighter than the base or what it sits over.";
     $layers_above_or_below = '';
     $layers_above = '';
