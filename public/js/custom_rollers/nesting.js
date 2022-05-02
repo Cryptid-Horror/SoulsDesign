@@ -1335,7 +1335,7 @@ function generateUmber() {
 	if (document.getElementById("BU").checked) {
 		if (!destroyedModifiers.includes("Bottle of Bronze destroyed.<br>"))
 			destroyedModifiers += "Bottle of Bronze destroyed.<br>";
-		bonus = 80;
+		bonus = 15;
 	}
 	
 	// sanitize
@@ -1354,40 +1354,40 @@ function generateUmber() {
 	if (damCoat == "bb" && sireCoat == "bb") {
 		return "bb";
 	} else if (damCoat == "Bb" && sireCoat == "Bb") {
-		if (roll < 5) {
+		if (roll < 10) {
 			result = "BB";
-		} else if (roll < (60 + bonus)) {
+		} else if (roll < (50 + bonus)) {
 			result = "Bb";
 		} else {
 			result = "bb";
 		}
 	} else if (damCoat == "BB" && sireCoat == "BB") {
-		if (roll < 25) {
+		if (roll < 20) {
 			result = "BB";
-		} else if (roll < (90 + bonus)) {
+		} else if (roll < (65 + bonus)) {
 			result = "Bb";
 		} else {
 			result = "bb";
 		}
 	} else if ((damCoat == "Bb" && sireCoat == "BB") ||
 		       (damCoat == "BB" && sireCoat == "Bb")) {
-		if (roll < 10) {
+		if (roll < 15) {
 			result = "BB";
-		} else if (roll < (80 + bonus)) {
+		} else if (roll < (60 + bonus)) {
 			result = "Bb";
 		} else {
 			result = "bb";
 		}
 	} else if ((damCoat == "bb" && sireCoat == "BB") ||
 		       (damCoat == "BB" && sireCoat == "bb")) {
-		if (roll < (60 + bonus)) {
+		if (roll < (55 + bonus)) {
 			result = "Bb";
 		} else {
 			result = "bb";
 		}
 	} else if ((damCoat == "bb" && sireCoat == "Bb") ||
 		       (damCoat == "Bb" && sireCoat == "bb")) {
-		if (roll < (40 + bonus)) {
+		if (roll < (45 + bonus)) {
 			result = "Bb";
 		} else {
 			result = "bb";
@@ -1407,7 +1407,7 @@ function generateHaze() {
 	if (document.getElementById("BH").checked) {
 		if (!destroyedModifiers.includes("Bottle of Tarnished destroyed.<br>"))
 			destroyedModifiers += "Bottle of Tarnished destroyed.<br>";
-		bonus = 60;
+		bonus = 20;
 	}
 	
 	// sanitize
@@ -1426,40 +1426,40 @@ function generateHaze() {
 	if (damCoat == "tt" && sireCoat == "tt") {
 		return "tt";
 	} else if (damCoat == "Tt" && sireCoat == "Tt") {
-		if (roll < 4) {
+		if (roll < 10) {
 			result = "TT";
-		} else if (roll < (65 + bonus)) {
+		} else if (roll < (45 + bonus)) {
 			result = "Tt";
 		} else {
 			result = "tt";
 		}
 	} else if (damCoat == "TT" && sireCoat == "TT") {
-		if (roll < 20) {
+		if (roll < 19) {
 			result = "TT";
-		} else if (roll < (85 + bonus)) {
+		} else if (roll < (60 + bonus)) {
 			result = "Tt";
 		} else {
 			result = "tt";
 		}
 	} else if ((damCoat == "Tt" && sireCoat == "TT") ||
 		       (damCoat == "TT" && sireCoat == "Tt")) {
-		if (roll < 8) {
+		if (roll < 14) {
 			result = "TT";
-		} else if (roll < (75 + bonus)) {
+		} else if (roll < (55 + bonus)) {
 			result = "Tt";
 		} else {
 			result = "tt";
 		}
 	} else if ((damCoat == "tt" && sireCoat == "TT") ||
 		       (damCoat == "TT" && sireCoat == "tt")) {
-		if (roll < (55 + bonus)) {
+		if (roll < (50 + bonus)) {
 			result = "Tt";
 		} else {
 			result = "tt";
 		}
 	} else if ((damCoat == "tt" && sireCoat == "Tt") ||
 		       (damCoat == "Tt" && sireCoat == "tt")) {
-		if (roll < (35 + bonus)) {
+		if (roll < (40 + bonus)) {
 			result = "Tt";
 		} else {
 			result = "tt";
@@ -1481,7 +1481,7 @@ function generateIvory() {
 	if (document.getElementById("BI").checked) {
 		if (!destroyedModifiers.includes("Bottle of Silver destroyed.<br>"))
 			destroyedModifiers += "Bottle of Silver destroyed.<br>";
-		bonus = 40;
+		bonus = 25;
 	}
 	
 	// sanitize
@@ -1500,24 +1500,24 @@ function generateIvory() {
 	if (damCoat == "ss" && sireCoat == "ss") {
 		return "ss";
 	} else if (damCoat == "Ss" && sireCoat == "Ss") {
-		if (roll < 3) {
+		if (roll < 8) {
 			result = "SS";
-		} else if (roll < (30 + bonus)) {
+		} else if (roll < (40 + bonus)) {
 			result = "Ss";
 		} else {
 			result = "ss";
 		}
 	} else if (damCoat == "SS" && sireCoat == "SS") {
-		if (roll < 15) {
+		if (roll < 18) {
 			result = "SS";
-		} else if (roll < (75 + bonus)) {
+		} else if (roll < (55 + bonus)) {
 			result = "Ss";
 		} else {
 		        result = "ss";
 		  }      
 	} else if ((damCoat == "Ss" && sireCoat == "SS") ||
 		       (damCoat == "SS" && sireCoat == "Ss")) {
-		if (roll < 5) {
+		if (roll < 13) {
 			result = "ss";
 		} else if (roll < (50 + bonus)) {
 			result = "Ss";
@@ -1526,14 +1526,14 @@ function generateIvory() {
 		}
 	} else if ((damCoat == "ss" && sireCoat == "SS") ||
 		       (damCoat == "SS" && sireCoat == "ss")) {
-		if (roll < (50 + bonus)) {
+		if (roll < (45 + bonus)) {
 			result = "Ss";
 		} else {
 			result = "ss";
 		}
 	} else if ((damCoat == "ss" && sireCoat == "Ss") ||
 		       (damCoat == "Ss" && sireCoat == "ss")) {
-		if (roll < (25 + bonus)) {
+		if (roll < (35 + bonus)) {
 			result = "Ss";
 		} else {
 			result = "ss";
@@ -1554,7 +1554,7 @@ function generateVanta() {
 	if (document.getElementById("BV").checked) {
 		if (!destroyedModifiers.includes("Bottle of Obsidian destroyed.<br>"))
 			destroyedModifiers += "Bottle of Obsidian destroyed.<br>";
-		bonus = 20;
+		bonus = 30;
 	}
 	
 	// sanitize
@@ -1573,40 +1573,40 @@ function generateVanta() {
 	if (damCoat == "nn" && sireCoat == "nn") {
 		return "nn";
 	} else if (damCoat == "Nn" && sireCoat == "Nn") {
-		if (roll < 2) {
+		if (roll < 7) {
 			result = "NN";
-		} else if (roll < (10 + bonus)) {
+		} else if (roll < (35 + bonus)) {
 			result = "Nn";
 		} else {
 			result = "nn";
 		}
 	} else if (damCoat == "NN" && sireCoat == "NN") {
-		if (roll < 6) {
+		if (roll < 17) {
 			result = "NN";
-		} else if (roll < (70 + bonus)) { 
+		} else if (roll < (50 + bonus)) { 
 			result = "Nn";
 		} else {
 		        result = "nn";
 		 }       
 	} else if ((damCoat == "Nn" && sireCoat == "NN") ||
 		       (damCoat == "NN" && sireCoat == "Nn")) {
-		if (roll < 3) {
+		if (roll < 12) {
 			result = "NN";
-		} else if (roll < (15 + bonus)) {
+		} else if (roll < (45 + bonus)) {
 			result = "Nn";
 		} else {
 			result = "nn";
 		}
 	} else if ((damCoat == "nn" && sireCoat == "NN") ||
 		       (damCoat == "NN" && sireCoat == "nn")) {
-		if (roll < (30 + bonus)) {
+		if (roll < (40 + bonus)) {
 			result = "Nn";
 		} else {
 			result = "nn";
 		}
 	} else if ((damCoat == "nn" && sireCoat == "Nn") ||
 		       (damCoat == "Nn" && sireCoat == "nn")) {
-		if (roll < (5 + bonus)) {
+		if (roll < (30 + bonus)) {
 			result = "Nn";
 		} else {
 			result = "nn";
@@ -1762,99 +1762,86 @@ function generateTrait(traitToGen) {
 	if (document.getElementById("AT").checked) {
 		if (!destroyedModifiers.includes("Aether Tonic destroyed.<br>"))
 			destroyedModifiers += "Aether Tonic destroyed.<br>";
-		bonus = 80;
+		bonus = 20;
 	}
 	
 	var roll = randRange(100);
-	
+	//SAME PAIRINGS//
 	if (sireRarity == Rarity.COMMON && damRarity == Rarity.COMMON) {
 	    if (roll < 10 - bonus/3) {
-	            childRarity = Rarity.VERY_RARE;
-	    } else if (roll < 30 - bonus/3) { 
-	            childRarity = Rarity.RARE;
-		} else if (roll < 60 - bonus/3) {
-				childRarity = Rarity.UNCOMMON;
+	            childRarity = Rarity.UNCOMMON;
 		} else {
 				childRarity = Rarity.COMMON;
 		}
 		childRarity = Rarity.COMMON;
 	} else if (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.UNCOMMON) {
-		if (roll <30 - bonus/3) {
+		if (roll < 20 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 50 - bonus/3) {
+		} else if (roll < 30 - bonus/3) {
 			childRarity = Rarity.RARE;
-		} else if (roll < 60 - bonus/3) {
-			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.UNCOMMON;	
 		}
 	} else if (sireRarity == Rarity.RARE && damRarity == Rarity.RARE) {
-		if (roll < 20 - bonus/3) {
+		if (roll < 10 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 50 - bonus/3) { 
+		} else if (roll < 30 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 60 - bonus/3) {
+		} else if (roll < 90 - bonus/3) {
 			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.VERY_RARE) {
-		if (roll < 10 - bonus/3) {
+		if (roll < 5 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 30 - bonus/3) { 
+		} else if (roll < 20 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 60 - bonus/3) {
+		} else if (roll < 50 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
 			childRarity = Rarity.VERY_RARE;
 		}
+		//DIFFERENT PAIRINGS//
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.UNCOMMON) ||
 		       (sireRarity == Rarity.UNCOMMON && damRarity == Rarity.COMMON)){
-		if (roll < 40 - bonus/3) {
+		if (roll < 50 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 60 - bonus/3) {
-			childRarity = Rarity.RARE;
-		} else if (roll < 70 - bonus/3) {
-			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.UNCOMMON;
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.COMMON)) {
-		if (roll < 30 - bonus/3) {
+		if (roll < 60 - bonus/3) {
 			childRarity = Rarity.COMMON;
 		} else if (roll < 70 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 80 - bonus/3) {
-			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if ((sireRarity == Rarity.COMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.COMMON)) {
-		if (roll < 20 - bonus/3) {
+		if (roll < 70 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 50 - bonus/3) { 
+		} else if (roll < 75 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 90 - bonus/3) {
+		} else if (roll < 80 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
 			childRarity = Rarity.VERY_RARE
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.RARE) ||
 		       (sireRarity == Rarity.RARE && damRarity == Rarity.UNCOMMON)) {
-		if (roll < 30 - bonus/3) {
+		if (roll < 20 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 50 - bonus/3) { 
+		} else if (roll < 70 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 60 - bonus/3) {
-			childRarity = Rarity.VERY_RARE;
 		} else {
 			childRarity = Rarity.RARE;
 		}
 	} else if ((sireRarity == Rarity.UNCOMMON && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.UNCOMMON)) {
-		if (roll < 20 - bonus/3) {
+		if (roll < 10 - bonus/3) {
 			childRarity = Rarity.COMMON;
 		} else if (roll < 50 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
@@ -1865,11 +1852,11 @@ function generateTrait(traitToGen) {
 		}
 	} else if ((sireRarity == Rarity.RARE && damRarity == Rarity.VERY_RARE) ||
 		       (sireRarity == Rarity.VERY_RARE && damRarity == Rarity.RARE)) {
-		if (roll < 10 - bonus/3) {
+		if (roll < 5 - bonus/3) {
 			childRarity = Rarity.COMMON;
-		} else if (roll < 30 - bonus/3) { 
+		} else if (roll < 25 - bonus/3) { 
 			childRarity = Rarity.UNCOMMON;
-		} else if (roll < 50 - bonus/3) {
+		} else if (roll < 65 - bonus/3) {
 			childRarity = Rarity.RARE;
 		} else {
 			childRarity = Rarity.VERY_RARE
