@@ -191,7 +191,7 @@
                 function time() {
                     setInterval(function() { 
                         //60*60*1000*6 FALL BACK
-                        //60*60*1000*7 SPRING FORWARD
+                        //60*60*1000*5 SPRING FORWARD
                         var date = new Date(); // initial date, this acts kinda like a first carbon instance so we can preform functions on it
                         var time = new Date(date.getTime() - 60*60*1000*5);  // preform function on first date (basically get time in timestamp format, the 60*60*1000 is an offset of +1 hour. To do other timezones just convert it to the necessary amount of hours +- UTC
                         var cycle = time.getUTCHours() >= 12 ? ' PM' : ' AM'; // this gets the hour in military time so if it's greater than 12 it's pm
