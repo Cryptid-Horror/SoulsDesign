@@ -29,7 +29,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 
 <br>
 <br>
-<div class="col-md-6 text-center">
+{{--<div class="col-md-6 text-center">
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5>Recent Characters</h5>
@@ -46,7 +46,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
                 @include('widgets._recent_forum_posts')
 <br>
     <div class="row">
