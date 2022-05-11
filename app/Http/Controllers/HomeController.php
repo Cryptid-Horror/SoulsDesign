@@ -45,7 +45,23 @@ class HomeController extends Controller
             'featured' => $character,
         ]);
     }
+   
+    public function getIndex()
+    {
+        $characters = Character::with('user.rank')->with('image.features')->with('rarity')->with('image.species')->myo(0);
+        $imageQuery = CharacterImage::images()->with('features')->with('rarity')->with('species')->with('features')
+        ->whereIn('character_id', $characters->pluck('id')->toArray());
+        $imageQuery->orderBy('created_at', 'DESC')->take(10);
+        $characters->visible()->whereIn('id', $imageQuery->pluck('character_id')->toArray())->orderBy('updated_at', 'DESC')->take(4);
 
+        return view('welcome', [
+            'characters' => $characters->get(),
+            'news' => News::visible()->orderBy('updated_at', 'DESC')->first(),
+            'sales' => Sales::visible()->orderBy('updated_at', 'DESC')->first(),
+            'submissions' => $submissions->get(),
+            'about' => SitePage::where('key', 'about')->first()
+        ]);
+    }
 
     
     /**
