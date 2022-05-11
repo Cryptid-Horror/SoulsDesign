@@ -29,7 +29,25 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 
 <br>
 <br>
-            @include('widgets._recent_forum_posts')
+<div class="col-md-6 text-center">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>Recent Characters</h5>
+                        @if($characters->count() > 0)
+                            <div class="row no-gutters">
+                                @foreach($characters as $character)
+                                    <div class="col-md-3">
+                                        <a href="{{ $character->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $character->image->thumbnailUrl }}" /></a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <p>None!</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+                @include('widgets._recent_forum_posts')
 <br>
     <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
