@@ -10,11 +10,15 @@ use Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
+
 use App\Models\SitePage;
 use App\Models\Comment;
 use App\Models\Forum;
+use App\Models\News;
 use App\Models\Character\Character;
 use App\Models\Character\CharacterImage;
+use App\Models\Gallery\GallerySubmission;
+
 use App\Services\LinkService;
 use App\Services\DeviantArtService;
 use App\Services\UserService;
@@ -36,6 +40,15 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
+        $characters = Character::with('user.rank')->with('image.features')->with('rarity')->with('image.species')->myo(0);
+        $imageQuery = CharacterImage::images()->with('features')->with('rarity')->with('species')->with('features')
+        ->whereIn('character_id', $characters->pluck('id')->toArray())->orderBy('created_at', 'DESC')->get()->unique('character_id')->take(4)->pluck('character_id')->toArray();
+        $characters->whereIn('id', $imageQuery)->get();
+
+        $news = News::visible()->orderBy('updated_at', 'DESC')->take(1);
+
+        $gallerySubmissions = GallerySubmission::visible()->accepted()->orderBy('created_at', 'DESC')->take(4);
+
         if(Settings::get('featured_character')) {
             $character = Character::find(Settings::get('featured_character'));
         }
@@ -43,6 +56,9 @@ class HomeController extends Controller
         return view('welcome', [
             'about' => SitePage::where('key', 'about')->first(),
             'featured' => $character,
+            'news' => $news->first(),
+            'characters' => $characters->get(),
+            'gallerySubmissions' => $gallerySubmissions->get(),
         ]);
     }
 
