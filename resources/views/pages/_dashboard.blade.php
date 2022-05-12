@@ -18,14 +18,18 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 <a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-md-6 text-center">
+  <div class="col-md-6 text-center">
     <div class="card mb-4">
          <div class="card-body">
             <h5>Recent Characters</h5>
@@ -43,6 +47,12 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
         </div>
      </div>
  </div>
+
+</div>
+
+
+
+
 
           
  @include('widgets._recent_forum_posts')
