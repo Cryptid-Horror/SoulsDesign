@@ -18,6 +18,13 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 <a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
 
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 <div class="col-md-6 text-center">
     <div class="card mb-4">
          <div class="card-body">
