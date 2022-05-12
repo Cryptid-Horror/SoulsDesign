@@ -43,7 +43,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
             <h5>Recent Characters</h5>
                 @if($news->count() > 0)
                     <div class="row no-gutters">
-                         @foreach($news as $news)
+                         @foreach($news as $new)
                              <div class="col-md-3">
                                 <a href="{{ $new->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $new->image->thumbnailUrl }}" /></a>
                             </div>
