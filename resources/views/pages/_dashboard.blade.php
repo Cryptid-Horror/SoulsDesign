@@ -18,38 +18,46 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 <a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
 
-
-
-<br>
-<br>
-
-
-
-
-
-<br>
-<br>
 <div class="col-md-6 text-center">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5>Recent Characters</h5>
-                        @if($characters->count() > 0)
-                            <div class="row no-gutters">
-                                @foreach($characters as $character)
-                                    <div class="col-md-3">
-                                        <a href="{{ $character->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $character->image->thumbnailUrl }}" /></a>
-                                    </div>
-                                @endforeach
+    <div class="card mb-4">
+         <div class="card-body">
+            <h5>Recent Characters</h5>
+                @if($characters->count() > 0)
+                    <div class="row no-gutters">
+                         @foreach($characters as $character)
+                             <div class="col-md-3">
+                                <a href="{{ $character->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $character->image->thumbnailUrl }}" /></a>
                             </div>
-                        @else
-                            <p>None!</p>
-                        @endif
+                         @endforeach
                     </div>
-                </div>
-            </div>
+                 @else
+             <p>None!</p>
+            @endif
+        </div>
+     </div>
+ </div>
+
+ <div class="col-md-6 text-center">
+    <div class="card mb-4">
+         <div class="card-body">
+            <h5>Recent Characters</h5>
+                @if($news->count() > 0)
+                    <div class="row no-gutters">
+                         @foreach($news as $news)
+                             <div class="col-md-3">
+                                <a href="{{ $new->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $new->image->thumbnailUrl }}" /></a>
+                            </div>
+                         @endforeach
+                    </div>
+                 @else
+             <p>None!</p>
+            @endif
+        </div>
+     </div>
+ </div>
 
           
-                @include('widgets._recent_forum_posts')
+ @include('widgets._recent_forum_posts')
 <br>
     <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
