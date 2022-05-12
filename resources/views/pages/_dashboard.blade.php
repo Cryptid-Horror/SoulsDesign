@@ -36,30 +36,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
         </div>
      </div>
  </div>
- <div class="col-md-6 text-center">
-    <div class="card mb-4">
-         <div class="card-body">
-         @if($gallerySubmissions->count())
-        <div class="row">
-            <div class="col text-center">
-                <div class="card mb-4">
-                    <div class="card-title mt-3 mb-2 px-2">
-                        <h5>Recent Gallery Submissions</h5>
-                        <div class="row mw-100 mx-auto">
-                            @foreach($gallerySubmissions->get() as $submission)
-                                <div class="col-md-3 align-self-center">
-                                    @include('galleries._thumb', ['submission' => $submission, 'gallery' => false])
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-        </div>
-     </div>
- </div>
+
           
  @include('widgets._recent_forum_posts')
 <br>
