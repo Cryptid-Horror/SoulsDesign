@@ -14,7 +14,7 @@
 
 @endphp
 
-<div class="card mb-4">
+<div class="card mb-3">
         <h5 class="card-title text-center my-2">Recent Forum Posts</h5>
     <ul class="list-group list-group-flush">
         @if($posts->count())
