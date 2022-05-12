@@ -14,50 +14,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
   </button>
 </div>
 
-<h2>Current Event</h2>
-
-
-
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text"><a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
-<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 text-center">
-    <div class="card mb-4">
-         <div class="card-body">
-            <h5>Recent Characters</h5>
-                @if($characters->count() > 0)
-                    <div class="row no-gutters">
-                         @foreach($characters as $character)
-                             <div class="col-md-3">
-                                <a href="{{ $character->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $character->image->thumbnailUrl }}" /></a>
-                            </div>
-                         @endforeach
-                    </div>
-                 @else
-             <p>None!</p>
-            @endif
-        </div>
-     </div>
- </div>
-
-</div>
-
-
-
-
-
-          
- @include('widgets._recent_forum_posts')
-<br>
-    <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/xdd.png'),
@@ -158,6 +115,44 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
             ])
         </div>
     </div>
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text"><a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <div class="card mb-4">
+         <div class="card-body">
+            <h5>Recent Characters</h5>
+                @if($characters->count() > 0)
+                    <div class="row no-gutters">
+                         @foreach($characters as $character)
+                             <div class="col-md-3">
+                                <a href="{{ $character->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $character->image->thumbnailUrl }}" /></a>
+                            </div>
+                         @endforeach
+                    </div>
+                 @else
+             <p>None!</p>
+            @endif
+        </div>
+     </div>
+ </div>
+
+</div>
+ 
+ @include('widgets._recent_forum_posts')
+<br>
+    
 
    {{-- @include('widgets._questboard', [
         'questImage1' => asset('images/testpage.png'),
