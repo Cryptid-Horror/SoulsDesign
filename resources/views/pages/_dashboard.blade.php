@@ -37,24 +37,24 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
      </div>
  </div>
 
- <div class="col-md-6 text-center">
-    <div class="card mb-4">
-         <div class="card-body">
-            <h5>Recent Characters</h5>
-                @if($news->count() > 0)
-                    <div class="row no-gutters">
-                         @foreach($news as $new)
-                             <div class="col-md-3">
-                                <a href="{{ $new->url }}"><img class="mb-2" style="width:90%; max-width:200px; background-color:#fefcf6; border-radius:.5em; border: 2px solid #fefcf6;" src="{{ $new->image->thumbnailUrl }}" /></a>
-                            </div>
-                         @endforeach
+ @if($gallerySubmissions->count())
+        <div class="row">
+            <div class="col text-center">
+                <div class="card mb-4">
+                    <div class="card-title mt-3 mb-2 px-2">
+                        <h5>Recent Gallery Submissions</h5>
+                        <div class="row mw-100 mx-auto">
+                            @foreach($gallerySubmissions->get() as $submission)
+                                <div class="col-md-3 align-self-center">
+                                    @include('galleries._thumb', ['submission' => $submission, 'gallery' => false])
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                 @else
-             <p>None!</p>
-            @endif
+                </div>
+            </div>
         </div>
-     </div>
- </div>
+        @endif
 
           
  @include('widgets._recent_forum_posts')
