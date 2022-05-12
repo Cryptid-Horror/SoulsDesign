@@ -36,8 +36,10 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
         </div>
      </div>
  </div>
-
- @if($gallerySubmissions->count())
+ <div class="col-md-6 text-center">
+    <div class="card mb-4">
+         <div class="card-body">
+         @if($gallerySubmissions->count())
         <div class="row">
             <div class="col text-center">
                 <div class="card mb-4">
@@ -55,7 +57,9 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
             </div>
         </div>
         @endif
-
+        </div>
+     </div>
+ </div>
           
  @include('widgets._recent_forum_posts')
 <br>
