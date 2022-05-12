@@ -15,8 +15,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
 </div>
 
 <h2>Current Event</h2>
-<a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
-<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
+
 
 
 <div class="row">
@@ -24,7 +23,8 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
