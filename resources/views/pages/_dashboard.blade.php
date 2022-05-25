@@ -23,7 +23,7 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
                     'Profile' => Auth::user()->url,
                     'User Settings' => url('account/settings'),
                     'Notifications' => url('notifications'),
-                    'Player Occupations' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Occupations'),
+                    'Player Guide Hub' => url(''),
                 ]
             ])
         </div>
@@ -34,9 +34,8 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
                 'links' => [
                     'My Dragons' => url('characters'),
                     'My Genotypes' => url('characters/myos'),
-                    'Dragon Transfers' => url('characters/transfers/incoming'),
-                    'Adoption Center' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Adoption%20Center'),
-                    'Dragon Occupations' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Occupations')
+                    'Transfers' => url('characters/transfers/incoming'),
+                    'Design Guide' => url('https://www.soulsbetween.com/design'),
                 ]
             ])
         </div>
@@ -56,61 +55,13 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
             @include('widgets._hovereffect_image', [
                 'imageUrl' => asset('images/design.png'),
-                'header' => 'Design',
+                'header' => 'Prompts',
                 'links' => [
-                    'Import Downloads' => url('https://www.soulsbetween.com/world/subtypes'),
-                    'Genetics Portal' => url('https://www.soulsbetween.com/design'),
-                    'Dragon Registration' => url('info/dragon_Registration'),
-                    'Registration Portal' => url('https://www.soulsbetween.com/designs')
-                ]
-            ])
-        </div>
-        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
-            @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/activities.png'),
-                'header' => 'Activities',
-                'links' => [
-                    'Dailies' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Daily%20Activities'),
-                    'Quests' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Basic%20Quests'),
-                    'Taming' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Taming%20Rites'),
-                    'Aether Restoration' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Aether%20Restoration'),
-                    'Free Rolls' => ('https://www.soulsbetween.com/info/MFA')
-                ]
-            ])
-        </div>
-        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
-            @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/special.png'),
-                'header' => 'Combat and Events',
-                'links' => [
-                    'Arena' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena'),
-                    'Grand Hunt' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=The%20Grand%20Hunt'),
-                    'Vortex' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=The%20Vortex'),
-                    'Healing Shrine' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Healing%20Shrine'),
-                ]
-            ])
-        </div>
-        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
-            @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/nest.png'),
-                'header' => 'Nesting',
-                'links' => [
-                    'Permissions' => url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=25'),
-                    'Submissions' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
-                    'Hatchery' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20and%20Hatchery'),
-                    'Nesting Rites' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Nesting%20Rites'),
-                ]
-            ])
-        </div>
-        <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
-            @include('widgets._hovereffect_image', [
-                'imageUrl' => asset('images/levels2.png'),
-                'header' => 'Levels',
-                'links' => [
-                    'Dragon Levels (CE)' => url('https://www.soulsbetween.com/world/levels/character'),
-                    'Player Levels (EE)' => url('https://www.soulsbetween.com/level'),
-                    'CE & EE' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Experience%20Claims'),
-                    'Non Activity CE' => url('https://www.soulsbetween.com/prompts/prompt-categories?name=Rank%20Updates'),
+                    'Trials of Passage' => url(''),
+                    'Activities' => url(''),
+                    'Miscellanious' => url(''),
+                    'Nesting and Hatchery' => url('')
+                    'Events' => url('')
                 ]
             ])
         </div>
@@ -122,10 +73,8 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text"><a href="{{ url('https://www.soulsbetween.com/world/events/5') }}"><img src="{{ asset('images/eggevent.png') }}"></a>
+        <h5 class="card-title">Current Events</h5>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
