@@ -60,8 +60,8 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
                     'Trials of Passage' => url(''),
                     'Activities' => url(''),
                     'Miscellanious' => url(''),
-                    'Nesting and Hatchery' => url('')
-                    'Events' => url('')
+                    'Nesting and Hatchery' => url(''),
+                    'Events' => url(''),
                 ]
             ])
         </div>
