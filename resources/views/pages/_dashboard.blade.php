@@ -1,11 +1,11 @@
 
 
 <h1>Welcome, {!! Auth::user()->displayName !!}!</h1>
-<div class="card mb-4 timestamp">
+{{--<div class="card mb-4 timestamp">
     <div class="card-body">
         <i class="far fa-clock"></i> {!! format_date(Carbon\Carbon::now()) !!}
     </div>
-</div>
+</div>--}}
 
  <div class="alert alert-success alert-dismissible fade show" role="alert">
 The AOT event has concluded - We will be rolling out rewards and raffles over the weekend!
