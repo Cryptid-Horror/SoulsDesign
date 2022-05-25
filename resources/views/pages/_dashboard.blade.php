@@ -7,12 +7,7 @@
     </div>
 </div>--}}
 
- <div class="alert alert-success alert-dismissible fade show" role="alert">
-The AOT event has concluded - We will be rolling out rewards and raffles over the weekend!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+ 
 
 <div class="row">
         <div class="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -73,7 +68,13 @@ The AOT event has concluded - We will be rolling out rewards and raffles over th
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Current Events</h5>
+        <h5 class="card-title">Current Events and Notices</h5>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+The AOT event has concluded - We will be rolling out rewards and raffles over the weekend!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div><br>
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
       </div>
     </div>
