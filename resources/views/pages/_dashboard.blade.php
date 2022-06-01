@@ -70,7 +70,8 @@
       <div class="card-body">
         <h5 class="card-title">Current Events and Notices</h5>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-The AOT event has concluded - We will be rolling out rewards and raffles over the weekend!
+Arena Season has been extended until the 15th of June!<br>
+Midsummer Event will be released Shortly!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
