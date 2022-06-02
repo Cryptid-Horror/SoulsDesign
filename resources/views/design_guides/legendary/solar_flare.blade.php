@@ -32,7 +32,7 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'yes';
+    $edge_blurred = 'no';
     $edge_gradient = 'yes';
     $color_any = 'yes';
     $edge_blending = 'yes';
@@ -47,13 +47,15 @@
         'solarflare_yes4',
         'solarflare_yes5',
         'solarflare_yes6',
+        'solarflare_yes7',
         'solarflare_no1',
         'solarflare_no2',
         'solarflare_no5',
-        'solarflare_no6',
         'solarflare_no7',
         'blank',
         'solarflare_body1',
+        'solarflare_body2',
+
     ];
 
     // You can use html!
@@ -62,7 +64,8 @@
         ♦ Solar flare should appear as a gradient with a minimum 3 to 4 colors blending into the base coat. <br>
         ♦ Solar flare can be any color, affected by a color marking, or affected by duotone and tritone to give it more color options.<br>
         ♦ Dark colors are allowed so long as there are at least 3 or 4 different colors present in the gradient.<br> 
-        ♦ An <i>optional</i> glow is allowed only <b>behind</b> the dragon. It may have a secondary glow spot to create a lens flare effect.',
+        ♦ An <i>optional</i> glow is allowed only <b>behind</b> the dragon. It may have a secondary glow spot to create a lens flare effect.<br>
+        ♦ Solar flare does not need to be circular or straight in shape - its edges can vary, so long as the edges remain a fully blended gradient.',
     ];
 
     $marking_cannot = [
@@ -76,7 +79,7 @@
     $marking_must = [
         '<b>Recessive Coverage:</b> 40% of the body and from only a single "point."<br>
         ♦ <b>Dominant Coverage:</b> 60% of the body and can be from two "points."<br>
-        ♦ <i>Points</i> Refer to one of the following parts of the character: Head, Front Legs, Back Legs, Wings, Tail. Front legs would count as one point, same as back legs and wings.<br>
+        ♦ <i>Points</i> Refer to any singular spot on the body where the brightest or darkest part of solar flare exists.<br>
         ♦ In the case of <i>dominant</i> solar flare, two glows may be present <b>behind</b> the body with two lens flares also behind the body.<br>
         ♦ Solar flare must have a minimum of 3 or 4 colors present in the marking, however it can up to 7 colors maximum.',
     ];
