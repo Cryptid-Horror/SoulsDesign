@@ -52,6 +52,7 @@
         'solarflare_no5',
         'solarflare_no6',
         'solarflare_no7',
+        'solareflare_body1',
     ];
 
     // You can use html!
