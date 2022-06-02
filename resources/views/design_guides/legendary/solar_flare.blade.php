@@ -3,7 +3,7 @@
     $marking_name = 'Solar Flare';
     $marking_code = 'nSf/SfSf';
     $marking_type = 'Variable';
-    $marking_desc = "A marking that causes a brilliant wave color to cascade from a point on the character's body. Suggested by PlusBacon.";
+    $marking_desc = "A marking that causes a brilliant wave of color to cascade from a point on the character's body. Suggested by PlusBacon.";
     $layers_above_or_below = '';
     $layers_above = '';
     $layers_below = '';
