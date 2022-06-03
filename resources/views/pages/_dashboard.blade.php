@@ -95,7 +95,31 @@ Midsummer Event will be released Shortly!
                  @else
              <p>None!</p>
             @endif
-        test text
+            @include('widgets._questboard', [
+        'questImage1' => asset('images/testpage.png'),
+        'questUrl1' => url('crafting'),
+
+        'questImage2' => asset('images/testpage.png'),
+        'questUrl2' => url('level'),
+
+        'questImage3' => asset('images/testpage.png'),
+        'questUrl3' => url('world'),
+
+        'questImage4' => asset('images/testpage.png'),
+        'questUrl4' => url('prompts'),
+
+        'questImage5' => asset('images/testpage.png'),
+        'questUrl5' => url('shops'),
+
+        'questImage6' => asset('images/testpage.png'),
+        'questUrl6' => url('level'),
+
+        'questImage7' => asset('images/testpage.png'),
+        'questUrl7' => url('level'),
+
+        'questImage8' => asset('images/testpage.png'),
+        'questUrl8' => url('level')
+    ]) 
         </div>
      </div>
  </div>
