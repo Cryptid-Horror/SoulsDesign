@@ -95,6 +95,7 @@ Midsummer Event will be released Shortly!
                  @else
              <p>None!</p>
             @endif
+        test text
         </div>
      </div>
  </div>
