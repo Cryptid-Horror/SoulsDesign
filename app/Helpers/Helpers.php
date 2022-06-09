@@ -291,6 +291,7 @@ function prettyProfileName($url)
     else return $url;
 }
 
+
 /**
  * Removes special characters and replaces spaces with hyphens.
  * https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string
@@ -303,3 +304,29 @@ function clean($string) {
  
     return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
  }
+
+// World Expansion attachments
+function allAttachments($model)
+{
+    $attachments = $model->attachments;
+    $attachers = $model->attachers;
+    $totals = [];
+    if($attachments){
+        foreach($attachments as $attach){
+            $class = class_basename($attach->attachment);
+            if(!isset($totals[$class])) $totals[$class] = [];
+            $totals[$class][] = $attach->attachment;
+            $totals[$class] = array_unique($totals[$class]);
+        }
+    }
+    if($attachers){
+        foreach($attachers as $attach){
+            $class = class_basename($attach->attacher);
+            if(!isset($totals[$class])) $totals[$class] = [];
+            $totals[$class][] = $attach->attacher;
+            $totals[$class] = array_unique($totals[$class]);
+        }
+    }
+    return $totals;
+}
+
