@@ -123,10 +123,25 @@
                          <i class="fas fa-book"></i>Codex 
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                           <i class="fas fa-book ml-3"></i> Lore & World 
+                           <i class="fas fa-book ml-3"></i> World 
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/event-categories') }}">
+                           <i class="fas fa-book ml-3"></i> Events 
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/fauna-categories') }}">
+                           <i class="fas fa-book ml-3"></i> Fauna 
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/flora-categories') }}">
+                           <i class="fas fa-book ml-3"></i> Flora 
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/Lore-categories') }}">
+                           <i class="fas fa-book ml-3"></i> Lore 
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/location-types') }}">
+                           <i class="fas fa-book ml-3"></i> Locations 
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                           <i class="fas fa-book"></i> Guides 
+                           <i class="fas fa-book ml-3"></i> Guides 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
