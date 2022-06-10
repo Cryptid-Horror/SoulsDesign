@@ -72,7 +72,7 @@
                             <i class="fas fa-store ml-3"></i> Shops
                         </a>
                         <a class="dropdown-item" href="{{ url('info/Flights') }}">
-                            <i class="fas fa-dragon"></i> Flights
+                            <i class="fas fa-dragon ml-3"></i> Flights
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('forum/13') }}">
