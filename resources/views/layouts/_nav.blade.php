@@ -86,7 +86,7 @@
                         Community
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                    Social    
+                    ✨Social    
                     <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
                             <i class="fab fa-discord ml-3"></i> Discord
                         </a>
@@ -100,8 +100,7 @@
                         <a class="dropdown-item" href="{{ url('trades/listings') }}">
                         <i class="fa-solid fa-arrow-right-arrow-left ml-3"></i> Trade Listings
                         </a>
-                        Resources
-                        <div class="dropdown-divider"></div>
+                        ✨Resources
                         <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
                         <i class="fa-solid fa-bug ml-3"></i> Bug Reports
                         </a>
@@ -123,20 +122,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
                 <li class="nav-item dropdown">
-                    <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                ✨Codex    
+                <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Codex
                     </a>
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
 
                         <a class="dropdown-item" href="{{ url('world') }}">
-                            <i class="fas fa-book"></i> Database
+                            <i class="fas fa-book ml-3"></i> Database
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                            <i class="fas fa-book-atlas ml-3"></i>Lore & World
+                        <i class="fas fa-book ml-3"></i>Lore & World
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                            <i class="fa-solid fa-book-bookmark ml-3"></i> Guides
+                        <i class="fas fa-book ml-3"></i> Guides
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
