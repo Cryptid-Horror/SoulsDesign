@@ -73,9 +73,13 @@
     @endif
 
     @if(Auth::check() && Auth::user()->theme)
+        @php $theme = Auth::user()->theme->cssUrl @endphp
         <link href="{{ Auth::user()->theme->cssUrl }}" rel="stylesheet">
     @elseif(isset($defaultTheme))
+        @php $theme = $defaultTheme->CSSUrl @endphp
         <link href="{{ $defaultTheme->CSSUrl }}" rel="stylesheet">
+    @else
+        @php $theme = null @endphp
     @endif
 
 </head>
@@ -163,7 +167,12 @@
                     content_css: [
                         '{{ asset('css/app.css') }}',
                         '{{ asset('css/lorekeeper.css') }}',
+
                         '{{ asset('js/skins/content/souls/content.min.css') }}'
+
+                       '{{ asset('css/custom.css') }}',
+                        '{{$theme}}'
+
                     ],
                     spoiler_caption: 'Toggle Spoiler',
                     target_list: false,
