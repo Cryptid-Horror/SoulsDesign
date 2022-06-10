@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
-                    <i class="fas fa-star-and-crescent"></i> 
+                    <i class="fa-solid fa-sparkles"></i> 
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
@@ -120,28 +120,13 @@
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
                         
                          <a class="dropdown-item" href="{{ url('world') }}">
-                         <i class="fas fa-book"></i>Codex 
+                         <i class="fas fa-book"></i>Database
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                           <i class="fas fa-book ml-3"></i> World 
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/event-categories') }}">
-                           <i class="fas fa-book ml-3"></i> Events 
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/fauna-categories') }}">
-                           <i class="fas fa-book ml-3"></i> Fauna 
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/flora-categories') }}">
-                           <i class="fas fa-book ml-3"></i> Flora 
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/Lore-categories') }}">
-                           <i class="fas fa-book ml-3"></i> Lore 
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/location-types') }}">
-                           <i class="fas fa-book ml-3"></i> Locations 
+                           <i class="fas fa-book-spells ml-3"></i>Lore & World 
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                           <i class="fas fa-book ml-3"></i> Guides 
+                           <i class="fas fa-book-bookmark ml-3"></i> Guides 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
