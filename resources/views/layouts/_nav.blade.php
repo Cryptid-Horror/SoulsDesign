@@ -34,18 +34,18 @@
                                <i class="fas fa-clipboard-list"></i> Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('prompts') }}">
-                                <i class="fas fa-dungeon"></i> Activity Prompts
+                                <i class="fas fa-dungeon"></i> Activities
                             </a>
-                            <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Adoption%20Center') }}">
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
                                <i class="fas fa-egg"></i> Adoption Center
                             </a>
                             <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
                             <i class="fas fa-egg"></i> Breeding Permissions
                             </a>
-                            <a class="dropdown-item" href="{{ url('challenges') }}">
+                            {[--<a class="dropdown-item" href="{{ url('challenges') }}">
                             <i class="fas fa-dungeon"></i> Challenges
-                            </a>
-                            <a class="dropdown-item" href="{{ url('prompts/prompt-categories?name=Experience%20Claims') }}">
+                            </a>--]}
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
                             <i class="fas fa-level-up-alt"></i> Celestial & Ethereal EXP
                             </a>
                             <a class="dropdown-item" href="{{ url('crafting') }}">
@@ -212,10 +212,10 @@
                                 Submit Report
                             </a>
                             <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
-                            <i class="fas fa-lock-open"></i>Staff Applications
+                            <i class="fas fa-lock-open"></i>Staff Application
                             </a>
                             <a class="dropdown-item" href="{{ url('info/GAP') }}">
-                            <i class="fas fa-lock-open"></i>Guest Artist Applications
+                            <i class="fas fa-lock-open"></i>Guest Artist Application
                             </a>
                             <a class="dropdown-item" href="{{ url('forum/16') }}">
                                 Suggestions/Feedback
