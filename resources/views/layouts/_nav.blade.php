@@ -121,14 +121,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
-                <li class="nav-item dropdown">
-                ✨Codex    
+                <li class="nav-item dropdown">   
                 <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Codex
                     </a>
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
-
+                    ✨Codex 
                         <a class="dropdown-item" href="{{ url('world') }}">
                             <i class="fas fa-book ml-3"></i> Database
                         </a>
@@ -138,7 +137,7 @@
                         <a class="dropdown-item" href="{{ url('') }}">
                         <i class="fas fa-book ml-3"></i> Guides
                         </a>
-                        <div class="dropdown-divider"></div>
+                        ✨Masterlists
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
                             Dragon Masterlist
                         </a>
