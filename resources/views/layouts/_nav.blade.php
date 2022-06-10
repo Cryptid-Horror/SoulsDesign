@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
-                    <i class="fa-solid fa-sparkles"></i> 
+    ✨ 
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
