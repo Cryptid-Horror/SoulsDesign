@@ -115,14 +115,18 @@
                                 <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
                  <li class="nav-item dropdown">
                     <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Lore and World
+                        Codex
                     </a>
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
-                        <a class="dropdown-item" href="{{ url('world/info') }}">
-                            Lore and World Info
-                        </a>
+                        
                          <a class="dropdown-item" href="{{ url('world') }}">
-                            Encyclopedia
+                         <i class="fas fa-book">Codex </i>
+                        </a>
+                        <a class="dropdown-item" href="{{ url('world/info') }}">
+                           <i class="fas fa-book"> Lore & World </i>
+                        </a>
+                        <a class="dropdown-item" href="{{ url('') }}">
+                           <i class="fas fa-book"> Guides </i>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
@@ -212,10 +216,10 @@
                                 Submit Report
                             </a>
                             <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
-                            <i class="fas fa-lock-open"></i>Staff Application
+                            <i class="fas fa-lock-open"></i>Staff Apps
                             </a>
                             <a class="dropdown-item" href="{{ url('info/GAP') }}">
-                            <i class="fas fa-lock-open"></i>Guest Artist Application
+                            <i class="fas fa-lock-open"></i>Guest Artist Apps
                             </a>
                             <a class="dropdown-item" href="{{ url('forum/16') }}">
                                 Suggestions/Feedback
