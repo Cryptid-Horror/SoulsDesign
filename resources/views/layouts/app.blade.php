@@ -168,10 +168,10 @@
                         '{{ asset('css/app.css') }}',
                         '{{ asset('css/lorekeeper.css') }}',
 
-                        '{{ asset('js/skins/content/souls/content.min.css') }}'
+                        '{{ asset('js/skins/content/souls/content.min.css') }}',
 
                        '{{ asset('css/custom.css') }}',
-                        '{{$theme}}'
+                        '{{$theme}}',
 
                     ],
                     spoiler_caption: 'Toggle Spoiler',
