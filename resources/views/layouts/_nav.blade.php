@@ -31,34 +31,37 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="queueDropdown">
                             <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
-                               <i class="fas fa-clipboard-list"></i> Activity Guide
+                            Prompts   
+                            <i class="fas fa-clipboard-list ml-3"></i> Activity Guide
                             </a>
                             <a class="dropdown-item" href="{{ url('prompts') }}">
-                                <i class="fas fa-dungeon"></i> Activities
-                            </a>
-                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
-                               <i class="fas fa-egg"></i> Adoption Center
-                            </a>
-                            <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
-                            <i class="fas fa-egg"></i> Breeding Permissions
+                                <i class="fas fa-dungeon ml-3"></i> Activity List
                             </a>
                             <!--<a class="dropdown-item" href="{{ url('challenges') }}">
-                            <i class="fas fa-dungeon"></i> Challenges
+                            <i class="fas fa-dungeon ml-3"></i> Challenges
                             </a>-->
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
-                            <i class="fas fa-level-up-alt"></i> Celestial & Ethereal EXP
+                            <i class="fas fa-level-up-alt ml-3"></i> Celestial & Ethereal EXP
                             </a>
+                            Nesting & Hatchery
+                            <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
+                               <i class="fas fa-egg ml-3"></i> Adoption Center
+                            </a>
+                            <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
+                            <i class="fas fa-egg ml-3"></i> Breeding Permissions
+                            </a>
+                            Design<a class="dropdown-item" href="{{ url('info/dragon_registration') }}">
+                               <i class="fas fa-paint-brush ml-3"></i>  Design Registration
+                            </a>
+                            Other
                             <a class="dropdown-item" href="{{ url('crafting') }}">
-                               <i class="fas fa-mortar-pestle"></i> Crafting
-                            </a>
-                            <a class="dropdown-item" href="{{ url('info/dragon_registration') }}">
-                               <i class="fas fa-paint-brush"></i>  Design Registration
+                               <i class="fas fa-mortar-pestle ml-3"></i> Crafting
                             </a>
                             <a class="dropdown-item" href="{{ url('info/MFA') }}">
-                                <i class="fas fa-dungeon"></i> Monthly Free Activities
+                                <i class="fas fa-dungeon ml-3"></i> Monthly Free Activities
                             </a>
                             <a class="dropdown-item" href="{{ url('shops') }}">
-                               <i class="fas fa-store"></i> Shops
+                               <i class="fas fa-store ml-3"></i> Shops
                             </a>
                             
                             <div class="dropdown-divider"></div>
