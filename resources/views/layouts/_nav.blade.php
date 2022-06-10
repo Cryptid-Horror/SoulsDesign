@@ -113,10 +113,10 @@
                         <i class="fa-solid fa-users ml-3"></i>  Users
                         </a>
                         <a class="dropdown-item" href="{{ url('forum/13') }}">
-                        <i class="fa-brands fa-pagelines ml-3"></i></i> Leasing Dragons
+                        <i class="fa-brands fa-pagelines ml-3"></i> Leasing Dragons
                         </a>
                         <a class="dropdown-item" href="{{ url('info/Sales') }}">
-                        <i class="fa-solid fa-tags ml-3"></i></i>Seasonal Sales
+                        <i class="fa-solid fa-store ml-3"></i>Seasonal Sales
                         </a>
                     </div>
                 </li>
