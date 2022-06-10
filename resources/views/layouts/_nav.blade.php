@@ -43,6 +43,9 @@
                         <a class="dropdown-item" href="{{ url('prompts') }}">
                             <i class="fas fa-dungeon ml-3"></i> Activity List
                         </a>
+                        <a class="dropdown-item" href="{{ url('info/MFA') }}">
+                            <i class="fas fa-dungeon ml-3"></i> Monthly Free Activities
+                        </a>
                         <!--<a class="dropdown-item" href="{{ url('challenges') }}">
                             <i class="fas fa-dungeon ml-3"></i> Challenges
                             </a>-->
@@ -65,22 +68,15 @@
                         <a class="dropdown-item" href="{{ url('crafting') }}">
                             <i class="fas fa-mortar-pestle ml-3"></i> Crafting
                         </a>
-                        <a class="dropdown-item" href="{{ url('info/MFA') }}">
-                            <i class="fas fa-dungeon ml-3"></i> Monthly Free Activities
-                        </a>
                         <a class="dropdown-item" href="{{ url('shops') }}">
                             <i class="fas fa-store ml-3"></i> Shops
                         </a>
                         <a class="dropdown-item" href="{{ url('info/Flights') }}">
                             <i class="fas fa-dragon ml-3"></i> Flights
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('forum/13') }}">
-                            <i class="fas fa-sign"></i> Leasing Dragons
-                        </a>
-                        <a class="dropdown-item" href="{{ url('info/Sales') }}">
-                            <i class="fas fa-store"></i>Seasonal Sales
-                        </a>
+                        </a>  
+                        <a class="dropdown-item" href="{{ url('raffles') }}">
+                        <i class="fa-solid fa-ticket ml-3"></i>Raffles
+                        </a>                      
                     </div>
                 </li>
 
@@ -90,36 +86,37 @@
                         Community
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                        <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
-                            <i class="fab fa-discord"></i> Discord
+                    Social    
+                    <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
+                            <i class="fab fa-discord ml-3"></i> Discord
                         </a>
 
                         <a class="dropdown-item" href="{{ url('forum') }}">
-                            <i class="fas fa-sign"></i> Forums
+                            <i class="fas fa-sign ml-3"></i> Forums
                         </a>
                         <a class="dropdown-item" href="{{ url('gallery') }}">
-                            <i class="fas fa-paint-brush"></i>Gallery
-                        </a>
-
-                        <a class="dropdown-item" href="{{ url('info/R-A-F') }}">
-                            <i class="fas fa-sign"></i> Refer a Friend
+                            <i class="fas fa-paint-brush ml-3"></i>Gallery
                         </a>
                         <a class="dropdown-item" href="{{ url('trades/listings') }}">
-                            <i class="fas fa-sign"></i> Trade Listings
+                        <i class="fa-solid fa-arrow-right-arrow-left ml-3"></i> Trade Listings
                         </a>
+                        Resources
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
-                            Bug Reports
+                        <i class="fa-solid fa-bug ml-3"></i> Bug Reports
                         </a>
                         <a class="dropdown-item"
                             href="{{ url('https://docs.google.com/spreadsheets/d/1DAK3eKFtAaqfA51r2USy6vT9Lzv7Xsv8uypeohMtcOs/edit?usp=sharing') }}">
-                            Offsite Tracker
-                        </a>
-                        <a class="dropdown-item" href="{{ url('raffles') }}">
-                            Raffles
+                            <i class="fa-solid fa-clipboard-list ml-3"></i> Offsite Tracker
                         </a>
                         <a class="dropdown-item" href="{{ url('users') }}">
-                            Users
+                        <i class="fa-solid fa-users ml-3"></i>  Users
+                        </a>
+                        <a class="dropdown-item" href="{{ url('forum/13') }}">
+                        <i class="fa-brands fa-pagelines ml-3"></i></i> Leasing Dragons
+                        </a>
+                        <a class="dropdown-item" href="{{ url('info/Sales') }}">
+                        <i class="fa-solid fa-tags ml-3"></i></i>Seasonal Sales
                         </a>
                     </div>
                 </li>
