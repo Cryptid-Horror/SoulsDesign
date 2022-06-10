@@ -98,7 +98,7 @@
                             <i class="fas fa-paint-brush ml-3"></i>Gallery
                         </a>
                         <a class="dropdown-item" href="{{ url('trades/listings') }}">
-                        <i class="fa-solid fa-arrow-right-arrow-left ml-3"></i> Trade Listings
+                        <i class="fa-solid fa-right-left ml-3"></i> Trade Listings
                         </a>
                         ✨Resources
                         <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
