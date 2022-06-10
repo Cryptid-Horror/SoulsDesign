@@ -120,13 +120,13 @@
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
                         
                          <a class="dropdown-item" href="{{ url('world') }}">
-                         <i class="fas fa-book">Codex </i>
+                         <i class="fas fa-book"></i>Codex 
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                           <i class="fas fa-book"> Lore & World </i>
+                           <i class="fas fa-book ml-3"></i> Lore & World 
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                           <i class="fas fa-book"> Guides </i>
+                           <i class="fas fa-book"></i> Guides 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
