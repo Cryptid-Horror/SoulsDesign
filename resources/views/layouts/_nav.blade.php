@@ -42,9 +42,9 @@
                             <a class="dropdown-item" href="{{ url('breeding-permissions') }}">
                             <i class="fas fa-egg"></i> Breeding Permissions
                             </a>
-                            {[--<a class="dropdown-item" href="{{ url('challenges') }}">
+                            <!--<a class="dropdown-item" href="{{ url('challenges') }}">
                             <i class="fas fa-dungeon"></i> Challenges
-                            </a>--]}
+                            </a>-->
                             <a class="dropdown-item" href="{{ url('https://www.soulsbetween.com/prompts/prompts?prompt_category_id=31') }}">
                             <i class="fas fa-level-up-alt"></i> Celestial & Ethereal EXP
                             </a>
