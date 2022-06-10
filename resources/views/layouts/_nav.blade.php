@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
     
-        <a class="navbar-brand" href="{{ url('/') }}">✨ 
-            {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
+        <a class="navbar-brand" href="{{ url('/') }}"> 
+        ✨{{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -120,13 +120,13 @@
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
                         
                          <a class="dropdown-item" href="{{ url('world') }}">
-                         <i class="fas fa-book"></i>Database
+                         <i class="fas fa-book"></i> Database
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                           <i class="fas fa-book-spells ml-3"></i>Lore & World 
+                           <i class="fas fa-book-atlas ml-3"></i>Lore & World 
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                           <i class="fas fa-book-bookmark ml-3"></i> Guides 
+                           <i class="fa-solid fa-book-bookmark ml-3"></i> Guides 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
