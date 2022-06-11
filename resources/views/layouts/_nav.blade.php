@@ -40,7 +40,7 @@
                         <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
                             <i class="fas fa-clipboard-list"></i> Activity Guide
                         </a>
-                        <a class="dropdown-item" href="{{ url('prompts') }}">
+                        <a class="dropdown-item" href="{{ url('prompts/prompt-categories') }}">
                             <i class="fas fa-dungeon"></i> Activity List
                         </a>
                         <a class="dropdown-item" href="{{ url('info/MFA') }}">
@@ -106,7 +106,7 @@
                         </a>
                         <a class="dropdown-item"
                             href="{{ url('https://docs.google.com/spreadsheets/d/1DAK3eKFtAaqfA51r2USy6vT9Lzv7Xsv8uypeohMtcOs/edit?usp=sharing') }}">
-                            <i class="fa-solid fa-clipboard-list ml-3"></i> Offsite Tracker
+                            <i class="fa-solid fa-clipboard-list"></i> Offsite Tracker
                         </a>
                         <a class="dropdown-item" href="{{ url('users') }}">
                         <i class="fa-solid fa-users"></i>  Users
