@@ -116,7 +116,7 @@ class SubmissionController extends Controller
             'count' => Submission::where('prompt_id', $submission->prompt_id)->where('status', 'Approved')->where('user_id', $submission->user_id)->count(),
             //'count' => $count,
             'prompt' => $prompt,
-            'limit' => $limit
+            'limit' => $limit,
         ] : []));
     }
 
