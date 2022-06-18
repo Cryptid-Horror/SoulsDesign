@@ -253,7 +253,7 @@ $( document ).ready(function() {
 
     $('.reward-type').on('change', function(e) {
         var val = $(this).val();
-        var $cell = $(this).parent().find('.loot-row-select');
+        var $cell = $(this).parent().parent().find('.loot-row-select');
 
         var $clone = null;
         if(val == 'Item') $clone = $itemSelect.clone();
@@ -273,6 +273,7 @@ $( document ).ready(function() {
 
         $cell.html('');
         $cell.append($clone);
+        if (val != 'ItemCategoryRarity' && val != 'ItemRarity') $clone.selectize();
     });
 
     function attachRewardTypeListener(node) {
