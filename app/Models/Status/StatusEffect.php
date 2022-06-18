@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Status\StatusEffect;
+namespace App\Models\Status;
 
 use Config;
 use App\Models\Model;
