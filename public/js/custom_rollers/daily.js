@@ -876,6 +876,8 @@ function injury(){
 			return "Dangerous creatures reside here, your dragon ran face to face with one and took an impressive hit. -40 HP";}
 		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
+			else if(zone.value == "aether" && i == 5){
+				return "Your Character has received Blighted Status Effect. -" + rand(30,100) + " HP";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
