@@ -69,14 +69,16 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Current Events and Notices</h5>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {}--<div class="alert alert-success alert-dismissible fade show" role="alert">
 Arena Season has been extended until the 15th of June!<br>
 Midsummer Event will be released Shortly!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div><br>
-<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a></p>
+<a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
+--}}
+There are no current events - Staff are working to catch up queues and we are working on finishing up on prompt overhaul! </p>
       </div>
     </div>
   </div>
