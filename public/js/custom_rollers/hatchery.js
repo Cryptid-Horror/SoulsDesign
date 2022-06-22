@@ -77,15 +77,15 @@ const c_marks = [
     ['Citrine', 'nCt', 'color'], ['Frog Eye', 'nFe', 'suffix'],
 	['Steel', 'nSl', 'color'], ['Hood', 'nHd', 'suffix'], ['Leaf', 'nLf', 'suffix'],
 	['Masked', 'nMa', 'ed'], ['Pangare', 'nPa', 'suffix'], ['Points', 'nPo', 'suffix'],
-	['Python', 'nPy', 'suffix'], ['Rimmed', 'nRi', 'ed'],
+	['Python', 'nPy', 'suffix'], ['Rimmed', 'nRi', 'ed'], ['Ripples', 'nRip', 'suffix'],
 	['Ringed', 'nRn', 'ed'], ['Rhodonite', 'nRd', 'color'],	['Sable', 'nSa', 'suffix'],
 	['Scaled', 'nSc', 'ed'], ['Stained', 'nSn', 'suffix'], ['Skink', 'nSk', 'suffix'],
-	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix']
+	['Trailing', 'nTr', 'suffix'], ['Underbelly', 'nUn', 'suffix'], ['Stockings', 'nSo', 'suffix'], ['Specter', 'nOse', 'suffix'], ['Cape', 'nCa', 'suffix']
 ];
 const uc_marks = [
     ['Azurite', 'nAz', 'color'], ['Banded', 'nBa', 'ed'],
 	['Border', 'nBo', 'suffix'], ['Cloud', 'nCd', 'suffix'], ['Topaz', 'nTz', 'color'],
-	['Crested', 'nCr', 'ed'], ['Garnet', 'nGt', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'],
+	['Crested', 'nCr', 'ed'], ['Garnet', 'nGt', 'color'], ['Dapple', 'nDl', 'suffix'], ['Dipped', 'nDi', 'ed'], ['Tritone', 'nTt', 'suffix'], ['Petrified', 'nOpr', 'suffix'],
 	['Dripping', 'nDr', 'suffix'], ['Inkwell', 'nIn', 'suffix'], ['Marbled', 'nMar', 'ed'],
 	['Merle', 'nMr', 'suffix'], ['Metallic', 'nMe', 'suffix'], ['Pigeon', 'nPg', 'suffix'], 
     ['Plasma', 'nPs', 'suffix'], ['Roan', 'nRo', 'suffix'], ['Rosettes', 'nRs', 'suffix'],
@@ -96,13 +96,14 @@ const r_marks = [
 	['Blooded', 'nBd', 'r'], ['Eyes', 'nEy', 'r'],
 	['Glass', 'nGl', 'r'], ['Jade', 'nJa', 'color'], ['Luminescent', 'nLu', 'r'],
 	['Lustrous', 'nLs', 'r'], ['Painted', 'nPn', 'r'], ['Petal', 'nPl', 'r'], 
-    ['Filigree', 'nFi', 'r'], ['Turquoise', 'nTu', 'color']
+    ['Filigree', 'nFi', 'r'], ['Turquoise', 'nTu', 'color'], ['Circuit', 'nCi', 'r'], 
+	['Patchwork', 'nPw', 'r'], ['Pearl', 'nOpe', 'r']
 ];
 const vr_marks = [
 	['Aether Marked', 'nAm', 'vr'], ['Aurora', 'nAu', 'vr'], ['Gemstone', 'nGm', 'vr'],
 	['Iridescent', 'nIr', 'vr'], ['Lepir', 'nLe', 'vr'], ['Amethyst', 'nAy', 'color'],
 	['Prismatic', 'nPr', 'color'], ['Rune', 'nRu', 'vr'], ['Shimmer', 'nSh', 'vr'],
-	['Triquetra', 'nTri', 'vr']
+	['Triquetra', 'nTri', 'vr'], ['Arcane', 'nArc', 'vr'], ['Harlequin', 'nHar', 'vr'], ['Oilslick', 'nOol', 'vr']
 ];
 
 const mutations = [
