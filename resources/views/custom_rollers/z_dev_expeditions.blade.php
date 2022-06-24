@@ -30,8 +30,7 @@
     </div>
 
     <div id="container1" align="center">
-        <table>
-            <td>
+       
                 <form id="activitytype">
                     <b>Activity</b>
                     <select id="activity" name="activity">
@@ -41,7 +40,7 @@
                         <option value="caving">Caving</option>
                     </select>
                 </form>
-                <form id="playerinfo" align="right">
+                <form id="playerinfo" align="left">
                     <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
@@ -77,17 +76,16 @@
                         <option value="100%">100%</option>
                     </select>
                 </form>
-            </td>
-
-        </table>
+				<div id="output" align="left">
+            <div id="result"></div>
+        </div>
+           
 
         <div id="buttoncontainer" align="left">
             <button class="button" onclick="roll()">roll</button>
             <button class="button" onclick="clearForms()">reset</button>
         </div>
-        <div id="output" align="left">
-            <div id="result"></div>
-        </div>
+        
     <form id="modifiers" align="center">
         <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
                 data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
