@@ -176,14 +176,14 @@
                                     </label>
                         </tr>
                     </table>
-					<div id="buttoncontainer" align="center">
+                </form>
+            </td>
+			<div id="buttoncontainer" align="center">
         <button class="button" onclick="roll()">roll</button>
         <button class="button" onclick="clearForms()">reset</button>
     </div>
         <div id="output" align="left">
             <div id="result"></div>
-                </form>
-            </td>
         </table>
 		
         <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
