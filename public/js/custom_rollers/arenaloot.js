@@ -45,16 +45,16 @@ function rollBchallenger(){
 			else if (i <= 30){itemlist += "Fried Rice";} 
 			else if (i <= 35){itemlist += "Satchel";} 
 			else if (i <= 40){itemlist += "Healing Salve";} 
-			else if (i <= 45){itemlist += "Goblet of Ice";} 
-			else if (i <= 50){itemlist += "Goblet of Shadow";} 
-			else if (i <= 55){itemlist += "Goblet of Radiation";} 
-			else if (i <= 60){itemlist += "Goblet of Lightning";} 
-			else if (i <= 65){itemlist += "Goblet of Fire";} 
+			else if (i <= 45){itemlist += "Goblet of Elements";} 
+			else if (i <= 50){itemlist += "Geode";} 
+			else if (i <= 55){itemlist += "Bag: Crystals";} 
+			else if (i <= 60){itemlist += "Tea";} 
+			else if (i <= 65){itemlist += "Splint and Cast";} 
 			else if (i <= 70){itemlist += "Bandages";} 
 			else if (i <= 72){itemlist += "Aether Booster";} 
-			else if (i <= 78){itemlist += "Goblet of Wind";} 
-			else if (i <= 83){itemlist += "Goblet of Poison";} 
-			else if (i <= 88){itemlist += "Goblet of Luster";} 
+			else if (i <= 78){itemlist += "Pearl Necklace";} 
+			else if (i <= 83){itemlist += "Hemlock Syrup";} 
+			else if (i <= 88){itemlist += "Revival Feather";} 
 			else if (i <= 83){itemlist += "Strength Booster";} 
 			else if (i <= 86){itemlist += "Bleed Booster";} 
             else if (i <= 89){itemlist += "Breath Booster";} 
@@ -96,16 +96,16 @@ function rollBchallenger(){
         else if (i <= 30){itemlist += "Fried Rice";} 
         else if (i <= 35){itemlist += "Satchel";} 
         else if (i <= 40){itemlist += "Healing Salve";} 
-        else if (i <= 45){itemlist += "Goblet of Ice";} 
-        else if (i <= 50){itemlist += "Goblet of Shadow";} 
-        else if (i <= 55){itemlist += "Goblet of Radiation";} 
-        else if (i <= 60){itemlist += "Goblet of Lightning";} 
-        else if (i <= 65){itemlist += "Goblet of Fire";} 
-        else if (i <= 70){itemlist += "Bandages";} 
-        else if (i <= 72){itemlist += "Aether Booster";} 
-        else if (i <= 78){itemlist += "Goblet of Wind";} 
-        else if (i <= 83){itemlist += "Goblet of Poison";} 
-        else if (i <= 88){itemlist += "Goblet of Luster";} 
+        else if (i <= 45){itemlist += "Goblet of Elements";} 
+	    else if (i <= 50){itemlist += "Geode";} 
+			else if (i <= 55){itemlist += "Bag: Crystals";} 
+			else if (i <= 60){itemlist += "Tea";} 
+			else if (i <= 65){itemlist += "Splint and Cast";} 
+			else if (i <= 70){itemlist += "Bandages";} 
+			else if (i <= 72){itemlist += "Aether Booster";} 
+			else if (i <= 78){itemlist += "Pearl Necklace";} 
+			else if (i <= 83){itemlist += "Hemlock Syrup";} 
+			else if (i <= 88){itemlist += "Revival Feather";} 
         else if (i <= 83){itemlist += "Strength Booster";} 
         else if (i <= 86){itemlist += "Bleed Booster";} 
         else if (i <= 89){itemlist += "Breath Booster";} 
@@ -156,17 +156,16 @@ function rollBwarrior(){
         else if (i <= 55){itemlist += "Decently Preserved Fish";}
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
-        else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
@@ -221,17 +220,16 @@ function rollBwarrior(){
         else if (i <= 55){itemlist += "Decently Preserved Fish";}
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
-        else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
@@ -289,17 +287,16 @@ function rollBgladiator(){
         else if (i <= 55){itemlist += "Decently Preserved Fish";}
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
-        else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
@@ -367,16 +364,16 @@ function rollBgladiator(){
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
         else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
@@ -445,17 +442,16 @@ function rollBchampion(){
         else if (i <= 55){itemlist += "Mushroom Soup";}
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
-        else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
@@ -534,17 +530,16 @@ function rollBchampion(){
         else if (i <= 55){itemlist += "Mushroom Soup";}
         else if (i <= 60){itemlist += "Satchel";} 
         else if (i <= 65){itemlist += "Healing Salve";} 
-        else if (i <= 70){itemlist += "Goblet of Ice";} 
-        else if (i <= 75){itemlist += "Goblet of Shadow";} 
-        else if (i <= 80){itemlist += "Goblet of Radiation";} 
-        else if (i <= 85){itemlist += "Goblet of Lightning";} 
-        else if (i <= 90){itemlist += "Goblet of Fire";} 
+        else if (i <= 70){itemlist += "Goblet of Elements";} 
+        else if (i <= 75){itemlist += "Geode";} 
+        else if (i <= 80){itemlist += "Bag: Crystals";} 
+        else if (i <= 85){itemlist += "Tea";} 
+        else if (i <= 90){itemlist += "Splint and Cast";} 
         else if (i <= 95){itemlist += "Bandages";} 
-        else if (i <= 100){itemlist += "Antidote";} 
-        else if (i <= 102){itemlist += "Aether Booster";} 
-        else if (i <= 107){itemlist += "Goblet of Wind";} 
-        else if (i <= 113){itemlist += "Goblet of Poison";} 
-        else if (i <= 118){itemlist += "Goblet of Luster";} 
+        else if (i <= 109){itemlist += "Aether Booster";} 
+        else if (i <= 112){itemlist += "Pearl Necklace";} 
+        else if (i <= 115){itemlist += "Hemlock Syrup";} 
+        else if (i <= 118){itemlist += "Revival Feather";} 
         else if (i <= 121){itemlist += "Strength Booster";} 
         else if (i <= 124){itemlist += "Bleed Booster";} 
         else if (i <= 127){itemlist += "Breath Booster";} 
