@@ -183,11 +183,8 @@
         <button class="button" onclick="roll()">roll</button>
         <button class="button" onclick="clearForms()">reset</button>
     </div>
-
-    <div id="container2" align="center">
         <div id="output" align="left">
             <div id="result"></div>
-        </div>
         <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
             Version 2.0.0</div>
     </div>
