@@ -3,7 +3,7 @@ body{
     margin: 15px;
 	color: #FFFFFF;
 	font-family:Helvetica,sans-serif;
-	text-align: left;
+	text-align: center;
 	padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
 }
 #title{
@@ -37,6 +37,7 @@ body{
 	margin: auto;
 	vertical-align: top;
 }
+
 
 select {
 	background-color: rgba(0,0,0,0.6);
