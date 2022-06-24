@@ -857,8 +857,8 @@ function rollHunt(){
 
 function injury(){
 	if (document.getElementById('souly').checked == true){
-		var i = rand(2,10);
-	} else {var i = rand(1,10);}
+		var i = rand(2,15);
+	} else {var i = rand(1,15);}
 	
 	if (document.getElementById(temp.value == "timid") == true){
 		i += 1;}
