@@ -135,8 +135,8 @@
                         <tr>
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="blue">
-                                    <label class="form-check-label" for="blue" data-toggle="tooltip"
+                                    <input class="form-check-input" type="checkbox" value="" id="Blue">
+                                    <label class="form-check-label" for="Blue" data-toggle="tooltip"
                                         data-placement="top" title="Increase chance for Recipe Fragments">
                                         Blueprint?
                                     </label>
