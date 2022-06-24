@@ -199,22 +199,21 @@
                 </form>
             </td>
         </table>
-
-		<div id="output" align="left">
-            <div id="result"></div>
-        </div>
-    </div>
-    <br>
-    <div id="buttoncontainer" align="center">
+		<div id="buttoncontainer" align="center">
         <button class="button" onclick="roll()">roll</button>
         <button class="button" onclick="clearForms()">reset</button>
     </div>
 
     <div id="container3" align="center">
-        
+        <div id="output" align="left">
+            <div id="result"></div>
+        </div>
         <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
             Version 2.0.0</div>
     </div>
+    </div>
+    <br>
+
 
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
