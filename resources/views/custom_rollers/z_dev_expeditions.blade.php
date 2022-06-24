@@ -73,7 +73,7 @@
 		<table>
 		<tr>
 			<td>Free Roll</td>
-			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
+			<td><input type="radio" name="barrel" id="barrely"><label for="barrely" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Yes</label></td>
 			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
 		
 			<td>Hoarder-Skill</td>
