@@ -30,7 +30,7 @@
     </div>
 
     <div id="container1" align="center">
-       
+       <table>
                 <form id="activitytype">
                     <b>Activity</b>
                     <select id="activity" name="activity">
@@ -76,6 +76,7 @@
                         <option value="100%">100%</option>
                     </select>
                 </form>
+			</table
         
     <form id="modifiers" align="center">
         <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
