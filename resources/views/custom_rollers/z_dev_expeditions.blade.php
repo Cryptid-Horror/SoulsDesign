@@ -79,8 +79,9 @@
                 </form>
             </td>
             <td>
-                <form id="modifiers" align="left">
-                   
+                <form id="modifiers" align="center">
+				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="barrely">
                                     <label class="form-check-label" for="barrely" data-toggle="tooltip"
