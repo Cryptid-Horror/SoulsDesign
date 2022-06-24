@@ -71,6 +71,15 @@
 	<td>
 		<form id="modifiers" align="right">
 		<table>
+
+		<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">2</label>
+</div>
 		<tr>
 			<td>Free Roll</td>
 			<td><input type="radio" name="barrel" id="barrely"><label for="barrely" data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">Yes</label></td>
