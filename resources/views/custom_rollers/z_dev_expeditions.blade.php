@@ -184,7 +184,7 @@
         <button class="button" onclick="clearForms()">reset</button>
     </div>
 
-    <div id="container3" align="center">
+    <div id="container2" align="center">
         <div id="output" align="left">
             <div id="result"></div>
         </div>
