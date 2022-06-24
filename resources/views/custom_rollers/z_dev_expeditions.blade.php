@@ -90,26 +90,31 @@
                                         Free Roll?
                                     </label>
                             </td>
-
-                            <td>Hoarder-Skill</td>
-                            <td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Gets an extra item returned.">Yes</label></td>
-                            <td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Does not get an extra item returned.">No</label></td>
-                        </tr>
-                        <td>Item Container</td>
-                        <td><input type="radio" name="satchel" id="bagy"><label for="bagy" data-toggle="tooltip"
-                                data-placement="top" title="Basket or cooler">Yes</label></td>
-                        <td><input type="radio" name="satchel" id="bagn" checked><label for="bagn" data-toggle="tooltip"
-                                data-placement="top" title="Basket or cooler">No</label></td>
-
-                        <td> Extra Item Familiar</td>
-                        <td><input type="radio" name="mimic" id="mimicy"><label for="mimicy" data-toggle="tooltip"
-                                data-placement="top"
-                                title="Vulture, Reticulated Crocodile, Toucan, Dracobat">Yes</label></td>
-                        <td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="hoardery">
+                                    <label class="form-check-label" for="hoardery" data-toggle="tooltip"
+                                        data-placement="top" title="+1 item returned.">
+                                        Hoarder Skill
+                                    </label>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="bagy">
+                                    <label class="form-check-label" for="bagy" data-toggle="tooltip"
+                                        data-placement="top" title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">
+                                        Container?
+                                    </label>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="mimicy">
+                                    <label class="form-check-label" for="mimicy" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">
+                                        Extra Item Pet?
+                                    </label>
+                            </td>
                         </tr>
                         <tr>
                             <td>Charm</td>
