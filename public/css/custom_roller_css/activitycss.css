@@ -3,7 +3,7 @@ body{
     margin: 15px;
 	color: #FFFFFF;
 	font-family:Helvetica,sans-serif;
-	text-align: center;
+	text-align: left;
 	padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
 }
 #title{
@@ -56,7 +56,7 @@ select option {
 
 #playerinfo{
 	display:inline-block;
-	
+	width:100%;
 	text-align: center;
 }
 

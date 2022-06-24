@@ -79,7 +79,7 @@
                 </form>
             </td>
             <td>
-                <form id="modifiers" align="right">
+                <form id="modifiers" align="left">
                    
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="barrely">
@@ -176,15 +176,16 @@
                                     </label>
                         </tr>
                     </table>
-                </form>
-            </td>
-        </table>
-		<div id="buttoncontainer" align="center">
+					<div id="buttoncontainer" align="center">
         <button class="button" onclick="roll()">roll</button>
         <button class="button" onclick="clearForms()">reset</button>
     </div>
         <div id="output" align="left">
             <div id="result"></div>
+                </form>
+            </td>
+        </table>
+		
         <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
             Version 2.0.0</div>
     </div>
