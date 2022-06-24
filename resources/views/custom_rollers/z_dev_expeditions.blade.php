@@ -80,9 +80,7 @@
             </td>
             <td>
                 <form id="modifiers" align="right">
-                    <table>
-                        <tr>
-                            <td>
+                   
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="barrely">
                                     <label class="form-check-label" for="barrely" data-toggle="tooltip"
@@ -96,8 +94,7 @@
                                             data-placement="top" title="+1 item returned.">
                                             Hoarder Skill
                                         </label>
-                            </td>
-                            <td>
+                            
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="bagy">
                                     <label class="form-check-label" for="bagy" data-toggle="tooltip"
@@ -112,11 +109,7 @@
                                             title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">
                                             Extra Item Pet?
                                         </label>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>
+                      
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="charmy">
                                     <label class="form-check-label" for="charmy" data-toggle="tooltip"
@@ -130,10 +123,7 @@
                                             data-placement="top" title="Item Rarity Buff">
                                             Morality Trial?
                                         </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                        
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="Blue">
                                     <label class="form-check-label" for="Blue" data-toggle="tooltip"
@@ -147,10 +137,7 @@
                                             data-placement="top" title="Increase chance for Recipe Fragments">
                                             Newt
                                         </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="souly">
                                     <label class="form-check-label" for="souly" data-toggle="tooltip"
@@ -164,11 +151,7 @@
                                             data-placement="top" title="You won't fail!">
                                             Pearl Necklace
                                         </label>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>
+                          
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="AdeptY">
                                     <label class="form-check-label" for="AdeptY" data-toggle="tooltip"
@@ -183,10 +166,7 @@
                                             title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">
                                             Pass Pet
                                         </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="localy">
                                     <label class="form-check-label" for="localy" data-toggle="tooltip"
