@@ -73,19 +73,19 @@
 		<table>
 		<tr>
 			<td>Free Roll</td>
-			<td><input type="radio" name="barrel" id="barrely"><label for="barrely" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Yes</label></td>
-			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
+			<td><input type="radio" name="barrel" id="barrely"><label for="barrely" data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">Yes</label></td>
+			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln"  data-toggle="tooltip" data-placement="top" title="Rolls with image or literature get more loot">No</label></td>
 		
 			<td>Hoarder-Skill</td>
-			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
-			<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern">No</label></td>
+			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery"  data-toggle="tooltip" data-placement="top" title="Gets an extra item returned.">Yes</label></td>
+			<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern"  data-toggle="tooltip" data-placement="top" title="Does not get an extra item returned.">No</label></td>
 		</tr>
         	<td>Item Container</td>
-			<td><input type="radio" name="satchel" id="bagy"><label for="bagy">Yes</label></td>
-			<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn">No</label></td>
+			<td><input type="radio" name="satchel" id="bagy"><label for="bagy" data-toggle="tooltip" data-placement="top" title="Basket or cooler">Yes</label></td>
+			<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn" data-toggle="tooltip" data-placement="top" title="Basket or cooler">No</label></td>
 		
 			<td> Extra Item Familiar</td>
-			<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
+			<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy" data-toggle="tooltip" data-placement="top" title="Vulture, Reticulated Crocodile, Toucan, Dracobat">Yes</label></td>
 			<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
 		</tr>
 		<tr>
@@ -121,12 +121,12 @@
 			<td><input type="radio" name="Adept" id="AdeptN" checked><label for="AdeptN">No</label></td>
 	
 			<td>  Pass Chance Familiar</td>
-			<td><input type="radio" name="fam" id="famY"><label for="famY">Yes</label></td>
+			<td><input type="radio" name="fam" id="famY"><label for="famY" data-toggle="tooltip" data-placement="top" title="Highborn Urses, Draco Otter, Royal Glimmer Deer, Cane Toad ">Yes</label></td>
 			<td><input type="radio" name="fam" id="famN" checked><label for="famN">No</label></td>
 		</tr>
 		<tr>
 			<td>Temperament Location Buff</td>
-			<td><input type="radio" name="local" id="localy"><label for="localy">Yes</label></td>
+			<td><input type="radio" name="local" id="localy"><label for="localy" data-toggle="tooltip" data-placement="top" title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">Yes</label></td>
 			<td><input type="radio" name="local" id="localn" checked><label for="localn">No</label></td>
 		</tr>
 		</table>
