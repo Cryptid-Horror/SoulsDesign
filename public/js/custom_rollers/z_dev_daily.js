@@ -867,7 +867,7 @@ function injury(){
 	
 	if (activity.value == "hunting"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10-50) + " HP";}
+			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
 		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
 		else if(zone.value == "aether" && i == 5){
@@ -875,7 +875,7 @@ function injury(){
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10-50) + " HP";}
+			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
 		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
 		else if(zone.value == "aether" && i == 5){
@@ -883,7 +883,7 @@ function injury(){
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "foraging"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10-50) + " HP";}
+			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
 		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
 		else if(zone.value == "aether" && i == 5){
@@ -891,7 +891,7 @@ function injury(){
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "caving"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10-50) + " HP";}
+			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
 			else if(zone.value == "aether" && i == 5){
 				return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
 			else if(zone.value == "aether" && i == 5){
