@@ -857,8 +857,8 @@ function rollHunt(){
 
 function injury(){
 	if (document.getElementById('souly').checked == true){
-		var i = rand(2,15);
-	} else {var i = rand(1,15);}
+		var i = rand(2,20);
+	} else {var i = rand(1,20);}
 	
 	if (document.getElementById(temp.value == "timid") == true){
 		i += 1;}
@@ -867,7 +867,7 @@ function injury(){
 	
 	if (activity.value == "hunting"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+			return "Your Character gets in a scuffle with the prey and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
 		else if(i == 2){
 			return "While in a fight with the prey, your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
 			// STATUS EFFECTS
@@ -883,34 +883,76 @@ function injury(){
 			return "Your character has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
 			//AETHER
 		else if(zone.value == "aether" && i == 8){
-			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+			return "The below is a dangerous place, and while you and your character braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
 		else if(zone.value == "aether" && i == 9){
 			return "Your Character has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
-		else if(zone.value == "aether" && i == 5){
-			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
-		else if(zone.value == "aether" && i == 5){
-			return "Your Character has received Blighted Status Effect. -" + rand(30,100) + " HP";}
+			return "Your character gets slapped by a rather large fish and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While diving in the waters your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return "Your character has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return "Your character has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return "Your character has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return "Your character has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return "Your character has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "The below is a dangerous place, and while you and your  character braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "Your Character has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "foraging"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
-		else if(zone.value == "aether" && i == 5){
-			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
-		else if(zone.value == "aether" && i == 5){
-			return "Your Character has received Blighted Status Effect. -" + rand(30,100) + " HP";}
+			return "Your character gets stuck in a dense forest and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While exploring for materials your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return "Your character has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return "Your character has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return "Your character has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return "Your character has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return "Your character has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "The below is a dangerous place, and while you and your  character braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "Your Character has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "caving"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,50) + " HP";}
-			else if(zone.value == "aether" && i == 5){
-				return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
-			else if(zone.value == "aether" && i == 5){
-				return "Your Character has received Blighted Status Effect. -" + rand(30,100) + " HP";}
-			else{ return dragonName.value +" was not injured.";}
+			return "Your  character gets caught in the caverns and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While exploring a deeper section of the cave your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return "Your character has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return "Your character has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return "Your character has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return "Your character has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return "Your character has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "The below is a dangerous place, and while you and your  character braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "Your Character has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
+		else{ return dragonName.value +" was not injured.";}
 	}
 }
 
@@ -927,7 +969,7 @@ function aberrantInjury()
 			return dragonName.value + "'s aberrations act up and their magic runs wild,\
 			lashing out at everything in the vicinity - including its master. "
 			+ aberrantData.flavortext
-			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP";
+			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP was lost";
 		}
 	}
 
