@@ -80,37 +80,33 @@
             </td>
             <td>
                 <form id="modifiers" align="center">
-				<label class="radioLabel"><input type="checkbox"  id="inbreeding" name="inbreeding" value="inbreeding">✦Inbreeding present?</label>
+                    <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                            data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+                        Roll?</label>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="barrely">
-                                    <label class="form-check-label" for="barrely" data-toggle="tooltip"
-                                        data-placement="top" title="Free rolls get less loot.">
-                                        Free Roll?
-                                    </label>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="hoardery">
-                                        <label class="form-check-label" for="hoardery" data-toggle="tooltip"
-                                            data-placement="top" title="+1 item returned.">
-                                            Hoarder Skill
-                                        </label>
-                            
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="bagy">
-                                    <label class="form-check-label" for="bagy" data-toggle="tooltip"
-                                        data-placement="top" title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">
-                                        Container?
-                                    </label>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="mimicy">
-                                        <label class="form-check-label" for="mimicy" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">
-                                            Extra Item Pet?
-                                        </label>
-                      
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="hoardery">
+                        <label class="form-check-label" for="hoardery" data-toggle="tooltip" data-placement="top"
+                            title="+1 item returned.">
+                            Hoarder Skill
+                        </label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="bagy">
+                            <label class="form-check-label" for="bagy" data-toggle="tooltip" data-placement="top"
+                                title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">
+                                Container?
+                            </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="mimicy">
+                                <label class="form-check-label" for="mimicy" data-toggle="tooltip" data-placement="top"
+                                    title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">
+                                    Extra Item Pet?
+                                </label>
+
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="charmy">
                                     <label class="form-check-label" for="charmy" data-toggle="tooltip"
@@ -124,72 +120,78 @@
                                             data-placement="top" title="Item Rarity Buff">
                                             Morality Trial?
                                         </label>
-                        
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="Blue">
-                                    <label class="form-check-label" for="Blue" data-toggle="tooltip"
-                                        data-placement="top" title="Increase chance for Recipe Fragments">
-                                        Blueprint?
-                                    </label>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="newty">
-                                        <label class="form-check-label" for="newty" data-toggle="tooltip"
-                                            data-placement="top" title="Increase chance for Recipe Fragments">
-                                            Newt
-                                        </label>
-                            
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="souly">
-                                    <label class="form-check-label" for="souly" data-toggle="tooltip"
-                                        data-placement="top" title="Decrease chance of injury">
-                                        Spirit Trial
-                                    </label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="Blue">
+                                            <label class="form-check-label" for="Blue" data-toggle="tooltip"
+                                                data-placement="top" title="Increase chance for Recipe Fragments">
+                                                Blueprint?
+                                            </label>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="nofaily">
-                                        <label class="form-check-label" for="nofaily" data-toggle="tooltip"
-                                            data-placement="top" title="You won't fail!">
-                                            Pearl Necklace
-                                        </label>
-                          
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="AdeptY">
-                                    <label class="form-check-label" for="AdeptY" data-toggle="tooltip"
-                                        data-placement="top" title="Ensure location matches!">
-                                        Adept Skill
-                                    </label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="newty">
+                                                <label class="form-check-label" for="newty" data-toggle="tooltip"
+                                                    data-placement="top" title="Increase chance for Recipe Fragments">
+                                                    Newt
+                                                </label>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="famY">
-                                        <label class="form-check-label" for="famY" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">
-                                            Pass Pet
-                                        </label>
-                            
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="localy">
-                                    <label class="form-check-label" for="localy" data-toggle="tooltip"
-                                        data-placement="top"
-                                        title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">
-                                        Temper Buff
-                                    </label>
-                        </tr>
-                    </table>
-                </form>
-            </td>
-			<div id="buttoncontainer" align="center">
-        <button class="button" onclick="roll()">roll</button>
-        <button class="button" onclick="clearForms()">reset</button>
-    </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="souly">
+                                                    <label class="form-check-label" for="souly" data-toggle="tooltip"
+                                                        data-placement="top" title="Decrease chance of injury">
+                                                        Spirit Trial
+                                                    </label>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="nofaily">
+                                                        <label class="form-check-label" for="nofaily"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="You won't fail!">
+                                                            Pearl Necklace
+                                                        </label>
+
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                id="AdeptY">
+                                                            <label class="form-check-label" for="AdeptY"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Ensure location matches!">
+                                                                Adept Skill
+                                                            </label>
+
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="famY">
+                                                                <label class="form-check-label" for="famY"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">
+                                                                    Pass Pet
+                                                                </label>
+
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        value="" id="localy">
+                                                                    <label class="form-check-label" for="localy"
+                                                                        data-toggle="tooltip" data-placement="top"
+                                                                        title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">
+                                                                        Temper Buff
+                                                                    </label>
+                                                                    </tr>
+        </table>
+        </form>
+        </td>
+        <div id="buttoncontainer" align="center">
+            <button class="button" onclick="roll()">roll</button>
+            <button class="button" onclick="clearForms()">reset</button>
+        </div>
         <div id="output" align="left">
             <div id="result"></div>
-        </table>
-		
-        <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
-            Version 2.0.0</div>
-    </div>
+            </table>
+
+            <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
+                Version 2.0.0</div>
+        </div>
     </div>
     <br>
 
