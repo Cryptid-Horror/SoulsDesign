@@ -71,19 +71,16 @@
 	<td>
 		<form id="modifiers" align="right">
 		<table>
-
-		<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">1</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">2</label>
-</div>
+	
 		<tr>
-			<td>Free Roll</td>
-			<td><input type="radio" name="barrel" id="barrely"><label for="barrely" data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">Yes</label></td>
-			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln"  data-toggle="tooltip" data-placement="top" title="Rolls with image or literature get more loot">No</label></td>
+		<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="barrely">
+  <label class="form-check-label" for="barrely">
+    Default checkbox
+  </label>
+		</tr>
+		<tr>
+			
 		
 			<td>Hoarder-Skill</td>
 			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery"  data-toggle="tooltip" data-placement="top" title="Gets an extra item returned.">Yes</label></td>
