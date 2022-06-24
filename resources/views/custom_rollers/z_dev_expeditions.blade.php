@@ -41,7 +41,7 @@
                         <option value="caving">Caving</option>
                     </select>
                 </form>
-                <form id="playerinfo" align="left">
+                <form id="playerinfo" align="right">
                     <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
@@ -78,13 +78,15 @@
                     </select>
                 </form>
             </td>
-            <div id="buttoncontainer" align="center">
+            
+        </table>
+
+		<div id="buttoncontainer" align="left">
                 <button class="button" onclick="roll()">roll</button>
                 <button class="button" onclick="clearForms()">reset</button>
             </div>
             <div id="output" align="left">
                 <div id="result"></div>
-        </table>
 
         <form id="modifiers" align="center">
             <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
