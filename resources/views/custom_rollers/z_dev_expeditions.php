@@ -149,7 +149,7 @@
 </div>
 	
 <!-- Found in the public/js folder -->
-<script src="{{ asset('js/custom_rollers/daily.js') }}"></script>
+<script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
 
 </body>
 
