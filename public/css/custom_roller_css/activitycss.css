@@ -56,11 +56,12 @@ select option {
 
 #playerinfo{
 	display:inline-block;
-	width:100%;
+	
 	text-align: center;
 }
 
 #modifiers{
+	display:inline-block;
 	width: auto;
 	padding: 5px;
 	padding-left: 5px;
