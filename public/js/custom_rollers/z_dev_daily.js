@@ -867,7 +867,7 @@ function injury(){
 	
 	if (activity.value == "hunting"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar!" + rand(10,30) + " HP was lost";}
+			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
 		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
 			return "While in a fight with the prey, your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
 			// STATUS EFFECTS
@@ -875,16 +875,16 @@ function injury(){
 			return "Your character has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
 		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 4){
 			return "Your character has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
-		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 5){
+		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
 			return "Your character has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
-		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 6){
+		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
 			return "Your character has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
-		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 7){
+		else if(zone.value == "radiant" || zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
 			return "Your character has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
 			//AETHER
-		else if(zone.value == "aether" && i == 8){
+		else if(zone.value == "aether" && i == 5){
 			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
-		else if(zone.value == "aether" && i == 9){
+		else if(zone.value == "aether" && i == 5){
 			return "Your Character has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
