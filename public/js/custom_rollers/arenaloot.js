@@ -69,7 +69,7 @@ function rollBchallenger(){
 			else if (i <= 109){itemlist += "3 Dragon Soul Coins";} 
 			else if (i <= 112){itemlist += "Aether Bag";} 
             else if (i <= 114){itemlist += "Premium Chest";} 
-            else if (i <= 118){itemlist += "Arena Chest";}
+            else if (i <= 118){itemlist += "Activity Chest";}
             else if (i <= 120){itemlist += "Emporium BG Voucher";}
             else if (i <= 123){itemlist += "Market BG Voucher";} 
             else if (i <= 124){itemlist += "Familiar Chest";} 
@@ -120,7 +120,7 @@ function rollBchallenger(){
         else if (i <= 109){itemlist += "3 Dragon Soul Coins";} 
         else if (i <= 112){itemlist += "Aether Bag";} 
         else if (i <= 114){itemlist += "Premium Chest";} 
-        else if (i <= 118){itemlist += "Arena Chest";}
+        else if (i <= 118){itemlist += "Activity Chest";}
         else if (i <= 120){itemlist += "Emporium BG Voucher";}
         else if (i <= 123){itemlist += "Market BG Voucher";} 
         else if (i <= 124){itemlist += "Familiar Chest";} 
@@ -186,7 +186,7 @@ function rollBwarrior(){
         else if (i <= 156){itemlist += "4 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 
@@ -251,7 +251,7 @@ function rollBwarrior(){
         else if (i <= 156){itemlist += "4 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 
@@ -319,7 +319,7 @@ function rollBgladiator(){
         else if (i <= 156){itemlist += "5 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 
@@ -396,7 +396,7 @@ function rollBgladiator(){
         else if (i <= 156){itemlist += "5 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 
@@ -475,7 +475,7 @@ function rollBchampion(){
         else if (i <= 156){itemlist += "6 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 
@@ -564,7 +564,7 @@ function rollBchampion(){
         else if (i <= 156){itemlist += "6 Dragon Soul Coins";} 
         else if (i <= 158){itemlist += "Aether Bag";} 
         else if (i <= 160){itemlist += "Premium Chest";} 
-        else if (i <= 164){itemlist += "Arena Chest";}
+        else if (i <= 164){itemlist += "Activity Chest";}
         else if (i <= 166){itemlist += "Emporium BG Voucher";}
         else if (i <= 169){itemlist += "Market BG Voucher";} 
         else if (i <= 170){itemlist += "Familiar Chest";} 

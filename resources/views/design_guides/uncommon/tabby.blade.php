@@ -32,7 +32,7 @@
     $color_darker = 'yes';
     $color_lighter = 'yes';
     $color_natural = 'yes';
-    $edge_blurred = 'no';
+    $edge_blurred = 'yes';
     $edge_gradient = 'yes';
     $color_any = 'no';
     $edge_blending = 'yes';

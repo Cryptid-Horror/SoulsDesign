@@ -60,7 +60,7 @@
     $marking_must = [
         'Recessive: May appear in up to 3 zones.',
         'Dominant: May appear in all zones, and be any one single color without the presence of a color modifier gene.',
-        'Smoke must be cleanly blended or blurred together, to avoid it looking like smoke it cannot have "soft" edges or solid edges.',
+        'Smoke must be cleanly blended or blurred together, to avoid it looking like cloud it cannot have "soft" edges or solid edges.',
         'Smoke must appear to be a misty marking, and can only be made of one color. Different shades of the color are fine, to give the design nuanced shades of lighter or darker portions.',
     ];
 

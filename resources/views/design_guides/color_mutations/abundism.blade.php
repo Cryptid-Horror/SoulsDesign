@@ -53,6 +53,7 @@
         'Abundism can cause the base coat to be picked from vanta sliders or the melanistic section of the base coat you have (i.e. an umber coat, you can use melanistic umber sliders, vanta sliders, or just umber sliders).',
         'If a color modifier is present, Abundism coat color can be picked from the abundism sliders.', 
         'If using abundism on the base coat, the markings do not have to be abundism black/grey etc.',
+        'When passing with Albino, Abundism and albino are allowed to cover 50% of the whole dragon - meaning one half of the dragon is white and the other is black.'
     ];
 
     $marking_cannot = [

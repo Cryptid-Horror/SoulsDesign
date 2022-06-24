@@ -51,6 +51,7 @@
     $marking_can = [
         'Albino may either come from ivory sliders, or it may be from the provided slider below.',
         'You may decide what markings show on albino.', 
+        'When passing with Albino, Abundism and albino are allowed to cover 50% of the whole dragon - meaning one half of the dragon is white and the other is black.',
     ];
 
     $marking_cannot = [

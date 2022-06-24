@@ -36,7 +36,7 @@
                 'header' => 'Levels',
                 'links' => [
                     'Player Levels' => url('world/levels/user'),
-                    'Dragon Levels' => url('world/levels/characters'),
+                    'Character Levels' => url('world/levels/character'),
                 ]
             ])
         </div>
