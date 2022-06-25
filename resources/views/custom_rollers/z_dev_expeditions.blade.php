@@ -80,10 +80,10 @@
                     </select>
                     <hr>
                     <span style="white-space: nowrap;">
-
-                        <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
-                                data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+					<label class="radioLabel"><input type="checkbox" name="barrely" value="barrely" id="barrely">✦Free
                             Roll?</label>
+
+                        
                         <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
                                 data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
                             Skill</label>
