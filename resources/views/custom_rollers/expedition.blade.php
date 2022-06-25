@@ -85,7 +85,7 @@
                         <option value="100%">100%</option>
                     </select>
                     <hr>
-					<h1>Modifiers</h1>
+					<center><h1>Modifiers</h1>
                    <h3>General</h3>
                     <span style="white-space: nowrap;">
 
@@ -172,7 +172,7 @@
                                 data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder</label>
                         <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
                                 data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept</label>
-                    </span>
+                    </span></center>
                 </form>
             </div>
         </div>
