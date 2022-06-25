@@ -149,9 +149,9 @@
             <h1>Final Count</h1>
             Copy this text into your prompt submission!<br>
             <div id="buttoncontainer" align="center">
-                <button class="button" onclick="roll()">roll</button>
-                <button class="button" onclick="clearForms()">reset</button>
-            </div>
+	<button class="button" onclick="roll()">roll</button>
+	<button class="button" onclick="clearForms()">reset</button>
+</div>
             <textarea rows= "10" cols= "40" id="result" onClick= "this.select();"></textarea><br><br>
         </div>
         
