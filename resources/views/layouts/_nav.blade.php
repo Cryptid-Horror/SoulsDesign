@@ -135,7 +135,7 @@
                                 <li><a class="dropdown-item" href="{{ url('') }}">Coming soon!</a></li>
                             </ul>
                         </li>
-                        ✨Masterlists
+                        ✨General Info
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Masterlists</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('masterlist') }}">Characters</a></li>
@@ -149,17 +149,25 @@
                             </ul>
                         </li>
                         ✨Rollers 
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Rollers</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Activities</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
-                                <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a></li>
+                                <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Crucible Loot</a></li>
                                 <li><a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a></li>
                                 <li><a class="dropdown-item" href="{{ url('roller/expedition') }}">Expeditions</a></li>
-                                <li><a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a></li>
-                                <li><a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a></li>
-                                <li><a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a></li>
                                 <li><a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a></li>
                                 <li><a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Nesting and Hatchery</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a></li>
+                                <li><a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Misc</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a></li>
+                                <li><a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a></li>
                             </ul>
                         </li>
                     </ul>  
