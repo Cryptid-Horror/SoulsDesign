@@ -79,58 +79,61 @@
                 </form>
             </td>
             <td>
-                <form id="modifiers" align="center">
-                    <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
-                            data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
-                        Roll?</label><br>
+                <table>
+                    <form id="modifiers" align="center">
+                        <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                                data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+                            Roll?</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
-                            data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
-                        Skill</label><br>
-                    <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
+                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
+                            Skill</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
-                        Item Pet</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
+                            Item Pet</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
-                            data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
-                            data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
-                        Trial</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
+                            Trial</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
-                            data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
-                        Trial</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
+                                data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
+                            Trial</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
-                            data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
-                        Necklace</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
+                                data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
+                            Necklace</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
-                            data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
-                        Skill</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
+                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
+                            Skill</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass Pet</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
+                            Pet</label><br>
 
-                    <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
-                        Buff</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
+                            Buff</label><br>
+                </table>
             </td>
             </form>
         </table>
