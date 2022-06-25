@@ -20,7 +20,7 @@
     </script>
 
     <!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom_roller_css/dev_activitycss.css') }}" rel="stylesheet">
 
 </head>
 
@@ -137,7 +137,7 @@
             </td>
             </form>
         </table>
-        <div id="buttoncontainer" align="left">
+        <div id="buttoncontainer" align="center">
             <button class="button" onclick="roll()">roll</button>
             <button class="button" onclick="clearForms()">reset</button>
         </div>
