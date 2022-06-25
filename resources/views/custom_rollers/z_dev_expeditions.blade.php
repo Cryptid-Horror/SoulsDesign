@@ -32,12 +32,11 @@
         <h1>Activity Roller</h1>
     </div>
     <div class="credit">
+	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
 	Version: 3.0.0<br>
-	CSS Credit: Livard (Liv Schneider)<br>
-	Original Code: Owlapin<br>
+	CSS Credit: Livard (Liv Schneider)|| Original Code: Owlapin<br>
 	Roller Maintained by Cryptid-Horror and DraginRaptor<br>
 	Roller Content: Copyright Souls-Between 2019 - 2022<br>
-	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="100px"></a>
 </div>
     <div id="all">
         <div class="boxed box3 side">

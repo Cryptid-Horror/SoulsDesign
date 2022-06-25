@@ -63,11 +63,10 @@ tel {
 	position: fixed;
 	bottom: 0%;
 	right: 0%;
-	opacity: .5;
 	padding: 20px;
 	width: 365px;
 	color: #eee;
-	background-color: #1b1b1be5;
+	background-color: #1b1b1ba4;
 	font-family: 'comfortaa', sans-serif;
 	font-size: 11px;
 	margin: 5px;
@@ -206,8 +205,8 @@ input[type=radio]:checked + label{
 }
 
 .button:hover, .button:focus, input[type=radio] + label:focus, input[type=radio] + label:hover, input[type=checkbox] + label:hover { 
-	background-color: #a53946;
-	color: #eee;
+	background-color: #6e6e6ec2;
+	color: rgb(0, 0, 0);
 }
 .big {
 	padding: 5px 1em;
