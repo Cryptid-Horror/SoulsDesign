@@ -85,8 +85,8 @@
                         <option value="100%">100%</option>
                     </select>
                     <hr>
-					<h1>Modifiers</h1><br>
-                   <h3>General</h3><br>
+					<h1>Modifiers</h1>
+                   <h3>General</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
@@ -109,7 +109,7 @@
                             title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
                         Buff</label>
 
-                   <h3> Items</h3><br>
+                   <h3> Items</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
@@ -134,7 +134,7 @@
                                 title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
                     </span>
 
-                   <h3> Pets</h3><br>
+                   <h3> Pets</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
@@ -165,15 +165,13 @@
                             Item Rarity</label>
                     </span>
 
-                   <h3> Skills</h3><br>
+                   <h3> Skills</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
-                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
-                            Skill</label>
+                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder</label>
                         <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
-                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
-                            Skill</label><br>
+                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept</label>
                     </span>
                 </form>
             </div>
