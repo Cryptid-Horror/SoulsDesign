@@ -121,55 +121,34 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
-                <li class="nav-item dropdown">   
-                <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Codex
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="browseDropdown">
-                    ✨Codex 
-                        <a class="dropdown-item" href="{{ url('world') }}">
-                            <i class="fas fa-book"></i> Database
-                        </a>
-                        <a class="dropdown-item" href="{{ url('world/info') }}">
-                        <i class="fas fa-book"></i>Lore & World
-                        </a>
-                        <a class="dropdown-item" href="{{ url('') }}">
-                        <i class="fas fa-book"></i> Guides
-                        </a>
-                        ✨Masterlists
-                        <a class="dropdown-item" href="{{ url('masterlist') }}">
-                            Dragon Masterlist
-                        </a>
-                        <a class="dropdown-item" href="{{ url('myos') }}">
-                            Genotype Masterlist
-                        </a>
-
-                    </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" v-pre>
-                        Rollers
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                        
-                        
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
-                            Hatchery Odds
-                        </a>
-                        <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
-                            Nesting Odds
-                        </a>
-                    </div>
-                </li>
-
                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Test </a>
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Codex </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                     <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                    ✨Codex 
+                     <li><a class="dropdown-item" href="{{ url('world') }}"><i class="fas fa-book"></i> Database</a></li>
+                        <li><a class="dropdown-item" href="{{ url('world/info') }}"><i class="fas fa-book"></i>Lore & World
+                        </a></li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Guides</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('') }}">Coming soon!</a></li>
+                                <li><a class="dropdown-item" href="{{ url('') }}">Coming soon!</a></li>
+                            </ul>
+                        </li>
+                        ✨Masterlists
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Masterlists</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('masterlist') }}">Characters</a></li>
+                                <li><a class="dropdown-item" href="{{ url('myos') }}">Genotypes</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Activity Chances</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('info/HatchOdds') }}">Hatchery Odds</a></li>
+                                <li><a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">Nesting Odds</a></li>
+                            </ul>
+                        </li>
+                        ✨Rollers 
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Rollers</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
