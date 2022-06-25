@@ -2,7 +2,8 @@
     <div class="container-fluid">
 
         <a class="navbar-brand" href="{{ url('/') }}">
-            ✨{{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
+        <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/59w93Jf.png" width="100px"></a><br>
+{{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
