@@ -132,11 +132,11 @@ hr {
 	border: none;
 }
 .textarea {
- background-color: #17171898;
+ background-color: #171718bd;
  font-size: 1em;
  font-weight: bold;
  font-family: 'comfortaa', sans-serif;
- border: 1px solid black;
+ border: 1px solid rgba(139, 139, 139, 0.411);
     -webkit-touch-callout: all; /* iOS Safari */
     -webkit-user-select: all; /* Safari */
     -khtml-user-select: all; /* Konqueror HTML */
