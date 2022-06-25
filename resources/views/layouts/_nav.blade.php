@@ -1,6 +1,6 @@
-<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/59w93Jf.png" width="100px"></a><br>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
+    <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/59w93Jf.png" width="50px"></a><br>
 
         <a class="navbar-brand" href="{{ url('/') }}">
 {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
