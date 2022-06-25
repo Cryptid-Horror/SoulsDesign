@@ -152,7 +152,7 @@
                 <button class="button" onclick="roll()">roll</button>
                 <button class="button" onclick="clearForms()">reset</button>
             </div>
-            <textarea rows= "10" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
+            <textarea rows= "10" cols= "40" id="result" onClick= "this.select();"></textarea><br><br>
         </div>
         
         <br><br>

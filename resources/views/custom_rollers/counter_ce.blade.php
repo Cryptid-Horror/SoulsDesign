@@ -72,7 +72,7 @@
 	</div>
 	<div class="boxed box3 center"><h1>Final Count</h1>
 		Copy this text into your prompt submission!<br>
-		<textarea rows= "10" cols= "40" id="result" onClick= "this.select();"></textarea><br><br>
+		<textarea rows= "10" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
 		<a class="big button" onclick="reset()">Reset</a>
 		<p>
 			
