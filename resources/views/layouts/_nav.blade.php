@@ -172,7 +172,7 @@
                     </div>
                 </li>
 
-              {{--  <li class="nav-item dropdown">
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -196,7 +196,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>--}}
+            </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
