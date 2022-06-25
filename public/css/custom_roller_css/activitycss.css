@@ -55,9 +55,9 @@ select option {
 }
 
 #playerinfo{
-		text-align: center;
-		margin: 200px;
-
+	display:inline-block;
+	width:100%;
+	text-align: center;
 }
 
 #modifiers{
