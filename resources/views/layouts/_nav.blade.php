@@ -36,7 +36,7 @@
                         Activities
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                    ✨Prompts
+                        ✨Prompts
                         <a class="dropdown-item" href="{{ url('info/Activity_Guide') }}">
                             <i class="fas fa-clipboard-list"></i> Activity Guide
                         </a>
@@ -73,10 +73,10 @@
                         </a>
                         <a class="dropdown-item" href="{{ url('info/Flights') }}">
                             <i class="fas fa-dragon"></i> Flights
-                        </a>  
+                        </a>
                         <a class="dropdown-item" href="{{ url('raffles') }}">
-                        <i class="fa-solid fa-ticket"></i>Raffles
-                        </a>                      
+                            <i class="fa-solid fa-ticket"></i>Raffles
+                        </a>
                     </div>
                 </li>
 
@@ -86,8 +86,8 @@
                         Community
                     </a>
                     <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                    ✨Social    
-                    <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
+                        ✨Social
+                        <a class="dropdown-item" href="{{ url('https://discord.gg/ZqtG7jf') }}">
                             <i class="fab fa-discord"></i> Discord
                         </a>
 
@@ -98,45 +98,58 @@
                             <i class="fas fa-paint-brush"></i>Gallery
                         </a>
                         <a class="dropdown-item" href="{{ url('trades/listings') }}">
-                        <i class="fa-solid fa-right-left"></i> Trade Listings
+                            <i class="fa-solid fa-right-left"></i> Trade Listings
                         </a>
                         ✨Resources
                         <a class="dropdown-item" href="{{ url('reports/bug-reports') }}">
-                        <i class="fa-solid fa-bug"></i> Bug Reports
+                            <i class="fa-solid fa-bug"></i> Bug Reports
                         </a>
                         <a class="dropdown-item"
                             href="{{ url('https://docs.google.com/spreadsheets/d/1DAK3eKFtAaqfA51r2USy6vT9Lzv7Xsv8uypeohMtcOs/edit?usp=sharing') }}">
                             <i class="fa-solid fa-clipboard-list"></i> Offsite Tracker
                         </a>
                         <a class="dropdown-item" href="{{ url('users') }}">
-                        <i class="fa-solid fa-users"></i>  Users
+                            <i class="fa-solid fa-users"></i> Users
                         </a>
                         <a class="dropdown-item" href="{{ url('forum/13') }}">
-                        <i class="fa-brands fa-pagelines"></i> Leasing Dragons
+                            <i class="fa-brands fa-pagelines"></i> Leasing Dragons
                         </a>
                         <a class="dropdown-item" href="{{ url('info/Sales') }}">
-                        <i class="fa-solid fa-store"></i>Seasonal Sales
+                            <i class="fa-solid fa-store"></i>Seasonal Sales
                         </a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('design') }}">GENETICS PORTAL</a>
-                <li class="nav-item dropdown">   
-                <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Codex
                     </a>
                     <div class="dropdown-menu" aria-labelledby="browseDropdown">
-                    ✨Codex 
+                        ✨Codex
                         <a class="dropdown-item" href="{{ url('world') }}">
                             <i class="fas fa-book"></i> Database
                         </a>
                         <a class="dropdown-item" href="{{ url('world/info') }}">
-                        <i class="fas fa-book"></i>Lore & World
+                            <i class="fas fa-book"></i>Lore & World
                         </a>
                         <a class="dropdown-item" href="{{ url('') }}">
-                        <i class="fas fa-book"></i> Guides
+                            <i class="fas fa-book"></i> Guides
                         </a>
+                        ✨Rollers
+                        <ul class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
+                            <a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
+                            <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
+                            <a class="dropdown-item" href="{{ url('roller/expeditions') }}">Expeditions</a>
+                            <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
+                            <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
+                            <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
+                            <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
+                            <a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
+                        </ul>
                         ✨Masterlists
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
                             Dragon Masterlist
@@ -144,24 +157,6 @@
                         <a class="dropdown-item" href="{{ url('myos') }}">
                             Genotype Masterlist
                         </a>
-
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a id="queueDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" v-pre>
-                        Rollers
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="queueDropdown">
-                        <a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a>
-                        <a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
-                        <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a>
-                        <a class="dropdown-item" href="{{ url('roller/daily') }}">Daily Activities</a>
-                        <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
-                        <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a>
-                        <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a>
-                        <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a>
-                        <a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
                             Hatchery Odds
