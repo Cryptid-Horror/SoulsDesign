@@ -885,7 +885,7 @@ function injury(){
 		else if(zone.value == "aether" && i == 8){
 			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
 		else if(zone.value == "aether" && i == 9){
-			return "The below is a dangerous place, and while " + dragonName.value + " braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
 		else if(zone.value == "aether" && i == 10){
 			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
@@ -909,7 +909,7 @@ function injury(){
 		else if(zone.value == "aether" && i == 8){
 			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
 		else if(zone.value == "aether" && i == 9){
-			return "The below is a dangerous place, and while " + dragonName.value + " braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
 		else if(zone.value == "aether" && i == 10){
 			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
@@ -933,7 +933,7 @@ function injury(){
 		else if(zone.value == "aether" && i == 8){
 			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
 		else if(zone.value == "aether" && i == 9){
-			return "The below is a dangerous place, and while " + dragonName.value + " braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
 		else if(zone.value == "aether" && i == 10){
 			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
@@ -957,7 +957,7 @@ function injury(){
 		else if(zone.value == "aether" && i == 8){
 			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
 		else if(zone.value == "aether" && i == 9){
-			return "The below is a dangerous place, and while " + dragonName.value + " braved it, you didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
 		else if(zone.value == "aether" && i == 10){
 			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
