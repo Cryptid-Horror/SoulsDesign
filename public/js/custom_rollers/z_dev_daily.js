@@ -56,10 +56,10 @@ function items(){
 	var lootSize;
 	var itemlist="";
 	
-	if (document.getElementById("barrely").checked == true){ //Free roll
-		lootSize = rand(2,4);}
-	else if (document.getElementById("booky").checked == true){ //book
+	if (document.getElementById("booky").checked == true){ //book
 		lootSize = (8);}
+	else if (document.getElementById("barrely").checked == true){ //Free roll
+		lootSize = rand(2,4);}
 	else {lootSize = rand(4,8);} //Entry roll
 	if (document.getElementById("hoardery").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
