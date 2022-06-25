@@ -36,7 +36,7 @@
         <div class="boxed box3 side">
             <div class="contentbox">
                 <h1>Character Info</h1>
-                <form id="mpcount">
+                <form id="activitytype">
                     <b>Activity</b>
                     <select id="activity" name="activity">
                         <option value="hunting">Hunting</option>
