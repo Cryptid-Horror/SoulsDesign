@@ -869,7 +869,7 @@ function injury(){
 		if(i == 1){
 			return dragonName.value + "gets in a scuffle with the prey and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
 		else if(i == 2){
-			return "While in a fight with the prey " + dragonName.value + " your character receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			return "While in a fight with the prey " + dragonName.value + " receives a painful wound. " + rand(10,50) + " HP was lost.";}
 			// STATUS EFFECTS
 		else if(i == 3){
 			return dragonName.value + " has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
