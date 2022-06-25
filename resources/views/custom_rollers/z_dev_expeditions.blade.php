@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
- 
+
 
     <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/dev_activitycss.css') }}" rel="stylesheet">
@@ -26,25 +26,25 @@
 </head>
 
 <body>
-<!-- Navigation -->
+    <!-- Navigation -->
     <!-- CONTENT -->
-	     <div id="title" align="center">
+    <div id="title" align="center">
         <h1>Activity Roller</h1>
     </div>
-	<a href="/home.html"><img src="/images/backarrow2.png" width="75px" class="backarrow"></a>
-<div id="all">
-	<div class="boxed box3 side">	
-	<div class="contentbox">
-		<h1>Character Info</h1>
-		<form id="mpcount">
-			<b>Activity</b>
+    <a href="/home.html"><img src="/images/backarrow2.png" width="75px" class="backarrow"></a>
+    <div id="all">
+        <div class="boxed box3 side">
+            <div class="contentbox">
+                <h1>Character Info</h1>
+                <form id="mpcount">
+                    <b>Activity</b>
                     <select id="activity" name="activity">
                         <option value="hunting">Hunting</option>
                         <option value="fishing">Fishing</option>
                         <option value="foraging">Foraging</option>
                         <option value="caving">Caving</option>
                     </select>
-      <b>Name</b>
+                    <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
                     <b>Rank</b>
@@ -78,85 +78,83 @@
                         <option value="50%">50%</option>
                         <option value="100%">100%</option>
                     </select>
-	</div>
-	</div>
-	<div class="boxed box3 center"><h1>Final Count</h1>
-		Copy this text into your prompt submission!<br>
-    <div id="buttoncontainer" align="center">
-            <button class="button" onclick="roll()">roll</button>
-            <button class="button" onclick="clearForms()">reset</button>
+                </form>
+            </div>
         </div>
-        <div id="output" align="left">
-            <div id="result"></div>
+        <div class="boxed box3 center">
+            <h1>Final Count</h1>
+            Copy this text into your prompt submission!<br>
+            <div id="buttoncontainer" align="center">
+                <button class="button" onclick="roll()">roll</button>
+                <button class="button" onclick="clearForms()">reset</button>
+            </div>
+            <div id="output" align="left">
+                <div id="result"></div>
+            </div>
         </div>
-		<p>
-			
-		</p>
-	</div>
-	<div class="boxed box3 side">
-		<fieldset id="bonuses">
-		<div class="contentbox">
-			<h1>Additional Bonuses</h1>
-			<label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
-                                data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
-                            Roll?</label><br>
+        <div class="boxed box3 side">
+                <div class="contentbox">
+                    <h1>Additional Bonuses</h1>
+                    <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                            data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+                        Roll?</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
-                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
-                            Skill</label><br>
-                        <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
+                            data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
+                        Skill</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
-                            Item Pet</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
+                        Item Pet</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
-                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
+                            data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
-                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
-                            Trial</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
+                            data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
+                        Trial</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
-                                data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
-                            Trial</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
+                            data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
+                        Trial</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
-                                data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
-                            Necklace</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
+                            data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
+                        Necklace</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
-                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
-                            Skill</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
+                            data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
+                        Skill</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
-                            Pet</label><br>
+                    <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
+                        Pet</label><br>
 
-                        <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
-                            Buff</label><br>
-	</div>
-</div>
-<br><br>
+                    <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
+                        Buff</label><br>
+                </div>
+        </div>
+        <br><br>
 </body>
 
 </html>
-    <!-- Found in the public/js folder -->
-    <script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
+<!-- Found in the public/js folder -->
+<script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
 
 </body>
 
