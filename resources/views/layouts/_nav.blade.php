@@ -138,8 +138,8 @@
                         <a class="dropdown-item" href="{{ url('') }}">
                             <i class="fas fa-book"></i> Guides
                         </a>
-                        <a class="dropdown-item" href="#">
-                            ✨Rollers &raquo;
+                        <a class="dropdown-item">
+                            ✨Rollers
                         </a>
                         <ul class="dropdown-menu dropdown-submenu">
                             <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
