@@ -133,12 +133,12 @@ hr {
 	border: none;
 }
 .textarea {
--webkit-user-select: initial;
  background-color: #525662;
  font-size: 1em;
  font-weight: bold;
  font-family: 'comfortaa', sans-serif;
  border: 1px solid black;
+ -webkit-user-select: initial;
 }
 .side {
 	text-align: center;
