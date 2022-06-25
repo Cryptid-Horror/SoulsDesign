@@ -1,8 +1,8 @@
+<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/59w93Jf.png" width="100px"></a><br>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="headerNav">
     <div class="container-fluid">
 
         <a class="navbar-brand" href="{{ url('/') }}">
-        <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/59w93Jf.png" width="100px"></a><br>
 {{ config('lorekeeper.settings.site_name', 'Lorekeeper') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
