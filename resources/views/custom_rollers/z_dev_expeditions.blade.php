@@ -31,7 +31,7 @@
     <div id="title" align="center">
         <h1>Activity Roller</h1>
     </div>
-    <a href="https://www.soulsbetween.com/"><img src="soulsbetween.com/www/public/images/gohome.png" width="75px" class="backarrow"></a>
+    <a href="https://www.soulsbetween.com/"><img src="../MainBG.png" width="75px" class="backarrow"></a>
     <div id="all">
         <div class="boxed box3 side">
             <div class="contentbox">
