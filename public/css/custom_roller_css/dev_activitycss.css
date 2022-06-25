@@ -248,3 +248,16 @@ input:disabled+label{
 	background:#150e17;
 	color:#ffffff;
 }
+.radioLabel {
+	font-family: "Overlock";
+	font-size: 14px;
+	font-weight: bold;
+	display: inline-block;
+	background: rgba(61, 61, 75, 0.50);
+	border-width: 1px;
+    border-radius: 2px;
+	padding: 3px;
+	margin: 2px;
+	width: 20ch;
+	color: #FFFFFF;
+}
