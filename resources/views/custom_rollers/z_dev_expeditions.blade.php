@@ -167,7 +167,7 @@
 
 								<label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
                                     data-toggle="tooltip" data-placement="top"
-                                    title="Loot chance Max + any modifiers">✦Empyrean Book</label><br><br>
+                                    title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
                         </span>
                 </form>
             </div>
