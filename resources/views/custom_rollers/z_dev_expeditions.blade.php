@@ -37,7 +37,7 @@
 	Original Code: Owlapin<br>
 	Roller Maintained by Cryptid-Horror and DraginRaptor<br>
 	Roller Content: Copyright Souls-Between 2019 - 2022<br>
-	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="75px" class="backarrow"></a>
+	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="100px"></a>
 </div>
     <div id="all">
         <div class="boxed box3 side">
