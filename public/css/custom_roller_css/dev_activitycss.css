@@ -56,7 +56,7 @@ td {
     left:0%;
 }
 tel {
-	background-color: #79485d;
+	background-color: #0a0a0a5d;
 }
 .credit {
 	text-align: center;
@@ -88,7 +88,7 @@ tel {
 h1 {
 	font-size: 18pt;
 	font-family: 'comfortaa', sans-serif;
-	color: #e75c57;
+	color: #ffffff;
 	letter-spacing: 2px;
 }
 
@@ -96,10 +96,10 @@ h1 {
 h2 {
 	margin: 0 0 5px;
 	font-size: 20px;
-	color: #e75c57;
+	color: #ffffff;
 }h3 {
 	font-size: 20px;
-	color: #e75c57;
+	color: #ffffff;
 }
 
 hr {
@@ -147,23 +147,23 @@ hr {
 }
 .side {
 	text-align: center;
-	background:rgba(33,24,41,.7);
-	border: 1px solid black;
-	color: #DC9D9E;
+	background:rgba(0,0,0,0.5);
+	border: 1px solid rgb(121, 121, 121);
+	color: #ffffff;
 	border-radius: 15px;
 }
 .center {
 	text-align: center;
-	background:rgba(33,24,41,.7);
-	border: 1px solid black;
-	color: #D49293;
+	background:rgba(0,0,0,0.5);
+	border: 1px solid rgb(121, 121, 121);
+	color: #ffffff;
 	border-radius: 15px;
 }
 .bottom {
 	text-align: center;
-	background:rgba(0,0,0,0.5);
+	background:rgba(121, 121, 121);
 	border: 1px solid black;
-	color: #8f7b9e;
+	color: #ffffff;
 	width: 50%;
 	margin: auto;
 	padding: 15px;
