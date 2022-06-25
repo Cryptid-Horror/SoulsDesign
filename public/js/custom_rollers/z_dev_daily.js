@@ -1007,7 +1007,5 @@ function aberrantInjury()
 
 function clearForms() {
 	document.getElementById("activitytype").reset();
-    document.getElementById("playerinfo").reset();
-    document.getElementById("modifiers").reset();
     document.getElementById("result").innerHTML = "";
 }
