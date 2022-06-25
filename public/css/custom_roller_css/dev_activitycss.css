@@ -133,6 +133,7 @@ hr {
 	border: none;
 }
 .textarea {
+-webkit-user-select: initial;
  background-color: #525662;
  font-size: 1em;
  font-weight: bold;
