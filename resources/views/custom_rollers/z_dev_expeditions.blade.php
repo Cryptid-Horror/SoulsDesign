@@ -80,7 +80,6 @@
                     </select>
 					<hr>
 					<div width="100%">
-			<span style="white-space: nowrap;">
 					<label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
                             data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
                         Roll?</label>
@@ -90,8 +89,6 @@
                     <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
                             data-toggle="tooltip" data-placement="top"
                             title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label>
-
-</span>
                 </form>
             </div>
         </div>
