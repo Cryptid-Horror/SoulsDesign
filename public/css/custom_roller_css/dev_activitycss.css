@@ -41,14 +41,14 @@ td {
 }
 #title {
 	font-size: 25pt;
-	background: #211829;
+	background: #080808a2;
 	opacity: .7;
 	margin-top: 0;
 	margin-bottom: 10px;
 	padding: 0.3em 10px;
 	font-family: 'comfortaa', sans-serif;
 	letter-spacing: 2px;
-	color: #fcd3bb;
+	color: #f7f7f7;
 }
 .backarrow {
 	position:fixed;
