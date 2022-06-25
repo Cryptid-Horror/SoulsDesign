@@ -86,7 +86,7 @@
                     </select>
                     <hr>
 					<h1>Modifiers</h1>
-                   <b><u>General</u></b>
+                   <h3>General</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
@@ -109,7 +109,7 @@
                             title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
                         Buff</label>
 
-						<b><u> Items</u></b>
+                   <h3> Items</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
@@ -134,7 +134,7 @@
                                 title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
                     </span>
 
-					<b><u> Pets</u></b>
+                   <h3> Pets</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
@@ -165,7 +165,7 @@
                             Item Rarity</label>
                     </span>
 
-					<b><u> Skills</u></b>
+                   <h3> Skills</h3>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
