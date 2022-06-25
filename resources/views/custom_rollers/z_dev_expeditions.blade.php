@@ -93,7 +93,6 @@
                         <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label>
-                        <span style="white-space: nowrap;">
 
                             <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
                                     data-toggle="tooltip" data-placement="top"
