@@ -18,6 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+ 
 
     <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/dev_activitycss.css') }}" rel="stylesheet">
@@ -25,24 +26,25 @@
 </head>
 
 <body>
-    <div id="title" align="center">
+<!-- Navigation -->
+    <!-- CONTENT -->
+	     <div id="title" align="center">
         <h1>Activity Roller</h1>
     </div>
-
-    <div id="container1" align="center">
-        <table>
-            <td>
-                <form id="activitytype">
-                    <b>Activity</b>
+	<a href="/home.html"><img src="/images/backarrow2.png" width="75px" class="backarrow"></a>
+<div id="all">
+	<div class="boxed box3 side">	
+	<div class="contentbox">
+		<h1>Character Info</h1>
+		<form id="mpcount">
+			<b>Activity</b>
                     <select id="activity" name="activity">
                         <option value="hunting">Hunting</option>
                         <option value="fishing">Fishing</option>
                         <option value="foraging">Foraging</option>
                         <option value="caving">Caving</option>
                     </select>
-                </form>
-                <form id="playerinfo" align="left">
-                    <b>Name</b>
+      <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
                     <b>Rank</b>
@@ -76,12 +78,26 @@
                         <option value="50%">50%</option>
                         <option value="100%">100%</option>
                     </select>
-                </form>
-            </td>
-            <td>
-                <table>
-                    <form id="modifiers" align="center">
-                        <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+	</div>
+	</div>
+	<div class="boxed box3 center"><h1>Final Count</h1>
+		Copy this text into your prompt submission!<br>
+    <div id="buttoncontainer" align="center">
+            <button class="button" onclick="roll()">roll</button>
+            <button class="button" onclick="clearForms()">reset</button>
+        </div>
+        <div id="output" align="left">
+            <div id="result"></div>
+        </div>
+		<p>
+			
+		</p>
+	</div>
+	<div class="boxed box3 side">
+		<fieldset id="bonuses">
+		<div class="contentbox">
+			<h1>Additional Bonuses</h1>
+			<label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
                                 data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
                             Roll?</label><br>
 
@@ -133,23 +149,12 @@
                                 data-toggle="tooltip" data-placement="top"
                                 title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
                             Buff</label><br>
-                </table>
-            </td>
-            </form>
-        </table>
-        <div id="buttoncontainer" align="center">
-            <button class="button" onclick="roll()">roll</button>
-            <button class="button" onclick="clearForms()">reset</button>
-        </div>
-        <div id="output" align="left">
-            <div id="result"></div>
-        </div>
-        <div id="cred">Copyright Souls Between 2019, All Rights Reserved.<br>
-            Version 2.0.0</div>
-    </div>
-    <br>
+	</div>
+</div>
+<br><br>
+</body>
 
-
+</html>
     <!-- Found in the public/js folder -->
     <script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
 
