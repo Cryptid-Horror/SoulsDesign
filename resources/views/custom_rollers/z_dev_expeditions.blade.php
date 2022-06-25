@@ -34,7 +34,7 @@
     <div class="credit">
 	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
 	Version: 3.0.0<br>
-	CSS Credit: Livard (Liv Schneider)|| Original Code: Owlapin<br>
+	CSS Credit: Livard (Liv Schneider) || Original Code: Owlapin<br>
 	Roller Maintained by Cryptid-Horror and DraginRaptor<br>
 	Roller Content: Copyright Souls-Between 2019 - 2022<br>
 </div>
@@ -153,6 +153,21 @@
                                     data-toggle="tooltip" data-placement="top"
                                     title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
                                 Buff</label>
+
+								<label class="radioLabel"><input type="checkbox" id="pdamy" name="pdamy" value="pdamy"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Decrease Damage chance. Hunting: Boar || Fishing: Jellyfish || Foraging: Badger || Caving: Komodo ">✦Pet Protection</label>
+                        </span>
+
+						<span style="white-space: nowrap;">
+
+                            <label class="radioLabel"><input type="checkbox" id="pitemy" name="pitemy" value="pitemy"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Increase chance of rarer items. Hunting: Snow Leopard || Fishing: Eel || Foraging: Humminggriffon || Caving: Insect ">✦Pet Item Rarity</label>
+
+								<label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Loot chance Max + any modifiers">✦Empyrean Book</label>
                         </span>
 
                 </form>
