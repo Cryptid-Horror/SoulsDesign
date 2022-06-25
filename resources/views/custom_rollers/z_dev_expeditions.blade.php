@@ -43,7 +43,7 @@
                         <option value="fishing">Fishing</option>
                         <option value="foraging">Foraging</option>
                         <option value="caving">Caving</option>
-                    </select>
+                    </select><br>
                     <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
@@ -78,6 +78,20 @@
                         <option value="50%">50%</option>
                         <option value="100%">100%</option>
                     </select>
+					<hr>
+					<div width="100%">
+			<span style="white-space: nowrap;">
+					<label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                            data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+                        Roll?</label>
+						<label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
+                            data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
+                        Skill</label>
+                    <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label>
+
+</span>
                 </form>
             </div>
         </div>
@@ -95,17 +109,9 @@
         <div class="boxed box3 side">
                 <div class="contentbox">
                     <h1>Additional Bonuses</h1>
-                    <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
-                            data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
-                        Roll?</label><br>
+                    
 
-                    <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
-                            data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
-                        Skill</label><br>
-                    <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
-                            data-toggle="tooltip" data-placement="top"
-                            title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
-
+                   
                     <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
                             data-toggle="tooltip" data-placement="top"
                             title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
