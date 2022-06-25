@@ -32,12 +32,12 @@
         <h1>Activity Roller</h1>
     </div>
     <div class="credit">
-	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
-	Version: 3.0.0<br>
-	CSS Credit: Livard (Liv Schneider) || Original Code: Owlapin<br>
-	Roller Maintained by Cryptid-Horror and DraginRaptor<br>
-	Roller Content: Copyright Souls-Between 2019 - 2022<br>
-</div>
+        <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
+        Version: 3.0.0<br>
+        CSS Credit: Livard (Liv Schneider) || Original Code: Owlapin<br>
+        Roller Maintained by Cryptid-Horror and DraginRaptor<br>
+        Roller Content: Copyright Souls-Between 2019 - 2022<br>
+    </div>
     <div id="all">
         <div class="boxed box3 side">
             <div class="contentbox">
@@ -85,90 +85,96 @@
                         <option value="100%">100%</option>
                     </select>
                     <hr>
+					<h1>Modifiers</h1><br>
+                   <h3>General</h3><br>
                     <span style="white-space: nowrap;">
-                        <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
-                                data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
-                            Roll?</label>
-                        <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
-                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
-                            Skill</label>
-                    </span>
 
+                        <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Free rolls get less loot. If a Book is used on free roll, deselect this option.">✦Free
+                            Roll?</label>
+                        <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
+                            Trial</label>
+
+                    </span>
+                    <span style="white-space: nowrap;">
+
+                        <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
+                                data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
+                            Trial</label>
+                    </span>
+                    <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
+                        Buff</label>
+
+                   <h3> Items</h3><br>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label>
+                        <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label>
+                    </span>
+                    <span style="white-space: nowrap;">
 
-                            <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
-                                Item Pet</label>
-                        </span>
+                        <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Blueprint</label>
+                        <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
+                                data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
+                            Necklace</label>
+                    </span>
+                    <span style="white-space: nowrap;">
 
-                        <span style="white-space: nowrap;">
+                        <label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
+                    </span>
 
-                            <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
-                                    data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label>
+                   <h3> Pets</h3><br>
+                    <span style="white-space: nowrap;">
 
-                            <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
-                                    data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
-                                Trial</label>
-                        </span>
-                        <span style="white-space: nowrap;">
+                        <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
+                            Item Pet</label>
+                        <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Newt</label>
 
-                            <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Increase chance for Recipe Fragments">✦Blueprint</label>
+                    </span>
+                    <span style="white-space: nowrap;">
 
-                            <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Increase chance for Recipe Fragments">✦Newt Pet</label>
-                        </span>
-                        <span style="white-space: nowrap;">
+                        <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
+                            Pet</label>
+                        <label class="radioLabel"><input type="checkbox" id="pdamy" name="pdamy" value="pdamy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Decrease Damage chance. Hunting: Boar || Fishing: Jellyfish || Foraging: Badger || Caving: Komodo ">✦Pet
+                            Protection</label>
+                    </span>
+                    <span style="white-space: nowrap;">
 
-                            <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
-                                    data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
-                                Trial</label>
+                        <label class="radioLabel"><input type="checkbox" id="pitemy" name="pitemy" value="pitemy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance of rarer items. Hunting: Snow Leopard || Fishing: Eel || Foraging: Humminggriffon || Caving: Insect ">✦Pet
+                            Item Rarity</label>
+                    </span>
 
+                   <h3> Skills</h3><br>
+                    <span style="white-space: nowrap;">
 
-                            <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
-                                    data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
-                                Necklace</label>
-                        </span>
-                        <span style="white-space: nowrap;">
-
-                            <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
-                                    data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
-                                Skill</label>
-
-                            <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
-                                Pet</label>
-                        </span>
-                        <span style="white-space: nowrap;">
-
-                            <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
-                                Buff</label>
-
-								<label class="radioLabel"><input type="checkbox" id="pdamy" name="pdamy" value="pdamy"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Decrease Damage chance. Hunting: Boar || Fishing: Jellyfish || Foraging: Badger || Caving: Komodo ">✦Pet Protection</label>
-                        </span>
-
-						<span style="white-space: nowrap;">
-
-                            <label class="radioLabel"><input type="checkbox" id="pitemy" name="pitemy" value="pitemy"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Increase chance of rarer items. Hunting: Snow Leopard || Fishing: Eel || Foraging: Humminggriffon || Caving: Insect ">✦Pet Item Rarity</label>
-
-								<label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
-                                    data-toggle="tooltip" data-placement="top"
-                                    title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
-                        </span>
+                        <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
+                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
+                            Skill</label>
+                        <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
+                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
+                            Skill</label><br>
+                    </span>
                 </form>
             </div>
         </div>
@@ -183,6 +189,7 @@
 
         <br><br>
 </body>
+
 </html>
 <!-- Found in the public/js folder -->
 <script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
