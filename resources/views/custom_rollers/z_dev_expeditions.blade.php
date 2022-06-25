@@ -31,7 +31,14 @@
     <div id="title" align="center">
         <h1>Activity Roller</h1>
     </div>
-    <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png"></a>
+    <div class="credit">
+	Version: 3.0.0<br>
+	CSS Credit: Livard (Liv Schneider)<br>
+	Original Code: Owlapin<br>
+	Roller Maintained by Cryptid-Horror and DraginRaptor<br>
+	Roller Content: Copyright Souls-Between 2019 - 2022<br>
+	<a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="75px" class="backarrow"></a>
+</div>
     <div id="all">
         <div class="boxed box3 side">
             <div class="contentbox">
@@ -164,7 +171,6 @@
 
         <br><br>
 </body>
-
 </html>
 <!-- Found in the public/js folder -->
 <script src="{{ asset('js/custom_rollers/z_dev_daily.js') }}"></script>
