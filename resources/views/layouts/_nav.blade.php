@@ -134,21 +134,21 @@
                         <a class="dropdown-item" href="{{ url('world/info') }}">
                             <i class="fas fa-book"></i>Lore & World
                         </a>
-                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">✨Guides </a>
+                     <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">✨Guides </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url('') }}">Coming Soon</a></li>
                     </ul>
-                </li>
-                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">✨Pass Chances </a>
-                    <ul class="dropdown-menu">
+                    </li>
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">✨Pass Chances </a>
+                        <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
                                 Hatchery Odds
                             </a></li>
                         <li><a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
                                 Nesting Odds
                             </a></li>
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
                 <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">✨Rollers </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
@@ -170,8 +170,11 @@
                             </a></li>
                         <li> <a class="dropdown-item" href="{{ url('myos') }}">
                                 Genotype Masterlist
-                            </a></li>
-
+                            </a>
+                        </li>
+                    </ul>
+                </li>       
+            </ul>
         </div>
 
         {{--  <li class="nav-item dropdown">
