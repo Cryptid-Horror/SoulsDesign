@@ -159,8 +159,7 @@
             </div>
         </div>
         <div class="boxed box3 center">
-            <h1>Final Count</h1>
-            Copy this text into your prompt submission!<br>
+            <h1>Activity Results</h1>
             <div id="buttoncontainer" align="center">
                 <button class="button" onclick="roll()">roll</button>
                 <button class="button" onclick="clearForms()">reset</button>

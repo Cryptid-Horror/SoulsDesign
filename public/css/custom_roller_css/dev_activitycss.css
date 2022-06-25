@@ -5,10 +5,10 @@ body {
 	font-size: 12px;
 	margin: 0;
 	text-align: center;
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 }
 a {
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 	color: #9c97b4;
 }
 form {
@@ -22,7 +22,7 @@ padding-bottom: 0.2em;
 }
 
 h1, h2, h3, h4, .button, #title {
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 	font-weight: bold;
 	text-align: center;
 }
@@ -46,7 +46,7 @@ td {
 	margin-top: 0;
 	margin-bottom: 10px;
 	padding: 0.3em 10px;
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 	letter-spacing: 2px;
 	color: #f7f7f7;
 }
@@ -67,7 +67,7 @@ tel {
 	width: 365px;
 	color: #eee;
 	background-color: #1b1b1ba4;
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 	font-size: 11px;
 	margin: 5px;
 }
@@ -86,7 +86,7 @@ tel {
 }
 h1 {
 	font-size: 18pt;
-	font-family: 'comfortaa', sans-serif;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
 	color: #ffffff;
 	letter-spacing: 2px;
 }
@@ -135,7 +135,7 @@ hr {
  background-color: #171718bd;
  font-size: 1em;
  font-weight: bold;
- font-family: 'comfortaa', sans-serif;
+ font-family: 'Overlock', 'comfortaa', sans-serif;
  border: 1px solid rgba(139, 139, 139, 0.411);
     -webkit-touch-callout: all; /* iOS Safari */
     -webkit-user-select: all; /* Safari */
@@ -252,7 +252,7 @@ input:disabled+label{
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
-	background: rgba(61, 61, 75, 0.50);
+	background: rgba(17, 17, 17, 0.678);
 	border-width: 1px;
     border-radius: 2px;
 	padding: 3px;
