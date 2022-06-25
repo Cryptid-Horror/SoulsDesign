@@ -138,17 +138,22 @@
                         <a class="dropdown-item" href="{{ url('') }}">
                             <i class="fas fa-book"></i> Guides
                         </a>
-                        ✨Rollers
+                        <a class="dropdown-item" href="#">
+                            ✨Rollers &raquo;
+                        </a>
                         <ul class="dropdown-menu dropdown-submenu">
                             <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
-                            <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a></li>
+                            <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
+                            </li>
                             <li> <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a></li>
                             <li> <a class="dropdown-item" href="{{ url('roller/expeditions') }}">Expeditions</a></li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a></li>
+                            <li> <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
+                            </li>
                             <li> <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a></li>
                             <li> <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a></li>
                             <li> <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a></li>
-                            <li><a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a></li>
+                            <li><a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
+                            </li>
                         </ul>
                         ✨Masterlists
                         <a class="dropdown-item" href="{{ url('masterlist') }}">
