@@ -138,176 +138,176 @@
                         <a class="dropdown-item" href="{{ url('') }}">
                             <i class="fas fa-book"></i> Guides
                         </a>
-                        <a class="dropdown-item">
-                            ✨Rollers
-                        </a>
-                        <ul class="dropdown-menu dropdown-submenu">
-                            <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
-                            <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a></li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/expeditions') }}">Expeditions</a></li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a></li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a></li>
-                            <li> <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a></li>
-                            <li><a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
-                            </li>
-                        </ul>
-                        ✨Masterlists
-                        <a class="dropdown-item" href="{{ url('masterlist') }}">
-                            Dragon Masterlist
-                        </a>
-                        <a class="dropdown-item" href="{{ url('myos') }}">
-                            Genotype Masterlist
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
-                            Hatchery Odds
-                        </a>
-                        <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
-                            Nesting Odds
-                        </a>
-                    </div>
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">✨Rollers</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url('roller/arenaloot') }}">Arena Loot</a></li>
+                        <li><a class="dropdown-item" href="{{ url('roller/counter_ce') }}">Celestial Exp Counter</a>
+                        </li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/combat') }}">Combat</a></li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/expeditions') }}">Expeditions</a></li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/counter_ee') }}">Ethereal Exp Counter</a>
+                        </li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/hatchery') }}">Hatchery</a></li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/nesting') }}">Nesting </a></li>
+                        <li> <a class="dropdown-item" href="{{ url('roller/questing') }}">Questing</a></li>
+                        <li><a class="dropdown-item" href="{{ url('roller/vortex') }}">Vortex / World Events</a>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif
-                @else
-                @if(Auth::user()->isStaff)
-                <li class="nav-item d-flex">
-                    <a class="nav-link position-relative display-inline-block" href="{{ url('admin') }}"><i
-                            class="fas fa-crown"></i>
-                        @if (Auth::user()->hasAdminNotification(Auth::user()))
-                        <span class="position-absolute rounded-circle bg-danger text-light"
-                            style="top: -2px; right: -5px; padding: 1px 6px 1px 6px; font-weight:bold; font-size: 0.8em; box-shadow: 1px 1px 1px rgba(0,0,0,.25);">
-                            {{ Auth::user()->hasAdminNotification(Auth::user()) }}
-                        </span>
-                        @endif
-                    </a>
-                </li>
-                @endif
-                @if(Auth::user()->notifications_unread)
-                <li class="nav-item">
-                    <a class="nav-link btn btn-secondary btn-sm" href="{{ url('notifications') }}"><span
-                            class="fas fa-envelope"></span> {{ Auth::user()->notifications_unread }}</a>
-                </li>
-                @endif
-
-                <li class="nav-item dropdown">
-                    <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Submit
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="browseDropdown">
-                        <a class="dropdown-item" href="{{ url('submissions/new') }}">
-                            Submit Prompt
-                        </a>
-                        <a class="dropdown-item" href="{{ url('claims/new') }}">
-                            Submit Claim
-                        </a>
-                        <a class="dropdown-item" href="{{ url('designs') }}">
-                            Design Review
-                        </a>
-                        <a class="dropdown-item" href="{{ url('trades/open') }}">
-                            Trades
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('reports/new') }}">
-                            Submit Report
-                        </a>
-                        <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
-                            <i class="fas fa-lock-open"></i>Staff Apps
-                        </a>
-                        <a class="dropdown-item" href="{{ url('info/GAP') }}">
-                            <i class="fas fa-lock-open"></i>Guest Artist Apps
-                        </a>
-                        <a class="dropdown-item" href="{{ url('forum/16') }}">
-                            Suggestions/Feedback
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ Auth::user()->url }}" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ Auth::user()->url }}">
-                            Profile
-                        </a>
-                        <a class="dropdown-item" href="{{ url('level') }}">
-                            </i> Ethereal Rank
-                        </a>
-                        <a class="dropdown-item" href="{{ url('notifications') }}">
-                            Notifications
-                        </a>
-                        <a class="dropdown-item" href="{{ url('account/bookmarks') }}">
-                            Bookmarks
-                        </a>
-                        <a class="dropdown-item" href="{{ url('wishlists') }}">
-                            Wishlists
-                        </a>
-                        <a class="dropdown-item" href="{{ url('account/settings') }}">
-                            Settings
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
-                            View Dragons
-                        </a>
-                        <a class="dropdown-item" href="{{ Auth::user()->url.'/myos' }}">
-                            View genotypes
-                        </a>
-
-                        <a class="dropdown-item" href="{{ Auth::user()->url.'/breeding-permissions' }}">
-                            Nesting Perms
-                        </a>
-
-                        <a class="dropdown-item" href="{{ url('inventory') }}">
-                            View Hoard
-                        </a>
-                        <a class="dropdown-item" href="{{ url('bank') }}">
-                            View Bank
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
-                            Dragon Transfers
-                        </a>
-                        <a class="dropdown-item" href="{{ url('characters') }}">
-                            Dragon Manager
-                        </a>
-                        <a class="dropdown-item" href="{{ url('characters/myos') }}">
-                            Geno Manager
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                @endguest
-            </ul>
+                ✨Masterlists
+                <a class="dropdown-item" href="{{ url('masterlist') }}">
+                    Dragon Masterlist
+                </a>
+                <a class="dropdown-item" href="{{ url('myos') }}">
+                    Genotype Masterlist
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url('info/HatchOdds') }}">
+                    Hatchery Odds
+                </a>
+                <a class="dropdown-item" href="{{ url('info/Nesting_Odds') }}">
+                    Nesting Odds
+                </a>
         </div>
+        </li>
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            @if (Route::has('register'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
+            @endif
+            @else
+            @if(Auth::user()->isStaff)
+            <li class="nav-item d-flex">
+                <a class="nav-link position-relative display-inline-block" href="{{ url('admin') }}"><i
+                        class="fas fa-crown"></i>
+                    @if (Auth::user()->hasAdminNotification(Auth::user()))
+                    <span class="position-absolute rounded-circle bg-danger text-light"
+                        style="top: -2px; right: -5px; padding: 1px 6px 1px 6px; font-weight:bold; font-size: 0.8em; box-shadow: 1px 1px 1px rgba(0,0,0,.25);">
+                        {{ Auth::user()->hasAdminNotification(Auth::user()) }}
+                    </span>
+                    @endif
+                </a>
+            </li>
+            @endif
+            @if(Auth::user()->notifications_unread)
+            <li class="nav-item">
+                <a class="nav-link btn btn-secondary btn-sm" href="{{ url('notifications') }}"><span
+                        class="fas fa-envelope"></span> {{ Auth::user()->notifications_unread }}</a>
+            </li>
+            @endif
+
+            <li class="nav-item dropdown">
+                <a id="browseDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" v-pre>
+                    Submit
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="browseDropdown">
+                    <a class="dropdown-item" href="{{ url('submissions/new') }}">
+                        Submit Prompt
+                    </a>
+                    <a class="dropdown-item" href="{{ url('claims/new') }}">
+                        Submit Claim
+                    </a>
+                    <a class="dropdown-item" href="{{ url('designs') }}">
+                        Design Review
+                    </a>
+                    <a class="dropdown-item" href="{{ url('trades/open') }}">
+                        Trades
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('reports/new') }}">
+                        Submit Report
+                    </a>
+                    <a class="dropdown-item" href="{{ url('info/_StaffApps') }}">
+                        <i class="fas fa-lock-open"></i>Staff Apps
+                    </a>
+                    <a class="dropdown-item" href="{{ url('info/GAP') }}">
+                        <i class="fas fa-lock-open"></i>Guest Artist Apps
+                    </a>
+                    <a class="dropdown-item" href="{{ url('forum/16') }}">
+                        Suggestions/Feedback
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ Auth::user()->url }}" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ Auth::user()->url }}">
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="{{ url('level') }}">
+                        </i> Ethereal Rank
+                    </a>
+                    <a class="dropdown-item" href="{{ url('notifications') }}">
+                        Notifications
+                    </a>
+                    <a class="dropdown-item" href="{{ url('account/bookmarks') }}">
+                        Bookmarks
+                    </a>
+                    <a class="dropdown-item" href="{{ url('wishlists') }}">
+                        Wishlists
+                    </a>
+                    <a class="dropdown-item" href="{{ url('account/settings') }}">
+                        Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="{{ Auth::user()->url.'/characters' }}">
+                        View Dragons
+                    </a>
+                    <a class="dropdown-item" href="{{ Auth::user()->url.'/myos' }}">
+                        View genotypes
+                    </a>
+
+                    <a class="dropdown-item" href="{{ Auth::user()->url.'/breeding-permissions' }}">
+                        Nesting Perms
+                    </a>
+
+                    <a class="dropdown-item" href="{{ url('inventory') }}">
+                        View Hoard
+                    </a>
+                    <a class="dropdown-item" href="{{ url('bank') }}">
+                        View Bank
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('characters/transfers/incoming') }}">
+                        Dragon Transfers
+                    </a>
+                    <a class="dropdown-item" href="{{ url('characters') }}">
+                        Dragon Manager
+                    </a>
+                    <a class="dropdown-item" href="{{ url('characters/myos') }}">
+                        Geno Manager
+                    </a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            @endguest
+        </ul>
+    </div>
     </div>
 </nav>
