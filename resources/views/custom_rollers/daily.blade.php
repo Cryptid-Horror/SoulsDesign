@@ -72,62 +72,58 @@
 		<form id="modifiers" align="right">
 		<table>
 		<tr>
-			<td>Free Roll</td>
-			<td><input type="radio" name="barrel" id="barrely"><label for="barrely">Yes</label></td>
-			<td><input type="radio" name="barrel" id="barreln" checked><label for="barreln">No</label></td>
-		
-			<td>Hoarder-Skill</td>
-			<td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
-			<td><input type="radio" name="hoarder" id="hoardern" checked><label for="hoardern">No</label></td>
-		</tr>
-        	<td>Item Container</td>
-			<td><input type="radio" name="satchel" id="bagy"><label for="bagy">Yes</label></td>
-			<td><input type="radio" name="satchel" id="bagn" checked><label for="bagn">No</label></td>
-		
-			<td> Extra Item Familiar</td>
-			<td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
-			<td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
-		</tr>
-		<tr>
-			<td>Charm</td>
-			<td><input type="radio" name="charm" id="charmy"><label for="charmy">Yes</label></td>
-			<td><input type="radio" name="charm" id="charmn" checked><label for="charmn">No</label></td>
-	
-			<td>Taming</td>
-			<td><input type="radio" name="tame" id="tamey"><label for="tamey">Yes</label></td>
-			<td><input type="radio" name="tame" id="tamen" checked><label for="tamen">No</label></td>
-		</tr>
-		<tr>
-			<td>Blueprint</td>
-			<td><input type="radio" name="Blueprint" id="Blue"><label for="Blue">Yes</label></td>
-			<td><input type="radio" name="Blueprint" id="Bluen" checked><label for="Bluen">No</label></td>
-	
-        	<td>Newt</td>
-			<td><input type="radio" name="Newt" id="newty"><label for="newty">Yes</label></td>
-			<td><input type="radio" name="Newt" id="newtn" checked><label for="newtn">No</label></td>
-		</tr>
-		<tr>
-			<td>Soul-Linked</td>
-			<td><input type="radio" name="soul" id="souly"><label for="souly">Yes</label></td>
-			<td><input type="radio" name="soul" id="souln" checked><label for="souln">No</label></td>
-	
-			<td>Pearl Necklace</td>
-			<td><input type="radio" name="nofail" id="nofaily"><label for="nofaily">Yes</label></td>
-			<td><input type="radio" name="nofail" id="nofailn" checked><label for="nofailn">No</label></td>
-		</tr>
-		<tr>
-			<td>Adept</td>
-			<td><input type="radio" name="Adept" id="AdeptY"><label for="AdeptY">Yes</label></td>
-			<td><input type="radio" name="Adept" id="AdeptN" checked><label for="AdeptN">No</label></td>
-	
-			<td>  Pass Chance Familiar</td>
-			<td><input type="radio" name="fam" id="famY"><label for="famY">Yes</label></td>
-			<td><input type="radio" name="fam" id="famN" checked><label for="famN">No</label></td>
-		</tr>
-		<tr>
-			<td>Temperament Location Buff</td>
-			<td><input type="radio" name="local" id="localy"><label for="localy">Yes</label></td>
-			<td><input type="radio" name="local" id="localn" checked><label for="localn">No</label></td>
+		<label class="radioLabel"><input type="checkbox" id="barrely" name="barrely" value="barrely"
+                                data-toggle="tooltip" data-placement="top" title="Free rolls get less loot.">✦Free
+                            Roll?</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery" value="hoardery"
+                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder
+                            Skill</label><br>
+                        <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Container</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
+                            Item Pet</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
+                            Trial</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
+                                data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
+                            Trial</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
+                                data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
+                            Necklace</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
+                                data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
+                            Skill</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
+                            Pet</label><br>
+
+                        <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
+                            Buff</label><br>
 		</tr>
 		</table>
 		</form>
