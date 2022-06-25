@@ -20,8 +20,8 @@
 <div id="title" align="center"><h1>Activity Roller</h1></div>
 
 <div id="container1" align="center">
-	<table>
-	<td>
+	
+		<form id="playerinfo" align="left">
 		<form id="activitytype">
 			<b>Activity</b>
 			<select id="activity" name="activity">
@@ -30,8 +30,6 @@
 				<option value="foraging">Foraging</option>
 				<option value="caving">Caving</option>
 			</select>
-		</form>
-		<form id="playerinfo" align="left">
 			<b>Name</b>
 			<input type="text" id="dName" placeholder="Dragon's Name here">
 			<br>
