@@ -150,7 +150,7 @@
             Copy this text into your prompt submission!<br>
             <div id="buttoncontainer" align="center">
                 <button class="button" onclick="roll()">roll</button>
-                <button class="button" onclick="clearForms()">reset</button>
+				<a class="big button" onclick="reset()">Reset</a>
             </div>
             <div id="output" align="left">
                 <div id="result"></div>
