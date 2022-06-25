@@ -145,7 +145,7 @@ hr {
     user-select: all; /* Chrome and Opera */
 }
 .side {
-	text-align: center;
+	text-align: left;
 	background:rgba(0,0,0,0.5);
 	border: 1px solid rgb(121, 121, 121);
 	color: #ffffff;
@@ -242,7 +242,7 @@ input:disabled+label{
 #output{
 	border: 1px solid black;
 	height: auto;
-	width:300
+	width:300;
 	margin-top:20px;
 	background:#150e17;
 	color:#ffffff;
