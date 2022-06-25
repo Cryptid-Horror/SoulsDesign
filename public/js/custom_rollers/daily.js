@@ -56,9 +56,11 @@ function items(){
 	var lootSize;
 	var itemlist="";
 	
-	if (document.getElementById("barrely").checked == true){ //Free roll
+	if (document.getElementById("booky").checked == true){ //book
+		lootSize = (8);}
+	else if (document.getElementById("barrely").checked == true){ //Free roll
 		lootSize = rand(2,4);}
-	else {lootSize = rand(2,6);} //Entry roll
+	else {lootSize = rand(4,8);} //Entry roll
 	if (document.getElementById("hoardery").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Hoarder skill activated!</i><br>";}
@@ -75,13 +77,15 @@ function items(){
 //HUNTING//
 function rollHunt(){
 		if (zone.value == "radiant"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(55,94);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(55,94);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,94);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (80, 94);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (80, 94);}
 			else {var i = rand(1,94);}
 			
@@ -113,13 +117,15 @@ function rollHunt(){
             else if (i <= 94){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
 	else if (zone.value == "gloom"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(55,83);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(55,83);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,83);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (70, 83);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (70, 83);}
 			else {var i = rand(1,83);}
 			
@@ -149,13 +155,15 @@ function rollHunt(){
 
 		}
 			else if(zone.value == "frigid"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(60,91);}
-            if(document.getElementById("tamey").checked == true&& rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true&& rand(1,10) <= 4){
 				var i = rand(60,91);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,91);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (71, 91);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (71, 91);}
 			else {var i = rand(1,91);}
 			
@@ -184,13 +192,15 @@ function rollHunt(){
             else if (i <= 81){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
         else if(zone.value == "shimmering"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(45,79);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(45,79);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,79);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (60, 79);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (60, 79);}
 			else {var i = rand(1,79);}
 			
@@ -219,13 +229,15 @@ function rollHunt(){
             else if (i <= 79){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		}
 			else if(zone.value == "scorched"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(53,81);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(53,81);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,81);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (66, 81);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (66, 81);}
 			else {var i = rand(1,81);}
 			
@@ -254,13 +266,15 @@ function rollHunt(){
             else if (i <= 81){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			}
 		else if(zone.value == "aether"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(40,67);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(40,67);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,67);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (52, 67);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (52, 67);}
 			else {var i = rand(1,67);}
 			
@@ -291,13 +305,15 @@ function rollHunt(){
 //FISHING//	
 	function rollFish(){
 		if (zone.value == "radiant"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(28,58);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(28,58);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,58);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (39, 58);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (39, 58);}
 			else {var i = rand(1,58);}
 			
@@ -319,13 +335,15 @@ function rollHunt(){
             else if(i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "gloom"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(33,57);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(33,57);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,57);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (46, 57);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (46, 57);}
 			else {var i = rand(1,57);}
 			
@@ -349,13 +367,15 @@ function rollHunt(){
             else if(i <= 57){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 			
 		} else if (zone.value == "frigid"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(33,55);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(33,55);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,55);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (42, 55);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (42, 55);}
 			else {var i = rand(1,55);}
 			
@@ -377,13 +397,15 @@ function rollHunt(){
             else if(i <= 55){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "shimmering"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(30,51);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(30,51);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,51);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (40, 51);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (40, 51);}
 			else {var i = rand(1,51);}
 			
@@ -404,13 +426,15 @@ function rollHunt(){
             else if (i <= 51){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "scorched"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(33,58);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(33,58);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,58);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (43, 58);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
 				var i = rand(33,58);}
 			else {var i = rand(1,58);}
 
@@ -433,13 +457,15 @@ function rollHunt(){
             else if(i <= 58){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 			
 		} else if (zone.value == "aether"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(25,53);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(33,58);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (40, 53);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (40, 53);}
 			else {var i = rand(1,53);}
 			
@@ -465,13 +491,15 @@ function rollHunt(){
 //FORAGING//
 	function rollForage(){
 		if (zone.value == "radiant"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(83,120);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(83,120);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,120);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (103, 120);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (103, 120);}
 			else {var i = rand(1,120);}
 			
@@ -503,13 +531,15 @@ function rollHunt(){
 
 						
 		} else if (zone.value == "gloom"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(78,107);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(78,107);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,107);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (94, 107);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (94, 107);}
 			else {var i = rand(1,107);}
 			
@@ -538,13 +568,15 @@ function rollHunt(){
             else if (i <= 107){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 		
 		} else if (zone.value == "frigid"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(72,102);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(72,102);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,102);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (89, 102);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (89, 102);}
 			else {var i = rand(1,102);}
 		
@@ -574,13 +606,15 @@ function rollHunt(){
 
 
 		} else if (zone.value == "shimmering"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(68,103);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(68,103);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,103);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (90, 103);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (90, 103);}
 			else {var i = rand(1,103);}
 			
@@ -610,13 +644,15 @@ function rollHunt(){
 
 
 		} else if (zone.value == "scorched"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(68,96);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 1){
 				var i = rand(68,96);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,96);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (83, 96);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (83, 96);}
 			else {var i = rand(1,96);}
 			
@@ -645,13 +681,15 @@ function rollHunt(){
 		
 		
 		} else if (zone.value == "aether"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(83,113);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(83,113);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,113);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (100, 113);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (100, 113);}
 			else {var i = rand(1,113);}
 			
@@ -684,13 +722,15 @@ function rollHunt(){
 //CAVING//
       function rollCave(){
 		if (zone.value == "radiant"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <=2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 2){
                 var i = rand (35, 48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 2){
                 var i = rand (35, 48);}
 			else {var i = rand(1,48);}
 			
@@ -711,13 +751,15 @@ function rollHunt(){
 
 						
 		} else if (zone.value == "gloom"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <=3){
                 var i = rand (35, 48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 3){
                 var i = rand (35, 48);}
 			else {var i = rand(1,48);}
 			
@@ -737,13 +779,15 @@ function rollHunt(){
             else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 		
 		} else if (zone.value == "frigid"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 3){
                 var i = rand (35, 48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 3){
                 var i = rand (35, 48);}
 			else {var i = rand(1,48);}
 		
@@ -763,13 +807,15 @@ function rollHunt(){
             else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 
 		} else if (zone.value == "shimmering"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 3){
                 var i = rand (35, 48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 3){
                 var i = rand (35, 48);}
 			else {var i = rand(1,48);}
 		
@@ -789,13 +835,15 @@ function rollHunt(){
             else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment
 
 		} else if (zone.value == "scorched"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 3){
                 var i = rand (35,48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <= 3){
                 var i = rand (35,48);}
 			else {var i = rand(1,48);}
 		
@@ -815,13 +863,15 @@ function rollHunt(){
             else if (i <= 48){itemlist += "Mythic Recipe Fragment";} //Mythic Recipe fragment 
 
 		} else if (zone.value == "aether"){
-			if(document.getElementById("charmy").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("charmy").checked == true && rand(1,10) <= 2){
 				var i = rand(23,48);}
-            if(document.getElementById("tamey").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("tamey").checked == true && rand(1,10) <= 4){
 				var i = rand(23,48);}
-            if(document.getElementById("Blue").checked == true && rand(1,10) <= 4){
+			if(document.getElementById("pitemy").checked == true && rand(1,10) <= 2){
+				var i = rand(23,48);}
+            if(document.getElementById("Blue").checked == true && rand(1,10) <= 3){
                 var i = rand (35,48);}
-            if(document.getElementById("newty").checked == true && rand(1,10) <= 5){
+            if(document.getElementById("newty").checked == true && rand(1,10) <=3){
                 var i = rand (35,48);}
 			else {var i = rand(1,48);}
 		
@@ -857,63 +907,111 @@ function rollHunt(){
 
 function injury(){
 	if (document.getElementById('souly').checked == true){
-		var i = rand(2,10);
-	} else {var i = rand(1,10);}
-	
+		var i = rand(2,20);
+	} else {var i = rand(1,20);}
+	if (document.getElementById('pdamy') == true){
+		i += 1;}
 	if (document.getElementById(temp.value == "timid") == true){
 		i += 1;}
 	else if (document.getElementById(temp.value == "aggressive") == true){
 		i = Math.max(1, i - 1);}
 	
+	
 	if (activity.value == "hunting"){
 		if(i == 1){
-			return "Your dragon gets in a scuffle with the prey and comes out with a nasty scar! -10 HP lost";}
-		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
-			return "This isn't your dragon's first time getting swatted at, but they get a little prideful and wind up with a nastier scar than usual. -20 HP";}
-		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
-			return "Hunting bigger game means greater rewards, but risks too. The prey fought your dragon valiantly and left a nasty mark. -6 HP";}
-		else if(zone.value == "shimmering" || zone.value == "scorched" || zone.value =="aether" && i == 4){
-			return "Dangerous creatures reside here, your dragon ran face to face with one and took an impressive hit. -40 HP";}
-		else if(zone.value == "aether" && i == 5){
-			return "The below is a dangerous place, and while you and your dragon braved it, you didn't come out unscathed. -" + rand(30,100) + " HP";}
-			else if(zone.value == "aether" && i == 5){
-				return "Your Character has received Blighted Status Effect. -" + rand(30,100) + " HP";}
+			return dragonName.value + " gets in a scuffle with the prey and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While in a fight with the prey " + dragonName.value + " receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return dragonName.value + " has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return dragonName.value + " has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return dragonName.value + " has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return dragonName.value + " has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return dragonName.value + " has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 10){
+			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "fishing"){
 		if(i == 1){
-			return "While diving into the water for fish your dragon scraped up against a jagged rock. -10 HP";}
-		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
-			return "Sometimes the safer places might be lakes. Sometimes lakes might have drop off abyssal points. Your dragon fell in one. -20 HP";}
-		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
-			return "Dragons are large creatures, but even dragons can be overwhelmed by the many smaller creatures. Your dragon agitated a large school of fish, but instead of them darting away, they attacked. -40 HP";}
-		else if(zone.value == "shimmering" || zone.value == "scorched" || zone.value =="aether" && i == 4){
-			return "The ocean is full of giant monsters and while your dragon is an apex predator, there are some predators in the ocean that are looking for lunch. Your dragon ran into one of them, luckily they escaped in one piece... -60 HP.";}
-		else if(zone.value == "aether" && i == 5){
-			return "The Aether's oceans are especially dangerous, and creatures that have no business existing are lurking in the dark depths. One lunges at grabs a hold of your dragon. With a quick bellow and lashing claws, you escape.  -" + rand(30,100) + " HP.";}
+			return dragonName.value + " gets slapped by a rather large fish and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While diving in the waters " + dragonName.value + " receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return dragonName.value + " has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return dragonName.value + " has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return dragonName.value + " has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return dragonName.value + " has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return dragonName.value + " has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 10){
+			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "foraging"){
 		if(i == 1){
-			return "Your dragon searched every where for anything they could find, so focused they didn't notice they had scraped up against some rather large rocks. -10 HP";}
-		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
-			return "Exploring further into the world, your dragon finds itself near some rather strange looking plants. You don't know if they ate them or if they touched them but your dragon isn't happy about them. -20 HP";}
-		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
-			return "Your dragon went missing for a few days, they returned to you a little beaten up, but otherwise they seem ok. -40 HP";}
-		else if(zone.value == "shimmering" || zone.value == "scorched" || zone.value =="aether" && i == 4){
-			return "In a scuffle of something shiny, your dragon got in a fight with another dragon. It didn't last long and both dragons seem ok despite the small injuries. -60 HP.";}
-		else if(zone.value == "aether" && i == 5){
-			return "The Aether has a lot of dangerous places. Your dragon found a book that was glowing bright red letters among these dangerous places. Upon touching it they lost  -" + rand(30,100) + " HP.";}
+			return dragonName.value + " gets stuck in a dense forest and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While exploring for materials " + dragonName.value + " receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return dragonName.value + " has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return dragonName.value + " has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return dragonName.value + " has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return dragonName.value + " has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return dragonName.value + " has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 10){
+			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	} else if (activity.value == "caving"){
 		if(i == 1){
-			return "Your dragon searched every where for anything they could find, so focused they didn't notice they had scraped up against some rather large rocks. -10 HP";}
-		else if(zone.value == "gloom" || zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 2){
-			return "Exploring further into the world, your dragon finds itself near some rather strange looking plants. You don't know if they ate them or if they touched them but your dragon isn't happy about them. -20 HP";}
-		else if(zone.value == "frigid" || zone.value == "shimmering" || zone.value == "scorched" || zone.value == "aether" && i == 3){
-			return "Your dragon went missing for a few days, they returned to you a little beaten up, but otherwise they seem ok. -40 HP";}
-		else if(zone.value == "shimmering" || zone.value == "scorched" || zone.value =="aether" && i == 4){
-			return "In a scuffle of something shiny, your dragon got in a fight with another dragon. It didn't last long and both dragons seem ok despite the small injuries. -60 HP.";}
-		else if(zone.value == "aether" && i == 5){
-			return "The Aether has a lot of dangerous places. Your dragon found a book that was glowing bright red letters among these dangerous places. Upon touching it they lost  -" + rand(30,100) + " HP.";}
+			return dragonName.value + " gets caught in the caverns and comes out with a nasty scar! " + rand(10,30) + " HP was lost";}
+		else if(i == 2){
+			return "While exploring a deeper section of the cave " + dragonName.value + " receives a painful wound. " + rand(10,50) + " HP was lost.";}
+			// STATUS EFFECTS
+		else if(i == 3){
+			return dragonName.value + " has received Minor Poisoning. " + rand(20,50) + " HP was lost.";}
+		else if(i == 4){
+			return dragonName.value + " has received Major Poisoning. " + rand(30,100) + " HP was lost.";}
+		else if(i == 5){
+			return dragonName.value + " has received a Broken Bone. " + rand(30,100) + " HP was lost.";}
+		else if(i == 6){
+			return dragonName.value + " has received a Minor Wound. " + rand(20,50) + " HP was lost.";}
+		else if(i == 7){
+			return dragonName.value + " has received an Infected Wound. " + rand(30,100) + " HP was lost.";}
+			//AETHER
+		else if(zone.value == "aether" && i == 8){
+			return "Perhaps " + dragonName.value + " has spent too much time in the darkest reaches of the Aether realm -" + rand(40,60) + " HP was lost";}
+		else if(zone.value == "aether" && i == 9){
+			return "The below is a dangerous place, and while " + dragonName.value + " braved it, they didn't come out unscathed. -" + rand(30,100) + " HP was lost";}
+		else if(zone.value == "aether" && i == 10){
+			return dragonName.value + " has received Blighted Status Effect. -" + rand(50,200) + " HP was lost";}
 		else{ return dragonName.value +" was not injured.";}
 	}
 }
@@ -931,7 +1029,7 @@ function aberrantInjury()
 			return dragonName.value + "'s aberrations act up and their magic runs wild,\
 			lashing out at everything in the vicinity - including its master. "
 			+ aberrantData.flavortext
-			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP";
+			+ " -" + rand(aberrantData.min_dmg, aberrantData.max_dmg) + " HP was lost";
 		}
 	}
 
@@ -961,7 +1059,5 @@ function aberrantInjury()
 
 function clearForms() {
 	document.getElementById("activitytype").reset();
-    document.getElementById("playerinfo").reset();
-    document.getElementById("modifiers").reset();
     document.getElementById("result").innerHTML = "";
 }
