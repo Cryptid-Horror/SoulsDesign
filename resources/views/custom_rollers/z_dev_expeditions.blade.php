@@ -96,50 +96,50 @@
                         <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy" value="mimicy"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Extra
-                            Item Pet</label><br>
+                            Item Pet</label>
 
                         <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy" value="charmy"
-                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label><br>
+                                data-toggle="tooltip" data-placement="top" title="Item Rarity Buff.">✦Charm</label>
 
                         <label class="radioLabel"><input type="checkbox" id="tamey" name="tamey" value="tamey"
                                 data-toggle="tooltip" data-placement="top" title="Item Rarity Buff">✦Morality
-                            Trial</label><br>
+                            Trial</label>
                     </span>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="Blue" name="Blue" value="Blue"
                                 data-toggle="tooltip" data-placement="top"
-                                title="Increase chance for Recipe Fragments">✦Blueprint</label><br>
+                                title="Increase chance for Recipe Fragments">✦Blueprint</label>
 
                         <label class="radioLabel"><input type="checkbox" id="newty" name="newty" value="newty"
                                 data-toggle="tooltip" data-placement="top"
-                                title="Increase chance for Recipe Fragments">✦Newt Pet</label><br>
+                                title="Increase chance for Recipe Fragments">✦Newt Pet</label>
 
                         <label class="radioLabel"><input type="checkbox" id="souly" name="souly" value="souly"
                                 data-toggle="tooltip" data-placement="top" title="Decrease chance of injury">✦Spirit
-                            Trial</label><br>
+                            Trial</label>
                     </span>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="nofaily" name="nofaily" value="nofaily"
                                 data-toggle="tooltip" data-placement="top" title="You won't fail!">✦Pearl
-                            Necklace</label><br>
+                            Necklace</label>
 
                         <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
                                 data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept
-                            Skill</label><br>
+                            Skill</label>
 
                         <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
-                            Pet</label><br>
+                            Pet</label>
                     </span>
                     <span style="white-space: nowrap;">
 
                         <label class="radioLabel"><input type="checkbox" id="localy" name="localy" value="localy"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Vigilant: Frigid and Gloom || Aggressive: Scorched and Shimmering || Calm: Aether and Radiant || Sinister: All Locations">✦Temper
-                            Buff</label><br>
+                            Buff</label>
                     </span>
 
                 </form>
