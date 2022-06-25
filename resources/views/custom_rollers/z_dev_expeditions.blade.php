@@ -150,11 +150,9 @@
             Copy this text into your prompt submission!<br>
             <div id="buttoncontainer" align="center">
                 <button class="button" onclick="roll()">roll</button>
-				<a class="big button" onclick="reset()">Reset</a>
+                <button class="button" onclick="clearForms()">reset</button>
             </div>
-            <div id="output" align="left">
-                <div id="result"></div>
-            </div>
+            <textarea rows= "10" cols= "40" id="points" onClick= "this.select();"></textarea><br><br>
         </div>
         
         <br><br>
