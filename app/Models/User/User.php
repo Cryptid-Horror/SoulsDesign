@@ -320,6 +320,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Character\CharacterFolder');
     }
+    
      /**   
      * Gets all of a user's liked / disliked comments.
      */
@@ -335,7 +336,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         // return this has many where initiator_id matches this id or where recipient_id matches this id
         return UserFriend::where('recipient_approved', 1)->where('initiator_id', $this->id)->orWhere('recipient_id', $this->id)->get();
->
     }
 
     /**********************************************************************************************

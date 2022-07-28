@@ -356,7 +356,6 @@ class WorldController extends Controller
         } else {
             $query->sortCategory();
         }
-        else $query->sortCategory();
         
         $query->orderBy('id');
 
