@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Config;
+use App\Models\Model
 use App\Traits\Commentable;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
