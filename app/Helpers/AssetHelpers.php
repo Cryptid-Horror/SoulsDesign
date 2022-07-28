@@ -219,7 +219,7 @@ function mergeAssetsArrays($first, $second, $isCharacter = false)
         foreach($second[$key] as $item)
 
             addAsset($first, $item['asset'], $item['quantity']);
-        }
+        
 
 
     return $first;
