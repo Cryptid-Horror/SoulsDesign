@@ -9,7 +9,7 @@ use App\Models\Gallery\Gallery;
 use App\Models\Gallery\GallerySubmission;
 use App\Models\Prompt\Prompt;
 use App\Models\WorldExpansion\Location;
-use App\Models\Comment;
+
 
 use App\Models\User\User;
 use App\Services\GalleryManager;
