@@ -296,6 +296,10 @@
                             Geno Manager
                         </a>
                         <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url('comments/liked') }}">
+                                Liked Comments
+                            </a>
+                        <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

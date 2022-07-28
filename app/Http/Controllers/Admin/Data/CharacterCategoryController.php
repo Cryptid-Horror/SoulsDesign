@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Data;
 
-use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Character\Sublist;
-
 use App\Services\CharacterCategoryService;
-
-use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Http\Request;
 
 class CharacterCategoryController extends Controller
 {
@@ -31,7 +29,7 @@ class CharacterCategoryController extends Controller
     public function getIndex()
     {
         return view('admin.characters.character_categories', [
-            'categories' => CharacterCategory::orderBy('sort', 'DESC')->get()
+            'categories' => CharacterCategory::orderBy('sort', 'DESC')->get(),
         ]);
     }
 
@@ -45,14 +43,15 @@ class CharacterCategoryController extends Controller
         return view('admin.characters.create_edit_character_category', [
             'lineageBlacklist' => null,
             'category' => new CharacterCategory,
-            'sublists' => [0 => 'No Sublist'] + Sublist::orderBy('name', 'DESC')->pluck('name', 'id')->toArray()
+            'sublists' => [0 => 'No Sublist'] + Sublist::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
         ]);
     }
 
     /**
      * Shows the edit character category page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditCharacterCategory($id)
@@ -64,16 +63,16 @@ class CharacterCategoryController extends Controller
         return view('admin.characters.create_edit_character_category', [
             'lineageBlacklist' => $lineageBlacklist,
             'category' => $category,
-            'sublists' => [0 => 'No Sublist'] + Sublist::orderBy('name', 'DESC')->pluck('name', 'id')->toArray()
+            'sublists' => [0 => 'No Sublist'] + Sublist::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
         ]);
     }
 
     /**
      * Creates or edits a character category.
      *
-     * @param  \Illuminate\Http\Request               $request
-     * @param  App\Services\CharacterCategoryService  $service
-     * @param  int|null                               $id
+     * @param App\Services\CharacterCategoryService $service
+     * @param int|null                              $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreateEditCharacterCategory(Request $request, CharacterCategoryService $service, $id = null)
@@ -83,28 +82,32 @@ class CharacterCategoryController extends Controller
             'lineage-blacklist',
             'code', 'name', 'description', 'image', 'remove_image', 'masterlist_sub_id'
         ]);
-        if($id && $service->updateCharacterCategory(CharacterCategory::find($id), $data)) {
+        if ($id && $service->updateCharacterCategory(CharacterCategory::find($id), $data, Auth::user())) {
             flash('Category updated successfully.')->success();
-        }
-        else if (!$id && $category = $service->createCharacterCategory($data)) {
+        } elseif (!$id && $category = $service->createCharacterCategory($data, Auth::user())) {
             flash('Category created successfully.')->success();
+
             return redirect()->to('admin/data/character-categories/edit/'.$category->id);
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
     /**
      * Gets the character category deletion modal.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getDeleteCharacterCategory($id)
     {
         $category = CharacterCategory::find($id);
+
         return view('admin.characters._delete_character_category', [
             'category' => $category,
         ]);
@@ -113,37 +116,41 @@ class CharacterCategoryController extends Controller
     /**
      * Deletes a character category.
      *
-     * @param  \Illuminate\Http\Request               $request
-     * @param  App\Services\CharacterCategoryService  $service
-     * @param  int                                    $id
+     * @param App\Services\CharacterCategoryService $service
+     * @param int                                   $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDeleteCharacterCategory(Request $request, CharacterCategoryService $service, $id)
     {
-        if($id && $service->deleteCharacterCategory(CharacterCategory::find($id))) {
+        if ($id && $service->deleteCharacterCategory(CharacterCategory::find($id), Auth::user())) {
             flash('Category deleted successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->to('admin/data/character-categories');
     }
 
     /**
      * Sorts character categories.
      *
-     * @param  \Illuminate\Http\Request               $request
-     * @param  App\Services\CharacterCategoryService  $service
+     * @param App\Services\CharacterCategoryService $service
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSortCharacterCategory(Request $request, CharacterCategoryService $service)
     {
-        if($service->sortCharacterCategory($request->get('sort'))) {
+        if ($service->sortCharacterCategory($request->get('sort'))) {
             flash('Category order updated successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 }

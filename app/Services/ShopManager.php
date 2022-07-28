@@ -1,4 +1,4 @@
-<?php namespace App\Services;
+<?php
 
 use App\Services\Service;
 
@@ -16,6 +16,8 @@ use App\Models\Shop\ShopLog;
 use App\Models\User\UserItem;
 use App\Models\Item\Item;
 use App\Models\Item\ItemTag;
+namespace App\Services;
+
 
 class ShopManager extends Service
 {
@@ -31,9 +33,10 @@ class ShopManager extends Service
     /**
      * Buys an item from a shop.
      *
-     * @param  array                 $data
-     * @param  \App\Models\User\User $user
-     * @return bool|App\Models\Shop\Shop
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     *
+     * @return App\Models\Shop\Shop|bool
      */
     public function buyStock($data, $user)
     {
@@ -41,21 +44,29 @@ class ShopManager extends Service
 
         try {
             $quantity = $data['quantity'];
-            if(!$quantity || $quantity == 0) throw new \Exception("Invalid quantity selected.");
+            if (!$quantity || $quantity == 0) {
+                throw new \Exception('Invalid quantity selected.');
+            }
 
             // Check that the shop exists and is open
             $shop = Shop::where('id', $data['shop_id'])->where('is_active', 1)->first();
-            if(!$shop) throw new \Exception("Invalid shop selected.");
+            if (!$shop) {
+                throw new \Exception('Invalid shop selected.');
+            }
 
             // Check that the stock exists and belongs to the shop
             $shopStock = ShopStock::where('id', $data['stock_id'])->where('shop_id', $data['shop_id'])->with('currency')->first();
             if(!$shopStock) throw new \Exception("Invalid item selected.");
 
             // Check if the item has a quantity, and if it does, check there is enough stock remaining
-            if($shopStock->is_limited_stock && $shopStock->quantity < $quantity) throw new \Exception("There is insufficient stock to fulfill your request.");
+            if ($shopStock->is_limited_stock && $shopStock->quantity < $quantity) {
+                throw new \Exception('There is insufficient stock to fulfill your request.');
+            }
 
             // Check if the user can only buy a limited number of this item, and if it does, check that the user hasn't hit the limit
-            if($shopStock->purchase_limit && $this->checkPurchaseLimitReached($shopStock, $user)) throw new \Exception("You have already purchased the maximum amount of this item you can buy.");
+            if ($shopStock->purchase_limit && $this->checkPurchaseLimitReached($shopStock, $user)) {
+                throw new \Exception('You have already purchased the maximum amount of this item you can buy.');
+            }
 
 
             if(isset($data['use_coupon'])) {
@@ -102,20 +113,25 @@ class ShopManager extends Service
             }
 
             $character = null;
-            if($data['bank'] == 'character')
-            {
+            if ($data['bank'] == 'character') {
                 // Check if the user is using a character to pay
                 // - stock must be purchaseable with characters
                 // - currency must be character-held
                 // - character has enough currency
-                if(!$shopStock->use_character_bank || !$shopStock->currency->is_character_owned) throw new \Exception("You cannot use a character's bank to pay for this item.");
-                if(!$data['slug']) throw new \Exception("Please enter a character code.");
+                if (!$shopStock->use_character_bank || !$shopStock->currency->is_character_owned) {
+                    throw new \Exception("You cannot use a character's bank to pay for this item.");
+                }
+                if (!$data['slug']) {
+                    throw new \Exception('Please enter a character code.');
+                }
                 $character = Character::where('slug', $data['slug'])->first();
-                if(!$character) throw new \Exception("Please enter a valid character code.");
-                if(!(new CurrencyManager)->debitCurrency($character, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) throw new \Exception("Not enough currency to make this purchase.");
-            }
-            else
-            {
+                if (!$character) {
+                    throw new \Exception('Please enter a valid character code.');
+                }
+                if (!(new CurrencyManager)->debitCurrency($character, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) {
+                    throw new \Exception('Not enough currency to make this purchase.');
+                }
+            } else {
                 // If the user is paying by themselves
                 // - stock must be purchaseable by users
                 // - currency must be user-held
@@ -168,28 +184,33 @@ class ShopManager extends Service
         } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Checks if the purchase limit for an item from a shop has been reached.
      *
-     * @param  \App\Models\Shop\ShopStock  $shopStock
-     * @param  \App\Models\User\User      $user
+     * @param \App\Models\Shop\ShopStock $shopStock
+     * @param \App\Models\User\User      $user
+     *
      * @return bool
      */
     public function checkPurchaseLimitReached($shopStock, $user)
     {
-        if($shopStock->purchase_limit > 0)
+        if ($shopStock->purchase_limit > 0) {
             return $this->checkUserPurchases($shopStock, $user) >= $shopStock->purchase_limit;
+        }
+
         return false;
     }
 
     /**
      * Checks how many times a user has purchased a shop item.
      *
-     * @param  \App\Models\Shop\ShopStock  $shopStock
-     * @param  \App\Models\User\User      $user
+     * @param \App\Models\Shop\ShopStock $shopStock
+     * @param \App\Models\User\User      $user
+     *
      * @return int
      */
     public function checkUserPurchases($shopStock, $user)
@@ -200,13 +221,18 @@ class ShopManager extends Service
     public function getStockPurchaseLimit($shopStock, $user)
     {
         $limit = Config::get('lorekeeper.settings.default_purchase_limit');
-        if($shopStock->purchase_limit > 0) {
+        if ($shopStock->purchase_limit > 0) {
             $user_purchase_limit = $shopStock->purchase_limit - $this->checkUserPurchases($shopStock, $user);
-            if($user_purchase_limit < $limit) $limit = $user_purchase_limit;
+            if ($user_purchase_limit < $limit) {
+                $limit = $user_purchase_limit;
+            }
         }
-        if($shopStock->is_limited_stock) {
-            if($shopStock->quantity < $limit) $limit = $shopStock->quantity;
+        if ($shopStock->is_limited_stock) {
+            if ($shopStock->quantity < $limit) {
+                $limit = $shopStock->quantity;
+            }
         }
+
         return $limit;
     }
 

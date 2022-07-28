@@ -9,10 +9,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/composer.lock
 *.env
+
 clear_characters.sql
 
-=======
+
 /composer.phar
+*.cache
 

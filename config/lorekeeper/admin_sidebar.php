@@ -19,67 +19,75 @@ return [
         'links' => [
             [
                 'name' => 'User Ranks',
-                'url' => 'admin/users/ranks'
-            ]
-        ]
+                'url'  => 'admin/users/ranks',
+            ],
+            [
+                'name' => 'Admin Logs',
+                'url'  => 'admin/logs',
+            ],
+            [
+                'name' => 'Staff Reward Settings',
+                'url'  => 'admin/staff-reward-settings',
+            ],
+        ],
     ],
     'Reports' => [
         'power' => 'manage_reports',
         'links' => [
             [
                 'name' => 'Report Queue',
-                'url' => 'admin/reports/pending'
-            ]
-        ]
+                'url'  => 'admin/reports/pending',
+            ],
+        ],
     ],
     'Site' => [
         'power' => 'edit_pages',
         'links' => [
             [
                 'name' => 'News',
-                'url' => 'admin/news'
+                'url'  => 'admin/news',
             ],
             [
                 'name' => 'Sales',
-                'url' => 'admin/sales'
+                'url'  => 'admin/sales',
             ],
             [
                 'name' => 'Pages',
-                'url' => 'admin/pages'
-            ]
-        ]
+                'url'  => 'admin/pages',
+            ],
+        ],
     ],
     'Users' => [
         'power' => 'edit_user_info',
         'links' => [
             [
                 'name' => 'User Index',
-                'url' => 'admin/users'
+                'url'  => 'admin/users',
             ],
             [
                 'name' => 'Invitation Keys',
-                'url' => 'admin/invitations'
+                'url'  => 'admin/invitations',
             ],
-        ]
+        ],
     ],
     'Queues' => [
         'power' => 'manage_submissions',
         'links' => [
             [
                 'name' => 'Gallery Submissions',
-                'url' => 'admin/gallery/submissions'
+                'url'  => 'admin/gallery/submissions',
             ],
             [
                 'name' => 'Gallery Currency Awards',
-                'url' => 'admin/gallery/currency'
+                'url'  => 'admin/gallery/currency',
             ],
             [
                 'name' => 'Prompt Submissions',
-                'url' => 'admin/submissions'
+                'url'  => 'admin/submissions',
             ],
             [
                 'name' => 'Claim Submissions',
-                'url' => 'admin/claims'
+                'url'  => 'admin/claims',
             ],
             [
                 'name' => 'Challenge Logs',
@@ -92,11 +100,11 @@ return [
         'links' => [
             [
                 'name' => 'Currency Grants',
-                'url' => 'admin/grants/user-currency'
+                'url'  => 'admin/grants/user-currency',
             ],
             [
                 'name' => 'Item Grants',
-                'url' => 'admin/grants/items'
+                'url'  => 'admin/grants/items',
             ],
             [
 
@@ -147,13 +155,13 @@ return [
             ],
             [
                 'name' => 'Design Updates',
-                'url' => 'admin/design-approvals/pending'
+                'url'  => 'admin/design-approvals/pending',
             ],
             [
                 'name' => 'Design Approvals',
                 'url' => 'admin/myo-approvals/pending'
             ],
-        ]
+        ],
     ],
     'Stats' => [
         'power' => 'edit_stats',
@@ -182,7 +190,7 @@ return [
         'links' => [
             [
                 'name' => 'Galleries',
-                'url' => 'admin/data/galleries'
+                'url'  => 'admin/data/galleries',
             ],
             [
                 'name' => 'Award Categories',
@@ -194,27 +202,27 @@ return [
             ],
             [
                 'name' => 'Character Categories',
-                'url' => 'admin/data/character-categories'
+                'url'  => 'admin/data/character-categories',
             ],
             [
                 'name' => 'Sub Masterlists',
-                'url' => 'admin/data/sublists'
+                'url'  => 'admin/data/sublists',
             ],
             [
                 'name' => 'Rarities',
-                'url' => 'admin/data/rarities'
+                'url'  => 'admin/data/rarities',
             ],
             [
                 'name' => 'Species',
-                'url' => 'admin/data/species'
+                'url'  => 'admin/data/species',
             ],
             [
                 'name' => 'Subtypes',
-                'url' => 'admin/data/subtypes'
+                'url'  => 'admin/data/subtypes',
             ],
             [
                 'name' => 'Traits',
-                'url' => 'admin/data/traits'
+                'url'  => 'admin/data/traits',
             ],
             [
                 'name' => 'Character Titles',
@@ -226,11 +234,11 @@ return [
             ],
             [
                 'name' => 'Shops',
-                'url' => 'admin/data/shops'
+                'url'  => 'admin/data/shops',
             ],
             [
                 'name' => 'Currencies',
-                'url' => 'admin/data/currencies'
+                'url'  => 'admin/data/currencies',
             ],
             [
                 'name' => 'Prompt Categories',
@@ -238,7 +246,7 @@ return [
             ],
             [
                 'name' => 'Prompts',
-                'url' => 'admin/data/prompts'
+                'url'  => 'admin/data/prompts',
             ],
             [
                 'name' => 'Challenges',
@@ -246,11 +254,11 @@ return [
             ],
             [
                 'name' => 'Loot Tables',
-                'url' => 'admin/data/loot-tables'
+                'url'  => 'admin/data/loot-tables',
             ],
             [
                 'name' => 'Items',
-                'url' => 'admin/data/items'
+                'url'  => 'admin/data/items',
             ],
             [
                 'name' => 'Recipes',
@@ -329,24 +337,24 @@ return [
         'links' => [
             [
                 'name' => 'Raffles',
-                'url' => 'admin/raffles'
+                'url'  => 'admin/raffles',
             ],
-        ]
+        ],
     ],
     'Settings' => [
         'power' => 'edit_site_settings',
         'links' => [
             [
                 'name' => 'Site Settings',
-                'url' => 'admin/settings'
+                'url'  => 'admin/settings',
             ],
             [
                 'name' => 'Site Images',
-                'url' => 'admin/images'
+                'url'  => 'admin/images',
             ],
             [
                 'name' => 'File Manager',
-                'url' => 'admin/files'
+                'url'  => 'admin/files',
             ],
             [
                 'name' => 'Theme Manager',

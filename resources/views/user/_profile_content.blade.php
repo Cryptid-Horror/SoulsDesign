@@ -8,6 +8,23 @@
     </div>
 @endif
 
+@if(Auth::check() && Auth::user()->id != $user->id && !$user->isBlocked(Auth::user()))
+    <h4>
+        @if($user->isPendingFriendsWith(Auth::user()))
+            <small><i data-toggle="tooltip" title="You have a pending request to be friends with {{ $user->name }}." class="fas fa-user text-info float-right"></i></small>
+        @elseif($user->isFriendsWith(Auth::user()))
+            <small><i data-toggle="tooltip" title="You are friends with {{ $user->name }}." class="fas fa-user text-success float-right"></i></small>
+        @else
+            {!! Form::open(['url' => 'friends/requests/'.$user->id]) !!}
+                {!! Form::button('<i class="fas fa-plus"></i>', ['class' => 'btn badge badge-success mr-2 float-right', 'data-toggle' => 'tooltip', 'title' => 'Add this user as friend.', 'type' => 'submit']) !!}
+            {!! Form::close() !!}
+        @endif
+        {!! Form::open(['url' => 'friends/block/'.$user->id]) !!}
+            {!! Form::button('Block', ['class' => 'btn badge badge-danger mr-2 float-right', 'data-toggle' => 'tooltip', 'title' => 'Blocking this user will prevent them from viewing your profile.', 'type' => 'submit']) !!}
+        {!! Form::close() !!}
+    </h4>
+@endif
+
 <br>
 <hr>
 
@@ -27,7 +44,7 @@
                     <a href="{{ $character->url }}"><img src="{{ $character->image->thumbnailUrl }}" class="img-thumbnail" alt="{{ $character->fullName }}" /></a>
                 </div>
                 <div class="mt-1">
-                    <a href="{{ $character->url }}" class="h5 mb-0"> @if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {{ $character->fullName }}</a>
+                    <a href="{{ $character->url }}" class="h5 mb-0"> @if(!$character->is_visible) <i class="fas fa-eye-slash"></i> @endif {{ Illuminate\Support\Str::limit($character->fullName, 20, $end='...') }}</a>
                 </div>
             </div>
         @endforeach

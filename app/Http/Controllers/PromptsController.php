@@ -11,6 +11,9 @@ use App\Models\Award\AwardCategory;
 use App\Models\Award\Award;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
+use App\Models\Prompt\PromptCategory;
+use Auth;
+use Illuminate\Http\Request;
 
 class PromptsController extends Controller
 {
@@ -37,15 +40,17 @@ class PromptsController extends Controller
     /**
      * Shows the prompt categories page.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getPromptCategories(Request $request)
     {
         $query = PromptCategory::query();
         $name = $request->get('name');
-        if($name) $query->where('name', 'LIKE', '%'.$name.'%');
-        return view('prompts.prompt_categories', [  
+        if ($name) {
+            $query->where('name', 'LIKE', '%'.$name.'%');
+        }
+
+        return view('prompts.prompt_categories', [
             'categories' => $query->orderBy('sort', 'DESC')->paginate(20)->appends($request->query()),
         ]);
     }
@@ -53,21 +58,21 @@ class PromptsController extends Controller
     /**
      * Shows the prompts page.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getPrompts(Request $request)
     {
-        $query = Prompt::active()->with('category');
+        $query = Prompt::active()->staffOnly(Auth::check() ? Auth::user() : null)->with('category');
         $data = $request->only(['prompt_category_id', 'name', 'sort']);
-        if(isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none') 
+        if (isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none') {
             $query->where('prompt_category_id', $data['prompt_category_id']);
-        if(isset($data['name'])) 
+        }
+        if (isset($data['name'])) {
             $query->where('name', 'LIKE', '%'.$data['name'].'%');
+        }
 
-        if(isset($data['sort'])) 
-        {
-            switch($data['sort']) {
+        if (isset($data['sort'])) {
+            switch ($data['sort']) {
                 case 'alpha':
                     $query->sortAlphabetical();
                     break;
@@ -96,12 +101,33 @@ class PromptsController extends Controller
                     $query->sortEnd(true);
                     break;
             }
-        } 
-        else $query->sortCategory();
+        } else {
+            $query->sortCategory();
+        }
 
         return view('prompts.prompts', [
-            'prompts' => $query->paginate(20)->appends($request->query()),
-            'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray()
+            'prompts'    => $query->paginate(20)->appends($request->query()),
+            'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+        ]);
+    }
+
+    /**
+     * Shows an individual prompt.
+     *
+     * @param mixed $id
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getPrompt(Request $request, $id)
+    {
+        $prompt = Prompt::where('id', $id)->get()->first();
+
+        if (!$prompt) {
+            abort(404);
+        }
+
+        return view('prompts.prompt', [
+            'prompt' => $prompt,
         ]);
     }
 }

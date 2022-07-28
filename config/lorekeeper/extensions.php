@@ -40,8 +40,8 @@ return [
         'resale_function' => 1,
         'loot_tables' => [
             // Adds the ability to use either rarity criteria for items or item categories with rarity criteria in loot tables. Note that disabling this does not apply retroactively.
-            'enable' => 0,
-            'alternate_filtering' => 0 // By default this uses more broadly compatible methods to filter by rarity. If you are on Dreamhost/know your DB software can handle searching in JSON, it's recommended to set this to 1 instead.
+            'enable'              => 0,
+            'alternate_filtering' => 0, // By default this uses more broadly compatible methods to filter by rarity. If you are on Dreamhost/know your DB software can handle searching in JSON, it's recommended to set this to 1 instead.
         ],
     ],
 
@@ -73,4 +73,20 @@ return [
         'profiles_enabled' => 1 // 0 to disable this effect on Character Profiles (versus their masterlist page)
     ],
 
+    // MYO Image Hide/Remove - Mercury
+    // Adds an option when approving MYO submissions to hide or delete the MYO placeholder image
+    'remove_myo_image' => 0,
+
+    // Auto-populate New Image Traits - Mercury
+    // Automatically adds the traits present on a character's active image to the list when uploading a new image for an extant character.
+    'autopopulate_image_features' => 0,
+
+    // Staff Rewards - Mercury
+    'staff_rewards' => [
+        'enabled'     => 0,
+        'currency_id' => 1,
+    ],
+
+    // Organised Traits Dropdown - Draginraptor
+    'organised_traits_dropdown' => 0,
 ];

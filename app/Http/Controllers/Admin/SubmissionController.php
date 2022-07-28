@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Item\Item;
+use App\Models\Prompt\PromptCategory;
+use App\Models\Submission\Submission;
+use App\Services\SubmissionManager;
 use Auth;
 use Config;
 use Carbon\Carbon;
@@ -35,20 +40,21 @@ class SubmissionController extends Controller
     /**
      * Shows the submission index page.
      *
-     * @param  string  $status
+     * @param string $status
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getSubmissionIndex(Request $request, $status = null)
     {
         $submissions = Submission::with('prompt')->where('status', $status ? ucfirst($status) : 'Pending')->whereNotNull('prompt_id');
         $data = $request->only(['prompt_category_id', 'sort']);
-        if(isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none')
-            $submissions->whereHas('prompt', function($query) use ($data) {
+        if (isset($data['prompt_category_id']) && $data['prompt_category_id'] != 'none') {
+            $submissions->whereHas('prompt', function ($query) use ($data) {
                 $query->where('prompt_category_id', $data['prompt_category_id']);
             });
-        if(isset($data['sort']))
-        {
-            switch($data['sort']) {
+        }
+        if (isset($data['sort'])) {
+            switch ($data['sort']) {
                 case 'newest':
                     $submissions->sortNewest();
                     break;
@@ -56,19 +62,22 @@ class SubmissionController extends Controller
                     $submissions->sortOldest();
                     break;
             }
+        } else {
+            $submissions->sortOldest();
         }
-        else $submissions->sortOldest();
+
         return view('admin.submissions.index', [
             'submissions' => $submissions->paginate(30)->appends($request->query()),
-            'categories' => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'isClaims' => false
+            'categories'  => ['none' => 'Any Category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'isClaims'    => false,
         ]);
     }
 
     /**
      * Shows the submission detail page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getSubmission($id)
@@ -123,16 +132,16 @@ class SubmissionController extends Controller
     /**
      * Shows the claim index page.
      *
-     * @param  string  $status
+     * @param string $status
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getClaimIndex(Request $request, $status = null)
     {
         $submissions = Submission::where('status', $status ? ucfirst($status) : 'Pending')->whereNull('prompt_id');
         $data = $request->only(['sort']);
-        if(isset($data['sort']))
-        {
-            switch($data['sort']) {
+        if (isset($data['sort'])) {
+            switch ($data['sort']) {
                 case 'newest':
                     $submissions->sortNewest();
                     break;
@@ -140,25 +149,31 @@ class SubmissionController extends Controller
                     $submissions->sortOldest();
                     break;
             }
+        } else {
+            $submissions->sortOldest();
         }
-        else $submissions->sortOldest();
+
         return view('admin.submissions.index', [
             'submissions' => $submissions->paginate(30),
-            'isClaims' => true
+            'isClaims'    => true,
         ]);
     }
 
     /**
      * Shows the claim detail page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getClaim($id)
     {
         $submission = Submission::whereNull('prompt_id')->where('id', $id)->first();
         $inventory = isset($submission->data['user']) ? parseAssetData($submission->data['user']) : null;
-        if(!$submission) abort(404);
+        if (!$submission) {
+            abort(404);
+        }
+
         return view('admin.submissions.submission', [
             'submission' => $submission,
             'awardsrow' => Award::all()->keyBy('id'),
@@ -186,10 +201,10 @@ class SubmissionController extends Controller
     /**
      * Creates a new submission.
      *
-     * @param  \Illuminate\Http\Request        $request
-     * @param  App\Services\SubmissionManager  $service
-     * @param  int                             $id
-     * @param  string                          $action
+     * @param App\Services\SubmissionManager $service
+     * @param int                            $id
+     * @param string                         $action
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSubmission(Request $request, SubmissionManager $service, $id, $action)
@@ -197,13 +212,14 @@ class SubmissionController extends Controller
         $data = $request->only(['slug', 'character_rewardable_quantity', 'character_rewardable_id',  'character_rewardable_type', 'character_currency_id', 'rewardable_type', 'rewardable_id', 'quantity', 'staff_comments', 'is_focus', 'bonus_exp', 'bonus_points', 'bonus_user_exp', 'bonus_user_points' ]);
         if($action == 'reject' && $service->rejectSubmission($request->only(['staff_comments']) + ['id' => $id], Auth::user())) {
             flash('Submission rejected successfully.')->success();
-        }
-        elseif($action == 'approve' && $service->approveSubmission($data + ['id' => $id], Auth::user())) {
+        } elseif ($action == 'approve' && $service->approveSubmission($data + ['id' => $id], Auth::user())) {
             flash('Submission approved successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 }

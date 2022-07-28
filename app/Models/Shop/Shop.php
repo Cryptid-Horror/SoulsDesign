@@ -2,7 +2,6 @@
 
 namespace App\Models\Shop;
 
-use Config;
 use App\Models\Model;
 
 class Shop extends Model
@@ -22,31 +21,30 @@ class Shop extends Model
      * @var string
      */
     protected $table = 'shops';
-    
     /**
      * Validation rules for creation.
      *
      * @var array
      */
     public static $createRules = [
-        'name' => 'required|unique:item_categories|between:3,100',
+        'name'        => 'required|unique:item_categories|between:3,100',
         'description' => 'nullable',
-        'image' => 'mimes:png',
+        'image'       => 'mimes:png',
     ];
-    
+
     /**
      * Validation rules for updating.
      *
      * @var array
      */
     public static $updateRules = [
-        'name' => 'required|between:3,100',
+        'name'        => 'required|between:3,100',
         'description' => 'nullable',
-        'image' => 'mimes:png',
+        'image'       => 'mimes:png',
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -54,11 +52,11 @@ class Shop extends Model
     /**
      * Get the shop stock.
      */
-    public function stock() 
+    public function stock()
     {
         return $this->hasMany('App\Models\Shop\ShopStock');
     }
-    
+
     /**
      * Get the shop stock as items for display purposes.
      */
@@ -73,11 +71,11 @@ class Shop extends Model
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/
-    
+
     /**
      * Displays the shop's name, linked to its purchase page.
      *
@@ -105,7 +103,7 @@ class Shop extends Model
      */
     public function getShopImageFileNameAttribute()
     {
-        return $this->id . '-image.png';
+        return $this->id.'-image.png';
     }
 
     /**
@@ -117,7 +115,7 @@ class Shop extends Model
     {
         return public_path($this->imageDirectory);
     }
-    
+
     /**
      * Gets the URL of the model's image.
      *
@@ -125,8 +123,11 @@ class Shop extends Model
      */
     public function getShopImageUrlAttribute()
     {
-        if (!$this->has_image) return null;
-        return asset($this->imageDirectory . '/' . $this->shopImageFileName);
+        if (!$this->has_image) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->shopImageFileName);
     }
 
     /**

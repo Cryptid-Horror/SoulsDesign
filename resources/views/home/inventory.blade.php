@@ -10,11 +10,14 @@
 
 @section('meta-img') {{ asset('/images/avatars/'.$user->avatar) }} @endsection
 <h1>
+<<<<<<< HEAD
     <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;" alt="{{ $user->name }}" ></h1>
 
 <h1>{!! Auth::user()->displayName !!}'s Hoard</h1>
 <h1>
     <div class="float-left mb-3">
+
+        <a class="btn btn-secondary consolidate-inventory" href="#">Consolidate</a>
         <a class="btn btn-primary" href="{{ url('inventory/account-search') }}"><i class="fas fa-search"></i> Account Search</a>
     </div>
 </h1>
@@ -96,6 +99,10 @@ $( document ).ready(function() {
         e.preventDefault();
         var $parent = $(this).parent().parent();
         loadModal("{{ url('items') }}/" + $parent.data('id'), $parent.data('name'));
+    });
+    $('.consolidate-inventory').on('click', function(e) {
+        e.preventDefault();
+        loadModal("{{ url('inventory/consolidate-inventory') }}", 'Consolidate Inventory');
     });
 });
 

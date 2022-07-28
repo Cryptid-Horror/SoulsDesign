@@ -2,11 +2,9 @@
 
 namespace App\Models\Character;
 
-use Config;
-use DB;
-use App\Models\Model;
 use App\Models\Feature\FeatureCategory;
-use App\Models\Character\CharacterCategory;
+use App\Models\Model;
+use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CharacterImage extends Model
@@ -62,10 +60,10 @@ class CharacterImage extends Model
      */
     public static $updateRules = [
         'character_id' => 'required',
-        'user_id' => 'required',
-        'species_id' => 'required',
-        'rarity_id' => 'required',
-        'description' => 'nullable',
+        'user_id'      => 'required',
+        'species_id'   => 'required',
+        'rarity_id'    => 'required',
+        'description'  => 'nullable',
     ];
 
     /**********************************************************************************************
@@ -167,13 +165,18 @@ class CharacterImage extends Model
     /**
      * Scope a query to only include images visible to guests and regular logged-in users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param mixed|null                            $user
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeImages($query, $user = null)
     {
-        if(!$user || !$user->hasPower('manage_characters')) return $query->where('is_visible', 1)->orderBy('sort')->orderBy('id', 'DESC');
-        else return $query->orderBy('sort')->orderBy('id', 'DESC');
+        if (!$user || !$user->hasPower('manage_characters')) {
+            return $query->where('is_visible', 1)->orderBy('sort')->orderBy('id', 'DESC');
+        } else {
+            return $query->orderBy('sort')->orderBy('id', 'DESC');
+        }
     }
 
     /**********************************************************************************************
@@ -199,7 +202,7 @@ class CharacterImage extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '_'.$this->hash.'.'.$this->extension;
+        return $this->id.'_'.$this->hash.'.'.$this->extension;
     }
 
     /**
@@ -219,7 +222,7 @@ class CharacterImage extends Model
      */
     public function getImageUrlAttribute()
     {
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
     }
 
     /**
@@ -229,7 +232,7 @@ class CharacterImage extends Model
      */
     public function getFullsizeFileNameAttribute()
     {
-        return $this->id . '_'.$this->hash.'_'.$this->fullsize_hash.'_full.'.$this->extension;
+        return $this->id.'_'.$this->hash.'_'.$this->fullsize_hash.'_full.'.$this->extension;
     }
 
     /**
@@ -239,20 +242,24 @@ class CharacterImage extends Model
      */
     public function getFullsizeUrlAttribute()
     {
-        return asset($this->imageDirectory . '/' . $this->fullsizeFileName);
+        return asset($this->imageDirectory.'/'.$this->fullsizeFileName);
     }
 
     /**
      * Gets the file name of the model's fullsize image.
      *
      * @param  user
+     * @param mixed|null $user
+     *
      * @return string
      */
     public function canViewFull($user = null)
     {
-        if(((isset($this->character->user_id) && ($user ? $this->character->user->id == $user->id : false)) || ($user ? $user->hasPower('manage_characters') : false)))
-        return true;
-        else return false;
+        if (((isset($this->character->user_id) && ($user ? $this->character->user->id == $user->id : false)) || ($user ? $user->hasPower('manage_characters') : false))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -262,7 +269,7 @@ class CharacterImage extends Model
      */
     public function getThumbnailFileNameAttribute()
     {
-        return $this->id . '_'.$this->hash.'_th.'.$this->extension;
+        return $this->id.'_'.$this->hash.'_th.'.$this->extension;
     }
 
     /**
@@ -282,7 +289,7 @@ class CharacterImage extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        return asset($this->imageDirectory . '/' . $this->thumbnailFileName);
+        return asset($this->imageDirectory.'/'.$this->thumbnailFileName);
     }
 
     /**

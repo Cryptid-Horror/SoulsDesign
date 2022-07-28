@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Data;
 
-use Illuminate\Http\Request;
-
-use Auth;
-
+use App\Http\Controllers\Controller;
+use App\Models\Currency\Currency;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
@@ -14,11 +12,13 @@ use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
-
 use App\Services\LootService;
+
 
 use App\Http\Controllers\Controller;
 use App\Models\Status\StatusEffect;
+
+use Illuminate\Http\Request;
 
 class LootTableController extends Controller
 {
@@ -39,7 +39,7 @@ class LootTableController extends Controller
     public function getIndex()
     {
         return view('admin.loot_tables.loot_tables', [
-            'tables' => LootTable::paginate(20)
+            'tables' => LootTable::paginate(20),
         ]);
     }
 
@@ -54,8 +54,8 @@ class LootTableController extends Controller
         sort($rarities);
 
         return view('admin.loot_tables.create_edit_loot_table', [
-            'table' => new LootTable,
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
+            'table'      => new LootTable,
+            'items'      => Item::orderBy('name')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
@@ -71,20 +71,23 @@ class LootTableController extends Controller
     /**
      * Shows the edit loot table page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditLootTable($id)
     {
         $table = LootTable::find($id);
-        if(!$table) abort(404);
+        if (!$table) {
+            abort(404);
+        }
 
         $rarities = Item::whereNotNull('data')->get()->pluck('rarity')->unique()->toArray();
         sort($rarities);
 
         return view('admin.loot_tables.create_edit_loot_table', [
-            'table' => $table,
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
+            'table'      => $table,
+            'items'      => Item::orderBy('name')->pluck('name', 'id'),
             'categories' => ItemCategory::orderBy('sort', 'DESC')->pluck('name', 'id'),
             'awards' => Award::orderBy('name')->pluck('name', 'id'),
             'pets' => Pet::orderBy('name')->pluck('name', 'id'),
@@ -100,9 +103,9 @@ class LootTableController extends Controller
     /**
      * Creates or edits a loot table.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\LootService  $service
-     * @param  int|null                  $id
+     * @param App\Services\LootService $service
+     * @param int|null                 $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreateEditLootTable(Request $request, LootService $service, $id = null)
@@ -111,28 +114,32 @@ class LootTableController extends Controller
         $data = $request->only([
             'name', 'display_name', 'rewardable_type', 'rewardable_id', 'quantity', 'weight', 'subtable_id', 'criteria', 'rarity', 'sublist_status_id', 'sublist_criteria', 'sublist_quantity'
         ]);
-        if($id && $service->updateLootTable(LootTable::find($id), $data)) {
+        if ($id && $service->updateLootTable(LootTable::find($id), $data)) {
             flash('Loot table updated successfully.')->success();
-        }
-        else if (!$id && $table = $service->createLootTable($data)) {
+        } elseif (!$id && $table = $service->createLootTable($data)) {
             flash('Loot table created successfully.')->success();
+
             return redirect()->to('admin/data/loot-tables/edit/'.$table->id);
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
     /**
      * Gets the loot table deletion modal.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getDeleteLootTable($id)
     {
         $table = LootTable::find($id);
+
         return view('admin.loot_tables._delete_loot_table', [
             'table' => $table,
         ]);
@@ -141,45 +148,50 @@ class LootTableController extends Controller
     /**
      * Deletes an item category.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\LootService  $service
-     * @param  int                       $id
+     * @param App\Services\LootService $service
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDeleteLootTable(Request $request, LootService $service, $id)
     {
-        if($id && $service->deleteLootTable(LootTable::find($id))) {
+        if ($id && $service->deleteLootTable(LootTable::find($id))) {
             flash('Loot table deleted successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->to('admin/data/loot-tables');
     }
 
     /**
      * Gets the loot table test roll modal.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  App\Services\LootService  $service
-     * @param  int                       $id
+     * @param App\Services\LootService $service
+     * @param int                      $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getRollLootTable(Request $request, LootService $service, $id)
     {
         $table = LootTable::find($id);
-        if(!$table) abort(404);
+        if (!$table) {
+            abort(404);
+        }
 
         // Normally we'd merge the result tables, but since we're going to be looking at
         // the results of each roll individually on this page, we'll keep them separate
         $results = [];
-        for ($i = 0; $i < $request->get('quantity'); $i++)
+        for ($i = 0; $i < $request->get('quantity'); $i++) {
             $results[] = $table->roll();
+        }
 
         return view('admin.loot_tables._roll_loot_table', [
-            'table' => $table,
-            'results' => $results,
-            'quantity' => $request->get('quantity')
+            'table'    => $table,
+            'results'  => $results,
+            'quantity' => $request->get('quantity'),
         ]);
     }
 }

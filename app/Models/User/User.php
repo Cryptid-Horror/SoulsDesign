@@ -13,10 +13,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Character\Character;
+use App\Models\Character\CharacterBookmark;
 use App\Models\Character\CharacterImageCreator;
-use App\Models\Rank\RankPower;
 use App\Models\Currency\Currency;
 use App\Models\Currency\CurrencyLog;
+
 use App\Models\Item\ItemLog;
 use App\Models\Stats\ExpLog;
 use App\Models\Stats\StatTransferLog;
@@ -45,9 +46,12 @@ use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Character\CharacterTransfer;
 use App\Models\Trade;
 
+use App\Models\Rank\RankPower;
+
+
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, Commenter;
+    use Commenter, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -91,7 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $appends = [
-        'verified_name'
+        'verified_name',
     ];
 
     /**
@@ -285,6 +289,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+
      * Get the user's gears.
      */
     public function gears()
@@ -314,6 +319,22 @@ class User extends Authenticatable implements MustVerifyEmail
     public function folders()
     {
         return $this->hasMany('App\Models\Character\CharacterFolder');
+     /**   
+     * Gets all of a user's liked / disliked comments.
+     */
+    public function commentLikes()
+    {
+        return $this->hasMany('App\Models\CommentLike');
+    }
+
+    /**
+     * Gets all of the user's friends.
+     */
+    public function getFriendsAttribute()
+    {
+        // return this has many where initiator_id matches this id or where recipient_id matches this id
+        return UserFriend::where('recipient_approved', 1)->where('initiator_id', $this->id)->orWhere('recipient_id', $this->id)->get();
+>
     }
 
     /**********************************************************************************************
@@ -325,7 +346,8 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Scope a query to only include visible (non-banned) users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeVisible($query)
@@ -336,7 +358,8 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Scope a query to only show deactivated accounts.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeDisabled($query)
@@ -357,7 +380,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getVerifiedNameAttribute()
     {
-        return $this->name . ($this->hasAlias ? '' : ' (Unverified)');
+        return $this->name.($this->hasAlias ? '' : ' (Unverified)');
     }
 
     /**
@@ -387,11 +410,13 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getIsStaffAttribute()
     {
-        return (RankPower::where('rank_id', $this->rank_id)->exists() || $this->isAdmin);
+        return RankPower::where('rank_id', $this->rank_id)->exists() || $this->isAdmin;
     }
 
     /**
      * Checks if the user has the given power.
+     *
+     * @param mixed $power
      *
      * @return bool
      */
@@ -437,17 +462,17 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getDisplayNameAttribute()
     {
-        return ($this->is_banned ? '<strike>' : '') . '<a href="'.$this->url.'" class="display-user" style="'.($this->rank->color ? 'color: #'.$this->rank->color.';' : '').($this->is_deactivated ? 'opacity: 0.5;' : '').'">'.$this->name.'</a>' . ($this->is_banned ? '</strike>' : '');
+        return ($this->is_banned ? '<strike>' : '').'<a href="'.$this->url.'" class="display-user" style="'.($this->rank->color ? 'color: #'.$this->rank->color.';' : '').($this->is_deactivated ? 'opacity: 0.5;' : '').'">'.$this->name.'</a>'.($this->is_banned ? '</strike>' : '');
     }
 
-        /**
+    /**
      * Displays the user's name, linked to their profile page.
      *
      * @return string
      */
     public function getCommentDisplayNameAttribute()
     {
-        return '<small><a href="'. $this->url .'" class="btn btn-primary btn-sm"'.($this->rank->color ? 'style="background-color: #'.$this->rank->color.'!important;color:#000!important;"' : '').'><i class="'.($this->rank->icon ? $this->rank->icon : 'fas fa-user').' mr-1" style="opacity: 50%;"></i>'. $this->name .'</a></small>';
+        return '<small><a href="'.$this->url.'" class="btn btn-primary btn-sm"'.($this->rank->color ? 'style="background-color: #'.$this->rank->color.'!important;color:#000!important;"' : '').'><i class="'.($this->rank->icon ? $this->rank->icon : 'fas fa-user').' mr-1" style="opacity: 50%;"></i>'.$this->name.'</a></small>';
     }
 
     /**
@@ -457,18 +482,21 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getDisplayAliasAttribute()
     {
-        if (!$this->hasAlias) return '(Unverified)';
+        if (!$this->hasAlias) {
+            return '(Unverified)';
+        }
+
         return $this->primaryAlias->displayAlias;
     }
 
     /**
-     * Displays the user's avatar
+     * Displays the user's avatar.
      *
      * @return string
      */
     public function getAvatar()
     {
-        return ($this->avatar);
+        return $this->avatar;
     }
 
     /**
@@ -545,41 +573,50 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get's user birthday setting
+     * Get's user birthday setting.
      */
     public function getBirthdayDisplayAttribute()
     {
         //
         $icon = null;
         $bday = $this->birthday;
-        if(!isset($bday)) return 'N/A';
+        if (!isset($bday)) {
+            return 'N/A';
+        }
 
-        if($bday->format('d M') == carbon::now()->format('d M')) $icon = '<i class="fas fa-birthday-cake ml-1"></i>';
+        if ($bday->format('d M') == Carbon::now()->format('d M')) {
+            $icon = '<i class="fas fa-birthday-cake ml-1"></i>';
+        }
         //
-        switch($this->settings->birthday_setting) {
+        switch ($this->settings->birthday_setting) {
             case 0:
                 return null;
-            break;
+                break;
             case 1:
-                if(Auth::check()) return $bday->format('d M') . $icon;
-            break;
+                if (Auth::check()) {
+                    return $bday->format('d M').$icon;
+                }
+                break;
             case 2:
-                return $bday->format('d M') . $icon;
-            break;
+                return $bday->format('d M').$icon;
+                break;
             case 3:
-                return $bday->format('d M Y') . $icon;
-            break;
+                return $bday->format('d M Y').$icon;
+                break;
         }
     }
 
     /**
-     * Check if user is of age
+     * Check if user is of age.
      */
     public function getcheckBirthdayAttribute()
     {
         $bday = $this->birthday;
-        if(!$bday || $bday->diffInYears(carbon::now()) < 13) return false;
-        else return true;
+        if (!$bday || $bday->diffInYears(carbon::now()) < 13) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -675,6 +712,8 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Checks if the user can edit the given rank.
      *
+     * @param mixed $rank
+     *
      * @return bool
      */
     public function canEditRank($rank)
@@ -699,7 +738,8 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's held currencies.
      *
-     * @param  bool  $showAll
+     * @param bool $showAll
+     *
      * @return \Illuminate\Support\Collection
      */
     public function getCurrencies($showAll = false)
@@ -711,15 +751,18 @@ class User extends Authenticatable implements MustVerifyEmail
         $owned = UserCurrency::where('user_id', $this->id)->pluck('quantity', 'currency_id')->toArray();
 
         $currencies = Currency::where('is_user_owned', 1);
-        if($showAll) $currencies->where(function($query) use($owned) {
-            $query->where('is_displayed', 1)->orWhereIn('id', array_keys($owned));
-        });
-        else $currencies = $currencies->where('is_displayed', 1);
+        if ($showAll) {
+            $currencies->where(function ($query) use ($owned) {
+                $query->where('is_displayed', 1)->orWhereIn('id', array_keys($owned));
+            });
+        } else {
+            $currencies = $currencies->where('is_displayed', 1);
+        }
 
         $currencies = $currencies->orderBy('sort_user', 'DESC')->get();
 
-        foreach($currencies as $currency) {
-            $currency->quantity = isset($owned[$currency->id]) ? $owned[$currency->id] : 0;
+        foreach ($currencies as $currency) {
+            $currency->quantity = $owned[$currency->id] ?? 0;
         }
 
         return $currencies;
@@ -728,31 +771,40 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's held currencies as an array for select inputs.
      *
+     * @param mixed $isTransferrable
+     *
      * @return array
      */
     public function getCurrencySelect($isTransferrable = false)
     {
         $query = UserCurrency::query()->where('user_id', $this->id)->leftJoin('currencies', 'user_currencies.currency_id', '=', 'currencies.id')->orderBy('currencies.sort_user', 'DESC');
-        if($isTransferrable) $query->where('currencies.allow_user_to_user', 1);
+        if ($isTransferrable) {
+            $query->where('currencies.allow_user_to_user', 1);
+        }
+
         return $query->get()->pluck('name_with_quantity', 'currency_id')->toArray();
     }
 
     /**
      * Get the user's currency logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getCurrencyLogs($limit = 10)
     {
         $user = $this;
-        $query = CurrencyLog::with('currency')->where(function($query) use ($user) {
+        $query = CurrencyLog::with('currency')->where(function ($query) use ($user) {
             $query->with('sender')->where('sender_type', 'User')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards', 'Gallery Submission Reward']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_type', 'User')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -810,19 +862,23 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's item logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getItemLogs($limit = 10)
     {
         $user = $this;
-        $query = ItemLog::with('item')->where(function($query) use ($user) {
+        $query = ItemLog::with('item')->where(function ($query) use ($user) {
             $query->with('sender')->where('sender_type', 'User')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_type', 'User')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
     
     /**
@@ -918,15 +974,19 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's shop purchase logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getShopLogs($limit = 10)
     {
         $user = $this;
         $query = ShopLog::where('user_id', $this->id)->with('character')->with('shop')->with('item')->with('currency')->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -942,6 +1002,7 @@ class User extends Authenticatable implements MustVerifyEmail
         })->orWhere(function($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
+
         return $query->paginate(30);
     }
 
@@ -950,20 +1011,30 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function updateCharacters()
     {
-        if(!$this->hasAlias) return;
+        if (!$this->hasAlias) {
+            return;
+        }
 
         // Pluck alias from url and check for matches
-        $urlCharacters = Character::whereNotNull('owner_url')->pluck('owner_url','id');
-        $matches = []; $count = 0;
-        foreach($this->aliases as $alias) {
+        $urlCharacters = Character::whereNotNull('owner_url')->pluck('owner_url', 'id');
+        $matches = [];
+        $count = 0;
+        foreach ($this->aliases as $alias) {
             // Find all urls from the same site as this alias
-            foreach($urlCharacters as $key=>$character) preg_match_all(Config::get('lorekeeper.sites.'.$alias->site.'.regex'), $character, $matches[$key]);
+            foreach ($urlCharacters as $key=>$character) {
+                preg_match_all(Config::get('lorekeeper.sites.'.$alias->site.'.regex'), $character, $matches[$key]);
+            }
             // Find all alias matches within those, and update the character's owner
-            foreach($matches as $key=>$match) if($match[1] != [] && strtolower($match[1][0]) == strtolower($alias->alias)) {Character::find($key)->update(['owner_url' => null, 'user_id' => $this->id]); $count += 1;}
+            foreach ($matches as $key=>$match) {
+                if ($match[1] != [] && strtolower($match[1][0]) == strtolower($alias->alias)) {
+                    Character::find($key)->update(['owner_url' => null, 'user_id' => $this->id]);
+                    $count += 1;
+                }
+            }
         }
 
         //
-        if($count > 0) {
+        if ($count > 0) {
             $this->settings->is_fto = 0;
         }
         $this->settings->save();
@@ -974,21 +1045,31 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function updateArtDesignCredits()
     {
-        if(!$this->hasAlias) return;
+        if (!$this->hasAlias) {
+            return;
+        }
 
         // Pluck alias from url and check for matches
-        $urlCreators = CharacterImageCreator::whereNotNull('url')->pluck('url','id');
+        $urlCreators = CharacterImageCreator::whereNotNull('url')->pluck('url', 'id');
         $matches = [];
-        foreach($this->aliases as $alias) {
+        foreach ($this->aliases as $alias) {
             // Find all urls from the same site as this alias
-            foreach($urlCreators as $key=>$creator) preg_match_all(Config::get('lorekeeper.sites.'.$alias->site.'.regex'), $creator, $matches[$key]);
+            foreach ($urlCreators as $key=>$creator) {
+                preg_match_all(Config::get('lorekeeper.sites.'.$alias->site.'.regex'), $creator, $matches[$key]);
+            }
             // Find all alias matches within those, and update the relevant CharacterImageCreator
-            foreach($matches as $key=>$match) if($match[1] != [] && strtolower($match[1][0]) == strtolower($alias->alias)) CharacterImageCreator::find($key)->update(['url' => null, 'user_id' => $this->id]);
+            foreach ($matches as $key=>$match) {
+                if ($match[1] != [] && strtolower($match[1][0]) == strtolower($alias->alias)) {
+                    CharacterImageCreator::find($key)->update(['url' => null, 'user_id' => $this->id]);
+                }
+            }
         }
     }
 
     /**
      * Get the user's submissions.
+     *
+     * @param mixed|null $user
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
@@ -1001,12 +1082,15 @@ class User extends Authenticatable implements MustVerifyEmail
      * Checks if the user has bookmarked a character.
      * Returns the bookmark if one exists.
      *
+     * @param mixed $character
+     *
      * @return \App\Models\Character\CharacterBookmark
      */
     public function hasBookmarked($character)
     {
         return CharacterBookmark::where('user_id', $this->id)->where('character_id', $character->id)->first();
     }
+
 
 
 
@@ -1060,6 +1144,70 @@ class User extends Authenticatable implements MustVerifyEmail
             }
         }
         return $recipeCollection;
+    }
+
+
+    /**
+     * Checks if a user is blocked by another user.
+     *
+     * @param mixed $user
+     */
+    public function isBlocked($user)
+    {
+        return UserBlock::where('user_id', $user->id)->where('blocked_id', $this->id)->exists();
+    }
+
+    /**
+     * Checks if a user is friends with another user.
+     *
+     * @param mixed $user
+     */
+    public function isFriendsWith($user)
+    {
+        // check both initiator_id, recipient_id for this user and the other user
+        return UserFriend::where('recipient_approved', 1)
+            ->where('initiator_id', $this->id)->where('recipient_id', $user->id)
+            ->orWhere('initiator_id', $user->id)->where('recipient_id', $this->id)->exists();
+    }
+
+    /**
+     * Checks if a user has a pending request with another user.
+     *
+     * @param mixed $user
+     */
+    public function isPendingFriendsWith($user)
+    {
+        // check both initiator_id, recipient_id for this user and the other user
+        if ($this->isFriendsWith($user)) {
+            return false;
+        }
+
+        return UserFriend::where('recipient_approved', 0)
+            ->where('initiator_id', $this->id)->where('recipient_id', $user->id)
+            ->orWhere('initiator_id', $user->id)->where('recipient_id', $this->id)->exists();
+    }
+
+    /**
+     * gets userOptions for the user divided by friends and all.
+     */
+    public function getUserOptionsAttribute()
+    {
+        $userOptions = [];
+        $friends = [];
+        foreach ($this->friends as $friend) {
+            $friends[] = $friend->other($this->id)->id;
+        }
+        $blocked = [];
+        if (!Settings::get('allow_blocked_transfers')) {
+            $blocked = UserBlock::where('blocked_id', $this->id)->pluck('user_id')->toArray();
+            $friends = array_diff($friends, $blocked);
+        }
+        $userOptions['Friends'] = self::visible()->where('id', '!=', $this->id)->whereIn('id', $friends)->orderBy('name')->pluck('name', 'id')->toArray();
+        $userOptions['All Users'] = self::visible()->where('id', '!=', $this->id)->whereNotIn('id', $friends)
+            ->whereNotIn('id', $blocked)
+            ->orderBy('name')->pluck('name', 'id')->toArray();
+
+        return $userOptions;
     }
 
 }

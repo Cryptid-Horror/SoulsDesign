@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Config;
-use App\Models\Model;
 
 class Notification extends Model
 {
@@ -13,7 +12,7 @@ class Notification extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'notification_type_id', 'is_unread', 'data'
+        'user_id', 'notification_type_id', 'is_unread', 'data',
     ];
 
     /**
@@ -29,7 +28,6 @@ class Notification extends Model
      * @var string
      */
     public $timestamps = true;
-
 
     /**********************************************************************************************
 
@@ -77,8 +75,8 @@ class Notification extends Model
 
         // Replace any variables in data...
         $data = $this->data;
-        if($data && count($data)) {
-            foreach($data as $key => $value) {
+        if ($data && count($data)) {
+            foreach ($data as $key => $value) {
                 $message = str_replace('{'.$key.'}', $value, $message);
             }
         }
@@ -89,13 +87,14 @@ class Notification extends Model
     /**
      * Get the notification ID from type.
      *
+     * @param mixed $type
+     *
      * @return array
      */
     public static function getNotificationId($type)
     {
-        return constant('self::'. $type);
+        return constant('self::'.$type);
     }
-
     /**********************************************************************************************
 
         CONSTANTS
@@ -188,4 +187,6 @@ class Notification extends Model
     const FORCED_BREEDING_PERMISSION_TRANSFER = 520;
     const CHARACTER_STATUS_GRANT            = 521;
     const CHARACTER_STATUS_REMOVAL          = 522;
+    const FRIEND_REQUEST_SENT               = 523;
+    const FRIEND_REQUEST_ACCEPTED           = 524;
 }

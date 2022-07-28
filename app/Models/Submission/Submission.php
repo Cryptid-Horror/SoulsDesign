@@ -2,11 +2,12 @@
 
 namespace App\Models\Submission;
 
-use Config;
-use DB;
-use Carbon\Carbon;
 use App\Models\Model;
+
 use App\Traits\Commentable;
+
+use Carbon\Carbon;
+
 
 class Submission extends Model
 {
@@ -29,7 +30,6 @@ class Submission extends Model
      * @var string
      */
     protected $table = 'submissions';
-
     /**
      * Whether the model contains timestamps to be saved and updated.
      *
@@ -111,7 +111,8 @@ class Submission extends Model
     /**
      * Scope a query to only include pending submissions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)
@@ -122,31 +123,40 @@ class Submission extends Model
     /**
      * Scope a query to only include viewable submissions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param mixed|null                            $user
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeViewable($query, $user = null)
     {
         $forbiddenSubmissions = $this
-        ->whereHas('prompt', function($q) {
+        ->whereHas('prompt', function ($q) {
             $q->where('hide_submissions', 1)->whereNotNull('end_at')->where('end_at', '>', Carbon::now());
         })
-        ->orWhereHas('prompt', function($q) {
+        ->orWhereHas('prompt', function ($q) {
             $q->where('hide_submissions', 2);
         })
         ->orWhere('status', '!=', 'Approved')->pluck('id')->toArray();
 
-        if($user && $user->hasPower('manage_submissions')) return $query;
-        else return $query->where(function($query) use ($user, $forbiddenSubmissions) {
-            if($user) $query->whereNotIn('id', $forbiddenSubmissions)->orWhere('user_id', $user->id);
-            else $query->whereNotIn('id', $forbiddenSubmissions);
-        });
+        if ($user && $user->hasPower('manage_submissions')) {
+            return $query;
+        } else {
+            return $query->where(function ($query) use ($user, $forbiddenSubmissions) {
+                if ($user) {
+                    $query->whereNotIn('id', $forbiddenSubmissions)->orWhere('user_id', $user->id);
+                } else {
+                    $query->whereNotIn('id', $forbiddenSubmissions);
+                }
+            });
+        }
     }
 
     /**
      * Scope a query to sort submissions oldest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortOldest($query)
@@ -157,7 +167,8 @@ class Submission extends Model
     /**
      * Scope a query to sort submissions by newest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortNewest($query)
@@ -196,18 +207,22 @@ class Submission extends Model
     /**
      * Gets the inventory of the user for selection.
      *
+     * @param mixed $user
+     *
      * @return array
      */
     public function getInventory($user)
     {
         return $this->data && isset($this->data['user']['user_items']) ? $this->data['user']['user_items'] : [];
+
         return $inventory;
     }
 
     /**
      * Gets the currencies of the given user for selection.
      *
-     * @param  \App\Models\User\User $user
+     * @param \App\Models\User\User $user
+     *
      * @return array
      */
     public function getCurrencies($user)
@@ -222,7 +237,7 @@ class Submission extends Model
      */
     public function getViewUrlAttribute()
     {
-        return url(($this->prompt_id ? 'submissions' : 'claims') . '/view/'.$this->id);
+        return url(($this->prompt_id ? 'submissions' : 'claims').'/view/'.$this->id);
     }
 
     /**
@@ -232,7 +247,7 @@ class Submission extends Model
      */
     public function getAdminUrlAttribute()
     {
-        return url('admin/' . ($this->prompt_id ? 'submissions' : 'claims') . '/edit/'.$this->id);
+        return url('admin/'.($this->prompt_id ? 'submissions' : 'claims').'/edit/'.$this->id);
     }
 
     /**
@@ -242,23 +257,23 @@ class Submission extends Model
      */
     public function getRewardsAttribute()
     {
-        if(isset($this->data['rewards']))
-        $assets = parseAssetData($this->data['rewards']);
-        else
-        $assets = parseAssetData($this->data);
+        if (isset($this->data['rewards'])) {
+            $assets = parseAssetData($this->data['rewards']);
+        } else {
+            $assets = parseAssetData($this->data);
+        }
         $rewards = [];
-        foreach($assets as $type => $a)
-        {
+        foreach ($assets as $type => $a) {
             $class = getAssetModelString($type, false);
-            foreach($a as $id => $asset)
-            {
-                $rewards[] = (object)[
+            foreach ($a as $id => $asset) {
+                $rewards[] = (object) [
                     'rewardable_type' => $class,
-                    'rewardable_id' => $id,
-                    'quantity' => $asset['quantity']
+                    'rewardable_id'   => $id,
+                    'quantity'        => $asset['quantity'],
                 ];
             }
         }
+
         return $rewards;
     }
 }

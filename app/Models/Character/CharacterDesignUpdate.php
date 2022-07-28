@@ -2,11 +2,10 @@
 
 namespace App\Models\Character;
 
-use Config;
-use DB;
-use App\Models\Model;
 use App\Models\Currency\Currency;
 use App\Models\Feature\FeatureCategory;
+use App\Models\Model;
+use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Traits\Commentable;
@@ -174,7 +173,8 @@ class CharacterDesignUpdate extends Model
     /**
      * Scope a query to only include active (Open or Pending) update requests.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)
@@ -185,7 +185,8 @@ class CharacterDesignUpdate extends Model
     /**
      * Scope a query to only include MYO slot approval requests.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeMyos($query)
@@ -196,7 +197,8 @@ class CharacterDesignUpdate extends Model
     /**
      * Scope a query to only include character design update requests.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeCharacters($query)
@@ -260,7 +262,7 @@ class CharacterDesignUpdate extends Model
      */
     public function getIsCompleteAttribute()
     {
-        return ($this->has_comments && $this->has_image && $this->has_addons && $this->has_features);
+        return $this->has_comments && $this->has_image && $this->has_addons && $this->has_features;
     }
 
     /**
@@ -280,7 +282,7 @@ class CharacterDesignUpdate extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '_'.$this->hash.'.'.$this->extension;
+        return $this->id.'_'.$this->hash.'.'.$this->extension;
     }
 
     /**
@@ -300,7 +302,7 @@ class CharacterDesignUpdate extends Model
      */
     public function getImageUrlAttribute()
     {
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
     }
 
     /**
@@ -310,7 +312,7 @@ class CharacterDesignUpdate extends Model
      */
     public function getThumbnailFileNameAttribute()
     {
-        return $this->id . '_'.$this->hash.'_th.'.$this->extension;
+        return $this->id.'_'.$this->hash.'_th.'.$this->extension;
     }
 
     /**
@@ -330,7 +332,7 @@ class CharacterDesignUpdate extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        return asset($this->imageDirectory . '/' . $this->thumbnailFileName);
+        return asset($this->imageDirectory.'/'.$this->thumbnailFileName);
     }
 
     /**
@@ -372,20 +374,26 @@ class CharacterDesignUpdate extends Model
     /**
      * Get the available currencies that the user can attach to this update request.
      *
-     * @param  string  $type
+     * @param string $type
+     *
      * @return array
      */
     public function getBank($type)
     {
-        if($type == 'user') $currencies = $this->userBank;
-        else $currencies = $this->characterBank;
-        if(!count($currencies)) return [];
+        if ($type == 'user') {
+            $currencies = $this->userBank;
+        } else {
+            $currencies = $this->characterBank;
+        }
+        if (!count($currencies)) {
+            return [];
+        }
         $ids = array_keys($currencies);
         $result = Currency::whereIn('id', $ids)->get();
-        foreach($result as $i=>$currency)
-        {
+        foreach ($result as $i=> $currency) {
             $currency->quantity = $currencies[$currency->id];
         }
+
         return $result;
     }
 }

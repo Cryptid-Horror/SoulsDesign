@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
 use DB;
+use Illuminate\Console\Command;
 
 class AddSiteSettings extends Command
 {
@@ -24,36 +23,10 @@ class AddSiteSettings extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         parent::__construct();
-    }
-
-    /**
-     * Add a site setting.
-     *
-     * Example usage:
-     * $this->addSiteSetting("site_setting_key", 1, "0: does nothing. 1: does something.");
-     *
-     * @param  string  $key
-     * @param  int     $value
-     * @param  string  $description
-     */
-    private function addSiteSetting($key, $value, $description) {
-        if(!DB::table('site_settings')->where('key', $key)->exists()) {
-            DB::table('site_settings')->insert([
-                [
-                    'key'         => $key,
-                    'value'       => $value,
-                    'description' => $description,
-                ],
-            ]);
-            $this->info( "Added:   ".$key." / Default: ".$value);
-        }
-        else $this->line("Skipped: ".$key);
     }
 
     /**
@@ -105,6 +78,7 @@ class AddSiteSettings extends Command
 
         $this->addSiteSetting('group_currency', 1, 'ID of the group currency to award from gallery submissions (if enabled).');
 
+
         $this->addSiteSetting('character_title_display', 0, '0: Characters\' titles only display in their image info. 1: Characters\'s titles display alongside their category, species, rarity.');
 
         $this->addSiteSetting('coupon_settings', 0, '0: Percentage is taken from total (e.g 20% from 2 items costing a total of 100 = 80), 1: Percentage is taken from item (e.g 20% from 2 items costing a total of 100 = 90)');
@@ -114,6 +88,8 @@ class AddSiteSettings extends Command
         $this->addSiteSetting('claymore_cooldown', 0, 'Number of days to add to the cooldown timer when a pet/weapon/gear is attached.');
 
         $this->addSiteSetting('featured_character', 1, 'ID of the currently featured character.');
+=
+        $this->addSiteSetting('is_maintenance_mode', 0, '0: Site is normal, 1: Users without the Has Maintenance Access power will be redirected to the home page.');
 
         $this->addSiteSetting('deactivated_privacy', 0, 'Who can view the deactivated list? 0: Admin only, 1: Staff only, 2: Members only, 3: Public.');
 
@@ -121,12 +97,43 @@ class AddSiteSettings extends Command
 
         $this->addSiteSetting('deactivated_key', 0, 'Optional key to view the deactivated list. Enter "0" to not require one.');
 
-        $this->line("\nSite settings up to date!");
+        $this->addSiteSetting('comment_dislikes_enabled', 0, '0: Dislikes disabled, 1: Dislikes enabled.');
+
 
         $this->addSiteSetting('shop_type', 0, '0: Default, 1: Collapsible.');
 
         $this->addSiteSetting('coupon_settings', 0, '0: Percentage is taken from total (e.g 20% from 2 items costing a total of 100 = 80), 1: Percentage is taken from item (e.g 20% from 2 items costing a total of 100 = 90)');
         
         $this->addSiteSetting('limited_stock_coupon_settings', 0, '0: Does not allow coupons to be used on limited stock items, 1: Allows coupons to be used on limited stock items');
+
+        $this->addSiteSetting('allow_blocked_transfers', 1, '0: Users cannot send to users they have been blocked by, 1: Unrestricted.');
+
+        $this->line("\nSite settings up to date!");
+    }
+
+    /**
+     * Add a site setting.
+     *
+     * Example usage:
+     * $this->addSiteSetting("site_setting_key", 1, "0: does nothing. 1: does something.");
+     *
+     * @param string $key
+     * @param int    $value
+     * @param string $description
+     */
+    private function addSiteSetting($key, $value, $description)
+    {
+        if (!DB::table('site_settings')->where('key', $key)->exists()) {
+            DB::table('site_settings')->insert([
+                [
+                    'key'         => $key,
+                    'value'       => $value,
+                    'description' => $description,
+                ],
+            ]);
+            $this->info('Added:   '.$key.' / Default: '.$value);
+        } else {
+            $this->line('Skipped: '.$key);
+        }
     }
 }
