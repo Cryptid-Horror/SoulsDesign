@@ -30,7 +30,6 @@ use App\Models\Award\AwardLog;
 use App\Models\User\UserCharacterLog;
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
-use App\Models\Character\CharacterBookmark;
 use App\Models\Gallery\GallerySubmission;
 use App\Models\Gallery\GalleryCollaborator;
 use App\Models\Gallery\GalleryFavorite;
@@ -320,7 +319,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Character\CharacterFolder');
     }
-    
+
      /**   
      * Gets all of a user's liked / disliked comments.
      */

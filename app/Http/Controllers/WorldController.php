@@ -22,7 +22,6 @@ use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterTitle;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
-use App\Models\Prompt\PromptCategory;
 use App\Models\Rarity;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopStock;

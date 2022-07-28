@@ -13,7 +13,6 @@ use DB;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
-use App\Models\SitePage;
 use App\Models\Comment;
 use App\Models\Forum;
 use App\Models\News;
