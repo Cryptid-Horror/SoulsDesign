@@ -220,7 +220,7 @@ function mergeAssetsArrays($first, $second, $isCharacter = false)
 
             addAsset($first, $item['asset'], $item['quantity']);
         }
-    }
+
 
     return $first;
 }
