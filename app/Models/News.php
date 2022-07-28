@@ -154,7 +154,7 @@ class News extends Model implements Feedable
      */
     public static function getFeedItems()
     {
-        return self::visible()->get();
+        return News::visible()->get();
     }
 
     /**

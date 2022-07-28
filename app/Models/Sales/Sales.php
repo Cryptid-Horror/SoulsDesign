@@ -212,7 +212,7 @@ class Sales extends Model implements Feedable
      */
     public static function getFeedItems()
     {
-        return self::visible()->get();
+        return Sales::visible()->get();
     }
 
     /**
