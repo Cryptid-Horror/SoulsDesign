@@ -74,6 +74,8 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @endif
 
+    @include('feed::links')
+
     @if(Auth::check() && Auth::user()->theme)
         @php $theme = Auth::user()->theme->cssUrl @endphp
         <link href="{{ Auth::user()->theme->cssUrl }}" rel="stylesheet">
