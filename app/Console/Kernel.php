@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('check-pet-drops')
                 ->everyMinute();
 
-        $schedule->command('restock-shops')
+        $schedule->command('restock-shops');
 
         $schedule->exec('rm public/images/avatars/*.tmp')
                 ->daily();
