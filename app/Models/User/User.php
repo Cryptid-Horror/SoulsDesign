@@ -319,6 +319,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function folders()
     {
         return $this->hasMany('App\Models\Character\CharacterFolder');
+    }
      /**   
      * Gets all of a user's liked / disliked comments.
      */
