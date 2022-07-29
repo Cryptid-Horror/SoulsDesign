@@ -12,7 +12,7 @@ use App\Models\Award\Award;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
 use Auth;
-use Illuminate\Http\Request;
+
 
 class PromptsController extends Controller
 {

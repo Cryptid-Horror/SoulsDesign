@@ -19,7 +19,6 @@ use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use App\Services\LinkService;
 
-use Auth;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
