@@ -11,28 +11,18 @@ use Auth;
 use Config;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
-use App\Models\Prompt\PromptCategory;
-use App\Models\Submission\Submission;
-use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\Award\Award;
 use App\Models\Award\AwardCategory;
 use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
-
 use App\Models\Raffle\Raffle;
 use App\Models\Recipe\Recipe;
 use App\Models\Pet\Pet;
 use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
-
 use App\Models\Prompt\Prompt;
 use App\Models\Character\Character;
-
-use App\Services\SubmissionManager;
-
-use App\Http\Controllers\Controller;
 use App\Models\Status\StatusEffect;
 
 class SubmissionController extends Controller
