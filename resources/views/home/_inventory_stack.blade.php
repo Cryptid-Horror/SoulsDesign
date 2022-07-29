@@ -53,7 +53,6 @@
                         <th class="col-3">Quantity</th>
                         <th class="col-1"><i class="fas fa-lock invisible"></i></th>
                     </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
