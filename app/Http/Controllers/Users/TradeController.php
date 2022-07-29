@@ -15,8 +15,6 @@ use App\Models\Item\ItemCategory;
 use App\Models\Character\CharacterCategory;
 
 use App\Models\Item\Item;
-use App\Models\Item\ItemCategory;
-use App\Models\Trade;
 use App\Models\User\User;
 use App\Models\User\UserItem;
 use App\Services\TradeManager;

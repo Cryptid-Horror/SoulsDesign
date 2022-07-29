@@ -28,29 +28,8 @@
             </p>
         </div>
     </div>
-   
-    {{-- Recursion for children --}}
-    <div class="w-100 mw-100">
-        @php $children = $depth == 0 ? $comment->children->sortByDesc('created_at')->paginate(5) : $comment->children->sortByDesc('created_at') @endphp
-        @foreach($children as $reply)
-            @php $limit++; @endphp
-
-            @if($limit >= 5 && $depth >= 1) 
-                <a href="{{ url('comment/').'/'.$comment->id }}"><span class="btn btn-secondary w-100">See More Replies</span></a>
-                @break
-            @endif
-
-            @include('comments._perma_comments', [
-                'comment' => $reply,
-                'reply' => true,
-                'limit' => $limit,
-                'depth' => $depth+1
-            ])
-            @endforeach
-        @if($depth == 0) {!! $children->render() !!} @endif
-    </div>
 </div>
-</div>
+
 @else
 @if($comment->deleted_at == null)
 @if(isset($reply) && $reply === true)
@@ -267,29 +246,6 @@ use child function
 url should be equal to the last replies permalink (e.g reply 5)--}}
 
 
-        {{-- Recursion for children --}}
-        <div class="w-100 mw-100">
-            @php $children = $depth == 0 ? $comment->children->sortByDesc('created_at')->paginate(5) : $comment->children->sortByDesc('created_at') @endphp
-            @foreach($children as $reply)
-                @php $limit++; @endphp
-
-                @if($limit >= 5 && $depth >= 1)
-                    <a href="{{ url('comment/').'/'.$comment->id }}"><span class="btn btn-secondary w-100">See More Replies</span></a>
-                    @break
-                @endif
-
-                @include('comments._perma_comments', [
-                    'comment' => $reply,
-                    'reply' => true,
-                    'limit' => $limit,
-                    'depth' => $depth+1
-                ])
-                @endforeach
-            @if($depth == 0) {!! $children->render() !!} @endif
-        </div>
-    </div>
-</div>
-@else
     @if(isset($reply) && $reply === true)
     <div id="comment-{{ $comment->getKey() }}" class="comment_replies border-left col-12 column mw-100 pr-0 pt-4" style="flex-basis: 100%;">
     @else

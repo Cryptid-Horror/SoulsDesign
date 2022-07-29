@@ -11,7 +11,6 @@ use App\Models\Award\AwardCategory;
 use App\Models\Award\Award;
 use App\Models\Prompt\PromptCategory;
 use App\Models\Prompt\Prompt;
-use App\Models\Prompt\PromptCategory;
 use Auth;
 use Illuminate\Http\Request;
 

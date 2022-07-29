@@ -22,11 +22,7 @@ use App\Models\Claymore\Weapon;
 use App\Services\PromptService;
 
 use App\Http\Controllers\Controller;
-use App\Models\Prompt\Prompt;
-use App\Models\Prompt\PromptCategory;
-use App\Services\PromptService;
-use Auth;
-use Illuminate\Http\Request;
+
 
 class PromptController extends Controller
 {

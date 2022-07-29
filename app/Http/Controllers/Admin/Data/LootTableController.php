@@ -10,7 +10,6 @@ use App\Models\Award\Award;
 use App\Models\Pet\Pet;
 use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
-use App\Models\Currency\Currency;
 use App\Models\Loot\LootTable;
 use App\Services\LootService;
 
