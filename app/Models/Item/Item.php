@@ -7,6 +7,7 @@ use App\Models\Prompt\Prompt;
 use App\Models\Shop\Shop;
 use App\Models\User\User;
 use App\Models\User\UserItem;
+use Config;
 
 class Item extends Model
 {
