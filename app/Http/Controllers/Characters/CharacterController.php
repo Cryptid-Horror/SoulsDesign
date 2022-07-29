@@ -202,7 +202,7 @@ class CharacterController extends Controller
                 // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
                 'has_grand_title'
             ]
-            )))
+            ))
             $this->character, Auth::user(), $isMod)) {
             flash('Profile edited successfully.')->success();
         } else {
