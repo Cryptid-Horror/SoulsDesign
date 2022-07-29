@@ -57,6 +57,77 @@
         </table>
     </div>
 
+    @if($user && !$readOnly && ($stack->first()->user_id == $user->id || $user->hasPower('edit_inventories')))
+        <div class="card mt-3">
+            <ul class="list-group list-group-flush">
+                @if(count($item->tags))
+                    @foreach($item->tags as $tag)
+                        @if($tag->is_active && View::exists('inventory._'.$tag->tag))
+                            @include('inventory._'.$tag->tag, ['stack' => $stack, 'tag' => $tag])
+                        @endif
+                    @endforeach
+                @endif
+
+                @if(isset($item->category) && $item->category->is_character_owned)
+                    <li class="list-group-item">
+                        <a class="card-title h5 collapse-title" data-toggle="collapse" href="#characterTransferForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Transfer Item to Character</a>
+                        <div id="characterTransferForm" class="collapse">
+                            <p>This will transfer this stack or stacks to this character's inventory.</p>
+                            <div class="form-group">
+                                {!! Form::select('character_id', $characterOptions, null, ['class' => 'form-control mr-2 default character-select', 'placeholder' => 'Select Character']) !!}
+                            </div>
+                            <div class="text-right">
+                                {!! Form::button('Transfer', ['class' => 'btn btn-primary', 'name' => 'action', 'value' => 'characterTransfer', 'type' => 'submit']) !!}
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                @if($item->canDonate)
+                    <li class="list-group-item">
+                        <a class="card-title h5 collapse-title" data-toggle="collapse" href="#donateForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Donate Item</a>
+                        <div id="donateForm" class="collapse">
+                            <p>This will donate this item to the <a href="{{ url('shops/donation-shop') }}">Donation Shop</a>, where it will be available for other users to take. This action is not reversible. Are you sure you want to donate this item?</p>
+                            <div class="text-right">
+                                {!! Form::button('Donate', ['class' => 'btn btn-warning', 'name' => 'action', 'value' => 'donate', 'type' => 'submit']) !!}
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                @if(isset($item->data['resell']) && App\Models\Currency\Currency::where('id', $item->resell->flip()->pop())->first() && Config::get('lorekeeper.extensions.item_entry_expansion.resale_function'))
+                    <li class="list-group-item">
+                        <a class="card-title h5 collapse-title" data-toggle="collapse" href="#resellForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Sell Item</a>
+                        <div id="resellForm" class="collapse">
+                            <p>This item can be sold for <strong>{!! App\Models\Currency\Currency::find($item->resell->flip()->pop())->display($item->resell->pop()) !!}</strong>. This action is not reversible. Are you sure you want to sell this item?</p>
+                            <div class="text-right">
+                                {!! Form::button('Sell', ['class' => 'btn btn-danger', 'name' => 'action', 'value' => 'resell', 'type' => 'submit']) !!}
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                <li class="list-group-item">
+                    <a class="card-title h5 collapse-title" data-toggle="collapse" href="#transferForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Transfer Item</a>
+                    <div id="transferForm" class="collapse">
+                        <div class="form-group">
+                            {!! Form::label('user_id', 'Recipient') !!} {!! add_help('You can only transfer items to verified users.') !!}
+                            {!! Form::select('user_id', $userOptions, null, ['class'=>'form-control']) !!}
+                        </div>
+                        <div class="text-right">
+                            {!! Form::button('Transfer', ['class' => 'btn btn-primary', 'name' => 'action', 'value' => 'transfer', 'type' => 'submit']) !!}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <a class="card-title h5 collapse-title" data-toggle="collapse" href="#deleteForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Delete Item</a>
+                    <div id="deleteForm" class="collapse">
+                        <p>This action is not reversible. Are you sure you want to delete this item?</p>
+                        <div class="text-right">
+                            {!! Form::button('Delete', ['class' => 'btn btn-danger', 'name' => 'action', 'value' => 'delete', 'type' => 'submit']) !!}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
         @if($user && !$readOnly && ($stack->first()->user_id == $user->id || $user->hasPower('edit_inventories')))
             <div class="card mt-3">
                 <ul class="list-group list-group-flush">
@@ -82,17 +153,6 @@
                             </div>
                         </li>
                     @endif
-                    @if($item->canDonate)
-                    <li class="list-group-item">
-                        <a class="card-title h5 collapse-title" data-toggle="collapse" href="#donateForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Donate Item</a>
-                        <div id="donateForm" class="collapse">
-                            <p>This will donate this item to the <a href="{{ url('shops/donation-shop') }}">Donation Shop</a>, where it will be available for other users to take. This action is not reversible. Are you sure you want to donate this item?</p>
-                            <div class="text-right">
-                                {!! Form::button('Donate', ['class' => 'btn btn-warning', 'name' => 'action', 'value' => 'donate', 'type' => 'submit']) !!}
-                            </div>
-                        </div>
-                    </li>
-                @endif
                     @if(isset($item->data['resell']) && App\Models\Currency\Currency::where('id', $item->resell->flip()->pop())->first() && Config::get('lorekeeper.extensions.item_entry_expansion.resale_function'))
                         <li class="list-group-item">
                             <a class="card-title h5 collapse-title" data-toggle="collapse" href="#resellForm">@if($stack->first()->user_id != $user->id) [ADMIN] @endif Sell Item</a>
