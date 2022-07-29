@@ -275,15 +275,14 @@ class InventoryManager extends Service
                 }
 
                 $oldUser = $stack->user;
-                if($this->moveStack($stack->user, $recipient, ($stack->user_id == $sender->id ? 'User Transfer' : 'Staff Transfer'), ['data' => ($stack->user_id != $sender->id ? 'Transferred by '.$sender->displayName : '')], $stack, $quantity))
-                {
+                if ($this->moveStack($stack->user, $recipient, ($stack->user_id == $sender->id ? 'User Transfer' : 'Staff Transfer'), ['data' => ($stack->user_id != $sender->id ? 'Transferred by '.$sender->displayName : '')], $stack, $quantity)) {
                     Notifications::create('ITEM_TRANSFER', $recipient, [
                         'item_name'     => $stack->item->name,
                         'item_quantity' => $quantity,
                         'sender_url'    => $sender->url,
                         'sender_name'   => $sender->name,
                     ]);
-                    if($stack->user_id != $sender->id)
+                    if ($stack->user_id != $sender->id) {
                         Notifications::create('FORCED_ITEM_TRANSFER', $oldUser, [
                             'item_name'     => $stack->item->name,
                             'item_quantity' => $quantity,
@@ -295,9 +294,10 @@ class InventoryManager extends Service
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
