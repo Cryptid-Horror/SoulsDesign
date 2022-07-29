@@ -374,14 +374,14 @@ class UserController extends Controller
                 ->get()
                 ->groupBy(['item_category_id', 'id']);
 
-                return view('user.inventory', [
-                    'user'        => $this->user,
-                    'categories'  => $categories->keyBy('id'),
-                    'items'       => $items,
-                    'userOptions' => Auth::user()->userOptions,
-                    'user'        => $this->user,
-                    'logs'        => $this->user->getItemLogs(),
-                    'sublists'    => Sublist::orderBy('sort', 'DESC')->get(),
+           return view('user.inventory', [
+            'user'        => $this->user,
+            'categories'  => $categories->keyBy('id'),
+            'items'       => $items,
+            'userOptions' => Auth::user()->userOptions,
+            'user'        => $this->user,
+            'logs'        => $this->user->getItemLogs(),
+            'sublists'    => Sublist::orderBy('sort', 'DESC')->get(),
         ]);
     }
 

@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Services;
 use App\Services\Service;
 
 use DB;
@@ -16,7 +16,7 @@ use App\Models\Shop\ShopLog;
 use App\Models\User\UserItem;
 use App\Models\Item\Item;
 use App\Models\Item\ItemTag;
-namespace App\Services;
+
 
 
 class ShopManager extends Service
