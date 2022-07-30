@@ -13,11 +13,9 @@ use App\Models\User\User;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
 use App\Models\Trade;
-use App\Models\User\User;
 use App\Models\User\UserItem;
 use App\Models\Stats\Character\Stat;
 use App\Models\Character\BreedingPermission;
-
 use App\Services\AwardCaseManager;
 use App\Services\CharacterManager;
 use App\Services\TradeManager;
