@@ -387,7 +387,6 @@ class InventoryManager extends Service
                             ]);
                         }
                     }
-                }
             } else {
                 foreach ($stacks as $key=>$stack) {
                     $quantity = $quantities[$key];
@@ -423,6 +422,7 @@ class InventoryManager extends Service
         }
 
         return $this->rollbackReturn(false);
+        }
     }
 
     /**
