@@ -53,10 +53,36 @@
                         <th class="col-3">Quantity</th>
                         <th class="col-1"><i class="fas fa-lock invisible"></i></th>
                     </tr>
-            </tbody>
-        </table>
-    </div>
-
+                </thead>
+                <tbody>
+                @foreach($stack as $itemRow)
+                        <tr id ="itemRow{{ $itemRow->id }}" class="d-flex {{ $itemRow->isTransferrable ? '' : 'accountbound' }}">
+                            @if($user && !$readOnly && ($stack->first()->user_id == $user->id || $user->hasPower('edit_inventories')))
+                                <td class="col-1">{!! Form::checkbox('ids[]', $itemRow->id, false, ['class' => 'item-check', 'onclick' => 'updateQuantities(this)']) !!}</td>
+                                <td class="col-4">{!! array_key_exists('data', $itemRow->data) ? ($itemRow->data['data'] ? $itemRow->data['data'] : 'N/A') : 'N/A' !!}</td>
+                            @else
+                                <td class="col-5">{!! array_key_exists('data', $itemRow->data) ? ($itemRow->data['data'] ? $itemRow->data['data'] : 'N/A') : 'N/A' !!}</td>
+                            @endif
+                            <td class="col-3">{!! array_key_exists('notes', $itemRow->data) ? ($itemRow->data['notes'] ? $itemRow->data['notes'] : 'N/A') : 'N/A' !!}</td>
+                            @if($user && !$readOnly && ($stack->first()->user_id == $user->id || $user->hasPower('edit_inventories')))
+                                @if($itemRow->availableQuantity)
+                                    <td class="col-3">{!! Form::selectRange('', 1, $itemRow->availableQuantity, 1, ['class' => 'quantity-select', 'type' => 'number', 'style' => 'min-width:40px;']) !!} /{{ $itemRow->availableQuantity }} @if($itemRow->getOthers()) {{ $itemRow->getOthers() }} @endif</td>
+                                @else
+                                    <td class="col-3">{!! Form::selectRange('', 0, 0, 0, ['class' => 'quantity-select', 'type' => 'number', 'style' => 'min-width:40px;', 'disabled']) !!} /{{ $itemRow->availableQuantity }} @if($itemRow->getOthers()) {{ $itemRow->getOthers() }} @endif</td>
+                                @endif
+                            @else
+                                <td class="col-3">{!! $itemRow->count !!}</td>
+                            @endif
+                            <td class="col-1">
+                                @if(!$itemRow->isTransferrable)
+                                    <i class="fas fa-lock" data-toggle="tooltip" title="Account-bound items cannot be transferred but can be deleted."></i>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         @if($user && !$readOnly && ($stack->first()->user_id == $user->id || $user->hasPower('edit_inventories')))
             <div class="card mt-3">
                 <ul class="list-group list-group-flush">
