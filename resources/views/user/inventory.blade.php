@@ -82,7 +82,6 @@
 
 @section('scripts')
 <script>
-
 $( document ).ready(function() {
     $('.inventory-stack').on('click', function(e) {
         e.preventDefault();
@@ -90,6 +89,5 @@ $( document ).ready(function() {
         loadModal("{{ url('items') }}/" + $parent.data('id'), $parent.data('name'));
     });
 });
-
 </script>
 @endsection

@@ -10,7 +10,6 @@ use Route;
 use Settings;
 
 use App\Models\User\User;
-
 use App\Models\User\UserCurrency;
 use App\Models\Currency\Currency;
 use App\Models\Gallery\Gallery;
@@ -26,33 +25,24 @@ use App\Models\Award\AwardLog;
 use App\Models\User\Wishlist;
 use App\Models\User\WishlistItem;
 use App\Models\Gallery\GalleryFavorite;
-
-
 use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterImage;
 use App\Models\Character\Character;
 use App\Models\Character\CharacterFolder;
 use App\Models\Character\Sublist;
 use App\Models\Character\BreedingPermission;
-
-
 use App\Models\Comment;
 use App\Models\Forum;
-
 use App\Models\User\UserPet;
 use App\Models\Pet\Pet;
 use App\Models\Pet\PetCategory;
 use App\Models\Pet\PetLog;
-
 use App\Models\Claymore\GearCategory;
 use App\Models\Claymore\Gear;
 use App\Models\User\UserGear;
-
 use App\Models\Claymore\WeaponCategory;
 use App\Models\Claymore\Weapon;
 use App\Models\User\UserWeapon;
-
-
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -349,7 +339,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
+       /**
      * Shows a user's inventory.
      *
      * @param string $name
@@ -374,7 +364,7 @@ class UserController extends Controller
                 ->get()
                 ->groupBy(['item_category_id', 'id']);
 
-           return view('user.inventory', [
+        return view('user.inventory', [
             'user'        => $this->user,
             'categories'  => $categories->keyBy('id'),
             'items'       => $items,
@@ -384,6 +374,7 @@ class UserController extends Controller
             'sublists'    => Sublist::orderBy('sort', 'DESC')->get(),
         ]);
     }
+
 
     /**
      * Shows a user's awardcase.
