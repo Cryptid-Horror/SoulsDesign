@@ -730,27 +730,5 @@ class SubmissionManager extends Service
         }
 
         return $this->rollbackReturn(false);
-    }
-    /*
-    |--------------------------------------------------------------------------
-    | Submission Manager
-    |--------------------------------------------------------------------------
-    |
-    | Handles creation and modification of submission data.
-    |
-    */
-
-    /**
-     * Helper function to remove all empty/zero/falsey values.
-     *
-     * @param array $value
-     *
-     * @return array
-     */
-    private function innerNull($value)
-    {
-        return array_values(array_filter($value));
-    }
-
-   
+    }  
 }
