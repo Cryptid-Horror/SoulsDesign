@@ -3116,6 +3116,7 @@ class CharacterManager extends Service
         foreach ($image->artists as $artist) {
             $result['artists'] .= '<div>'.$artist->displayLink().'</div>';
         }
+    }
 
     /**
      * Deletes a character design update request.
