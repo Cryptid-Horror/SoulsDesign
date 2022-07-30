@@ -408,6 +408,7 @@ class UserController extends Controller
                 ->orderBy('updated_at')
                 ->get()
                 ->groupBy(['award_category_id', 'id']);
+                
         return view('user.awardcase', [
             'user' => $this->user,
             'categories' => $categories->keyBy('id'),
@@ -416,8 +417,8 @@ class UserController extends Controller
             'user' => $this->user,
             'logs' => $this->user->getAwardLogs(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get()
-]);
-}
+        ]);
+    }
     public function getUserPets($name)
     {
         $categories = PetCategory::orderBy('sort', 'DESC')->get();
