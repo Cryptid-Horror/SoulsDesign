@@ -129,9 +129,7 @@ class CharacterManager extends Service
                 }
             } else {
                 $data['subtype_id'] = null;
-            } else {
-                $data['subtype_id'] = null;
-            }
+            } 
 
             if(isset($data['skills'])) $data['skills'] = implode(',', array_filter(str_replace(',', ';', $data['skills'])));
             if(isset($data['adornments'])) $data['adornments'] = implode(',', array_filter(str_replace(',', ';', $data['adornments'])));
