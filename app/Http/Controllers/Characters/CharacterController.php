@@ -40,6 +40,7 @@ use App\Services\CharacterManager;
 use App\Services\DesignUpdateManager;
 use App\Models\Status\StatusEffect;
 use App\Models\Skill\Skill;
+use App\Models\Feature\Feature;
 
 use Auth;
 use Illuminate\Http\Request;
