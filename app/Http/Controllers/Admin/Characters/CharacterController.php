@@ -7,6 +7,8 @@ use App\Models\Character\Character;
 use App\Models\Character\CharacterCategory;
 use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Character\CharacterClass;
+use App\Models\Character\CharacterTransfer;
+use App\Models\Feature\Feature;
 use App\Models\Rarity;
 use App\Models\Character\CharacterTitle;
 use App\Models\User\User;
