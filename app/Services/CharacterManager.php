@@ -2853,6 +2853,7 @@ class CharacterManager extends Service
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
+       }
     }
 
     /**
