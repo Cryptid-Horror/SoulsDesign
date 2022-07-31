@@ -322,7 +322,7 @@ class BrowseController extends Controller
             'subtypes' => [0 => 'Any Subtype'] + Subtype::orderBy('subtypes.sort', 'DESC')->pluck('name', 'id')->toArray(),
             'rarities' => [0 => 'Any Rarity'] + Rarity::orderBy('rarities.sort', 'DESC')->pluck('name', 'id')->toArray(),
             'titles' => [0 => 'Any Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('character_titles.sort', 'DESC')->pluck('title', 'id')->toArray(),
-            'features' => Feature::getFeaturesByCategory(),
+            'features' => Feature::getDropdownItems(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray()
 
@@ -452,7 +452,7 @@ class BrowseController extends Controller
             'slots' => $query->paginate(30)->appends($request->query()),
             'specieses' => [0 => 'Any Species'] + Species::orderBy('specieses.sort', 'DESC')->pluck('name', 'id')->toArray(),
             'rarities' => [0 => 'Any Rarity'] + Rarity::orderBy('rarities.sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'features' => Feature::getFeaturesByCategory(),
+            'features' => Feature::getDropdownItems(),
             'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray()
 
@@ -654,7 +654,7 @@ class BrowseController extends Controller
             'subtypes' => [0 => 'Any Subtype'] + Subtype::orderBy('subtypes.sort', 'DESC')->pluck('name', 'id')->toArray(),
             'rarities' => [0 => 'Any Rarity'] + Rarity::orderBy('rarities.sort', 'DESC')->pluck('name', 'id')->toArray(),
             'titles' => [0 => 'Any Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('character_titles.sort', 'DESC')->pluck('title', 'id')->toArray(),
-            'features' => Feature::getFeaturesByCategory(),
+            'features' => Feature::getDropdownItems(),
             'sublist' => $sublist,
             'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
             'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray()
