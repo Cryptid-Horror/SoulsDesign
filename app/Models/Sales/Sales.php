@@ -230,7 +230,8 @@ class Sales extends Model implements Feedable
             'summary' => $summary,
             'updated' => $this->updated_at,
             'link' => $this->url,
-            'author' => $this->user->name
+            'author'     => $this->user->name,
+            'authorName' => $this->user->name,
         ]);
     }
 }
