@@ -20,9 +20,7 @@ use App\Models\Character\Character;
 use App\Models\Character\CharacterImage;
 use App\Models\Gallery\GallerySubmission;
 
-use App\Services\LinkService;
 use App\Services\DeviantArtService;
-use App\Services\UserService;
 class HomeController extends Controller
 {
     /*

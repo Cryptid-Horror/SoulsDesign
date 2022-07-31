@@ -391,7 +391,7 @@ Route::group(['prefix' => 'data', 'namespace' => 'Data', 'middleware' => 'power:
     Route::get('skill-categories/delete/{id}', 'SkillController@getDeleteSkillCategory');
     Route::post('skill-categories/create', 'SkillController@postCreateEditSkillCategory');
     Route::post('skill-categories/edit/{id?}', 'SkillController@postCreateEditSkillCategory');
-    Route::post('skill-categories/delete/{id}', 'SkillController@postDeleteSkillCategory');\
+    Route::post('skill-categories/delete/{id}', 'SkillController@postDeleteSkillCategory');
 
     # CHALLENGES
     Route::get('challenges', 'ChallengeController@getChallengeIndex');
