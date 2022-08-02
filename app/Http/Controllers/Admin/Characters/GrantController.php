@@ -59,8 +59,8 @@ class GrantController extends Controller
 
         return redirect()->back();
     }
-
-    /**
+    
+  /**
      * Grants or removes status effect(s) from a character.
      *
      * @param  string                            $slug
@@ -74,6 +74,10 @@ class GrantController extends Controller
         if($service->grantCharacterStatusEffects($data, Character::where('slug', $slug)->first(), Auth::user())) {
             flash('Status effect granted successfully.')->success();
         }
+        else {
+            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        }
+        return redirect()->back();
     }
 
     /**
