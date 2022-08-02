@@ -13,18 +13,12 @@ use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rank\Rank;
-
 use App\Models\User\User;
 use App\Models\User\UserAlias;
 use App\Models\User\UserUpdateLog;
 use App\Models\WorldExpansion\Location;
 use App\Models\WorldExpansion\Faction;
-
 use App\Services\UserService;
-use Auth;
-use Carbon\Carbon;
-use Config;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
