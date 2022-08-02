@@ -17,7 +17,6 @@ use App\Models\WorldExpansion\Location;
 use App\Models\WorldExpansion\Faction;
 use App\Models\WorldExpansion\FactionRankMember;
 use App\Models\Character\CharacterDesignUpdate;
-use App\Models\Character\CharacterTransfer;
 use App\Models\Gallery\GallerySubmission;
 use App\Models\User\UserUpdateLog;
 use Illuminate\Support\Facades\Hash;
