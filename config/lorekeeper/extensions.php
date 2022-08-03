@@ -83,8 +83,8 @@ return [
 
     // Staff Rewards - Mercury
     'staff_rewards' => [
-        'enabled'     => 0,
-        'currency_id' => 1,
+        'enabled'     => 1,
+        'currency_id' => 3,
     ],
 
     // Organised Traits Dropdown - Draginraptor
