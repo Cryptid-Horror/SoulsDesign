@@ -10,6 +10,7 @@ use App\Models\User\UserItem;
 use Carbon\Carbon;
 use Config;
 use DB;
+use Auth;
 use Illuminate\Support\Arr;
 use Notifications;
 

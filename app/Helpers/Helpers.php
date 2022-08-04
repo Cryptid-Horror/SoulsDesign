@@ -278,10 +278,6 @@ function checkAlias($url, $failOnError = true)
             throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
         }
 
-        if (($matches == [] || $matches[0] == []) && $failOnError) {
-            throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
-        }
-
         // and 2. if it contains an alias associated with a user on-site.
 
         if ($matches != [] && $matches[0] != [] && isset($matches[0][1])) {
