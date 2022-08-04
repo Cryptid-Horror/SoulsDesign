@@ -69,8 +69,7 @@ citrine is applied to the base. Smoke is base dependant and is now shades of cit
 
     // If left empty, the swatches section will not be shown
     $swatches = [
-        'GREYING',
-         'Grey_lilac_single', 'Grey_lilac_double', 'Grey_lilac_abundism'
+        'GREYING','amy_steel','citrine_steel', 
     ];
 
     // Design examples should be kept in public/images/design_guides/examples/approved_designs
