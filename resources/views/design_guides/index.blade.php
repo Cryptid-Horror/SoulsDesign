@@ -68,14 +68,14 @@
 		</div>
 
 		<div class="d-flex justify-content-around mb-5">
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" class="btn btn-info">
 				<a href="{{ url('info/Import_Extras') }}" class="btn btn-secondary">Import Extras and Effects</a>
                 <a href="{{ url('info/dragon_registration') }}" class="btn btn-secondary">Submitting a Design</a>
 				<a href="{{ url('info/Value_Saturation') }}" class="btn btn-secondary">Value and Saturation</a>
 				<a href="{{ url('info/Design_Addons') }}" class="btn btn-secondary">Editing Imports with Items</a>
 
 			</div>
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" class="btn btn-info">
 				<a href="{{ url('world/traits?feature_category_id=8') }}" class="btn btn-secondary">Coat Types</a>
 				<a href="{{ url('world/traits?feature_category_id=3') }}" class="btn btn-secondary">Tails</a>
                 <a href="{{ url('world/traits?feature_category_id=2') }}" class="btn btn-secondary">Eyes</a>
@@ -84,7 +84,7 @@
 
 
 			</div>
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" class="btn btn-info">
 				<a href="{{ url('') }}" class="btn btn-secondary">[Redacted]</a>
                 <a href="{{ url('world/traits?feature_category_id=6') }}" class="btn btn-secondary">Breath Elements</a>
 				<a href="{{ url('world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
@@ -93,7 +93,7 @@
 
 
 			</div>
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" class="btn btn-info">
 				<a href="{{ url('info/Check_List') }}" class="btn btn-secondary">Design Review Check List</a>
                 <a href="{{ url('world/species') }}" class="btn btn-secondary">Dragon Species (Imports)</a>
 				<a href="{{ url('info/Coat_Colors') }}" class="btn btn-secondary">Coat Colors and Melanism</a>
@@ -104,12 +104,7 @@
 	
 		</div>
 		<div class="alert alert-danger" role="alert">
-  			The following things cannot be added to genos/dragons with items currently:<br>
-			  - Hydra, Minature mutations, or new mutations from the contest! <br>
-			  - New traits from the contest. </br>
-			  - New Markings from the contest: Cape, Stockings, Specter, Tritone, Petrified, Patchwork, Circuit, Pearl, arcane, Oilslick, Harlequin, Torch (Fwoosh/Name pending), and Mermaid.</br>
-			  - Any Legendary Skills.<br>
-			  Base coats and Color modifer marking names have changed names and IDs! 
+			  Base coats and Color modifer marking names have changed names and IDs! If you are unsure what your new marking should be called, please ask a staff member!
 		</div>
 
 		<!-- Common Genetics -->		
