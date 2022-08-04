@@ -77,10 +77,10 @@
 			</div>
 			<div class="btn-group-vertical" class="btn btn-info">
 				<a href="{{ url('world/traits?feature_category_id=8') }}" class="btn btn-secondary">Coat Types</a>
-				<a href="{{ url('world/traits?feature_category_id=3') }}" class="btn btn-secondary">Tails</a>
-                <a href="{{ url('world/traits?feature_category_id=2') }}" class="btn btn-secondary">Eyes</a>
-                <a href="{{ url('world/traits?feature_category_id=1') }}" class="btn btn-secondary">Horns</a>
-                <a href="{{ url('world/traits?feature_category_id=4') }}" class="btn btn-secondary">Ears</a>
+				<a href="{{ url('world/traits?feature_category_id=3') }}" class="btn btn-secondary">Tail Traits</a>
+                <a href="{{ url('world/traits?feature_category_id=2') }}" class="btn btn-secondary">Eye Traits</a>
+                <a href="{{ url('world/traits?feature_category_id=1') }}" class="btn btn-secondary">Horn Traits</a>
+                <a href="{{ url('world/traits?feature_category_id=4') }}" class="btn btn-secondary">Ear Traits</a>
 
 
 			</div>
