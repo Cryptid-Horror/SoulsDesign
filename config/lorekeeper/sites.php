@@ -48,13 +48,13 @@ return [
     ],
 
     'twitter' => [
-        'full_name' => 'Twitter',
-        'display_name' => 'twitter',
-        'regex' => '/twitter\.com\/([A-Za-z0-9_-]+)/',
-        'link' => 'twitter.com',
-        'icon' => 'fab fa-twitter',
-        'auth' => 1,
-        'primary_alias' => 1
+        'full_name'     => 'Twitter',
+        'display_name'  => 'twitter',
+        'regex'         => '/twitter\.com\/([A-Za-z0-9_-]+)/',
+        'link'          => 'twitter.com',
+        'icon'          => 'fab fa-twitter',
+        'auth'          => 1,
+        'primary_alias' => 1,
     ],
 
     'instagram' => [
@@ -98,12 +98,12 @@ return [
     ],
 
     'discord' => [
-        'full_name' => 'Discord',
-        'display_name' => 'discord',
-        'regex' => '/([A-Za-z0-9_-]+)#([0-9]+)/m',
-        'icon' => 'fab fa-discord',
-        'auth' => 1,
-        'primary_alias' => 1
+        'full_name'     => 'Discord',
+        'display_name'  => 'discord',
+        'regex'         => '/([A-Za-z0-9_-]+)#([0-9]+)/m',
+        'icon'          => 'fab fa-discord',
+        'auth'          => 1,
+        'primary_alias' => 1,
     ],
 
     /**********************************************************************************************

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Comments;
 
+use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Comment;
 use App\Models\Gallery\GallerySubmission;
 use App\Models\News;
 use App\Models\Report\Report;
 use App\Models\Sales\Sales;
 use App\Models\SitePage;
+use App\Models\Submission\Submission;
+use App\Models\TradeListing;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -17,10 +20,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\TradeListing;
-use App\Models\Submission\Submission;
-use App\Models\Character\CharacterDesignUpdate;
 use Notifications;
 use Settings;
 use Spatie\Honeypot\ProtectAgainstSpam;
@@ -79,11 +78,14 @@ class CommentController extends Controller implements CommentControllerInterface
 
         $comment->commentable()->associate($model);
 
-        if($comment->commentable_type == 'App\Models\Forum') $comment->comment = parse($request->message);
-        else $comment->comment = $request->message;
+        if ($comment->commentable_type == 'App\Models\Forum') {
+            $comment->comment = parse($request->message);
+        } else {
+            $comment->comment = $request->message;
+        }
 
         $comment->approved = !Config::get('comments.approval_required');
-        $comment->type = isset($request['type']) && $request['type'] ? $request['type'] : "User-User";
+        $comment->type = isset($request['type']) && $request['type'] ? $request['type'] : 'User-User';
         $comment->title = isset($request['title']) && $request['title'] ? $request['title'] : null;
         $comment->save();
 
@@ -143,25 +145,26 @@ class CommentController extends Controller implements CommentControllerInterface
                 $listing = TradeListing::find($comment->commentable_id);
                 $recipient = $listing->user;
                 $post = 'your trade listing';
-                $link = $listing->url . '/#comment-' . $comment->getKey();
+                $link = $listing->url.'/#comment-'.$comment->getKey();
                 break;
             case 'App\Models\Forum':
                 flash('Thread created successfully.')->success();
+
                 return redirect('/forum/'.$comment->commentable_id.'/~'.$comment->id);
                 break;
             case 'App\Models\Submission\Submission':
                 $submission = Submission::find($comment->commentable_id);
                 $recipient = $submission->user;
                 $post = 'your submission';
-                $link = $submission->viewUrl . '/#comment-' . $comment->getKey();
-                break;  
+                $link = $submission->viewUrl.'/#comment-'.$comment->getKey();
+                break;
             case 'App\Models\Character\CharacterDesignUpdate':
                 $request = CharacterDesignUpdate::find($comment->commentable_id);
                 $recipient = $request->user;
                 $post = 'your design update request';
-                $link = $request->url . '/#comment-' . $comment->getKey();
-                break;  
-            }
+                $link = $request->url.'/#comment-'.$comment->getKey();
+                break;
+        }
 
         if ($recipient != $sender) {
             Notifications::create('COMMENT_MADE', $recipient, [
@@ -184,18 +187,19 @@ class CommentController extends Controller implements CommentControllerInterface
 
         Validator::make($request->all(), [
             'message' => 'required|string',
-            'title' => 'nullable|string'
+            'title'   => 'nullable|string',
         ])->validate();
 
-        if($comment->commentable_type == 'App\Models\Forum') {
+        if ($comment->commentable_type == 'App\Models\Forum') {
             $request->message = parse($request->message);
             flash('Thread edited successfully.')->success();
+        } else {
+            flash('Comment edited successfully.')->success();
         }
-        else flash('Comment edited successfully.')->success();
 
         $comment->update([
             'comment' => $request->message,
-            'title' => isset($request->title) ? $request->title : null
+            'title'   => $request->title ?? null,
         ]);
 
         return Redirect::to(URL::previous().'#comment-'.$comment->getKey());
@@ -209,43 +213,39 @@ class CommentController extends Controller implements CommentControllerInterface
         Gate::authorize('delete-comment', $comment);
 
         $forum = null;
-        if($comment->commentable_type == 'App\Models\Forum' && $comment->children){
-            if(isset($comment->child_id))
-            {
-                foreach($comment->children as $child)
-                {
+        if ($comment->commentable_type == 'App\Models\Forum' && $comment->children) {
+            if (isset($comment->child_id)) {
+                foreach ($comment->children as $child) {
                     $child->child_id = $comment->child_id;
                     $child->save();
                 }
-            }
-            else{
-                foreach($comment->children as $child)
-                {
+            } else {
+                foreach ($comment->children as $child) {
                     $child->delete();
                 }
             }
         } // You may want to remove the inner if statement and move the isset into the container if statement if you don't want comments deleted when their threads are deleted.
 
-        if($comment->commentable_type == 'App\Models\Forum')
-        {
-            if($comment->parent) {
+        if ($comment->commentable_type == 'App\Models\Forum') {
+            if ($comment->parent) {
                 $forum = $comment->parent->threadUrl;
                 flash('Reply deleted successfully.')->success();
-            }
-            else {
+            } else {
                 $forum = $comment->commentable->url;
                 flash('Thread deleted successfully.')->success();
             }
         }
 
         if (Config::get('comments.soft_deletes') == true) {
-			$comment->delete();
-		}
-		else {
-			$comment->forceDelete();
-		}
-        if(isset($forum)) return redirect($forum);
-        else return redirect()->back();
+            $comment->delete();
+        } else {
+            $comment->forceDelete();
+        }
+        if (isset($forum)) {
+            return redirect($forum);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -274,19 +274,19 @@ class CommentController extends Controller implements CommentControllerInterface
         $sender = User::find($reply->commenter_id);
         $recipient = User::find($comment->commenter_id);
 
-        if($reply->commentable_type == 'App\Models\Forum' && $recipient != $sender){
+        if ($reply->commentable_type == 'App\Models\Forum' && $recipient != $sender) {
             Notifications::create('THREAD_REPLY', $recipient, [
-            'sender_url' => $sender->url,
-            'sender' => $sender->name,
-            'comment_url' => $reply->id,
-            'thread_url' => $comment->topComment->id,
+            'sender_url'   => $sender->url,
+            'sender'       => $sender->name,
+            'comment_url'  => $reply->id,
+            'thread_url'   => $comment->topComment->id,
             'thread_title' => $comment->topComment->title,
-            'forum_url' => $comment->commentable_id,
-            'forum_name' => $comment->commentable->name
+            'forum_url'    => $comment->commentable_id,
+            'forum_name'   => $comment->commentable->name,
             ]);
-            return redirect(URL::previous() . '#comment-' . $reply->getKey());
-        }
-        elseif($recipient != $sender) {
+
+            return redirect(URL::previous().'#comment-'.$reply->getKey());
+        } elseif ($recipient != $sender) {
             Notifications::create('COMMENT_REPLY', $recipient, [
             'sender_url'  => $sender->url,
             'sender'      => $sender->name,
@@ -306,26 +306,28 @@ class CommentController extends Controller implements CommentControllerInterface
     {
         $comment = Comment::find($id);
         $comment->timestamps = false;
-        if($comment->is_featured == 0) {
+        if ($comment->is_featured == 0) {
             $comment->update(['is_featured' => 1]);
         } else {
             $comment->update(['is_featured' => 0]);
         }
         $comment->timestamps = true;
 
-        return Redirect::to(URL::previous() . '#comment-' . $comment->getKey());
+        return Redirect::to(URL::previous().'#comment-'.$comment->getKey());
     }
 
     /**
-     * Is featured for comments
+     * Is featured for comments.
+     *
+     * @param mixed $id
      */
-    public function lock($id) {
+    public function lock($id)
+    {
         $comment = Comment::find($id);
         $comment->timestamps = false;
-        if($comment->is_locked == 0) {
+        if ($comment->is_locked == 0) {
             $comment->update(['is_locked' => 1]);
-        }
-        else {
+        } else {
             $comment->update(['is_locked' => 0]);
         }
         $comment->timestamps = true;

@@ -114,35 +114,6 @@ class ItemService extends Service
     }
 
     /**
-     * Handle category data.
-     *
-     * @param  array                               $data
-     * @param  \App\Models\Item\ItemCategory|null  $category
-     * @return array
-     */
-    private function populateCategoryData($data, $category = null)
-    {
-        if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-
-        isset($data['is_character_owned']) && $data['is_character_owned'] ? $data['is_character_owned'] : $data['is_character_owned'] = 0;
-        isset($data['character_limit']) && $data['character_limit'] ? $data['character_limit'] : $data['character_limit'] = 0;
-        isset($data['can_name']) && $data['can_name'] ? $data['can_name'] : $data['can_name'] = 0;
-        isset($data['can_donate']) && $data['is_character_owned'] ? $data['can_donate'] : $data['can_donate'] = 0;
-
-        if(isset($data['remove_image']))
-        {
-            if($category && $category->has_image && $data['remove_image'])
-            {
-                $data['has_image'] = 0;
-                $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        return $data;
-    }
-
-    /**
      * Delete a category.
      *
      * @param \App\Models\Item\ItemCategory $category
@@ -519,14 +490,15 @@ class ItemService extends Service
             }
 
             $this_tag = $item->tags()->where('tag', $tag)->first();
-            if($this_tag && $this_tag->tag == 'background' && isset($this_tag->getData()['background-image']))
-            {
-                $full = explode('/', (explode('?',$this_tag->getData()['background-image'])[0]));
+            if ($this_tag && $this_tag->tag == 'background' && isset($this_tag->getData()['background-image'])) {
+                $full = explode('/', (explode('?', $this_tag->getData()['background-image'])[0]));
                 $filename = end($full);
-                $path = implode('/',array_slice($full, 0, -1));
+                $path = implode('/', array_slice($full, 0, -1));
 
                 // Delete the image at this location
-                if(is_file($path.'/'.$filename)) $this->deleteImage($path, $filename);
+                if (is_file($path.'/'.$filename)) {
+                    $this->deleteImage($path, $filename);
+                }
             }
 
             $item->tags()->where('tag', $tag)->delete();
@@ -537,6 +509,36 @@ class ItemService extends Service
         }
 
         return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Handle category data.
+     *
+     * @param array                              $data
+     * @param \App\Models\Item\ItemCategory|null $category
+     *
+     * @return array
+     */
+    private function populateCategoryData($data, $category = null)
+    {
+        if (isset($data['description']) && $data['description']) {
+            $data['parsed_description'] = parse($data['description']);
+        }
+
+        isset($data['is_character_owned']) && $data['is_character_owned'] ? $data['is_character_owned'] : $data['is_character_owned'] = 0;
+        isset($data['character_limit']) && $data['character_limit'] ? $data['character_limit'] : $data['character_limit'] = 0;
+        isset($data['can_name']) && $data['can_name'] ? $data['can_name'] : $data['can_name'] = 0;
+        isset($data['can_donate']) && $data['is_character_owned'] ? $data['can_donate'] : $data['can_donate'] = 0;
+
+        if (isset($data['remove_image'])) {
+            if ($category && $category->has_image && $data['remove_image']) {
+                $data['has_image'] = 0;
+                $this->deleteImage($category->categoryImagePath, $category->categoryImageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        return $data;
     }
 
     /**

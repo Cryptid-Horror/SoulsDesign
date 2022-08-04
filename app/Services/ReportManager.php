@@ -115,14 +115,25 @@ class ReportManager extends Service
         DB::beginTransaction();
 
         try {
-            if(!isset($data['report'])) $report = Report::where('status', 'Assigned')->where('id', $data['id'])->first();
-            elseif($data['report']->status == 'Assigned') $report = $data['report'];
-            else $report = null;
-            if(!$report) throw new \Exception("Invalid report.");
-            if(!isset($data['staff_comments'])) throw new \Exception("Please add a summary to conclude the report.");
-			
-			if(isset($data['staff_comments']) && $data['staff_comments']) $data['parsed_staff_comments'] = parse($data['staff_comments']);
-			else $data['parsed_staff_comments'] = null;
+            if (!isset($data['report'])) {
+                $report = Report::where('status', 'Assigned')->where('id', $data['id'])->first();
+            } elseif ($data['report']->status == 'Assigned') {
+                $report = $data['report'];
+            } else {
+                $report = null;
+            }
+            if (!$report) {
+                throw new \Exception('Invalid report.');
+            }
+            if (!isset($data['staff_comments'])) {
+                throw new \Exception('Please add a summary to conclude the report.');
+            }
+
+            if (isset($data['staff_comments']) && $data['staff_comments']) {
+                $data['parsed_staff_comments'] = parse($data['staff_comments']);
+            } else {
+                $data['parsed_staff_comments'] = null;
+            }
 
             $report->update([
                 'staff_comments'        => $data['staff_comments'],

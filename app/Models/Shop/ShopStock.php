@@ -13,7 +13,7 @@ class ShopStock extends Model
      */
     protected $fillable = [
         'shop_id', 'item_id', 'currency_id', 'cost', 'use_user_bank', 'use_character_bank', 'is_limited_stock', 'quantity', 'sort', 'purchase_limit', 'is_fto', 'stock_type', 'is_visible',
-        'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer'
+        'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer',
     ];
 
     /**
@@ -34,7 +34,9 @@ class ShopStock extends Model
      */
     public function item()
     {
-        if($this->stock_type == 'Item') return $this->belongsTo('App\Models\Item\Item');
+        if ($this->stock_type == 'Item') {
+            return $this->belongsTo('App\Models\Item\Item');
+        }
     }
 
     /**
@@ -52,15 +54,17 @@ class ShopStock extends Model
     {
         return $this->belongsTo('App\Models\Currency\Currency');
     }
-    
+
     /**********************************************************************************************
-    
+
         OTHER FUNCTIONS
 
     **********************************************************************************************/
 
     /**
-     * Scopes active stock
+     * Scopes active stock.
+     *
+     * @param mixed $query
      */
     public function scopeActive($query)
     {
@@ -68,10 +72,10 @@ class ShopStock extends Model
     }
 
     /**
-     * Makes the cost an integer for display
+     * Makes the cost an integer for display.
      */
     public function getDisplayCostAttribute()
     {
-        return (int)$this->cost;
+        return (int) $this->cost;
     }
 }

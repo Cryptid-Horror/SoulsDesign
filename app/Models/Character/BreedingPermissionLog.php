@@ -2,7 +2,6 @@
 
 namespace App\Models\Character;
 
-use Config;
 use App\Models\Model;
 
 class BreedingPermissionLog extends Model
@@ -13,7 +12,7 @@ class BreedingPermissionLog extends Model
      * @var array
      */
     protected $fillable = [
-        'breeding_permission_id', 'sender_id', 'recipient_id', 'log', 'log_type', 'data'
+        'breeding_permission_id', 'sender_id', 'recipient_id', 'log', 'log_type', 'data',
     ];
 
     /**
@@ -59,5 +58,4 @@ class BreedingPermissionLog extends Model
     {
         return $this->belongsTo('App\Models\Character\BreedingPermission');
     }
-
 }

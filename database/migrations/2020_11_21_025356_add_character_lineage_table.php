@@ -1,15 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddCharacterLineageTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -43,16 +41,14 @@ class AddCharacterLineageTable extends Migration
 
             // Character ID or an Identifying Name of the Child's
             // Parents / Grandparents / Great-Grandparents
-            for ($i=0; $i < count($ancestors); $i++)
-            {
+            for ($i = 0; $i < count($ancestors); $i++) {
                 $table->integer($ancestors[$i].'_id')->unsigned()->nullable();
                 $table->string($ancestors[$i].'_name')->nullable();
             }
 
             // Set references to the character ID table
             $table->foreign('character_id')->references('id')->on('characters');
-            for ($i=0; $i < count($ancestors); $i++)
-            {
+            for ($i = 0; $i < count($ancestors); $i++) {
                 $table->foreign($ancestors[$i].'_id')->references('id')->on('characters');
             }
         });
@@ -60,8 +56,6 @@ class AddCharacterLineageTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

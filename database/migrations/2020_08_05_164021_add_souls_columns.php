@@ -1,15 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSoulsColumns extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -57,7 +55,7 @@ class AddSoulsColumns extends Migration
 
             $table->string('dds_slug', 191)->nullable()->default(null);
             $table->string('ddd_slug', 191)->nullable()->default(null);
-            
+
             $table->boolean('use_custom_lineage')->nullable(false)->default(false);
 
             $table->boolean('deceased')->default(false);
@@ -74,8 +72,6 @@ class AddSoulsColumns extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
@@ -123,7 +119,7 @@ class AddSoulsColumns extends Migration
 
             $table->dropColumn('dds_slug');
             $table->dropColumn('ddd_slug');
-            
+
             $table->dropColumn('use_custom_lineage');
 
             $table->dropColumn('deceased');

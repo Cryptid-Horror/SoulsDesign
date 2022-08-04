@@ -21,7 +21,7 @@ class CharacterImage extends Model
         'extension', 'use_cropper', 'hash', 'fullsize_hash', 'sort',
         'x0', 'x1', 'y0', 'y1',
         'description', 'parsed_description',
-        'is_valid', 'ext_url', 'genotype', 'phenotype', 'free_markings', 'adornments'
+        'is_valid', 'ext_url', 'genotype', 'phenotype', 'free_markings', 'adornments',
 
     ];
 
@@ -46,10 +46,10 @@ class CharacterImage extends Model
      */
     public static $createRules = [
         'species_id' => 'required',
-        'rarity_id' => 'required',
-        'image' => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
-        'thumbnail' => 'nullable|mimes:jpeg,gif,png|max:20000',
-        'ext_url' => 'required_without:image|nullable|url|max:20000',
+        'rarity_id'  => 'required',
+        'image'      => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
+        'thumbnail'  => 'nullable|mimes:jpeg,gif,png|max:20000',
+        'ext_url'    => 'required_without:image|nullable|url|max:20000',
 
     ];
 
@@ -300,10 +300,13 @@ class CharacterImage extends Model
     public function getDisplayDesignersAttribute()
     {
         $designers = [];
-        foreach($this->designers as $designer) {
+        foreach ($this->designers as $designer) {
             $designers[] = $designer->displayLink();
         }
-        if(!count($designers)) $designers[] = 'N/A';
+        if (!count($designers)) {
+            $designers[] = 'N/A';
+        }
+
         return implode(', ', $designers);
     }
 
@@ -315,10 +318,13 @@ class CharacterImage extends Model
     public function getDisplayArtistsAttribute()
     {
         $artists = [];
-        foreach($this->artists as $artist) {
+        foreach ($this->artists as $artist) {
             $artists[] = $artist->displayLink();
         }
-        if(!count($artists)) $artists[] = 'N/A';
+        if (!count($artists)) {
+            $artists[] = 'N/A';
+        }
+
         return implode(', ', $artists);
     }
 
@@ -329,8 +335,11 @@ class CharacterImage extends Model
      */
     public function getHasTitleAttribute()
     {
-       if(isset($this->title_id) || isset($this->title_data)) return true;
-        else return false;
+        if (isset($this->title_id) || isset($this->title_data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

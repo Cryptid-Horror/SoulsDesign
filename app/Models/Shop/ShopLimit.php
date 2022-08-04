@@ -2,7 +2,6 @@
 
 namespace App\Models\Shop;
 
-use Config;
 use App\Models\Model;
 
 class ShopLimit extends Model
@@ -13,7 +12,7 @@ class ShopLimit extends Model
      * @var array
      */
     protected $fillable = [
-        'shop_id', 'item_id'
+        'shop_id', 'item_id',
     ];
 
     /**
@@ -24,7 +23,7 @@ class ShopLimit extends Model
     protected $table = 'shop_limits';
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -33,5 +32,4 @@ class ShopLimit extends Model
     {
         return $this->belongsTo('App\Models\Item\Item', 'item_id');
     }
-
 }

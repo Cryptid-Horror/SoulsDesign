@@ -2,7 +2,6 @@
 
 namespace App\Models\Stats\Character;
 
-use Config;
 use App\Models\Model;
 
 class CharaLevels extends Model
@@ -13,7 +12,7 @@ class CharaLevels extends Model
      * @var array
      */
     protected $fillable = [
-        'character_id','current_level', 'current_exp', 'current_points'
+        'character_id', 'current_level', 'current_exp', 'current_points',
     ];
 
     /**
@@ -24,7 +23,7 @@ class CharaLevels extends Model
     protected $table = 'character_levels';
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -32,14 +31,13 @@ class CharaLevels extends Model
     /**
      * Get the shop stock.
      */
-    public function character() 
+    public function character()
     {
         return $this->belongsTo('App\Models\Character\Character');
     }
 
-    public function level() 
+    public function level()
     {
         return $this->belongsTo('App\Models\Stats\Character\CharacterLevel', 'current_level');
     }
-    
 }

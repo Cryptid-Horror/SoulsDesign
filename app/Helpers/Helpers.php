@@ -85,11 +85,9 @@ function format_date($timestamp, $showTime = true)
     return $timestamp->format('j F Y'.($showTime ? ', H:i:s' : '')).($showTime ? ' <abbr data-toggle="tooltip" title="UTC'.$timestamp->timezone->toOffsetName().'">'.strtoupper($timestamp->timezone->getAbbreviatedName($timestamp->isDST())).'</abbr>' : '');
 }
 
-
-function pretty_date($timestamp, $showTime = true) {
-   return '<abbr data-toggle="tooltip" title="' . $timestamp->format('F j Y' . ($showTime ? ', H:i:s' : '')) . ' ' . strtoupper($timestamp->timezone->getAbbreviatedName($timestamp->isDST())).'">' .$timestamp->diffForHumans(['parts' => 2, 'join' => true]) . '</abbr>';
-
-
+function pretty_date($timestamp, $showTime = true)
+{
+    return '<abbr data-toggle="tooltip" title="'.$timestamp->format('F j Y'.($showTime ? ', H:i:s' : '')).' '.strtoupper($timestamp->timezone->getAbbreviatedName($timestamp->isDST())).'">'.$timestamp->diffForHumans(['parts' => 2, 'join' => true]).'</abbr>';
 }
 
 /**
@@ -194,9 +192,9 @@ function parseCharacters($text, &$characters)
     if ($count) {
         $matches = array_unique($matches[1]);
 
-        foreach($matches as $match) {
+        foreach ($matches as $match) {
             $character = App\Models\Character\Character::where('slug', $match)->first();
-            if($character) {
+            if ($character) {
                 $characters[] = $character;
                 $text = preg_replace('/\[character='.$match.'\]/', $character->displayName, $text);
             }
@@ -280,13 +278,14 @@ function checkAlias($url, $failOnError = true)
             throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
         }
 
-        if(($matches == [] || $matches[0] == []) && $failOnError) throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
+        if (($matches == [] || $matches[0] == []) && $failOnError) {
+            throw new \Exception('This URL is from an invalid site. Please provide a URL for a user profile from a site used for authentication.');
+        }
 
         // and 2. if it contains an alias associated with a user on-site.
 
-        if($matches != [] && $matches[0] != [] && isset($matches[0][1])) {
-            if($urlSite != 'discord') {
-
+        if ($matches != [] && $matches[0] != [] && isset($matches[0][1])) {
+            if ($urlSite != 'discord') {
                 $alias = App\Models\User\UserAlias::where('site', $urlSite)->where('alias', $matches[0][1])->first();
             } else {
                 $alias = App\Models\User\UserAlias::where('site', $urlSite)->where('alias', $matches[0][0])->first();
@@ -357,19 +356,20 @@ function prettyProfileName($url)
     }
 }
 
-
 /**
  * Removes special characters and replaces spaces with hyphens.
- * https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string
+ * https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string.
  *
- * @param  string  $string
+ * @param string $string
+ *
  * @return string
  */
-function clean($string) {
+function clean($string)
+{
     $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
- 
+
     return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
- }
+}
 
 // World Expansion attachments
 function allAttachments($model)
@@ -377,22 +377,26 @@ function allAttachments($model)
     $attachments = $model->attachments;
     $attachers = $model->attachers;
     $totals = [];
-    if($attachments){
-        foreach($attachments as $attach){
+    if ($attachments) {
+        foreach ($attachments as $attach) {
             $class = class_basename($attach->attachment);
-            if(!isset($totals[$class])) $totals[$class] = [];
+            if (!isset($totals[$class])) {
+                $totals[$class] = [];
+            }
             $totals[$class][] = $attach->attachment;
             $totals[$class] = array_unique($totals[$class]);
         }
     }
-    if($attachers){
-        foreach($attachers as $attach){
+    if ($attachers) {
+        foreach ($attachers as $attach) {
             $class = class_basename($attach->attacher);
-            if(!isset($totals[$class])) $totals[$class] = [];
+            if (!isset($totals[$class])) {
+                $totals[$class] = [];
+            }
             $totals[$class][] = $attach->attacher;
             $totals[$class] = array_unique($totals[$class]);
         }
     }
+
     return $totals;
 }
-

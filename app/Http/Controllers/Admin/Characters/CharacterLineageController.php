@@ -2,23 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Characters;
 
-use Illuminate\Http\Request;
-
-use Auth;
-
-use App\Models\Character\Character;
-use App\Models\Character\CharacterImage;
-use App\Models\Character\CharacterCategory;
-use App\Models\Character\CharacterLineageBlacklist;
-use App\Models\Rarity;
-use App\Models\User\User;
-use App\Models\Species\Species;
-use App\Models\Species\Subtype;
-use App\Models\Feature\Feature;
-
-use App\Services\CharacterManager;
-
 use App\Http\Controllers\Controller;
+use App\Models\Character\Character;
+use App\Models\Character\CharacterLineageBlacklist;
+use App\Services\CharacterManager;
+use Auth;
+use Illuminate\Http\Request;
 
 class CharacterLineageController extends Controller
 {
@@ -34,7 +23,8 @@ class CharacterLineageController extends Controller
     /**
      * Shows the character lineage page.
      *
-     * @param  string  $slug
+     * @param string $slug
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getCharacterLineagePage($slug)
@@ -45,7 +35,8 @@ class CharacterLineageController extends Controller
     /**
      * Shows the MYO slot lineage page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getMyoLineagePage($id)
@@ -56,28 +47,34 @@ class CharacterLineageController extends Controller
     /**
      * Shows the character's lineage page.
      *
-     * @param  string  $slug
+     * @param mixed $id
+     * @param mixed $isMyo
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getLineagePage($id, $isMyo = false)
     {
         $this->character = $isMyo ? Character::where('is_myo_slot', 1)->where('id', $id)->first() : Character::where('slug', $id)->first();
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
 
         $hasLineage = $this->character->lineage !== null;
         $line = $this->character->lineage;
+
         return view('character.lineage', [
-            'character' => $this->character,
+            'character'  => $this->character,
             'hasLineage' => $hasLineage,
-            'lineage' => $line,
-            'isMyo' => $isMyo,
+            'lineage'    => $line,
+            'isMyo'      => $isMyo,
         ]);
     }
 
     /**
      * Shows the edit character lineage modal.
      *
-     * @param  string  $slug
+     * @param string $slug
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditCharacterLineage($slug)
@@ -88,7 +85,8 @@ class CharacterLineageController extends Controller
     /**
      * Shows the edit MYO slot lineage modal.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditMyoLineage($id)
@@ -100,21 +98,26 @@ class CharacterLineageController extends Controller
      * Shows the edit lineage modal.
      *
      * @param  string/int  $id
+     * @param mixed $isMyo
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditLineage($id, $isMyo)
     {
         $this->character = $isMyo ? Character::where('is_myo_slot', 1)->where('id', $id)->first() : Character::where('slug', $id)->first();
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
 
         $hasLineage = $this->character->lineage !== null;
         $line = $this->character->lineage;
+
         return view('character.admin._edit_lineage_modal', [
-            'character' => $this->character,
+            'character'        => $this->character,
             'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
-            'isMyo' => $isMyo,
-            'hasLineage' => $hasLineage,
-            'lineage' => [
+            'isMyo'            => $isMyo,
+            'hasLineage'       => $hasLineage,
+            'lineage'          => [
                 // there have GOT to be better ways to do this
                 'sire_id'               => $hasLineage ? $line->sire_id : null,
                 'sire_name'             => $hasLineage ? $line->sire_name : null,
@@ -151,9 +154,9 @@ class CharacterLineageController extends Controller
     /**
      * Edits a character's lineage.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\CharacterManager  $service
-     * @param  string                         $slug
+     * @param App\Services\CharacterManager $service
+     * @param string                        $slug
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEditCharacterLineage(Request $request, CharacterManager $service, $slug)
@@ -164,9 +167,9 @@ class CharacterLineageController extends Controller
     /**
      * Edits an MYO slot's lineage.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\CharacterManager  $service
-     * @param  int                            $id
+     * @param App\Services\CharacterManager $service
+     * @param int                           $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEditMyoLineage(Request $request, CharacterManager $service, $id)
@@ -174,19 +177,21 @@ class CharacterLineageController extends Controller
         return $this->postEditLineage($request, $service, $id, true);
     }
 
-
     /**
      * Edits an char or myo's lineage.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\CharacterManager  $service
-     * @param  int                            $id
+     * @param App\Services\CharacterManager $service
+     * @param int                           $id
+     * @param mixed                         $isMyo
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEditLineage(Request $request, CharacterManager $service, $id, $isMyo)
     {
         $this->character = $isMyo ? Character::where('is_myo_slot', 1)->where('id', $id)->first() : Character::where('slug', $id)->first();
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
 
         $data = $request->only([
             'sire_id',
@@ -222,11 +227,14 @@ class CharacterLineageController extends Controller
         ]);
         if ($service->updateCharacterLineage($data, $this->character, Auth::user())) {
             flash('Character lineage updated successfully.')->success();
+
             return redirect()->to($this->character->url);
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back()->withInput();
     }
 }

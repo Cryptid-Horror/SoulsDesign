@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Auth;
-use Config;
-use App\Models\Model;
 use App\Traits\Commentable;
+use Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Forum extends Model
 {
-    use SoftDeletes;
     use Commentable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +17,7 @@ class Forum extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'parsed_description', 'is_locked', 'staff_only', 'role_limit', 'parent_id', 'has_image', 'extension', 'sort', 'is_active'
+        'name', 'description', 'parsed_description', 'is_locked', 'staff_only', 'role_limit', 'parent_id', 'has_image', 'extension', 'sort', 'is_active',
     ];
 
     /**
@@ -50,7 +48,6 @@ class Forum extends Model
         return $this->belongsTo('App\Models\Forum');
     }
 
-
     /**
      * Get the children of this forum.
      */
@@ -58,6 +55,7 @@ class Forum extends Model
     {
         return $this->hasMany('App\Models\Forum', 'parent_id');
     }
+
     /**
      * Get the children of this forum.
      */
@@ -66,7 +64,6 @@ class Forum extends Model
         return $this->belongsTo('App\Models\Rank\Rank', 'role_limit');
     }
 
-
     /**********************************************************************************************
 
         SCOPES
@@ -74,7 +71,9 @@ class Forum extends Model
     **********************************************************************************************/
 
     /**
-     * Scope only forums with no parent_id
+     * Scope only forums with no parent_id.
+     *
+     * @param mixed $query
      */
     public function scopeCategory($query)
     {
@@ -83,36 +82,52 @@ class Forum extends Model
 
     /**
      * Scope forums that are staff only.
+     *
+     * @param mixed $query
+     * @param mixed $only
      */
     public function scopeStaff($query, $only = false)
     {
-        if($only){
-            if(Auth::check() && Auth::user()->isStaff) return $query->where('staff_only',1);
-            return $query->where('staff_only',0);
-        }
-        else {
-            if(Auth::check() && Auth::user()->isStaff) return $query;
-            return $query->where('staff_only',0);
+        if ($only) {
+            if (Auth::check() && Auth::user()->isStaff) {
+                return $query->where('staff_only', 1);
+            }
+
+            return $query->where('staff_only', 0);
+        } else {
+            if (Auth::check() && Auth::user()->isStaff) {
+                return $query;
+            }
+
+            return $query->where('staff_only', 0);
         }
     }
 
     /**
      * Scope forums are locked for new posts/comments.
+     *
+     * @param mixed $query
+     * @param mixed $state
      */
     public function scopeLocked($query, $state = 1)
     {
-        return $query->where('is_locked',$state);
+        return $query->where('is_locked', $state);
     }
 
     /**
      * Scope forums are locked for new posts/comments.
+     *
+     * @param mixed $query
+     * @param mixed $state
      */
     public function scopeVisible($query, $state = 1)
     {
-        if(!Auth::check() || !(Auth::check() && Auth::user()->isStaff))  return $query->where('is_active',$state)->where('staff_only',0);
-        else return $query->where('is_active',$state);
+        if (!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) {
+            return $query->where('is_active', $state)->where('staff_only', 0);
+        } else {
+            return $query->where('is_active', $state);
+        }
     }
-
 
     /**********************************************************************************************
 
@@ -138,41 +153,53 @@ class Forum extends Model
     public function getDisplayNameAttribute()
     {
         $icon = [];
-        if($this->is_locked) $icon[] = '<i class="fas fa-lock mr-1" data-toggle="tooltip" title="This forum is locked."></i>';
-        if($this->staff_only) $icon[] = '<i class="fas fa-crown mr-1" data-toggle="tooltip" title="Staff-only Forum."></i>';
-        if($this->role) $icon[] = '<i class="fas fa-star mr-1" data-toggle="tooltip" title="'. $this->role->name .'-only Forum."></i>';
-        $icon = (isset($icon) ? implode('',$icon) : '');
-
-        if($this->is_locked)
-        {
-            if(Auth::check() && Auth::user()->isStaff) return '<a href="'.$this->url.'" >'. $icon . $this->name .'</a>';
-            else return '<span>'. $icon . $this->name . '</span>';
+        if ($this->is_locked) {
+            $icon[] = '<i class="fas fa-lock mr-1" data-toggle="tooltip" title="This forum is locked."></i>';
         }
-        else return '<a href="'.$this->url.'" class="display-forum">'. $icon . $this->name .'</a>';
+        if ($this->staff_only) {
+            $icon[] = '<i class="fas fa-crown mr-1" data-toggle="tooltip" title="Staff-only Forum."></i>';
+        }
+        if ($this->role) {
+            $icon[] = '<i class="fas fa-star mr-1" data-toggle="tooltip" title="'.$this->role->name.'-only Forum."></i>';
+        }
+        $icon = (isset($icon) ? implode('', $icon) : '');
+
+        if ($this->is_locked) {
+            if (Auth::check() && Auth::user()->isStaff) {
+                return '<a href="'.$this->url.'" >'.$icon.$this->name.'</a>';
+            } else {
+                return '<span>'.$icon.$this->name.'</span>';
+            }
+        } else {
+            return '<a href="'.$this->url.'" class="display-forum">'.$icon.$this->name.'</a>';
+        }
     }
 
     /**
-     * Determines if Forum has any restrictions
+     * Determines if Forum has any restrictions.
      *
      * @return string
      */
     public function getHasRestrictionsAttribute()
     {
-        if($this->is_locked || $this->staff_only || $this->role) return true;
-        else return false;
+        if ($this->is_locked || $this->staff_only || $this->role) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getAccessibleSubforumsAttribute()
     {
         $children = collect();
-        if($this->children) {
-            foreach($this->children as $child)
-            {
-                if(!$child->hasRestrictions || Auth::check() && Auth::user()->canVisitForum($child->id)) {
+        if ($this->children) {
+            foreach ($this->children as $child) {
+                if (!$child->hasRestrictions || Auth::check() && Auth::user()->canVisitForum($child->id)) {
                     $children->push($child);
                 }
             }
         }
+
         return $children;
     }
 
@@ -193,7 +220,7 @@ class Forum extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '-image.'.$this->extension;
+        return $this->id.'-image.'.$this->extension;
     }
 
     /**
@@ -213,10 +240,12 @@ class Forum extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (!$this->has_image) return null;
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
-    }
+        if (!$this->has_image) {
+            return null;
+        }
 
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
+    }
 
     /**
      * Gets the URL of the model's image.
@@ -225,7 +254,7 @@ class Forum extends Model
      */
     public function getCommentsAttribute()
     {
-        return Comment::where('commentable_type','App\Models\Forum')->where('commentable_id',$this->id)->get();
+        return Comment::where('commentable_type', 'App\Models\Forum')->where('commentable_id', $this->id)->get();
     }
 
     /**********************************************************************************************
@@ -235,18 +264,23 @@ class Forum extends Model
     **********************************************************************************************/
 
     /**
-     * Checks if a board is locked
+     * Checks if a board is locked.
+     *
+     * @param mixed|null $board
      */
     public function canUsersPost($board = null)
     {
-        if($board == null) $board = $this;
-        if($board->is_locked) return false;
-        elseif(isset($board->parent_id)) {
-            if(!$board->canUsersPost($board->parent)) return false;
+        if ($board == null) {
+            $board = $this;
         }
+        if ($board->is_locked) {
+            return false;
+        } elseif (isset($board->parent_id)) {
+            if (!$board->canUsersPost($board->parent)) {
+                return false;
+            }
+        }
+
         return true;
     }
-
-
-
 }

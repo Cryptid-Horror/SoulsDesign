@@ -4,29 +4,20 @@ namespace App\Http\Controllers\Characters;
 
 use App\Http\Controllers\Controller;
 use App\Models\Character\Character;
+use App\Models\Character\CharacterProfile;
 use App\Models\Character\CharacterTransfer;
+use App\Models\Feature\Feature;
+use App\Models\Rarity;
+use App\Models\Species\Species;
+use App\Models\Species\Subtype;
 use App\Models\User\User;
+use App\Models\WorldExpansion\Location;
 use App\Services\CharacterManager;
 use App\Services\DesignUpdateManager;
 use Auth;
 use Illuminate\Http\Request;
 use Route;
 use Settings;
-
-use App\Models\Character\CharacterProfile;
-use App\Models\Currency\Currency;
-use App\Models\Currency\CurrencyLog;
-use App\Models\User\UserCurrency;
-use App\Models\Character\CharacterCurrency;
-
-use App\Models\WorldExpansion\Location;
-use App\Models\Species\Subtype;
-use App\Models\Species\Species;
-use App\Models\Rarity;
-use App\Models\Feature\Feature;
-
-use App\Services\CurrencyManager;
-
 
 class MyoController extends Controller
 {
@@ -48,18 +39,24 @@ class MyoController extends Controller
         $this->middleware(function ($request, $next) {
             $id = Route::current()->parameter('id');
             $check = Character::where('id', $id)->first();
-            if(!$check) abort(404);
-
-            if($check->is_myo_slot) {
-                $query = Character::myo(1)->where('id', $id);
-                if(!(Auth::check() && Auth::user()->hasPower('manage_characters'))) $query->where('is_visible', 1);
-                $this->character = $query->first();
-                if(!$this->character) abort(404);
-                $this->character->updateOwner();
-                return $next($request);
+            if (!$check) {
+                abort(404);
             }
-            else {
-                return redirect('/character/' . $check->slug);
+
+            if ($check->is_myo_slot) {
+                $query = Character::myo(1)->where('id', $id);
+                if (!(Auth::check() && Auth::user()->hasPower('manage_characters'))) {
+                    $query->where('is_visible', 1);
+                }
+                $this->character = $query->first();
+                if (!$this->character) {
+                    abort(404);
+                }
+                $this->character->updateOwner();
+
+                return $next($request);
+            } else {
+                return redirect('/character/'.$check->slug);
             }
         });
     }
@@ -112,16 +109,16 @@ class MyoController extends Controller
         }
 
         return view('character.edit_profile', array_merge([
-            'character' => $this->character,
-            'locations' => Location::all()->where('is_character_home')->pluck('style','id')->toArray(),
+            'character'    => $this->character,
+            'locations'    => Location::all()->where('is_character_home')->pluck('style', 'id')->toArray(),
             'user_enabled' => Settings::get('WE_user_locations'),
-            'char_enabled' => Settings::get('WE_character_locations')
-        ],($isMod ? [
-            'isMyo' => $this->character->is_myo,
+            'char_enabled' => Settings::get('WE_character_locations'),
+        ], ($isMod ? [
+            'isMyo'     => $this->character->is_myo,
             'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'subtypes' => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'features' => Feature::getDropdownItems(),
+            'subtypes'  => ['0' => 'Select Subtype'] + Subtype::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'rarities'  => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'features'  => Feature::getDropdownItems(),
         ] : [])));
     }
 
@@ -141,32 +138,39 @@ class MyoController extends Controller
 
         $isMod = Auth::user()->hasPower('manage_characters');
         $isOwner = ($this->character->user_id == Auth::user()->id);
-        if(!$isMod && !$isOwner) abort(404);
-        
+        if (!$isMod && !$isOwner) {
+            abort(404);
+        }
+
         $request->validate(CharacterProfile::$rules);
-        if($service->updateCharacterProfile($request->only(
+        if ($service->updateCharacterProfile(
+            $request->only(
             array_merge(
-            [
-                'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
-                'custom_values_group', 'custom_values_name', 'custom_values_data',
-                'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
-                'is_trading', 'alert_user', 'location', 'faction'
-            ],
-            ($isMod ?
-            [
-                'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
-                'slots_used', 'adornments', 'free_markings', 'health_status',
-                'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
-                'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
-                'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
-                // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
-                // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
-                // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
-                'has_grand_title'
-            ]
-            : [])
-            )),
-            $this->character, Auth::user(), $isMod)) {
+                [
+                    'name', 'link', 'title_name', 'nicknames', 'gender_pronouns',
+                    'custom_values_group', 'custom_values_name', 'custom_values_data',
+                    'text', 'is_gift_art_allowed', 'is_gift_writing_allowed',
+                    'is_trading', 'alert_user', 'location', 'faction',
+                ],
+                ($isMod ?
+                [
+                    'genotype', 'phenotype', 'species_id', 'subtype_id', 'rarity_id', 'feature_id', 'feature_data', 'sex',
+                    'slots_used', 'adornments', 'free_markings', 'health_status',
+                    'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
+                    'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
+                    'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
+                    // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
+                    // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
+                    // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
+                    'has_grand_title',
+                ]
+                : [])
+            )
+        ),
+            $this->character,
+            Auth::user(),
+            $isMod
+        )) {
             flash('Profile edited successfully.')->success();
         } else {
             foreach ($service->errors()->getMessages()['error'] as $error) {
@@ -335,8 +339,9 @@ class MyoController extends Controller
             abort(404);
         }
 
-        if($request = $service->createDesignUpdateRequest($this->character, Auth::user())) {
+        if ($request = $service->createDesignUpdateRequest($this->character, Auth::user())) {
             flash('Successfully created new Registered Dragon slot approval draft.')->success();
+
             return redirect()->to($request->url);
         } else {
             foreach ($service->errors()->getMessages()['error'] as $error) {

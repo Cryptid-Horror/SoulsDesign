@@ -2,28 +2,17 @@
 
 namespace App\Http\Controllers\Users;
 
-use Illuminate\Http\Request;
-
-use DB;
-use Auth;
-use Route;
-use Settings;
-use App\Models\User\User;
+use App\Http\Controllers\Controller;
 use App\Models\Character\Character;
+use App\Models\Character\CharacterClass;
 use App\Models\Character\CharacterFolder;
-use App\Models\Currency\Currency;
-use App\Models\Currency\CurrencyLog;
-use App\Models\User\UserCurrency;
-use App\Models\Character\CharacterCurrency;
 use App\Models\Character\CharacterTransfer;
-
-use App\Services\CurrencyManager;
+use App\Models\User\User;
 use App\Services\CharacterManager;
 use App\Services\FolderManager;
-
-use App\Models\Character\CharacterClass;
-
-use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Http\Request;
+use Settings;
 
 class CharacterController extends Controller
 {
@@ -47,7 +36,7 @@ class CharacterController extends Controller
 
         return view('home.characters', [
             'characters' => $characters,
-            'folders' => ['None' => 'None'] + Auth::user()->folders()->pluck('name', 'id')->toArray(),
+            'folders'    => ['None' => 'None'] + Auth::user()->folders()->pluck('name', 'id')->toArray(),
         ]);
     }
 
@@ -61,7 +50,7 @@ class CharacterController extends Controller
         $slots = Auth::user()->myoSlots()->with('image')->get();
 
         return view('home.myos', [
-            'slots' => $slots,
+            'slots'   => $slots,
             'folders' => ['None' => 'None'] + Auth::user()->folders()->pluck('name', 'id')->toArray(),
         ]);
     }
@@ -89,7 +78,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Gets the create folder modal
+     * Gets the create folder modal.
      */
     public function getCreateFolder()
     {
@@ -99,12 +88,16 @@ class CharacterController extends Controller
     }
 
     /**
-     * Gets the edit folder modal
+     * Gets the edit folder modal.
+     *
+     * @param mixed $id
      */
     public function getEditFolder($id)
     {
         $folder = CharacterFolder::find($id);
-        if(!$folder) abort(404);
+        if (!$folder) {
+            abort(404);
+        }
 
         return view('home._create_edit_folder', [
             'folder' => $folder,
@@ -112,41 +105,59 @@ class CharacterController extends Controller
     }
 
     /**
-     * Posts create / edit folder
+     * Posts create / edit folder.
+     *
+     * @param mixed|null $id
      */
     public function postCreateEditFolder(Request $request, FolderManager $service, $id = null)
     {
-        if($id) {
+        if ($id) {
             $folder = CharacterFolder::find($id);
-            if(!$folder) abort(404);
-            if(!$service->editFolder($request->only(['name', 'description']), Auth::user(), $folder)) {
-                foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+            if (!$folder) {
+                abort(404);
             }
-            else flash('Folder edited successfully.')->success();
-            return redirect()->back();
+            if (!$service->editFolder($request->only(['name', 'description']), Auth::user(), $folder)) {
+                foreach ($service->errors()->getMessages()['error'] as $error) {
+                    flash($error)->error();
+                }
+            } else {
+                flash('Folder edited successfully.')->success();
+            }
 
-        }
-        else {
-            if(!$service->createFolder($request->only(['name', 'description']), Auth::user())) {
-                foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+            return redirect()->back();
+        } else {
+            if (!$service->createFolder($request->only(['name', 'description']), Auth::user())) {
+                foreach ($service->errors()->getMessages()['error'] as $error) {
+                    flash($error)->error();
+                }
+            } else {
+                flash('Folder created successfully.')->success();
             }
-            else flash('Folder created successfully.')->success();
+
             return redirect()->back();
         }
     }
 
     /**
-     * Deletes a folder
+     * Deletes a folder.
+     *
+     * @param mixed $id
      */
     public function postDeleteFolder(FolderManager $service, $id)
     {
         $folder = CharacterFolder::find($id);
-        if(!$folder) abort(404);
-
-        if(!$service->deleteFolder($folder)) {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
+        if (!$folder) {
+            abort(404);
         }
-        else flash('Folder deleted successfully.')->success();
+
+        if (!$service->deleteFolder($folder)) {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
+        } else {
+            flash('Folder deleted successfully.')->success();
+        }
+
         return redirect()->back();
     }
 
@@ -220,32 +231,39 @@ class CharacterController extends Controller
      ************************************************************************************/
 
     /**
-     * Changes / assigns the character class
-     * @param  \Illuminate\Http\Request       $request
-     * @param  int                            $id
-     * @param App\Services\CharacterManager  $service
+     * Changes / assigns the character class.
+     *
+     * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function getClassModal($id)
     {
         $this->character = Character::find($id);
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
+
         return view('admin.claymores.classes._modal', [
-            'classes' => ['none' => 'No Class'] + CharacterClass::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
-            'character' => $this->character
+            'classes'   => ['none' => 'No Class'] + CharacterClass::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
+            'character' => $this->character,
         ]);
     }
 
     public function postClassModal($id, Request $request, CharacterManager $service)
     {
         $this->character = Character::find($id);
-        if(!$this->character) abort(404);
-        if($service->editClass($request->only(['class_id']), $this->character, Auth::user())) {
+        if (!$this->character) {
+            abort(404);
+        }
+        if ($service->editClass($request->only(['class_id']), $this->character, Auth::user())) {
             flash('Character class edited successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 }

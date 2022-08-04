@@ -2,7 +2,6 @@
 
 namespace App\Models\Status;
 
-use Config;
 use App\Models\Model;
 
 class StatusEffect extends Model
@@ -13,7 +12,7 @@ class StatusEffect extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'parsed_description', 'data', 'has_image'
+        'name', 'description', 'parsed_description', 'data', 'has_image',
     ];
 
     /**
@@ -29,9 +28,9 @@ class StatusEffect extends Model
      * @var array
      */
     public static $createRules = [
-        'name' => 'required|unique:currencies|between:3,100',
-        'description' => 'nullable',
-        'severity_name.*' => 'nullable|required_with:severity_breakpoint.*',
+        'name'                  => 'required|unique:currencies|between:3,100',
+        'description'           => 'nullable',
+        'severity_name.*'       => 'nullable|required_with:severity_breakpoint.*',
         'severity_breakpoint.*' => 'nullable|required_with:severity_name.*',
     ];
 
@@ -41,9 +40,9 @@ class StatusEffect extends Model
      * @var array
      */
     public static $updateRules = [
-        'name' => 'required|between:3,100',
-        'description' => 'nullable',
-        'severity_name.*' => 'nullable|required_with:severity_breakpoint.*',
+        'name'                  => 'required|between:3,100',
+        'description'           => 'nullable',
+        'severity_name.*'       => 'nullable|required_with:severity_breakpoint.*',
         'severity_breakpoint.*' => 'nullable|required_with:severity_name.*',
     ];
 
@@ -80,7 +79,7 @@ class StatusEffect extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '-image.png';
+        return $this->id.'-image.png';
     }
 
     /**
@@ -100,8 +99,11 @@ class StatusEffect extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (!$this->has_image) return null;
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
+        if (!$this->has_image) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
     }
 
     /**
@@ -131,7 +133,10 @@ class StatusEffect extends Model
      */
     public function getDataAttribute()
     {
-        if(!$this->id) return null;
+        if (!$this->id) {
+            return null;
+        }
+
         return json_decode($this->attributes['data'], true);
     }
 
@@ -144,38 +149,46 @@ class StatusEffect extends Model
     /**
      * Displays a given value of the status effect.
      *
+     * @param mixed $value
+     *
      * @return string
      */
     public function display($value)
     {
         $ret = '<span class="display-currency"> '.$this->name;
         $ret .= ' (×'.$value.')';
-        return $ret . '</span>';
+
+        return $ret.'</span>';
     }
 
     /**
      * Displays the name of the status effect based on severity.
+     *
+     * @param mixed $value
      *
      * @return string
      */
     public function displaySeverity($value)
     {
         $ret = '<span class="display-currency">';
-        if(isset($this->data) && count($this->data)) {
-            foreach($this->data as $severity)
+        if (isset($this->data) && count($this->data)) {
+            foreach ($this->data as $severity) {
                 $severities[$severity['breakpoint']] = $severity['name'];
-            $severity = collect($severities)->filter(function ($severity,$key) use ($value) {
+            }
+            $severity = collect($severities)->filter(function ($severity, $key) use ($value) {
                 // Find only those severities whose breakpoints are below or equal to the current value
                 return $key <= $value;
-            })->sortByDesc(function ($severity,$key) {
+            })->sortByDesc(function ($severity, $key) {
                 // Sort by the breakpoint so that the first result will be the highest/
                 // most applicable severity
                 return $key;
             })->first();
 
             $ret .= $this->name.': '.$severity;
+        } else {
+            $ret .= $this->name;
         }
-        else $ret .= $this->name;
-        return $ret . '</span>';
+
+        return $ret.'</span>';
     }
 }

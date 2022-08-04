@@ -8,8 +8,6 @@ class CreateBreedingPermissionTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -46,8 +44,6 @@ class CreateBreedingPermissionTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

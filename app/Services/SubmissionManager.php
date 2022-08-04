@@ -2,35 +2,28 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
-
-use DB;
-use Config;
-use Image;
-use Notifications;
-use Settings;
-
-use Illuminate\Support\Arr;
-use App\Models\User\User;
-use App\Models\User\UserItem;
-use App\Models\User\UserAward;
-use App\Models\Character\Character;
-use App\Models\Currency\Currency;
-use App\Models\Item\Item;
 use App\Models\Award\Award;
-use App\Models\Loot\LootTable;
-use App\Models\Prompt\Prompt;
-use App\Models\Recipe\Recipe;
-use App\Models\Pet\Pet;
+use App\Models\Character\Character;
 use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
-use App\Services\Stats\ExperienceManager;
-use App\Services\Stats\StatManager;
-use App\Services\SkillManager;
-use App\Models\Status\StatusEffect;
+use App\Models\Currency\Currency;
+use App\Models\Item\Item;
+use App\Models\Loot\LootTable;
+use App\Models\Pet\Pet;
+use App\Models\Prompt\Prompt;
 use App\Models\Raffle\Raffle;
+use App\Models\Recipe\Recipe;
+use App\Models\Status\StatusEffect;
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
+use App\Models\User\User;
+use App\Models\User\UserItem;
+use App\Services\Stats\ExperienceManager;
+use App\Services\Stats\StatManager;
+use DB;
+use Illuminate\Support\Arr;
+use Notifications;
+use Settings;
 
 class SubmissionManager extends Service
 {
@@ -51,14 +44,21 @@ class SubmissionManager extends Service
             // 1. check that the prompt can be submitted at this time
             // 2. check that the characters selected exist (are visible too)
             // 3. check that the currencies selected can be attached to characters
-            if(!$isClaim && !Settings::get('is_prompts_open')) throw new \Exception("The prompt queue is closed for submissions.");
-            else if($isClaim && !Settings::get('is_claims_open')) throw new \Exception("The claim queue is closed for submissions.");
-            if(!$isClaim && !isset($data['prompt_id'])) throw new \Exception("Please select a prompt.");
-            if(!$isClaim) {
+            if (!$isClaim && !Settings::get('is_prompts_open')) {
+                throw new \Exception('The prompt queue is closed for submissions.');
+            } elseif ($isClaim && !Settings::get('is_claims_open')) {
+                throw new \Exception('The claim queue is closed for submissions.');
+            }
+            if (!$isClaim && !isset($data['prompt_id'])) {
+                throw new \Exception('Please select a prompt.');
+            }
+            if (!$isClaim) {
                 $prompt = Prompt::active()->where('id', $data['prompt_id'])->with('rewards')->first();
-                if(!$prompt) throw new \Exception("Invalid prompt selected.");
+                if (!$prompt) {
+                    throw new \Exception('Invalid prompt selected.');
+                }
                 //check that the prompt limit hasn't been hit
-                if($prompt->limit) {
+                if ($prompt->limit) {
                     //check that the user hasn't hit the prompt submission limit
                     //filter the submissions by hour/day/week/etc and count
                     $count['all'] = Submission::submitted($prompt->id, $user->id)->count();
@@ -69,13 +69,19 @@ class SubmissionManager extends Service
                     $count['Year'] = Submission::submitted($prompt->id, $user->id)->where('created_at', '>=', now()->startOfYear())->count();
 
                     //if limit by character is on... multiply by # of chars. otherwise, don't
-                    if($prompt->limit_character) {
+                    if ($prompt->limit_character) {
                         $limit = $prompt->limit * Character::visible()->where('is_myo_slot', 0)->where('user_id', $user->id)->count();
-                    } else { $limit = $prompt->limit; }
+                    } else {
+                        $limit = $prompt->limit;
+                    }
                     //if limit by time period is on
-                    if($prompt->limit_period) {
-                        if($count[$prompt->limit_period] >= $limit) throw new \Exception("You have already submitted to this prompt the maximum number of times.");
-                    } else if($count['all'] >= $limit) throw new \Exception("You have already submitted to this prompt the maximum number of times.");
+                    if ($prompt->limit_period) {
+                        if ($count[$prompt->limit_period] >= $limit) {
+                            throw new \Exception('You have already submitted to this prompt the maximum number of times.');
+                        }
+                    } elseif ($count['all'] >= $limit) {
+                        throw new \Exception('You have already submitted to this prompt the maximum number of times.');
+                    }
                 }
             }
 
@@ -138,12 +144,12 @@ class SubmissionManager extends Service
                     }
                 }
             }
-            if(!$isClaim) 
-            {
+            if (!$isClaim) {
                 //level req
-                if($prompt->level_req)
-                {
-                    if(!$user->level || $user->level->current_level < $prompt->level_req) throw new \Exception('You are not high enough level to enter this prompt');
+                if ($prompt->level_req) {
+                    if (!$user->level || $user->level->current_level < $prompt->level_req) {
+                        throw new \Exception('You are not high enough level to enter this prompt');
+                    }
                 }
             }
 
@@ -160,33 +166,43 @@ class SubmissionManager extends Service
                 'url'      => $data['url'] ?? null,
                 'status'   => 'Pending',
                 'comments' => $data['comments'],
-                'data' => json_encode([
-                    'user' => Arr::only(getDataReadyAssets($userAssets), ['user_items','currencies']),
-                    'rewards' => getDataReadyAssets($promptRewards)
-                    ]) // list of rewards and addons
-            ] + ($isClaim ? [] : ['prompt_id' => $prompt->id,]));
+                'data'     => json_encode([
+                    'user'    => Arr::only(getDataReadyAssets($userAssets), ['user_items', 'currencies']),
+                    'rewards' => getDataReadyAssets($promptRewards),
+                    ]), // list of rewards and addons
+            ] + ($isClaim ? [] : ['prompt_id' => $prompt->id]));
 
             // Retrieve all reward IDs for characters
-            $currencyIds = []; $itemIds = []; $tableIds = []; $statusIds = [];
-            if(isset($data['character_currency_id'])) {
-                foreach($data['character_currency_id'] as $c)
-                {
-                    foreach($c as $currencyId) $currencyIds[] = $currencyId;
+            $currencyIds = [];
+            $itemIds = [];
+            $tableIds = [];
+            $statusIds = [];
+            if (isset($data['character_currency_id'])) {
+                foreach ($data['character_currency_id'] as $c) {
+                    foreach ($c as $currencyId) {
+                        $currencyIds[] = $currencyId;
+                    }
                 } // Non-expanded character rewards
             } elseif (isset($data['character_rewardable_id'])) {
                 $data['character_rewardable_id'] = array_map([$this, 'innerNull'], $data['character_rewardable_id']);
                 foreach ($data['character_rewardable_id'] as $ckey => $c) {
                     foreach ($c as $key => $id) {
                         switch ($data['character_rewardable_type'][$ckey][$key]) {
-                            case 'Currency': $currencyIds[] = $id; break;
-                            case 'Item': $itemIds[] = $id; break;
-                            case 'StatusEffect': $statusIds[] = $id; break;
-                            case 'LootTable': $tableIds[] = $id; break;
+                            case 'Currency': $currencyIds[] = $id;
+                                break;
+                            case 'Item': $itemIds[] = $id;
+                                break;
+                            case 'StatusEffect': $statusIds[] = $id;
+                                break;
+                            case 'LootTable': $tableIds[] = $id;
+                                break;
                         }
                     }
                 } // Expanded character rewards
             }
-            array_unique($currencyIds);            array_unique($itemIds);            array_unique($tableIds);
+            array_unique($currencyIds);
+            array_unique($itemIds);
+            array_unique($tableIds);
             array_unique($statusIds);
             $currencies = Currency::whereIn('id', $currencyIds)->where('is_character_owned', 1)->get()->keyBy('id');
             $items = Item::whereIn('id', $itemIds)->get()->keyBy('id');
@@ -194,8 +210,7 @@ class SubmissionManager extends Service
             $statuses = StatusEffect::whereIn('id', $statusIds)->get()->keyBy('id');
 
             // Attach characters
-            foreach($characters as $key => $c)
-            {
+            foreach ($characters as $key => $c) {
                 // Users might not pass in clean arrays (may contain redundant data) so we need to clean that up
                 $assets = $this->processRewards($data + ['character_id' => $c->id, 'currencies' => $currencies, 'items' => $items, 'tables' => $tables, 'statuses' => $statuses], true);
 
@@ -204,19 +219,23 @@ class SubmissionManager extends Service
                 SubmissionCharacter::create([
                     'character_id'  => $c->id,
                     'submission_id' => $submission->id,
-                    'data' => json_encode(getDataReadyAssets($assets)),
-                    'is_focus' => $data['is_focus'][$key]
+                    'data'          => json_encode(getDataReadyAssets($assets)),
+                    'is_focus'      => $data['is_focus'][$key],
                 ]);
 
-                if($data['is_focus'][$key] && $submission->prompt_id) {
-                    foreach($submission->prompt->skills as $skill) {
-                        if($skill->skill->parent) {
+                if ($data['is_focus'][$key] && $submission->prompt_id) {
+                    foreach ($submission->prompt->skills as $skill) {
+                        if ($skill->skill->parent) {
                             $charaSkill = $c->skills()->where('skill_id', $skill->skill->id)->first();
-                            if(!$charaSkill || $charaSkill->level < $skill->parent_level) throw new \Exception("Skill level too low on one or more characters.");
+                            if (!$charaSkill || $charaSkill->level < $skill->parent_level) {
+                                throw new \Exception('Skill level too low on one or more characters.');
+                            }
                         }
-                        if($skill->skill->prerequisite) {
+                        if ($skill->skill->prerequisite) {
                             $charaSkill = $c->skills()->where('skill_id', $skill->skill->id)->first();
-                            if(!$charaSkill) throw new \Exception("Skill not unlocked on one or more characters.");
+                            if (!$charaSkill) {
+                                throw new \Exception('Skill not unlocked on one or more characters.');
+                            }
                         }
                     }
                 }
@@ -228,114 +247,6 @@ class SubmissionManager extends Service
         }
 
         return $this->rollbackReturn(false);
-    }
-
-    private function innerNull($value){
-        return array_values(array_filter($value));
-    }
-
-    /**
-     * Processes reward data into a format that can be used for distribution.
-     *
-     * @param  array $data
-     * @param  bool  $isCharacter
-     * @param  bool  $isStaff
-     * @param bool  $isClaim
-     * @return array
-     */
-    private function processRewards($data, $isCharacter, $isStaff = false, $isClaim = false)
-    {
-        if($isCharacter)
-        {
-            $assets = createAssetsArray(true);
-
-            if(isset($data['character_currency_id'][$data['character_id']]) && isset($data['character_quantity'][$data['character_id']]))
-            {
-                foreach($data['character_currency_id'][$data['character_id']] as $key => $currency)
-                {
-                    if($data['character_quantity'][$data['character_id']][$key]) addAsset($assets, $data['currencies'][$currency], $data['character_quantity'][$data['character_id']][$key]);
-                }
-            }
-            elseif(isset($data['character_rewardable_type'][$data['character_id']]) && isset($data['character_rewardable_id'][$data['character_id']]) && isset($data['character_rewardable_quantity'][$data['character_id']]))
-            {
-
-                $data['character_rewardable_id'] = array_map(array($this, 'innerNull'),$data['character_rewardable_id']);
-
-                foreach($data['character_rewardable_id'][$data['character_id']] as $key => $reward)
-                {
-                    switch($data['character_rewardable_type'][$data['character_id']][$key])
-                    {
-                        case 'Currency': if($data['character_rewardable_quantity'][$data['character_id']][$key]) addAsset($assets, $data['currencies'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]); break;
-                        case 'Item': if($data['character_rewardable_quantity'][$data['character_id']][$key]) addAsset($assets, $data['items'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]); break;
-                        case 'Award': if($data['character_rewardable_quantity'][$data['character_id']][$key]) addAsset($assets, $data['awards'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]); break;
-                        case 'LootTable': if($data['character_rewardable_quantity'][$data['character_id']][$key]) addAsset($assets, $data['tables'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]); break;
-                        case 'StatusEffect': if($data['character_rewardable_quantity'][$data['character_id']][$key]) addAsset($assets, $data['statuses'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]); break;
-                    }
-                }
-            }
-            return $assets;
-        }
-        else
-        {
-            $assets = createAssetsArray(false);
-            // Process the additional rewards
-            if(isset($data['rewardable_type']) && $data['rewardable_type'])
-            {
-                foreach($data['rewardable_type'] as $key => $type)
-                {
-                    $reward = null;
-                    switch($type)
-                    {
-                        case 'Item':
-                            $reward = Item::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'Currency':
-                            $reward = Currency::find($data['rewardable_id'][$key]);
-                            if(!$reward->is_user_owned) throw new \Exception("Invalid currency selected.");
-                            break;
-
-                        case 'Award':
-                            $reward = Award::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'Pet':
-                            if (!$isStaff) break;
-                            $reward = Pet::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'LootTable':
-                            if (!$isStaff) break;
-                            $reward = LootTable::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'Raffle':
-                            if (!$isStaff) break;
-                            $reward = Raffle::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'Recipe':
-                            if (!$isStaff) break;
-                            $reward = Recipe::find($data['rewardable_id'][$key]);
-                            if(!$reward->needs_unlocking) throw new \Exception("Invalid recipe selected.");
-
-                        case 'Gear':
-                            if (!$isStaff) break;
-                            $reward = Gear::find($data['rewardable_id'][$key]);
-                            break;
-
-                        case 'Weapon':
-                            if (!$isStaff) break;
-                            $reward = Weapon::find($data['rewardable_id'][$key]);
-
-                            break;
-                    }
-                    if(!$reward) continue;
-                    addAsset($assets, $reward, $data['quantity'][$key]);
-                }
-            }
-            return $assets;
-        }
     }
 
     /**
@@ -479,8 +390,6 @@ class SubmissionManager extends Service
 
                 // Set user back to the processing staff member, now that addons have been properly processed.
                 $user = $staff;
-                
-            
             }
 
             // Log currency removal, etc.
@@ -519,7 +428,6 @@ class SubmissionManager extends Service
             // Get the updated set of rewards
             $rewards = $this->processRewards($data, false, true);
 
-
             // Logging data
             $promptLogType = $submission->prompt_id ? 'Prompt Rewards' : 'Claim Rewards';
             $promptData = [
@@ -532,32 +440,40 @@ class SubmissionManager extends Service
             }
 
             // Retrieve all reward IDs for characters
-            $currencyIds = []; $itemIds = []; $tableIds = []; $statusIds = []; $awardIds = [];
-            if(isset($data['character_currency_id'])) {
-                foreach($data['character_currency_id'] as $c)
-                {
-                    foreach($c as $currencyId) $currencyIds[] = $currencyId;
+            $currencyIds = [];
+            $itemIds = [];
+            $tableIds = [];
+            $statusIds = [];
+            $awardIds = [];
+            if (isset($data['character_currency_id'])) {
+                foreach ($data['character_currency_id'] as $c) {
+                    foreach ($c as $currencyId) {
+                        $currencyIds[] = $currencyId;
+                    }
                 } // Non-expanded character rewards
-            }
-            elseif(isset($data['character_rewardable_id']))
-            {
-                $data['character_rewardable_id'] = array_map(array($this, 'innerNull'),$data['character_rewardable_id']);
-                foreach($data['character_rewardable_id'] as $ckey => $c)
-                {
-                    foreach($c as $key => $id) {
-
-                        switch($data['character_rewardable_type'][$ckey][$key])
-                        {
-                            case 'Currency':    $currencyIds[]  = $id; break;
-                            case 'Item':        $itemIds[]      = $id; break;
-                            case 'LootTable':   $tableIds[]     = $id; break;
-                            case 'Award':       $awardIds[]     = $id; break;
-                            case 'StatusEffect': $statusIds[]   = $id; break;
+            } elseif (isset($data['character_rewardable_id'])) {
+                $data['character_rewardable_id'] = array_map([$this, 'innerNull'], $data['character_rewardable_id']);
+                foreach ($data['character_rewardable_id'] as $ckey => $c) {
+                    foreach ($c as $key => $id) {
+                        switch ($data['character_rewardable_type'][$ckey][$key]) {
+                            case 'Currency':    $currencyIds[] = $id;
+                                break;
+                            case 'Item':        $itemIds[] = $id;
+                                break;
+                            case 'LootTable':   $tableIds[] = $id;
+                                break;
+                            case 'Award':       $awardIds[] = $id;
+                                break;
+                            case 'StatusEffect': $statusIds[] = $id;
+                                break;
                         }
                     }
                 } // Expanded character rewards
             }
-            array_unique($currencyIds);            array_unique($itemIds);            array_unique($tableIds);          array_unique($awardIds);
+            array_unique($currencyIds);
+            array_unique($itemIds);
+            array_unique($tableIds);
+            array_unique($awardIds);
             array_unique($statusIds);
             $currencies = Currency::whereIn('id', $currencyIds)->where('is_character_owned', 1)->get()->keyBy('id');
             $items = Item::whereIn('id', $itemIds)->get()->keyBy('id');
@@ -570,7 +486,7 @@ class SubmissionManager extends Service
 
             // do the user stats stuff first so that we can use variables later
             // stats & exp ---- currently prompt only
-            if($submission->prompt_id && $submission->prompt->expreward) {
+            if ($submission->prompt_id && $submission->prompt->expreward) {
                 // initialise
                 $levelLog = new ExperienceManager;
                 $statLog = new StatManager;
@@ -584,39 +500,42 @@ class SubmissionManager extends Service
                 // user
                 $level = $submission->user->level;
                 $levelUser = $submission->user;
-                if(!$level) throw new \Exception('This user does not have a level log.');
-                
+                if (!$level) {
+                    throw new \Exception('This user does not have a level log.');
+                }
+
                 // exp
-                if($submission->prompt->expreward->user_exp || isset($data['bonus_user_exp']))
-                {
+                if ($submission->prompt->expreward->user_exp || isset($data['bonus_user_exp'])) {
                     // get predefined user exp amount
                     $quantity = $submission->prompt->expreward->user_exp;
-                        if(isset($data['bonus_user_exp']))
-                        {
-                            // add bonus
-                            $quantity += $data['bonus_user_exp'];
-                        }
-                        else $data['bonus_user_exp'] = 0; 
-                        $user_exp += $data['bonus_user_exp'];
-                    if(!$levelLog->creditExp(null, $levelUser, $promptLogType, $levelData, $quantity)) throw new \Exception('Could not grant user exp');
+                    if (isset($data['bonus_user_exp'])) {
+                        // add bonus
+                        $quantity += $data['bonus_user_exp'];
+                    } else {
+                        $data['bonus_user_exp'] = 0;
+                    }
+                    $user_exp += $data['bonus_user_exp'];
+                    if (!$levelLog->creditExp(null, $levelUser, $promptLogType, $levelData, $quantity)) {
+                        throw new \Exception('Could not grant user exp');
+                    }
                 }
                 //points
-                if($submission->prompt->expreward->user_points || isset($data['bonus_user_points']))
-                {
+                if ($submission->prompt->expreward->user_points || isset($data['bonus_user_points'])) {
                     $quantity = $submission->prompt->expreward->user_points;
-                        if(isset($data['bonus_user_points']))
-                        {
-                            $quantity += $data['bonus_user_points'];
-                        }
-                        else $data['bonus_user_points'] = 0; 
-                        $user_points +=  $data['bonus_user_points'];
-                    if(!$statLog->creditStat(null, $levelUser, $promptLogType, $levelData, $quantity)) throw new \Exception('Could not grant user points');
+                    if (isset($data['bonus_user_points'])) {
+                        $quantity += $data['bonus_user_points'];
+                    } else {
+                        $data['bonus_user_points'] = 0;
+                    }
+                    $user_points += $data['bonus_user_points'];
+                    if (!$statLog->creditStat(null, $levelUser, $promptLogType, $levelData, $quantity)) {
+                        throw new \Exception('Could not grant user points');
+                    }
                 }
             }
 
             // Distribute character rewards
-            foreach($characters as $key => $c)
-            {
+            foreach ($characters as $key => $c) {
                 // Users might not pass in clean arrays (may contain redundant data) so we need to clean that up
                 $assets = $this->processRewards($data + ['character_id' => $c->id, 'currencies' => $currencies, 'items' => $items, 'tables' => $tables, 'statuses' => $statuses, 'awards' => $awards], true);
 
@@ -627,58 +546,64 @@ class SubmissionManager extends Service
                 SubmissionCharacter::create([
                     'character_id'  => $c->id,
                     'submission_id' => $submission->id,
-                    'data' => json_encode(getDataReadyAssets($assets)),
-                    'is_focus' => $data['is_focus'][$key]
+                    'data'          => json_encode(getDataReadyAssets($assets)),
+                    'is_focus'      => $data['is_focus'][$key],
                 ]);
 
                 // here we do da skills
                 $skillManager = new SkillManager;
 
-                if($data['is_focus'][$key] && $submission->prompt_id) {
-                    foreach($submission->prompt->skills as $skill) {
-                        if(!$skillManager->creditSkill($user, $c, $skill->skill, $skill->quantity, 'Prompt Reward')) throw new \Exception("Failed to credit skill.");
+                if ($data['is_focus'][$key] && $submission->prompt_id) {
+                    foreach ($submission->prompt->skills as $skill) {
+                        if (!$skillManager->creditSkill($user, $c, $skill->skill, $skill->quantity, 'Prompt Reward')) {
+                            throw new \Exception('Failed to credit skill.');
+                        }
                     }
                     // if there's exp rewards
-                    if($submission->prompt->expreward) {
+                    if ($submission->prompt->expreward) {
                         $level = $c->level;
-                        if(!$level) throw new \Exception('One or more characters do not have a level log.');
+                        if (!$level) {
+                            throw new \Exception('One or more characters do not have a level log.');
+                        }
                         // exp
-                        if($submission->prompt->expreward->chara_exp || isset($data['bonus_exp']))
-                        {
+                        if ($submission->prompt->expreward->chara_exp || isset($data['bonus_exp'])) {
                             $quantity = $submission->prompt->expreward->chara_exp;
-                            if(isset($data['bonus_exp']))
-                            {
+                            if (isset($data['bonus_exp'])) {
                                 $quantity += $data['bonus_exp'];
+                            } else {
+                                $data['bonus_exp'] = 0;
                             }
-                            else $data['bonus_exp'] = 0; 
                             $character_exp += $data['bonus_exp'];
-                            if(!$levelLog->creditExp(null, $c, $promptLogType, $levelData, $quantity)) throw new \Exception('Could not grant character exp');
+                            if (!$levelLog->creditExp(null, $c, $promptLogType, $levelData, $quantity)) {
+                                throw new \Exception('Could not grant character exp');
+                            }
                         }
                         // points
-                        if($submission->prompt->expreward->chara_points || isset($data['bonus_points']))
-                        {
+                        if ($submission->prompt->expreward->chara_points || isset($data['bonus_points'])) {
                             $quantity = $submission->prompt->expreward->chara_points;
-                            if(isset($data['bonus_points']))
-                            {
+                            if (isset($data['bonus_points'])) {
                                 $quantity += $data['bonus_points'];
+                            } else {
+                                $data['bonus_points'] = 0;
                             }
-                            else $data['bonus_points'] = 0; 
                             $character_points += $data['bonus_points'];
-                            if(!$statLog->creditStat(null, $c, $promptLogType, $levelData, $quantity)) throw new \Exception('Could not grant character points');
+                            if (!$statLog->creditStat(null, $c, $promptLogType, $levelData, $quantity)) {
+                                throw new \Exception('Could not grant character points');
+                            }
                         }
                     }
                 }
             }
 
-            if($submission->prompt_id && $submission->prompt->expreward) {
+            if ($submission->prompt_id && $submission->prompt->expreward) {
                 $json[] = [
                     'User_Bonus' => [
-                        'exp' => $user_exp,
-                        'points' => $user_points
+                        'exp'    => $user_exp,
+                        'points' => $user_points,
                     ],
                     'Character_Bonus' => [
-                        'exp' => $character_exp,
-                        'points' => $character_points
+                        'exp'    => $character_exp,
+                        'points' => $character_points,
                     ],
                 ];
 
@@ -703,15 +628,15 @@ class SubmissionManager extends Service
             // 3. status
             // 4. final rewards
             $submission->update([
-			    'staff_comments' => $data['staff_comments'],
-				'parsed_staff_comments' => $data['parsed_staff_comments'],
-                'staff_id' => $user->id,
-                'status' => 'Approved',
-                'data' => json_encode([
-                    'user' => $addonData,
-                    'rewards' => getDataReadyAssets($rewards)
+                'staff_comments'        => $data['staff_comments'],
+                'parsed_staff_comments' => $data['parsed_staff_comments'],
+                'staff_id'              => $user->id,
+                'status'                => 'Approved',
+                'data'                  => json_encode([
+                    'user'    => $addonData,
+                    'rewards' => getDataReadyAssets($rewards),
                     ]), // list of rewards
-                'bonus' => isset($bonus) ? $bonus : null,
+                'bonus' => $bonus ?? null,
             ]);
 
             Notifications::create($submission->prompt_id ? 'SUBMISSION_APPROVED' : 'CLAIM_APPROVED', $submission->user, [
@@ -730,5 +655,134 @@ class SubmissionManager extends Service
         }
 
         return $this->rollbackReturn(false);
-    }  
+    }
+
+    private function innerNull($value)
+    {
+        return array_values(array_filter($value));
+    }
+
+    /**
+     * Processes reward data into a format that can be used for distribution.
+     *
+     * @param array $data
+     * @param bool  $isCharacter
+     * @param bool  $isStaff
+     * @param bool  $isClaim
+     *
+     * @return array
+     */
+    private function processRewards($data, $isCharacter, $isStaff = false, $isClaim = false)
+    {
+        if ($isCharacter) {
+            $assets = createAssetsArray(true);
+
+            if (isset($data['character_currency_id'][$data['character_id']]) && isset($data['character_quantity'][$data['character_id']])) {
+                foreach ($data['character_currency_id'][$data['character_id']] as $key => $currency) {
+                    if ($data['character_quantity'][$data['character_id']][$key]) {
+                        addAsset($assets, $data['currencies'][$currency], $data['character_quantity'][$data['character_id']][$key]);
+                    }
+                }
+            } elseif (isset($data['character_rewardable_type'][$data['character_id']]) && isset($data['character_rewardable_id'][$data['character_id']]) && isset($data['character_rewardable_quantity'][$data['character_id']])) {
+                $data['character_rewardable_id'] = array_map([$this, 'innerNull'], $data['character_rewardable_id']);
+
+                foreach ($data['character_rewardable_id'][$data['character_id']] as $key => $reward) {
+                    switch ($data['character_rewardable_type'][$data['character_id']][$key]) {
+                        case 'Currency': if ($data['character_rewardable_quantity'][$data['character_id']][$key]) {
+                            addAsset($assets, $data['currencies'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]);
+                        } break;
+                        case 'Item': if ($data['character_rewardable_quantity'][$data['character_id']][$key]) {
+                            addAsset($assets, $data['items'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]);
+                        } break;
+                        case 'Award': if ($data['character_rewardable_quantity'][$data['character_id']][$key]) {
+                            addAsset($assets, $data['awards'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]);
+                        } break;
+                        case 'LootTable': if ($data['character_rewardable_quantity'][$data['character_id']][$key]) {
+                            addAsset($assets, $data['tables'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]);
+                        } break;
+                        case 'StatusEffect': if ($data['character_rewardable_quantity'][$data['character_id']][$key]) {
+                            addAsset($assets, $data['statuses'][$reward], $data['character_rewardable_quantity'][$data['character_id']][$key]);
+                        } break;
+                    }
+                }
+            }
+
+            return $assets;
+        } else {
+            $assets = createAssetsArray(false);
+            // Process the additional rewards
+            if (isset($data['rewardable_type']) && $data['rewardable_type']) {
+                foreach ($data['rewardable_type'] as $key => $type) {
+                    $reward = null;
+                    switch ($type) {
+                        case 'Item':
+                            $reward = Item::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'Currency':
+                            $reward = Currency::find($data['rewardable_id'][$key]);
+                            if (!$reward->is_user_owned) {
+                                throw new \Exception('Invalid currency selected.');
+                            }
+                            break;
+
+                        case 'Award':
+                            $reward = Award::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'Pet':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = Pet::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'LootTable':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = LootTable::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'Raffle':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = Raffle::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'Recipe':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = Recipe::find($data['rewardable_id'][$key]);
+                            if (!$reward->needs_unlocking) {
+                                throw new \Exception('Invalid recipe selected.');
+                            }
+
+                        case 'Gear':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = Gear::find($data['rewardable_id'][$key]);
+                            break;
+
+                        case 'Weapon':
+                            if (!$isStaff) {
+                                break;
+                            }
+                            $reward = Weapon::find($data['rewardable_id'][$key]);
+
+                            break;
+                    }
+                    if (!$reward) {
+                        continue;
+                    }
+                    addAsset($assets, $reward, $data['quantity'][$key]);
+                }
+            }
+
+            return $assets;
+        }
+    }
 }

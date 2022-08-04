@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Data;
 
-use Illuminate\Http\Request;
-
-use Auth;
-
-use App\Models\Prompt\PromptCategory;
-use App\Models\Prompt\Prompt;
-use App\Models\Item\Item;
-use App\Models\Skill\Skill;
-use App\Models\Currency\Currency;
-use App\Models\Loot\LootTable;
+use App\Http\Controllers\Controller;
 use App\Models\Award\Award;
-use App\Models\Raffle\Raffle;
-use App\Models\Recipe\Recipe;
-use App\Models\Pet\Pet;
 use App\Models\Claymore\Gear;
 use App\Models\Claymore\Weapon;
-
+use App\Models\Currency\Currency;
+use App\Models\Item\Item;
+use App\Models\Loot\LootTable;
+use App\Models\Pet\Pet;
+use App\Models\Prompt\Prompt;
+use App\Models\Prompt\PromptCategory;
+use App\Models\Raffle\Raffle;
+use App\Models\Recipe\Recipe;
+use App\Models\Skill\Skill;
 use App\Services\PromptService;
-
-use App\Http\Controllers\Controller;
-
+use Auth;
+use Illuminate\Http\Request;
 
 class PromptController extends Controller
 {
@@ -200,19 +195,19 @@ class PromptController extends Controller
     public function getCreatePrompt()
     {
         return view('admin.prompts.create_edit_prompt', [
-            'prompt'     => new Prompt,
-            'categories' => ['none' => 'No category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
-            'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
-            'pets' => Pet::orderBy('name')->pluck('name', 'id'),
-            'gears' => Gear::orderBy('name')->pluck('name', 'id'),
-            'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
-            'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
-            'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
-            'recipes'=> Recipe::orderBy('name')->pluck('name', 'id'),
-            'skills' => Skill::pluck('name', 'id')->toArray(),
-            'limit_periods' => [null => 'None', 'Hour' => 'Hour', 'Day' => 'Day', 'Week' => 'Week', 'Month' => 'Month', 'Year' => 'Year']
+            'prompt'        => new Prompt,
+            'categories'    => ['none' => 'No category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'items'         => Item::orderBy('name')->pluck('name', 'id'),
+            'awards'        => Award::orderBy('name')->pluck('name', 'id'),
+            'currencies'    => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
+            'pets'          => Pet::orderBy('name')->pluck('name', 'id'),
+            'gears'         => Gear::orderBy('name')->pluck('name', 'id'),
+            'weapons'       => Weapon::orderBy('name')->pluck('name', 'id'),
+            'tables'        => LootTable::orderBy('name')->pluck('name', 'id'),
+            'raffles'       => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
+            'recipes'       => Recipe::orderBy('name')->pluck('name', 'id'),
+            'skills'        => Skill::pluck('name', 'id')->toArray(),
+            'limit_periods' => [null => 'None', 'Hour' => 'Hour', 'Day' => 'Day', 'Week' => 'Week', 'Month' => 'Month', 'Year' => 'Year'],
         ]);
     }
 
@@ -226,22 +221,25 @@ class PromptController extends Controller
     public function getEditPrompt($id)
     {
         $prompt = Prompt::find($id);
-        
-        if(!$prompt) abort(404);
+
+        if (!$prompt) {
+            abort(404);
+        }
+
         return view('admin.prompts.create_edit_prompt', [
-            'prompt'     => $prompt,
-            'categories' => ['none' => 'No category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'items' => Item::orderBy('name')->pluck('name', 'id'),
-            'awards' => Award::orderBy('name')->pluck('name', 'id'),
-            'currencies' => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
-            'pets' => Pet::orderBy('name')->pluck('name', 'id'),
-            'gears' => Gear::orderBy('name')->pluck('name', 'id'),
-            'weapons' => Weapon::orderBy('name')->pluck('name', 'id'),
-            'tables' => LootTable::orderBy('name')->pluck('name', 'id'),
-            'raffles' => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
-            'recipes'=> Recipe::orderBy('name')->pluck('name', 'id'),
-            'skills' => Skill::pluck('name', 'id')->toArray(),
-            'limit_periods' => [null => 'None', 'Hour' => 'Hour', 'Day' => 'Day', 'Week' => 'Week', 'Month' => 'Month', 'Year' => 'Year']
+            'prompt'        => $prompt,
+            'categories'    => ['none' => 'No category'] + PromptCategory::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'items'         => Item::orderBy('name')->pluck('name', 'id'),
+            'awards'        => Award::orderBy('name')->pluck('name', 'id'),
+            'currencies'    => Currency::where('is_user_owned', 1)->orderBy('name')->pluck('name', 'id'),
+            'pets'          => Pet::orderBy('name')->pluck('name', 'id'),
+            'gears'         => Gear::orderBy('name')->pluck('name', 'id'),
+            'weapons'       => Weapon::orderBy('name')->pluck('name', 'id'),
+            'tables'        => LootTable::orderBy('name')->pluck('name', 'id'),
+            'raffles'       => Raffle::where('rolled_at', null)->where('is_active', 1)->orderBy('name')->pluck('name', 'id'),
+            'recipes'       => Recipe::orderBy('name')->pluck('name', 'id'),
+            'skills'        => Skill::pluck('name', 'id')->toArray(),
+            'limit_periods' => [null => 'None', 'Hour' => 'Hour', 'Day' => 'Day', 'Week' => 'Week', 'Month' => 'Month', 'Year' => 'Year'],
         ]);
     }
 

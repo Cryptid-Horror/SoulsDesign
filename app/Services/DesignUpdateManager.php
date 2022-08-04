@@ -490,10 +490,6 @@ class DesignUpdateManager extends Service
                 throw new \Exception('Please enter a unique character code.');
             }
 
-            if (!$this->logAdminAction($user, 'Approved Design Update', 'Approved design update <a href="'.$request->url.'">#'.$request->id.'</a>')) {
-                throw new \Exception('Failed to log admin action.');
-            }
-
             // Remove any added items/currency
             // Currency has already been removed, so no action required
             // However logs need to be added for each of these
@@ -549,8 +545,8 @@ class DesignUpdateManager extends Service
                         'Character',
                         null,
                         null,
-                        $request->character->is_myo_slot ? 'MYO Design Approved' : 'Character Design Updated',
-                        'Used in '.($request->character->is_myo_slot ? 'MYO design approval' : 'character design update').' (<a href="'.$request->url.'">#'.$request->id.'</a>)',
+                        $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated',
+                        'Used in '.($request->character->is_myo_slot ? 'Registered Dragon design approval' : 'character design update').' (<a href="'.$request->url.'">#'.$request->id.'</a>)',
                         $currencyId,
                         $quantity
                     )) {
@@ -576,7 +572,14 @@ class DesignUpdateManager extends Service
                 'species_id'    => $request->species_id,
                 'subtype_id'    => ($request->character->is_myo_slot && isset($request->character->image->subtype_id)) ? $request->character->image->subtype_id : $request->subtype_id,
                 'rarity_id'     => $request->rarity_id,
+                'ext_url'       => $request->ext_url,
                 'sort'          => 0,
+                'genotype'      => $request->genotype,
+                'phenotype'     => $request->phenotype,
+                'free_markings' => $request->free_markings,
+                'adornments'    => $request->adornments,
+                'title_id'      => isset($request->title_id) && $request->title_id ? $request->title_id : null,
+                'title_data'    => $request->title_data ?? null,
             ]);
 
             // Shift the image credits over to the new image
@@ -607,7 +610,7 @@ class DesignUpdateManager extends Service
             // Move the image file to the new image
             File::move($request->imagePath.'/'.$request->imageFileName, $image->imagePath.'/'.$image->imageFileName);
             // Process and save the image
-            (new CharacterManager)->processImage($image);
+            $this->processImage($image);
 
             // The thumbnail is already generated, so it can just be moved without processing
             File::move($request->thumbnailPath.'/'.$request->thumbnailFileName, $image->thumbnailPath.'/'.$image->thumbnailFileName);
@@ -636,21 +639,13 @@ class DesignUpdateManager extends Service
                 $request->character->image->save();
             }
 
-            // Note old image to delete it
-            if (Config::get('lorekeeper.extensions.remove_myo_image') && $request->character->is_myo_slot && $data['remove_myo_image'] == 2) {
-                $oldImage = $request->character->image;
-            }
-
-            // Hide the MYO placeholder image if desired
-            if (Config::get('lorekeeper.extensions.remove_myo_image') && $request->character->is_myo_slot && $data['remove_myo_image'] == 1) {
-                $request->character->image->is_visible = 0;
-                $request->character->image->save();
-            }
-
             // Set new image if desired
             if (isset($data['set_active'])) {
                 $request->character->character_image_id = $image->id;
             }
+
+            // Add a log for the character
+            $this->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
 
             // Final recheck and setting of update type, as insurance
             if ($request->character->is_myo_slot) {
@@ -661,8 +656,8 @@ class DesignUpdateManager extends Service
             $request->save();
 
             // Add a log for the character and user
-            (new CharacterManager)->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
-            (new CharacterManager)->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'user');
+            $this->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
+            $this->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'user');
 
             // If this is for a MYO, set user's FTO status and the MYO status of the slot
             // and clear the character's name
@@ -671,19 +666,10 @@ class DesignUpdateManager extends Service
                     $request->character->name = null;
                 }
                 $request->character->is_myo_slot = 0;
+                // Reset sort order.
+                $request->character->sort = 0;
                 $request->user->settings->is_fto = 0;
                 $request->user->settings->save();
-
-                // Delete the MYO placeholder image if desired
-                if (Config::get('lorekeeper.extensions.remove_myo_image') && $data['remove_myo_image'] == 2) {
-                    $characterManager = new CharacterManager;
-                    if (!$characterManager->deleteImage($oldImage, $user, true)) {
-                        foreach ($characterManager->errors()->getMessages()['error'] as $error) {
-                            flash($error)->error();
-                        }
-                        throw new \Exception('Failed to delete MYO image.');
-                    }
-                }
             }
             $request->character->save();
 

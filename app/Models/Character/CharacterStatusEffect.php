@@ -6,14 +6,13 @@ use App\Models\Model;
 
 class CharacterStatusEffect extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'quantity', 'character_id', 'status_effect_id'
+        'quantity', 'character_id', 'status_effect_id',
     ];
 
     /**
@@ -65,6 +64,6 @@ class CharacterStatusEffect extends Model
      */
     public function getNameWithQuantityAttribute()
     {
-        return $this->status->name . ' [Severity: ' . $this->quantity . ']';
+        return $this->status->name.' [Severity: '.$this->quantity.']';
     }
 }

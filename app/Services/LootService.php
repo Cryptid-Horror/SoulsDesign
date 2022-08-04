@@ -56,12 +56,12 @@ class LootService extends Service
                 }
             }
 
-            if(isset($data['sublist_status_id'])) {
-                foreach($data['sublist_status_id'] as $key=>$id) {
+            if (isset($data['sublist_status_id'])) {
+                foreach ($data['sublist_status_id'] as $key=>$id) {
                     $data['data'][($key + 1)] = [
                         'status_id' => $id,
-                        'criteria' => $data['sublist_criteria'][$key],
-                        'quantity' => $data['sublist_quantity'][$key],
+                        'criteria'  => $data['sublist_criteria'][$key],
+                        'quantity'  => $data['sublist_quantity'][$key],
                     ];
                 }
             }
@@ -116,12 +116,12 @@ class LootService extends Service
                 }
             }
 
-            if(isset($data['sublist_status_id'])) {
-                foreach($data['sublist_status_id'] as $key=>$id) {
+            if (isset($data['sublist_status_id'])) {
+                foreach ($data['sublist_status_id'] as $key=>$id) {
                     $data['data'][($key + 1)] = [
                         'status_id' => $id,
-                        'criteria' => $data['sublist_criteria'][$key],
-                        'quantity' => $data['sublist_quantity'][$key],
+                        'criteria'  => $data['sublist_criteria'][$key],
+                        'quantity'  => $data['sublist_quantity'][$key],
                     ];
                 }
             }
@@ -136,37 +136,6 @@ class LootService extends Service
         }
 
         return $this->rollbackReturn(false);
-    }
-
-    /**
-     * Handles the creation of loot for a loot table.
-     *
-     * @param  \App\Models\Loot\LootTable  $table
-     * @param  array                       $data
-     */
-    private function populateLootTable($table, $data)
-    {
-        // Clear the old loot...
-        $table->loot()->delete();
-
-        foreach($data['rewardable_type'] as $key => $type)
-        {
-            if($type == 'ItemCategoryRarity' || $type == 'ItemRarity')
-                $lootData = [
-                    'criteria' => $data['criteria'][$key],
-                    'rarity' => $data['rarity'][$key]
-                ];
-
-            Loot::create([
-                'loot_table_id'   => $table->id,
-                'rewardable_type' => $type,
-                'rewardable_id'   => isset($data['rewardable_id'][$key]) ? $data['rewardable_id'][$key] : 1,
-                'quantity'        => $data['quantity'][$key],
-                'weight'          => $data['weight'][$key],
-                'data'            => isset($lootData) ? json_encode($lootData) : null,
-                'subtable_id'     => $data['subtable_id'][$key] != "null" ? $data['subtable_id'][$key] : null,
-            ]);
-        }
     }
 
     /**
@@ -197,6 +166,37 @@ class LootService extends Service
         }
 
         return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Handles the creation of loot for a loot table.
+     *
+     * @param \App\Models\Loot\LootTable $table
+     * @param array                      $data
+     */
+    private function populateLootTable($table, $data)
+    {
+        // Clear the old loot...
+        $table->loot()->delete();
+
+        foreach ($data['rewardable_type'] as $key => $type) {
+            if ($type == 'ItemCategoryRarity' || $type == 'ItemRarity') {
+                $lootData = [
+                    'criteria' => $data['criteria'][$key],
+                    'rarity'   => $data['rarity'][$key],
+                ];
+            }
+
+            Loot::create([
+                'loot_table_id'   => $table->id,
+                'rewardable_type' => $type,
+                'rewardable_id'   => $data['rewardable_id'][$key] ?? 1,
+                'quantity'        => $data['quantity'][$key],
+                'weight'          => $data['weight'][$key],
+                'data'            => isset($lootData) ? json_encode($lootData) : null,
+                'subtable_id'     => $data['subtable_id'][$key] != 'null' ? $data['subtable_id'][$key] : null,
+            ]);
+        }
     }
 
     /**

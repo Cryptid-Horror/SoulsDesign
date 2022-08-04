@@ -12,7 +12,7 @@ class Shop extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'sort', 'has_image', 'description', 'parsed_description', 'is_active', 'is_staff', 'use_coupons', 'is_restricted', 'is_fto', 'allowed_coupons'
+        'name', 'sort', 'has_image', 'description', 'parsed_description', 'is_active', 'is_staff', 'use_coupons', 'is_restricted', 'is_fto', 'allowed_coupons',
     ];
 
     /**
@@ -139,21 +139,24 @@ class Shop extends Model
     {
         return url('shops/'.$this->id);
     }
-    
+
     /**********************************************************************************************
-    
+
         OTHER FUNCTIONS
 
     **********************************************************************************************/
 
     /**
-     * Gets all the coupons useable in the shop
+     * Gets all the coupons useable in the shop.
      */
     public function getAllAllowedCouponsAttribute()
     {
-        if(!$this->use_coupons || !$this->allowed_coupons) return;
+        if (!$this->use_coupons || !$this->allowed_coupons) {
+            return;
+        }
         // Get the coupons from the id in allowed_coupons
         $coupons = \App\Models\Item\Item::whereIn('id', json_decode($this->allowed_coupons, 1))->get();
+
         return $coupons;
     }
 }

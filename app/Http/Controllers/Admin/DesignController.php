@@ -64,8 +64,8 @@ class DesignController extends Controller
             flash('Request cancelled successfully.')->success();
         } elseif ($action == 'approve' && $service->approveRequest($request->only([
                 'character_category_id', 'number', 'slug', 'description',
-                'is_giftable', 'is_tradeable', 'is_sellable', 'sale_value', 
-                'transferrable_at', 'set_active', 'invalidate_old', 'adornments'
+                'is_giftable', 'is_tradeable', 'is_sellable', 'sale_value',
+                'transferrable_at', 'set_active', 'invalidate_old', 'adornments',
             ]), $r, Auth::user())) {
             flash('Request approved successfully.')->success();
         } elseif ($action == 'reject' && $service->rejectRequest($request->only(['staff_comments']), $r, Auth::user())) {
@@ -111,23 +111,29 @@ class DesignController extends Controller
      * Edits a design update request's adornments.
      * Admin exclusive.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\CharacterManager  $service
-     * @param  int                            $id
+     * @param App\Services\CharacterManager $service
+     * @param int                           $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postAdornments(Request $request, CharacterManager $service, $id)
     {
         $r = CharacterDesignUpdate::find($id);
-        if(!$r) abort(404);
-        if(!Auth::user()->hasPower('manage_characters')) abort(404);
+        if (!$r) {
+            abort(404);
+        }
+        if (!Auth::user()->hasPower('manage_characters')) {
+            abort(404);
+        }
 
-        if($service->saveRequestAdornments($request->only('adornments'), $r)) {
+        if ($service->saveRequestAdornments($request->only('adornments'), $r)) {
             flash('Request edited successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 }

@@ -2,15 +2,13 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
+use App\Models\Character\Character;
+use App\Models\Character\CharacterItem;
 use App\Models\Item\Item;
 use App\Models\Item\ItemCategory;
 use App\Models\User\User;
-use App\Models\Character\Character;
-use App\Models\Character\CharacterItem;
-
 use App\Services\InventoryManager;
+use Illuminate\Console\Command;
 
 class MoveBoxesFromDragonsToUsers extends Command
 {
@@ -30,8 +28,6 @@ class MoveBoxesFromDragonsToUsers extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -54,15 +50,21 @@ class MoveBoxesFromDragonsToUsers extends Command
         // Get all Character Items
         $character_items = CharacterItem::all();
 
-        foreach($character_items as $ci) {
+        foreach ($character_items as $ci) {
             // Check the item's category
-            if(!$ci->count) continue;
+            if (!$ci->count) {
+                continue;
+            }
 
             $item = Item::find($ci->item_id);
-            if(!$item) continue;
+            if (!$item) {
+                continue;
+            }
 
             $item_category = ItemCategory::find($item->item_category_id);
-            if(!$item_category || $item_category->name != 'Boxes') continue;
+            if (!$item_category || $item_category->name != 'Boxes') {
+                continue;
+            }
 
             $character = Character::find($ci->character_id);
             $owner = User::find($character->user_id);

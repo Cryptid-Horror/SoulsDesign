@@ -1,15 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTradeListingsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -26,7 +24,7 @@ class CreateTradeListingsTable extends Migration
             // Information including requested & offered items, characters, currencies, and any other goods/services.
             $table->string('data', 1024)->nullable()->default(null);
 
-            // Timestamps, including for when the trade expires. 
+            // Timestamps, including for when the trade expires.
             // Only listings whose expiry dates are in the future will be displayed.
             $table->timestamp('expires_at')->nullable()->default(null);
             $table->timestamps();
@@ -35,8 +33,6 @@ class CreateTradeListingsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -2,14 +2,8 @@
 
 namespace App\Models\Challenge;
 
-use Config;
-use DB;
-use Arr;
-use Settings;
-use Carbon\Carbon;
-use App\Models\Submission\Submission;
-
 use App\Models\Model;
+use App\Models\Submission\Submission;
 
 class UserChallenge extends Model
 {
@@ -19,7 +13,7 @@ class UserChallenge extends Model
      * @var array
      */
     protected $fillable = [
-        'challenge_id', 'user_id', 'staff_id', 'status', 'staff_comments', 'data'
+        'challenge_id', 'user_id', 'staff_id', 'status', 'staff_comments', 'data',
     ];
 
     /**
@@ -43,7 +37,7 @@ class UserChallenge extends Model
      */
     public static $updateRules = [
         'prompt_text.*' => 'required_without:prompt_url.*',
-        'prompt_url.*' => 'nullable|url|required_without:prompt_text.*'
+        'prompt_url.*'  => 'nullable|url|required_without:prompt_text.*',
     ];
 
     /**********************************************************************************************
@@ -85,7 +79,8 @@ class UserChallenge extends Model
     /**
      * Scope a query to only include current challenges.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)
@@ -96,7 +91,8 @@ class UserChallenge extends Model
     /**
      * Scope a query to only include submitted+ challenges.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOld($query)
@@ -107,7 +103,8 @@ class UserChallenge extends Model
     /**
      * Scope a query to only include a given user's logs.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUser($query)
@@ -158,10 +155,15 @@ class UserChallenge extends Model
      */
     public function getIsCompleteAttribute()
     {
-        if($this->isOld) return true;
-        foreach($this->challenge->data as $key=>$prompt) {
-            if(!isset($this->data[$key])) return false;
+        if ($this->isOld) {
+            return true;
         }
+        foreach ($this->challenge->data as $key=>$prompt) {
+            if (!isset($this->data[$key])) {
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -172,8 +174,11 @@ class UserChallenge extends Model
      */
     public function getIsOldAttribute()
     {
-        if($this->status == 'Old') return true;
-        else return false;
+        if ($this->status == 'Old') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -183,5 +188,4 @@ class UserChallenge extends Model
     {
         return Submission::where('url', $this->url)->where('status', 'Approved')->first();
     }
-
 }

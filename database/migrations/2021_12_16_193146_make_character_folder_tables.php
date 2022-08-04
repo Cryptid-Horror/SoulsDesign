@@ -8,12 +8,9 @@ class MakeCharacterFolderTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        
         Schema::create('character_folders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -28,8 +25,6 @@ class MakeCharacterFolderTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

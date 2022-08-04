@@ -71,13 +71,12 @@ class AddSiteSettings extends Command
         $this->addSiteSetting('gallery_submissions_open', 1, '0: Gallery submissions closed, 1: Gallery submissions open.');
 
         $this->addSiteSetting('gallery_submissions_require_approval', 1, '0: Gallery submissions do not require approval, 1: Gallery submissions require approval.');
-        
+
         $this->addSiteSetting('trade_listing_duration', 14, 'Number of days a trade listing is displayed for.');
 
         $this->addSiteSetting('gallery_submissions_reward_currency', 0, '0: Gallery submissions do not reward currency, 1: Gallery submissions reward currency.');
 
         $this->addSiteSetting('group_currency', 1, 'ID of the group currency to award from gallery submissions (if enabled).');
-
 
         $this->addSiteSetting('character_title_display', 0, '0: Characters\' titles only display in their image info. 1: Characters\'s titles display alongside their category, species, rarity.');
 
@@ -88,7 +87,7 @@ class AddSiteSettings extends Command
         $this->addSiteSetting('claymore_cooldown', 0, 'Number of days to add to the cooldown timer when a pet/weapon/gear is attached.');
 
         $this->addSiteSetting('featured_character', 1, 'ID of the currently featured character.');
-        
+
         $this->addSiteSetting('is_maintenance_mode', 0, '0: Site is normal, 1: Users without the Has Maintenance Access power will be redirected to the home page.');
 
         $this->addSiteSetting('deactivated_privacy', 0, 'Who can view the deactivated list? 0: Admin only, 1: Staff only, 2: Members only, 3: Public.');
@@ -99,11 +98,10 @@ class AddSiteSettings extends Command
 
         $this->addSiteSetting('comment_dislikes_enabled', 0, '0: Dislikes disabled, 1: Dislikes enabled.');
 
-
         $this->addSiteSetting('shop_type', 0, '0: Default, 1: Collapsible.');
 
         $this->addSiteSetting('coupon_settings', 0, '0: Percentage is taken from total (e.g 20% from 2 items costing a total of 100 = 80), 1: Percentage is taken from item (e.g 20% from 2 items costing a total of 100 = 90)');
-        
+
         $this->addSiteSetting('limited_stock_coupon_settings', 0, '0: Does not allow coupons to be used on limited stock items, 1: Allows coupons to be used on limited stock items');
 
         $this->addSiteSetting('allow_blocked_transfers', 1, '0: Users cannot send to users they have been blocked by, 1: Unrestricted.');

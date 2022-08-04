@@ -8,8 +8,6 @@ class CreateThemesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -24,7 +22,7 @@ class CreateThemesTable extends Migration
 
             $table->boolean('has_css')->default(0); // css file uploaded to the theme folder
             $table->boolean('has_header')->default(0); // header image uploaded to the theme folder
-            $table->string('extension',5)->nullable()->default(null); // Header image extension
+            $table->string('extension', 5)->nullable()->default(null); // Header image extension
 
             $table->text('creators'); // JSON Credits to creators
 
@@ -38,8 +36,6 @@ class CreateThemesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

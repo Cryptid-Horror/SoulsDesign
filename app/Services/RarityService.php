@@ -4,12 +4,9 @@ namespace App\Services;
 
 use App\Models\Character\Character;
 use App\Models\Character\CharacterImage;
-
 use App\Models\Character\CharacterLineageBlacklist;
-
 use App\Models\Rarity;
 use DB;
-
 
 class RarityService extends Service
 {
@@ -121,12 +118,14 @@ class RarityService extends Service
                 throw new \Exception('A character or character image with this rarity exists. Please change its rarity first.');
             }
 
-            if($rarity->has_image) $this->deleteImage($rarity->rarityImagePath, $rarity->rarityImageFileName);
+            if ($rarity->has_image) {
+                $this->deleteImage($rarity->rarityImagePath, $rarity->rarityImageFileName);
+            }
             $rarity->delete();
             CharacterLineageBlacklist::searchAndSet(0, 'rarity', $rarity->id);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 

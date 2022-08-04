@@ -2,7 +2,6 @@
 
 namespace App\Models\Stats\Character;
 
-use Config;
 use App\Models\Model;
 
 class CharacterLevel extends Model
@@ -13,7 +12,7 @@ class CharacterLevel extends Model
      * @var array
      */
     protected $fillable = [
-        'level', 'exp_required','stat_points', 'description'
+        'level', 'exp_required', 'stat_points', 'description',
     ];
 
     /**
@@ -22,7 +21,7 @@ class CharacterLevel extends Model
      * @var string
      */
     protected $table = 'level_characters';
-    
+
     /**
      * Validation rules for creation.
      *
@@ -31,7 +30,7 @@ class CharacterLevel extends Model
     public static $createRules = [
         'level' => 'required|unique:level_characters',
     ];
-    
+
     /**
      * Validation rules for updating.
      *
@@ -42,11 +41,11 @@ class CharacterLevel extends Model
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Get the rewards attached to this prompt.
      */

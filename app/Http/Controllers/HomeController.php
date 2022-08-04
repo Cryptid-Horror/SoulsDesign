@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character\Character;
+use App\Models\Character\CharacterImage;
+use App\Models\Gallery\GallerySubmission;
+use App\Models\News;
 use App\Models\SitePage;
 use App\Services\LinkService;
 use App\Services\UserService;
 use Auth;
 use Carbon\Carbon;
-use Settings;
 use Config;
 use DB;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Settings;
 
-use App\Models\Comment;
-use App\Models\Forum;
-use App\Models\News;
-use App\Models\Character\Character;
-use App\Models\Character\CharacterImage;
-use App\Models\Gallery\GallerySubmission;
-
-use App\Services\DeviantArtService;
 class HomeController extends Controller
 {
     /*
@@ -48,20 +44,21 @@ class HomeController extends Controller
 
         $gallerySubmissions = GallerySubmission::visible()->accepted()->orderBy('created_at', 'DESC')->take(4);
 
-        if(Settings::get('featured_character')) {
+        if (Settings::get('featured_character')) {
             $character = Character::find(Settings::get('featured_character'));
+        } else {
+            $character = null;
         }
-        else $character = null;
+
         return view('welcome', [
-            'about' => SitePage::where('key', 'about')->first(),
-            'featured' => $character,
-            'news' => $news->first(),
-            'characters' => $characters->get(),
+            'about'              => SitePage::where('key', 'about')->first(),
+            'featured'           => $character,
+            'news'               => $news->first(),
+            'characters'         => $characters->get(),
             'gallerySubmissions' => $gallerySubmissions->get(),
         ]);
     }
 
-    
     /**
      * Shows the account linking page.
      *

@@ -1,20 +1,13 @@
-<?php namespace App\Services\Item;
+<?php
 
-use App\Services\Service;
-
-use DB;
-
-use App\Services\InventoryManager;
+namespace App\Services\Item;
 
 use App\Models\Item\Item;
-use App\Models\Currency\Currency;
-use App\Models\Loot\LootTable;
-use App\Models\Raffle\Raffle;
-use App\Models\Shop\Shop;
+use App\Services\Service;
+use DB;
 
 class CouponService extends Service
 {
-
     /**
      * Retrieves any data that should be used in the item tag editing form.
      *
@@ -23,31 +16,32 @@ class CouponService extends Service
     public function getEditData()
     {
         return [
-            
+
         ];
     }
 
     /**
      * Processes the data attribute of the tag and returns it in the preferred format for edits.
      *
-     * @param  string  $tag
+     * @param string $tag
+     *
      * @return mixed
      */
     public function getTagData($tag)
     {
         $couponData = [];
-        $couponData['discount'] = isset($tag->data['discount']) ? $tag->data['discount'] : null;
-        $couponData['infinite'] = isset($tag->data['infinite']) ? $tag->data['infinite'] : null;
+        $couponData['discount'] = $tag->data['discount'] ?? null;
+        $couponData['infinite'] = $tag->data['infinite'] ?? null;
 
         return $couponData;
-
     }
 
     /**
      * Processes the data attribute of the tag and returns it in the preferred format.
      *
-     * @param  string  $tag
-     * @param  array   $data
+     * @param string $tag
+     * @param array  $data
+     *
      * @return bool
      */
     public function updateData($tag, $data)
@@ -55,16 +49,19 @@ class CouponService extends Service
         DB::beginTransaction();
 
         try {
-            if(!isset($data['infinite'])) $data['infinite'] = 0;
+            if (!isset($data['infinite'])) {
+                $data['infinite'] = 0;
+            }
 
             $coupon['discount'] = $data['discount'];
             $coupon['infinite'] = $data['infinite'];
             $tag->update(['data' => json_encode($coupon)]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 }

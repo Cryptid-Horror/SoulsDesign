@@ -1,15 +1,12 @@
-<?php namespace App\Services;
+<?php
 
-use App\Services\Service;
+namespace App\Services;
 
-use DB;
-use Auth;
-use Config;
-use Settings;
-
-use App\Models\User\User;
 use App\Models\Challenge\Challenge;
 use App\Models\Challenge\UserChallenge;
+use App\Models\User\User;
+use DB;
+use Settings;
 
 class ChallengeManager extends Service
 {
@@ -25,8 +22,9 @@ class ChallengeManager extends Service
     /**
      * Registers a new challenge.
      *
-     * @param  \App\Models\Challenge\Challenge  $challenge
-     * @param  \App\Models\User\User            $user
+     * @param \App\Models\Challenge\Challenge $challenge
+     * @param \App\Models\User\User           $user
+     *
      * @return mixed
      */
     public function createChallengeLog($challenge, $user)
@@ -35,32 +33,40 @@ class ChallengeManager extends Service
 
         try {
             // Check that challenges can be registered for
-            if(Settings::get('challenges_concurrent') < 1) throw new \Exception('Challenge registration is currently closed.');
+            if (Settings::get('challenges_concurrent') < 1) {
+                throw new \Exception('Challenge registration is currently closed.');
+            }
             // Verify that the selected challenge is valid
-            if(!$challenge) throw new \Exception('Invalid challenge selected.');
+            if (!$challenge) {
+                throw new \Exception('Invalid challenge selected.');
+            }
             // Verify that the user can register for a new challenge presently
-            if(!$user->canChallenge) throw new \Exception('You cannot register for a new challenge at this time.');
+            if (!$user->canChallenge) {
+                throw new \Exception('You cannot register for a new challenge at this time.');
+            }
 
             // Create the log
             $log = UserChallenge::create([
-                'user_id' => $user->id,
-                'status' => 'Active',
-                'challenge_id' => $challenge->id
+                'user_id'      => $user->id,
+                'status'       => 'Active',
+                'challenge_id' => $challenge->id,
             ]);
 
             return $this->commitReturn($log);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Edits a challenge.
      *
-     * @param  array                                $data
-     * @param  \App\Models\Challenge\UserChallenge  $challenge
-     * @param  \App\Models\User\User                $user
+     * @param array                               $data
+     * @param \App\Models\Challenge\UserChallenge $challenge
+     * @param \App\Models\User\User               $user
+     *
      * @return mixed
      */
     public function editChallenge($data, $challenge, $user)
@@ -70,14 +76,18 @@ class ChallengeManager extends Service
         try {
             // 1. check that the challenge exists
             // 2. check that the challenge is not old/can be interacted with
-            if(!$challenge) throw new \Exception("Invalid challenge.");
-            if($challenge->isOld) throw new \Exception("This challenge is old.");
+            if (!$challenge) {
+                throw new \Exception('Invalid challenge.');
+            }
+            if ($challenge->isOld) {
+                throw new \Exception('This challenge is old.');
+            }
 
             // Fetch any existing data
             $data['data'] = $challenge->data;
 
             // Update the data for only the submitted prompt
-            foreach($data['prompt_url'] as $key=>$url) {
+            foreach ($data['prompt_url'] as $key=>$url) {
                 $data['data'][$key]['url'] = $url;
                 $data['data'][$key]['text'] = $data['prompt_text'][$key];
             }
@@ -89,18 +99,20 @@ class ChallengeManager extends Service
             $challenge->update(['data' => $data['data']]);
 
             return $this->commitReturn($challenge);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Accepts a challenge.
      *
-     * @param  array                                $data
-     * @param  \App\Models\Challenge\UserChallenge  $challenge
-     * @param  \App\Models\User\User                $user
+     * @param array                               $data
+     * @param \App\Models\Challenge\UserChallenge $challenge
+     * @param \App\Models\User\User               $user
+     *
      * @return mixed
      */
     public function acceptChallenge($data, $challenge, $user)
@@ -110,8 +122,12 @@ class ChallengeManager extends Service
         try {
             // 1. check that the challenge exists
             // 2. check that the challenge is not old/can be interacted with
-            if(!$challenge) throw new \Exception("Invalid challenge.");
-            if($challenge->isOld) throw new \Exception("This challenge is old.");
+            if (!$challenge) {
+                throw new \Exception('Invalid challenge.');
+            }
+            if ($challenge->isOld) {
+                throw new \Exception('This challenge is old.');
+            }
 
             // The only things we need to set are:
             // 1. staff comments
@@ -119,14 +135,15 @@ class ChallengeManager extends Service
             // 3. status
             $challenge->update([
                 'staff_comments' => $data['staff_comments'],
-                'staff_id' => $user->id,
-                'status' => 'Old'
+                'staff_id'       => $user->id,
+                'status'         => 'Old',
             ]);
 
             return $this->commitReturn($challenge);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 }

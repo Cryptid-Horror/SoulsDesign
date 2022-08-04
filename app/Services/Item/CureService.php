@@ -1,12 +1,12 @@
-<?php namespace App\Services\Item;
+<?php
 
-use App\Services\Service;
+namespace App\Services\Item;
 
-use DB;
-
-use App\Models\Status\StatusEffect;
 use App\Models\Character\Character;
+use App\Models\Status\StatusEffect;
 use App\Services\InventoryManager;
+use App\Services\Service;
+use DB;
 
 class CureService extends Service
 {
@@ -34,34 +34,35 @@ class CureService extends Service
     /**
      * Processes the data attribute of the tag and returns it in the preferred format.
      *
-     * @param  string  $tag
+     * @param string $tag
+     *
      * @return mixed
      */
     public function getTagData($tag)
     {
         $rewards = [];
-        if($tag->data) {
+        if ($tag->data) {
             $assets = parseAssetData($tag->data);
-            foreach($assets as $type => $a)
-            {
+            foreach ($assets as $type => $a) {
                 $class = getAssetModelString($type, false);
-                foreach($a as $id => $asset)
-                {
-                    $rewards = (array)[
+                foreach ($a as $id => $asset) {
+                    $rewards = (array) [
                         'status_effect_id' => $id,
-                        'quantity' => $asset['quantity']
+                        'quantity'         => $asset['quantity'],
                     ];
                 }
             }
         }
+
         return $rewards;
     }
 
     /**
      * Processes the data attribute of the tag and returns it in the preferred format.
      *
-     * @param  string  $tag
-     * @param  array   $data
+     * @param string $tag
+     * @param array  $data
+     *
      * @return bool
      */
     public function updateData($tag, $data)
@@ -80,19 +81,20 @@ class CureService extends Service
             $tag->update(['data' => json_encode($assets)]);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
 
     /**
      * Acts upon the item when used from the inventory.
      *
-     * @param  \App\Models\User\UserItem  $stacks
-     * @param  \App\Models\User\User      $user
-     * @param  array                      $data
+     * @param \App\Models\User\UserItem $stacks
+     * @param \App\Models\User\User     $user
+     * @param array                     $data
+     *
      * @return bool
      */
     public function act($stacks, $user, $data)
@@ -100,29 +102,36 @@ class CureService extends Service
         DB::beginTransaction();
 
         try {
-            foreach($stacks as $key=>$stack) {
+            foreach ($stacks as $key=>$stack) {
                 // We don't want to let anyone who isn't the owner of the box open it,
                 // so do some validation...
-                if($stack->user_id != $user->id) throw new \Exception("This item does not belong to you.");
+                if ($stack->user_id != $user->id) {
+                    throw new \Exception('This item does not belong to you.');
+                }
 
                 $character = Character::where('id', $data['cure_character_id'])->first();
-                if(!$character) throw new \Exception('Invalid character selected.');
+                if (!$character) {
+                    throw new \Exception('Invalid character selected.');
+                }
 
                 // Next, try to delete the item. If successful, we can start distributing rewards.
-                if((new InventoryManager)->debitStack($stack->user, 'Cure Applied', ['data' => ''], $stack, $data['quantities'][$key])) {
-
-                    for($q=0; $q<$data['quantities'][$key]; $q++) {
+                if ((new InventoryManager)->debitStack($stack->user, 'Cure Applied', ['data' => ''], $stack, $data['quantities'][$key])) {
+                    for ($q = 0; $q < $data['quantities'][$key]; $q++) {
                         // Distribute user rewards
-                        if(!$rewards = fillCharacterAssets(parseAssetData($stack->item->tag('cure')->data), $user, $character, 'Cure Applied', [
-                            'data' => 'Cured status by using '.$stack->item->name
-                        ])) throw new \Exception("Failed to use cure.");
+                        if (!$rewards = fillCharacterAssets(parseAssetData($stack->item->tag('cure')->data), $user, $character, 'Cure Applied', [
+                            'data' => 'Cured status by using '.$stack->item->name,
+                        ])) {
+                            throw new \Exception('Failed to use cure.');
+                        }
                     }
                 }
             }
+
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 }

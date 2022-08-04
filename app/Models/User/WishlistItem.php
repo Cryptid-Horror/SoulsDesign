@@ -6,14 +6,13 @@ use App\Models\Model;
 
 class WishlistItem extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'wishlist_id', 'user_id', 'item_id', 'count'
+        'wishlist_id', 'user_id', 'item_id', 'count',
     ];
 
     /**
@@ -43,7 +42,7 @@ class WishlistItem extends Model
      * @var array
      */
     public static $updateRules = [
-        'count' => 'nullable|numeric|max:9999'
+        'count' => 'nullable|numeric|max:9999',
     ];
 
     /**********************************************************************************************
@@ -67,5 +66,4 @@ class WishlistItem extends Model
     {
         return $this->belongsTo('App\Models\Item\Item');
     }
-
 }

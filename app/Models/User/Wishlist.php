@@ -2,20 +2,17 @@
 
 namespace App\Models\User;
 
-use Config;
 use App\Models\Model;
-use App\Models\User\WishlistItem;
 
 class Wishlist extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'name'
+        'user_id', 'name',
     ];
 
     /**
@@ -82,20 +79,29 @@ class Wishlist extends Model
     /**
      * Displays the count of an item in a wishlist.
      *
-     * @param  int                    $id
-     * @param  \App\Models\User\User  $user
+     * @param int                   $id
+     * @param \App\Models\User\User $user
+     *
      * @return int
      */
     public function itemCount($id, $user)
     {
-        if(!$this->id) $wishlist = 0;
-        else $wishlist = $this->id;
+        if (!$this->id) {
+            $wishlist = 0;
+        } else {
+            $wishlist = $this->id;
+        }
 
         $item = WishlistItem::where('item_id', $id)->where('wishlist_id', $wishlist);
-        if(!$wishlist) $item = $item->where('user_id', $user->id);
+        if (!$wishlist) {
+            $item = $item->where('user_id', $user->id);
+        }
         $item = $item->first();
 
-        if($item) return $item->count;
+        if ($item) {
+            return $item->count;
+        }
+
         return null;
     }
 }

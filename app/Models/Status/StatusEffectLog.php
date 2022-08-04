@@ -2,7 +2,6 @@
 
 namespace App\Models\Status;
 
-use Config;
 use App\Models\Model;
 
 class StatusEffectLog extends Model
@@ -15,7 +14,7 @@ class StatusEffectLog extends Model
     protected $fillable = [
         'sender_id', 'recipient_id',
         'log', 'log_type', 'data',
-        'status_effect_id', 'quantity'
+        'status_effect_id', 'quantity',
     ];
 
     /**
@@ -43,7 +42,10 @@ class StatusEffectLog extends Model
      */
     public function sender()
     {
-        if($this->sender_type == 'User') return $this->belongsTo('App\Models\User\User', 'sender_id');
+        if ($this->sender_type == 'User') {
+            return $this->belongsTo('App\Models\User\User', 'sender_id');
+        }
+
         return $this->belongsTo('App\Models\Character\Character', 'sender_id');
     }
 
@@ -52,7 +54,10 @@ class StatusEffectLog extends Model
      */
     public function recipient()
     {
-        if($this->recipient_type == 'User') return $this->belongsTo('App\Models\User\User', 'recipient_id');
+        if ($this->recipient_type == 'User') {
+            return $this->belongsTo('App\Models\User\User', 'recipient_id');
+        }
+
         return $this->belongsTo('App\Models\Character\Character', 'recipient_id');
     }
 
@@ -63,5 +68,4 @@ class StatusEffectLog extends Model
     {
         return $this->belongsTo('App\Models\Status\StatusEffect', 'status_effect_id');
     }
-
 }

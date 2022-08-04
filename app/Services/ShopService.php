@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopLimit;
-use App\Models\Shop\ShopStock;
 use DB;
 
 class ShopService extends Service
@@ -118,8 +117,12 @@ class ShopService extends Service
         DB::beginTransaction();
 
         try {
-            if(!$data['stock_type']) throw new \Exception("Please select a stock type.");
-            if(!$data['item_id']) throw new \Exception("You must select an item.");
+            if (!$data['stock_type']) {
+                throw new \Exception('Please select a stock type.');
+            }
+            if (!$data['item_id']) {
+                throw new \Exception('You must select an item.');
+            }
 
             $shop->stock()->create([
                 'shop_id'               => $shop->id,
@@ -133,11 +136,11 @@ class ShopService extends Service
                 'quantity'              => isset($data['is_limited_stock']) ? $data['quantity'] : 0,
                 'purchase_limit'        => $data['purchase_limit'],
                 'stock_type'            => $data['stock_type'],
-                'is_visible'            => isset($data['is_visible']) ? $data['is_visible'] : 0,
-                'restock'               => isset($data['restock']) ? $data['restock'] : 0,
+                'is_visible'            => $data['is_visible'] ?? 0,
+                'restock'               => $data['restock'] ?? 0,
                 'restock_quantity'      => isset($data['restock']) && isset($data['quantity']) ? $data['quantity'] : 1,
-                'restock_interval'      => isset($data['restock_interval']) ? $data['restock_interval'] : 2,
-                'range'                 => isset($data['range']) ? $data['range'] : 0,
+                'restock_interval'      => $data['restock_interval'] ?? 2,
+                'range'                 => $data['range'] ?? 0,
             ]);
 
             return $this->commitReturn($shop);
@@ -151,18 +154,23 @@ class ShopService extends Service
     /**
      * Updates shop stock.
      *
-     * @param  \App\Models\Shop\Shop  $shop
-     * @param  array                  $data 
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Shop\Shop
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     * @param mixed                 $stock
+     *
+     * @return \App\Models\Shop\Shop|bool
      */
     public function editShopStock($stock, $data, $user)
     {
         DB::beginTransaction();
 
         try {
-            if(!$data['stock_type']) throw new \Exception("Please select a stock type.");
-            if(!$data['item_id']) throw new \Exception("You must select an item.");
+            if (!$data['stock_type']) {
+                throw new \Exception('Please select a stock type.');
+            }
+            if (!$data['item_id']) {
+                throw new \Exception('You must select an item.');
+            }
 
             $stock->update([
                 'shop_id'               => $stock->shop->id,
@@ -176,18 +184,19 @@ class ShopService extends Service
                 'quantity'              => isset($data['is_limited_stock']) ? $data['quantity'] : 0,
                 'purchase_limit'        => $data['purchase_limit'],
                 'stock_type'            => $data['stock_type'],
-                'is_visible'            => isset($data['is_visible']) ? $data['is_visible'] : 0,
-                'restock'               => isset($data['restock']) ? $data['restock'] : 0,
+                'is_visible'            => $data['is_visible'] ?? 0,
+                'restock'               => $data['restock'] ?? 0,
                 'restock_quantity'      => isset($data['restock']) && isset($data['quantity']) ? $data['quantity'] : 1,
-                'restock_interval'      => isset($data['restock_interval']) ? $data['restock_interval'] : 2,
-                'range'                 => isset($data['range']) ? $data['range'] : 0,
-                'disallow_transfer'     => isset($data['disallow_transfer']) ? $data['disallow_transfer'] : 0
+                'restock_interval'      => $data['restock_interval'] ?? 2,
+                'range'                 => $data['range'] ?? 0,
+                'disallow_transfer'     => $data['disallow_transfer'] ?? 0,
             ]);
 
             return $this->commitReturn($stock);
-        } catch(\Exception $e) { 
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
@@ -196,44 +205,16 @@ class ShopService extends Service
         DB::beginTransaction();
 
         try {
-
             $stock->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
-    /**
-     * Processes user input for creating/updating a shop.
-     *
-     * @param  array                  $data 
-     * @param  \App\Models\Shop\Shop  $shop
-     * @return array
-     */
-    private function populateShopData($data, $shop = null)
-    {
-        if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-        $data['is_active'] = isset($data['is_active']);
-        $data['is_staff'] = isset($data['is_staff']);
-        $data['use_coupons'] = isset($data['use_coupons']);
-        $data['allowed_coupons'] = isset($data['allowed_coupons']) ? $data['allowed_coupons'] : null;
-        
-        if(isset($data['remove_image']))
-        {
-            if($shop && $shop->has_image && $data['remove_image']) 
-            { 
-                $data['has_image'] = 0; 
-                $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName); 
-            }
-            unset($data['remove_image']);
-        }
-
-        return $data;
-    }
-    
     /**
      * Deletes a shop.
      *
@@ -289,12 +270,14 @@ class ShopService extends Service
         return $this->rollbackReturn(false);
     }
 
-    public function restrictShop($data, $id) 
+    public function restrictShop($data, $id)
     {
         DB::beginTransaction();
 
         try {
-            if(!isset($data['is_restricted'])) $data['is_restricted'] = 0;
+            if (!isset($data['is_restricted'])) {
+                $data['is_restricted'] = 0;
+            }
 
             $shop = Shop::find($id);
             $shop->is_restricted = $data['is_restricted'];
@@ -302,20 +285,49 @@ class ShopService extends Service
 
             $shop->limits()->delete();
 
-            if(isset($data['item_id'])) {
-                foreach($data['item_id'] as $key => $type)
-                {
+            if (isset($data['item_id'])) {
+                foreach ($data['item_id'] as $key => $type) {
                     ShopLimit::create([
                         'shop_id'       => $shop->id,
-                        'item_id' => $type,
+                        'item_id'       => $type,
                     ]);
                 }
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Processes user input for creating/updating a shop.
+     *
+     * @param array                 $data
+     * @param \App\Models\Shop\Shop $shop
+     *
+     * @return array
+     */
+    private function populateShopData($data, $shop = null)
+    {
+        if (isset($data['description']) && $data['description']) {
+            $data['parsed_description'] = parse($data['description']);
+        }
+        $data['is_active'] = isset($data['is_active']);
+        $data['is_staff'] = isset($data['is_staff']);
+        $data['use_coupons'] = isset($data['use_coupons']);
+        $data['allowed_coupons'] ??= null;
+
+        if (isset($data['remove_image'])) {
+            if ($shop && $shop->has_image && $data['remove_image']) {
+                $data['has_image'] = 0;
+                $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        return $data;
     }
 }

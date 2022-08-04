@@ -70,7 +70,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Users'], function () {
     Route::get('{name}/wishlists', 'UserController@getUserWishlists');
     Route::get('{name}/wishlists/{id}', 'UserController@getUserWishlist')->where(['id' => '[0-9]+']);
     Route::get('{name}/wishlists/default', 'UserController@getUserWishlist');
-    
+
     Route::get('{name}/currency-logs', 'UserController@getUserCurrencyLogs');
     Route::get('{name}/item-logs', 'UserController@getUserItemLogs');
     Route::get('{name}/award-logs', 'UserController@getUserAwardLogs');
@@ -122,12 +122,12 @@ Route::group(['prefix' => 'character', 'namespace' => 'Characters'], function ()
 
     Route::get('{slug}/gallery', 'CharacterController@getCharacterGallery');
 
-    # lineage
+    // lineage
     Route::get('{slug}/lineage', 'CharacterLineageController@getCharacterLineage');
     Route::get('{slug}/children', 'CharacterLineageController@getCharacterChildren');
     Route::get('{slug}/grandchildren', 'CharacterLineageController@getCharacterGrandChildren');
     Route::get('{slug}/great-grandchildren', 'CharacterLineageController@getCharacterGreatGrandChildren');
-    
+
     Route::get('{slug}/breeding-permissions', 'CharacterController@getCharacterBreedingPermissions');
 });
 Route::group(['prefix' => 'myo', 'namespace' => 'Characters'], function () {
@@ -192,12 +192,12 @@ Route::group(['prefix' => 'prompts'], function () {
     Route::get('{id}', 'PromptsController@getPrompt');
 });
 
-Route::group(['prefix' => 'challenges'], function() {
+Route::group(['prefix' => 'challenges'], function () {
     Route::get('/', 'ChallengeController@getIndex');
     Route::get('{id}', 'ChallengeController@getChallenge')->where(['id' => '[0-9]+']);
 });
 
-Route::group(['prefix' => 'shops'], function() {
+Route::group(['prefix' => 'shops'], function () {
     Route::get('/', 'ShopController@getIndex');
     Route::get('{id}', 'ShopController@getShop')->where(['id' => '[0-9]+']);
     Route::get('{id}/{stockId}', 'ShopController@getShopStock')->where(['id' => '[0-9]+', 'stockId' => '[0-9]+']);
@@ -271,8 +271,7 @@ Route::group(['prefix' => 'reports', 'namespace' => 'Users'], function () {
     World Expansion
 **************************************************************************************************/
 
-Route::group(['prefix' => 'world', 'namespace' => 'WorldExpansion'], function() {
-
+Route::group(['prefix' => 'world', 'namespace' => 'WorldExpansion'], function () {
     Route::get('info', 'LocationController@getWorld');
     Route::get('locations', 'LocationController@getLocations');
     Route::get('locations/{id}', 'LocationController@getLocation');
@@ -315,11 +314,8 @@ Route::group(['prefix' => 'world', 'namespace' => 'WorldExpansion'], function() 
 /**************************************************************************************************
     Forums
 **************************************************************************************************/
-Route::group(['prefix' => 'forum'], function() {
+Route::group(['prefix' => 'forum'], function () {
     Route::get('/', 'ForumController@getIndex');
     Route::get('{board_id}/~{id}', 'ForumController@getThread');
     Route::get('{id}', 'ForumController@getForum');
 });
-
-
-

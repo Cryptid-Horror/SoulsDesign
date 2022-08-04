@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers\Users;
 
-use Auth;
-use File;
-use Settings;
-
+use App\Http\Controllers\Controller;
+use App\Models\Character\BreedingPermission;
+use App\Models\Notification;
+use App\Models\Theme;
 use App\Models\User\User;
 use App\Models\User\UserAlias;
-use App\Models\Theme;
-use App\Models\Character\BreedingPermission;
-
-use Illuminate\Support\Facades\Storage;
-use App\Models\Notification;
-use App\Models\WorldExpansion\Location;
 use App\Models\WorldExpansion\Faction;
-use App\Http\Controllers\Controller;
-use App\Services\UserService;
+use App\Models\WorldExpansion\Location;
 use App\Services\LinkService;
-
+use App\Services\UserService;
+use Auth;
 use Illuminate\Http\Request;
+use Settings;
 
 class AccountController extends Controller
 {
@@ -67,24 +62,24 @@ class AccountController extends Controller
      */
     public function getSettings()
     {
-        $interval = array(
+        $interval = [
             0 => 'whenever',
             1 => 'yearly',
             2 => 'quarterly',
             3 => 'monthly',
             4 => 'weekly',
-            5 => 'daily'
-        );
+            5 => 'daily',
+        ];
 
-        return view('account.settings',[
-            'locations' => Location::all()->where('is_user_home')->pluck('style','id')->toArray(),
-            'factions' => Faction::all()->where('is_user_faction')->pluck('style','id')->toArray(),
-            'user_enabled' => Settings::get('WE_user_locations'),
+        return view('account.settings', [
+            'locations'            => Location::all()->where('is_user_home')->pluck('style', 'id')->toArray(),
+            'factions'             => Faction::all()->where('is_user_faction')->pluck('style', 'id')->toArray(),
+            'user_enabled'         => Settings::get('WE_user_locations'),
             'user_faction_enabled' => Settings::get('WE_user_factions'),
-            'char_enabled' => Settings::get('WE_character_locations'),
+            'char_enabled'         => Settings::get('WE_character_locations'),
             'char_faction_enabled' => Settings::get('WE_character_factions'),
-            'themeOptions' => Theme::where('is_active',1)->get()->pluck('displayName','id')->toArray(),
-            'location_interval' => $interval[Settings::get('WE_change_timelimit')],
+            'themeOptions'         => Theme::where('is_active', 1)->get()->pluck('displayName', 'id')->toArray(),
+            'location_interval'    => $interval[Settings::get('WE_change_timelimit')],
 
         ]);
     }
@@ -126,51 +121,54 @@ class AccountController extends Controller
     /**
      * Edits the user's location from a list of locations that users can make their home.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postLocation(Request $request, UserService $service)
     {
-        if($service->updateLocation($request->input('location'), Auth::user())) {
+        if ($service->updateLocation($request->input('location'), Auth::user())) {
             flash('Location updated successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
     /**
      * Edits the user's theme.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTheme(Request $request, UserService $service)
     {
-        if($service->updateTheme($request->only('theme'), Auth::user())) {
+        if ($service->updateTheme($request->only('theme'), Auth::user())) {
             flash('Theme updated successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
     /**
      * Edits the user's faction from a list of factions that users can make their home.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postFaction(Request $request, UserService $service)
     {
-        if($service->updateFaction($request->input('faction'), Auth::user())) {
+        if ($service->updateFaction($request->input('faction'), Auth::user())) {
             flash('Faction updated successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
@@ -403,14 +401,15 @@ class AccountController extends Controller
     /**
      * Shows the user's owned breeding permissions.
      *
-     * @param  \Illuminate\Http\Request       $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getBreedingPermissions(Request $request)
     {
         $permissions = BreedingPermission::where('recipient_id', Auth::user()->id);
         $used = $request->get('used');
-        if(!$used) $used = 0;
+        if (!$used) {
+            $used = 0;
+        }
 
         $permissions = $permissions->where('is_used', $used);
 

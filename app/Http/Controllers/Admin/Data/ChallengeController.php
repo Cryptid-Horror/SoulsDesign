@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Data;
 
-use Illuminate\Http\Request;
-
-use Auth;
-
+use App\Http\Controllers\Controller;
 use App\Models\Challenge\Challenge;
 use App\Services\ChallengeService;
-
-use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Http\Request;
 
 class ChallengeController extends Controller
 {
@@ -25,13 +22,12 @@ class ChallengeController extends Controller
     /**
      * Shows the challenge index.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getChallengeIndex(Request $request)
     {
         return view('admin.challenges.index', [
-            'challenges' => Challenge::query()->paginate(20)->appends($request->query())
+            'challenges' => Challenge::query()->paginate(20)->appends($request->query()),
         ]);
     }
 
@@ -43,32 +39,35 @@ class ChallengeController extends Controller
     public function getCreateChallenge()
     {
         return view('admin.challenges.create_edit_challenge', [
-            'challenge' => new Challenge
+            'challenge' => new Challenge,
         ]);
     }
 
     /**
      * Shows the edit challenge page.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getEditChallenge($id)
     {
         $challenge = Challenge::find($id);
-        if(!$challenge) abort(404);
+        if (!$challenge) {
+            abort(404);
+        }
 
         return view('admin.challenges.create_edit_challenge', [
-            'challenge' => $challenge
+            'challenge' => $challenge,
         ]);
     }
 
     /**
      * Creates or edits a challenge.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\ChallengeService  $service
-     * @param  int|null                       $id
+     * @param App\Services\ChallengeService $service
+     * @param int|null                      $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreateEditChallenge(Request $request, ChallengeService $service, $id = null)
@@ -76,31 +75,35 @@ class ChallengeController extends Controller
         $id ? $request->validate(Challenge::$updateRules) : $request->validate(Challenge::$createRules);
         $data = $request->only([
             'name', 'description', 'rules', 'is_active',
-            'prompt_name', 'prompt_description', 'prompt_key'
+            'prompt_name', 'prompt_description', 'prompt_key',
         ]);
 
-        if($id && $service->updateChallenge(Challenge::find($id), $data, Auth::user())) {
+        if ($id && $service->updateChallenge(Challenge::find($id), $data, Auth::user())) {
             flash('Challenge updated successfully.')->success();
-        }
-        else if (!$id && $challenge = $service->createChallenge($data, Auth::user())) {
+        } elseif (!$id && $challenge = $service->createChallenge($data, Auth::user())) {
             flash('Challenge created successfully.')->success();
+
             return redirect()->to('admin/data/challenges/edit/'.$challenge->id);
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
     /**
      * Gets the challenge deletion modal.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getDeleteChallenge($id)
     {
         $challenge = Challenge::find($id);
+
         return view('admin.challenges._delete_challenge', [
             'challenge' => $challenge,
         ]);
@@ -109,19 +112,21 @@ class ChallengeController extends Controller
     /**
      * Deletes a challenge.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\ChallengeService  $service
-     * @param  int                            $id
+     * @param App\Services\ChallengeService $service
+     * @param int                           $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDeleteChallenge(Request $request, ChallengeService $service, $id)
     {
-        if($id && $service->deleteChallenge(Challenge::find($id))) {
+        if ($id && $service->deleteChallenge(Challenge::find($id))) {
             flash('Challenge deleted successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->to('admin/data/challenges');
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Models\Character\CharacterImage;
+use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
-use App\Models\Character\CharacterLineageBlacklist;
 use DB;
 
 class SpeciesService extends Service
@@ -114,15 +114,19 @@ class SpeciesService extends Service
 
         try {
             // Check first if characters with this species exists
-            if(CharacterImage::where('species_id', $species->id)->exists()) throw new \Exception("A character image with this species exists. Please change its species first.");
-            
-            if($species->has_image) $this->deleteImage($species->speciesImagePath, $species->speciesImageFileName);
+            if (CharacterImage::where('species_id', $species->id)->exists()) {
+                throw new \Exception('A character image with this species exists. Please change its species first.');
+            }
+
+            if ($species->has_image) {
+                $this->deleteImage($species->speciesImagePath, $species->speciesImageFileName);
+            }
             $species->delete();
 
             CharacterLineageBlacklist::searchAndSet(0, 'species', $species->id);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -189,7 +193,7 @@ class SpeciesService extends Service
             $blacklist = CharacterLineageBlacklist::searchAndSet($data['lineage-blacklist'], 'subtype', $subtype->id);
 
             return $this->commitReturn($subtype);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -228,7 +232,7 @@ class SpeciesService extends Service
             $blacklist = CharacterLineageBlacklist::searchAndSet($data['lineage-blacklist'], 'subtype', $subtype->id);
 
             return $this->commitReturn($subtype);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -248,15 +252,19 @@ class SpeciesService extends Service
 
         try {
             // Check first if characters with this subtype exists
-            if(CharacterImage::where('subtype_id', $subtype->id)->exists()) throw new \Exception("A character image with this subtype exists. Please change or remove its subtype first.");
-            
-            if($subtype->has_image) $this->deleteImage($subtype->subtypeImagePath, $subtype->subtypeImageFileName);
+            if (CharacterImage::where('subtype_id', $subtype->id)->exists()) {
+                throw new \Exception('A character image with this subtype exists. Please change or remove its subtype first.');
+            }
+
+            if ($subtype->has_image) {
+                $this->deleteImage($subtype->subtypeImagePath, $subtype->subtypeImageFileName);
+            }
             $subtype->delete();
 
             CharacterLineageBlacklist::searchAndSet(0, 'subtype', $subtype->id);
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 

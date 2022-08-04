@@ -2,14 +2,10 @@
 
 namespace App\Models\Character;
 
-use Config;
-use DB;
 use App\Models\Model;
-use App\Models\Character\CharacterCategory;
 
 class CharacterProfileCustomValue extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
@@ -27,7 +23,7 @@ class CharacterProfileCustomValue extends Model
     protected $table = 'character_profile_custom_values';
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
@@ -35,7 +31,7 @@ class CharacterProfileCustomValue extends Model
     /**
      * Get the character this profile belongs to.
      */
-    public function profile() 
+    public function profile()
     {
         return $this->belongsTo('App\Models\Character\CharacterProfile', 'character_id', 'character_id');
     }
@@ -43,7 +39,7 @@ class CharacterProfileCustomValue extends Model
     /**
      * Get the character this profile belongs to.
      */
-    public function character() 
+    public function character()
     {
         return $this->belongsTo('App\Models\Character\Character', 'character_id', 'id');
     }

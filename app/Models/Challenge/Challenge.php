@@ -2,9 +2,6 @@
 
 namespace App\Models\Challenge;
 
-use Config;
-use DB;
-use Carbon\Carbon;
 use App\Models\Model;
 
 class Challenge extends Model
@@ -15,7 +12,7 @@ class Challenge extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'parsed_description', 'rules', 'is_active', 'data'
+        'name', 'description', 'parsed_description', 'rules', 'is_active', 'data',
     ];
 
     /**
@@ -31,10 +28,10 @@ class Challenge extends Model
      * @var array
      */
     public static $createRules = [
-        'name' => 'required|unique:challenges|between:3,100',
-        'prompt_name' => 'required',
-        'prompt_name.*' => 'required|between:3,50',
-        'prompt_description.*' => 'nullable|max:250'
+        'name'                 => 'required|unique:challenges|between:3,100',
+        'prompt_name'          => 'required',
+        'prompt_name.*'        => 'required|between:3,50',
+        'prompt_description.*' => 'nullable|max:250',
     ];
 
     /**
@@ -43,10 +40,10 @@ class Challenge extends Model
      * @var array
      */
     public static $updateRules = [
-        'name' => 'required|between:3,100',
-        'prompt_name' => 'required',
-        'prompt_name.*' => 'required|between:3,50',
-        'prompt_description.*' => 'nullable|max:250'
+        'name'                 => 'required|between:3,100',
+        'prompt_name'          => 'required',
+        'prompt_name.*'        => 'required|between:3,50',
+        'prompt_description.*' => 'nullable|max:250',
     ];
 
     /**********************************************************************************************
@@ -64,7 +61,8 @@ class Challenge extends Model
     /**
      * Scope a query to only include active challenges.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)
@@ -75,8 +73,9 @@ class Challenge extends Model
     /**
      * Scope a query to sort challenges in alphabetical order.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  bool                                   $reverse
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param bool                                  $reverse
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortAlphabetical($query, $reverse = false)
@@ -87,7 +86,8 @@ class Challenge extends Model
     /**
      * Scope a query to sort challenges by newest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortNewest($query)
@@ -98,7 +98,8 @@ class Challenge extends Model
     /**
      * Scope a query to sort challenges oldest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortOldest($query)
@@ -119,7 +120,10 @@ class Challenge extends Model
      */
     public function getDataAttribute()
     {
-        if(!isset($this->attributes['data'])) return null;
+        if (!isset($this->attributes['data'])) {
+            return null;
+        }
+
         return json_decode($this->attributes['data'], true);
     }
 
@@ -140,8 +144,10 @@ class Challenge extends Model
      */
     public function getDisplayNameAttribute()
     {
-        if(!$this->is_active) return $this->name;
+        if (!$this->is_active) {
+            return $this->name;
+        }
+
         return '<a href="'.$this->url.'">'.$this->name.'</a>';
     }
-
 }

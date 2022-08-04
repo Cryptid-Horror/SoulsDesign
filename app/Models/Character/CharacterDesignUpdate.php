@@ -5,10 +5,9 @@ namespace App\Models\Character;
 use App\Models\Currency\Currency;
 use App\Models\Feature\FeatureCategory;
 use App\Models\Model;
+use App\Traits\Commentable;
 use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-use App\Traits\Commentable;
 
 class CharacterDesignUpdate extends Model
 {
@@ -24,12 +23,12 @@ class CharacterDesignUpdate extends Model
         'character_id', 'status', 'user_id', 'staff_id',
         'comments', 'staff_comments', 'data', 'extension',
         'use_cropper', 'x0', 'x1', 'y0', 'y1',
-        'hash', 'species_id', 'subtype_id', 'rarity_id', 
+        'hash', 'species_id', 'subtype_id', 'rarity_id',
         'has_comments', 'has_image', 'has_addons', 'has_features',
         'submitted_at', 'ext_url', 'update_type', 'fullsize_hash',
         'approval_votes', 'rejection_votes',
         'title_id', 'title_data',
-        'genotype', 'phenotype', 'free_markings', 'adornments'
+        'genotype', 'phenotype', 'free_markings', 'adornments',
     ];
 
     /**
@@ -59,11 +58,11 @@ class CharacterDesignUpdate extends Model
      * @var array
      */
     public static $imageRules = [
-        'image' => 'nullable|mimes:jpeg,gif,png',
-        'thumbnail' => 'nullable|mimes:jpeg,gif,png',
-        'ext_url' => 'nullable|url',
-        'artist_url.*' => 'nullable|url',
-        'designer_url.*' => 'nullable|url'
+        'image'          => 'nullable|mimes:jpeg,gif,png',
+        'thumbnail'      => 'nullable|mimes:jpeg,gif,png',
+        'ext_url'        => 'nullable|url',
+        'artist_url.*'   => 'nullable|url',
+        'designer_url.*' => 'nullable|url',
     ];
 
     /**********************************************************************************************

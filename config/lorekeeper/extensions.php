@@ -36,9 +36,9 @@ return [
 
     // Item Entry Expansion - Mercury
     'item_entry_expansion' => [
-        'extra_fields' => 1,
+        'extra_fields'    => 1,
         'resale_function' => 1,
-        'loot_tables' => [
+        'loot_tables'     => [
             // Adds the ability to use either rarity criteria for items or item categories with rarity criteria in loot tables. Note that disabling this does not apply retroactively.
             'enable'              => 0,
             'alternate_filtering' => 0, // By default this uses more broadly compatible methods to filter by rarity. If you are on Dreamhost/know your DB software can handle searching in JSON, it's recommended to set this to 1 instead.
@@ -57,7 +57,6 @@ return [
         'default_recipient'         => 0, // 0 to default to the character's owner (if a user), 1 to default to the submission user.
     ],
 
-
     // Awards - Uri
     'awards' => [
         'user_featured'             => 1,   // Number of awards displayed prominently on the user profile
@@ -69,8 +68,8 @@ return [
 
     // Character Backgrounds - Uri
     'character_backgrounds' => [
-        'enabled' => 1, // 0 for disabled
-        'profiles_enabled' => 1 // 0 to disable this effect on Character Profiles (versus their masterlist page)
+        'enabled'          => 1, // 0 for disabled
+        'profiles_enabled' => 1, // 0 to disable this effect on Character Profiles (versus their masterlist page)
     ],
 
     // MYO Image Hide/Remove - Mercury

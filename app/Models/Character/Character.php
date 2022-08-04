@@ -2,45 +2,29 @@
 
 namespace App\Models\Character;
 
-use Config;
-use DB;
-use Settings;
-use Carbon\Carbon;
-use Notifications;
-use App\Models\Model;
-
-use App\Models\User\User;
-use App\Models\User\UserCharacterLog;
-
-use App\Models\Character\Character;
-use App\Models\Character\CharacterCategory;
-use App\Models\Character\CharacterTransfer;
-use App\Models\Character\CharacterBookmark;
-use App\Models\Character\CharacterLineage;
-use App\Models\Character\CharacterLineageBlacklist;
-
-use App\Models\Character\CharacterCurrency;
+use App\Models\Award\Award;
+use App\Models\Award\AwardLog;
 use App\Models\Currency\Currency;
 use App\Models\Currency\CurrencyLog;
 use App\Models\Item\Item;
 use App\Models\Item\ItemLog;
+
+use App\Models\Model;
+use App\Models\Stats\CountLog;
+use App\Models\Stats\ExpLog;
+use App\Models\Stats\LevelLog;
+use App\Models\Stats\StatTransferLog;
 use App\Models\Status\StatusEffect;
 use App\Models\Status\StatusEffectLog;
-use App\Models\Award\Award;
-use App\Models\Award\AwardLog;
-
 use App\Models\Submission\Submission;
 use App\Models\Submission\SubmissionCharacter;
-
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-use App\Models\Stats\ExpLog;
-use App\Models\Stats\StatTransferLog;
-use App\Models\Stats\LevelLog;
-use App\Models\Stats\CountLog;
-
-use App\Models\WorldExpansion\FactionRank;
+use App\Models\User\User;
+use App\Models\User\UserCharacterLog;
 use App\Models\WorldExpansion\FactionRankMember;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Notifications;
+use Settings;
 
 class Character extends Model
 {
@@ -67,9 +51,8 @@ class Character extends Model
         // 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
         // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
         // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug',
-        'deceased', 'deceased_at', 'has_grand_title'
+        'deceased', 'deceased_at', 'has_grand_title',
 
-        
     ];
 
     /**
@@ -80,18 +63,18 @@ class Character extends Model
     protected $table = 'characters';
 
     /**
-     * Whether the model contains timestamps to be saved and updated.
-     *
-     * @var string
-     */
-    public $timestamps = true;
-
-    /**
      * Dates on the model to convert to Carbon instances.
      *
      * @var array
      */
     protected $dates = ['transferrable_at', 'deceased_at', 'home_changed', 'faction_changed'];
+
+    /**
+     * Whether the model contains timestamps to be saved and updated.
+     *
+     * @var string
+     */
+    public $timestamps = true;
 
     /**
      * Accessors to append to the model.
@@ -107,21 +90,21 @@ class Character extends Model
      */
     public static $createRules = [
         'character_category_id' => 'required',
-        'rarity_id' => 'required',
-        'user_id' => 'nullable',
-        'number' => 'required',
-        'slug' => 'required|alpha_dash',
-        'description' => 'nullable',
-        'sale_value' => 'nullable',
-        'image' => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
-        'thumbnail' => 'nullable|mimes:jpeg,gif,png|max:20000',
-        'ext_url' => 'required_without:image|nullable|url|max:20000',
-        'sex' => 'required',
-        'soul_link_target' => 'required_with:soul_link_type',
+        'rarity_id'             => 'required',
+        'user_id'               => 'nullable',
+        'number'                => 'required',
+        'slug'                  => 'required|alpha_dash',
+        'description'           => 'nullable',
+        'sale_value'            => 'nullable',
+        'image'                 => 'required_without:ext_url|nullable|mimes:jpeg,gif,png|max:20000',
+        'thumbnail'             => 'nullable|mimes:jpeg,gif,png|max:20000',
+        'ext_url'               => 'required_without:image|nullable|url|max:20000',
+        'sex'                   => 'required',
+        'soul_link_target'      => 'required_with:soul_link_type',
         'soul_link_target_link' => 'nullable|url',
-        'genotype' => 'required',
-        'phenotype' => 'required',
-        'owner_url' => 'url|nullable'
+        'genotype'              => 'required',
+        'phenotype'             => 'required',
+        'owner_url'             => 'url|nullable',
 
     ];
 
@@ -206,7 +189,7 @@ class Character extends Model
     /**
      * Get character level.
      */
-    public function level() 
+    public function level()
     {
         return $this->hasOne('App\Models\Stats\Character\CharaLevels');
     }
@@ -214,7 +197,7 @@ class Character extends Model
     /**
      * Get characters stats.
      */
-    public function stats() 
+    public function stats()
     {
         return $this->hasMany('App\Models\Stats\Character\CharacterStat');
     }
@@ -263,7 +246,7 @@ class Character extends Model
     {
         return $this->hasMany('App\Models\User\UserPet', 'chara_id');
     }
-    
+
     public function gear()
     {
         return $this->hasMany('App\Models\User\UserGear', 'character_id');
@@ -289,6 +272,7 @@ class Character extends Model
     {
         return $this->belongsToMany('App\Models\Item\Item', 'character_items')->withPivot('count', 'data', 'updated_at', 'id')->whereNull('character_items.deleted_at');
     }
+
     /**
      * Get the character's awards.
      */
@@ -297,13 +281,12 @@ class Character extends Model
         return $this->belongsToMany('App\Models\Award\Award', 'character_awards')->withPivot('count', 'data', 'updated_at', 'id')->whereNull('character_awards.deleted_at');
     }
 
- 
     public function lineage()
     {
         return $this->hasOne('App\Models\Character\CharacterLineage', 'character_id');
     }
-     /* Get the character's class
-     */
+    /* Get the character's class
+    */
 
     public function class()
     {
@@ -316,16 +299,17 @@ class Character extends Model
     public function breedingPermissions()
     {
         return $this->hasMany('App\Models\Character\BreedingPermission', 'character_id');
-    /**
-     * Gets which folder the character currently resides in.
-     */
+        /*
+         * Gets which folder the character currently resides in.
+         */
     }
+
     public function folder()
     {
         return $this->belongsTo('App\Models\Character\CharacterFolder', 'folder_id');
     }
-    
-    /** 
+
+    /**
      * Get the character's skills.
      */
     public function skills()
@@ -426,8 +410,11 @@ class Character extends Model
      */
     public function getDisplayOwnerAttribute()
     {
-        if($this->user_id) return ($this->user ? $this->user->displayName : '(Deleted User)');
-        else return prettyProfileLink($this->owner_url);
+        if ($this->user_id) {
+            return $this->user ? $this->user->displayName : '(Deleted User)';
+        } else {
+            return prettyProfileLink($this->owner_url);
+        }
     }
 
     /**
@@ -463,8 +450,11 @@ class Character extends Model
      */
     public function getFullNameAttribute()
     {
-        if($this->is_myo_slot) return $this->name;
-        else return ($this->deceased ? '[DECEASED] ' : '').$this->slug.($this->title_name ? ': '.$this->title_name : ($this->name ? ': '.$this->name : ''));
+        if ($this->is_myo_slot) {
+            return $this->name;
+        } else {
+            return ($this->deceased ? '[DECEASED] ' : '').$this->slug.($this->title_name ? ': '.$this->title_name : ($this->name ? ': '.$this->name : ''));
+        }
     }
 
     /**
@@ -508,7 +498,7 @@ class Character extends Model
      */
     public function getRankImageUrlAttribute()
     {
-        return asset('images/' . $this->rank . '.png');
+        return asset('images/'.$this->rank.'.png');
     }
 
     /**
@@ -518,21 +508,25 @@ class Character extends Model
      */
     public function getSoulLinkAttribute()
     {
-        if($this->soul_link_type) {
+        if ($this->soul_link_type) {
             $result = 'Completed; Linked to '.$this->soul_link_type.' (';
-            if($this->soul_link_type == 'Dragon') $result = $result.Character::where('slug', $this->soul_link_target)->first()->displayName;
-            else {
-                if($this->soul_link_target_link) $result = $result.'<a href="'.$this->soul_link_target_link.'">'.$this->soul_link_target.'</a>';
-                else $result = $result.$this->soul_link_target;
+            if ($this->soul_link_type == 'Dragon') {
+                $result = $result.self::where('slug', $this->soul_link_target)->first()->displayName;
+            } else {
+                if ($this->soul_link_target_link) {
+                    $result = $result.'<a href="'.$this->soul_link_target_link.'">'.$this->soul_link_target.'</a>';
+                } else {
+                    $result = $result.$this->soul_link_target;
+                }
             }
             $result = $result.')';
+
             return $result;
-        }
-        else {
+        } else {
             return 'Incomplete';
         }
     }
-    
+
     public function getHomeSettingAttribute()
     {
         return intval(Settings::get('WE_character_locations'));
@@ -542,20 +536,29 @@ class Character extends Model
     {
         $setting = $this->homeSetting;
 
-
-        switch($setting) {
+        switch ($setting) {
             case 1:
-                if(!$this->user) return null;
-                elseif(!$this->user->home) return null;
-                else return $this->user->home->fullDisplayName;
+                if (!$this->user) {
+                    return null;
+                } elseif (!$this->user->home) {
+                    return null;
+                } else {
+                    return $this->user->home->fullDisplayName;
+                }
 
             case 2:
-                if(!$this->home) return null;
-                else return $this->home->fullDisplayName;
+                if (!$this->home) {
+                    return null;
+                } else {
+                    return $this->home->fullDisplayName;
+                }
 
             case 3:
-                if(!$this->home) return null;
-                else return $this->home->fullDisplayName;
+                if (!$this->home) {
+                    return null;
+                } else {
+                    return $this->home->fullDisplayName;
+                }
 
             default:
                 return null;
@@ -571,19 +574,29 @@ class Character extends Model
     {
         $setting = $this->factionSetting;
 
-        switch($setting) {
+        switch ($setting) {
             case 1:
-                if(!$this->user) return null;
-                elseif(!$this->user->faction) return null;
-                else return $this->user->faction->fullDisplayName;
+                if (!$this->user) {
+                    return null;
+                } elseif (!$this->user->faction) {
+                    return null;
+                } else {
+                    return $this->user->faction->fullDisplayName;
+                }
 
             case 2:
-                if(!$this->faction) return null;
-                else return $this->faction->fullDisplayName;
+                if (!$this->faction) {
+                    return null;
+                } else {
+                    return $this->faction->fullDisplayName;
+                }
 
             case 3:
-                if(!$this->faction) return null;
-                else return $this->faction->fullDisplayName;
+                if (!$this->faction) {
+                    return null;
+                } else {
+                    return $this->faction->fullDisplayName;
+                }
 
             default:
                 return null;
@@ -598,11 +611,17 @@ class Character extends Model
     {
         // A sorta hacky way to check for the rank
         $level = $this->level->current_level;
-        if(!$level || $level <= 1) return 'Fledgling';
-        elseif($level == 2) return 'Primal';
-        elseif($level == 3) return 'Ancient';
-        elseif($level >= 4) return 'Primordial';
-        else return 'Fledgling'; // The fallback
+        if (!$level || $level <= 1) {
+            return 'Fledgling';
+        } elseif ($level == 2) {
+            return 'Primal';
+        } elseif ($level == 3) {
+            return 'Ancient';
+        } elseif ($level >= 4) {
+            return 'Primordial';
+        } else {
+            return 'Fledgling';
+        } // The fallback
     }
 
     /**
@@ -610,15 +629,22 @@ class Character extends Model
      */
     public function getFactionRankAttribute()
     {
-        if(!isset($this->faction_id) || !$this->faction->ranks()->count()) return null;
-        if(FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()) return FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()->rank;
-        if($this->faction->ranks()->where('is_open', 1)->count()) {
+        if (!isset($this->faction_id) || !$this->faction->ranks()->count()) {
+            return null;
+        }
+        if (FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()) {
+            return FactionRankMember::where('member_type', 'character')->where('member_id', $this->id)->first()->rank;
+        }
+        if ($this->faction->ranks()->where('is_open', 1)->count()) {
             $standing = $this->getCurrencies(true)->where('id', Settings::get('WE_faction_currency'))->first();
-            if(!$standing) return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', 0)->first();
+            if (!$standing) {
+                return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', 0)->first();
+            }
+
             return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', '<=', $standing->quantity)->orderBy('breakpoint', 'DESC')->first();
         }
     }
-    
+
     /**
      * Gets the character's maximum number of breeding permissions.
      *
@@ -627,7 +653,10 @@ class Character extends Model
     public function getMaxBreedingPermissionsAttribute()
     {
         $currencies = $this->getCurrencies(true)->where('id', Settings::get('breeding_permission_currency'))->first();
-        if(!$currencies) return 0;
+        if (!$currencies) {
+            return 0;
+        }
+
         return $currencies->quantity;
     }
 
@@ -705,71 +734,87 @@ class Character extends Model
     /**
      * Get the character's exp logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getExpLogs($limit = 10)
     {
         $character = $this;
-        $query = ExpLog::where(function($query) use ($character) {
+        $query = ExpLog::where(function ($query) use ($character) {
             $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($character) {
+        })->orWhere(function ($query) use ($character) {
             $query->with('recipient')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the character's stat logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getStatLogs($limit = 10)
     {
         $character = $this;
-        $query = StatTransferLog::where(function($query) use ($character) {
+        $query = StatTransferLog::where(function ($query) use ($character) {
             $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($character) {
+        })->orWhere(function ($query) use ($character) {
             $query->with('recipient')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the character's level logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getLevelLogs($limit = 10)
     {
         $character = $this;
-        $query = LevelLog::where(function($query) use ($character) {
+        $query = LevelLog::where(function ($query) use ($character) {
             $query->with('recipient')->where('leveller_type', 'Character')->where('recipient_id', $character->id);
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
-     * Get the character's stat count logs
+     * Get the character's stat count logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getCountLogs($limit = 10)
     {
         $character = $this;
-        $query = CountLog::where(function($query) use ($character) {
+        $query = CountLog::where(function ($query) use ($character) {
             $query->with('sender')->where('sender_type', 'Character')->where('sender_id', $character->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($character) {
+        })->orWhere(function ($query) use ($character) {
             $query->where('character_id', $character->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -797,11 +842,11 @@ class Character extends Model
 
         $statuses = $statuses->orderBy('name', 'DESC')->get();
 
-        foreach($statuses as $status) {
-            $status->quantity = isset($owned[$status->id]) ? $owned[$status->id] : 0;
+        foreach ($statuses as $status) {
+            $status->quantity = $owned[$status->id] ?? 0;
         }
 
-        $statuses = $statuses->filter(function($status) {
+        $statuses = $statuses->filter(function ($status) {
             return $status->quantity > 0;
         });
 
@@ -833,19 +878,23 @@ class Character extends Model
     /**
      * Get the character's status effect logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getStatusEffectLogs($limit = 10)
     {
         $character = $this;
-        $query = StatusEffectLog::with('status')->where(function($query) use ($character) {
+        $query = StatusEffectLog::with('status')->where(function ($query) use ($character) {
             $query->with('recipient.rank')->where('sender_type', 'Character')->where('sender_id', $character->id)->where('log_type', '!=', 'Staff Grant');
-        })->orWhere(function($query) use ($character) {
+        })->orWhere(function ($query) use ($character) {
             $query->with('recipient.rank')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -875,21 +924,25 @@ class Character extends Model
     /**
      * Get the character's award logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getAwardLogs($limit = 10)
     {
         $character = $this;
 
-        $query = AwardLog::with('award')->where(function($query) use ($character) {
+        $query = AwardLog::with('award')->where(function ($query) use ($character) {
             $query->with('sender.rank')->where('sender_type', 'Character')->where('sender_id', $character->id)->where('log_type', '!=', 'Staff Grant');
-        })->orWhere(function($query) use ($character) {
+        })->orWhere(function ($query) use ($character) {
             $query->with('recipient.rank')->where('recipient_type', 'Character')->where('recipient_id', $character->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
 
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -912,6 +965,7 @@ class Character extends Model
     public function getCharacterLogs()
     {
         $query = CharacterLog::with('sender.rank')->where('character_id', $this->id)->where('log_type', '!=', 'Skill Awarded')->orderBy('id', 'DESC');
+
         return $query->paginate(30);
     }
 
@@ -923,6 +977,7 @@ class Character extends Model
     public function getCharacterSkillLogs()
     {
         $query = CharacterLog::with('sender.rank')->where('character_id', $this->id)->where('log_type', 'Skill Awarded')->orderBy('id', 'DESC');
+
         return $query->paginate(30);
     }
 
@@ -997,25 +1052,27 @@ class Character extends Model
     /**
      * Returns the character's lineage as an associative array of characters.
      *
-     * @param int       $depth      The recursion limit of the function, i.e. how far down the lineage it should search. Used mostly to track the number of recursions.
-     * 
+     * @param int $depth The recursion limit of the function, i.e. how far down the lineage it should search. Used mostly to track the number of recursions.
+     *
      * @return array
      */
-    public function lineage_old($depth=3)
+    public function lineage_old($depth = 3)
     {
         $sire_side = [
             'sire',
             'ss', 'sd',
-            'sss', 'ssd', 'sds', 'sdd'
+            'sss', 'ssd', 'sds', 'sdd',
         ];
-        $dam_side =[
+        $dam_side = [
             'dam',
             'ds', 'dd',
-            'dss', 'dsd', 'dds', 'ddd'
+            'dss', 'dsd', 'dds', 'ddd',
         ];
         $ancestor_titles = array_merge($sire_side, $dam_side);
         $lineage = array_combine($ancestor_titles, array_fill(0, 14, null));
-        if($depth <= 0) return $lineage;
+        if ($depth <= 0) {
+            return $lineage;
+        }
 
         // if($this->use_custom_lineage) {
         //     foreach($ancestor_titles as $title) {
@@ -1023,49 +1080,55 @@ class Character extends Model
         //     }
         // }
         //else {
-            $sire = isset($this['sire_slug']) ? Character::myo(0)->where('slug', $this['sire_slug'])->first() : null;
-            if($sire) {
-                $sire_lineage = $sire->lineage_old($depth-1);
-                $lineage['sire'] = $sire;
-                $lineage['ss'] = $sire_lineage['sire'];
-                $lineage['sd'] = $sire_lineage['dam'];
-                $lineage['sss'] = $sire_lineage['ss'];
-                $lineage['ssd'] = $sire_lineage['sd'];
-                $lineage['sds'] = $sire_lineage['ds'];
-                $lineage['sdd'] = $sire_lineage['dd'];
-            }
-            else {
-                foreach($sire_side as $title) {
-                    if(isset($this[$title.'_slug'])) $lineage[$title] = Character::myo(0)->where('slug', $this[$title.'_slug'])->first() ?? $this[$title.'_slug'];
-                    else $lineage[$title] = null;
+        $sire = isset($this['sire_slug']) ? self::myo(0)->where('slug', $this['sire_slug'])->first() : null;
+        if ($sire) {
+            $sire_lineage = $sire->lineage_old($depth - 1);
+            $lineage['sire'] = $sire;
+            $lineage['ss'] = $sire_lineage['sire'];
+            $lineage['sd'] = $sire_lineage['dam'];
+            $lineage['sss'] = $sire_lineage['ss'];
+            $lineage['ssd'] = $sire_lineage['sd'];
+            $lineage['sds'] = $sire_lineage['ds'];
+            $lineage['sdd'] = $sire_lineage['dd'];
+        } else {
+            foreach ($sire_side as $title) {
+                if (isset($this[$title.'_slug'])) {
+                    $lineage[$title] = self::myo(0)->where('slug', $this[$title.'_slug'])->first() ?? $this[$title.'_slug'];
+                } else {
+                    $lineage[$title] = null;
                 }
             }
-            $dam = isset($this['dam_slug']) ? Character::myo(0)->where('slug', $this['dam_slug'])->first() : null;
-            if($dam) {
-                $dam_lineage = $dam->lineage_old($depth-1);
-                $lineage['dam'] = $dam;
-                $lineage['ds'] = $dam_lineage['sire'];
-                $lineage['dd'] = $dam_lineage['dam'];
-                $lineage['dss'] = $dam_lineage['ss'];
-                $lineage['dsd'] = $dam_lineage['sd'];
-                $lineage['dds'] = $dam_lineage['ds'];
-                $lineage['ddd'] = $dam_lineage['dd'];
-            }
-            else {
-                foreach($dam_side as $title) {
-                    if(isset($this[$title.'_slug'])) $lineage[$title] = Character::myo(0)->where('slug', $this[$title.'_slug'])->first() ?? $this[$title.'_slug'];
-                    else $lineage[$title] = null;   
+        }
+        $dam = isset($this['dam_slug']) ? self::myo(0)->where('slug', $this['dam_slug'])->first() : null;
+        if ($dam) {
+            $dam_lineage = $dam->lineage_old($depth - 1);
+            $lineage['dam'] = $dam;
+            $lineage['ds'] = $dam_lineage['sire'];
+            $lineage['dd'] = $dam_lineage['dam'];
+            $lineage['dss'] = $dam_lineage['ss'];
+            $lineage['dsd'] = $dam_lineage['sd'];
+            $lineage['dds'] = $dam_lineage['ds'];
+            $lineage['ddd'] = $dam_lineage['dd'];
+        } else {
+            foreach ($dam_side as $title) {
+                if (isset($this[$title.'_slug'])) {
+                    $lineage[$title] = self::myo(0)->where('slug', $this[$title.'_slug'])->first() ?? $this[$title.'_slug'];
+                } else {
+                    $lineage[$title] = null;
                 }
             }
+        }
         //}
         return $lineage;
     }
-    
+
     /**
      * Finds the lineage blacklist level of this character.
      * 0 is no restriction at all
      * 1 is no ancestors but no children
-     * 2 is no lineage at all
+     * 2 is no lineage at all.
+     *
+     * @param mixed $maxLevel
      *
      * @return int
      */

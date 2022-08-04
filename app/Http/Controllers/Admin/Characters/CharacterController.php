@@ -3,22 +3,21 @@
 namespace App\Http\Controllers\Admin\Characters;
 
 use App\Http\Controllers\Controller;
+use App\Models\Character\BreedingPermission;
 use App\Models\Character\Character;
 use App\Models\Character\CharacterCategory;
-use App\Models\Character\CharacterLineageBlacklist;
 use App\Models\Character\CharacterClass;
+use App\Models\Character\CharacterLineageBlacklist;
+use App\Models\Character\CharacterTitle;
 use App\Models\Character\CharacterTransfer;
 use App\Models\Feature\Feature;
 use App\Models\Rarity;
-use App\Models\Character\CharacterTitle;
-use App\Models\User\User;
 use App\Models\Species\Species;
 use App\Models\Species\Subtype;
-use App\Models\Trade;
-use App\Models\User\UserItem;
 use App\Models\Stats\Character\Stat;
-use App\Models\Character\BreedingPermission;
-use App\Services\AwardCaseManager;
+use App\Models\Trade;
+use App\Models\User\User;
+use App\Models\User\UserItem;
 use App\Services\CharacterManager;
 use App\Services\TradeManager;
 use Auth;
@@ -57,16 +56,16 @@ class CharacterController extends Controller
     public function getCreateCharacter()
     {
         return view('admin.masterlist.create_character', [
-            'categories'  => CharacterCategory::orderBy('sort')->get(),
-            'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
+            'categories'       => CharacterCategory::orderBy('sort')->get(),
+            'userOptions'      => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
             'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
-            'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'titles' => ['0' => 'Select Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('sort', 'DESC')->pluck('title', 'id')->toArray(),
-            'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'subtypes' => ['0' => 'Pick a Species First'],
-            'features' => Feature::getDropdownItems(),
-            'isMyo' => false,
-            'stats' => Stat::orderBy('name')->get(),
+            'rarities'         => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'titles'           => ['0' => 'Select Title', 'custom' => 'Custom Title'] + CharacterTitle::orderBy('sort', 'DESC')->pluck('title', 'id')->toArray(),
+            'specieses'        => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'subtypes'         => ['0' => 'Pick a Species First'],
+            'features'         => Feature::getDropdownItems(),
+            'isMyo'            => false,
+            'stats'            => Stat::orderBy('name')->get(),
 
         ]);
     }
@@ -79,14 +78,14 @@ class CharacterController extends Controller
     public function getCreateMyo()
     {
         return view('admin.masterlist.create_character', [
-            'userOptions' => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
+            'userOptions'      => User::query()->orderBy('name')->pluck('name', 'id')->toArray(),
             'characterOptions' => CharacterLineageBlacklist::getAncestorOptions(),
-            'rarities' => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'specieses' => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
-            'subtypes' => ['0' => 'Pick a Species First'],
-            'features' => Feature::getDropdownItems(),
-            'isMyo' => true,
-            'stats' => Stat::orderBy('name')->get(),
+            'rarities'         => ['0' => 'Select Rarity'] + Rarity::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'specieses'        => ['0' => 'Select Species'] + Species::orderBy('sort', 'DESC')->pluck('name', 'id')->toArray(),
+            'subtypes'         => ['0' => 'Pick a Species First'],
+            'features'         => Feature::getDropdownItems(),
+            'isMyo'            => true,
+            'stats'            => Stat::orderBy('name')->get(),
         ]);
     }
 
@@ -122,7 +121,7 @@ class CharacterController extends Controller
             'x0', 'x1', 'y0', 'y1',
             'designer_id', 'designer_url',
             'artist_id', 'artist_url',
-            
+
             // hello darkness my old friend //
             'sire_id',           'sire_name',
             'sire_sire_id',      'sire_sire_name',
@@ -145,13 +144,13 @@ class CharacterController extends Controller
             'image', 'ext_url', 'thumbnail', 'image_description', 'adornments',
             'sex', 'gender_pronouns', 'genotype', 'phenotype', 'free_markings', 'slots_used', 'health_status',
             'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
-            'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
+            'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
             'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
             // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
             // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
             // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
             'name', 'title_name', 'nicknames', 'has_grand_title',
-            'stats'
+            'stats',
         ]);
         if ($character = $service->createCharacter($data, Auth::user())) {
             flash('Character created successfully.')->success();
@@ -205,16 +204,17 @@ class CharacterController extends Controller
             'image', 'ext_url', 'thumbnail', 'adornments',
             'sex', 'genotype', 'phenotype', 'slots_used', 'health_status',
             'ouroboros', 'taming', 'basic_aether', 'low_aether', 'high_aether',
-            'arena_ranking', 'soul_link_type', 'soul_link_target' , 'soul_link_target_link',
+            'arena_ranking', 'soul_link_type', 'soul_link_target', 'soul_link_target_link',
             'is_adopted', 'temperament', 'diet', /*'rank',*/ 'skills',
             // 'sire_slug', 'dam_slug', 'ss_slug', 'sd_slug', 'ds_slug', 'dd_slug',
             // 'sss_slug', 'ssd_slug', 'sds_slug', 'sdd_slug',
             // 'dss_slug', 'dsd_slug', 'dds_slug', 'ddd_slug', 'use_custom_lineage',
             'has_grand_title',
-            'image', 'thumbnail', 'stats'
+            'image', 'thumbnail', 'stats',
             ]);
         if ($character = $service->createCharacter($data, Auth::user(), true)) {
             flash('Registered Dragon slot created successfully.')->success();
+
             return redirect()->to($character->url);
         } else {
             foreach ($service->errors()->getMessages()['error'] as $error) {
@@ -498,42 +498,50 @@ class CharacterController extends Controller
     /**
      * Shows the use breeding permission modal.
      *
-     * @param  string  $slug
-     * @param  int     $id
+     * @param string $slug
+     * @param int    $id
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getUseBreedingPermission($slug, $id)
     {
         $this->character = Character::where('slug', $slug)->first();
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
 
         return view('character.admin._use_breeding_permission', [
-            'character' => $this->character,
-            'breedingPermission' => BreedingPermission::find($id)
+            'character'          => $this->character,
+            'breedingPermission' => BreedingPermission::find($id),
         ]);
     }
 
     /**
      * Marks a breeding permission as used.
      *
-     * @param  \Illuminate\Http\Request       $request
-     * @param  App\Services\CharacterManager  $service
-     * @param  string                         $slug
-     * @param  int                            $id
+     * @param App\Services\CharacterManager $service
+     * @param string                        $slug
+     * @param int                           $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postUseBreedingPermission(Request $request, CharacterManager $service, $slug, $id)
     {
         $this->character = Character::where('slug', $slug)->first();
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
 
         if ($service->useBreedingPermission($this->character, BreedingPermission::find($id), Auth::user())) {
             flash('Breeding permission marked used successfully.')->success();
+
             return redirect()->back();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 
@@ -809,6 +817,7 @@ class CharacterController extends Controller
                 }
             }
         }
+
         return view('admin.masterlist.character_trades', [
             'trades'             => $trades->orderBy('id', 'DESC')->paginate(20),
             'tradesQueue'        => Settings::get('open_transfers_queue'),
@@ -886,7 +895,6 @@ class CharacterController extends Controller
     /**
      * Attempts to show a link to character.
      *
-     * @param  string  $slug
      * @return App\Models\Character
      */
     public function getCharacterInfo(Request $request)
@@ -894,30 +902,33 @@ class CharacterController extends Controller
         $ancestor_titles = [
             'sire', 'dam',
             'ss', 'sd', 'ds', 'dd',
-            'sss', 'ssd', 'sds', 'sdd', 'dss', 'dsd', 'dds', 'ddd'
+            'sss', 'ssd', 'sds', 'sdd', 'dss', 'dsd', 'dds', 'ddd',
         ];
         $is_custom = $request->custom == 'true';
         $lineage = array_combine($ancestor_titles, array_fill(0, 14, 'Unknown'));
-        if($is_custom) {
-            foreach($ancestor_titles as $title) {
-                if($request[$title] == 'undefined' || $request[$title] == '') {
+        if ($is_custom) {
+            foreach ($ancestor_titles as $title) {
+                if ($request[$title] == 'undefined' || $request[$title] == '') {
                     $lineage[$title] = 'Unknown';
-                }
-                else {
+                } else {
                     $lineage[$title] = Character::myo(0)->where('slug', $request[$title])->first();
-                    if($lineage[$title]) $lineage[$title] = $lineage[$title]->display_name;
-                    else $lineage[$title] = $request[$title].add_help('This is a legacy character.');
+                    if ($lineage[$title]) {
+                        $lineage[$title] = $lineage[$title]->display_name;
+                    } else {
+                        $lineage[$title] = $request[$title].add_help('This is a legacy character.');
+                    }
                 }
             }
-        }
-        else {
-            if($request['sire'] == 'undefined' || $request['sire'] == '') {
-                if($request['dam'] != 'undefined' && $request['dam'] != '') $lineage['sire'] = 'Sire needs to be set.';
-                else $lineage['sire'] = 'Unknown';
-            }
-            else {
+        } else {
+            if ($request['sire'] == 'undefined' || $request['sire'] == '') {
+                if ($request['dam'] != 'undefined' && $request['dam'] != '') {
+                    $lineage['sire'] = 'Sire needs to be set.';
+                } else {
+                    $lineage['sire'] = 'Unknown';
+                }
+            } else {
                 $sire = Character::myo(0)->where('slug', $request['sire'])->first();
-                if($sire) {
+                if ($sire) {
                     $sire_lineage = $sire->lineage();
                     $lineage['sire'] = $sire->display_name;
                     $lineage['ss'] = $sire_lineage['sire'] ? $sire_lineage['sire']->display_name ?? $sire_lineage['sire'] : 'Unknown';
@@ -926,18 +937,19 @@ class CharacterController extends Controller
                     $lineage['ssd'] = $sire_lineage['sd'] ? $sire_lineage['sd']->display_name ?? $sire_lineage['sd'] : 'Unknown';
                     $lineage['sds'] = $sire_lineage['ds'] ? $sire_lineage['ds']->display_name ?? $sire_lineage['ds'] : 'Unknown';
                     $lineage['sdd'] = $sire_lineage['dd'] ? $sire_lineage['dd']->display_name ?? $sire_lineage['dd'] : 'Unknown';
-                }
-                else {
+                } else {
                     $lineage['sire'] = $request['sire'].' does not exist.';
                 }
             }
-            if($request['dam'] == 'undefined' || $request['dam'] == '') {
-                if($request['sire'] != 'undefined' && $request['sire'] != '') $lineage['dam'] = 'Dam needs to be set.';
-                else $lineage['dam'] = 'Unknown';
-            }
-            else {
+            if ($request['dam'] == 'undefined' || $request['dam'] == '') {
+                if ($request['sire'] != 'undefined' && $request['sire'] != '') {
+                    $lineage['dam'] = 'Dam needs to be set.';
+                } else {
+                    $lineage['dam'] = 'Unknown';
+                }
+            } else {
                 $dam = Character::myo(0)->where('slug', $request['dam'])->first();
-                if($dam) {
+                if ($dam) {
                     $dam_lineage = $dam->lineage();
                     $lineage['dam'] = $dam->display_name;
                     $lineage['ds'] = $dam_lineage['sire'] ? $dam_lineage['sire']->display_name ?? $dam_lineage['sire'] : 'Unknown';
@@ -946,46 +958,53 @@ class CharacterController extends Controller
                     $lineage['dsd'] = $dam_lineage['sd'] ? $dam_lineage['sd']->display_name ?? $dam_lineage['sd'] : 'Unknown';
                     $lineage['dds'] = $dam_lineage['ds'] ? $dam_lineage['ds']->display_name ?? $dam_lineage['ds'] : 'Unknown';
                     $lineage['ddd'] = $dam_lineage['dd'] ? $dam_lineage['dd']->display_name ?? $dam_lineage['dd'] : 'Unknown';
-                }
-                else {
+                } else {
                     $lineage['dam'] = $request['dam'].' does not exist.';
                 }
             }
         }
+
         return $lineage;
-        }
+    }
 
     /************************************************************************************
      * CLAYMORE
      ************************************************************************************/
-    
+
     /**
-     * Changes / assigns the character class
-     * @param  \Illuminate\Http\Request       $request
-     * @param  int                            $id
-     * @param App\Services\CharacterManager  $service
+     * Changes / assigns the character class.
+     *
+     * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function getClassModal($id)
     {
         $this->character = Character::find($id);
-        if(!$this->character) abort(404);
+        if (!$this->character) {
+            abort(404);
+        }
+
         return view('admin.claymores.classes._modal', [
-            'classes' => ['none' => 'No Class'] + CharacterClass::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
-            'character' => $this->character
+            'classes'   => ['none' => 'No Class'] + CharacterClass::orderBy('name', 'DESC')->pluck('name', 'id')->toArray(),
+            'character' => $this->character,
         ]);
     }
 
     public function postClassModal($id, Request $request, CharacterManager $service)
     {
         $this->character = Character::find($id);
-        if(!$this->character) abort(404);
-        if($service->editClass($request->only(['class_id']), $this->character, Auth::user())) {
+        if (!$this->character) {
+            abort(404);
+        }
+        if ($service->editClass($request->only(['class_id']), $this->character, Auth::user())) {
             flash('Character class editted successfully.')->success();
+        } else {
+            foreach ($service->errors()->getMessages()['error'] as $error) {
+                flash($error)->error();
+            }
         }
-        else {
-            foreach($service->errors()->getMessages()['error'] as $error) flash($error)->error();
-        }
+
         return redirect()->back();
     }
 }

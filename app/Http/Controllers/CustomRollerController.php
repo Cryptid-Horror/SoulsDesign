@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
 class CustomRollerController extends Controller
 {
     /*
@@ -17,6 +15,8 @@ class CustomRollerController extends Controller
 
     /**
      * Shows the specified guide page.
+     *
+     * @param mixed $file
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

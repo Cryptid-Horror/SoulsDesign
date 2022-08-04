@@ -2,19 +2,13 @@
 
 namespace App\Models\WorldExpansion;
 
-use DB;
 use Auth;
-use Config;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\User\User;
-use App\Models\WorldExpansion\LocationType;
-
 class Location extends Model
 {
-
     use SoftDeletes;
 
     /**
@@ -23,11 +17,10 @@ class Location extends Model
      * @var array
      */
     protected $fillable = [
-        'name','description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension',
+        'name', 'description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension',
         'parent_id', 'type_id', 'is_active', 'display_style', 'is_character_home', 'is_user_home',
 
     ];
-
 
     /**
      * The table associated with the model.
@@ -44,11 +37,11 @@ class Location extends Model
      * @var array
      */
     public static $createRules = [
-        'name' => 'required|unique:locations|between:3,25',
+        'name'        => 'required|unique:locations|between:3,25',
         'description' => 'nullable',
-        'summary' => 'nullable|max:300',
-        'image' => 'mimes:png,gif,jpg,jpeg',
-        'image_th' => 'mimes:png,gif,jpg,jpeg',
+        'summary'     => 'nullable|max:300',
+        'image'       => 'mimes:png,gif,jpg,jpeg',
+        'image_th'    => 'mimes:png,gif,jpg,jpeg',
     ];
 
     /**
@@ -57,13 +50,12 @@ class Location extends Model
      * @var array
      */
     public static $updateRules = [
-        'name' => 'required|between:3,25',
+        'name'        => 'required|between:3,25',
         'description' => 'nullable',
-        'summary' => 'nullable|max:300',
-        'image' => 'mimes:png,gif,jpg,jpeg',
-        'image_th' => 'mimes:png,gif,jpg,jpeg',
+        'summary'     => 'nullable|max:300',
+        'image'       => 'mimes:png,gif,jpg,jpeg',
+        'image_th'    => 'mimes:png,gif,jpg,jpeg',
     ];
-
 
     /**********************************************************************************************
 
@@ -108,7 +100,7 @@ class Location extends Model
      */
     public function attachments()
     {
-        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attacher_id')->where('attacher_type',class_basename($this));
+        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attacher_id')->where('attacher_type', class_basename($this));
     }
 
     /**
@@ -116,7 +108,7 @@ class Location extends Model
      */
     public function attachers()
     {
-        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attachment_id')->where('attachment_type',class_basename($this));
+        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attachment_id')->where('attachment_type', class_basename($this));
     }
 
     /**********************************************************************************************
@@ -128,16 +120,18 @@ class Location extends Model
     /**
      * Scope a query to only include visible posts.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeVisible($query)
     {
-        if(!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) return $query->where('is_active', 1);
-        else return $query;
+        if (!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) {
+            return $query->where('is_active', 1);
+        } else {
+            return $query;
+        }
     }
-
-
 
     /**********************************************************************************************
 
@@ -152,8 +146,11 @@ class Location extends Model
      */
     public function getDisplayNameAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-location">'.$this->name.'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-location text-muted">'.$this->name.'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-location">'.$this->name.'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-location text-muted">'.$this->name.'</a></s>';
+        }
     }
 
     /**
@@ -163,10 +160,12 @@ class Location extends Model
      */
     public function getFullDisplayNameAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-location">'.$this->style.'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-location text-muted">'.$this->style.'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-location">'.$this->style.'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-location text-muted">'.$this->style.'</a></s>';
+        }
     }
-
 
     /**
      * Displays the location's name, linked to its purchase page.
@@ -175,8 +174,11 @@ class Location extends Model
      */
     public function getFullDisplayNameUCAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-location">'.ucfirst($this->style).'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-location text-muted">'.ucfirst($this->style).'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-location">'.ucfirst($this->style).'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-location text-muted">'.ucfirst($this->style).'</a></s>';
+        }
     }
 
     /**
@@ -199,8 +201,6 @@ class Location extends Model
         return public_path($this->imageDirectory);
     }
 
-
-
     /**
      * Gets the file name of the model's image.
      *
@@ -208,9 +208,8 @@ class Location extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '-image.' . $this->image_extension;
+        return $this->id.'-image.'.$this->image_extension;
     }
-
 
     /**
      * Gets the file name of the model's thumbnail image.
@@ -219,7 +218,7 @@ class Location extends Model
      */
     public function getThumbFileNameAttribute()
     {
-        return $this->id . '-th.'. $this->thumb_extension;
+        return $this->id.'-th.'.$this->thumb_extension;
     }
 
     /**
@@ -229,8 +228,11 @@ class Location extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (!$this->image_extension) return null;
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
+        if (!$this->image_extension) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
     }
 
     /**
@@ -240,8 +242,11 @@ class Location extends Model
      */
     public function getThumbUrlAttribute()
     {
-        if (!$this->thumb_extension) return null;
-        return asset($this->imageDirectory . '/' . $this->thumbFileName);
+        if (!$this->thumb_extension) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->thumbFileName);
     }
 
     /**
@@ -262,13 +267,13 @@ class Location extends Model
     public function getDisplayStylesAttribute()
     {
         return
-            array(
+            [
                 0 => $this->name,
                 1 => 'the '.$this->type->name.' of '.$this->name,
                 2 => $this->type->name.' of '.$this->name,
                 3 => $this->name.' '.$this->type->name,
                 4 => $this->type->name.' '.$this->name,
-            );
+            ];
     }
 
     /**
@@ -288,10 +293,12 @@ class Location extends Model
      */
     public function getStyleParentAttribute()
     {
-        if($this->parent_id) return $this->style . ' (' . $this->parent->style . ')';
-        else return $this->style;
+        if ($this->parent_id) {
+            return $this->style.' ('.$this->parent->style.')';
+        } else {
+            return $this->style;
+        }
     }
-
 
     /**********************************************************************************************
 
@@ -299,24 +306,26 @@ class Location extends Model
 
     **********************************************************************************************/
 
-
-
     /**
      * Scope a query to sort items in category order.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortLocationType($query)
     {
         $ids = LocationType::orderBy('sort', 'DESC')->pluck('id')->toArray();
+
         return count($ids) ? $query->orderByRaw(DB::raw('FIELD(type_id, '.implode(',', $ids).')')) : $query;
     }
+
     /**
      * Scope a query to sort items in alphabetical order.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  bool                                   $reverse
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param bool                                  $reverse
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortAlphabetical($query, $reverse = false)
@@ -327,7 +336,8 @@ class Location extends Model
     /**
      * Scope a query to sort items by newest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortNewest($query)
@@ -338,14 +348,14 @@ class Location extends Model
     /**
      * Scope a query to sort features oldest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortOldest($query)
     {
         return $query->orderBy('id');
     }
-
 
     public static function getLocationsByType()
     {
@@ -355,7 +365,7 @@ class Location extends Model
             if (!$sorted_location_types->contains('Miscellaneous')) {
                 $sorted_location_types->push('Miscellaneous');
             }
-            $grouped['Miscellaneous'] = $grouped['Miscellaneous'] ?? [] + $grouped[''];
+            $grouped['Miscellaneous'] ??= [] + $grouped[''];
         }
         $sorted_location_types = $sorted_location_types->filter(function ($value, $key) use ($grouped) {
             return in_array($value, array_keys($grouped), true);
@@ -373,6 +383,4 @@ class Location extends Model
 
         return $grouped;
     }
-
-
 }

@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use Carbon\Carbon;
+use Illuminate\Console\Command;
+
 class RestockShops extends Command
 {
     /**
@@ -22,8 +23,6 @@ class RestockShops extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -38,23 +37,23 @@ class RestockShops extends Command
     public function handle()
     {
         $stocks = \App\Models\Shop\ShopStock::where('is_limited_stock', 1)->where('restock', 1)->get();
-        foreach($stocks as $stock) {
-            if($stock->restock_interval == 1) {
+        foreach ($stocks as $stock) {
+            if ($stock->restock_interval == 1) {
                 $stock->quantity = $stock->range ? mt_rand(1, $stock->restock_quantity) : $stock->restock_quantity;
                 $stock->save();
-            } elseif($stock->restock_interval == 2) {
+            } elseif ($stock->restock_interval == 2) {
                 // check if it's start of week
                 $now = Carbon::now();
                 $day = $now->dayOfWeek;
-                if($day == 1) {
+                if ($day == 1) {
                     $stock->quantity = $stock->range ? mt_rand(1, $stock->restock_quantity) : $stock->restock_quantity;
                     $stock->save();
                 }
-            } elseif($stock->restock_interval == 3) {
+            } elseif ($stock->restock_interval == 3) {
                 // check if it's start of month
                 $now = Carbon::now();
                 $day = $now->day;
-                if($day == 1) {
+                if ($day == 1) {
                     $stock->quantity = $stock->range ? mt_rand(1, $stock->restock_quantity) : $stock->restock_quantity;
                     $stock->save();
                 }

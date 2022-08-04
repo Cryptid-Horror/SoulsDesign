@@ -8,8 +8,6 @@ class CreateChallengeTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -21,7 +19,7 @@ class CreateChallengeTables extends Migration
 
             $table->text('description')->nullable()->default(null);
             $table->text('parsed_description')->nullable()->default(null);
-			$table->text('rules')->nullable()->default(null);
+            $table->text('rules')->nullable()->default(null);
             $table->boolean('is_active')->default(1);
 
             $table->text('data')->nullable()->default(null);
@@ -35,7 +33,7 @@ class CreateChallengeTables extends Migration
             $table->integer('staff_id')->unsigned()->nullable()->default(null);
             $table->integer('challenge_id')->unsigned();
 
-			$table->enum('status', ['Active', 'Old'])->default('Active');
+            $table->enum('status', ['Active', 'Old'])->default('Active');
             $table->text('staff_comments')->nullable()->default(null);
 
             $table->text('data')->nullable()->default(null);
@@ -46,8 +44,6 @@ class CreateChallengeTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -2,51 +2,39 @@
 
 namespace App\Models\User;
 
-use Auth;
-use Config;
-use Cache;
-use Settings;
-use Carbon\Carbon;
-
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Models\Award\AwardLog;
 use App\Models\Character\Character;
 use App\Models\Character\CharacterBookmark;
+use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Character\CharacterImageCreator;
-use App\Models\Currency\Currency;
-use App\Models\Currency\CurrencyLog;
-
-use App\Models\Item\ItemLog;
-use App\Models\Stats\ExpLog;
-use App\Models\Stats\StatTransferLog;
-use App\Models\Stats\LevelLog;
-use App\Models\Pet\PetLog;
+use App\Models\Character\CharacterTransfer;
 use App\Models\Claymore\GearLog;
 use App\Models\Claymore\WeaponLog;
-use App\Models\Shop\ShopLog;
-use App\Models\Award\AwardLog;
-use App\Models\User\UserCharacterLog;
-use App\Models\Submission\Submission;
-use App\Models\Submission\SubmissionCharacter;
-use App\Models\Gallery\GallerySubmission;
-use App\Models\Gallery\GalleryCollaborator;
-use App\Models\Gallery\GalleryFavorite;
-use App\Models\WorldExpansion\FactionRank;
-use App\Models\WorldExpansion\FactionRankMember;
 use App\Models\Comment;
+use App\Models\Currency\Currency;
+use App\Models\Currency\CurrencyLog;
 use App\Models\Forum;
-use App\Traits\Commenter;
-use App\Models\Recipe\Recipe;
-use App\Models\User\UserRecipeLog;
-
-use App\Models\Character\CharacterDesignUpdate;
-use App\Models\Character\CharacterTransfer;
-use App\Models\Trade;
-
+use App\Models\Gallery\GalleryCollaborator;
+use App\Models\Item\ItemLog;
+use App\Models\Pet\PetLog;
 use App\Models\Rank\RankPower;
-
+use App\Models\Recipe\Recipe;
+use App\Models\Shop\ShopLog;
+use App\Models\Stats\ExpLog;
+use App\Models\Stats\LevelLog;
+use App\Models\Stats\StatTransferLog;
+use App\Models\Submission\Submission;
+use App\Models\Trade;
+use App\Models\WorldExpansion\FactionRankMember;
+use App\Traits\Commenter;
+use Auth;
+use Cache;
+use Carbon\Carbon;
+use Config;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Settings;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -103,7 +91,6 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string
      */
     public $timestamps = true;
-
 
     /**********************************************************************************************
 
@@ -230,8 +217,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Models\Item\Item', 'user_items')->withPivot('count', 'data', 'updated_at', 'id')->whereNull('user_items.deleted_at');
     }
-    
-        /**
+
+    /**
      * Get the user's awards.
      */
     public function awards()
@@ -278,7 +265,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Models\Claymore\Weapon', 'user_weapons')->withPivot('data', 'updated_at', 'id', 'character_id', 'has_image')->whereNull('user_weapons.deleted_at');
     }
-    
+
     /**
      * Get all of the users character bookmarks.
      */
@@ -288,7 +275,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-
      * Get the user's gears.
      */
     public function gears()
@@ -303,7 +289,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\User\Wishlist')->where('user_id', $this->id);
     }
-    
+
     /**
      * Get all of the user's challenge logs.
      */
@@ -313,14 +299,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * gets all the user's character folders
+     * gets all the user's character folders.
      */
     public function folders()
     {
         return $this->hasMany('App\Models\Character\CharacterFolder');
     }
 
-     /**   
+    /**
      * Gets all of a user's liked / disliked comments.
      */
     public function commentLikes()
@@ -512,19 +498,24 @@ class User extends Authenticatable implements MustVerifyEmail
     // Check if user is online and display When they were online
     public function isOnline()
     {
-      $onlineStatus = Cache::has('user-is-online-' . $this->id);
-      $online = Carbon::createFromTimeStamp(strtotime(Cache::get('user-is-online-time-' . $this->id)));
-      $onlineTime = $online->diffForHumans(['parts' => 2, 'join' => true, 'short' => true]);
-      $onlineYear = $online->year;
+        $onlineStatus = Cache::has('user-is-online-'.$this->id);
+        $online = Carbon::createFromTimeStamp(strtotime(Cache::get('user-is-online-time-'.$this->id)));
+        $onlineTime = $online->diffForHumans(['parts' => 2, 'join' => true, 'short' => true]);
+        $onlineYear = $online->year;
 
-      if($onlineYear < Carbon::now()->year-10) $onlineTime = "a long time ago";
+        if ($onlineYear < Carbon::now()->year - 10) {
+            $onlineTime = 'a long time ago';
+        }
 
-      if($onlineStatus) $result = '<i class="fas fa-circle text-success mr-2" data-toggle="tooltip" title="This user is online."></i>';
-      else  $result = '<i class="far fa-circle text-secondary mr-2" data-toggle="tooltip" title="This user was last online ' . $onlineTime .'."></i>';
+        if ($onlineStatus) {
+            $result = '<i class="fas fa-circle text-success mr-2" data-toggle="tooltip" title="This user is online."></i>';
+        } else {
+            $result = '<i class="far fa-circle text-secondary mr-2" data-toggle="tooltip" title="This user was last online '.$onlineTime.'."></i>';
+        }
 
-      return $result;
+        return $result;
     }
-    
+
     /**
      * Checks if the user can change location.
      *
@@ -532,40 +523,67 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getCanChangeLocationAttribute()
     {
-        if(!isset($this->home_changed)) return true;
+        if (!isset($this->home_changed)) {
+            return true;
+        }
         $limit = Settings::get('WE_change_timelimit');
-        switch($limit){
+        switch ($limit) {
             case 0:
                 return true;
             case 1:
                 // Yearly
-                if(now()->year == $this->home_changed->year) return false;
-                else return true;
+                if (now()->year == $this->home_changed->year) {
+                    return false;
+                } else {
+                    return true;
+                }
 
             case 2:
                 // Quarterly
-                if(now()->year != $this->home_changed->year) return true;
-                if(now()->quarter != $this->home_changed->quarter) return true;
-                else return false;
+                if (now()->year != $this->home_changed->year) {
+                    return true;
+                }
+                if (now()->quarter != $this->home_changed->quarter) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 3:
                 // Monthly
-                if(now()->year != $this->home_changed->year) return true;
-                if(now()->month != $this->home_changed->month) return true;
-                else return false;
+                if (now()->year != $this->home_changed->year) {
+                    return true;
+                }
+                if (now()->month != $this->home_changed->month) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 4:
                 // Weekly
-                if(now()->year != $this->home_changed->year) return true;
-                if(now()->week != $this->home_changed->week) return true;
-                else return false;
+                if (now()->year != $this->home_changed->year) {
+                    return true;
+                }
+                if (now()->week != $this->home_changed->week) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 5:
                 // Daily
-                if(now()->year != $this->home_changed->year) return true;
-                if(now()->month != $this->home_changed->month) return true;
-                if(now()->day != $this->home_changed->day) return true;
-                else return false;
+                if (now()->year != $this->home_changed->year) {
+                    return true;
+                }
+                if (now()->month != $this->home_changed->month) {
+                    return true;
+                }
+                if (now()->day != $this->home_changed->day) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             default:
                 return true;
@@ -626,40 +644,67 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getCanChangeFactionAttribute()
     {
-        if(!isset($this->faction_changed)) return true;
+        if (!isset($this->faction_changed)) {
+            return true;
+        }
         $limit = Settings::get('WE_change_timelimit');
-        switch($limit){
+        switch ($limit) {
             case 0:
                 return true;
             case 1:
                 // Yearly
-                if(now()->year == $this->faction_changed->year) return false;
-                else return true;
+                if (now()->year == $this->faction_changed->year) {
+                    return false;
+                } else {
+                    return true;
+                }
 
             case 2:
                 // Quarterly
-                if(now()->year != $this->faction_changed->year) return true;
-                if(now()->quarter != $this->faction_changed->quarter) return true;
-                else return false;
+                if (now()->year != $this->faction_changed->year) {
+                    return true;
+                }
+                if (now()->quarter != $this->faction_changed->quarter) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 3:
                 // Monthly
-                if(now()->year != $this->faction_changed->year) return true;
-                if(now()->month != $this->faction_changed->month) return true;
-                else return false;
+                if (now()->year != $this->faction_changed->year) {
+                    return true;
+                }
+                if (now()->month != $this->faction_changed->month) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 4:
                 // Weekly
-                if(now()->year != $this->faction_changed->year) return true;
-                if(now()->week != $this->faction_changed->week) return true;
-                else return false;
+                if (now()->year != $this->faction_changed->year) {
+                    return true;
+                }
+                if (now()->week != $this->faction_changed->week) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             case 5:
                 // Daily
-                if(now()->year != $this->faction_changed->year) return true;
-                if(now()->month != $this->faction_changed->month) return true;
-                if(now()->day != $this->faction_changed->day) return true;
-                else return false;
+                if (now()->year != $this->faction_changed->year) {
+                    return true;
+                }
+                if (now()->month != $this->faction_changed->month) {
+                    return true;
+                }
+                if (now()->day != $this->faction_changed->day) {
+                    return true;
+                } else {
+                    return false;
+                }
 
             default:
                 return true;
@@ -671,11 +716,18 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getFactionRankAttribute()
     {
-        if(!isset($this->faction_id) || !$this->faction->ranks()->count()) return null;
-        if(FactionRankMember::where('member_type', 'user')->where('member_id', $this->id)->first()) return FactionRankMember::where('member_type', 'user')->where('member_id', $this->id)->first()->rank;
-        if($this->faction->ranks()->where('is_open', 1)->count()) {
+        if (!isset($this->faction_id) || !$this->faction->ranks()->count()) {
+            return null;
+        }
+        if (FactionRankMember::where('member_type', 'user')->where('member_id', $this->id)->first()) {
+            return FactionRankMember::where('member_type', 'user')->where('member_id', $this->id)->first()->rank;
+        }
+        if ($this->faction->ranks()->where('is_open', 1)->count()) {
             $standing = $this->getCurrencies(true)->where('id', Settings::get('WE_faction_currency'))->first();
-            if(!$standing) return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', 0)->first();
+            if (!$standing) {
+                return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', 0)->first();
+            }
+
             return $this->faction->ranks()->where('is_open', 1)->where('breakpoint', '<=', $standing->quantity)->orderBy('breakpoint', 'DESC')->first();
         }
     }
@@ -687,19 +739,25 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getForumCountAttribute()
     {
-        return Comment::where('commentable_type','App\Models\Forum')->where('commenter_id',$this->id)->count();
+        return Comment::where('commentable_type', 'App\Models\Forum')->where('commenter_id', $this->id)->count();
     }
+
     /**
-     * Check if the user can register for a new challenge
+     * Check if the user can register for a new challenge.
      *
      * @return bool
      */
     public function getCanChallengeAttribute()
     {
         // Check that registrations are currently open
-        if(Settings::get('challenges_concurrent') < 1) return false;
+        if (Settings::get('challenges_concurrent') < 1) {
+            return false;
+        }
         // Check if user has fewer active challenges than the current cap
-        if($this->challengeLogs()->active()->count() < Settings::get('challenges_concurrent')) return true;
+        if ($this->challengeLogs()->active()->count() < Settings::get('challenges_concurrent')) {
+            return true;
+        }
+
         return false;
     }
 
@@ -724,15 +782,22 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Checks if the user can see and visit a certain forum.
      *
+     * @param mixed $id
+     *
      * @return bool
      */
     public function canVisitForum($id)
     {
         $forum = Forum::find($id);
-        if($this->isStaff) return true;
-        elseif(isset($forum->role_limit) && $this->rank_id == $forum->role_limit) return true;
-        elseif(!isset($forum->role_limit) && !$forum->staff_only) return true;
-        else return false;
+        if ($this->isStaff) {
+            return true;
+        } elseif (isset($forum->role_limit) && $this->rank_id == $forum->role_limit) {
+            return true;
+        } elseif (!isset($forum->role_limit) && !$forum->staff_only) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -810,53 +875,65 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's exp logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getExpLogs($limit = 10)
     {
         $user = $this;
-        $query = ExpLog::where(function($query) use ($user) {
+        $query = ExpLog::where(function ($query) use ($user) {
             $query->with('sender')->where('sender_type', 'User')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_type', 'User')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's stat logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getStatLogs($limit = 10)
     {
         $user = $this;
-        $query = StatTransferLog::where(function($query) use ($user) {
+        $query = StatTransferLog::where(function ($query) use ($user) {
             $query->with('sender')->where('sender_type', 'User')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_type', 'User')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's level logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getLevelLogs($limit = 10)
     {
         $user = $this;
-        $query = LevelLog::where(function($query) use ($user) {
+        $query = LevelLog::where(function ($query) use ($user) {
             $query->with('recipient')->where('leveller_type', 'User')->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -880,95 +957,115 @@ class User extends Authenticatable implements MustVerifyEmail
             return $query->paginate(30);
         }
     }
-    
+
     /**
      * Get the user's award logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getAwardLogs($limit = 10)
     {
         $user = $this;
-        $query = AwardLog::with('award')->where(function($query) use ($user) {
+        $query = AwardLog::with('award')->where(function ($query) use ($user) {
             $query->with('sender')->where('sender_type', 'User')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_type', 'User')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's recipe logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getRecipeLogs($limit = 10)
     {
         $user = $this;
-        $query = UserRecipeLog::with('recipe')->where(function($query) use ($user) {
+        $query = UserRecipeLog::with('recipe')->where(function ($query) use ($user) {
             $query->with('sender')->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Claim Rewards']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->with('recipient')->where('recipient_id', $user->id)->where('log_type', '!=', 'Staff Removal');
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's pet logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getPetLogs($limit = 10)
     {
         $user = $this;
-        $query = PetLog::with('sender')->with('recipient')->with('pet')->where(function($query) use ($user) {
+        $query = PetLog::with('sender')->with('recipient')->with('pet')->where(function ($query) use ($user) {
             $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Staff Removal']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's weapon logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getWeaponLogs($limit = 10)
     {
         $user = $this;
-        $query = WeaponLog::with('sender')->with('recipient')->with('weapon')->where(function($query) use ($user) {
+        $query = WeaponLog::with('sender')->with('recipient')->with('weapon')->where(function ($query) use ($user) {
             $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Staff Removal']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
      * Get the user's gear logs.
      *
-     * @param  int  $limit
-     * @return \Illuminate\Support\Collection|\Illuminate\Pagination\LengthAwarePaginator
+     * @param int $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function getGearLogs($limit = 10)
     {
         $user = $this;
-        $query = GearLog::with('sender')->with('recipient')->with('gear')->where(function($query) use ($user) {
+        $query = GearLog::with('sender')->with('recipient')->with('gear')->where(function ($query) use ($user) {
             $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Staff Grant', 'Prompt Rewards', 'Staff Removal']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
-        if($limit) return $query->take($limit)->get();
-        else return $query->paginate(30);
+        if ($limit) {
+            return $query->take($limit)->get();
+        } else {
+            return $query->paginate(30);
+        }
     }
 
     /**
@@ -997,9 +1094,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getOwnershipLogs()
     {
         $user = $this;
-        $query = UserCharacterLog::with('sender.rank')->with('recipient.rank')->with('character')->where(function($query) use ($user) {
+        $query = UserCharacterLog::with('sender.rank')->with('recipient.rank')->with('character')->where(function ($query) use ($user) {
             $query->where('sender_id', $user->id)->whereNotIn('log_type', ['Character Created', 'Registered Dragon Slot Created', 'Character Design Updated', 'Registered Dragon Design Approved']);
-        })->orWhere(function($query) use ($user) {
+        })->orWhere(function ($query) use ($user) {
             $query->where('recipient_id', $user->id);
         })->orderBy('id', 'DESC');
 
@@ -1091,11 +1188,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return CharacterBookmark::where('user_id', $this->id)->where('character_id', $character->id)->first();
     }
 
-
-
-
     /**
-     * Check if there are any Admin Notifications
+     * Check if there are any Admin Notifications.
+     *
+     * @param mixed $user
      *
      * @return int
      */
@@ -1105,14 +1201,17 @@ class User extends Authenticatable implements MustVerifyEmail
         $claimCount = $user->hasPower('manage_submissions') ? Submission::where('status', 'Pending')->whereNull('prompt_id')->count() : 0;
         $designCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::characters()->where('status', 'Pending')->count() : 0;
         $myoCount = $user->hasPower('manage_characters') ? CharacterDesignUpdate::myos()->where('status', 'Pending')->count() : 0;
-        $transferCount =  $user->hasPower('manage_characters') ? CharacterTransfer::active()->where('is_approved', 0)->count() : 0;
+        $transferCount = $user->hasPower('manage_characters') ? CharacterTransfer::active()->where('is_approved', 0)->count() : 0;
         $tradeCount = $user->hasPower('manage_characters') ? Trade::where('status', 'Pending')->count() : 0;
         $total = $submissionCount + $claimCount + $designCount + $myoCount + $transferCount + $tradeCount;
+
         return $total;
     }
 
     /**
-     * Checks if the user has the named recipe
+     * Checks if the user has the named recipe.
+     *
+     * @param mixed $recipe_id
      *
      * @return bool
      */
@@ -1121,31 +1220,37 @@ class User extends Authenticatable implements MustVerifyEmail
         $recipe = Recipe::find($recipe_id);
         $user_has = $this->recipes->contains($recipe);
         $default = !$recipe->needs_unlocking;
+
         return $default ? true : $user_has;
     }
 
-
     /**
      * Returned recipes listed that are owned
-     * Reversal simply
+     * Reversal simply.
+     *
+     * @param mixed $ids
+     * @param mixed $reverse
      *
      * @return object
      */
     public function ownedRecipes($ids, $reverse = false)
     {
-        $recipes = Recipe::find($ids); $recipeCollection = [];
-        foreach($recipes as $recipe)
-        {
-            if($reverse) {
-                if(!$this->recipes->contains($recipe)) $recipeCollection[] = $recipe;
-            }
-            else {
-                if($this->recipes->contains($recipe)) $recipeCollection[] = $recipe;
+        $recipes = Recipe::find($ids);
+        $recipeCollection = [];
+        foreach ($recipes as $recipe) {
+            if ($reverse) {
+                if (!$this->recipes->contains($recipe)) {
+                    $recipeCollection[] = $recipe;
+                }
+            } else {
+                if ($this->recipes->contains($recipe)) {
+                    $recipeCollection[] = $recipe;
+                }
             }
         }
+
         return $recipeCollection;
     }
-
 
     /**
      * Checks if a user is blocked by another user.
@@ -1209,5 +1314,4 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $userOptions;
     }
-
 }

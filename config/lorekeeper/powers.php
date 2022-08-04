@@ -48,35 +48,34 @@ return [
         'description' => 'Allow rank to view the submissions queue, edit rewards attached to a submission and approve/reject them.',
     ],
     'edit_awardcases' => [
-        'name' => 'Edit Awardcases',
-        'description' => 'Allow rank to create and edit awards and user awardcases.'
+        'name'        => 'Edit Awardcases',
+        'description' => 'Allow rank to create and edit awards and user awardcases.',
     ],
     'manage_world' => [
-        'name' => 'Manage World',
-        'description' => 'Allow rank to edit world information related to the World Expansion extension.'
+        'name'        => 'Manage World',
+        'description' => 'Allow rank to edit world information related to the World Expansion extension.',
     ],
     'manage_reports' => [
 
-        'name' => 'Manage Reports',
-        'description' => 'Allow rank to view the reports queue.'
+        'name'        => 'Manage Reports',
+        'description' => 'Allow rank to view the reports queue.',
     ],
     'edit_stats' => [
-        'name' => 'Edit Stats',
-        'description' => 'Allow rank to edit stats.'
+        'name'        => 'Edit Stats',
+        'description' => 'Allow rank to edit stats.',
     ],
     'edit_levels' => [
-        'name' => 'Edit Levels',
-        'description' => 'Allow rank to edit levels.'
+        'name'        => 'Edit Levels',
+        'description' => 'Allow rank to edit levels.',
     ],
     'edit_claymores' => [
-        'name' => 'Edit Claymores & Companions',
-        'description' => 'Allow rank to edit claymore & companions data.'
+        'name'        => 'Edit Claymores & Companions',
+        'description' => 'Allow rank to edit claymore & companions data.',
     ],
 
     'maintenance_access' => [
         'name'        => 'Has Maintenance Access',
         'description' => 'Allow rank to browse the site normally during maintenance mode.',
     ],
-
 
 ];

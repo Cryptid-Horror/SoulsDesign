@@ -3,16 +3,13 @@
 namespace App\Models\Submission;
 
 use App\Models\Model;
-
 use App\Traits\Commentable;
-
 use Carbon\Carbon;
-
 
 class Submission extends Model
 {
     use Commentable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +18,7 @@ class Submission extends Model
     protected $fillable = [
         'prompt_id', 'user_id', 'staff_id', 'url',
         'comments', 'staff_comments', 'parsed_staff_comments',
-        'status', 'data', 'bonus'
+        'status', 'data', 'bonus',
     ];
 
     /**
@@ -179,14 +176,16 @@ class Submission extends Model
     /**
      * Scope a query to only include user's submissions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param mixed                                 $prompt
+     * @param mixed                                 $user
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSubmitted($query, $prompt, $user)
     {
         return $query->where('prompt_id', $prompt)->where('status', '!=', 'Rejected')->where('user_id', $user);
     }
-
 
     /**********************************************************************************************
 

@@ -1,28 +1,13 @@
-<?php namespace App\Services\WorldExpansion;
+<?php
 
-use App\Services\Service;
-
-use DB;
-use Config;
-use Settings;
-use Auth;
-use Notifications;
-
-use App\Models\Item\Item;
+namespace App\Services\WorldExpansion;
 
 use App\Models\WorldExpansion\Fauna;
 use App\Models\WorldExpansion\FaunaCategory;
-use App\Models\WorldExpansion\FaunaItem;
-use App\Models\WorldExpansion\FaunaLocation;
-
 use App\Models\WorldExpansion\Flora;
 use App\Models\WorldExpansion\FloraCategory;
-use App\Models\WorldExpansion\FloraItem;
-use App\Models\WorldExpansion\FloraLocation;
-
-use App\Models\WorldExpansion\LocationType;
-use App\Models\WorldExpansion\Location;
-use App\Services\WorldExpansion\WorldExpansionService;
+use App\Services\Service;
+use DB;
 
 class NatureService extends Service
 {
@@ -35,30 +20,28 @@ class NatureService extends Service
     |
     */
 
-
     /**
      * Creates a new fauna category.
      *
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Fauna\Category
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     *
+     * @return \App\Models\Fauna\Category|bool
      */
     public function createFaunaCategory($data, $user)
     {
-
         DB::beginTransaction();
 
         try {
-
             $data = $this->populateFaunaCategoryData($data);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
+            if (isset($data['image']) && $data['image']) {
                 $image = $data['image'];
                 unset($data['image']);
             }
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
+            if (isset($data['image_th']) && $data['image_th']) {
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -77,19 +60,21 @@ class NatureService extends Service
             }
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Updates a category.
      *
-     * @param  \App\Models\Category\Category  $category
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Category\Category
+     * @param \App\Models\Category\Category $category
+     * @param array                         $data
+     * @param \App\Models\User\User         $user
+     *
+     * @return \App\Models\Category\Category|bool
      */
     public function updateFaunaCategory($category, $data, $user)
     {
@@ -97,14 +82,19 @@ class NatureService extends Service
 
         try {
             // More specific validation
-            if(FaunaCategory::where('name', $data['name'])->where('id', '!=', $category->id)->exists()) throw new \Exception("The name has already been taken.");
+            if (FaunaCategory::where('name', $data['name'])->where('id', '!=', $category->id)->exists()) {
+                throw new \Exception('The name has already been taken.');
+            }
 
             $data = $this->populateFaunaCategoryData($data, $category);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
-                if(isset($category->image_extension)) $old = $category->imageFileName;
-                else $old = null;
+            if (isset($data['image']) && $data['image']) {
+                if (isset($category->image_extension)) {
+                    $old = $category->imageFileName;
+                } else {
+                    $old = null;
+                }
                 $image = $data['image'];
                 unset($data['image']);
             }
@@ -115,9 +105,12 @@ class NatureService extends Service
             }
 
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
-                if(isset($category->thumb_extension)) $old_th = $category->thumbFileName;
-                else $old_th = null;
+            if (isset($data['image_th']) && $data['image_th']) {
+                if (isset($category->thumb_extension)) {
+                    $old_th = $category->thumbFileName;
+                } else {
+                    $old_th = null;
+                }
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -130,18 +123,18 @@ class NatureService extends Service
             $category->update($data);
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
-
 
     /**
      * Deletes a category.
      *
-     * @param  \App\Models\Category\Category  $category
+     * @param \App\Models\Category\Category $category
+     *
      * @return bool
      */
     public function deleteFaunaCategory($category)
@@ -149,28 +142,39 @@ class NatureService extends Service
         DB::beginTransaction();
 
         try {
-            if(isset($category->image_extension)) $this->deleteImage($category->imagePath, $category->imageFileName);
-            if(isset($category->thumb_extension)) $this->deleteImage($category->imagePath, $category->thumbFileName);
+            if (isset($category->image_extension)) {
+                $this->deleteImage($category->imagePath, $category->imageFileName);
+            }
+            if (isset($category->thumb_extension)) {
+                $this->deleteImage($category->imagePath, $category->thumbFileName);
+            }
 
-            if(count($category->faunas)){
-                foreach($category->faunas as $fauna){
-                    if(isset($fauna->image_extension)) $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
-                    if(isset($fauna->thumb_extension)) $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
+            if (count($category->faunas)) {
+                foreach ($category->faunas as $fauna) {
+                    if (isset($fauna->image_extension)) {
+                        $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
+                    }
+                    if (isset($fauna->thumb_extension)) {
+                        $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
+                    }
                 }
             }
 
             $category->delete();
+
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Sorts category order.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return bool
      */
     public function sortFaunaCategory($data)
@@ -181,54 +185,17 @@ class NatureService extends Service
             // explode the sort array and reverse it since the order is inverted
             $sort = array_reverse(explode(',', $data));
 
-            foreach($sort as $key => $s) {
+            foreach ($sort as $key => $s) {
                 FaunaCategory::where('id', $s)->update(['sort' => $key]);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
-    /**
-     * Processes user input for creating/updating a category.
-     *
-     * @param  array                  $data
-     * @param  \App\Models\Category\Category  $category
-     * @return array
-     */
-    private function populateFaunaCategoryData($data, $category = null)
-    {
-        if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-        if(isset($data['name']) && $data['name']) $data['name'] = parse($data['name']);
-
-        if(isset($data['remove_image']))
-        {
-            if($category && isset($category->image_extension) && $data['remove_image'])
-            {
-                $data['image_extension'] = null;
-                $this->deleteImage($category->imagePath, $category->imageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        if(isset($data['remove_image_th']) && $data['remove_image_th'])
-        {
-            if($category && isset($category->thumb_extension) && $data['remove_image_th'])
-            {
-                $data['thumb_extension'] = null;
-                $this->deleteImage($category->imagePath, $category->thumbFileName);
-            }
-            unset($data['remove_image_th']);
-        }
-
-
-        return $data;
-    }
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -237,30 +204,28 @@ class NatureService extends Service
     |
     */
 
-
-
     /**
      * Creates a new fauna.
      *
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Fauna\Category
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     *
+     * @return \App\Models\Fauna\Category|bool
      */
     public function createFauna($data, $user)
     {
-
         DB::beginTransaction();
 
         try {
             $data = $this->populateFaunaData($data);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
+            if (isset($data['image']) && $data['image']) {
                 $image = $data['image'];
                 unset($data['image']);
             }
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
+            if (isset($data['image_th']) && $data['image_th']) {
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -279,37 +244,43 @@ class NatureService extends Service
             }
 
             return $this->commitReturn($fauna);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Updates a fauna.
      *
-     * @param  \App\Models\WorldExpansion\Fauna  $fauna
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\WorldExpansion\Fauna
+     * @param \App\Models\WorldExpansion\Fauna $fauna
+     * @param array                            $data
+     * @param \App\Models\User\User            $user
+     *
+     * @return \App\Models\WorldExpansion\Fauna|bool
      */
     public function updateFauna($fauna, $data, $user)
     {
-
         DB::beginTransaction();
 
         try {
             // More specific validation
-            if(Fauna::where('name', $data['name'])->where('id', '!=', $fauna->id)->exists()) throw new \Exception("The name has already been taken.");
+            if (Fauna::where('name', $data['name'])->where('id', '!=', $fauna->id)->exists()) {
+                throw new \Exception('The name has already been taken.');
+            }
 
             (new WorldExpansionService)->updateAttachments($fauna, $data);
 
             $data = $this->populateFaunaData($data, $fauna);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
-                if(isset($fauna->image_extension)) $old = $fauna->imageFileName;
-                else $old = null;
+            if (isset($data['image']) && $data['image']) {
+                if (isset($fauna->image_extension)) {
+                    $old = $fauna->imageFileName;
+                } else {
+                    $old = null;
+                }
                 $image = $data['image'];
                 unset($data['image']);
             }
@@ -320,9 +291,12 @@ class NatureService extends Service
             }
 
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
-                if(isset($fauna->thumb_extension)) $old_th = $fauna->thumbFileName;
-                else $old_th = null;
+            if (isset($data['image_th']) && $data['image_th']) {
+                if (isset($fauna->thumb_extension)) {
+                    $old_th = $fauna->thumbFileName;
+                } else {
+                    $old_th = null;
+                }
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -336,17 +310,18 @@ class NatureService extends Service
             $fauna->update($data);
 
             return $this->commitReturn($fauna);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
 
     /**
      * Deletes a fauna.
      *
-     * @param  \App\Models\WorldExpansion\Fauna  $fauna
+     * @param \App\Models\WorldExpansion\Fauna $fauna
+     *
      * @return bool
      */
     public function deleteFauna($fauna)
@@ -354,67 +329,27 @@ class NatureService extends Service
         DB::beginTransaction();
 
         try {
-            if(isset($fauna->image_extension)) $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
-            if(isset($fauna->thumb_extension)) $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
+            if (isset($fauna->image_extension)) {
+                $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
+            }
+            if (isset($fauna->thumb_extension)) {
+                $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
+            }
             $fauna->delete();
+
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Processes user input for creating/updating a fauna.
-     *
-     * @param  array                  $data
-     * @param  \App\Models\WorldExpansion\Fauna  $fauna
-     * @return array
-     */
-    private function populateFaunaData($data, $fauna = null)
-    {
-
-        $saveData['description'] = isset($data['description']) ? $data['description'] : null;
-        if(isset($data['description']) && $data['description']) $saveData['parsed_description'] = parse($data['description']);
-        $saveData['summary'] = isset($data['summary']) ? $data['summary'] : null;
-
-        if(isset($data['name']) && $data['name']) $saveData['name'] = parse($data['name']);
-        if(isset($data['scientific_name']) && $data['scientific_name']) $saveData['scientific_name'] = parse($data['scientific_name']);
-
-        $saveData['is_active'] = isset($data['is_active']);
-        $saveData['category_id'] = isset($data['category_id']) && $data['category_id'] ? $data['category_id'] : null;
-
-        $saveData['image'] = isset($data['image']) ? $data['image'] : null;
-        $saveData['image_th'] = isset($data['image_th']) ? $data['image_th'] : null;
-
-
-        if(isset($data['remove_image']))
-        {
-            if($fauna && isset($fauna->image_extension) && $data['remove_image'])
-            {
-                $saveData['image_extension'] = null;
-                $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        if(isset($data['remove_image_th']) && $data['remove_image_th'])
-        {
-            if($fauna && isset($fauna->thumb_extension) && $data['remove_image_th'])
-            {
-                $saveData['thumb_extension'] = null;
-                $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
-            }
-            unset($data['remove_image_th']);
-        }
-        return $saveData;
-    }
-
-
-    /**
      * Sorts category order.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return bool
      */
     public function sortFauna($data)
@@ -425,43 +360,40 @@ class NatureService extends Service
             // explode the sort array and reverse it since the order is inverted
             $sort = array_reverse(explode(',', $data));
 
-            foreach($sort as $key => $s) {
+            foreach ($sort as $key => $s) {
                 Fauna::where('id', $s)->update(['sort' => $key]);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
-
-
 
     /**
      * Creates a new flora category.
      *
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Flora\Category
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     *
+     * @return \App\Models\Flora\Category|bool
      */
     public function createFloraCategory($data, $user)
     {
-
         DB::beginTransaction();
 
         try {
-
             $data = $this->populateFloraCategoryData($data);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
+            if (isset($data['image']) && $data['image']) {
                 $image = $data['image'];
                 unset($data['image']);
             }
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
+            if (isset($data['image_th']) && $data['image_th']) {
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -480,19 +412,21 @@ class NatureService extends Service
             }
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Updates a category.
      *
-     * @param  \App\Models\Category\Category  $category
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Category\Category
+     * @param \App\Models\Category\Category $category
+     * @param array                         $data
+     * @param \App\Models\User\User         $user
+     *
+     * @return \App\Models\Category\Category|bool
      */
     public function updateFloraCategory($category, $data, $user)
     {
@@ -500,14 +434,19 @@ class NatureService extends Service
 
         try {
             // More specific validation
-            if(FloraCategory::where('name', $data['name'])->where('id', '!=', $category->id)->exists()) throw new \Exception("The name has already been taken.");
+            if (FloraCategory::where('name', $data['name'])->where('id', '!=', $category->id)->exists()) {
+                throw new \Exception('The name has already been taken.');
+            }
 
             $data = $this->populateFloraCategoryData($data, $category);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
-                if(isset($category->image_extension)) $old = $category->imageFileName;
-                else $old = null;
+            if (isset($data['image']) && $data['image']) {
+                if (isset($category->image_extension)) {
+                    $old = $category->imageFileName;
+                } else {
+                    $old = null;
+                }
                 $image = $data['image'];
                 unset($data['image']);
             }
@@ -518,9 +457,12 @@ class NatureService extends Service
             }
 
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
-                if(isset($category->thumb_extension)) $old_th = $category->thumbFileName;
-                else $old_th = null;
+            if (isset($data['image_th']) && $data['image_th']) {
+                if (isset($category->thumb_extension)) {
+                    $old_th = $category->thumbFileName;
+                } else {
+                    $old_th = null;
+                }
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -533,18 +475,18 @@ class NatureService extends Service
             $category->update($data);
 
             return $this->commitReturn($category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
-
 
     /**
      * Deletes a category.
      *
-     * @param  \App\Models\Category\Category  $category
+     * @param \App\Models\Category\Category $category
+     *
      * @return bool
      */
     public function deleteFloraCategory($category)
@@ -552,26 +494,37 @@ class NatureService extends Service
         DB::beginTransaction();
 
         try {
-            if(isset($category->image_extension)) $this->deleteImage($category->imagePath, $category->imageFileName);
-            if(isset($category->thumb_extension)) $this->deleteImage($category->imagePath, $category->thumbFileName);
-            if(count($category->floras)){
-                foreach($category->floras as $flora){
-                    if(isset($flora->image_extension)) $this->deleteImage($flora->imagePath, $flora->imageFileName);
-                    if(isset($flora->thumb_extension)) $this->deleteImage($flora->imagePath, $flora->thumbFileName);
+            if (isset($category->image_extension)) {
+                $this->deleteImage($category->imagePath, $category->imageFileName);
+            }
+            if (isset($category->thumb_extension)) {
+                $this->deleteImage($category->imagePath, $category->thumbFileName);
+            }
+            if (count($category->floras)) {
+                foreach ($category->floras as $flora) {
+                    if (isset($flora->image_extension)) {
+                        $this->deleteImage($flora->imagePath, $flora->imageFileName);
+                    }
+                    if (isset($flora->thumb_extension)) {
+                        $this->deleteImage($flora->imagePath, $flora->thumbFileName);
+                    }
                 }
             }
             $category->delete();
+
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Sorts category order.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return bool
      */
     public function sortFloraCategory($data)
@@ -582,54 +535,17 @@ class NatureService extends Service
             // explode the sort array and reverse it since the order is inverted
             $sort = array_reverse(explode(',', $data));
 
-            foreach($sort as $key => $s) {
+            foreach ($sort as $key => $s) {
                 FloraCategory::where('id', $s)->update(['sort' => $key]);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
-    /**
-     * Processes user input for creating/updating a category.
-     *
-     * @param  array                  $data
-     * @param  \App\Models\Category\Category  $category
-     * @return array
-     */
-    private function populateFloraCategoryData($data, $category = null)
-    {
-        if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
-        if(isset($data['name']) && $data['name']) $data['name'] = parse($data['name']);
-
-        if(isset($data['remove_image']))
-        {
-            if($category && isset($category->image_extension) && $data['remove_image'])
-            {
-                $data['image_extension'] = null;
-                $this->deleteImage($category->imagePath, $category->imageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        if(isset($data['remove_image_th']) && $data['remove_image_th'])
-        {
-            if($category && isset($category->thumb_extension) && $data['remove_image_th'])
-            {
-                $data['thumb_extension'] = null;
-                $this->deleteImage($category->imagePath, $category->thumbFileName);
-            }
-            unset($data['remove_image_th']);
-        }
-
-
-        return $data;
-    }
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -638,31 +554,28 @@ class NatureService extends Service
     |
     */
 
-
-
     /**
      * Creates a new flora.
      *
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\Flora\Category
+     * @param array                 $data
+     * @param \App\Models\User\User $user
+     *
+     * @return \App\Models\Flora\Category|bool
      */
     public function createFlora($data, $user)
     {
-
         DB::beginTransaction();
 
         try {
-
             $data = $this->populateFloraData($data);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
+            if (isset($data['image']) && $data['image']) {
                 $image = $data['image'];
                 unset($data['image']);
             }
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
+            if (isset($data['image_th']) && $data['image_th']) {
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -681,37 +594,43 @@ class NatureService extends Service
             }
 
             return $this->commitReturn($flora);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
      * Updates a flora.
      *
-     * @param  \App\Models\WorldExpansion\Flora  $flora
-     * @param  array                  $data
-     * @param  \App\Models\User\User  $user
-     * @return bool|\App\Models\WorldExpansion\Flora
+     * @param \App\Models\WorldExpansion\Flora $flora
+     * @param array                            $data
+     * @param \App\Models\User\User            $user
+     *
+     * @return \App\Models\WorldExpansion\Flora|bool
      */
     public function updateFlora($flora, $data, $user)
     {
-
         DB::beginTransaction();
 
         try {
             // More specific validation
-            if(Flora::where('name', $data['name'])->where('id', '!=', $flora->id)->exists()) throw new \Exception("The name has already been taken.");
+            if (Flora::where('name', $data['name'])->where('id', '!=', $flora->id)->exists()) {
+                throw new \Exception('The name has already been taken.');
+            }
 
             (new WorldExpansionService)->updateAttachments($flora, $data);
 
             $data = $this->populateFloraData($data, $flora);
 
             $image = null;
-            if(isset($data['image']) && $data['image']) {
-                if(isset($flora->image_extension)) $old = $flora->imageFileName;
-                else $old = null;
+            if (isset($data['image']) && $data['image']) {
+                if (isset($flora->image_extension)) {
+                    $old = $flora->imageFileName;
+                } else {
+                    $old = null;
+                }
                 $image = $data['image'];
                 unset($data['image']);
             }
@@ -722,9 +641,12 @@ class NatureService extends Service
             }
 
             $image_th = null;
-            if(isset($data['image_th']) && $data['image_th']) {
-                if(isset($flora->thumb_extension)) $old_th = $flora->thumbFileName;
-                else $old_th = null;
+            if (isset($data['image_th']) && $data['image_th']) {
+                if (isset($flora->thumb_extension)) {
+                    $old_th = $flora->thumbFileName;
+                } else {
+                    $old_th = null;
+                }
                 $image_th = $data['image_th'];
                 unset($data['image_th']);
             }
@@ -738,17 +660,18 @@ class NatureService extends Service
             $flora->update($data);
 
             return $this->commitReturn($flora);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
-
 
     /**
      * Deletes a flora.
      *
-     * @param  \App\Models\WorldExpansion\Flora  $flora
+     * @param \App\Models\WorldExpansion\Flora $flora
+     *
      * @return bool
      */
     public function deleteFlora($flora)
@@ -756,67 +679,27 @@ class NatureService extends Service
         DB::beginTransaction();
 
         try {
-            if(isset($flora->image_extension)) $this->deleteImage($flora->imagePath, $flora->imageFileName);
-            if(isset($flora->thumb_extension)) $this->deleteImage($flora->imagePath, $flora->thumbFileName);
+            if (isset($flora->image_extension)) {
+                $this->deleteImage($flora->imagePath, $flora->imageFileName);
+            }
+            if (isset($flora->thumb_extension)) {
+                $this->deleteImage($flora->imagePath, $flora->thumbFileName);
+            }
             $flora->delete();
+
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
     /**
-     * Processes user input for creating/updating a flora.
-     *
-     * @param  array                  $data
-     * @param  \App\Models\WorldExpansion\Flora  $flora
-     * @return array
-     */
-    private function populateFloraData($data, $flora = null)
-    {
-
-        $saveData['description'] = isset($data['description']) ? $data['description'] : null;
-        if(isset($data['description']) && $data['description']) $saveData['parsed_description'] = parse($data['description']);
-        $saveData['summary'] = isset($data['summary']) ? $data['summary'] : null;
-
-        if(isset($data['scientific_name']) && $data['scientific_name']) $saveData['scientific_name'] = parse($data['scientific_name']);
-        if(isset($data['name']) && $data['name']) $saveData['name'] = parse($data['name']);
-
-        $saveData['is_active'] = isset($data['is_active']);
-        $saveData['category_id'] = isset($data['category_id']) && $data['category_id'] ? $data['category_id'] : null;
-
-        $saveData['image'] = isset($data['image']) ? $data['image'] : null;
-        $saveData['image_th'] = isset($data['image_th']) ? $data['image_th'] : null;
-
-        if(isset($data['remove_image']))
-        {
-            if($flora && isset($flora->image_extension) && $data['remove_image'])
-            {
-                $saveData['image_extension'] = null;
-                $this->deleteImage($flora->imagePath, $flora->imageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        if(isset($data['remove_image_th']) && $data['remove_image_th'])
-        {
-            if($flora && isset($flora->thumb_extension) && $data['remove_image_th'])
-            {
-                $saveData['thumb_extension'] = null;
-                $this->deleteImage($flora->imagePath, $flora->thumbFileName);
-            }
-            unset($data['remove_image_th']);
-        }
-
-        return $saveData;
-    }
-
-
-    /**
      * Sorts category order.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return bool
      */
     public function sortFlora($data)
@@ -827,15 +710,183 @@ class NatureService extends Service
             // explode the sort array and reverse it since the order is inverted
             $sort = array_reverse(explode(',', $data));
 
-            foreach($sort as $key => $s) {
+            foreach ($sort as $key => $s) {
                 Flora::where('id', $s)->update(['sort' => $key]);
             }
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
+
         return $this->rollbackReturn(false);
     }
 
+    /**
+     * Processes user input for creating/updating a category.
+     *
+     * @param array                         $data
+     * @param \App\Models\Category\Category $category
+     *
+     * @return array
+     */
+    private function populateFaunaCategoryData($data, $category = null)
+    {
+        if (isset($data['description']) && $data['description']) {
+            $data['parsed_description'] = parse($data['description']);
+        }
+        if (isset($data['name']) && $data['name']) {
+            $data['name'] = parse($data['name']);
+        }
+
+        if (isset($data['remove_image'])) {
+            if ($category && isset($category->image_extension) && $data['remove_image']) {
+                $data['image_extension'] = null;
+                $this->deleteImage($category->imagePath, $category->imageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        if (isset($data['remove_image_th']) && $data['remove_image_th']) {
+            if ($category && isset($category->thumb_extension) && $data['remove_image_th']) {
+                $data['thumb_extension'] = null;
+                $this->deleteImage($category->imagePath, $category->thumbFileName);
+            }
+            unset($data['remove_image_th']);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Processes user input for creating/updating a fauna.
+     *
+     * @param array                            $data
+     * @param \App\Models\WorldExpansion\Fauna $fauna
+     *
+     * @return array
+     */
+    private function populateFaunaData($data, $fauna = null)
+    {
+        $saveData['description'] = $data['description'] ?? null;
+        if (isset($data['description']) && $data['description']) {
+            $saveData['parsed_description'] = parse($data['description']);
+        }
+        $saveData['summary'] = $data['summary'] ?? null;
+
+        if (isset($data['name']) && $data['name']) {
+            $saveData['name'] = parse($data['name']);
+        }
+        if (isset($data['scientific_name']) && $data['scientific_name']) {
+            $saveData['scientific_name'] = parse($data['scientific_name']);
+        }
+
+        $saveData['is_active'] = isset($data['is_active']);
+        $saveData['category_id'] = isset($data['category_id']) && $data['category_id'] ? $data['category_id'] : null;
+
+        $saveData['image'] = $data['image'] ?? null;
+        $saveData['image_th'] = $data['image_th'] ?? null;
+
+        if (isset($data['remove_image'])) {
+            if ($fauna && isset($fauna->image_extension) && $data['remove_image']) {
+                $saveData['image_extension'] = null;
+                $this->deleteImage($fauna->imagePath, $fauna->imageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        if (isset($data['remove_image_th']) && $data['remove_image_th']) {
+            if ($fauna && isset($fauna->thumb_extension) && $data['remove_image_th']) {
+                $saveData['thumb_extension'] = null;
+                $this->deleteImage($fauna->imagePath, $fauna->thumbFileName);
+            }
+            unset($data['remove_image_th']);
+        }
+
+        return $saveData;
+    }
+
+    /**
+     * Processes user input for creating/updating a category.
+     *
+     * @param array                         $data
+     * @param \App\Models\Category\Category $category
+     *
+     * @return array
+     */
+    private function populateFloraCategoryData($data, $category = null)
+    {
+        if (isset($data['description']) && $data['description']) {
+            $data['parsed_description'] = parse($data['description']);
+        }
+        if (isset($data['name']) && $data['name']) {
+            $data['name'] = parse($data['name']);
+        }
+
+        if (isset($data['remove_image'])) {
+            if ($category && isset($category->image_extension) && $data['remove_image']) {
+                $data['image_extension'] = null;
+                $this->deleteImage($category->imagePath, $category->imageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        if (isset($data['remove_image_th']) && $data['remove_image_th']) {
+            if ($category && isset($category->thumb_extension) && $data['remove_image_th']) {
+                $data['thumb_extension'] = null;
+                $this->deleteImage($category->imagePath, $category->thumbFileName);
+            }
+            unset($data['remove_image_th']);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Processes user input for creating/updating a flora.
+     *
+     * @param array                            $data
+     * @param \App\Models\WorldExpansion\Flora $flora
+     *
+     * @return array
+     */
+    private function populateFloraData($data, $flora = null)
+    {
+        $saveData['description'] = $data['description'] ?? null;
+        if (isset($data['description']) && $data['description']) {
+            $saveData['parsed_description'] = parse($data['description']);
+        }
+        $saveData['summary'] = $data['summary'] ?? null;
+
+        if (isset($data['scientific_name']) && $data['scientific_name']) {
+            $saveData['scientific_name'] = parse($data['scientific_name']);
+        }
+        if (isset($data['name']) && $data['name']) {
+            $saveData['name'] = parse($data['name']);
+        }
+
+        $saveData['is_active'] = isset($data['is_active']);
+        $saveData['category_id'] = isset($data['category_id']) && $data['category_id'] ? $data['category_id'] : null;
+
+        $saveData['image'] = $data['image'] ?? null;
+        $saveData['image_th'] = $data['image_th'] ?? null;
+
+        if (isset($data['remove_image'])) {
+            if ($flora && isset($flora->image_extension) && $data['remove_image']) {
+                $saveData['image_extension'] = null;
+                $this->deleteImage($flora->imagePath, $flora->imageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        if (isset($data['remove_image_th']) && $data['remove_image_th']) {
+            if ($flora && isset($flora->thumb_extension) && $data['remove_image_th']) {
+                $saveData['thumb_extension'] = null;
+                $this->deleteImage($flora->imagePath, $flora->thumbFileName);
+            }
+            unset($data['remove_image_th']);
+        }
+
+        return $saveData;
+    }
 }

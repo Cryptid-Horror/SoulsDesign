@@ -38,19 +38,19 @@ return [
         'filename'    => 'currency.png',
     ],
     'awards' => [
-        'name' => 'Awards Icon',
+        'name'        => 'Awards Icon',
         'description' => 'The awards graphic on the front page. PNG format, default size of 200px x 200px (no restriction).',
-        'filename' => 'awards.png'
+        'filename'    => 'awards.png',
     ],
     'myo' => [
-        'name' => 'Registered Dragon Default Image',
+        'name'        => 'Registered Dragon Default Image',
         'description' => 'The default image used for Registered Dragon slots when no image is uploaded. PNG format, no size restriction.',
-        'filename' => 'myo.png'
+        'filename'    => 'myo.png',
     ],
     'myo-th' => [
-        'name' => 'Registered Dragon Default Image (Thumbnail)',
+        'name'        => 'Registered Dragon Default Image (Thumbnail)',
         'description' => 'The default masterlist thumbnail used for Registered Dragon slots when no image is uploaded. PNG format, size of masterlist thumbnails.',
-        'filename' => 'myo-th.png'
+        'filename'    => 'myo-th.png',
     ],
     'meta-image' => [
         'name'        => 'Meta Tag Image',
@@ -68,8 +68,8 @@ return [
         'filename'    => 'content_warning.png',
     ],
     'donation_shop' => [
-        'name' => 'Donation Shop Image',
+        'name'        => 'Donation Shop Image',
         'description' => 'Image used for the donation shop. PNG format, should be the same size as other shop images.',
-        'filename' => 'donation_shop.png'
+        'filename'    => 'donation_shop.png',
     ],
 ];

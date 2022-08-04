@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
 class DesignGuideController extends Controller
 {
     /*
@@ -27,6 +25,9 @@ class DesignGuideController extends Controller
 
     /**
      * Shows the specified guide page.
+     *
+     * @param mixed $folder
+     * @param mixed $file
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

@@ -2,17 +2,10 @@
 
 namespace App\Models\WorldExpansion;
 
-use DB;
 use Auth;
-use Config;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-use App\Models\User\User;
-use App\Models\WorldExpansion\FigureCategory;
-use App\Models\WorldExpansion\FactionRankMember;
-use App\Models\Item\Item;
 
 class Figure extends Model
 {
@@ -24,11 +17,10 @@ class Figure extends Model
      * @var array
      */
     protected $fillable = [
-        'name','description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension',
-        'category_id', 'is_active', 'birth_date', 'death_date', 'faction_id'
+        'name', 'description', 'summary', 'parsed_description', 'sort', 'image_extension', 'thumb_extension',
+        'category_id', 'is_active', 'birth_date', 'death_date', 'faction_id',
 
     ];
-
 
     /**
      * The table associated with the model.
@@ -46,12 +38,12 @@ class Figure extends Model
      * @var array
      */
     public static $createRules = [
-        'name' => 'required|unique:figures|between:3,50',
+        'name'        => 'required|unique:figures|between:3,50',
         'description' => 'nullable',
-        'summary' => 'nullable|max:300',
-        'image' => 'mimes:png,gif,jpg,jpeg',
-        'image_th' => 'mimes:png,gif,jpg,jpeg',
-        'data' => 'nullable'
+        'summary'     => 'nullable|max:300',
+        'image'       => 'mimes:png,gif,jpg,jpeg',
+        'image_th'    => 'mimes:png,gif,jpg,jpeg',
+        'data'        => 'nullable',
     ];
 
     /**
@@ -60,14 +52,13 @@ class Figure extends Model
      * @var array
      */
     public static $updateRules = [
-        'name' => 'required|between:3,50',
+        'name'        => 'required|between:3,50',
         'description' => 'nullable',
-        'summary' => 'nullable|max:300',
-        'image' => 'mimes:png,gif,jpg,jpeg',
-        'image_th' => 'mimes:png,gif,jpg,jpeg',
-        'data' => 'nullable'
+        'summary'     => 'nullable|max:300',
+        'image'       => 'mimes:png,gif,jpg,jpeg',
+        'image_th'    => 'mimes:png,gif,jpg,jpeg',
+        'data'        => 'nullable',
     ];
-
 
     /**********************************************************************************************
 
@@ -88,18 +79,16 @@ class Figure extends Model
      */
     public function attachments()
     {
-        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attacher_id')->where('attacher_type',class_basename($this));
+        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attacher_id')->where('attacher_type', class_basename($this));
     }
-
 
     /**
      * Get the attacher attached to the model.
      */
     public function attachers()
     {
-        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attachment_id')->where('attachment_type',class_basename($this));
+        return $this->hasMany('App\Models\WorldExpansion\WorldAttachment', 'attachment_id')->where('attachment_type', class_basename($this));
     }
-
 
     /**
      * Get the figure attached to this figure.
@@ -108,7 +97,6 @@ class Figure extends Model
     {
         return $this->belongsTo('App\Models\WorldExpansion\Faction', 'faction_id')->visible();
     }
-
 
     /**********************************************************************************************
 
@@ -119,13 +107,17 @@ class Figure extends Model
     /**
      * Scope a query to only include visible posts.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeVisible($query)
     {
-        if(!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) return $query->where('is_active', 1);
-        else return $query;
+        if (!Auth::check() || !(Auth::check() && Auth::user()->isStaff)) {
+            return $query->where('is_active', 1);
+        } else {
+            return $query;
+        }
     }
 
     /**********************************************************************************************
@@ -141,8 +133,11 @@ class Figure extends Model
      */
     public function getDisplayNameAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-figure">'.$this->name.'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.$this->name.'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-figure">'.$this->name.'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.$this->name.'</a></s>';
+        }
     }
 
     /**
@@ -152,10 +147,12 @@ class Figure extends Model
      */
     public function getFullDisplayNameAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-figure">'.$this->style.'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.$this->style.'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-figure">'.$this->style.'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.$this->style.'</a></s>';
+        }
     }
-
 
     /**
      * Displays the figure's name, linked to its purchase page.
@@ -164,8 +161,11 @@ class Figure extends Model
      */
     public function getFullDisplayNameUCAttribute()
     {
-        if($this->is_active) {return '<a href="'.$this->url.'" class="display-figure">'.ucfirst($this->style).'</a>';}
-        else {return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.ucfirst($this->style).'</a></s>';}
+        if ($this->is_active) {
+            return '<a href="'.$this->url.'" class="display-figure">'.ucfirst($this->style).'</a>';
+        } else {
+            return '<s><a href="'.$this->url.'" class="display-figure text-muted">'.ucfirst($this->style).'</a></s>';
+        }
     }
 
     /**
@@ -188,8 +188,6 @@ class Figure extends Model
         return public_path($this->imageDirectory);
     }
 
-
-
     /**
      * Gets the file name of the model's image.
      *
@@ -197,9 +195,8 @@ class Figure extends Model
      */
     public function getImageFileNameAttribute()
     {
-        return $this->id . '-image.' . $this->image_extension;
+        return $this->id.'-image.'.$this->image_extension;
     }
-
 
     /**
      * Gets the file name of the model's thumbnail image.
@@ -208,7 +205,7 @@ class Figure extends Model
      */
     public function getThumbFileNameAttribute()
     {
-        return $this->id . '-th.'. $this->thumb_extension;
+        return $this->id.'-th.'.$this->thumb_extension;
     }
 
     /**
@@ -218,8 +215,11 @@ class Figure extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (!$this->image_extension) return null;
-        return asset($this->imageDirectory . '/' . $this->imageFileName);
+        if (!$this->image_extension) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->imageFileName);
     }
 
     /**
@@ -229,8 +229,11 @@ class Figure extends Model
      */
     public function getThumbUrlAttribute()
     {
-        if (!$this->thumb_extension) return null;
-        return asset($this->imageDirectory . '/' . $this->thumbFileName);
+        if (!$this->thumb_extension) {
+            return null;
+        }
+
+        return asset($this->imageDirectory.'/'.$this->thumbFileName);
     }
 
     /**
@@ -252,19 +255,23 @@ class Figure extends Model
     /**
      * Scope a query to sort items in category order.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortCategory($query)
     {
         $ids = FigureCategory::orderBy('sort', 'DESC')->pluck('id')->toArray();
+
         return count($ids) ? $query->orderByRaw(DB::raw('FIELD(category_id, '.implode(',', $ids).')')) : $query;
     }
+
     /**
      * Scope a query to sort items in alphabetical order.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  bool                                   $reverse
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param bool                                  $reverse
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortAlphabetical($query, $reverse = false)
@@ -275,7 +282,8 @@ class Figure extends Model
     /**
      * Scope a query to sort items by newest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortNewest($query)
@@ -286,7 +294,8 @@ class Figure extends Model
     /**
      * Scope a query to sort features oldest first.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSortOldest($query)
@@ -305,10 +314,13 @@ class Figure extends Model
      */
     public function getFactionRankAttribute()
     {
-        if(!isset($this->faction_id) || !$this->faction->ranks()->count()) return null;
-        if(FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()) return FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()->rank;
+        if (!isset($this->faction_id) || !$this->faction->ranks()->count()) {
+            return null;
+        }
+        if (FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()) {
+            return FactionRankMember::where('member_type', 'figure')->where('member_id', $this->id)->first()->rank;
+        }
     }
-
 
     public static function getFiguresByCategory()
     {
@@ -318,7 +330,7 @@ class Figure extends Model
             if (!$sorted_figure_categories->contains('Miscellaneous')) {
                 $sorted_figure_categories->push('Miscellaneous');
             }
-            $grouped['Miscellaneous'] = $grouped['Miscellaneous'] ?? [] + $grouped[''];
+            $grouped['Miscellaneous'] ??= [] + $grouped[''];
         }
         $sorted_figure_categories = $sorted_figure_categories->filter(function ($value, $key) use ($grouped) {
             return in_array($value, array_keys($grouped), true);

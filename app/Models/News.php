@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Config;
-use App\Models\Model;
 use App\Traits\Commentable;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -154,7 +152,7 @@ class News extends Model implements Feedable
      */
     public static function getFeedItems()
     {
-        return News::visible()->get();
+        return self::visible()->get();
     }
 
     /**

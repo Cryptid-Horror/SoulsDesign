@@ -8,8 +8,6 @@ class CreateForumsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -37,7 +35,6 @@ class CreateForumsTable extends Migration
 
             $table->timestamps();
             $table->softDeletes();
-
         });
         Schema::table('comments', function (Blueprint $table) {
             $table->string('title', 191)->nullable()->default(null);
@@ -47,8 +44,6 @@ class CreateForumsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -8,8 +8,6 @@ class CreateStatusEffectTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -60,8 +58,6 @@ class CreateStatusEffectTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

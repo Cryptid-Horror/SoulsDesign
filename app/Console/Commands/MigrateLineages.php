@@ -2,14 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
-use DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-
 use App\Models\Character\Character;
-use App\Models\Character\CharacterLineages;
+use DB;
+use Illuminate\Console\Command;
 
 class MigrateLineages extends Command
 {
@@ -29,8 +24,6 @@ class MigrateLineages extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -53,164 +46,164 @@ class MigrateLineages extends Command
         // Get all Characters
         $characters = Character::all();
 
-        foreach($characters as $char) {
+        foreach ($characters as $char) {
             $data = ['character_id' => $char->id];
 
             $c = $char->lineage_old();
 
             // Sire
-            if($c['sire']) {
-                if($id = $this->checkSlug($c['sire'])) {
+            if ($c['sire']) {
+                if ($id = $this->checkSlug($c['sire'])) {
                     $data['sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_name'] = $c['sire'];
                 }
+            } else {
+                $data['sire_id'] = null;
             }
-            else $data['sire_id'] = null;
 
             // Sire Sire
-            if($c['ss']) {
-                if($id = $this->checkSlug($c['ss'])) {
+            if ($c['ss']) {
+                if ($id = $this->checkSlug($c['ss'])) {
                     $data['sire_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_sire_name'] = $c['ss'];
                 }
+            } else {
+                $data['sire_sire_id'] = null;
             }
-            else $data['sire_sire_id'] = null;
 
             // Sire Sire Sire
-            if($c['sss']) {
-                if($id = $this->checkSlug($c['sss'])) {
+            if ($c['sss']) {
+                if ($id = $this->checkSlug($c['sss'])) {
                     $data['sire_sire_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_sire_sire_name'] = $c['sss'];
                 }
+            } else {
+                $data['sire_sire_sire_id'] = null;
             }
-            else $data['sire_sire_sire_id'] = null;
 
             // Sire Sire Dam
-            if($c['ssd']) {
-                if($id = $this->checkSlug($c['ssd'])) {
+            if ($c['ssd']) {
+                if ($id = $this->checkSlug($c['ssd'])) {
                     $data['sire_sire_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_sire_dam_name'] = $c['ssd'];
                 }
+            } else {
+                $data['sire_sire_dam_id'] = null;
             }
-            else $data['sire_sire_dam_id'] = null;
 
             // Sire Dam
-            if($c['sd']) {
-                if($id = $this->checkSlug($c['sd'])) {
+            if ($c['sd']) {
+                if ($id = $this->checkSlug($c['sd'])) {
                     $data['sire_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_dam_name'] = $c['sd'];
                 }
+            } else {
+                $data['sire_dam_id'] = null;
             }
-            else $data['sire_dam_id'] = null;
 
             // Sire Dam Sire
-            if($c['sds']) {
-                if($id = $this->checkSlug($c['sds'])) {
+            if ($c['sds']) {
+                if ($id = $this->checkSlug($c['sds'])) {
                     $data['sire_dam_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_dam_sire_name'] = $c['sds'];
                 }
+            } else {
+                $data['sire_dam_sire_id'] = null;
             }
-            else $data['sire_dam_sire_id'] = null;
 
             // Sire Dam Dam
-            if($c['sdd']) {
-                if($id = $this->checkSlug($c['sdd'])) {
+            if ($c['sdd']) {
+                if ($id = $this->checkSlug($c['sdd'])) {
                     $data['sire_dam_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['sire_dam_dam_name'] = $c['sdd'];
                 }
+            } else {
+                $data['sire_dam_dam_id'] = null;
             }
-            else $data['sire_dam_dam_id'] = null;
 
             // Dam
-            if($c['dam']) {
-                if($id = $this->checkSlug($c['dam'])) {
+            if ($c['dam']) {
+                if ($id = $this->checkSlug($c['dam'])) {
                     $data['dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_name'] = $c['dam'];
                 }
+            } else {
+                $data['dam_id'] = null;
             }
-            else $data['dam_id'] = null;
 
             // Dam Sire
-            if($c['ds']) {
-                if($id = $this->checkSlug($c['ds'])) {
+            if ($c['ds']) {
+                if ($id = $this->checkSlug($c['ds'])) {
                     $data['dam_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_sire_name'] = $c['ds'];
                 }
+            } else {
+                $data['dam_sire_id'] = null;
             }
-            else $data['dam_sire_id'] = null;
 
             // Dam Sire Sire
-            if($c['dss']) {
-                if($id = $this->checkSlug($c['dss'])) {
+            if ($c['dss']) {
+                if ($id = $this->checkSlug($c['dss'])) {
                     $data['dam_sire_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_sire_sire_name'] = $c['dss'];
                 }
+            } else {
+                $data['dam_sire_sire_id'] = null;
             }
-            else $data['dam_sire_sire_id'] = null;
 
             // Dam Sire Dam
-            if($c['dsd']) {
-                if($id = $this->checkSlug($c['dsd'])) {
+            if ($c['dsd']) {
+                if ($id = $this->checkSlug($c['dsd'])) {
                     $data['dam_sire_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_sire_dam_name'] = $c['dsd'];
                 }
+            } else {
+                $data['dam_sire_dam_id'] = null;
             }
-            else $data['dam_sire_dam_id'] = null;
 
             // Dam Dam
-            if($c['dd']) {
-                if($id = $this->checkSlug($c['dd'])) {
+            if ($c['dd']) {
+                if ($id = $this->checkSlug($c['dd'])) {
                     $data['dam_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_dam_name'] = $c['dd'];
                 }
+            } else {
+                $data['dam_dam_id'] = null;
             }
-            else $data['dam_dam_id'] = null;
 
             // Dam Dam Sire
-            if($c['dds']) {
-                if($id = $this->checkSlug($c['dds'])) {
+            if ($c['dds']) {
+                if ($id = $this->checkSlug($c['dds'])) {
                     $data['dam_dam_sire_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_dam_sire_name'] = $c['dds'];
                 }
+            } else {
+                $data['dam_dam_sire_id'] = null;
             }
-            else $data['dam_dam_sire_id'] = null;
 
             // Dam Dam Dam
-            if($c['ddd']) {
-                if($id = $this->checkSlug($c['ddd'])) {
+            if ($c['ddd']) {
+                if ($id = $this->checkSlug($c['ddd'])) {
                     $data['dam_dam_dam_id'] = $id;
-                }
-                else {
+                } else {
                     $data['dam_dam_dam_name'] = $c['ddd'];
                 }
+            } else {
+                $data['dam_dam_dam_id'] = null;
             }
-            else $data['dam_dam_dam_id'] = null;
 
             DB::table('character_lineages')->insert($data);
         }
@@ -220,7 +213,10 @@ class MigrateLineages extends Command
 
     private function checkSlug($slug)
     {
-        if(isset($slug->id)) return $slug->id;
-        else null;
+        if (isset($slug->id)) {
+            return $slug->id;
+        } else {
+            null;
+        }
     }
 }

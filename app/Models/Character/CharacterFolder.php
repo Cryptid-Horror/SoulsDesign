@@ -2,8 +2,6 @@
 
 namespace App\Models\Character;
 
-use Config;
-use Settings;
 use App\Models\Model;
 
 class CharacterFolder extends Model
@@ -14,7 +12,7 @@ class CharacterFolder extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'user_id'
+        'name', 'description', 'user_id',
     ];
 
     /**
@@ -31,7 +29,7 @@ class CharacterFolder extends Model
     **********************************************************************************************/
 
     /**
-     * Get the user this folder belongs to
+     * Get the user this folder belongs to.
      */
     public function user()
     {
@@ -39,7 +37,7 @@ class CharacterFolder extends Model
     }
 
     /**
-     * Get all characters in this folder
+     * Get all characters in this folder.
      */
     public function characters()
     {
@@ -53,10 +51,10 @@ class CharacterFolder extends Model
     **********************************************************************************************/
 
     /**
-     * returns the folder url
+     * returns the folder url.
      */
     public function getUrlAttribute()
     {
-        return url('user/'.$this->user->name.'/characters/' . $this->name);
+        return url('user/'.$this->user->name.'/characters/'.$this->name);
     }
 }

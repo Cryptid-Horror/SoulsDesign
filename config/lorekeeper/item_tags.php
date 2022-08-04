@@ -26,57 +26,57 @@ return [
     ],
 
     'recipe' => [
-        'name' => 'Recipe',
-        'text_color' => '#ffffff',
-        'background_color' => '#6D18A7'
+        'name'             => 'Recipe',
+        'text_color'       => '#ffffff',
+        'background_color' => '#6D18A7',
     ],
-    
+
     'donateable' => [
-        'name' => 'Donateable',
-        'text_color' => '#ffffff',
-        'background_color' => '#56639E'
+        'name'             => 'Donateable',
+        'text_color'       => '#ffffff',
+        'background_color' => '#56639E',
     ],
 
     'coupon' => [
-        'name' => 'Coupon',
-        'text_color' => '#ffffff',
-        'background_color' => '#ff5ca8'
+        'name'             => 'Coupon',
+        'text_color'       => '#ffffff',
+        'background_color' => '#ff5ca8',
 
     ],
 
     'choicebox' => [
-        'name' => 'Choice Box',
-        'text_color' => '#ffffff',
-        'background_color' => '#56639E'
+        'name'             => 'Choice Box',
+        'text_color'       => '#ffffff',
+        'background_color' => '#56639E',
     ],
-    
+
     'breedingperm' => [
-        'name' => 'Breeding Permission',
-        'text_color' => '#ffffff',
-        'background_color' => '#cbbd8a'
+        'name'             => 'Breeding Permission',
+        'text_color'       => '#ffffff',
+        'background_color' => '#cbbd8a',
         ],
-    
+
     'background' => [
-        'name' => 'Background',
-        'text_color' => 'antiquewhite',
-        'background_color' => 'slategrey'
+        'name'             => 'Background',
+        'text_color'       => 'antiquewhite',
+        'background_color' => 'slategrey',
     ],
-    
+
     'splice' => [
-        'name' => 'Splice',
-        'text_color' => '#ffffff',
-        'background_color' => '#a69bc6'
+        'name'             => 'Splice',
+        'text_color'       => '#ffffff',
+        'background_color' => '#a69bc6',
     ],
-    
+
     'buff' => [
-        'name' => 'Buff',
-        'text_color' => '#ffffff',
-        'background_color' => '#a4b88d'
+        'name'             => 'Buff',
+        'text_color'       => '#ffffff',
+        'background_color' => '#a4b88d',
     ],
 
     'cure' => [
-        'name' => 'Cure',
-        'text_color' => '#ffffff',
-        'background_color' => '#b4676b'
+        'name'             => 'Cure',
+        'text_color'       => '#ffffff',
+        'background_color' => '#b4676b',
     ],
 ];

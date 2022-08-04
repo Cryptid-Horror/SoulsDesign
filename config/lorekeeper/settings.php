@@ -107,9 +107,9 @@ return [
     |       Default: 0/Disabled, 1 to enable.
     |
     */
-    'character_codes' => '{category}-{number}',
+    'character_codes'         => '{category}-{number}',
     'character_number_digits' => 4,
-    'character_pull_number' => 'category',
+    'character_pull_number'   => 'category',
 
     'reset_character_status_on_transfer'  => 0,
     'reset_character_profile_on_transfer' => 0,
@@ -155,7 +155,7 @@ return [
     |
     */
     'store_masterlist_fullsizes' => 1,
-    'masterlist_fullsizes_cap' => 0,
+    'masterlist_fullsizes_cap'   => 0,
 
     /*
     |--------------------------------------------------------------------------
@@ -232,6 +232,6 @@ return [
 
     'donation_shop' => [
         'item_donations' => 0,
-        'cooldown' => 1440,
-    ]
+        'cooldown'       => 1440,
+    ],
 ];
