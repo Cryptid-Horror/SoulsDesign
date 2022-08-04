@@ -368,6 +368,9 @@ class DesignUpdateManager extends Service
                 throw new \Exception('Please select a rarity.');
             }
 
+            $genotype = (!$request->character->is_myo_slot || ($request->character->is_myo_slot && $request->character->image->genotype)) ? $request->character->image->genotype : $request->genotype;
+            $phenotype = (!$request->character->is_myo_slot || ($request->character->is_myo_slot && $request->character->image->phenotype)) ? $request->character->image->phenotype : $request->phenotype;
+            $free_markings = (!$request->character->is_myo_slot || ($request->character->is_myo_slot && $request->character->image->free_markings)) ? $request->character->image->free_markings : $request->free_markings;
             $rarity = ($request->character->is_myo_slot && $request->character->image->rarity_id) ? $request->character->image->rarity : Rarity::find($data['rarity_id']);
             $species = ($request->character->is_myo_slot && $request->character->image->species_id) ? $request->character->image->species : Species::find($data['species_id']);
             if (isset($data['subtype_id']) && $data['subtype_id']) {
@@ -411,6 +414,9 @@ class DesignUpdateManager extends Service
             }
 
             // Update other stats
+            $request->genotype = $genotype;
+            $request->phenotype = $phenotype;
+            $request->free_markings = $free_markings;
             $request->species_id = $species->id;
             $request->rarity_id = $rarity->id;
             $request->subtype_id = $subtype ? $subtype->id : null;
@@ -610,7 +616,7 @@ class DesignUpdateManager extends Service
             // Move the image file to the new image
             File::move($request->imagePath.'/'.$request->imageFileName, $image->imagePath.'/'.$image->imageFileName);
             // Process and save the image
-            $this->processImage($image);
+            (new CharacterManager)->processImage($image);
 
             // The thumbnail is already generated, so it can just be moved without processing
             File::move($request->thumbnailPath.'/'.$request->thumbnailFileName, $image->thumbnailPath.'/'.$image->thumbnailFileName);
@@ -645,7 +651,7 @@ class DesignUpdateManager extends Service
             }
 
             // Add a log for the character
-            $this->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
+            (new CharacterManager)->createLog($user->id, null, $request->user->id, $request->user->alias, $request->character->id, $request->character->is_myo_slot ? 'Registered Dragon Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
 
             // Final recheck and setting of update type, as insurance
             if ($request->character->is_myo_slot) {
@@ -656,8 +662,8 @@ class DesignUpdateManager extends Service
             $request->save();
 
             // Add a log for the character and user
-            $this->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
-            $this->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'user');
+            (new CharacterManager)->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'character');
+            (new CharacterManager)->createLog($user->id, null, $request->character->user_id, $request->character->user->url, $request->character->id, $request->update_type == 'MYO' ? 'MYO Design Approved' : 'Character Design Updated', '[#'.$image->id.']', 'user');
 
             // If this is for a MYO, set user's FTO status and the MYO status of the slot
             // and clear the character's name
