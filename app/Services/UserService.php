@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Character\CharacterDesignUpdate;
 use App\Models\Character\CharacterTransfer;
-use App\Models\Character\CharacterTransfer;
 use App\Models\Gallery\GallerySubmission;
 use App\Models\Rank\Rank;
 use App\Models\Submission\Submission;

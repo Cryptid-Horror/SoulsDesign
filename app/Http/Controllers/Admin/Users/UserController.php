@@ -11,12 +11,8 @@ use App\Models\WorldExpansion\Faction;
 use App\Models\WorldExpansion\Location;
 use App\Services\UserService;
 use Auth;
-use Auth;
-use Carbon\Carbon;
 use Carbon\Carbon;
 use Config;
-use Config;
-use Illuminate\Http\Request;
 use Illuminate\Http\Request;
 use Settings;
 
