@@ -58,9 +58,6 @@
     </div>
 
 	<div class="main">
-		<div class="text-center mb-5">
-			<h2><a href="{{ url('/') }}">Click here to return to the Home page!</a></h2>
-		</div>
 		<div class="text-center mb-3">
 			<h1><b><u>Genetics Portal</u></b></h1><br>
 		</div>
@@ -316,11 +313,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer">
-		Copyright Cryptid-Horror 2020 all Rights reserved.<br>
-		Marking Icons created by Cryptid-Horror, AlabasterGreen, and ModernBeatnik<br>
-        Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor<br>
-	</div>
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
