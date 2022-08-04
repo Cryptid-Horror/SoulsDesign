@@ -124,3 +124,7 @@ b {
 	font-size: 11px;
 	margin: 5px;
 }
+
+.btn-group button{
+    background-color:rgb(28, 42, 54) !important;
+}
