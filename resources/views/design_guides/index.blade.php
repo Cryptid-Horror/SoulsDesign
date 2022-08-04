@@ -49,7 +49,13 @@
 	$legendarys = [['Confetti', 'nFti/FtiFti'], ['Constellation', 'nCn/CnCn'], ['Mermaid', 'nMer/MerMer'], ['Solar Flare', 'nSf/SfSf'], ['Torched', 'nTh/ThTh']];
 ?>
 <body>
-
+<div class="credit">
+        <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
+        Version: 1.0.0<br>
+		Copyright Cryptid-Horror 2020 all Rights reserved. <br>
+		Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor.<br>
+		Marking icons created by Cryptid-Horror, AlabasterGreen, and ModernBeatnik<br>
+    </div>
 
 	<div class="main">
 		<div class="text-center mb-5">
