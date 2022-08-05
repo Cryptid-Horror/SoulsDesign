@@ -126,5 +126,6 @@ b {
 }
 
 .btn-group-vertical{
-    background-color:rgb(28, 42, 54) !important;
+    background:rgb(54, 104, 148) !important;
+	color:rgb(54, 104, 148) !important;
 }
