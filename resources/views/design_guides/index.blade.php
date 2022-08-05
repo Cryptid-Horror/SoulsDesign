@@ -87,7 +87,7 @@
 
 			</div>
 			<div class="btn-group-vertical" class="btn btn-info">
-				<a href="{{ url('') }}" class="btn btn-secondary">[Redacted]</a>
+				<a href="{{ url('') }}" class="btn btn-secondary">Aberrant State</a>
                 <a href="{{ url('world/traits?feature_category_id=6') }}" class="btn btn-secondary">Breath Elements</a>
 				<a href="{{ url('world/traits?feature_category_id=5') }}" class="btn btn-secondary">Physical Mutations</a>
                 <a href="{{ url('world/traits?feature_category_id=7') }}" class="btn btn-secondary">Skills</a>
