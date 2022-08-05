@@ -17,6 +17,7 @@
 
 <body>
 	<div class="main">
+    <div class="credit">
     <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
         Version: 1.0.0<br>
 		Copyright Cryptid-Horror 2020 all Rights reserved. <br>
