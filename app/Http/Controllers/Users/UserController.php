@@ -470,22 +470,23 @@ class UserController extends Controller
         ]);
     }
 
-    /* Shows the users wishlists.
-    *
-    * @return \Illuminate\Contracts\Support\Renderable
-    */
+   /**
+     * Shows the user's wishlists.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function getUserWishlists(Request $request)
     {
         $query = $this->user->wishlists();
 
         $data = $request->only(['name', 'sort']);
 
-        if (isset($data['name'])) {
+        if(isset($data['name']))
             $query->where('name', 'LIKE', '%'.$data['name'].'%');
-        }
 
-        if (isset($data['sort'])) {
-            switch ($data['sort']) {
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
                 case 'alpha':
                     $query->orderBy('name', 'ASC');
                     break;
@@ -499,14 +500,13 @@ class UserController extends Controller
                     $query->orderBy('id', 'ASC');
                     break;
             }
-        } else {
-            $query->orderBy('name', 'ASC');
         }
+        else $query->orderBy('name', 'ASC');
 
         return view('user.wishlists', [
-            'user'      => $this->user,
+            'user' => $this->user,
             'wishlists' => $query->paginate(20)->appends($request->query()),
-            'sublists'  => Sublist::orderBy('sort', 'DESC')->get(),
+            'sublists' => Sublist::orderBy('sort', 'DESC')->get()
         ]);
     }
 
@@ -538,32 +538,32 @@ class UserController extends Controller
         ]);
     }
 
-    /* Shows a wishlists page.
-    *
-    * @return \Illuminate\Contracts\Support\Renderable
-    */
-    public function getUserWishlist($name, $id, Request $request)
+      /**
+     * Shows a wishlist's page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getUserWishlist($name, $id = null, Request $request)
     {
-        if ($id) {
+        if($id) {
             $wishlist = Wishlist::where('id', $id)->where('user_id', $this->user->id)->first();
-            if (!$wishlist) {
-                abort(404);
-            }
+            if(!$wishlist) abort(404);
 
             $query = $wishlist->items();
-        } else {
+        }
+        else {
             $wishlist = null;
             $query = WishlistItem::where('wishlist_id', 0)->where('user_id', $this->user->id);
         }
 
         $data = $request->only(['name', 'sort']);
 
-        if (isset($data['name'])) {
+        if(isset($data['name']))
             $query->where(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'LIKE', '%'.$data['name'].'%');
-        }
 
-        if (isset($data['sort'])) {
-            switch ($data['sort']) {
+        if(isset($data['sort']))
+        {
+            switch($data['sort']) {
                 case 'alpha':
                     $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'ASC');
                     break;
@@ -577,17 +577,17 @@ class UserController extends Controller
                     $query->orderBy('id', 'ASC');
                     break;
             }
-        } else {
-            $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'ASC');
         }
+        else $query->orderBy(Item::select('name')->whereColumn('items.id', 'user_wishlist_items.item_id'), 'ASC');
 
         return view('user.wishlist', [
-            'user'     => $this->user,
+            'user' => $this->user,
             'wishlist' => $wishlist,
-            'items'    => $query->paginate(20)->appends($request->query()),
-            'sublists' => Sublist::orderBy('sort', 'DESC')->get(),
+            'items' => $query->paginate(20)->appends($request->query()),
+            'sublists' => Sublist::orderBy('sort', 'DESC')->get()
         ]);
     }
+
 
     /**
      * Shows a user's currency logs.
