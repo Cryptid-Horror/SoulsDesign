@@ -63,8 +63,10 @@
 		</div>
 		<hr>
 		<div class="mb-4">
-			Welcome to the Genetics Portal! This is the main page of our genetics handguide. You will find links to all necessary documentations on the genes and traits of our dragons here! To view markings, click on the marking rarity names which will open a menu that shows you the different markings!<br><br>
-			In addition, we've made many new changes to our guides and how markings work. We hope you have a fun time designing your dragons!
+			<div class="alert alert-primary" role="alert">
+				Welcome to the Genetics Portal! This is the main page of our genetics handguide. You will find links to all necessary documentations on the genes and traits of our dragons here! To view markings, click on the marking rarity names which will open a menu that shows you the different markings!<br><br>
+				In addition, we've made many new changes to our guides and how markings work. We hope you have a fun time designing your dragons!
+			</div>
 		</div>
 
 		<div class="d-flex justify-content-around mb-5">
@@ -103,7 +105,7 @@
 			</div>
 	
 		</div>
-		<div class="alert alert-danger" role="alert">
+		<div class="alert alert-primary" role="alert">
 			  Base coats and Color modifer marking names have changed names and IDs! If you are unsure what your new marking should be called, please ask a staff member!
 		</div>
 

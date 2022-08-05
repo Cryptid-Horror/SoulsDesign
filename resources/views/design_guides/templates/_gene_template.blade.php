@@ -17,9 +17,12 @@
 
 <body>
 	<div class="main">
-        <div class="text-center mb-5">
-            <h2><a href="{{ url('/design') }}">Click here to return to the Genetics portal!</a></h2>
-        </div>
+    <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
+        Version: 1.0.0<br>
+		Copyright Cryptid-Horror 2020 all Rights reserved. <br>
+		Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor.<br>
+		Marking icons created by Cryptid-Horror, AlabasterGreen, FallingFireX, and ModernBeatnik<br>
+    </div>
         <div class="row">
             <div class="col-xl-9 mb-3">
                 <!-- Marking Name and Code -->
