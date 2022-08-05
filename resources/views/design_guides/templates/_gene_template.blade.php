@@ -24,16 +24,17 @@
 		Original Design for guides by Cryptid-Horror, rebuilt for LK by DraginRaptor.<br>
 		Marking icons created by Cryptid-Horror, AlabasterGreen, FallingFireX, and ModernBeatnik<br>
     </div>
-        <div class="alert alert-primary" role="alert">
             <div class="row">
                 <div class="col-xl-9 mb-3">
                     <!-- Marking Name and Code -->
-                    <h3>{{ $marking_name }}<center>{{ $marking_code }}</h3> </center><br> <center> <h2>{{ $marking_type }}</h2></center>
+                    <div class="alert alert-primary" role="alert">
+                         <h3>{{ $marking_name }}<center>{{ $marking_code }}</h3> </center><br> <center> <h2>{{ $marking_type }}</h2></center>
 
-                    <!-- Marking Description -->
-                    {{ $marking_desc }}
+                        <!-- Marking Description -->
+                        {{ $marking_desc }}
+                    </div>
                 </div>
-        </div>
+        
             <!-- Marking Icon -->
             <div class="text-center col-xl-3 mb-3"><img src="{{ asset('images/design_guides/'.$marking_icon.'.png') }}" width="90%" style="max-width:250px;"></div>
         </div>
