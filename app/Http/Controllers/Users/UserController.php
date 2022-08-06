@@ -373,7 +373,7 @@ class UserController extends Controller
             'user'        => $this->user,
             'categories'  => $categories->keyBy('id'),
             'items'       => $items,
-            'userOptions' => Auth::user()->userOptions,
+            'userOptions' => Auth::user() ? Auth::user()->userOptions : [],
             'user'        => $this->user,
             'logs'        => $this->user->getItemLogs(),
             'sublists'    => Sublist::orderBy('sort', 'DESC')->get(),
@@ -543,7 +543,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function getUserWishlist($name, $id = null, Request $request)
+    public function getUserWishlist($id = null, Request $request)
     {
         if($id) {
             $wishlist = Wishlist::where('id', $id)->where('user_id', $this->user->id)->first();
