@@ -543,7 +543,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function getUserWishlist($name, Request $request, $id = null)
+    public function getUserWishlist($name, $id = null, Request $request)
     {
         if($id) {
             $wishlist = Wishlist::where('id', $id)->where('user_id', $this->user->id)->first();
