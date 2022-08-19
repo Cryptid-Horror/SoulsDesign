@@ -40,6 +40,9 @@
                 In Inventory: {{ $userOwned->pluck('count')->sum() }}
             </span>
         </h5>
+
+        @if($stock->is_fto && Auth::user()->settings->is_fto || !$stock->is_fto)
+            
         @if($stock->is_limited_stock && $stock->quantity == 0)
             <div class="alert alert-warning mb-0">This item is out of stock.</div>
         @elseif($purchaseLimitReached)
