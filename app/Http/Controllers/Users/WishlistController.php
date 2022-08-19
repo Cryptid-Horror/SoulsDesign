@@ -67,7 +67,7 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function getWishlist($id, Request $request)
+    public function getWishlist(Request $request, $id = null)
     {
         if ($id) {
             $wishlist = Wishlist::where('id', $id)->where('user_id', Auth::user()->id)->first();
