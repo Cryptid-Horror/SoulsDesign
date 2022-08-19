@@ -26,10 +26,10 @@ class ShopService extends Service
     /**
      * Creates a new shop.
      *
-     * @param array                 $data
-     * @param \App\Models\User\User $user
-     *
-     * @return \App\Models\Shop\Shop|bool
+
+     * @param  array                  $data
+     * @param  \App\Models\User\User  $user
+     * @return bool|\App\Models\Shop\Shop
      */
     public function createShop($data, $user)
     {
@@ -54,7 +54,8 @@ class ShopService extends Service
             }
 
             return $this->commitReturn($shop);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -64,11 +65,11 @@ class ShopService extends Service
     /**
      * Updates a shop.
      *
-     * @param \App\Models\Shop\Shop $shop
-     * @param array                 $data
-     * @param \App\Models\User\User $user
-     *
-     * @return \App\Models\Shop\Shop|bool
+
+     * @param  \App\Models\Shop\Shop  $shop
+     * @param  array                  $data
+     * @param  \App\Models\User\User  $user
+     * @return bool|\App\Models\Shop\Shop
      */
     public function updateShop($shop, $data, $user)
     {
@@ -83,7 +84,8 @@ class ShopService extends Service
             $data = $this->populateShopData($data, $shop);
 
             $image = null;
-            if (isset($data['image']) && $data['image']) {
+
+            if(isset($data['image']) && $data['image']) {
                 $data['has_image'] = 1;
                 $image = $data['image'];
                 unset($data['image']);
@@ -96,7 +98,8 @@ class ShopService extends Service
             }
 
             return $this->commitReturn($shop);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -106,11 +109,11 @@ class ShopService extends Service
     /**
      * Updates shop stock.
      *
-     * @param \App\Models\Shop\Shop $shop
-     * @param array                 $data
-     * @param \App\Models\User\User $user
-     *
-     * @return \App\Models\Shop\Shop|bool
+
+     * @param  \App\Models\Shop\Shop  $shop
+     * @param  array                  $data
+     * @param  \App\Models\User\User  $user
+     * @return bool|\App\Models\Shop\Shop
      */
     public function updateShopStock($shop, $data, $user)
     {
@@ -135,6 +138,7 @@ class ShopService extends Service
                 'is_limited_stock'      => isset($data['is_limited_stock']),
                 'quantity'              => isset($data['is_limited_stock']) ? $data['quantity'] : 0,
                 'purchase_limit'        => $data['purchase_limit'],
+                'purchase_limit_timeframe' => $data['purchase_limit_timeframe'],
                 'stock_type'            => $data['stock_type'],
                 'is_visible'            => $data['is_visible'] ?? 0,
                 'restock'               => $data['restock'] ?? 0,
@@ -144,7 +148,8 @@ class ShopService extends Service
             ]);
 
             return $this->commitReturn($shop);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -154,11 +159,10 @@ class ShopService extends Service
     /**
      * Updates shop stock.
      *
-     * @param array                 $data
-     * @param \App\Models\User\User $user
-     * @param mixed                 $stock
-     *
-     * @return \App\Models\Shop\Shop|bool
+     * @param  \App\Models\Shop\Shop  $shop
+     * @param  array                  $data
+     * @param  \App\Models\User\User  $user
+     * @return bool|\App\Models\Shop\Shop
      */
     public function editShopStock($stock, $data, $user)
     {
@@ -183,6 +187,7 @@ class ShopService extends Service
                 'is_limited_stock'      => isset($data['is_limited_stock']),
                 'quantity'              => isset($data['is_limited_stock']) ? $data['quantity'] : 0,
                 'purchase_limit'        => $data['purchase_limit'],
+                'purchase_limit_timeframe' => $data['purchase_limit_timeframe'],
                 'stock_type'            => $data['stock_type'],
                 'is_visible'            => $data['is_visible'] ?? 0,
                 'restock'               => $data['restock'] ?? 0,
@@ -193,7 +198,8 @@ class ShopService extends Service
             ]);
 
             return $this->commitReturn($stock);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -208,11 +214,40 @@ class ShopService extends Service
             $stock->delete();
 
             return $this->commitReturn(true);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
         return $this->rollbackReturn(false);
+    }
+
+    /**
+     * Processes user input for creating/updating a shop.
+     *
+     * @param  array                  $data
+     * @param  \App\Models\Shop\Shop  $shop
+     * @return array
+     */
+    private function populateShopData($data, $shop = null)
+    {
+        if(isset($data['description']) && $data['description']) $data['parsed_description'] = parse($data['description']);
+        $data['is_active'] = isset($data['is_active']);
+        $data['is_staff'] = isset($data['is_staff']);
+        $data['use_coupons'] = isset($data['use_coupons']);
+        $data['allowed_coupons'] = isset($data['allowed_coupons']) ? $data['allowed_coupons'] : null;
+
+        if(isset($data['remove_image']))
+        {
+            if($shop && $shop->has_image && $data['remove_image'])
+            {
+                $data['has_image'] = 0;
+                $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName);
+            }
+            unset($data['remove_image']);
+        }
+
+        return $data;
     }
 
     /**
@@ -230,13 +265,11 @@ class ShopService extends Service
             // Delete shop stock
             $shop->stock()->delete();
 
-            if ($shop->has_image) {
-                $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName);
-            }
+            if($shop->has_image) $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName);
             $shop->delete();
 
             return $this->commitReturn(true);
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -263,7 +296,7 @@ class ShopService extends Service
             }
 
             return $this->commitReturn(true);
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -295,39 +328,10 @@ class ShopService extends Service
             }
 
             return $this->commitReturn(true);
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
         return $this->rollbackReturn(false);
-    }
-
-    /**
-     * Processes user input for creating/updating a shop.
-     *
-     * @param array                 $data
-     * @param \App\Models\Shop\Shop $shop
-     *
-     * @return array
-     */
-    private function populateShopData($data, $shop = null)
-    {
-        if (isset($data['description']) && $data['description']) {
-            $data['parsed_description'] = parse($data['description']);
-        }
-        $data['is_active'] = isset($data['is_active']);
-        $data['is_staff'] = isset($data['is_staff']);
-        $data['use_coupons'] = isset($data['use_coupons']);
-        $data['allowed_coupons'] ??= null;
-
-        if (isset($data['remove_image'])) {
-            if ($shop && $shop->has_image && $data['remove_image']) {
-                $data['has_image'] = 0;
-                $this->deleteImage($shop->shopImagePath, $shop->shopImageFileName);
-            }
-            unset($data['remove_image']);
-        }
-
-        return $data;
     }
 }

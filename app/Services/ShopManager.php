@@ -86,8 +86,12 @@ class ShopManager extends Service
                 $tag = $item->tags()->where('tag', 'Coupon')->first();
                 $coupon = $tag->data;
 
-                if (!$coupon['discount']) {
-                    throw new \Exception('No discount amount set, please contact a site admin before trying to purchase again.');
+
+                if(!$coupon['discount']) throw new \Exception('No discount amount set, please contact a site admin before trying to purchase again.');
+
+                // if the coupon isn't infinite kill it
+                if(!$coupon['infinite']) {
+                    if(!(new InventoryManager)->debitStack($user, 'Coupon Used', ['data' => 'Coupon used in purchase of ' . $shopStock->item->name . ' from ' . $shop->name], $userItem, 1)) throw new \Exception("Failed to remove coupon.");
                 }
 
                 // if the coupon isn't infinite kill it
@@ -150,40 +154,31 @@ class ShopManager extends Service
             }
 
             // If the item has a limited quantity, decrease the quantity
-            if ($shopStock->is_limited_stock) {
+
+            if($shopStock->is_limited_stock)
+            {
+
                 $shopStock->quantity -= $quantity;
                 $shopStock->save();
             }
 
             // Add a purchase log
             $shopLog = ShopLog::create([
-                'shop_id'      => $shop->id,
+
+                'shop_id' => $shop->id,
                 'character_id' => $character ? $character->id : null,
-                'user_id'      => $user->id,
-                'currency_id'  => $shopStock->currency->id,
-                'cost'         => isset($data['use_coupon']) ? $total_cost : $shopStock->cost,
-                'item_id'      => $shopStock->item_id,
-                'quantity'     => $quantity,
+                'user_id' => $user->id,
+                'currency_id' => $shopStock->currency->id,
+                'cost' => isset($data['use_coupon']) ? $total_cost : $shopStock->cost,
+                'item_id' => $shopStock->item_id,
+                'quantity' => $quantity
             ]);
 
             // Give the user the item, noting down 1. whose currency was used (user or character) 2. who purchased it 3. which shop it was purchased from
-
-            //     if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
-            //        'data' => $shopLog->itemData,
-            //         'notes' => 'Purchased ' . format_date($shopLog->created_at)
-            //     ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
-            //     // this bottom one is from the shop extension, unsure if I should remove?
-            //    // if($shopStock->stock_type == 'Item') {
-            //        // if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
-            //        //     'data' => $shopLog->itemData,
-            //       //      'notes' => 'Purchased ' . format_date($shopLog->created_at)
-            //     //    ], $shopStock->item, $quantity)) throw new \Exception("Failed to purchase item.");
-            //     //}
-
-            if ($shopStock->stock_type == 'Item') {
-                if (!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
+            if($shopStock->stock_type == 'Item') {
+                if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
                     'data' => $shopLog->itemData,
-                    'notes' => 'Purchased '.format_date($shopLog->created_at),
+                    'notes' => 'Purchased ' . format_date($shopLog->created_at),
                     'disallow_transfer' => $shopStock->disallow_transfer ? 1 : null,
                 ], $shopStock->item, $quantity)) {
                     throw new \Exception('Failed to purchase item.');
@@ -191,7 +186,8 @@ class ShopManager extends Service
             }
 
             return $this->commitReturn($shop);
-        } catch (\Exception $e) {
+
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -225,7 +221,11 @@ class ShopManager extends Service
      */
     public function checkUserPurchases($shopStock, $user)
     {
-        return ShopLog::where('shop_id', $shopStock->shop_id)->whereRaw('( cost / quantity ) = '.$shopStock->cost)->where('item_id', $shopStock->item_id)->where('user_id', $user->id)->sum('quantity');
+        $date = $shopStock->purchaseLimitDate;
+        $shopQuery = ShopLog::where('shop_id', $shopStock->shop_id)->where('cost', $shopStock->cost)->where('item_id', $shopStock->item_id)->where('user_id', $user->id);
+        $shopQuery = isset($date) ? $shopQuery->where('created_at', '>=', date("Y-m-d H:i:s", $date)) : $shopQuery;
+
+        return $shopQuery->sum('quantity');
     }
 
     public function getStockPurchaseLimit($shopStock, $user)

@@ -11,7 +11,7 @@
         </div>
         <div><strong>Cost: </strong> {!! $stock->currency->display($stock->cost) !!}</div>
         @if($stock->is_limited_stock) <div>Stock: {{ $stock->quantity }}</div> @endif
-        @if($stock->purchase_limit) <div class="text-danger">Max {{ $stock->purchase_limit }} per user</div> @endif
+        @if($stock->purchase_limit) <div class="text-danger">Max {{ $stock->purchase_limit }} @if($stock->purchase_limit_timeframe !== 'lifetime') {{ $stock->purchase_limit_timeframe }} @endif per user</div> @endif
         @if($stock->disallow_transfer) <div class="text-danger">Cannot be transferred after purchase</div> @endif
     </div>
 
@@ -40,34 +40,32 @@
                 In Inventory: {{ $userOwned->pluck('count')->sum() }}
             </span>
         </h5>
-        @if($stock->is_fto && Auth::user()->settings->is_fto || !$stock->is_fto)
-            <h5>Purchase</h5>
-            @if($stock->is_limited_stock && $stock->quantity == 0)
-                <div class="alert alert-warning mb-0">This item is out of stock.</div>
-            @elseif($purchaseLimitReached)
-                <div class="alert alert-warning mb-0">You have already purchased the limit of {{ $stock->purchase_limit }} of this item.</div>
-            @else
-                @if($stock->purchase_limit) <div class="alert alert-warning mb-3">You have purchased this item {{ $userPurchaseCount }} times.</div>@endif
-                {!! Form::open(['url' => 'shops/buy']) !!}
-                    {!! Form::hidden('shop_id', $shop->id) !!}
-                    {!! Form::hidden('stock_id', $stock->id) !!}
-                    {!! Form::label('quantity', 'Quantity') !!}
-                    {!! Form::selectRange('quantity', 1, $quantityLimit, 1, ['class' => 'form-control mb-3']) !!}
-                    @if($stock->use_user_bank && $stock->use_character_bank)
-                        <p>This item can be paid for with either your user account bank, or a character's bank. Please choose which you would like to use.</p>
-                        <div class="form-group">
-                            <div>
-                                <label class="h5">{{ Form::radio('bank', 'user' , true, ['class' => 'bank-select mr-1']) }} User Bank</label>
-                            </div>
-                            <div>
-                                <label class="h5">{{ Form::radio('bank', 'character' , false, ['class' => 'bank-select mr-1']) }} Character Bank</label>
-                                <div class="card use-character-bank hide">
-                                    <div class="card-body">
-                                        <p>Enter the code of the character you would like to use to purchase the item.</p>
-                                        <div class="form-group">
-                                            {!! Form::label('slug', 'Character Code') !!}
-                                            {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-                                        </div>
+        @if($stock->is_limited_stock && $stock->quantity == 0)
+            <div class="alert alert-warning mb-0">This item is out of stock.</div>
+        @elseif($purchaseLimitReached)
+            <div class="alert alert-warning mb-0">You have already purchased the limit of {{ $stock->purchase_limit }} of this item @if($stock->purchase_limit_timeframe !== 'lifetime') within the {{$stock->purchase_limit_timeframe}} reset @endif.</div>
+        @else
+
+            @if($stock->purchase_limit) <div class="alert alert-warning mb-3">You have purchased this item {{ $userPurchaseCount }} times @if($stock->purchase_limit_timeframe !== 'lifetime') within the {{$stock->purchase_limit_timeframe}} reset @endif.</div>@endif
+            {!! Form::open(['url' => 'shops/buy']) !!}
+                {!! Form::hidden('shop_id', $shop->id) !!}
+                {!! Form::hidden('stock_id', $stock->id) !!}
+                {!! Form::label('quantity', 'Quantity') !!}
+                {!! Form::selectRange('quantity', 1, $quantityLimit, 1, ['class' => 'form-control mb-3']) !!}
+                @if($stock->use_user_bank && $stock->use_character_bank)
+                    <p>This item can be paid for with either your user account bank, or a character's bank. Please choose which you would like to use.</p>
+                    <div class="form-group">
+                        <div>
+                            <label class="h5">{{ Form::radio('bank', 'user' , true, ['class' => 'bank-select mr-1']) }} User Bank</label>
+                        </div>
+                        <div>
+                            <label class="h5">{{ Form::radio('bank', 'character' , false, ['class' => 'bank-select mr-1']) }} Character Bank</label>
+                            <div class="card use-character-bank hide">
+                                <div class="card-body">
+                                    <p>Enter the code of the character you would like to use to purchase the item.</p>
+                                    <div class="form-group">
+                                        {!! Form::label('slug', 'Character Code') !!}
+                                        {!! Form::text('slug', null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +104,7 @@
         @else
             <div class="alert alert-danger">You must be a FTO to purchase this item.</div>
         @endif
-    @else 
+    @else
         <div class="alert alert-danger">You must be logged in to purchase this item.</div>
     @endif
 @endif
