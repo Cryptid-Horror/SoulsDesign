@@ -150,7 +150,6 @@
 			</select>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">✦Mutation</label>
-			<label class="wideCheckbox"><input type="checkbox" id="SireAether" name="SireAether" value="SireAether">✦Perfect Nest</label>
 
 		</div>
 		
@@ -286,8 +285,6 @@
 			</select>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">✦Mutation</label>
-			<label class="wideCheckbox"><input type="checkbox" id="DamAether" name="DamAether" value="DamAether">✦Perfect Nest</label>
-
 
 		</div>
 		
@@ -307,9 +304,6 @@
 	<!-- MODIFIERS -->
 	<td class="entryBox modifiers">
 		<h2>Modifiers</h2>
-		If your dragon's genome is not updated to the <br>
-		newest base coat and color modifer codes<br>
-		you will need to submit a claim to have them updated!
 		<div width="100%">
 			<span style="white-space: nowrap;">
 				<label class="radioLabel"><input type="checkbox" onchange="updateModifiers()" name="modifierSelector" value="AT" id="AT">Aether Tonic</label>
@@ -452,7 +446,8 @@
 				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
 			</span>
 			<br>
-			
+			✦ Perfect Nest - With the elements on their side the dragon is able to create a perfect nest to help in the nesting process.<br>
+			 No longer will a nest be too cold or too warm, always will it be perfect. A skill that increases the Nesting Item limit +1 (If both Dam and Sire have it it’s +2 | The normal amount is 4.)
 		</div>
 	</td>
 	</tr>

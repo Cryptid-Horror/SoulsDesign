@@ -607,22 +607,12 @@ function validateParent(sireOrDam) {
 }
 function validateModifiers() {
 	var numModsSelected = document.querySelectorAll('input[name="modifierSelector"]:checked').length;
-	var bonus = 0;
-    var SireAether = 0;
-	var DamAether = 0;
-	if (document.getElementById("SireAether").checked) {
-		bonus += 1;
-	} if (document.getElementById("DamAether").checked) {
-		bonus +=1;
-	} if (numModsSelected > 4) {
-		return "" + numModsSelected + " is too many modifiers.";
-	} if (numModsSelected > 4 + bonus + SireAether){
-		return "" + numModsSelected + " is too many modifiers.";
-	} if (numModsSelected > 4 + bonus + DamAether){
+	
+	if (numModsSelected > 6) {
 		return "" + numModsSelected + " is too many modifiers.";
 	}
 
-
+	
 	if (document.getElementById("RB").checked && document.getElementById("colorMod").value == 0) {
 		return "Color modifier for Radiance Bond or Agouti not selected.";
 	}
