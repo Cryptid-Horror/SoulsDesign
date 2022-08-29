@@ -150,6 +150,7 @@
 			</select>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="SM" name="SM" value="SM">✦Mutation</label>
+			<label class="wideCheckbox"><input type="checkbox" id="SireAether" name="SireAether" value="SireAether">✦Perfect Nest</label>
 
 		</div>
 		
@@ -285,6 +286,8 @@
 			</select>
 			<br>
 			<label class="wideCheckbox"><input type="checkbox" id="DM" name="DM" value="DM">✦Mutation</label>
+			<label class="wideCheckbox"><input type="checkbox" id="DamAether" name="DamAether" value="DamAether">✦Perfect Nest</label>
+
 
 		</div>
 		
