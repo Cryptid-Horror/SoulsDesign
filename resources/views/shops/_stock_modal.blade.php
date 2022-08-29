@@ -121,7 +121,6 @@
             else
                 $useCharacterBank.addClass('hide');
         });
-
     $( document ).ready(function() {
         $('.is-coupon-class').change(function(e){
             console.log(this.checked)
@@ -129,6 +128,5 @@
                 })
             $('.br-form-group').css('display',$('.is-restricted-class').prop('checked') ? 'block' : 'none')
         });
-
     </script>
 @endif
