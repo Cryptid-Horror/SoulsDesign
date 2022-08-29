@@ -53,7 +53,7 @@
 				<option value="3">Warden Dragon</option>
 				<option value="5">Sapiere Dragon</option>
 				<option value="4">Greater Emperor</option>
-				<option value="6">Ridgeback Drake</option>
+				<option value="6">Ridgewalker Drake</option>
 				<option value="7">Abyssal Basileus</option>
 
 
@@ -189,7 +189,7 @@
 				<option value="3">Warden Dragon</option>
 				<option value="4">Greater Emperor</option>
 				<option value="5">Sapiere Dragon</option>
-				<option value="6">Ridgeback Drake</option>
+				<option value="6">Ridgewalker Drake</option>
 				<option value="7">Abyssal Basileus</option>
 
 

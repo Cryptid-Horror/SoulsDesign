@@ -14,7 +14,7 @@ const common_egg = {
 	base: { 'Bronze': 70, 'Tarnished': 15, 'Silver': 5, 'Obsidian': 10 },
 	coat: { 'Velour': 80, 'Feathered': 10, 'Plated': 10 },
 	lineage: { 'yes': 90, 'no': 10 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5, 'Abyssal Basileus': 6, 'Ridgewalker Drake': 7 },
 	act_lineage: { 'yes': 95, 'no': 5 },
 	uc_max: 1,
 	r_max: 0	
@@ -30,7 +30,7 @@ const uncommon_egg = {
 	base: { 'Bronze': 40, 'Tarnished': 30, 'Silver': 15, 'Obsidian': 15 },
 	coat: { 'Velour': 75, 'Feathered': 10, 'Plated': 15 },
 	lineage: { 'yes': 85, 'no': 15 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5, 'Abyssal Basileus': 6, 'Ridgewalker Drake': 7 },
 	act_lineage: { 'yes': 90, 'no': 10 },
 	uc_max: 2,
 	r_max: 0	
@@ -46,7 +46,7 @@ const rare_egg = {
 	base: { 'Tarnished': 40, 'Silver': 30, 'Obsidian': 15, 'Gold': 10, 'Melanistic Bronze': 2, 'Melanistic Tarnished': 1, 'Melanistic Silver': 1, 'Melanistic Gold': 1 },
 	coat: { 'Velour': 60, 'Feathered': 20, 'Plated': 16, 'Angora': 3, 'Imperial': 1 },
 	lineage: { 'yes': 75, 'no': 25 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5, 'Abyssal Basileus': 6, 'Ridgewalker Drake': 7 },
 	act_lineage: { 'yes': 80, 'no': 20 },
 	uc_max: 2,
 	r_max: 1	
@@ -62,7 +62,7 @@ const myst_egg = {
 	base: { 'Tarnished': 30, 'Silver': 35, 'Obsidian': 15, 'Gold': 10, 'Melanistic Bronze': 3, 'Melanistic Tarnished': 3, 'Melanistic Silver': 2, 'Melanistic Gold': 2 },
 	coat: { 'Velour': 25, 'Feathered': 35, 'Plated': 25, 'Angora': 10, 'Imperial': 5 },
 	lineage: { 'yes': 70, 'no': 30 },
-	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5 },
+	act_species: { 'Stalker Wyvern': 1, 'Ravager Wyvern': 2, 'Warden Dragon': 3, 'Greater Emperor': 4, 'Sapiere Dragon': 5, 'Abyssal Basileus': 6, 'Ridgewalker Drake': 7 },
 	act_lineage: { 'yes': 75, 'no': 25 },
 	uc_max: 3,
 	r_max: 1

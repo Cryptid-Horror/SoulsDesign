@@ -131,3 +131,16 @@ input[type=checkbox]:checked + label{
   background-color: #1c1f21;
 }
 
+.credit {
+	text-align: center;
+	position: fixed;
+	bottom: 0%;
+	right: 0%;
+	padding: 20px;
+	width: 365px;
+	color: #eee;
+	background-color: #1b1b1ba4;
+	font-family: 'Overlock', 'comfortaa', sans-serif;
+	font-size: 11px;
+	margin: 5px;
+}

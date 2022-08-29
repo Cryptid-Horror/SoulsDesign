@@ -10,10 +10,19 @@
  
    <!-- Should always be kept; found in the public/css -->
     <link href="{{ asset('css/custom_roller_css/hatchery.css') }}" rel="stylesheet">
+    
 
 </head>
 <html lang="en">
     <body>
+    <div class="credit">
+        <a href="https://www.soulsbetween.com/"><img src="https://i.imgur.com/3Jjag9m.png" width="200px"></a><br>
+        Version: 3.0.0<br>
+        CSS Credit: Livard (Main) and Cryptid || Original Code: Owlapin<br>
+        Roller Maintained by Cryptid-Horror and DraginRaptor<br>
+        Roller Content: Copyright Souls-Between 2019 - 2022<br>
+    </div>
+
 <div id="title" align="center"><h1>Hatchery Roller</h1></div>
         <select id="rarity">
             <option value="common">Common</option>
