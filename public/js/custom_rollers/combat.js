@@ -341,6 +341,13 @@ const familiars = {
 			bleed: 10,
 			magic: 40, 
 			breath: 0,
+		},
+		'aetherling': {
+			name: 'Aetherlings Favor',
+			raw: 10,
+			bleed: 5,
+			magic: 45, 
+			breath: 30,
 		}
 	},
 	healing: {

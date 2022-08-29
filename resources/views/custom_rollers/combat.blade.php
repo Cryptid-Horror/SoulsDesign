@@ -121,12 +121,15 @@
             <option value="dire_wolf">Dire Wolf</option>
             <option value="basilisk">Basilisk</option>
             <option value="phoenix">Phoenix</option>
+            <option value="aetherling">Aetherling’s Favor</option>
+
         </select>
         <select id="1_familiar_2" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire Wolf</option>
             <option value="basilisk">Basilisk</option>
             <option value="phoenix">Phoenix</option>
+            <option value="aetherling">Aetherling’s Favor</option>
         </select>
         <br>
         <label>Skills:</label>
@@ -307,12 +310,14 @@
             <option value="dire_wolf">Dire wolf</option>
             <option value="basilisk">Basilisk</option>
             <option value="phoenix">Phoenix</option>
+            <option value="aetherling">Aetherling’s Favor</option>
         </select>
         <select id="2_familiar_2" class="cellElement">
             <option value="NA">NA</option>
             <option value="dire_wolf">Dire wolf</option>
             <option value="basilisk">Basilisk</option>
             <option value="phoenix">Phoenix</option>
+            <option value="aetherling">Aetherling’s Favor</option>
         </select>
         <br>
         <label>Skills:</label>
