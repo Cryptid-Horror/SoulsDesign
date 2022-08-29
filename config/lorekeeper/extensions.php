@@ -87,5 +87,5 @@ return [
     ],
 
     // Organised Traits Dropdown - Draginraptor
-    'organised_traits_dropdown' => 0,
+    'organised_traits_dropdown' => 1,
 ];
