@@ -446,8 +446,8 @@
 				<label class="radioLabel"><input type="checkbox"  id="weakFertility" name="weakFertility" value="weakFertility">✦Weak Fertility?</label>
 			</span>
 			<br>
-			✦ Perfect Nest - With the elements on their side the dragon is able to create a perfect nest to help in the nesting process.<br>
-			 No longer will a nest be too cold or too warm, always will it be perfect. A skill that increases the Nesting Item limit +1 (If both Dam and Sire have it it’s +2 | The normal amount is 4.)
+			✦ Perfect Nest - An Aether Talent that increases the Nesting Item limit +1<br>
+			(If both Dam and Sire have it it’s +2 | The normal amount is 4.)
 		</div>
 	</td>
 	</tr>
