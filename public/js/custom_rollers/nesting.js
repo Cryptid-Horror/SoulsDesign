@@ -616,9 +616,9 @@ function validateModifiers() {
 		bonus +=1;
 	} if (numModsSelected > 4) {
 		return "" + numModsSelected + " is too many modifiers.";
-	} else if (numModsSelected > 4 + bonus + SireAether){
+	} if (numModsSelected > 4 + bonus + SireAether){
 		return "" + numModsSelected + " is too many modifiers.";
-	} else if (numModsSelected > 4 + bonus + DamAether){
+	} if (numModsSelected > 4 + bonus + DamAether){
 		return "" + numModsSelected + " is too many modifiers.";
 	}
 
