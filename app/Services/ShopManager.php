@@ -133,7 +133,7 @@ class ShopManager extends Service
                 // - character has enough currency
                 if(!$shopStock->use_character_bank || !$shopStock->currency->is_character_owned) throw new \Exception("You cannot use a character's bank to pay for this item.");
                 if(!$data['slug']) throw new \Exception("Please enter a character code.");
-                $character = Character::where('slug', $data['slug'])->first();
+                $character = Character::where('slug', $data['slug'])->where('user_id',$user->id)->first();
                 if(!$character) throw new \Exception("Please enter a valid character code.");
                 if(!(new CurrencyManager)->debitCurrency($character, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) throw new \Exception("Not enough currency to make this purchase.");
             }
