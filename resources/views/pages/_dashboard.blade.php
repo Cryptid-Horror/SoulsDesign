@@ -79,7 +79,7 @@ Midsummer Event will be released Shortly!
 <a href="{{ url('https://www.soulsbetween.com/prompts/prompt-categories?name=Arena') }}"><img src="{{ asset('images/arenas.png') }}"></a>
 --}}
 
-<a href="{{ url('https://www.soulsbetween.com/advent-calendars/3') }}"><img src="{{ asset('images/adventbutton.png') }}"></a>
+<a href="{{ url('https://www.soulsbetween.com/advent-calendars/3') }}"><img src="{{ asset('images/advent.png') }}"></a>
 <br>The Daily advent has returned! Staff is completing Prompt overhaul, these are the last ones left of the original list: 
 <ul>
     <li>Trials of Morality</li>
