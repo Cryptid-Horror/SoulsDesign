@@ -25,6 +25,9 @@ if (document.getElementById("barrely").checked == true){ // Free rolls
     if (document.getElementById("bagy").checked == true){
 		lootSize += 1;
 		itemlist += "<i>An extra item was stored in your satchel!</i><br>";}
+    if (document.getElementById("endy").checked == true){
+        lootSize += 2;
+        itemlist += "<i>Your dragon brought back an extra item in their Endless Satchel!</i><br>";}
 
             
 

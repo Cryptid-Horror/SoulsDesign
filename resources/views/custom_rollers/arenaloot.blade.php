@@ -75,6 +75,11 @@
 				<td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label></td>
 				<td><input type="radio" name="fam" id="famn" checked><label for="famn">No</label></td>
 			</tr>
+			<tr>
+				<td>Endless Satchel</td>
+				<td><input type="radio" name="end" id="endy"><label for="endy">Yes</label></td>
+				<td><input type="radio" name="end" id="endn" checked><label for="endn">No</label></td>
+			</tr>
 			</table>
 		</form>
 	</td>
