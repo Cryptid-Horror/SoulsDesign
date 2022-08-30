@@ -61,23 +61,23 @@
         @switch($character->high_aether)
             @case('Arcane')
                 <li>Ability one test text</li>
-                @Break
+                @break
         @switch($character->high_aether)
             @case('Illusionist')
                 <li>Ability one test text</li>
-                @Break
+                @break
         @switch($character->high_aether)
             @case('Elementalist')
                 <li>Ability one test text</li>
-                @Break
+                @break
         @switch($character->high_aether)
             @case('Healing')
                 <li>Ability one test text</li>
-                @Break
+                @break
         switch($character->high_aether)
             @case('Enchantment')
                 <li>Ability one test text</li>
-                @Break
+                @break
         @endswitch
     </ul>
 
