@@ -410,7 +410,7 @@
 
     <div class="form-group">
         {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : null, ['class' => 'form-control']) !!}
+        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : Rankless, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -554,12 +554,14 @@
     </div>
     --}}
 
-    <div class="form-group">
+    {{--
+        <div class="form-group">
         {!! Form::label('Skills') !!}
         <div id="skillsList">
         </div>
         <div><a href="#" class="btn btn-primary" id="addSkills">Add Skill</a></div>
     </div>
+    --}}
 
     @if($stats)
     <h3>Stats</h3>

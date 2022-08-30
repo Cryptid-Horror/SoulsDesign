@@ -85,11 +85,36 @@
                 @break
         @endswitch
     </ul>
-    <b>Aether Restoration:</b> {{ $character->basic_aether ? 'Basic Completed' : 'Incomplete' }}<br>
+    <b>Aether Trials:</b> {{ $character->basic_aether ? 'Basic Completed' : 'Incomplete' }}<br>
     <ul>
         <i>Low Aether Class:</i> {{ $character->low_aether ? 'Low '.$character->low_aether.' Completed' : 'Incomplete' }}<br>
         <i>High Aether Class:</i> {{ $character->high_aether ? 'High '.$character->high_aether.' Completed' : 'Incomplete' }}<br>
     </ul>
+    <ul>
+        @switch($character->high_aether)
+            @case('Arcane')
+                <li>Ability one test text</li>
+                @Break
+        @switch($character->high_aether)
+            @case('Illusionist')
+                <li>Ability one test text</li>
+                @Break
+        @switch($character->high_aether)
+            @case('Elementalist')
+                <li>Ability one test text</li>
+                @Break
+        @switch($character->high_aether)
+            @case('Healing')
+                <li>Ability one test text</li>
+                @Break
+        switch($character->high_aether)
+            @case('Enchantment')
+                <li>Ability one test text</li>
+                @Break
+        @endswitch
+    </ul>
+    
+
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
     <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
     <b>Combat Class:</b> {!! $character->class_id ? $character->class->displayName : 'None' !!}<br>

@@ -249,7 +249,7 @@
 
     <div class="form-group">
         {!! Form::checkbox('basic_aether', 1, $character->basic_aether, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
-        {!! Form::label('basic_aether', 'Has Finished Aether Awakening', ['class' => 'form-check-label ml-3']) !!}
+        {!! Form::label('basic_aether', 'Has Finished Aether Trials', ['class' => 'form-check-label ml-3']) !!}
     </div>
 
     <div class="form-group">
@@ -264,7 +264,7 @@
 
     <div class="form-group">
         {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', [null => 'None', 'Challenger' => 'Challenger', 'Warrior' => 'Warrior', 'Gladiator' => 'Gladiator', 'Champion' => 'Champion'], $character->arena_ranking, ['class' => 'form-control']) !!}
+        {!! Form::select('arena_ranking', [null => 'Rankless', 'Challenger' => 'Challenger', 'Warrior' => 'Warrior', 'Gladiator' => 'Gladiator', 'Champion' => 'Champion'], $character->arena_ranking, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
