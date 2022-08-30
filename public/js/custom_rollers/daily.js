@@ -73,6 +73,9 @@ function items(){
 	if (document.getElementById("localy").checked == true && rand(1,10) <= 4){
 		lootSize += 1;
 		itemlist += "<i>Your dragon brought back an extra item!</i><br>";}
+	if (document.getElementById("endy").checked == true){
+		lootSize += 2;
+		itemlist += "<i>Your dragon brought back an extra item in their Endless Satchel!</i><br>";}
 
 //HUNTING//
 function rollHunt(){

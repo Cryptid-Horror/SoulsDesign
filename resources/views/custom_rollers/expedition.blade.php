@@ -172,7 +172,17 @@
                                 data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Hoarder</label>
                         <label class="radioLabel"><input type="checkbox" id="AdeptY" name="AdeptY" value="AdeptY"
                                 data-toggle="tooltip" data-placement="top" title="Ensure location matches!">✦Adept</label>
-                    </span></center>
+                    </span>
+                    <h3> Aether Talents</h3>
+                    <span style="white-space: nowrap;">
+
+                        <label class="radioLabel"><input type="checkbox" id="endy" name="edny" value="endy"
+                                data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Endless Satchel</label>
+                        <label class="radioLabel"><input type="checkbox" id="healy" name="healy" value="healy"
+                                data-toggle="tooltip" data-placement="top" title="Still get initial Damage, Stacks Status Effects, but does not add prior exisiting Status Effect damage. ">✦Revitalizing Aura</label>
+                    </span>
+
+                </center>
                 </form>
             </div>
         </div>
