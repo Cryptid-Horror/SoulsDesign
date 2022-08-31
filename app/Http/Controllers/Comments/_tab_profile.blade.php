@@ -78,7 +78,7 @@
     </ul>
 
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
-    <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
+    <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'Rankless' }}<br>
     <br>
     @if($character->skills)
         <b>Skills:</b>

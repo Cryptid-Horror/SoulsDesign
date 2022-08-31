@@ -112,7 +112,7 @@
     
 
     <b>Soul Linking:</b> {!! $character->soul_link !!}<br>
-    <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'NIL' }}<br>
+    <b>Arena Ranking:</b> {{ $character->arena_ranking ? $character->arena_ranking : 'Rankless' }}<br>
     <b>Combat Class:</b> {!! $character->class_id ? $character->class->displayName : 'None' !!}<br>
     <br>
     
