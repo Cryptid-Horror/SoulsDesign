@@ -402,48 +402,65 @@
         {!! Form::text('slots_used', old('slots_used') ? old('slots_used') : 0, ['class' => 'form-control']) !!}
     </div>
 
-    <h3>Rites and Activities</h3>
 
-    <div class="form-group">
-        {!! Form::checkbox('ouroboros', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
-        {!! Form::label('ouroboros', 'Has Achieved Ouroboros Emblem', ['class' => 'form-check-label ml-3']) !!}
+    <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Rites and Activities
+        </button>
+      </h5>
     </div>
 
-    <div class="form-group">
-        {!! Form::label('Taming') !!}
-        {!! Form::select('taming', [null => 'None', 'Domesticated' => 'Domesticated', 'Wild' => 'Wild', 'Aether' => 'Aether'], old('taming') ? old('taming') : null, ['class' => 'form-control']) !!}
-    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      <h3>Rites and Activities</h3>
 
-    <div class="form-group">
-        {!! Form::checkbox('basic_aether', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
-        {!! Form::label('basic_aether', 'Has Finished Aether Awakening', ['class' => 'form-check-label ml-3']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::checkbox('ouroboros', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+            {!! Form::label('ouroboros', 'Has Achieved Ouroboros Emblem', ['class' => 'form-check-label ml-3']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('Low Aether Class') !!}
-        {!! Form::select('low_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('low_aether') ? old('low_aether') : null, ['class' => 'form-control']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::label('Taming') !!}
+            {!! Form::select('taming', [null => 'None', 'Domesticated' => 'Domesticated', 'Wild' => 'Wild', 'Aether' => 'Aether'], old('taming') ? old('taming') : null, ['class' => 'form-control']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('High Aether Class') !!}
-        {!! Form::select('high_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('high_aether') ? old('high_aether') : null, ['class' => 'form-control']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::checkbox('basic_aether', 1, 0, ['class' => 'form-check-input', 'data-toggle' => 'toggle']) !!}
+            {!! Form::label('basic_aether', 'Has Finished Aether Awakening', ['class' => 'form-check-label ml-3']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : null, ['class' => 'form-control']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::label('Low Aether Class') !!}
+            {!! Form::select('low_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('low_aether') ? old('low_aether') : null, ['class' => 'form-control']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('Soul Link Type') !!}
-        {!! Form::select('soul_link_type', [null => 'None', 'Dragon' => 'Dragon','Account' => 'Account', 'Companion' => 'Companion'], old('soul_link_type') ? old('soul_link_type') : null, ['class' => 'form-control']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::label('High Aether Class') !!}
+            {!! Form::select('high_aether', [null => 'None', 'Arcane' => 'Arcane', 'Illusionist' => 'Illusionist', 'Elementalist' => 'Elementalist', 'Healing' => 'Healing', 'Enchantment' => 'Enchantment'], old('high_aether') ? old('high_aether') : null, ['class' => 'form-control']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('Soul Link Target') !!}
-        {!! Form::text('soul_link_target', old('soul_link_target'), ['class' => 'form-control', 'placeholder' => 'Enter the name of the target, if link type is Dragon, enter the dragon ID']) !!}
-        {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
+        <div class="form-group">
+            {!! Form::label('Arena Ranking') !!}
+            {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Soul Link Type') !!}
+            {!! Form::select('soul_link_type', [null => 'None', 'Dragon' => 'Dragon','Account' => 'Account', 'Companion' => 'Companion'], old('soul_link_type') ? old('soul_link_type') : null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Soul Link Target') !!}
+            {!! Form::text('soul_link_target', old('soul_link_target'), ['class' => 'form-control', 'placeholder' => 'Enter the name of the target, if link type is Dragon, enter the dragon ID']) !!}
+            {!! Form::text('soul_link_target_link', old('soul_link_target_link'), ['class' => 'form-control', 'placeholder' => 'Enter a link to the target']) !!}
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
     {{-- Old Lineage Code
     <h3>Lineage</h3>
