@@ -336,6 +336,27 @@
     </div>
     @endif
 
+    @if($stats)
+    <h3>Stats</h3>
+    <p class="alert alert-info">If you want a character to have different stats from the default, set them here. Else, leave it as default</p>
+    <div class="form-group">
+        @foreach($stats as $stat)
+            {!! Form::label($stat->name) !!}
+            {!! Form::number('stats['.$stat->id.']', $stat->base, ['class' => 'form-control m-1',]) !!}
+        @endforeach
+    </div>
+    @endif
+
+    <div class="form-group">
+        {!! Form::label('Temperament') !!}
+        {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('Diet') !!}
+        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
+    </div>
+
     <div class="form-group">
         {!! Form::label('Traits') !!} @if($isMyo) {!! add_help('These traits will be listed as required traits for the slot. The user will still be able to add on more traits, but not be able to remove these. This is allowed to conflict with the rarity above; you may add traits above the character\'s specified rarity.') !!} @endif
         <div id="featureList">
@@ -537,16 +558,6 @@
         {!! Form::label('is_adopted', 'Is Adopted', ['class' => 'form-check-label ml-3']) !!}
     </div>
 
-    <div class="form-group">
-        {!! Form::label('Temperament') !!}
-        {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('Diet') !!}
-        {!! Form::select('diet', ['Carnivore' => 'Carnivore', 'Herbivore' => 'Herbivore', 'Piscivore' => 'Piscivore', 'Omnivore' => 'Omnivore'], old('diet') ? old('diet') : 'Omnivore', ['class' => 'form-control']) !!}
-    </div>
-
     {{--
     <div class="form-group">
         {!! Form::label('Rank') !!}
@@ -563,16 +574,7 @@
     </div>
     --}}
 
-    @if($stats)
-    <h3>Stats</h3>
-    <p class="alert alert-info">If you want a character to have different stats from the default, set them here. Else, leave it as default</p>
-    <div class="form-group">
-        @foreach($stats as $stat)
-            {!! Form::label($stat->name) !!}
-            {!! Form::number('stats['.$stat->id.']', $stat->base, ['class' => 'form-control m-1',]) !!}
-        @endforeach
-    </div>
-    @endif
+ 
 
     <div class="text-right">
         {!! Form::submit('Create Character', ['class' => 'btn btn-primary']) !!}
