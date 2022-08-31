@@ -336,17 +336,6 @@
     </div>
     @endif
 
-    @if($stats)
-    <h3>Stats</h3>
-    <p class="alert alert-info">If you want a character to have different stats from the default, set them here. Else, leave it as default</p>
-    <div class="form-group">
-        @foreach($stats as $stat)
-            {!! Form::label($stat->name) !!}
-            {!! Form::number('stats['.$stat->id.']', $stat->base, ['class' => 'form-control m-1',]) !!}
-        @endforeach
-    </div>
-    @endif
-
     <div class="form-group">
         {!! Form::label('Temperament') !!}
         {!! Form::select('temperament', ['Vigilant' => 'Vigilant', 'Aggressive' => 'Aggressive', 'Calm' => 'Calm', 'Sinister' => 'Sinister'], old('temperament') ? old('temperament') : 'Timid', ['class' => 'form-control']) !!}
@@ -392,6 +381,17 @@
         </div>
     @endif
 
+    @if($stats)
+    <h3>Stats</h3>
+    <p class="alert alert-info">If you want a character to have different stats from the default, set them here. Else, leave it as default</p>
+    <div class="form-group">
+        @foreach($stats as $stat)
+            {!! Form::label($stat->name) !!}
+            {!! Form::number('stats['.$stat->id.']', $stat->base, ['class' => 'form-control m-1',]) !!}
+        @endforeach
+    </div>
+    @endif
+    
     <div class="form-group">
         {!! Form::label('Slots used') !!}
         {!! Form::text('slots_used', old('slots_used') ? old('slots_used') : 0, ['class' => 'form-control']) !!}
