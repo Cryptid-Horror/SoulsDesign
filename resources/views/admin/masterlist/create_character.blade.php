@@ -120,6 +120,18 @@
         {!! Form::text('transferrable_at', old('transferrable_at'), ['class' => 'form-control', 'id' => 'datepicker']) !!}
     </div>
 
+    <div class="accordion" id="accordionExampl">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Image Upload (Select to show)
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExampl">
+      <div class="card-body">
     <h3>Image Upload</h3>
 
     <div class="form-group">
@@ -207,7 +219,10 @@
             {!! Form::textarea('image_description', old('image_description'), ['class' => 'form-control wysiwyg']) !!}
         </div>
     @endif
-
+    </div>
+    </div>
+  </div>
+</div>
     <h3>Lineage</h3>
 
     <div class="alert alert-info">Enter a sire and dam to autogenerate ancestry or enter ancestors manually. Do not enter anything if there are no ancestors in that slot.</div>
