@@ -410,7 +410,7 @@
 
     <div class="form-group">
         {!! Form::label('Arena Ranking') !!}
-        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : Rankless, ['class' => 'form-control']) !!}
+        {!! Form::select('arena_ranking', [null => 'None'], old('arena_ranking') ? old('arena_ranking') : null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
