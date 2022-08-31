@@ -381,6 +381,11 @@
         </div>
     @endif
 
+    <div class="form-group">
+        {!! Form::label('Health Status') !!}
+        {!! Form::text('health_status', 'Healthy', ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
+    </div>
+
     @if($stats)
     <h3>Stats</h3>
     <p class="alert alert-info">If you want a character to have different stats from the default, set them here. Else, leave it as default</p>
@@ -391,15 +396,10 @@
         @endforeach
     </div>
     @endif
-    
+
     <div class="form-group">
         {!! Form::label('Slots used') !!}
         {!! Form::text('slots_used', old('slots_used') ? old('slots_used') : 0, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('Health Status') !!}
-        {!! Form::text('health_status', 'Healthy', ['class' => 'form-control', 'placeholder' => 'Enter health status (Healthy/Inbred/Blind etc.)']) !!}
     </div>
 
     <h3>Rites and Activities</h3>
