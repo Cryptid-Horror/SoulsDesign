@@ -60,19 +60,19 @@
     <ul>
         @switch($character->high_aether)
             @case('Arcane')
-                <li>Ability one test text</li>
+                <li>AETHERLING’S FAVOR</li>
                 @break
             @case('Illusionist')
-                <li>Ability one test text</li>
+                <li>TIMELESS TRANSFORMATION</li>
                 @break
             @case('Elementalist')
-                <li>Ability one test text</li>
+                <li>PERFECT NEST</li>
                 @break
             @case('Healing')
-                <li>Ability one test text</li>
+                <li>REVITALIZING AURA</li>
                 @break
             @case('Enchantment')
-                <li>Ability one test text</li>
+                <li>ENDLESS SATCHEL</li>
                 @break
         @endswitch
     </ul>
