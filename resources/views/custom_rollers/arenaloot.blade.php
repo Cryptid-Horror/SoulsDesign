@@ -39,16 +39,14 @@
         <div class="boxed box3 side">
             <div class="contentbox">
                 <form id="activitytype" align="center">
+					<b>Rank</b>
                     <select id="activity" name="activity" align="center">
                         <option value="Brankless">Rankless</option>
                         <option value="Bchallenger">Challenger</option>
                         <option value="Bwarrior">Warrior</option>
                         <option value="Bgladiator">Gladiator</option>
                         <option value="Bchampion">Champion</option>
-                    </select>
-
-
-
+                    </select><br>
                     <b>Name</b>
                     <input type="text" id="dName" placeholder="Dragon's Name here">
                     <br>
@@ -57,32 +55,7 @@
                         <option value="basic">Base levels</option>
                         <option value="copper">Copper Prestige</option>
                     </select>
-
-                    <center>
-                        <h1>Modifiers</h1>
-
-
-                        <tr>
-                            <td>Golden Chest of Mimcry</td>
-                            <td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
-                            <td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
-                        </tr>
-                        <tr>
-                            <td>Hoarder-Skill</td>
-                            <td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
-                            <td><input type="radio" name="hoarder" id="hoardern" checked><label
-                                    for="hoardern">No</label></td>
-                        </tr>
-
-
-                        <tr>
-                            <td>Rarity Familiar</td>
-                            <td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label>
-                            </td>
-                            <td><input type="radio" name="fam" id="famn" checked><label for="famn">No</label></td>
-                        </tr>
-
-                        hr>
+                        <hr>
                         <center>
                             <h1>Modifiers</h1>
                             <h3>General</h3>
@@ -138,27 +111,23 @@
                                         data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Endless
                                     Satchel</label>
                             </span>
-
                         </center>
-
                 </form>
             </div>
         </div>
     </div>
-    <br>
-
-    <div class="boxed box3 center">
-        <h1>Crucible Loot Results</h1>
-        <div id="buttoncontainer" align="center">
-            <button class="button" onclick="roll()">roll</button>
-            <button class="button" onclick="clearForms()">reset</button>
-        </div>
-        <div class="textarea" rows="10" cols="40" id="result" onClick="this.select();"></div><br><br>
-    </div>
-
-    <!-- Found in the public/js folder -->
-    <script type="text/javascript" src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
+		<div class="boxed box3 center">
+            <h1>Expedition Results</h1>
+            <div id="buttoncontainer" align="center">
+                <button class="button" onclick="roll()">roll</button>
+                <button class="button" onclick="clearForms()">reset</button>
+            </div>
+            <div class="textarea" rows="10" cols="40" id="result" onClick="this.select();"></div><br><br>
+    	</div>
 
 </body>
 
 </html>
+
+<!-- Found in the public/js folder -->
+<script type="text/javascript" src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
