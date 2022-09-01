@@ -75,7 +75,7 @@
 
                                 <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
                                         data-toggle="tooltip" data-placement="top"
-                                        title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Satchel</label>
+                                        title="Brings back an extra item">✦Satchel</label>
 
                                 <label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
                                         data-toggle="tooltip" data-placement="top"
@@ -87,15 +87,14 @@
 
                                 <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy"
                                         value="mimicy" data-toggle="tooltip" data-placement="top"
-                                        title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Mimic
+                                        title="Brings back an Extra Item">✦Mimic
                                     Pet</label>
 
                             </span>
                             <span style="white-space: nowrap;">
                                 <label class="radioLabel"><input type="checkbox" id="famy" name="famy" value="famy"
                                         data-toggle="tooltip" data-placement="top"
-                                        title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
-                                    Pet</label>
+                                        title="Increase Chance of Rare Items">✦Jerboa Pet</label>
                             </span>
 
                             <h3> Skills</h3>
@@ -108,7 +107,7 @@
                             <h3> Aether Talents</h3>
                             <span style="white-space: nowrap;">
                                 <label class="radioLabel"><input type="checkbox" id="endy" name="edny" value="endy"
-                                        data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Endless
+                                        data-toggle="tooltip" data-placement="top" title="+2 items returned.">✦Endless
                                     Satchel</label>
                             </span>
                         </center>
