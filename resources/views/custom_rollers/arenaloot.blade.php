@@ -63,7 +63,6 @@
                             </form>
                         </td>
                         <td>
-                            <form id="modifiers" align="right">
                                 <center>
                                     <h1>Modifiers</h1>
                                     <table>
@@ -117,13 +116,11 @@
                                                     for="endn">No</label></td>
                                         </tr>
                                     </table>
-                            </form>
                         </td>
                     </table>
                 </div>
             </div>
         </div>
-	</div>
         <br>
 
         <div class="boxed box3 center">
