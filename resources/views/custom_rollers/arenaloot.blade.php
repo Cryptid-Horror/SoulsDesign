@@ -92,7 +92,7 @@
 
                             </span>
                             <span style="white-space: nowrap;">
-                                <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                                <label class="radioLabel"><input type="checkbox" id="famy" name="famy" value="famy"
                                         data-toggle="tooltip" data-placement="top"
                                         title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
                                     Pet</label>
@@ -115,7 +115,7 @@
                 </form>
             </div>
         </div>
-    </div>
+
 		<div class="boxed box3 center">
             <h1>Expedition Results</h1>
             <div id="buttoncontainer" align="center">
