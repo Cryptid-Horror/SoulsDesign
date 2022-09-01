@@ -46,94 +46,118 @@
                         <option value="Bgladiator">Gladiator</option>
                         <option value="Bchampion">Champion</option>
                     </select>
+
+
+
+                    <b>Name</b>
+                    <input type="text" id="dName" placeholder="Dragon's Name here">
+                    <br>
+                    <b>Prestige</b>
+                    <select id="zone" name="zone">
+                        <option value="basic">Base levels</option>
+                        <option value="copper">Copper Prestige</option>
+                    </select>
+
+                    <center>
+                        <h1>Modifiers</h1>
+
+
+                        <tr>
+                            <td>Golden Chest of Mimcry</td>
+                            <td><input type="radio" name="mimic" id="mimicy"><label for="mimicy">Yes</label></td>
+                            <td><input type="radio" name="mimic" id="mimicn" checked><label for="mimicn">No</label></td>
+                        </tr>
+                        <tr>
+                            <td>Hoarder-Skill</td>
+                            <td><input type="radio" name="hoarder" id="hoardery"><label for="hoardery">Yes</label></td>
+                            <td><input type="radio" name="hoarder" id="hoardern" checked><label
+                                    for="hoardern">No</label></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Rarity Familiar</td>
+                            <td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label>
+                            </td>
+                            <td><input type="radio" name="fam" id="famn" checked><label for="famn">No</label></td>
+                        </tr>
+
+                        hr>
+                        <center>
+                            <h1>Modifiers</h1>
+                            <h3>General</h3>
+                            <span style="white-space: nowrap;">
+
+                                <label class="radioLabel"><input type="checkbox" id="barrely" name="barrely"
+                                        value="barrely" data-toggle="tooltip" data-placement="top"
+                                        title="Free rolls get less loot. If a Book is used on free roll, deselect this option.">✦Free
+                                    Roll?</label>
+                                <label class="radioLabel"><input type="checkbox" id="charmy" name="charmy"
+                                        value="charmy" data-toggle="tooltip" data-placement="top"
+                                        title="Item Rarity Buff.">✦Morality Trial</label>
+
+                            </span>
+                            <h3> Items</h3>
+                            <span style="white-space: nowrap;">
+
+                                <label class="radioLabel"><input type="checkbox" id="bagy" name="bagy" value="bagy"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Basket (Forage/Cave) or Cooler (Hunt/Fish).">✦Satchel</label>
+
+                                <label class="radioLabel"><input type="checkbox" id="booky" name="booky" value="booky"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Loot chance Max + any modifiers">✦Empyrean Book</label><br>
+                            </span>
+
+                            <h3> Pets</h3>
+                            <span style="white-space: nowrap;">
+
+                                <label class="radioLabel"><input type="checkbox" id="mimicy" name="mimicy"
+                                        value="mimicy" data-toggle="tooltip" data-placement="top"
+                                        title="Hunt: Vulture || Fish: Reticulated Crocodile || Forage: Toucan || Cave: Dracobat">✦Mimic
+                                    Pet</label>
+
+                            </span>
+                            <span style="white-space: nowrap;">
+                                <label class="radioLabel"><input type="checkbox" id="famY" name="famY" value="famY"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Hunt: Ursus || Fish: Otter|| Forage: Deer || Cave: Cane toad">✦Pass
+                                    Pet</label>
+                            </span>
+
+                            <h3> Skills</h3>
+                            <span style="white-space: nowrap;">
+
+                                <label class="radioLabel"><input type="checkbox" id="hoardery" name="hoardery"
+                                        value="hoardery" data-toggle="tooltip" data-placement="top"
+                                        title="+1 item returned.">✦Hoarder</label>
+                            </span>
+                            <h3> Aether Talents</h3>
+                            <span style="white-space: nowrap;">
+                                <label class="radioLabel"><input type="checkbox" id="endy" name="edny" value="endy"
+                                        data-toggle="tooltip" data-placement="top" title="+1 item returned.">✦Endless
+                                    Satchel</label>
+                            </span>
+
+                        </center>
+
                 </form>
-
-                <div id="container1" align="center">
-                    <table>
-                        <td>
-                            <form id=playerinfo" align="left">
-                                <b>Name</b>
-                                <input type="text" id="dName" placeholder="Dragon's Name here">
-                                <br>
-                                <b>Prestige</b>
-                                <select id="zone" name="zone">
-                                    <option value="basic">Base levels</option>
-                                    <option value="copper">Copper Prestige</option>
-                                </select>
-                            </form>
-                        </td>
-                        <td>
-                                <center>
-                                    <h1>Modifiers</h1>
-                                    <table>
-                                        <tr>
-                                            <td>Free Roll</td>
-                                            <td><input type="radio" name="barrel" id="barrely"><label
-                                                    for="barrely">Yes</label></td>
-                                            <td><input type="radio" name="barrel" id="barreln" checked><label
-                                                    for="barreln">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Golden Chest of Mimcry</td>
-                                            <td><input type="radio" name="mimic" id="mimicy"><label
-                                                    for="mimicy">Yes</label></td>
-                                            <td><input type="radio" name="mimic" id="mimicn" checked><label
-                                                    for="mimicn">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hoarder-Skill</td>
-                                            <td><input type="radio" name="hoarder" id="hoardery"><label
-                                                    for="hoardery">Yes</label></td>
-                                            <td><input type="radio" name="hoarder" id="hoardern" checked><label
-                                                    for="hoardern">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Satchel</td>
-                                            <td><input type="radio" name="satchel" id="bagy"><label
-                                                    for="bagy">Yes</label></td>
-                                            <td><input type="radio" name="satchel" id="bagn" checked><label
-                                                    for="bagn">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Arena Honor (Taming)</td>
-                                            <td><input type="radio" name="charm" id="charmy"><label
-                                                    for="charmy">Yes</label></td>
-                                            <td><input type="radio" name="charm" id="charmn" checked><label
-                                                    for="charmn">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rarity Familiar</td>
-                                            <td><input type="radio" name="fam" id="famy"><label for="famy">Yes</label>
-                                            </td>
-                                            <td><input type="radio" name="fam" id="famn" checked><label
-                                                    for="famn">No</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Endless Satchel</td>
-                                            <td><input type="radio" name="end" id="endy"><label for="endy">Yes</label>
-                                            </td>
-                                            <td><input type="radio" name="end" id="endn" checked><label
-                                                    for="endn">No</label></td>
-                                        </tr>
-                                    </table>
-                        </td>
-                    </table>
-                </div>
             </div>
         </div>
-        <br>
+    </div>
+    <br>
 
-        <div class="boxed box3 center">
-            <h1>Crucible Loot Results</h1>
-            <div id="buttoncontainer" align="center">
-                <button class="button" onclick="roll()">roll</button>
-                <button class="button" onclick="clearForms()">reset</button>
-            </div>
-            <div class="textarea" rows="10" cols="40" id="result" onClick="this.select();"></div><br><br>
+    <div class="boxed box3 center">
+        <h1>Crucible Loot Results</h1>
+        <div id="buttoncontainer" align="center">
+            <button class="button" onclick="roll()">roll</button>
+            <button class="button" onclick="clearForms()">reset</button>
         </div>
+        <div class="textarea" rows="10" cols="40" id="result" onClick="this.select();"></div><br><br>
+    </div>
 
-        <!-- Found in the public/js folder -->
-        <script type="text/javascript" src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
+    <!-- Found in the public/js folder -->
+    <script type="text/javascript" src="{{ asset('js/custom_rollers/arenaloot.js') }}"></script>
 
 </body>
 
