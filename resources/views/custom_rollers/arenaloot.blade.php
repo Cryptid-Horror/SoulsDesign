@@ -20,7 +20,7 @@
     </script>
 
     <!-- Should always be kept; found in the public/css -->
-    <link href="{{ asset('css/custom_roller_css/activitycss.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom_roller_css/expedition.css') }}" rel="stylesheet">
 
 </head>
 
