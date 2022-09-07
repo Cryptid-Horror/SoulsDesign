@@ -72,6 +72,5 @@ class UserLevelReward extends Model
                 return $this->belongsTo('App\Models\Award\Award', 'rewardable_id');
                 break;
         }
-
     }
 }

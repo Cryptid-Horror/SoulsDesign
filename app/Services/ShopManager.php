@@ -2,21 +2,18 @@
 
 namespace App\Services;
 
+use App\Models\Character\Character;
+use App\Models\Item\Item;
+use App\Models\Item\ItemLog;
+use App\Models\Shop\Shop;
+use App\Models\Shop\ShopLog;
+use App\Models\Shop\ShopStock;
+use App\Models\Shop\UserItemDonation;
+use App\Models\User\UserItem;
+use Carbon\Carbon;
 use Config;
 use DB;
 use Settings;
-
-use App\Models\Character\Character;
-use App\Models\Shop\Shop;
-use App\Models\Shop\ShopStock;
-use App\Models\Shop\ShopLog;
-use App\Models\User\UserItem;
-use App\Models\Item\Item;
-use App\Models\Item\ItemTag;
-use App\Models\Item\ItemLog;
-use App\Models\Shop\UserItemDonation;
-use Carbon\Carbon;
-
 
 class ShopManager extends Service
 {
@@ -89,12 +86,15 @@ class ShopManager extends Service
                 $tag = $item->tags()->where('tag', 'Coupon')->first();
                 $coupon = $tag->data;
 
-
-                if(!$coupon['discount']) throw new \Exception('No discount amount set, please contact a site admin before trying to purchase again.');
+                if (!$coupon['discount']) {
+                    throw new \Exception('No discount amount set, please contact a site admin before trying to purchase again.');
+                }
 
                 // if the coupon isn't infinite kill it
-                if(!$coupon['infinite']) {
-                    if(!(new InventoryManager)->debitStack($user, 'Coupon Used', ['data' => 'Coupon used in purchase of ' . $shopStock->item->name . ' from ' . $shop->name], $userItem, 1)) throw new \Exception("Failed to remove coupon.");
+                if (!$coupon['infinite']) {
+                    if (!(new InventoryManager)->debitStack($user, 'Coupon Used', ['data' => 'Coupon used in purchase of '.$shopStock->item->name.' from '.$shop->name], $userItem, 1)) {
+                        throw new \Exception('Failed to remove coupon.');
+                    }
                 }
 
                 // if the coupon isn't infinite kill it
@@ -125,33 +125,40 @@ class ShopManager extends Service
             }
 
             $character = null;
-            if($data['bank'] == 'character')
-            {
+            if ($data['bank'] == 'character') {
                 // Check if the user is using a character to pay
                 // - stock must be purchaseable with characters
                 // - currency must be character-held
                 // - character has enough currency
-                if(!$shopStock->use_character_bank || !$shopStock->currency->is_character_owned) throw new \Exception("You cannot use a character's bank to pay for this item.");
-                if(!$data['slug']) throw new \Exception("Please enter a character code.");
-                $character = Character::where('slug', $data['slug'])->where('user_id',$user->id)->first();
-                if(!$character) throw new \Exception("Please enter a valid character code.");
-                if(!(new CurrencyManager)->debitCurrency($character, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) throw new \Exception("Not enough currency to make this purchase.");
-            }
-            else
-            {
+                if (!$shopStock->use_character_bank || !$shopStock->currency->is_character_owned) {
+                    throw new \Exception("You cannot use a character's bank to pay for this item.");
+                }
+                if (!$data['slug']) {
+                    throw new \Exception('Please enter a character code.');
+                }
+                $character = Character::where('slug', $data['slug'])->where('user_id', $user->id)->first();
+                if (!$character) {
+                    throw new \Exception('Please enter a valid character code.');
+                }
+                if (!(new CurrencyManager)->debitCurrency($character, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) {
+                    throw new \Exception('Not enough currency to make this purchase.');
+                }
+            } else {
                 // If the user is paying by themselves
                 // - stock must be purchaseable by users
                 // - currency must be user-held
                 // - user has enough currency
-                if(!$shopStock->use_user_bank || !$shopStock->currency->is_user_owned) throw new \Exception("You cannot use your user bank to pay for this item.");
-                if($shopStock->displayCost > 0 && !(new CurrencyManager)->debitCurrency($user, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) throw new \Exception("Not enough currency to make this purchase.");
+                if (!$shopStock->use_user_bank || !$shopStock->currency->is_user_owned) {
+                    throw new \Exception('You cannot use your user bank to pay for this item.');
+                }
+                if ($shopStock->displayCost > 0 && !(new CurrencyManager)->debitCurrency($user, null, 'Shop Purchase', 'Purchased '.$shopStock->item->name.' from '.$shop->name, $shopStock->currency, $total_cost)) {
+                    throw new \Exception('Not enough currency to make this purchase.');
+                }
             }
 
             // If the item has a limited quantity, decrease the quantity
 
-            if($shopStock->is_limited_stock)
-            {
-
+            if ($shopStock->is_limited_stock) {
                 $shopStock->quantity -= $quantity;
                 $shopStock->save();
             }
@@ -159,20 +166,20 @@ class ShopManager extends Service
             // Add a purchase log
             $shopLog = ShopLog::create([
 
-                'shop_id' => $shop->id,
+                'shop_id'      => $shop->id,
                 'character_id' => $character ? $character->id : null,
-                'user_id' => $user->id,
-                'currency_id' => $shopStock->currency->id,
-                'cost' => isset($data['use_coupon']) ? $total_cost : $shopStock->cost,
-                'item_id' => $shopStock->item_id,
-                'quantity' => $quantity
+                'user_id'      => $user->id,
+                'currency_id'  => $shopStock->currency->id,
+                'cost'         => isset($data['use_coupon']) ? $total_cost : $shopStock->cost,
+                'item_id'      => $shopStock->item_id,
+                'quantity'     => $quantity,
             ]);
 
             // Give the user the item, noting down 1. whose currency was used (user or character) 2. who purchased it 3. which shop it was purchased from
-            if($shopStock->stock_type == 'Item') {
-                if(!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
+            if ($shopStock->stock_type == 'Item') {
+                if (!(new InventoryManager)->creditItem(null, $user, 'Shop Purchase', [
                     'data' => $shopLog->itemData,
-                    'notes' => 'Purchased ' . format_date($shopLog->created_at),
+                    'notes' => 'Purchased '.format_date($shopLog->created_at),
                     'disallow_transfer' => $shopStock->disallow_transfer ? 1 : null,
                 ], $shopStock->item, $quantity)) {
                     throw new \Exception('Failed to purchase item.');
@@ -180,8 +187,7 @@ class ShopManager extends Service
             }
 
             return $this->commitReturn($shop);
-
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
 
@@ -191,29 +197,33 @@ class ShopManager extends Service
     /**
      * Checks if the purchase limit for an item from a shop has been reached.
      *
-     * @param  \App\Models\Shop\ShopStock  $shopStock
-     * @param  \App\Models\User\User      $user
+     * @param \App\Models\Shop\ShopStock $shopStock
+     * @param \App\Models\User\User      $user
+     *
      * @return bool
      */
     public function checkPurchaseLimitReached($shopStock, $user)
     {
-        if($shopStock->purchase_limit > 0)
+        if ($shopStock->purchase_limit > 0) {
             return $this->checkUserPurchases($shopStock, $user) >= $shopStock->purchase_limit;
+        }
+
         return false;
     }
 
-      /**
+    /**
      * Checks how many times a user has purchased a shop item.
      *
-     * @param  \App\Models\Shop\ShopStock  $shopStock
-     * @param  \App\Models\User\User      $user
+     * @param \App\Models\Shop\ShopStock $shopStock
+     * @param \App\Models\User\User      $user
+     *
      * @return int
      */
     public function checkUserPurchases($shopStock, $user)
     {
         $date = $shopStock->purchaseLimitDate;
         $shopQuery = ShopLog::where('shop_id', $shopStock->shop_id)->where('cost', $shopStock->cost)->where('item_id', $shopStock->item_id)->where('user_id', $user->id);
-        $shopQuery = isset($date) ? $shopQuery->where('created_at', '>=', date("Y-m-d H:i:s", $date)) : $shopQuery;
+        $shopQuery = isset($date) ? $shopQuery->where('created_at', '>=', date('Y-m-d H:i:s', $date)) : $shopQuery;
 
         return $shopQuery->sum('quantity');
     }
@@ -221,13 +231,18 @@ class ShopManager extends Service
     public function getStockPurchaseLimit($shopStock, $user)
     {
         $limit = Config::get('lorekeeper.settings.default_purchase_limit');
-        if($shopStock->purchase_limit > 0) {
+        if ($shopStock->purchase_limit > 0) {
             $user_purchase_limit = $shopStock->purchase_limit - $this->checkUserPurchases($shopStock, $user);
-            if($user_purchase_limit < $limit) $limit = $user_purchase_limit;
+            if ($user_purchase_limit < $limit) {
+                $limit = $user_purchase_limit;
+            }
         }
-        if($shopStock->is_limited_stock) {
-            if($shopStock->quantity < $limit) $limit = $shopStock->quantity;
+        if ($shopStock->is_limited_stock) {
+            if ($shopStock->quantity < $limit) {
+                $limit = $shopStock->quantity;
+            }
         }
+
         return $limit;
     }
 

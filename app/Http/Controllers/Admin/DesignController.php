@@ -66,7 +66,7 @@ class DesignController extends Controller
                 'character_category_id', 'number', 'slug', 'description',
                 'is_giftable', 'is_tradeable', 'is_sellable', 'sale_value',
                 'transferrable_at', 'set_active', 'invalidate_old', 'adornments',
-                'genotype', 'phenotype', 'free_markings'
+                'genotype', 'phenotype', 'free_markings',
             ]), $r, Auth::user())) {
             flash('Request approved successfully.')->success();
         } elseif ($action == 'reject' && $service->rejectRequest($request->only(['staff_comments']), $r, Auth::user())) {

@@ -14,7 +14,7 @@ class ShopStock extends Model
     protected $fillable = [
 
         'shop_id', 'item_id', 'currency_id', 'cost', 'use_user_bank', 'use_character_bank', 'is_limited_stock', 'quantity', 'sort', 'purchase_limit', 'purchase_limit_timeframe', 'is_fto', 'stock_type', 'is_visible',
-        'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer'
+        'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer',
     ];
 
     /**
@@ -68,18 +68,19 @@ class ShopStock extends Model
     /*
      * Gets the current date associated to the current stocks purchase limit timeframe
      */
-    public function getPurchaseLimitDateAttribute() {
-        switch($this->purchase_limit_timeframe) {
-            case "yearly":
+    public function getPurchaseLimitDateAttribute()
+    {
+        switch ($this->purchase_limit_timeframe) {
+            case 'yearly':
                 $date = strtotime('January 1st');
                 break;
-            case "monthly":
+            case 'monthly':
                 $date = strtotime('midnight first day of this month');
                 break;
-            case "weekly":
+            case 'weekly':
                 $date = strtotime('last sunday');
                 break;
-            case "daily":
+            case 'daily':
                 $date = strtotime('midnight');
                 break;
             default:

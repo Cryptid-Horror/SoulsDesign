@@ -174,7 +174,7 @@ class ShopController extends Controller
         $data = $request->only([
 
             'shop_id', 'item_id', 'currency_id', 'cost', 'use_user_bank', 'use_character_bank', 'is_limited_stock', 'quantity', 'purchase_limit', 'purchase_limit_timeframe', 'is_fto', 'stock_type', 'is_visible',
-            'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer'
+            'restock', 'restock_quantity', 'restock_interval', 'range', 'disallow_transfer',
         ]);
         if ($service->editShopStock(ShopStock::find($id), $data, Auth::user())) {
             flash('Shop stock updated successfully.')->success();
@@ -202,7 +202,7 @@ class ShopController extends Controller
         $data = $request->only([
 
             'shop_id', 'item_id', 'currency_id', 'cost', 'use_user_bank', 'use_character_bank', 'is_limited_stock', 'quantity', 'purchase_limit', 'purchase_limit_timeframe', 'is_fto', 'stock_type', 'is_visible',
-            'restock', 'restock_quantity', 'restock_interval', 'range'
+            'restock', 'restock_quantity', 'restock_interval', 'range',
         ]);
         if ($service->updateShopStock(Shop::find($id), $data, Auth::user())) {
             flash('Shop stock updated successfully.')->success();

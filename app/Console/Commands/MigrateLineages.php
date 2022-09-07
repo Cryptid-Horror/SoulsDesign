@@ -216,7 +216,6 @@ class MigrateLineages extends Command
         if (isset($slug->id)) {
             return $slug->id;
         } else {
-            null;
         }
     }
 }

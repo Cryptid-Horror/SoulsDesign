@@ -4,7 +4,6 @@ namespace App\Models\WorldExpansion;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class FigureCategory extends Model
 {
     /**
