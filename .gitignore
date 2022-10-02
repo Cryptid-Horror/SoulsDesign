@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/resources/sass/theme
 /vendor
 .env
 .phpunit.result.cache
