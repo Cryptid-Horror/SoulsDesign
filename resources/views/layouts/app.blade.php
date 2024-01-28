@@ -94,40 +94,40 @@
             <div class="row">
                 <!-- HEADER LEFT -->
                 <div class="col-md-6">
-                    @if(Auth::check() && Auth::user()->theme)
-                        <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}'); position: relative;"></div>
-                    @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
-                        <div class="site-header-image" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}'); position: relative;"></div>
-                    @else
-                        <div class="site-header-left">
+                    <div class="site-header-left">
+                        @if(Auth::check() && Auth::user()->theme)
+                            <div class="site-header-image px-3" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}');"></div>
+                        @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
+                            <div class="site-header-image px-3" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}');"></div>
+                        @else
                             <div class="site-header-image px-3" id="header" style="background-image: url('{{ asset('images/header.png') }}');"></div>
+                        @endif
 
-                            <div class="d-flex align-items-end">
-                                <a href="{{ url('/') }}">
-                                    <h1 class="site-name">Souls Between</h1>
-                                </a>
-                                <ul class="nav nav-pills header-pills">
-                                    <li class="nav-item">
-                                        @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
-                                            <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
-                                        @else
-                                            <a class="nav-link" href="{{ url('news') }}">News</a>
-                                        @endif
-                                    </li>
-                                    <li class="nav-item">
-                                        @if(Auth::check() && Auth::user()->is_sales_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
-                                            <a class="nav-link d-flex text-warning" href="{{ url('sales') }}"><strong>Sales</strong><i class="fas fa-bell"></i></a>
-                                        @else
-                                            <a class="nav-link" href="{{ url('sales') }}">Sales</a>
-                                        @endif
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('design') }}">Guides</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="d-flex align-items-end">
+                            <a href="{{ url('/') }}">
+                                <h1 class="site-name">Souls Between</h1>
+                            </a>
+                            <ul class="nav nav-pills header-pills">
+                                <li class="nav-item">
+                                    @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
+                                        <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
+                                    @else
+                                        <a class="nav-link" href="{{ url('news') }}">News</a>
+                                    @endif
+                                </li>
+                                <li class="nav-item">
+                                    @if(Auth::check() && Auth::user()->is_sales_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
+                                        <a class="nav-link d-flex text-warning" href="{{ url('sales') }}"><strong>Sales</strong><i class="fas fa-bell"></i></a>
+                                    @else
+                                        <a class="nav-link" href="{{ url('sales') }}">Sales</a>
+                                    @endif
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('design') }}">Guides</a>
+                                </li>
+                            </ul>
                         </div>
-                    @endif
+                    </div>
                 </div>
 
                 <!-- HEADER RIGHT -->

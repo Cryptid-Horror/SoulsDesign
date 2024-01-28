@@ -14,7 +14,7 @@
   --gray: #6d6f7c;
   --gray-dark: #3a3a3f;
   --black: #212129;
-  --bg-image: url("https://cdn.discordapp.com/attachments/1081345918202294304/1081369781980110948/Frigid_Mountains2.png");
+  --bg-image: url("../files/main_bg.png");
   --header-head: url("../files/header_right.png");
   /* Sidebar Sections */
   --sidebar-1: url("../files/sidebar_1.png");
@@ -484,7 +484,7 @@ a {
 .sidebar-user .dropdown-menu .dropdown-item {
   background-color: var(--theme-500);
   color: rgba(255, 255, 255, 0.5);
-  font-family: var(--martel);
+  font-family: "Martel", serif;
   text-transform: none;
   transition: all 100ms linear;
   padding-left: 1rem;
@@ -526,7 +526,7 @@ a {
 .sidebar .sidebar-header, .sidebar .sidebar-section .sidebar-section-header {
   background-color: var(--theme-200);
   color: var(--theme-400);
-  font-family: var(--yrsa);
+  font-family: "Yrsa", serif;
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
@@ -547,7 +547,7 @@ a {
 }
 .sidebar .sidebar-header a {
   color: rgba(255, 255, 255, 0.5);
-  font-family: var(--yrsa);
+  font-family: "Yrsa", serif;
   text-transform: none;
   transition: color 150ms linear;
   padding-left: 1rem;
@@ -571,7 +571,7 @@ a {
 }
 .sidebar a {
   color: var(--theme-100);
-  font-family: var(--martel);
+  font-family: "Martel", serif;
   text-transform: none;
   transition: all 150ms linear;
 }
