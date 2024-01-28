@@ -53,6 +53,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lorekeeper.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/soulsbetween.css') }}" rel="stylesheet">
 
     {{-- Font Awesome --}}
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
@@ -62,8 +63,6 @@
 
     {{-- Bootstrap Toggle --}}
     <link href="{{ asset('css/bootstrap4-toggle.min.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-ui-timepicker-addon.css') }}" rel="stylesheet">
@@ -90,38 +89,116 @@
 </head>
 <body>
     <div id="app">
-        @if(Auth::check() && Auth::user()->theme)
-            <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}'); position: relative;">
-                @include('layouts._clock')
-            </div>
-        @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
-            <div class="site-header-image" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}'); position: relative;">
-                @include('layouts._clock')
-            </div>
-        @else
-            <div class="site-header-image" id="header" style="background-image: url('{{ asset('images/header.png') }}'); position: relative;">
-                @include('layouts._clock')
-            </div>
-        @endif
 
-        
-        
-        @include('layouts._nav')
-        @if ( View::hasSection('sidebar') )
-			<div class="site-mobile-header bg-secondary"><a href="#" class="btn btn-sm btn-outline-light" id="mobileMenuButton">Menu <i class="fas fa-caret-right ml-1"></i></a></div>
-		@endif
+        <div class="container-fluid d-none d-lg-block">
+            <div class="row">
+                <!-- HEADER LEFT -->
+                <div class="col-md-6">
+                    @if(Auth::check() && Auth::user()->theme)
+                        <div class="site-header-image" id="header" style="background-image: url('{{ Auth::user()->theme->imageUrl }}'); position: relative;"></div>
+                    @elseif(isset($defaultTheme) && isset($defaultTheme->imageUrl))
+                        <div class="site-header-image" id="header" style="background-image: url('{{ $defaultTheme->imageUrl }}'); position: relative;"></div>
+                    @else
+                        <div class="site-header-left">
+                            <div class="site-header-image px-3" id="header" style="background-image: url('{{ asset('images/header.png') }}');"></div>
+
+                            <div class="d-flex align-items-end">
+                                <a href="{{ url('/') }}">
+                                    <h1 class="site-name">Souls Between</h1>
+                                </a>
+                                <ul class="nav nav-pills header-pills">
+                                    <li class="nav-item">
+                                        @if(Auth::check() && Auth::user()->is_news_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
+                                            <a class="nav-link d-flex text-warning" href="{{ url('news') }}"><strong>News</strong><i class="fas fa-bell"></i></a>
+                                        @else
+                                            <a class="nav-link" href="{{ url('news') }}">News</a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if(Auth::check() && Auth::user()->is_sales_unread && Config::get('lorekeeper.extensions.navbar_news_notif'))
+                                            <a class="nav-link d-flex text-warning" href="{{ url('sales') }}"><strong>Sales</strong><i class="fas fa-bell"></i></a>
+                                        @else
+                                            <a class="nav-link" href="{{ url('sales') }}">Sales</a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Guides</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- HEADER RIGHT -->
+                <div class="col-md-6">
+                    <div class="site-header-right">
+                        <div class="header-dragon"></div>
+                        <div class="p-2">
+                            <a href="#">
+                                <img src="{{ asset('files/advent.png') }}" class="advent img-fluid">
+                            </a>
+                        </div>
+                        <div class="currency-display">
+                            @if(Auth::check())
+                                @foreach(Auth::user()->getCurrencies(true) as $currency)
+                                    <div class="d-flex justify-content-between p-1 w-100">
+                                        <span class="mr-2">{{ $currency->quantity }}</span>
+                                        <span>@if($currency->has_icon) {!! $currency->displayIcon !!} @endif</span>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="d-flex justify-content-between p-1 w-100">
+                                    <span class="mr-2" style="opacity: 25%;">----</span>
+                                    <span><img src="{{ url('images/data/currencies/1-icon.png') }}"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-between p-1 w-100">
+                                    <span class="mr-2" style="opacity: 25%;">----</span>
+                                    <span><img src="{{ url('images/data/currencies/2-icon.png') }}"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-between p-1 w-100">
+                                    <span class="mr-2" style="opacity: 25%;">----</span>
+                                    <span><img src="{{ url('images/data/currencies/3-icon.png') }}"></span>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div style="position: relative; width: 95%;">
+                    @include('layouts._nav')
+                </div>
+            </div>
+        </div>
+
+        <div class="d-lg-none">
+            @include('layouts._nav')
+        </div>
+
+        <!-- Mobile Sidebar Toggles -->
+		<div class="site-mobile-header d-lg-none d-flex justify-content-between">
+            <a href="#" class="btn btn-sm" id="mobileMenuButton">Menu <i class="fas fa-caret-right ml-1"></i></a>
+            <a href="#" class="btn btn-sm" id="mobileMenuButtonTwo"><i class="fas fa-bars mr-1"></i> Links</a>
+        </div>
 
         <main class="container-fluid">
             <div class="row">
-
                 <div class="sidebar col-lg-2" id="sidebar">
-                    @yield('sidebar')
+                    <div class="sidebar-content">
+                        @include('layouts._sidebarLeft')
+                    </div>
                 </div>
+
                 <div class="main-content col-lg-8 p-4">
                     <div>
                         @if(Settings::get('is_maintenance_mode'))
                             <div class="alert alert-secondary">
-                                The site is currently in maintenance mode! 
+                                The site is currently in maintenance mode!
                                 @if(!Auth::user()->hasPower('maintenance_access'))
                                     You can browse public content, but cannot make any submissions.
                                 @endif
@@ -143,10 +220,14 @@
                             @include('layouts._footer')
                     </div>
                 </div>
+
+                <div class="sidebar sidebar-right col-lg-2" id="sidebarRight">
+                    <div class="sidebar-content">
+                        @include('layouts._sidebarRight')
+                    </div>
+                </div>
             </div>
-
         </main>
-
 
         <div class="modal fade" id="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -198,6 +279,13 @@
                     $sidebar.toggleClass('active');
                 });
 
+                var $mobileMenuButtonTwo = $('#mobileMenuButtonTwo');
+                var $sidebarRight = $('#sidebarRight');
+                $('#mobileMenuButtonTwo').on('click', function(e) {
+                    e.preventDefault();
+                    $sidebarRight.toggleClass('active');
+                });
+
                 $('.inventory-log-stack').on('click', function(e) {
                     e.preventDefault();
                     loadModal("{{ url('items') }}/" + $(this).data('id') + "?read_only=1", $(this).data('name'));
@@ -211,13 +299,13 @@
 
                 // CLOCK
                 function time() {
-                    setInterval(function() { 
+                    setInterval(function() {
                         //60*60*1000*6 FALL BACK
                         //60*60*1000*5 SPRING FORWARD
                         var date = new Date(); // initial date, this acts kinda like a first carbon instance so we can preform functions on it
                         var time = new Date(date.getTime() - 60*60*1000*5);  // preform function on first date (basically get time in timestamp format, the 60*60*1000 is an offset of +1 hour. To do other timezones just convert it to the necessary amount of hours +- UTC
                         var cycle = time.getUTCHours() >= 12 ? ' PM' : ' AM'; // this gets the hour in military time so if it's greater than 12 it's pm
-                        // substr is a function that'll knock of certain letters from a given input. 
+                        // substr is a function that'll knock of certain letters from a given input.
                         // Because ours is -2, if we have 001, it'll read as 01. If we have 042, it'll be 42
                         // we want this because getUTCSeconds() for example gives a single integer value for values < 10 (ex 1 second shows as 1)
                         // this doesn't look correct so we basically ''force'' it to be correct by adding and (sometimes) removed the extra 0
@@ -226,7 +314,7 @@
                         var display = time.getUTCHours() + ":" +  ('0' + time.getUTCMinutes()).substr(-2) + ":" +  ('0' + time.getUTCSeconds()).substr(-2) + " " + cycle; // make it look pretty
                         $("#clock").text(display); // set the div to new time
                     }, 1000)} // times it out for 1 second so loop
-                
+
                 setInterval(time(), 1000); // loop
         </script>
     </div>
