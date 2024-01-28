@@ -103,7 +103,7 @@
 <ul class="text-center position-relative">
     <div class="sidebar-three"></div>
     <li class="sidebar-section grand-hunt">
-        <img src="https://cdn.discordapp.com/attachments/1081345918202294304/1081345923701030974/arenas.png">
+        <img src="{{ asset('files/sidebar_box_1.png') }}">
     </li>
     <div class="sidebar-four"></div>
 </ul>
@@ -111,7 +111,7 @@
 <!-- WORLD EVENT SECTION -->
 <ul class="text-center position-relative">
     <li class="sidebar-section world-event">
-        <img src="https://cdn.discordapp.com/attachments/1081345918202294304/1081345923701030974/arenas.png">
+        <img src="{{ asset('files/sidebar_box_2.png') }}">
     </li>
     <div class="sidebar-five"></div>
 </ul>

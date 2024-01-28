@@ -122,7 +122,7 @@
                                         @endif
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Guides</a>
+                                        <a class="nav-link" href="{{ url('design') }}">Guides</a>
                                     </li>
                                 </ul>
                             </div>
@@ -166,7 +166,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="d-flex justify-content-center">

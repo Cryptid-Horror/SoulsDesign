@@ -15,13 +15,13 @@
   --gray-dark: #3a3a3f;
   --black: #212129;
   --bg-image: url("https://cdn.discordapp.com/attachments/1081345918202294304/1081369781980110948/Frigid_Mountains2.png");
-  --header-head: url("http://souls-between.test/files/header_right.png");
+  --header-head: url("../files/header_right.png");
   /* Sidebar Sections */
-  --sidebar-1: url("https://cdn.discordapp.com/attachments/1081345918202294304/1181012082548813964/s1.png?ex=657f8236&is=656d0d36&hm=d0cddbc90ea210010c73b68bbc1611384c06d2572f5996a5e360332abdb23805&");
-  --sidebar-2: url("https://cdn.discordapp.com/attachments/1081345918202294304/1181012082318123128/s2.png?ex=657f8236&is=656d0d36&hm=6681660e2aec1939b114d488480bfe9a8af011ec527f3230926dc03f639f42e3&");
-  --sidebar-3: url("https://cdn.discordapp.com/attachments/1081345918202294304/1181012082020339832/s3.png?ex=657f8236&is=656d0d36&hm=9a435f2846b6c3ee59813b01a9d0a4cf5050f749f53ff10053f50dc75f6d05a2&");
-  --sidebar-4: url("https://cdn.discordapp.com/attachments/1081345918202294304/1181012081714147388/s4.png?ex=657f8236&is=656d0d36&hm=1d89b72ce917e3888658364d19334b6e1ad5385cfca101f991e07bba01e7c670&");
-  --sidebar-5: url("https://cdn.discordapp.com/attachments/1081345918202294304/1181012081466679387/s5.png?ex=657f8236&is=656d0d36&hm=b3a702d64a8b26691ad73423093a9d6afbd86441af977ffddb37a023979648d4&");
+  --sidebar-1: url("../files/sidebar_1.png");
+  --sidebar-2: url("../files/sidebar_2.png");
+  --sidebar-3: url("../files/sidebar_3.png");
+  --sidebar-4: url("../files/sidebar_4.png");
+  --sidebar-5: url("../files/sidebar_5.png");
   /* PRIMARY */
   --primary-color: 220, 77%;
   --primary-l: 65%;
