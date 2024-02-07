@@ -170,13 +170,13 @@
 
             <div class="d-flex justify-content-center">
                 <div style="position: relative; width: 95%;">
-                    @include('layouts._nav')
+                    @include('layouts._nav', ['viewport' => 'desktop'])
                 </div>
             </div>
         </div>
 
         <div class="d-lg-none">
-            @include('layouts._nav')
+            @include('layouts._nav', ['viewport' => 'mobile'])
         </div>
 
         <!-- Mobile Sidebar Toggles -->
