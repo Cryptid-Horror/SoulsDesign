@@ -53,7 +53,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lorekeeper.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/soulsbetween.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/soulsbetween.css?v=1.1') }}" rel="stylesheet">
 
     {{-- Font Awesome --}}
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
